@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.lake/
+*.olean
+*.ilean
+*.c.o
+*.so
+multi_cap/cell600_graph.txt
+multi_cap/cell600_enum

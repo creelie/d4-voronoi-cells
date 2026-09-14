@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper and this archive."
+title: "Supplementary code for: Voronoi Cells of Unit-Ball Packings in Dimension Four and the Twenty-Four-Cell Conjecture"
+type: software
+authors:
+  - family-names: Bhattacharjee
+    given-names: Deep
+    orcid: "https://orcid.org/0000-0003-0466-750X"
+  - family-names: Bhattacharya
+    given-names: Ushashi
+    orcid: "https://orcid.org/0009-0002-2254-3914"
+  - family-names: Mandal
+    given-names: Priyabrata
+    orcid: "https://orcid.org/0000-0001-6472-6239"
+repository-code: "https://github.com/creelie/d4-voronoi-cells"
+license: MIT
+keywords:
+  - sphere packing
+  - Voronoi cell
+  - semidefinite programming
+  - spherical codes
+  - Lean 4
+abstract: >-
+  Scripts, certificates, run logs and Lean 4 verifications supporting the paper
+  "Voronoi Cells of Unit-Ball Packings in Dimension Four and the Twenty-Four-Cell
+  Conjecture": the exact chamber certificates of the single-deviation bound, the
+  covering bound, the root-system and 600-cell enumerations, the slack
+  continuation, and the three-point semidefinite certificate for the
+  twenty-three-contact case with its verification in exact rational, interval
+  and Lean arithmetic.
