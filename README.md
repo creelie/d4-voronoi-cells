@@ -4,7 +4,8 @@ Python scripts supporting the computations in:
 
   "Voronoi Cells of Unit-Ball Packings in Dimension Four
    and the Twenty-Four-Cell Conjecture"
-  Deep Bhattacharjee, Ushashi Bhattacharya, Priyabrata Mandal
+  Deep Bhattacharjee, Ushashi Bhattacharya, Priyabrata Mandal,
+  Shounak Bhattacharya
 
 Nothing in the paper needs to be checked by running these scripts: every
 exact value the paper asserts is printed in the paper itself. The

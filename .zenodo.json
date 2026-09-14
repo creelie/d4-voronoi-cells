@@ -5,7 +5,8 @@
   "creators": [
     {"name": "Bhattacharjee, Deep", "orcid": "0000-0003-0466-750X"},
     {"name": "Bhattacharya, Ushashi", "orcid": "0009-0002-2254-3914"},
-    {"name": "Mandal, Priyabrata", "affiliation": "Maulana Azad National Institute of Technology Bhopal", "orcid": "0000-0001-6472-6239"}
+    {"name": "Mandal, Priyabrata", "affiliation": "Maulana Azad National Institute of Technology Bhopal", "orcid": "0000-0001-6472-6239"},
+    {"name": "Bhattacharya, Shounak", "affiliation": "Asian College of Teachers, Kolkata"}
   ],
   "keywords": ["sphere packing", "Voronoi cell", "semidefinite programming", "spherical codes", "Lean 4"],
   "license": "MIT",

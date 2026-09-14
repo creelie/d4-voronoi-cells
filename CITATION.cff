@@ -12,6 +12,9 @@ authors:
   - family-names: Mandal
     given-names: Priyabrata
     orcid: "https://orcid.org/0000-0001-6472-6239"
+  - family-names: Bhattacharya
+    given-names: Shounak
+    affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
 keywords:
