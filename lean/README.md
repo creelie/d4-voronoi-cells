@@ -1,6 +1,6 @@
 # Lean 4 verification
 
-Three files and two small Lake projects: machine checks of finite
+Four files and two small Lake projects: machine checks of finite
 arithmetic taken from the paper.
 
 `D4Stress.lean` covers Proposition 7.39 and the corollary that follows it:
@@ -42,6 +42,19 @@ closed forms in interval arithmetic, the one input not computed in Lean;
 `D4CertMain.lean` states that the check returns true and settles it by
 `native_decide`.
 
+`D4InnerProducts.lean` covers the last step of the verification of the
+certificate of de Laat, Leijenhorst and de Muinck Keizer (Theorem 7.25 and
+Remark 7.27): the two-point polynomial p_2 of that certificate, computed
+exactly from their published data by `multi_cap/llm24_certificate_check.py`
+and written into the file by `gen_innerproducts_lean.py` with its
+coefficients scaled to integers (of about 15700 digits each), vanishes at
+-1, -1/2, 0 and 1/2 with multiplicities 1, 2, 2, 1, and its quotient by
+those factors has no zero on [-1, 1/2], by a Sturm sequence computed in
+`Rat`. By complementary slackness these four values are then the only
+inner products a 24-point code of minimal angle 60 degrees can have,
+provided the polynomial identities of their step 5 hold, which are not
+repeated here (see the docstring of `llm24_certificate_check.py`).
+
 `cell600/` covers Proposition 7.51: every set of twenty-three vertices of
 the 600-cell with pairwise inner products at most 1/2 is an inscribed 24-cell
 with one vertex removed. Its module `D4Cell600Enum.lean` holds the 120
@@ -57,8 +70,9 @@ the three files there is no `lakefile`: install elan and run
     lean D4Stress.lean
     lean D4Meet.lean
     lean D4Certificate.lean
+    lean D4InnerProducts.lean
 
-The first two take a few seconds and the third about forty. Silence means
+The first two take a few seconds and the last two about forty each. Silence means
 every theorem in the file was accepted by the kernel; the axiom audit at the foot of each file then prints
 one line per theorem. For the projects,
 
@@ -149,6 +163,22 @@ audit lists `propext`, `Classical.choice` and `Quot.sound`, the three
 standard axioms that arithmetic on `Rat` brings in, and no `native_decide`
 axiom.
 
+### D4InnerProducts.lean
+
+| theorem | statement |
+| --- | --- |
+| `p2_degree` | the scaled two-point polynomial p_2 has degree 16 |
+| `p2_vanishes` | p_2(-1) = p_2(-1/2) = p_2(0) = p_2(1/2) = 0 |
+| `division_exact` | the successive synthetic divisions by (u+1), (u+1/2)^2, u^2 and (u-1/2) are exact |
+| `q_degree` | the quotient q has degree 10 |
+| `q_nonzero_at_the_four` | q does not vanish at any of the four points, so the multiplicities are exactly 1, 2, 2, 1 |
+| `sturm_length` | the Sturm sequence of q has 11 members |
+| `sturm_no_zero` | the sign variations of the Sturm sequence of q at -1 and at 1/2 agree, so q has no zero on [-1, 1/2] |
+
+All by `decide +kernel`, about forty-five seconds; the axiom audit lists the
+three standard axioms only. Sturm's theorem, which turns the last line into a
+count of zeros, is mathematics and is not formalised.
+
 ### cell600/D4Cell600Enum.lean
 
 | theorem | statement |
@@ -223,4 +253,7 @@ statement about the real numbers and is left to the paper; every claim of
 Proposition 7.51 about those 120 vectors is checked. `roots_inner` is
 the conclusion of Lemma 5.1 of de Laat, Leijenhorst and de Muinck Keizer for
 the root system itself, not their theorem, which is the converse
-classification and is not formalised here.
+classification; of the verification of their certificate, `D4InnerProducts.lean`
+formalises the last step and `multi_cap/llm24_certificate_check.py` repeats
+four more in exact and ball arithmetic, while the construction of their zonal
+matrices and the polynomial identities that use them are not repeated.
