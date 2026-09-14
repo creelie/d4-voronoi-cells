@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-The extendability criterion of Proposition 7.28 and the reduction of
-Corollary 7.29 to the saturated 23-point case.
+The extendability criterion of Proposition 7.29 and the reduction of
+Corollary 7.30 to the saturated 23-point case.
 
 A contact configuration W admits a further contact direction if and only
 if its cell contains a point of norm 2, equivalently its cell has
@@ -27,7 +27,7 @@ Checks, in order:
   5  the Gram values of the root configuration lie in {-1,-1/2,0,1/2},
      which is what Lemma 5.1 of de Laat, Leijenhorst and de Muinck Keizer
      proves for every 24-point configuration;
-  6  the chain of Corollary 7.29: at most 22 contacts gives at least
+  6  the chain of Corollary 7.30: at most 22 contacts gives at least
      8.0464 by the covering bound, exactly 24 gives exactly 8, and 23
      with circumradius at least 2 gives strictly more than 8;
   7  a search for a saturated 23-point configuration, started from the
@@ -225,7 +225,7 @@ def main():
 
     # 6. the chain of the corollary
     b22, b24 = covering_bound(22), covering_bound(24)
-    record("the chain of Corollary 7.29 holds numerically",
+    record("the chain of Corollary 7.30 holds numerically",
            b22 > 8.0 and abs(vol - 8.0) < 1e-7 and vol23 > 8.0,
            "m <= 22: covering bound %.6f > 8\n"
            "m  = 24: root configuration, volume exactly 8\n"

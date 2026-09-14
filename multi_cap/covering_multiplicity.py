@@ -1,7 +1,7 @@
 """
 covering_multiplicity.py
 
-Proposition 7.33 and Proposition 7.34: the covering multiplicity inequality,
+Proposition 7.34 and Proposition 7.35: the covering multiplicity inequality,
 and how far the pair-angle distribution alone can carry the estimate.
 
 N(u) counts the contact directions within 60 degrees of u. For a saturated

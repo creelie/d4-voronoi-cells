@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 certificate_check.py -- verification of a three-point certificate for the
-pair inequality of Theorem 7.55, in exact rational and interval arithmetic
-(the proof of Theorem 7.59).
+pair inequality of Theorem 7.57, in exact rational and interval arithmetic
+(the proof of Theorem 7.61).
 
 Input: continuation_out/certificate_d<d>.npz, written by three_point_sdp.py
 in certificate mode: floating-point numbers f_0, ..., f_d and symmetric
@@ -17,7 +17,7 @@ the following is established.
   2.  The bound B = N (N f_0 - f(1)) / 2 - N F(1,1,1) / (6 (N - 2)), with
       N = 23, computed exactly, divided by the scale 1000 of the solver,
       exceeds 8 - A_*, where A_* is evaluated in interval arithmetic from
-      its closed form (the integrals in Proposition 7.54 are elementary):
+      its closed form (the integrals in Proposition 7.56 are elementary):
       A_* = 9 pi^2 / 8 - 207 pi r_* / 8 + 253 pi / (12 sqrt 2), r_* = arctan(1/sqrt 2).
 
   3.  The polynomial P(u, v, t) = f(u) + f(v) + f(t) + F(u, v, t) +
@@ -45,7 +45,7 @@ the following is established.
 
 If all three steps pass, then for every contact configuration of 23
 directions sum_{i<j} omega(gamma_ij) >= B / 1000 > 8 - A_*, which is the
-hypothesis of Theorem 7.55.  The script prints what it verifies and
+hypothesis of Theorem 7.57.  The script prints what it verifies and
 stops with a message at the first failure.
 
 Usage: python3 certificate_check.py [degree] [minimum box width]

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 three_point_sdp.py -- the three-point (Bachoc-Vallentin) relaxation of the
-pair inequality of Theorem 7.55, and the certificate of Theorem 7.59.
+pair inequality of Theorem 7.57, and the certificate of Theorem 7.61.
 
 The question.  For twenty-three contact directions w_1, ..., w_23 (pairwise
 inner products at most 1/2) write u_ij = <w_i, w_j> and
@@ -9,12 +9,12 @@ inner products at most 1/2) write u_ij = <w_i, w_j> and
 where omega(u) = omega_*(arccos u) is the lens weight of the second-order
 estimate carried to r_* = arcsin(1/sqrt3): omega(1/2) = 0.00144541 at
 sixty degrees, decreasing to zero at u = 1/3 (70.53 degrees), and zero
-below.  Theorem 7.55 states that the m = 23 case follows from
+below.  Theorem 7.57 states that the m = 23 case follows from
     E(W) >= 8 - A_* = 0.092855570   for every W,
-and Proposition 7.34 shows that the pair-angle relaxation reaches four
+and Proposition 7.35 shows that the pair-angle relaxation reaches four
 fifths of this target.  This script computes the next relaxation in the
 hierarchy, the one that sees the triples, and produces the certificate
-that certificate_check.py verifies (Theorem 7.59, Lemma 7.58).
+that certificate_check.py verifies (Theorem 7.61, Lemma 7.60).
 
 The certificate.  Let G_k be the Gegenbauer polynomials of S^3, G_k(cos t)
 = sin((k+1)t) / ((k+1) sin t), and let S_k(u, v, t) be the matrices of

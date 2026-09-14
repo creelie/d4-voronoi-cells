@@ -2,7 +2,7 @@
 """
 third_edge_symmetry.py
 =======================
-Resolves the open question left at the end of Section 7.4 ("Where the
+Resolves the open question left at the end of Section 8.3 ("Where the
 transition window's minimiser actually sits"): is the fundamental
 triangle's third edge (v1-v2, the one edge that is neither of this
 paper's two named boundary arcs) the exact image of an already-certified

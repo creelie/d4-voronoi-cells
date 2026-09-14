@@ -1,7 +1,7 @@
 /-
 D4Cell600Enum.lean
 
-A machine check of the finite statement behind Proposition 7.49 of
+A machine check of the finite statement behind Proposition 7.51 of
 "Voronoi Cells of Unit-Ball Packings in Dimension Four": every set of
 twenty-three vertices of the 600-cell with pairwise inner products at most
 1/2 is an inscribed 24-cell with one vertex removed. This file holds the

@@ -42,21 +42,22 @@ from Deep Bhattacharjee <itsdeep@live.com>.
   verification/       Independent cross-checking scripts
   misc/               Utility and diagnostic scripts
   lean/               Five Lean 4 verifications: the equilibrium stress of
-                        Proposition 7.38 with the surrounding root-system
-                        combinatorics (D4Stress.lean); the finite half of
-                        Propositions 7.41 and 7.42 on how much of a root
+                        Proposition 7.39 and of the corollary after it, with
+                        the surrounding root-system combinatorics
+                        (D4Stress.lean); the finite half of
+                        Propositions 7.43 and 7.44 on how much of a root
                         system a contact configuration can hold
                         (D4Meet.lean); the exact half of the certificate
-                        of Theorem 7.59, positivity of its matrices and
+                        of Theorem 7.61, positivity of its matrices and
                         the value of its bound over the rationals
                         (D4Certificate.lean, generated from the
                         certificate by gen_certificate_lean.py); and, in
                         the Lake project cell600/, the enumeration behind
-                        Proposition 7.49, that every 23-point code of
+                        Proposition 7.51, that every 23-point code of
                         minimal angle 60 degrees among the vertices of the
                         600-cell is an inscribed 24-cell less a vertex;
                         and, in the Lake project certificate/, the interval
-                        branch and bound of Theorem 7.59 re-done in exact
+                        branch and bound of Theorem 7.61 re-done in exact
                         dyadic arithmetic (D4CertDomain.lean), the
                         polynomial expanded inside Lean and only the
                         tables of bounds for omega and its derivatives
@@ -478,7 +479,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 ## multi_cap/ -- the 23-point case, reformulated and settled
 
   root_deletions_exact.py
-                              Supports Propositions 7.41 and 7.42.
+                              Supports Propositions 7.43 and 7.44.
                               Exact integer vertex enumeration of the cell
                               left when j = 1, 2, 3 roots are removed from
                               D_4. Scaling the roots to integer vectors of
@@ -496,7 +497,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               No floating point anywhere.
 
   cell600_exact.py
-                              Establishes Proposition 7.49. The 120
+                              Establishes Proposition 7.51. The 120
                               vertices of the 600-cell with doubled
                               coordinates in Z[phi], every inner product
                               computed exactly in Z[phi]; two vertices are
@@ -570,7 +571,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 
   three_point_reduction.py
                               Supports Section 7.10 and the r_* forms of
-                              Propositions 7.23, 7.31 and 7.34. Part 1:
+                              Propositions 7.23, 7.32 and 7.35. Part 1:
                               the pair-only truncated-volume bound at the
                               limits r_23 and r_* (bracket, weight of a
                               60-degree pair, value at a deletion, pairs
@@ -606,13 +607,13 @@ from Deep Bhattacharjee <itsdeep@live.com>.
   three_point_sdp.py
                               Supports Section 7.11: the three-point
                               (Bachoc-Vallentin) relaxation of the pair
-                              inequality of Theorem 7.55, and the
-                              certificate of Theorem 7.59. Builds the
+                              inequality of Theorem 7.57, and the
+                              certificate of Theorem 7.61. Builds the
                               Gegenbauer polynomials of S^3, the matrices
                               Y_k for n = 4 (Legendre polynomials, in the
                               Chebyshev basis T_i(u) T_j(v)) and their
                               symmetrisation, imposes the condition (C) of
-                              Lemma 7.58 on a grid of admissible triples
+                              Lemma 7.60 on a grid of admissible triples
                               and solves the semidefinite programme with
                               cvxpy and Clarabel. First mode: maximise the
                               bound, check on about 1.15 million further
@@ -633,7 +634,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 python three_point_sdp.py 8 30 CLARABEL 5 0.0929
 
   certificate_check.py
-                              The proof of Theorem 7.59: verifies the
+                              The proof of Theorem 7.61: verifies the
                               certificate in exact rational and interval
                               arithmetic, sharing no code with the solver.
                               Step 1, exact LDL^T of the nine matrices and
@@ -712,7 +713,10 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               the Lean branch and bound
                               lean_certificate_build.log and its counter
                               run lean_certificate_stat.log (421881
-                              boxes). The directory
+                              boxes), the root-lattice census
+                              root_lattices_rank4.log, the exact
+                              48-point enumeration octahedral48_exact.log,
+                              and rigidity24.log. The directory
                               continuation_out/ holds the best
                               configuration of every level of the third
                               pass as a 23 x 4 array (.npy). The runs used
@@ -742,8 +746,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 python slack_continuation.py [fresh] [seed]
 
   root_meet.py
-                              Supports Propositions 7.41, 7.42 and
-                              Remark 7.44, in five parts:
+                              Supports Propositions 7.43, 7.44 and
+                              Remark 7.46, in five parts:
 
                                 (i)   no pair of removed roots destroys a
                                       whole couple of complementary
@@ -929,8 +933,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               and the polytope volumes are not.
                               Runtime under a minute.
 
-  saturation_search.py        Supports Section 7.6: Proposition 7.36 and
-                              Remark 7.37. Takes the covering radius as
+  saturation_search.py        Supports Section 7.6: Proposition 7.37 and
+                              Remark 7.38. Takes the covering radius as
                               the objective from the start, which is the
                               quantity the open case is about. It uses
                               that g(W) is the inradius of conv(W) about
@@ -956,8 +960,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               every one of them a deletion. Runtime about
                               three minutes.
 
-  covering_multiplicity.py    Supports Section 7.6: Proposition 7.33
-                              and Proposition 7.34. Two parts:
+  covering_multiplicity.py    Supports Section 7.6: Proposition 7.34
+                              and Proposition 7.35. Two parts:
 
                                 (a) the Cauchy-Schwarz bound on the total
                                     overlap of the 60-degree caps of a
@@ -971,15 +975,15 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                     Gegenbauer positivity at 12 degrees,
                                     whose minimum of the pair weight is
                                     0.041573648 against the 0.083272432
-                                    that Proposition 7.31 needs.
+                                    that Proposition 7.32 needs.
 
                               Part (b) is the sharp statement about the
                               route: nothing reading only the pair angles
                               gets past half way. Runtime about four
                               minutes.
 
-  pair_budget.py              Supports Section 7.6: Proposition 7.31
-                              and Remark 7.32. Proposition 7.23 evaluates
+  pair_budget.py              Supports Section 7.6: Proposition 7.32
+                              and Remark 7.33. Proposition 7.23 evaluates
                               the pairwise estimate at the deletion
                               configuration and gets 7.997885, three
                               pairs short of 8. The deletion
@@ -1006,8 +1010,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               The quadratures are adaptive; nothing here
                               is Monte Carlo. Runtime about two minutes.
 
-  spherical_code_23.py        Supports Section 7.8: Proposition 7.45,
-                              Theorem 7.46 and Remark 7.48. Contact
+  spherical_code_23.py        Supports Section 7.8: Proposition 7.47,
+                              Theorem 7.48 and Remark 7.50. Contact
                               configurations of m directions are
                               spherical codes of m
                               points on S^3 of minimal angle at least 60
@@ -1039,7 +1043,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               minutes.
 
   extendability.py            Supports Section 7.5: Theorem 7.25,
-                              Proposition 7.28 and Corollary 7.29. Six
+                              Proposition 7.29 and Corollary 7.30. Six
                               checks:
 
                                 (a) the root configuration has
@@ -1149,7 +1153,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               percentages, not last digits.
                               Runtime about 30 seconds.
 
-  rigidity23.py               Supports Proposition 7.38, the
+  rigidity23.py               Supports Proposition 7.39, the
                               infinitesimal rigidity of the deletion
                               configuration. Five checks, all in exact
                               integer arithmetic on the unnormalised
@@ -1180,6 +1184,21 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               configuration through contact
                               configurations is a rotation.
                               Runtime well under a second.
+
+  rigidity24.py               Supports the corollary after Proposition
+                              7.39, the same statement for the root
+                              system itself with nothing deleted. Four
+                              checks in exact integer arithmetic: 24
+                              directions and 96 tight pairs, every
+                              direction in 8 of them; the constant
+                              stress (weight 1 on every tight pair, -4
+                              on the diagonal) is positive on the pairs;
+                              it is in equilibrium, the eight
+                              neighbours of every root summing to four
+                              times the root; and the space of motions
+                              holding all 96 pairs at equality has
+                              dimension exactly 6, spanned by the
+                              rotations. Runtime a few seconds.
 
 ## Scripts that run under a time bound
 
@@ -1247,6 +1266,7 @@ Each script can be run directly, from any working directory:
   python multi_cap/covering_multiplicity.py
   python multi_cap/saturation_search.py
   python multi_cap/rigidity23.py
+  python multi_cap/rigidity24.py
   python multi_cap/local_cell_obstruction.py
   python multi_cap/second_order_estimate.py
   python multi_cap/root_deletions_exact.py

@@ -37,7 +37,7 @@ clines = ",\n".join("    [" + ", ".join(str(i) for i in range(n) if c >> i & 1) 
 src = r'''/-
 D4Cell600Enum.lean
 
-A machine check of the finite statement behind Proposition 7.49 of
+A machine check of the finite statement behind Proposition 7.51 of
 "Voronoi Cells of Unit-Ball Packings in Dimension Four": every set of
 twenty-three vertices of the 600-cell with pairwise inner products at most
 1/2 is an inscribed 24-cell with one vertex removed. This file holds the
@@ -275,7 +275,7 @@ print("wrote", out)
 main = """/-
 D4Cell600Main.lean
 
-The three enumeration theorems behind Proposition 7.49: the compiled
+The three enumeration theorems behind Proposition 7.51: the compiled
 depth-first search of D4Cell600Enum.lean, evaluated by `native_decide`.
 Building with `lake build` in this directory compiles D4Cell600Enum to
 native code first (precompileModules), so the search runs in a few seconds.

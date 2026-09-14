@@ -1,7 +1,7 @@
 /-
 D4Meet.lean
 
-A machine check of the combinatorics behind Propositions 7.41 and 7.42 of
+A machine check of the combinatorics behind Propositions 7.43 and 7.44 of
 "Voronoi Cells of Unit-Ball Packings in Dimension Four": how much of a root
 system a contact configuration can hold.
 
@@ -94,7 +94,7 @@ def hasFilledCouple (touched : List (Nat × Nat)) : Bool :=
 /-! ## Two removed roots
 
 Two roots touch at most two of the six supports, so one couple survives
-whole. This is the finite half of Proposition 7.41, and since it depends
+whole. This is the finite half of Proposition 7.43, and since it depends
 only on the supports it is a statement about the thirty-six ordered pairs
 of supports.
 -/
@@ -232,7 +232,7 @@ def deletion : List Vec := roots.filter fun a => a != ((1,1,0,0) : Vec)
 
 /-- A contact configuration meeting a root system in 23 directions is the
     root system with one root removed, and that configuration carries the
-    88 tight pairs of Proposition 7.38. -/
+    88 tight pairs of Proposition 7.39. -/
 theorem deletion_tight_pairs :
     (deletion.length = 23)
   ∧ ((deletion.zipIdx.flatMap fun p =>

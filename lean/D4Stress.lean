@@ -1,7 +1,7 @@
 /-
 D4Stress.lean
 
-A machine check of the integer arithmetic behind Proposition 7.38 of
+A machine check of the integer arithmetic behind Proposition 7.39 of
 "Voronoi Cells of Unit-Ball Packings in Dimension Four": the equilibrium
 stress on the eighty-eight tight pairs of a deletion configuration.
 
@@ -10,7 +10,7 @@ is settled by `decide` and the kernel checks it. There is no `sorry` and no
 dependence on Mathlib: this file compiles against a bare Lean 4 toolchain.
 
 The roots are taken unnormalised, with squared length 2, exactly as in the
-proof of Proposition 7.38, so that every quantity below is an integer. In
+proof of Proposition 7.39, so that every quantity below is an integer. In
 that scaling the contact condition reads `dot a b <= 1` and a pair is tight
 when `dot a b = 1`.
 -/
@@ -136,27 +136,53 @@ def residual (a : Vec) : Vec :=
 
 /-- **The equilibrium relation.** For every direction of the deletion
     configuration, the weighted sum of its tight neighbours cancels against
-    its own multiple of itself. This is equation (7.23) of the paper, and it
+    its own multiple of itself. This is equation (7.24) of the paper, and it
     is what makes every first-order motion hold all eighty-eight pairs at
     equality. -/
 theorem equilibrium : (W.all fun a => residual a == vzero) = true := by decide
 
-/-! ## The pair count of Proposition 7.31 -/
+/-! ## The pair count of Proposition 7.32 -/
 
 /-- A graph on twenty-three vertices of maximum degree ten has at most
     one hundred and fifteen edges, which is the ceiling quoted in
-    Proposition 7.31. -/
+    Proposition 7.32. -/
 theorem pair_ceiling : (23 * 10) / 2 = 115 := by decide
 
 /-- With the integration stopped at r_23, the deletion configuration is
     three pairs short of the ninety-one that the pairwise estimate would
-    need (Remark 7.32). -/
+    need (Remark 7.33). -/
 theorem deletion_shortfall : 91 - tightPairs.length = 3 := by decide
 
 /-- Carried to r_*, the estimate needs sixty-five pairs at sixty degrees
-    (Proposition 7.31), and the deletion configuration has twenty-three
+    (Proposition 7.32), and the deletion configuration has twenty-three
     more than that. -/
 theorem deletion_surplus : tightPairs.length - 65 = 23 := by decide
+
+/-! ## The root system itself (the corollary after Proposition 7.39)
+
+With nothing deleted the tight pairs are the ninety-six edges of the
+24-cell, and the constant stress, weight 1 on every tight pair and -4 on
+the diagonal, is in equilibrium: the eight roots at sixty degrees from a
+root sum to four times that root. -/
+
+/-- The tight pairs of the full root system, listed once each. -/
+def tightPairs24 : List (Vec × Vec) :=
+  (roots.zipIdx.flatMap fun p =>
+    (roots.zipIdx.filterMap fun q =>
+      if p.2 < q.2 && dot p.1 q.1 == 1 then some (p.1, q.1) else none))
+
+/-- The root system has ninety-six tight pairs. -/
+theorem tight_count24 : tightPairs24.length = 96 := by decide
+
+/-- The left-hand side of the equilibrium relation for the constant stress. -/
+def residual24 (a : Vec) : Vec :=
+  add
+    (roots.foldl (fun acc b => if dot a b == 1 then add acc b else acc) vzero)
+    (smul (-4) a)
+
+/-- **The equilibrium relation for the root system.** The sum of the eight
+    tight neighbours of every root is four times the root. -/
+theorem equilibrium24 : (roots.all fun a => residual24 a == vzero) = true := by decide
 
 end D4Stress
 
@@ -188,3 +214,5 @@ and in no case `sorryAx`.
 #print axioms D4Stress.pair_ceiling
 #print axioms D4Stress.deletion_shortfall
 #print axioms D4Stress.deletion_surplus
+#print axioms D4Stress.tight_count24
+#print axioms D4Stress.equilibrium24
