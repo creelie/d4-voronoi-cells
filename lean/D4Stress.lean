@@ -2,7 +2,7 @@
 D4Stress.lean
 
 A machine check of the integer arithmetic behind Proposition 7.39 of
-"Voronoi Cells of Unit-Ball Packings in Dimension Four": the equilibrium
+"Voronoi Cells in Dimension Four and the Twenty-Four-Cell Conjecture": the equilibrium
 stress on the eighty-eight tight pairs of a deletion configuration.
 
 Everything here is finite arithmetic over the integers, so every statement

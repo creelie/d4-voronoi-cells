@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper and this archive."
-title: "Supplementary code for: Voronoi Cells of Unit-Ball Packings in Dimension Four and the Twenty-Four-Cell Conjecture"
+title: "Supplementary code for: Voronoi Cells in Dimension Four and the Twenty-Four-Cell Conjecture"
 type: software
 authors:
   - family-names: Bhattacharjee
@@ -25,7 +25,7 @@ keywords:
   - Lean 4
 abstract: >-
   Scripts, certificates, run logs and Lean 4 verifications supporting the paper
-  "Voronoi Cells of Unit-Ball Packings in Dimension Four and the Twenty-Four-Cell
+  "Voronoi Cells in Dimension Four and the Twenty-Four-Cell Conjecture and the Twenty-Four-Cell
   Conjecture": the exact chamber certificates of the single-deviation bound, the
   covering bound, the root-system and 600-cell enumerations, the slack
   continuation, and the three-point semidefinite certificate for the
