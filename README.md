@@ -718,6 +718,19 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               Log: runs/llm24_certificate_check.log.
                                 python llm24_certificate_check.py /path/to/LasserreSphericalCodes/proofs/4_24
 
+  run_llm24_full_verification.sh
+                              The computation this package does not
+                              contain: on a machine with 128 GB of
+                              memory and 8 cores, installs Julia 1.10,
+                              runs the authors' complete verification
+                              (zonal matrices and the polynomial
+                              identities included, about three days),
+                              then llm24_certificate_check.py on the
+                              same data, and keeps both logs. Needs
+                              LasserreSphericalCodes.zip in the current
+                              directory.
+                                bash run_llm24_full_verification.sh
+
   symmetric_search.py
                               Supports Section 7.9 ("Configurations with a
                               symmetry"). For every rotation type of order
