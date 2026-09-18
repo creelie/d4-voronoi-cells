@@ -3,7 +3,7 @@
 verify_formula2.py
 
 The finer-grid companion to verify_formula.py: the same check of the first arc's breakpoint classification
-(Theorem 9.1): that the four curves
+(Theorem IX.1): that the four curves
 
     universal :  phi = pi/3
     W         :  phi = 2 arctan(sin s)

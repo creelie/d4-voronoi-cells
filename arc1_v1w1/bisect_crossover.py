@@ -4,7 +4,7 @@ bisect_crossover.py
 
 Locates, by bisection on an exact symbolic difference, the crossover
 parameter at which the swap-path and mixed-path defect totals of
-Section 19 exchange order.  Each evaluation is a full symbolic
+Section XIX exchange order.  Each evaluation is a full symbolic
 simplification over Q(sqrt 3) and takes a few seconds, so the default
 forty bisections run for about three minutes on ordinary consumer
 hardware.  Set BISECT_ITERATIONS to shorten that.

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-The covering bound of Theorem 7.16 and Corollary 7.17.
+The covering bound of Theorem VII.16 and Corollary VII.17.
 
 For a contact configuration of m unit vectors in R^4 with pairwise inner
 products at most 1/2 and bounded cell,
@@ -17,20 +17,20 @@ Checks, in order:
   3  the layer-cake rewriting of that integral, against the direct form;
   4  the closed form (pi m / 3) tan^3 r_m against numerical quadrature of
      the same estimate;
-  5  the table of Table 1 for m = 5 .. 24, including the monotonicity
-     in m used in the proof of Corollary 7.17;
+  5  the table of Table I for m = 5 .. 24, including the monotonicity
+     in m used in the proof of Corollary VII.17;
   6  the bound is never violated: at the root configuration, at every
      subset of the roots of size 20 .. 24, and on perturbed and random
      packing-valid configurations;
   7  the two quoted constants, 8.046376 at m = 22 and 7.798989 at
      m = 24, and the density 0.632749 the second implies;
   8  the per-cell form of the bound and its Jensen collapse
-     (Proposition 7.18): phi(s) = tan^3(C^{-1}(s)) has derivative
+     (Proposition VII.18): phi(s) = tan^3(C^{-1}(s)) has derivative
      3 sec^4(C^{-1}(s)) / (4 pi), is strictly convex, and is therefore
      minimised at equal cell areas, where the per-cell bound reproduces
      the global one exactly;
   9  the covering-radius bound arccos sqrt(5/8) = 37.7612 degrees
-     (Proposition 7.21), the averaging step behind it, and the fact that
+     (Proposition VII.21), the averaging step behind it, and the fact that
      it moves the volume bound only in the fifth decimal;
  10  where the shortfall at m = 24 goes: about 0.057 to the overlaps
      below r_24 and about 0.140 to the tail above it, and the total
@@ -313,9 +313,9 @@ def check_constants():
 
 def check_area_optimality():
     """
-    Proposition 7.18: the per-cell bound, its derivative in closed form,
+    Proposition VII.18: the per-cell bound, its derivative in closed form,
     its convexity, and the fact that equal cell areas reproduce exactly
-    the global bound of Theorem 7.16.
+    the global bound of Theorem VII.16.
     """
     def rho_of_area(a):
         return brentq(lambda r: cap_area(r) - a, 1e-14, np.pi / 2.0,
@@ -358,7 +358,7 @@ def check_area_optimality():
 
 def check_covering_radius():
     """
-    Proposition 7.21. Every vertex of a spherical Voronoi cell is at
+    Proposition VII.21. Every vertex of a spherical Voronoi cell is at
     angular distance at least arccos sqrt(5/8) from its centre.
     """
     R0 = np.arccos(np.sqrt(5.0 / 8.0))

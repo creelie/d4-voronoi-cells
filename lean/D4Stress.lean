@@ -1,8 +1,8 @@
 /-
 D4Stress.lean
 
-A machine check of the integer arithmetic behind Proposition 7.39 of
-"Voronoi Cells in Dimension Four and the Twenty-Four-Cell Conjecture": the equilibrium
+A machine check of the integer arithmetic behind Proposition VII.45 of
+"The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture": the equilibrium
 stress on the eighty-eight tight pairs of a deletion configuration.
 
 Everything here is finite arithmetic over the integers, so every statement
@@ -10,7 +10,7 @@ is settled by `decide` and the kernel checks it. There is no `sorry` and no
 dependence on Mathlib: this file compiles against a bare Lean 4 toolchain.
 
 The roots are taken unnormalised, with squared length 2, exactly as in the
-proof of Proposition 7.39, so that every quantity below is an integer. In
+proof of Proposition VII.45, so that every quantity below is an integer. In
 that scaling the contact condition reads `dot a b <= 1` and a pair is tight
 when `dot a b = 1`.
 -/
@@ -141,24 +141,24 @@ def residual (a : Vec) : Vec :=
     equality. -/
 theorem equilibrium : (W.all fun a => residual a == vzero) = true := by decide
 
-/-! ## The pair count of Proposition 7.32 -/
+/-! ## The pair count of Proposition VII.38 -/
 
 /-- A graph on twenty-three vertices of maximum degree ten has at most
     one hundred and fifteen edges, which is the ceiling quoted in
-    Proposition 7.32. -/
+    Proposition VII.38. -/
 theorem pair_ceiling : (23 * 10) / 2 = 115 := by decide
 
 /-- With the integration stopped at r_23, the deletion configuration is
     three pairs short of the ninety-one that the pairwise estimate would
-    need (Remark 7.33). -/
+    need (Remark VII.39). -/
 theorem deletion_shortfall : 91 - tightPairs.length = 3 := by decide
 
 /-- Carried to r_*, the estimate needs sixty-five pairs at sixty degrees
-    (Proposition 7.32), and the deletion configuration has twenty-three
+    (Proposition VII.38), and the deletion configuration has twenty-three
     more than that. -/
 theorem deletion_surplus : tightPairs.length - 65 = 23 := by decide
 
-/-! ## The root system itself (the corollary after Proposition 7.39)
+/-! ## The root system itself (the corollary after Proposition VII.45)
 
 With nothing deleted the tight pairs are the ninety-six edges of the
 24-cell, and the constant stress, weight 1 on every tight pair and -4 on

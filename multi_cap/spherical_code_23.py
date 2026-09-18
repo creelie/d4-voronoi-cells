@@ -16,7 +16,7 @@ result is then polished by pushing the largest inner product down
 directly. Calibration is at m = 24, where the answer is exactly 1/2, and
 at m = 25, where no contact configuration exists.
 
-Output of a run is reproduced in Section 7 of the paper.
+Output of a run is reproduced in Section VII of the paper.
 """
 import numpy as np
 from itertools import combinations

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Putting the pairwise overlaps back into the covering estimate,
-Lemma 7.22, Proposition 7.23 and equation (7.17).
+Lemma VII.22, Proposition VII.23 and equation (VII.18).
 
 Below r_m the caps of radius r about a contact configuration meet only
 in pairs: three contact directions have circumradius at least
@@ -14,16 +14,16 @@ with the lens measure
 
     Lambda(r, gamma) = 4 pi int_{gamma/2}^{r} sin^2 t (1 - tan(gamma/2) cot t) dt,
 
-and the layer-cake step of Theorem 7.16 gives the strongest bound any
+and the layer-cake step of Theorem VII.16 gives the strongest bound any
 argument can extract from cap measures and pairwise intersections.
 
 Checks, in order:
 
-  1  the circumradius bound of Lemma 7.22, by the Rayleigh-quotient
+  1  the circumradius bound of Lemma VII.22, by the Rayleigh-quotient
      argument and against direct computation on random admissible
      triples;
   2  r_23 and r_24 both lie below arccos(sqrt(2/3)), so the hypothesis
-     of Proposition 7.23 holds at both counts;
+     of Proposition VII.23 holds at both counts;
   3  the closed form for Lambda against direct integration on S^3;
   4  the value of the second-order bound at the root system and at the
      root system minus one root, in high-precision quadrature.

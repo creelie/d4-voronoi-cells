@@ -37,8 +37,8 @@ clines = ",\n".join("    [" + ", ".join(str(i) for i in range(n) if c >> i & 1) 
 src = r'''/-
 D4Cell600Enum.lean
 
-A machine check of the finite statement behind Proposition 7.51 of
-"Voronoi Cells in Dimension Four and the Twenty-Four-Cell Conjecture": every set of
+A machine check of the finite statement behind Proposition VII.60 of
+"The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture": every set of
 twenty-three vertices of the 600-cell with pairwise inner products at most
 1/2 is an inscribed 24-cell with one vertex removed. This file holds the
 data, the definitions, and every theorem the kernel checks by `decide`;
@@ -275,7 +275,7 @@ print("wrote", out)
 main = """/-
 D4Cell600Main.lean
 
-The three enumeration theorems behind Proposition 7.51: the compiled
+The three enumeration theorems behind Proposition VII.60: the compiled
 depth-first search of D4Cell600Enum.lean, evaluated by `native_decide`.
 Building with `lake build` in this directory compiles D4Cell600Enum to
 native code first (precompileModules), so the search runs in a few seconds.

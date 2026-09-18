@@ -2,7 +2,7 @@
 """
 third_edge_symmetry.py
 =======================
-Resolves the open question left at the end of Section 8.3 ("Where the
+Resolves the open question left at the end of Section VIII C ("Where the
 transition window's minimiser actually sits"): is the fundamental
 triangle's third edge (v1-v2, the one edge that is neither of this
 paper's two named boundary arcs) the exact image of an already-certified
@@ -34,7 +34,7 @@ performed here.
 WHAT THIS DOES NOT ESTABLISH, stated plainly: it does not complete the
 second arc (w1-v2), which still carries only 3 of its own ~8-9
 region-and-sub-part units (see hessian_multidir/ and the paper's
-Section 12 for the honest count there). It says nothing about the
+Section XII for the honest count there). It says nothing about the
 two-dimensional INTERIOR of the fundamental triangle, which remains
 completely untouched by any certificate or symmetry argument anywhere
 in this paper. Conjecture (Direction-of-Deviation Positivity) remains

@@ -3,7 +3,7 @@ pair_budget.py
 
 What the pairwise estimate would need at twenty-three contacts.
 
-Proposition 7.23 adds the exact pairwise cap overlaps to the covering
+Proposition VII.23 adds the exact pairwise cap overlaps to the covering
 estimate. Evaluated at the deletion configuration, where the 88 close pairs
 sit at exactly 60 degrees, it returns 7.997885, short of 8 by 0.002115.
 That number is a property of the deletion configuration, and the deletion
@@ -161,6 +161,6 @@ if __name__ == "__main__":
     if FAIL:
         print("failed:", ", ".join(FAIL))
     print("=" * 62)
-    print("The estimate of Proposition 7.23 falls short at the deletion")
+    print("The estimate of Proposition VII.23 falls short at the deletion")
     print("configuration by three pairs. The deletion configuration is not")
     print("saturated, so this says nothing about the case left open.")

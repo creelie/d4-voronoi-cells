@@ -227,5 +227,5 @@ if __name__ == "__main__":
     print("the first arc, via the S_3 symmetry group verified above. Conjecture")
     print("(Direction-of-Deviation Positivity, RESTATED) is proved in full on the")
     print("fundamental triangle's boundary. The triangle's interior is untouched by")
-    print("this argument; it is covered instead by the cap inequality of Section 13,")
+    print("this argument; it is covered instead by the cap inequality of Section XIII,")
     print("which gives the sign over the whole deviation sphere at once.")

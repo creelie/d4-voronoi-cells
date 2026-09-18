@@ -2,7 +2,7 @@
 """
 cap_inequality_certificate.py
 
-Reproduces, end to end, the chain of Section 13 of the paper:
+Reproduces, end to end, the chain of Section XIII of the paper:
 
     (A)  Q  =  intersection of the 23 root half-spaces other than the
          deviating one, written in the scaled coordinates z = x/sqrt(2)
@@ -36,7 +36,7 @@ Reproduces, end to end, the chain of Section 13 of the paper:
          remaining region.
 
     (G)  Consequence: vol(Cap_Q(u)) <= 1/3 for every unit u, hence the
-         volume defect of Theorem 13.7 is nonnegative for every tilt and
+         volume defect of Theorem XIII.7 is nonnegative for every tilt and
          every deviation direction.  Confirmed independently against
          directly computed Voronoi cell volumes.
 

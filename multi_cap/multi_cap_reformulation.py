@@ -2,7 +2,7 @@
 """
 multi_cap_reformulation.py
 
-Checks the multi-cap reformulation of Section 7.2, which recasts the
+Checks the multi-cap reformulation of Section VII B, which recasts the
 multi-direction problem as a single extremal question about one fixed
 polytope.
 
@@ -31,7 +31,7 @@ This script checks, in order:
       direct polytope volumes.
   (D) vol(Q_D) - 8 equals |D|/3 when no two roots of D are adjacent and
       exceeds it otherwise.
-  (E) The obstruction of Remark 7.3: vol(E_j) in an m-direction
+  (E) The obstruction of Remark VII.3: vol(E_j) in an m-direction
       configuration both exceeds and falls short of its single-deviation
       value, so the single-deviation theorem gives no term-by-term
       bound.

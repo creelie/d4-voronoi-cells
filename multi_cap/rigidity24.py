@@ -2,7 +2,7 @@
 """
 Infinitesimal rigidity of the root system itself as a contact
 configuration of 24 directions, the corollary that follows
-Proposition 7.39 (the deletion case is rigidity23.py).
+Proposition VII.45 (the deletion case is rigidity23.py).
 
 Write the D4 roots unnormalised, a = +-e_i +- e_j with |a|^2 = 2, so
 that the contact condition <w_i,w_j> <= 1/2 reads <a_i,a_j> <= 1 and

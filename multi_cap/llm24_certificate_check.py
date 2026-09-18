@@ -12,7 +12,7 @@ that can be checked from the published data alone.  The certificate is
 an exact rational feasible point of the second level of the Lasserre
 hierarchy for spherical codes in S^3 with pairwise inner product at most
 1/2, with objective value 24; it is what Lemma 5.1 of that paper and
-Theorem 7.25 of ours rest on.
+Theorem VII.25 of ours rest on.
 
 Their verification procedure (README.txt of the data set) has seven
 steps.  This script re-implements, from the data files and from the
@@ -60,7 +60,7 @@ authors' verification.
 
 Also checked, as a test of the reading of the data: the block for each
 lambda has the number of rows the paper's description prescribes (the
-number of admissible tuples (i, j, k), Section 2.3 of the paper).
+number of admissible tuples (i, j, k), Section 2.3 of theirs).
 
 Usage: python3 llm24_certificate_check.py /path/to/LasserreSphericalCodes/proofs/4_24
 (the data set is not redistributed here; download LasserreSphericalCodes.zip

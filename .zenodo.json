@@ -1,14 +1,34 @@
 {
-  "title": "Supplementary code for: Voronoi Cells in Dimension Four and the Twenty-Four-Cell Conjecture",
+  "title": "Supplementary code for: The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture",
   "upload_type": "software",
-  "description": "Scripts, certificates, run logs and Lean 4 verifications supporting the paper. The package contains the exact chamber certificates of the single-deviation bound, the covering bound at every contact count, the root-system meets and the 600-cell enumeration, the slack continuation, and the three-point semidefinite certificate for the twenty-three-contact case together with its verification in exact rational arithmetic, interval arithmetic and Lean 4.",
+  "description": "Scripts, certificates, run logs and Lean 4 verifications supporting the paper. The package contains the exact chamber certificates of the single-deviation bound, the covering bound at every contact count, the root-system meets and the 600-cell enumeration, the slack continuation, and the three-point semidefinite certificate for the twenty-three-contact case together with its verification in exact rational arithmetic, interval arithmetic and Lean 4. It also carries the two steps of the certificate of de Laat, Leijenhorst and de Muinck Keizer for the twenty-four-contact case that their own verification code leaves out, the construction of the zonal matrices and the four polynomial identities, recomputed here from their published data in exact rational arithmetic on an ordinary machine.",
   "creators": [
-    {"name": "Bhattacharjee, Deep", "orcid": "0000-0003-0466-750X"},
-    {"name": "Bhattacharya, Ushashi", "orcid": "0009-0002-2254-3914"},
-    {"name": "Mandal, Priyabrata", "affiliation": "Maulana Azad National Institute of Technology Bhopal", "orcid": "0000-0001-6472-6239"},
-    {"name": "Bhattacharya, Shounak", "affiliation": "Asian College of Teachers, Kolkata"}
+    {
+      "name": "Bhattacharjee, Deep",
+      "orcid": "0000-0003-0466-750X"
+    },
+    {
+      "name": "Bhattacharya, Ushashi",
+      "orcid": "0009-0002-2254-3914"
+    },
+    {
+      "name": "Mandal, Priyabrata",
+      "affiliation": "Maulana Azad National Institute of Technology Bhopal",
+      "orcid": "0000-0001-6472-6239"
+    },
+    {
+      "name": "Bhattacharya, Shounak",
+      "affiliation": "Asian College of Teachers, Kolkata"
+    }
   ],
-  "keywords": ["sphere packing", "Voronoi cell", "semidefinite programming", "spherical codes", "Lean 4"],
+  "keywords": [
+    "sphere packing",
+    "Voronoi cell",
+    "semidefinite programming",
+    "spherical codes",
+    "Lean 4"
+  ],
   "license": "MIT",
-  "access_right": "open"
+  "access_right": "open",
+  "version": "v1.2.0"
 }
