@@ -1,7 +1,7 @@
 /-
 D4Meet.lean
 
-A machine check of the combinatorics behind Propositions VII.52 and VII.53 of
+A machine check of the combinatorics behind Propositions 7.55 and 7.56 of
 "The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture": how much of a root
 system a contact configuration can hold.
 
@@ -94,7 +94,7 @@ def hasFilledCouple (touched : List (Nat × Nat)) : Bool :=
 /-! ## Two removed roots
 
 Two roots touch at most two of the six supports, so one couple survives
-whole. This is the finite half of Proposition VII.52, and since it depends
+whole. This is the finite half of Proposition 7.55, and since it depends
 only on the supports it is a statement about the thirty-six ordered pairs
 of supports.
 -/
@@ -232,7 +232,7 @@ def deletion : List Vec := roots.filter fun a => a != ((1,1,0,0) : Vec)
 
 /-- A contact configuration meeting a root system in 23 directions is the
     root system with one root removed, and that configuration carries the
-    88 tight pairs of Proposition VII.45. -/
+    88 tight pairs of Proposition 7.48. -/
 theorem deletion_tight_pairs :
     (deletion.length = 23)
   ∧ ((deletion.zipIdx.flatMap fun p =>

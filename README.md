@@ -7,9 +7,13 @@ Python scripts supporting the computations in:
   Deep Bhattacharjee, Ushashi Bhattacharya, Priyabrata Mandal,
   Shounak Bhattacharya
 
-Nothing in the paper needs to be checked by running these scripts: every
-exact value the paper asserts is printed in the paper itself. The
-package is here so that the derivations can be repeated independently.
+Every exact value the paper asserts is printed in the paper itself, so
+the derivations can be followed without running anything; the one
+computation that the paper cannot print is the verification of the
+certificate of Section 7.5.3, whose inputs are the deposited data in
+third_party/llm24-certificate and whose run logs are in multi_cap/runs and
+zonal/runs. The package is here so that every derivation, that one
+included, can be repeated independently.
 
 ## Availability
 
@@ -18,9 +22,44 @@ and archived on Zenodo through that repository (CITATION.cff and
 .zenodo.json carry the metadata of the archive). It is also obtainable
 from Deep Bhattacharjee <itsdeep@live.com>.
 
+## What is new in v1.3.0
+
+  paper/              The manuscript (D4.tex, with D4.pdf beside it in a
+                        tagged release) and its figures.  The
+                        twenty-four-contact case is now proved in the text:
+                        the bound of the second level of the hierarchy with
+                        its equality case, the positivity of Gram kernels,
+                        and the finite properties of the deposited certificate
+                        (Section "Twenty-four contacts, and what is left").
+                        No statement of an unrefereed source is used.
+  paper/figures_new/  The matplotlib scripts of the data figures, each with a
+                        label collision test that it has to pass before it
+                        writes (figstyle.py); the ray-traced panels of the
+                        composites are reused unchanged (oldpanels.py, old/).
+                        make_p2_pickle.py builds p2.pkl, the exact
+                        coefficients of the two-point polynomial, from
+                        multi_cap/llm24_out/llm24_p2.txt.
+  third_party/llm24-certificate/
+                      The certificate data set of de Laat, Leijenhorst and
+                        de Muinck Keizer (MIT licence), redistributed with
+                        its licence notice, a fetch script that checks the
+                        MD5 recorded in the paper, and verify.sh, which runs
+                        the seven-step verification.  See its README.
+  lean/D4RootLattices.lean
+                      A seventh Lean verification: the finite content of the
+                        lemma from the four inner products to the D_4 root
+                        system (see lean/README.md); lean/run_all.sh checks
+                        the five standalone files.
+  multi_cap/p2_zeroset_check.py
+                      A standalone exact-arithmetic check (Fractions, Sturm
+                        sequences) of the zero set of the two-point
+                        polynomial, independent of python-flint.
+
 ## Directory Structure
 
-  cap_certificate/    The cap inequality, end to end (Section XIII)
+  paper/              The manuscript, its figures and their scripts
+  third_party/        The redistributed certificate data set (see above)
+  cap_certificate/    The cap inequality, end to end (Section 13)
   multi_cap/          The multi-cap, polar and boundary reformulations of
                         the 23-point case, the covering bound, the
                         extendability criterion, the rigidity of the
@@ -29,30 +68,30 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                         the codes of the 600-cell, the continuation
                         in the slack, the cell inside a ball and the
                         three-point certificate that settles the case
-                        (Sections VII B to VII L)
+                        (Section 7.2 to VII L)
   data/               Cached intermediate results (.pkl) for the longer
                         symbolic derivations, so that the consuming
                         scripts can be run without first re-running the
                         step that produced them
   core/               Core arithmetic and Hessian routines
-  hessian_multidir/   Joint Hessian computations (Sections XV-XIX)
-  arc1_v1w1/          First-arc certificate scripts (Section X)
-  arc2_w1v2/          Second-arc certificate scripts (Section XII)
-  swap_configs/       Swap-configuration finite-angle proofs (Section XX)
+  hessian_multidir/   Joint Hessian computations (Sections 15-19)
+  arc1_v1w1/          First-arc certificate scripts (Section 10)
+  arc2_w1v2/          Second-arc certificate scripts (Section 12)
+  swap_configs/       Swap-configuration finite-angle proofs (Section 20)
   verification/       Independent cross-checking scripts
   zonal/              The two steps of the LLM24 certificate that the
                         authors' own implementation needs 128 GB for:
                         the zonal matrices and the four polynomial
                         identities that use them (see zonal/README.md)
   misc/               Utility and diagnostic scripts
-  lean/               Six Lean 4 verifications: the equilibrium stress of
-                        Proposition VII.45 and of the corollary after it, with
+  lean/               Seven Lean 4 verifications: the equilibrium stress of
+                        Proposition 7.48 and of the corollary after it, with
                         the surrounding root-system combinatorics
                         (D4Stress.lean); the finite half of
-                        Propositions VII.52 and VII.53 on how much of a root
+                        Propositions 7.55 and 7.56 on how much of a root
                         system a contact configuration can hold
                         (D4Meet.lean); the exact half of the certificate
-                        of Theorem VII.70, positivity of its matrices and
+                        of Theorem 7.73, positivity of its matrices and
                         the value of its bound over the rationals
                         (D4Certificate.lean, generated from the
                         certificate by gen_certificate_lean.py); the
@@ -63,11 +102,11 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                         multi_cap/llm24_out/llm24_p2.txt by
                         gen_innerproducts_lean.py); and, in
                         the Lake project cell600/, the enumeration behind
-                        Proposition VII.60, that every 23-point code of
+                        Proposition 7.63, that every 23-point code of
                         minimal angle 60 degrees among the vertices of the
                         600-cell is an inscribed 24-cell less a vertex;
                         and, in the Lake project certificate/, the interval
-                        branch and bound of Theorem VII.70 re-done in exact
+                        branch and bound of Theorem 7.73 re-done in exact
                         dyadic arithmetic (D4CertDomain.lean), the
                         polynomial expanded inside Lean and only the
                         tables of bounds for omega and its derivatives
@@ -89,19 +128,19 @@ from Deep Bhattacharjee <itsdeep@live.com>.
   triality_search.py, triality_search2.py, triality_exact.py,
   chain_length.py, m3_hessian.py
                               Earlier exploratory and chain-configuration
-                              Hessian scans (Sections XV, XVIII).
+                              Hessian scans (Sections 15, 18).
 
   joint_hessian_closed_form.py
                               Derivation of the m=2 adjacent-pair cross-Hessian
-                              closed form used in Section XV. Recorded
-                              in-file and in the paper (Section XV, "A first
+                              closed form used in Section 15. Recorded
+                              in-file and in the paper (Section 15, "A first
                               step toward a first-principles derivation for
                               m=2") as obtained by numerical fitting, not a
                               first-principles symbolic derivation.
 
   vertex_degeneracy_check.py
                               Exact vertex-enumeration check referenced in
-                              Section XV: confirms two adjacent facets of the
+                              Section 15: confirms two adjacent facets of the
                               24-cell share exactly 3 of their 6 vertices, and
                               examines the vertex-degeneracy reduction (which
                               4 of 10 candidate 3-subsets of a vertex's other
@@ -112,7 +151,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               High-precision (35-45 digit mpmath) three-step-size
                               scaling argument establishing the exact quartic
                               degeneracy at the m=18 configuration A_18
-                              (Section XVII, "exact singularity"): confirms the
+                              (Section 17, "exact singularity"): confirms the
                               near-null subspace is genuinely 4-dimensional
                               (eigenvalues shrink by a clean factor of ~4 per
                               halving of the step size, the signature of an
@@ -130,7 +169,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 
   multidir_nullspace_broad_sample_m20.py
                               Same broadened-sampling method applied to the
-                              independent m=20 configuration A_20 (Section XVIII):
+                              independent m=20 configuration A_20 (Section 18):
                               confirms a 5-dimensional near-null subspace and
                               samples it with 30 directions, all strictly
                               positive.
@@ -163,11 +202,11 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               form at A_18 by least squares from
                               quartic_dense_A18_data.tsv, then runs
                               gram_sos_lib.py's SDP check on the fitted
-                              quartic (Section XVIII, "A Gram-matrix sum-of-
+                              quartic (Section 18, "A Gram-matrix sum-of-
                               squares check"). Reports the fit residual and
                               the SDP result plainly; states in its own output
                               exactly what the result does and does not
-                              establish about Conjecture I.4.
+                              establish about Conjecture 1.4.
 
   multidir_chain_hessian_extended.py, hp_volume.py
                               Shared dependencies (root-system construction,
@@ -186,7 +225,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               B_3-type subgroup: signed permutations of 3
                               coordinates, with one coordinate's identity
                               and sign left untouched). This is Proposition
-                              "a18-stabiliser", Proposition XVIII.5 of the paper.
+                              "a18-stabiliser", Proposition 18.5 of the paper.
 
   a18_symmetry_representation_check.py
                               Verifies the order-48 group is not a
@@ -252,7 +291,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               eps_perm (+) (std3 (x) det) -- resolving an
                               ambiguity the aggregate data alone could not.
                               This is Proposition "a18-nullspace-irrep",
-                              Proposition XVIII.6 of the paper.
+                              Proposition 18.6 of the paper.
 
   a18_invariant_quartic_basis.py
                               Proves, via exact power-sum
@@ -267,7 +306,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               via exact Reynolds-operator projection,
                               confirming the two methods agree. This is
                               Proposition "a18-invariant-dim" (with its
-                              proof), Proposition XVIII.7 of the paper.
+                              proof), Proposition 18.7 of the paper.
 
   a18_fit_and_sos_check.py
                               End-to-end numerical
@@ -290,9 +329,9 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               precision gave fits disagreeing by 100-700%
                               between step sizes -- discarded, not reported
                               as reliable, exactly the failure mode
-                              Section XVI (musin-degeneracy) already
+                              Section 16 (musin-degeneracy) already
                               documents for this configuration. This is
-                              Proposition "a18-sos-reduced", Proposition XVIII.8
+                              Proposition "a18-sos-reduced", Proposition 18.8
                               of the paper. Does NOT prove positivity: the
                               fitted coefficients remain finite-difference
                               numerical estimates, not an exact symbolic
@@ -303,7 +342,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 ## arc2_w1v2/ -- the symmetry of the fundamental triangle
 
   third_edge_symmetry.py     Resolves the open question left in the paper's
-                              Section VIII C ("Where the worst
+                              Section 8.3 ("Where the worst
                               direction sits"): identifies and
                               verifies, both by exact sympy/Q(sqrt2)
                               computer algebra and as a numerical sanity
@@ -312,7 +351,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               (v1-v2, off both named arcs) exactly onto the
                               already-certified first arc (v1-w1). This is
                               Lemma "third-edge-symmetry" and Proposition
-                              "third-edge-cert" in Section VIII D of the paper.
+                              "third-edge-cert" in Section 8.4 of the paper.
 
   full_triangle_symmetry.py  The bigger result this led to: the group
                               generated by S (above) and H (the Hadamard
@@ -328,7 +367,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               arc, including the B-bounded band). This is
                               Lemma "s3-symmetry", Proposition
                               "arc2-is-arc1", and Corollary
-                              "restated-conjecture-holds" in Section VIII E of
+                              "restated-conjecture-holds" in Section 8.5 of
                               the paper: it proves Conjecture
                               (Direction-of-Deviation Positivity, RESTATED)
                               in full on the fundamental triangle's
@@ -413,7 +452,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               not grid noise and not a combinatorial
                               breakpoint (vertex count confirmed constant
                               at 37 throughout the tested window). This is
-                              Section VIII F's falsified-shortcut result: a
+                              Section 8.6's falsified-shortcut result: a
                               real (negative) finding, not an unattempted
                               guess.
 
@@ -432,7 +471,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               visibly respecting the S_3 symmetry of
                               full_triangle_symmetry.py (in particular the
                               reflection fixing v1 and swapping w1,v2).
-                              This is Section VIII F's structural map: a real
+                              This is Section 8.6's structural map: a real
                               scope reduction (one-sixth of the triangle
                               suffices, by the S_3 action, to know the
                               whole interior's combinatorial structure) but
@@ -443,7 +482,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 ## cap_certificate/ -- the main theorem, in one script
 
   cap_inequality_certificate.py
-                              Reproduces the whole of Section XIII end to
+                              Reproduces the whole of Section 13 end to
                               end, in the order the section proves it:
 
                                 (A) exact rational vertex enumeration of
@@ -490,7 +529,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 ## multi_cap/ -- the 23-point case, reformulated and settled
 
   root_deletions_exact.py
-                              Supports Propositions VII.52 and VII.53.
+                              Supports Propositions 7.55 and 7.56.
                               Exact integer vertex enumeration of the cell
                               left when j = 1, 2, 3 roots are removed from
                               D_4. Scaling the roots to integer vectors of
@@ -508,7 +547,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               No floating point anywhere.
 
   cell600_exact.py
-                              Establishes Proposition VII.60. The 120
+                              Establishes Proposition 7.63. The 120
                               vertices of the 600-cell with doubled
                               coordinates in Z[phi], every inner product
                               computed exactly in Z[phi]; two vertices are
@@ -548,7 +587,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               superseded by cell600_exact.py.
 
   inradius_search.py
-                              Supports Section VII J. Maximises the inradius
+                              Supports Section 7.10. Maximises the inradius
                               g(W) of conv(W), the cosine of the covering
                               radius, over 23-point configurations with all
                               inner products at most 1/2, by a trust-region
@@ -581,8 +620,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               only. Exact; a few seconds.
 
   three_point_reduction.py
-                              Supports Section VII K and the r_* forms of
-                              Propositions VII.23, VII.38 and VII.41. Part 1:
+                              Supports Section 7.11 and the r_* forms of
+                              Propositions 7.23, 7.41 and 7.44. Part 1:
                               the pair-only truncated-volume bound at the
                               limits r_23 and r_* (bracket, weight of a
                               60-degree pair, value at a deletion, pairs
@@ -597,7 +636,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               About twenty minutes.
 
   truncated_volume.py
-                              Supports Section VII K. Evaluates the volume
+                              Supports Section 7.11. Evaluates the volume
                               of the cell inside a ball of radius R by a
                               fixed quasi-random quadrature on S^3
                               (deterministic, 400000 points), checks it
@@ -616,15 +655,15 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               for sqrt(3/2)). About two hours per run.
 
   three_point_sdp.py
-                              Supports Section VII L: the three-point
+                              Supports Section 7.12: the three-point
                               (Bachoc-Vallentin) relaxation of the pair
-                              inequality of Theorem VII.66, and the
-                              certificate of Theorem VII.70. Builds the
+                              inequality of Theorem 7.69, and the
+                              certificate of Theorem 7.73. Builds the
                               Gegenbauer polynomials of S^3, the matrices
                               Y_k for n = 4 (Legendre polynomials, in the
                               Chebyshev basis T_i(u) T_j(v)) and their
                               symmetrisation, imposes the condition (C) of
-                              Lemma VII.69 on a grid of admissible triples
+                              Lemma 7.72 on a grid of admissible triples
                               and solves the semidefinite programme with
                               cvxpy and Clarabel. First mode: maximise the
                               bound, check on about 1.15 million further
@@ -645,7 +684,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 python three_point_sdp.py 8 30 CLARABEL 5 0.0929
 
   certificate_check.py
-                              The proof of Theorem VII.70: verifies the
+                              The proof of Theorem 7.73: verifies the
                               certificate in exact rational and interval
                               arithmetic, sharing no code with the solver.
                               Step 1, exact LDL^T of the nine matrices and
@@ -666,7 +705,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 python certificate_check.py 8 1e-6
 
   root_lattices_rank4.py
-                              Supports Lemma VII.26, the combinatorial half
+                              Supports Lemma 7.26, the combinatorial half
                               of the twenty-four-point classification.
                               Enumerates every positive definite Gram
                               matrix with 2 on the diagonal and -1, 0, 1
@@ -682,16 +721,16 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 python root_lattices_rank4.py
 
   llm24_certificate_check.py
-                              Supports Theorem VII.25 and Remark VII.27: an
-                              independent re-verification, sharing no
-                              code with the authors' Julia package, of
-                              the certificate of de Laat, Leijenhorst and
-                              de Muinck Keizer (data set
+                              Supports Theorem 7.25, Proposition 7.29 and
+                              Section 7.5.3: an independent verification,
+                              sharing no code with the authors' Julia
+                              package, of the certificate of de Laat,
+                              Leijenhorst and de Muinck Keizer (data set
                               doi:10.4121/74ce1c25-6fca-4680-8a36-e9c18e7e9594,
                               LasserreSphericalCodes.zip, md5
-                              02acd5270f7b3fa799abdeb5291706fd, not
-                              redistributed here; pass the path of its
-                              proofs/4_24 folder). Of the seven steps of
+                              02acd5270f7b3fa799abdeb5291706fd, redistributed
+                              in third_party/llm24-certificate; pass the
+                              path of its proofs/4_24 folder). Of the seven steps of
                               their verification it repeats five: the
                               reading and format of the data (127 blocks
                               of total dimension 3726, the block of every
@@ -710,11 +749,11 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               16, computed exactly from the data and
                               shown by a Sturm sequence over Q to vanish
                               on [-1, 1/2] exactly at -1, -1/2, 0, 1/2
-                              (multiplicities 1, 2, 2, 1). Not repeated:
-                              the construction of the zonal matrices
-                              (three days, 128 GB in the authors'
-                              implementation) and the polynomial
-                              identities that use them. Writes
+                              (multiplicities 1, 2, 2, 1). Steps 3 and 5,
+                              the construction of the zonal matrices and
+                              the polynomial identities that use them,
+                              are done in zonal/ (see zonal/README.md).
+                              Writes
                               llm24_out/llm24_p2.txt, from which
                               lean/gen_innerproducts_lean.py generates
                               lean/D4InnerProducts.lean. Needs
@@ -736,7 +775,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 bash run_llm24_full_verification.sh
 
   symmetric_search.py
-                              Supports Section VII J ("Configurations with a
+                              Supports Section 7.10 ("Configurations with a
                               symmetry"). For every rotation type of order
                               n <= 12 (angles 2 pi a/n, 2 pi b/n in two
                               orthogonal planes) and the two improper
@@ -758,7 +797,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               and C), three passes of
                               slack_continuation.py (seeds 1, 2, 3 with
                               40, 80 and 60 fresh starts per level; the
-                              table in Section VII J takes the largest
+                              table in Section 7.10 takes the largest
                               inradius at each level over the three), and
                               inradius_search_300_seed7.log (300 direct
                               maximisations at slack 0: 94 feasible
@@ -798,7 +837,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               verification is deterministic.
 
   slack_continuation.py
-                              Supports Section VII J and its table. For
+                              Supports Section 7.10 and its table. For
                               delta on a schedule from 0.05 down to 0,
                               estimates h(delta), the largest inradius over
                               23-point configurations with inner products
@@ -815,8 +854,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 python slack_continuation.py [fresh] [seed]
 
   root_meet.py
-                              Supports Propositions VII.52, VII.53 and
-                              Remark VII.55, in five parts:
+                              Supports Propositions 7.55, 7.56 and
+                              Remark 7.58, in five parts:
 
                                 (i)   no pair of removed roots destroys a
                                       whole couple of complementary
@@ -849,8 +888,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 
 
   multi_cap_reformulation.py
-                              Supports Proposition VII.5, Open Problem VII.6
-                              and Remark VII.3.
+                              Supports Proposition 7.5, Open Problem 7.6
+                              and Remark 7.3.
                               Checks, in order:
 
                                 (A) Q_D is bounded for every packing-valid
@@ -882,9 +921,9 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               checks, about four and a half minutes.
 
   polar_surface_reformulation.py
-                              Supports Section VII C: Proposition VII.8,
-                              Corollary VII.9, Lemma VII.10, Lemma VII.11 and
-                              Remarks VII.12 and VII.13. Eighteen checks,
+                              Supports Section 7.3: Proposition 7.8,
+                              Corollary 7.9, Lemma 7.10, Lemma 7.11 and
+                              Remarks 7.12 and 7.13. Eighteen checks,
                               grouped here as follows:
 
                                 (a) the cell is the polar dual of the
@@ -918,7 +957,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                 (i) enlarging the configuration never
                                     increases the cell volume;
                                (i') the square-antiprism configuration of
-                                    Remark VII.12: its nine directions in
+                                    Remark 7.12: its nine directions in
                                     R^4 are packing-valid, its facet has
                                     3-volume 16 sqrt(2) - 64/3 =
                                     1.2940836646 against the octahedron's
@@ -940,10 +979,10 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               sampling device and enters no argument.
                               Runtime under a minute.
 
-  covering_bound.py           Supports Section VII D: Lemma VII.15,
-                              Theorem VII.16, Corollary VII.17,
-                              Proposition VII.18 and Table I, which
-                              together are Theorem I.3 of the paper (the
+  covering_bound.py           Supports Section 7.4: Lemma 7.15,
+                              Theorem 7.16, Corollary 7.17,
+                              Proposition 7.18 and Table I, which
+                              together are Theorem 1.3 of the paper (the
                               local bound at any centre with at most 22
                               contacts). Nineteen checks, grouped here
                               as follows:
@@ -965,7 +1004,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                     same estimate, agreeing to 1e-14;
                                 (f) the whole of Table I for
                                     m = 5 .. 24, and the monotonicity in m
-                                    that the proof of Corollary VII.17 uses;
+                                    that the proof of Corollary 7.17 uses;
                                 (g) that 22 is exactly the largest m at
                                     which the bound reaches 8;
                                 (h) no violation of the bound at the root
@@ -976,13 +1015,13 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                     8.046376 at m = 22, 7.798989 at
                                     m = 24, 7.916728 at m = 23, and the
                                     implied density 0.632749;
-                                (j) Proposition VII.18: the closed form for
+                                (j) Proposition 7.18: the closed form for
                                     phi'(s), the convexity of phi, and
                                     the fact that equal Voronoi cell
                                     areas reproduce the global bound and
                                     minimise the per-cell sum (against
                                     1500 random area splittings);
-                                (k) Proposition VII.21: every spherical
+                                (k) Proposition 7.21: every spherical
                                     Voronoi cell has circumradius at
                                     least arccos sqrt(5/8) = 37.7612
                                     degrees, checked against the
@@ -1002,8 +1041,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               and the polytope volumes are not.
                               Runtime under a minute.
 
-  saturation_search.py        Supports Section VII G: Proposition VII.43 and
-                              Remark VII.44. Takes the covering radius as
+  saturation_search.py        Supports Section 7.7: Proposition 7.46 and
+                              Remark 7.47. Takes the covering radius as
                               the objective from the start, which is the
                               quantity the open case is about. It uses
                               that g(W) is the inradius of conv(W) about
@@ -1029,8 +1068,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               every one of them a deletion. Runtime about
                               three minutes.
 
-  covering_multiplicity.py    Supports Section VII G: Proposition VII.40
-                              and Proposition VII.41. Two parts:
+  covering_multiplicity.py    Supports Section 7.7: Proposition 7.43
+                              and Proposition 7.44. Two parts:
 
                                 (a) the Cauchy-Schwarz bound on the total
                                     overlap of the 60-degree caps of a
@@ -1044,20 +1083,20 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                                     Gegenbauer positivity at 12 degrees,
                                     whose minimum of the pair weight is
                                     0.041573648 against the 0.083272432
-                                    that Proposition VII.38 needs.
+                                    that Proposition 7.41 needs.
 
                               Part (b) is the sharp statement about the
                               route: nothing reading only the pair angles
                               gets past half way. Runtime about four
                               minutes.
 
-  pair_budget.py              Supports Section VII G: Proposition VII.38
-                              and Remark VII.39. Proposition VII.23 evaluates
+  pair_budget.py              Supports Section 7.7: Proposition 7.41
+                              and Remark 7.42. Proposition 7.23 evaluates
                               the pairwise estimate at the deletion
                               configuration and gets 7.997885, three
                               pairs short of 8. The deletion
                               configuration is extendable, so it is not
-                              one of the configurations Problem 7.30 is
+                              one of the configurations Problem 7.33 is
                               about, and this script computes what the
                               same estimate would need from one that is.
                               Five checks:
@@ -1079,8 +1118,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               The quadratures are adaptive; nothing here
                               is Monte Carlo. Runtime about two minutes.
 
-  spherical_code_23.py        Supports Section VII I: Proposition VII.56,
-                              Theorem VII.57 and Remark VII.59. Contact
+  spherical_code_23.py        Supports Section 7.9: Proposition 7.59,
+                              Theorem 7.60 and Remark 7.62. Contact
                               configurations of m directions are
                               spherical codes of m
                               points on S^3 of minimal angle at least 60
@@ -1111,8 +1150,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               configuration exists. Runtime about forty
                               minutes.
 
-  extendability.py            Supports Section VII E: Theorem VII.25,
-                              Proposition VII.35 and Corollary VII.36. Six
+  extendability.py            Supports Section 7.5: Theorem 7.25,
+                              Proposition 7.38 and Corollary 7.39. Six
                               checks:
 
                                 (a) the root configuration has
@@ -1152,7 +1191,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 
                               Runtime about 3 minutes.
 
-  second_order_estimate.py    Supports Lemma VII.22 and Proposition VII.23:
+  second_order_estimate.py    Supports Lemma 7.22 and Proposition 7.23:
                               the covering estimate with every pairwise
                               overlap put back. Four checks, the
                               quadratures in 30-digit arithmetic:
@@ -1179,8 +1218,8 @@ from Deep Bhattacharjee <itsdeep@live.com>.
 
                               Runtime a few seconds.
 
-  local_cell_obstruction.py   Supports Remark VII.19: the shape deficit
-                              that Proposition VII.18 leaves cannot be
+  local_cell_obstruction.py   Supports Remark 7.19: the shape deficit
+                              that Proposition 7.18 leaves cannot be
                               collected one cell at a time. Five checks:
 
                                 (a) at the root configuration the mean of
@@ -1222,7 +1261,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               percentages, not last digits.
                               Runtime about 30 seconds.
 
-  rigidity23.py               Supports Proposition VII.45, the
+  rigidity23.py               Supports Proposition 7.48, the
                               infinitesimal rigidity of the deletion
                               configuration. Five checks, all in exact
                               integer arithmetic on the unnormalised
@@ -1255,7 +1294,7 @@ from Deep Bhattacharjee <itsdeep@live.com>.
                               Runtime well under a second.
 
   rigidity24.py               Supports the corollary after Proposition
-                              7.39, the same statement for the root
+                              7.42, the same statement for the root
                               system itself with nothing deleted. Four
                               checks in exact integer arithmetic: 24
                               directions and 96 tight pairs, every
@@ -1280,8 +1319,8 @@ cleanly rather than running without end:
   arc2_w1v2/bandBcurve_certificate.py   BANDB_BUDGET_SECONDS (240) and
                                         BANDB_PER_SIMPLEX_SECONDS (90).
                                         The moving-volume step does not
-                                        complete; Section XII B says so,
-                                        and Proposition VIII.5 makes the
+                                        complete; Section 12.2 says so,
+                                        and Proposition 8.5 makes the
                                         direct certificate unnecessary.
 
   misc/sumtest.py                       SUMTEST_STAGE_SECONDS (120).

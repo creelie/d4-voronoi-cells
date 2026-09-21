@@ -17,7 +17,7 @@ sec:a18-invariant-quartics in the paper:
      chosen to isolate the 5 basis invariants (x0^4, x0^2*S2, x0*P3, S4,
      S22), using the project's validated HIGH-PRECISION (mpmath, 40
      digit) volume routine -- NOT plain double precision, which this
-     project's own Section XV documents as inadequate at this exact
+     project's own Section 15 documents as inadequate at this exact
      configuration (confirmed again here: an initial attempt with plain
      scipy/qhull double precision gave fits disagreeing by 100-700%
      between step sizes, discarded once caught by the two-step-size

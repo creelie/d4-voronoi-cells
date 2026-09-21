@@ -3,7 +3,7 @@
 verify_formula.py
 
 Independent check of the first arc's breakpoint classification
-(Theorem IX.1): that the four curves
+(Theorem 9.1): that the four curves
 
     universal :  phi = pi/3
     W         :  phi = 2 arctan(sin s)

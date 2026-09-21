@@ -12,7 +12,7 @@ that can be checked from the published data alone.  The certificate is
 an exact rational feasible point of the second level of the Lasserre
 hierarchy for spherical codes in S^3 with pairwise inner product at most
 1/2, with objective value 24; it is what Lemma 5.1 of that paper and
-Theorem VII.25 of ours rest on.
+Theorem 7.25 of ours rest on.
 
 Their verification procedure (README.txt of the data set) has seven
 steps.  This script re-implements, from the data files and from the
@@ -48,23 +48,24 @@ description of the format, with none of their code:
 Steps 3 and 5, the construction of the zonal matrices Z_lambda as
 polynomials in the six inner products of four points and the check that
 A_2 K(Q) + (sum of squares) = rhs holds as a polynomial identity for
-|Q| = 1, 2, 3, 4, are NOT repeated here: the construction of the zonal
-matrices needs about three days and 128 GB of memory in the authors'
-implementation, and no machine with that memory was available.  What this
-script establishes is therefore: the data are well formed, every block is
-positive definite, every sum-of-squares term is nonnegative on the domain,
-the objective is 24, and if the polynomial identities of step 5 hold then
+|Q| = 1, 2, 3, 4, are not part of this script: the construction of the
+zonal matrices needs about three days and 128 GB of memory in the authors'
+implementation, and the programs of ../zonal do both steps on an ordinary
+machine in exact rational arithmetic.  What this script establishes is: the
+data are well formed, every block is positive definite, every sum-of-squares
+term is nonnegative on the domain, the objective is 24, and with the
+polynomial identities of step 5 (checked in ../zonal)
 every 24-point code of minimal angle 60 degrees has all its inner products
-in {-1, -1/2, 0, 1/2}.  The identities themselves are taken from the
-authors' verification.
+in {-1, -1/2, 0, 1/2}.  The identities themselves are checked by the
+programs of ../zonal (steps 3 and 5), in exact rational arithmetic.
 
 Also checked, as a test of the reading of the data: the block for each
 lambda has the number of rows the paper's description prescribes (the
 number of admissible tuples (i, j, k), Section 2.3 of theirs).
 
 Usage: python3 llm24_certificate_check.py /path/to/LasserreSphericalCodes/proofs/4_24
-(the data set is not redistributed here; download LasserreSphericalCodes.zip
-from the DOI above and unpack it).  Writes llm24_out/llm24_p2.txt, the exact
+(the data set is redistributed in ../third_party/llm24-certificate, or
+download LasserreSphericalCodes.zip from the DOI above and unpack it).  Writes llm24_out/llm24_p2.txt, the exact
 coefficients of p_2, from which lean/gen_innerproducts_lean.py generates
 lean/D4InnerProducts.lean.  Needs python-flint (pip install python-flint).
 Exits nonzero if any check fails.  Runtime about half an hour on two cores.
@@ -501,8 +502,8 @@ def main():
     ok = all(o for _, o in RESULTS)
     print("=" * 62)
     print("%d of %d checks passed (%.0f s)" % (sum(o for _, o in RESULTS), len(RESULTS), time.time() - t0))
-    print("NOT repeated here: step 3 (construction of the zonal matrices, about three days and 128 GB)")
-    print("and step 5 (the polynomial identities A_2 K(Q) + SOS = rhs for |Q| = 1..4), which use them.")
+    print("Not part of this script: step 3 (the zonal matrices) and step 5 (the identities")
+    print("A_2 K(Q) + SOS = rhs for |Q| = 1..4), which the programs of ../zonal carry out.")
     return 0 if ok else 1
 
 

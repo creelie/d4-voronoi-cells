@@ -1,7 +1,7 @@
 /-
 D4Cell600Main.lean
 
-The three enumeration theorems behind Proposition VII.60: the compiled
+The three enumeration theorems behind Proposition 7.63: the compiled
 depth-first search of D4Cell600Enum.lean, evaluated by `native_decide`.
 Building with `lake build` in this directory compiles D4Cell600Enum to
 native code first (precompileModules), so the search runs in a few seconds.

@@ -121,7 +121,7 @@ def main():
               "at the sampled rays. It does not put Conjecture "
               "(Multi-Direction Positivity) at A_18 on an elementary footing: "
               "what settles that conjecture is the classification cited in "
-              "Corollary VII.28.")
+              "Corollary 7.31.")
     else:
         print("INTERPRETATION: no PSD Gram matrix was found for the least-squares-fitted "
               "quartic within this SDP's numerical tolerance. This does NOT show the true "

@@ -1,5 +1,16 @@
 # Figure composition for the manuscript
 
+Note for v1.3.0. The two scripts here record how the composite figures
+`fig_c_*.png` were first assembled from single panels, when the manuscript
+was set two-column; the manuscript is now single-column amsart and the
+composites are carried in `paper/figures/`. The single-panel sources that
+`merge_panels.py` reads are not part of this package. The data panels of
+seven composites were redrawn for v1.3.0, and three figures added, by the scripts in
+`paper/figures_new/`, which reuse the rendered three-dimensional panels of
+the earlier composites (`paper/figures_new/old/`) and pass a label
+collision test before writing; those scripts, not these, reproduce the
+figures shipped with the paper. What follows is the original description.
+
 The manuscript was carrying forty-nine single-panel floats, each asked for at
 about 0.85 of a column. In a hundred-page two-column revtex document that is
 more floats than the class can place near the text that cites them: the build

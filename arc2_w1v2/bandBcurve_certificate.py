@@ -21,8 +21,8 @@ the exact fixed-volume contribution is 6.  The moving-volume step is
 where it stops.  Several of the 74 moving boundary simplices produce
 symbolic determinants whose exact simplification over the relevant
 algebraic extension grows without settling, and no closed form for the
-volume is obtained.  Section XI D of the paper reports this outcome, and
-Proposition VIII.5 makes the direct certificate unnecessary: the second arc
+volume is obtained.  Section 11.4 of the paper reports this outcome, and
+Proposition 8.5 makes the direct certificate unnecessary: the second arc
 is the first arc's own defect function, so this sub-part is already
 covered by the first arc's certificates.
 
@@ -266,8 +266,8 @@ def derive_band():
             print("    unbounded in practice, so no closed form for the volume")
             print("    is obtained on this sub-part.")
             print()
-            print("    This is the outcome recorded in Section XI D of the paper.")
-            print("    The sub-part needs no direct certificate: by Proposition VIII.5")
+            print("    This is the outcome recorded in Section 11.4 of the paper.")
+            print("    The sub-part needs no direct certificate: by Proposition 8.5")
             print("    the second arc carries the first arc's certificates.")
             print()
             print("    Steps that did complete: combinatorial stability across the")
@@ -289,8 +289,8 @@ def derive_band():
             print("=" * 70)
             print("    one determinant's exact simplification does not settle,")
             print("    so no closed form for the volume is obtained on this")
-            print("    sub-part.  This is the outcome recorded in Section XI D")
-            print("    of the paper; by Proposition VIII.5 the sub-part needs no")
+            print("    sub-part.  This is the outcome recorded in Section 11.4")
+            print("    of the paper; by Proposition 8.5 the sub-part needs no")
             print("    direct certificate, since the second arc carries the")
             print("    first arc's own.")
             raise SystemExit(0)

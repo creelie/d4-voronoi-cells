@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Infinitesimal rigidity of the deletion configuration, Proposition VII.45.
+Infinitesimal rigidity of the deletion configuration, Proposition 7.48.
 
 Write the D4 roots unnormalised, alpha = +-e_i +- e_j with |alpha|^2 = 2,
 so that the contact condition <w_i,w_j> <= 1/2 reads <a_i,a_j> <= 1 and

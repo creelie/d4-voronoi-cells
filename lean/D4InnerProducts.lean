@@ -8,7 +8,7 @@ and scaled by the least common denominator of its coefficients (an integer of
 15741 digits) so that every coefficient is an integer.  By complementary
 slackness, the inner products of a 24-point code of minimal angle 60 degrees
 are zeros of p_2 in [-1, 1/2] (step 7 of their verification, Lemma 5.1 of
-their paper, Theorem VII.25 of ours).  This file proves by kernel computation
+their paper, Theorem 7.25 of ours).  This file proves by kernel computation
 that p_2 vanishes at -1, -1/2, 0, 1/2 with multiplicities 1, 2, 2, 1, and that
 the quotient q of p_2 by (u+1)(2u+1)^2 u^2 (2u-1) has no zero on [-1, 1/2]:
 q(-1) and q(1/2) are nonzero and the Sturm sequence of q has the same number

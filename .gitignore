@@ -7,3 +7,5 @@ __pycache__/
 *.so
 multi_cap/cell600_graph.txt
 multi_cap/cell600_enum
+third_party/llm24-certificate/LasserreSphericalCodes.zip
+third_party/llm24-certificate/proofs/
