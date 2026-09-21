@@ -22,6 +22,9 @@ and archived on Zenodo through that repository (CITATION.cff and
 .zenodo.json carry the metadata of the archive). It is also obtainable
 from Deep Bhattacharjee <itsdeep@live.com>.
 
+Archive: concept DOI 10.5281/zenodo.22766562, which always resolves to the
+newest release; this release, v1.3.0, is 10.5281/zenodo.22880335.
+
 ## What is new in v1.3.0
 
   paper/              The manuscript (D4.tex, with D4.pdf beside it in a

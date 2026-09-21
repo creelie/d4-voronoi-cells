@@ -36,3 +36,4 @@ abstract: >-
   that their own code leaves out, the construction of the zonal matrices and
   the four polynomial identities, recomputed here from their published data in
   exact rational arithmetic on an ordinary machine.
+doi: "10.5281/zenodo.22766562"

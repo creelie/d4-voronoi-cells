@@ -58,3 +58,7 @@ proved inside the paper.
    DOI, which resolves to the latest version, so nothing in the paper has to
    change after minting; if a version DOI is wanted in the Data availability
    statement, add it there once it exists.
+
+## Archive
+
+Published on Zenodo: version DOI 10.5281/zenodo.22880335, under the concept record 10.5281/zenodo.22766562. The certificate travels in the repository as third_party/llm24-certificate/LasserreSphericalCodes.zip.part-00 and .part-01; fetch_certificate.py --join restores the archive and checks the MD5.
