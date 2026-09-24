@@ -12,17 +12,24 @@ the package.
 ## Verdict
 
 **The computations hold up.**  Every machine check the paper relies on was
-reproduced, and none failed:
+reproduced, and none failed.  The one exception is the rational measure of
+Remark 7.36, which is not in the package and so could not be checked (F4).
+Reproduced:
 
 - all seven Lean verifications, with the axiom reports the paper states;
 - the exact and interval-arithmetic certificates for 23 contacts
   (Theorem 7.73) and for the single-deviation cap inequality (Section 13);
 - the independent checks of the de Laat–Leijenhorst–de Muinck Keizer
-  certificate for 24 contacts, including the zonal-matrix construction and
-  the four constraint identities;
+  certificate for 24 contacts.  These were rebuilt from scratch here: the
+  zonal matrices, all four constraint identities (each holds exactly), and
+  the zero set of p_2 in Lean;
 - the three independent 600-cell enumerations.
 
-Details, and the steps still pending when this was written, are below.
+Both certificates regenerate exactly from the package: the 23-contact
+certificate by re-solving its SDP (byte-identical), and p_2 from the
+deposited data (byte-identical).  Every generated Lean file is byte-identical
+to its committed version.  The search results the paper quotes, and the
+figures, reproduce.  Details are below.
 
 **The proof does not, as written, establish the main theorems.**  The volume
 results are proved for *contact configurations*: sets of directions pairwise
@@ -45,7 +52,7 @@ may well be true.  The missing step, though, is where non-contact neighbours
 enter the 24-cell conjecture, and it is a real gap, not a typo.  It should be
 resolved before the paper claims the conjecture.
 
-**The package had a handful of defects**, fixed in this commit (section
+**The package had a handful of defects**, fixed on this branch (section
 "Changes made").  The most important: `zonal/run_sos4.sh` omitted 5 of the 50
 sum-of-squares blocks of the four-point constraint, and hard-coded the
 authors' paths.  The shipped result is consistent, because those blocks came
@@ -119,7 +126,30 @@ The DOIs could not be re-resolved online (see "Bibliography").
 * `p2_zeroset_check.py` (Fractions, no FLINT): zero set {-1, -1/2, 0, 1/2},
   multiplicities 1, 2, 2, 1, q < 0 on [-1, 1/2].
 * `D4InnerProducts.lean`: see section 1.
-* `zonal/` (steps 3 and 5): ZONAL-PENDING
+* `zonal/`, step 3 (the zonal matrices), rebuilt from scratch:
+  `ps_build.py` (490 entries, 1509 MB) and `psker` on two cores, 46 min wall
+  clock.  The integral self-test of `o4.py` passes.  For every one of the 490
+  entries, the kernel's counters (monomial triples walked, nonzero triples)
+  are identical to the shipped `zonal/runs/step3_part*.log`.  That is 7.854e9
+  triples in all, as the paper says.
+* `zonal/`, step 5 (the four constraint identities), with `verify45.py` on
+  the fresh `ps.txt`: **all four hold exactly.**
+  - Constraints 1 and 2 (9 min) and constraint 3 (9 min) have 0 nonzero
+    coefficients.
+  - For constraint 4, the zonal half (`verify45.py ... 4 zonal`, 125 min under
+    load) ends on 53572 monomials, as the paper says, with the shipped term
+    counts at every checkpoint.  The sum-of-squares half, computed with the
+    corrected `run_sos4.sh` over all 50 blocks in two lanes (`SOS_ONLY`),
+    also leaves 53572.  `combine4.py` adds the three pieces to **0 nonzero
+    coefficients: CONSTRAINT HOLDS EXACTLY**.  Unlike the shipped run, every
+    block here was computed within the logged run.
+* Checks of the zonal matrices themselves:
+  - `ps_ref.py`: the slow reference integral agrees exactly with the kernel on
+    all 27 entries with |lambda| <= 5.
+  - `check_psd.py`: 60 signatures, none with a negative eigenvalue; output
+    identical to the shipped `zonal_psd_check.log`.
+  - `gegenbauer_check.py` (new, F12): Z_(k,0) = (8^k/(k+1)^2) U_k(u) exactly,
+    for every k from 0 to 14.
 
 ## 3. The certificate for 23 contacts (Theorem 7.73)
 
@@ -129,6 +159,13 @@ The DOIs could not be re-resolved online (see "Bibliography").
   identical to `multi_cap/runs/certificate_check_d8.log` apart from timings.
 * `D4Certificate.lean` and `certificate/` (`domain_ok`): see section 1.  The
   Lean branch and bound is a second, independent implementation.
+* The certificate itself regenerates exactly.  `three_point_sdp.py 8 30
+  CLARABEL 5 0.0929` reproduces every slack of the five rounds in
+  `multi_cap/runs/three_point_sdp_certificate_d8.log`, and writes a
+  `certificate_d8.npz` byte-identical to the committed one.  So the whole
+  chain is reproducible from nothing but the code: SDP solve, certificate,
+  generated Lean files (byte-identical), kernel and `native_decide` checks,
+  and the interval check.
 
 ## 4. Other exact results
 
@@ -151,7 +188,37 @@ the committed and the regenerated primal measure.  See also finding F4.
 
 ## 5. The rest of the package (batch 2)
 
-BATCH2-PENDING
+All 165 other Python scripts of the package (arc1_v1w1/, arc2_w1v2/,
+hessian_multidir/, misc/, swap_configs/, verification/, core/, and the
+remaining multi_cap/ scripts) were run with a 15-minute limit each (an hour
+for the `*_derive.py` steps).  They shared the machine with the step-5 run
+and were lowered in priority for part of the time, so a timeout here does not
+mean a hang.
+
+* 159 ran to completion and exited 0.  No log of any of them contains FAIL,
+  Traceback, NONZERO or MISMATCH.
+* All six `*_derive.py` steps completed.  The README warns they "can run for
+  an hour or more".
+* `swap_exact_volume.py` hit the 15-minute limit under load.  Rerun alone
+  with an hour, it completes (877 s).
+* The other five that hit the limit are the long searches, rerun with longer
+  limits in batch 3 below.
+* The cached intermediates in `data/` that the scripts regenerate reproduce:
+  29 files byte for byte, including every `*_derive.py` output, and the other
+  4 equal in value (`logs/scripts_other/data_cache_comparison.log`).
+
+Batch 3, the long exploratory searches the paper names:
+
+| script | result |
+| --- | --- |
+| `spherical_code_23.py` | reproduces every number of Remark 7.62 digit for digit |
+| `inradius_search.py 300 7` | same result as the shipped log (94 feasible, all deletions, g <= 1/2) |
+| `symmetric_search.py 16 1` | all 73 orbit structures, largest g = 0.5, none above 1/2 (Proposition 7.46) |
+| `slack_continuation.py 40 1` | same picture as Table 3 (F10) |
+| `multi_cap_reformulation.py` | completes (the authors' own run stopped it at 240 s) |
+| `three_point_sdp.py ... 0.0929` | reproduces the certificate byte for byte (section 3) |
+| `three_point_sdp.py 8 30 CLARABEL 5` | two-point rounds identical; three-point rounds fall back to SCS (F9) |
+| `truncated_volume.py` | identical to the shipped `truncated_volume_r4.log`, an hour of optimisation |
 
 ## 6. Figures
 
@@ -159,7 +226,10 @@ All ten figure scripts in `paper/figures_new/` run and pass their label
 collision tests.  With matplotlib 3.10.9, the version the shipped figures
 were made with, every one of the ten PNGs is **pixel-identical** to the shipped
 file.  The bytes differ only in the PNG encoding, which depends on the local
-Pillow/zlib.  Under matplotlib 3.11.2 the renderings differ slightly.
+Pillow/zlib.  Under matplotlib 3.11.2 the renderings differ slightly.  The
+other 16 figures of `paper/figures/` cannot be regenerated from the package:
+`figures_paper/README.md` says the single panels they were composed from
+are not part of it.  They are unchanged.
 
 ## 7. The manuscript
 
@@ -174,7 +244,33 @@ Pillow/zlib.  Under matplotlib 3.11.2 the renderings differ slightly.
   compiled paper.  All point at an item of the right type, and a scan of the
   titles found them pointing at the right result.  There was one stale number
   (fixed): `D4Stress.lean` called the equilibrium relation (7.29); it is (7.33).
-* Quoted numbers: NUMSCAN-PENDING
+* Quoted numbers.  Every decimal of six or more significant digits in the
+  paper (198 of them) was looked for in the fresh run outputs, the shipped
+  logs and the code (`numscan.py`).  Of those not found verbatim:
+  - checked here as arithmetic or closed forms:
+    (pi^2/16)^(1/4) = 0.886226, 32/23, 2/sqrt 577, 7.907144430 + 65 x
+    0.001445409 = 8.001096 (and 64 pairs: 7.999651), 88 x 0.00565947,
+    84 x 5.65e-5, 0.0929000002 - 0.0928555702 = 0.0000444, f_0 = 0.000927
+    (from the certificate), 16/pi^2 - 1.543643 = 0.077495;
+  - recomputed independently: omega(62 deg)/omega(60 deg) = 0.555035 and
+    omega(66 deg)/omega(60 deg) = 0.090772 (paper 0.55504, 0.09077);
+    sup_R F = 0.765832 at (3/4, 1/4, 0, 0) (paper 0.76583); and
+    E[(1+q)^-2] = 0.5182543879 by deterministic quadrature (paper 0.518254,
+    hence 1.543643 and 4.78 per cent).  On that last one the paper is more
+    accurate than the package: `local_cell_obstruction.py` estimates it by
+    Monte Carlo as 0.518307 and prints 4.79 per cent;
+  - found at lower precision in the fresh logs: 0.89372, 0.002115, 0.034340
+    (8.03434), 0.1677, 0.08333;
+  - literature values: 0.12914461 (Li), 0.13126 (Cohn–Elkies), 60.1398863
+    (Sloane's tables);
+  - not reproduced by anything in the package: the Remark 7.36 measure
+    (5.9826875, finding F4); the sample values 0.20945/0.20971 and
+    0.1798/0.1570 of Section 7.1; and the determinant anecdote 0.30580 /
+    -5.7369 of Section 20.  The last two are illustrations, not results;
+  - the search results of Remark 7.62 (0.4980170 and 60.1311 deg at m = 22,
+    0.5000071 at m = 24, 0.5374065 at m = 25, and 0.5000078 with 32
+    near-feasible outcomes, all deletions, at m = 23) are reproduced digit for
+    digit by `spherical_code_23.py` (batch 3).
 
 ## 8. Bibliography
 
@@ -209,8 +305,9 @@ F4 (paper, open): Remark 7.36 says a rational measure on 632 of 670 grid
 triples, with value 5.9826875 and an exact LDL^T, *proves* that no degree-6
 certificate exists.  Neither the measure nor any script that builds or checks
 it is in the package.  The shipped `m24_primal_d6.npy` is a different,
-floating-point measure: 522 triples, value 5.942410.  A fresh run of
-`m24_primal_sdp.py` gives 2170 triples and 5.985098.  The Remark is not on
+floating-point measure: 2170 triples, value 5.942410 as read by
+`m24_exact_reduction.py`.  A fresh run of `m24_primal_sdp.py` gives 522
+triples and 5.985098.  The Remark is not on
 the path of the main theorems, but as it stands its "proof" cannot be
 checked from the package.
 
@@ -237,21 +334,66 @@ matplotlib 3.10.9, not byte for byte in general.  The same notes say D4.pdf
 "is delivered separately (it is 21 MB)"; it is in `paper/` and is 18 MB.  The
 release notes are a record of v1.3.0 and were not edited.
 
-F9 (code, noted): `gcc -Wall -Wextra` on `zonal/psker.c` gives one
+F9 (reproducibility, noted): in its search mode (`three_point_sdp.py 8 30
+CLARABEL 5`), the three-point solves fail under Clarabel with cvxpy 1.9.3, with
+both clarabel 0.11.1 and 0.10.0.  The script then falls back to SCS, which is
+slower and gives lower sampled bounds than the shipped log: 0.0946 against
+0.0957 in round 1.  The two-point rounds reproduce the shipped log exactly.
+The shipped log was made by an earlier version of the script (its warning
+points at line 154; the SCS fallback is now at line 195), so the solver
+behaviour it records cannot be recreated here.  This is exploration: the
+certificate mode, which produces the certificate the proof uses, runs under
+Clarabel and reproduces its log and the certificate byte for byte.
+
+F10 (logs, noted): several shipped logs predate small script changes, so a
+fresh run differs from them in form, not substance.  `llm24_certificate_check.log`
+has a reworded final message; `step5_constraints_1_2.log` has older progress
+lines; `slack_continuation_seed1_fresh40.log` lacks the delta levels 0.009 and
+0.008 that the script (and Table 3) now include; and
+`symmetric_search_16_seed1.log` stops before the final summary, which the
+fresh run prints (largest g 0.5, none above 1/2).  The paper's slack table
+takes the best over three passes; the fresh seed-1 pass shows the same
+picture: far from deletions down to delta = 0.009, gone at 0.008, and every
+endpoint a deletion at delta = 0.
+
+F11 (code, noted): `gcc -Wall -Wextra` on `zonal/psker.c` gives one
 `-Wmaybe-uninitialized` warning in `canon()`.  It is a false positive: every
-byte of `t` is written before the `memcpy`.
+byte of `t` is written before the `memcpy`.  Sorting rows and columns there
+is not a unique canonical form under simultaneous permutation.  That costs
+only memo hits, since the O(4) monomial integral is invariant under row and
+column permutations and under transposition.
+
+F12 (package, fixed): `zonal/README.md` (item 3) and Section 7.5.3 of the
+paper say that Z_(k,0) at two single points was checked to be the zonal
+harmonic kernel of S^3, "exactly, with ratio 8^k/(k+1)^2 for every k from 0
+to 14".  No script in the package did this.
+`independent_verification/gegenbauer_check.py` now does it, through
+`zonal.py` exactly as `verify45.py` evaluates Z, and the claim holds.
+
+F13 (code, noted): `multi_cap/local_cell_obstruction.py` estimates
+E[(1+q)^-2] at the regular simplex by Monte Carlo (0.518307), prints "4.79
+per cent", and labels its check "4.78 per cent".  The paper's 0.518254,
+1.543643 and 4.78 per cent are the accurate values (0.5182543879 by
+quadrature).  The script's tolerance still passes.
+
+F14 (package, noted): `third_party/llm24-certificate/verify.sh` runs
+`psker` in one process and all of step 5 in a single `verify45.py` process.
+The zonal README says the four-point constraint was too large for one
+process on the authors' machine.  This verification ran the same programs
+split up, as described in section 2, and did not run `verify.sh` end to
+end.
 
 ## Changes made
 
 | file | change |
 | --- | --- |
-| `zonal/run_sos4.sh` | F3: portable arguments; all 50 blocks; coverage guard |
+| `zonal/run_sos4.sh` | F3: all 50 blocks; coverage guard; takes the data folder, `ps.txt` and a work directory as arguments (resolved before it changes directory); `SOS_ONLY` to share the groups between processes; a failed group now makes the script exit 1 (added after the run above, which only exercised the success path) |
 | `lean/D4Stress.lean` | comment: equation (7.29) -> (7.33); rechecked with Lean |
 | `lean/README.md` | "Thirty-seven" -> "Forty" |
 | `README.md` | `D4RootLattices.lean` in the directory entry and usage; runtime of `three_point_reduction.py` |
 | `third_party/llm24-certificate/README.md` | part list and sizes (F5) |
 | `CITATION.cff` | Mandal's affiliation (F7) |
-| `independent_verification/` | this report, the proof-gap examples, and the logs of every run |
+| `independent_verification/` | this report, the proof-gap examples, `gegenbauer_check.py` (F12), `compare_figures.py`, `numscan.py`, and the logs of every run |
 
 The manuscript `paper/D4.tex` was not changed.  F1, F2 and F4 are for the
 authors to resolve.

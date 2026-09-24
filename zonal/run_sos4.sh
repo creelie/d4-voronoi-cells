@@ -15,23 +15,35 @@
 # is  python3 verify45.py DATA ps.txt 4 zonal WORK/z4.pkl , and
 # python3 combine4.py WORK/s4_total.pkl WORK/z4.pkl  adds the two halves and
 # reports whether the constraint vanishes.
+#
+# SOS_ONLY="b2 b1 ..." restricts the run to the named groups, so that the
+# groups can be shared between processes, each with its own workdir; then
+# combine4.py takes every workdir's s4_total.pkl together with z4.pkl.
 set -u
-cd "$(dirname "$0")"
 DATA=${1:?usage: run_sos4.sh DATA ps.txt [workdir]}
 PS=${2:?usage: run_sos4.sh DATA ps.txt [workdir]}
-WORK=${3:-work4}
-mkdir -p "$WORK"
+DATA=$(cd "$DATA" && pwd) || exit 1
+PS=$(cd "$(dirname "$PS")" && pwd)/$(basename "$PS")
+[ -s "$PS" ] || { echo "run_sos4.sh: no psker output at $PS"; exit 1; }
+HERE=$(cd "$(dirname "$0")" && pwd)
+WORK=${3:-$HERE/work4}
+mkdir -p "$WORK" && WORK=$(cd "$WORK" && pwd)
+ONLY=${SOS_ONLY:-}
+cd "$HERE"
 TOTAL=$WORK/s4_total.pkl
 DONE=$WORK/s4_done.txt
 PART=$WORK/s4_part.pkl
 touch "$DONE"
+FAILED=0
 
 run_group () {          # $1 = "lo,hi"  $2 = tag
+  if [ -n "$ONLY" ] && ! echo " $ONLY " | grep -q " $2 "; then return; fi
   if grep -qx "g$2" "$DONE"; then echo "skip group $2"; return; fi
   SOS_BLOCKS=$1 python3 verify45.py "$DATA" "$PS" 4 sos "$PART" 2>&1 \
       | grep -E '^    block|Error|error'
   if [ ! -s "$PART" ]; then
     echo "GROUP $2 FAILED"
+    FAILED=1
     return
   fi
   python3 merge4.py "$TOTAL" "$PART"
@@ -66,4 +78,5 @@ run_group 13,19 m13      # 29x26 up to 120x89
 run_group 22,28 m22
 run_group 28,45 s28
 run_group 45,50 m45
+if [ "$FAILED" != 0 ]; then echo "SOME GROUPS FAILED; rerun to retry them"; exit 1; fi
 echo "ALL GROUPS DONE"
