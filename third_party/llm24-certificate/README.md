@@ -13,7 +13,9 @@ and deposited by them, under the MIT licence, at 4TU.ResearchData:
     doi:10.4121/74ce1c25-6fca-4680-8a36-e9c18e7e9594
     archive  LasserreSphericalCodes.zip
     MD5      02acd5270f7b3fa799abdeb5291706fd
-    size     234 MB, 331 files under proofs/4_24
+    size     152065368 bytes (145 MiB) as a zip; unpacked, 331 files
+             under proofs/4_24 holding 243787660 bytes (232.5 MiB; on
+             disk du -h reports 234M, the "234 megabytes" of the paper)
 
 The paper proves everything it needs about that point itself (the bound, its
 equality case, the positivity of the kernel, and the four properties of the
@@ -23,9 +25,9 @@ the proof does not depend on a server.
 
 ## Contents of this directory
 
-    LasserreSphericalCodes.zip.part-00, -01, -02
+    LasserreSphericalCodes.zip.part-00, -01
                                  the deposited archive, byte for byte, cut into
-                                 80 MB parts because GitHub refuses single files
+                                 80 MiB parts because GitHub refuses single files
                                  above 100 MB; `python3 fetch_certificate.py
                                  --join` reassembles LasserreSphericalCodes.zip
                                  and checks its MD5

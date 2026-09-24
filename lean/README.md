@@ -221,7 +221,7 @@ count of zeros, is mathematics and is not formalised.
 | `five_24` | exactly five of size 24 do, all of them cells |
 | `all_23_in_cells` | exactly 115 of size 23 do, and every one of them lies in a cell |
 
-Thirty-seven theorems across the two files, no `sorry`. The axiom audits
+Forty theorems across the two files, no `sorry`. The axiom audits
 report that each of them depends on no axiom at all, not even propositional
 extensionality: every one is settled by kernel computation on integers.
 The project adds sixteen theorems, again with no `sorry`. Its thirteen
