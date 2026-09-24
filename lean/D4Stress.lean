@@ -136,7 +136,7 @@ def residual (a : Vec) : Vec :=
 
 /-- **The equilibrium relation.** For every direction of the deletion
     configuration, the weighted sum of its tight neighbours cancels against
-    its own multiple of itself. This is equation (7.29) of the paper, and it
+    its own multiple of itself. This is equation (7.33) of the paper, and it
     is what makes every first-order motion hold all eighty-eight pairs at
     equality. -/
 theorem equilibrium : (W.all fun a => residual a == vzero) = true := by decide

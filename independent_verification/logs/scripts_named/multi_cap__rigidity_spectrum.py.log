@@ -1,0 +1,18 @@
+$ (cd multi_cap && rigidity_spectrum.py)
+max |4N| entry: 16
+4N annihilates x(x-8)(x-20)(x-24)(x-32): True
+eigenvalue 0 of N: rank of 4N -  0I is 66, multiplicity 30
+eigenvalue 2 of N: rank of 4N -  8I is 67, multiplicity 29
+eigenvalue 5 of N: rank of 4N - 20I is 88, multiplicity  8
+eigenvalue 6 of N: rank of 4N - 24I is 75, multiplicity 21
+eigenvalue 8 of N: rank of 4N - 32I is 88, multiplicity  8
+
+The multiplicities sum to 96, so the ranks over a field of positive
+characteristic, which bound the ranks over Q from below, are met.
+The kernel of N is 30-dimensional: the 24 radial directions, on which
+P vanishes, and the 6 infinitesimal rotations.  Halving and taking
+square roots, the singular values of Lambda on the tangent space are
+0, 1, sqrt(5/2), sqrt3, 2 with multiplicities 6, 29, 8, 21, 8.
+The smallest nonzero singular value is exactly 1, which is the
+constant the radius 2/sqrt(577) of Theorem (a radius for the
+rigidity) is built from.
