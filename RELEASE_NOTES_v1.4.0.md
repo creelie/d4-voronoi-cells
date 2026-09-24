@@ -96,13 +96,10 @@ In every example the true cell is above 8.  The details are in
 - `CITATION.cff` (Mandal's affiliation) and `.zenodo.json` carry version
   v1.4.0.
 
-## Publishing the release
+## Release
 
-1. Merge the branch into `main`.
-2. On GitHub, go to Releases, then "Draft a new release".  Create the tag
-   `v1.4.0` on `main`, title it `v1.4.0`, paste these notes, and publish.
-3. The Zenodo GitHub integration archives the release and mints a version
-   DOI under the concept record 10.5281/zenodo.22766562.  The paper cites
-   the concept DOI, which always resolves to the newest version, so nothing
-   in the paper has to change after minting.  If a version DOI is wanted in
-   `README.md` ("Availability"), add it there once Zenodo shows it.
+Published on 24 September 2026 as the tag `v1.4.0` on `main`
+(https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.4.0) and
+archived by Zenodo under the concept DOI 10.5281/zenodo.22766562, which
+always resolves to the newest version and is the identifier the paper cites.
+The version DOI of v1.4.0 is recorded in `README.md` once Zenodo shows it.
