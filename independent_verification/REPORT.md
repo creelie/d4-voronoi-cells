@@ -1,5 +1,10 @@
 # Independent verification of the D4 package (v1.3.0), 24 September 2026
 
+This report was written against v1.3.0.  The corrections it led to, in the
+package and in the manuscript, are released as v1.4.0; the section
+"Addendum: v1.4.0" at the end says what v1.4.0 proves and what it leaves
+open.  Theorem, lemma and section numbers in the body are those of v1.3.0.
+
 Scope: the manuscript `paper/D4.tex` ("The Sphere Packing Problem in
 Dimension 4 and the Twenty-Four-Cell Conjecture") and everything in this
 repository that supports it.  The repository was re-run from a fresh clone.
@@ -286,9 +291,11 @@ Clarabel entry could not be checked.
 
 ## Findings
 
-F1 (proof, open): the radial reduction.  See `proof_gaps/README.md`.
+F1 (proof; corrected in v1.4.0, see the addendum): the radial reduction.  See
+`proof_gaps/README.md`.
 
-F2 (proof, open): shell localisation.  See `proof_gaps/README.md`.
+F2 (proof; corrected in v1.4.0, see the addendum): shell localisation.  See
+`proof_gaps/README.md`.
 
 F3 (package, fixed): `zonal/run_sos4.sh` omitted blocks 0, 1, 3, 4 and 5 of
 the 50 sum-of-squares blocks of the four-point constraint.  Its own comment
@@ -301,7 +308,7 @@ refuses to run if the groups do not cover 0..49 exactly once.  (A first
 version of that guard used the variable name `GROUPS`, which bash reserves;
 it is now `SOS_GROUPS`.)
 
-F4 (paper, open): Remark 7.36 says a rational measure on 632 of 670 grid
+F4 (paper; stated in v1.4.0): Remark 7.36 says a rational measure on 632 of 670 grid
 triples, with value 5.9826875 and an exact LDL^T, *proves* that no degree-6
 certificate exists.  Neither the measure nor any script that builds or checks
 it is in the package.  The shipped `m24_primal_d6.npy` is a different,
@@ -395,5 +402,78 @@ end.
 | `CITATION.cff` | Mandal's affiliation (F7) |
 | `independent_verification/` | this report, the proof-gap examples, `gegenbauer_check.py` (F12), `compare_figures.py`, `numscan.py`, and the logs of every run |
 
-The manuscript `paper/D4.tex` was not changed.  F1, F2 and F4 are for the
-authors to resolve.
+The manuscript `paper/D4.tex` was not changed by the re-verification itself.
+v1.4.0 then revised it for F1, F2 and F4; see the addendum.
+
+## Addendum: v1.4.0
+
+The corrections of v1.4.0, which answer F1, F2 and F4, were made after this
+report and are checked here in the same way.  Numbers below are those of
+v1.4.0.
+
+**What is proved, and what is not.**  Nothing in the re-verification closes
+the twenty-four-cell conjecture for all packings, and v1.4.0 does not claim
+it.  The bound vol >= 8, with equality only at the root system, is proved:
+
+- for every *contact configuration*.  This is the contact-count argument,
+  unchanged: at most 22 contacts (Theorem 1.3), exactly 23 (Theorem 7.40)
+  and exactly 24 (Theorem 7.25);
+- for the *Voronoi cell of a packing* in two cases (Theorem 1.5).  The first
+  is when every centre within 2 sqrt 2 of the given one touches it.  The
+  second is when the distances d_i of those centres satisfy
+  Phi(d_1, d_2, ...) > 8, where Phi is the distance criterion of
+  Proposition 2.10.
+
+The case left open is Conjecture 1.6: at least 23 centres within 2 sqrt 2,
+at least one of them not touching, and Phi <= 8.  The density bound pi^2/16
+is proved for periodic packings whose centres satisfy the hypothesis of
+Theorem 1.5 (Theorem 1.7).  For all packings it depends on the conjecture.
+
+**The new arguments (Section 2.7).**
+
+- *Proposition 2.10.*  The radial form of the cell volume, truncated at
+  radius sqrt 2, sees only the centres within 2 sqrt 2.  Each of those
+  centres removes at most a cap of radius arccos((d_i/2) cos r) at level
+  sec r.  That gives vol(V_c) >= vol(V_c cap B(sqrt 2)) >= Phi(d_1, ...),
+  with Phi nondecreasing in every d_i.  For contacts only, Phi is the
+  covering bound of Theorem 7.16 cut off at 45 degrees.  That cut-off changes
+  the bound only for m <= 11, and the value stays above 11.5 there.
+- *Lemma 2.11.*  The root directions have covering radius exactly 45 degrees:
+  (a + b)^2 >= a^2 + b^2 + c^2 + d^2 because 2ab >= c^2 + d^2.  So a centre
+  with 24 contacts has no other centre within 2 sqrt 2, and its cell is the
+  24-cell.
+- *Proof of Theorem 1.5 for shell-free centres.*  For m <= 22,
+  Phi > 8.044.  For m = 24, Lemma 2.11 applies.  For m = 23, the cell is
+  bounded (Theorem 7.25), and Theorem 7.73 bounds its part inside
+  B(sqrt(3/2)) above 8.  Centres beyond 2 sqrt 2 do not reach that ball.
+
+**Checks.**
+
+- `multi_cap/shell_reduction.py`, in ball arithmetic (python-flint, 160
+  bits), passes every check.  Its log is `multi_cap/runs/shell_reduction.log`.
+  - Phi for m contacts has rigorous lower bounds 11.5286 (m = 11) and
+    8.04415 (m = 22).
+  - It computes the thresholds of Table 1, for example 22 contacts plus one
+    further centre at d >= 2.16756.
+  - With 23 contacts and one further centre, no d below 2 sqrt 2 passes the
+    criterion.
+  - Both counterexamples of `proof_gaps/` are consistent with the corrected
+    lemmas, and the 49-ball example satisfies Phi >= 18.3358.
+  - Each value of Phi is a lower Riemann sum.  The decreasing factor is taken
+    at the right end of each interval and the increasing factor at the left,
+    so every printed value is a lower bound.
+- The exact gradient of the polytope volume used by
+  `multi_cap/shell_neighbour_search.py` agrees with finite differences to
+  1e-8.  It reproduces the volumes 8 (the root system) and 25/3 (a deletion).
+- The search of the open case, which is exploration and not proof:
+{SEARCH}
+
+**The manuscript.**  The revised paper was built with `latexmk -pdf`: 0
+undefined references, 0 overfull boxes, and no "??" in the text.  Every new
+cross-reference resolves, and every number quoted in Section 2.7 matches
+`multi_cap/runs/shell_reduction.log`.  The title-page note, abstract,
+introduction, Theorems 1.1, 1.5 and 1.7, Section 6, the conclusion, and the
+data and code availability statement are revised to the claims above.
+Theorem 1.1 is now stated for the cell cut out by the active neighbours,
+under the hypothesis its proof uses: the deviating direction replaces a root
+that no active neighbour takes.

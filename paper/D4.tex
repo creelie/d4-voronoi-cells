@@ -176,21 +176,29 @@ bound through an additivity property of free volumes under several
 simultaneous deviations, asserted there without proof and not true in
 the form stated, which \cref{rem:sums-not-unions} explains; no
 argument, statement or computation of it is used here. What the present
-paper closes, and where, can be said exactly. The local cell bound for
-a single deviation, $\vol(V_c)\ge8$ with equality only at the reference
-cell, is \cref{thm:local-uncond}, and it is unconditional: layers $1$
-and $3$ are the reductions of \cref{sec:shell-new,sec:radial-new},
-layer $2$ is \cref{sec:root-aligned-new}, layer $4$ is the exact cell
-positivity of \cref{sec:stage-one,sec:stage-two} over the $176$ cell
-types, and layer $5$ is the cap theorem of \cref{sec:cap-theorem},
-which removes the constraint on the deviation direction. Simultaneous
-deviation in several directions, which the preprint assumed away, is
-settled here by the contact count: at most $22$ contacts by
-\cref{thm:local-fewcontacts}, exactly $23$ by \cref{thm:m23}, and
-exactly $24$ by \cref{thm:m24}; that is \cref{cor:conj-resolved}, and
-the general statements are \cref{thm:local-general,thm:main-general},
-with the density bound $\Delta_4=\pi^2/16$ stated there. One more
-point of provenance needs saying. The classification of $24$-point
+paper closes, and where, can be said exactly. For contact
+configurations, the directions to the neighbours at distance exactly
+$2$, the bound $\vol\ge8$ with equality only at the root system is proved
+in full: simultaneous deviation in several directions, which the
+preprint assumed away, is settled by the contact count, at most $22$
+contacts by \cref{thm:local-fewcontacts}, exactly $23$ by
+\cref{thm:m23} and exactly $24$ by \cref{thm:m24}, and that is
+\cref{cor:conj-resolved}. The single-deviation bound, with no
+restriction on the deviation, is \cref{thm:local-uncond}. For the
+Voronoi cell of a packing the bound is proved whenever the centres
+within $2\sqrt2$ of the given one all touch it, or their distances pass
+the covering criterion of \cref{prop:distance-criterion}; that is
+\cref{thm:local-general}, and \cref{thm:main-general} is the density
+bound it gives. The case left open is a centre crowded by at least
+twenty-three neighbours within $2\sqrt2$ some of which do not touch it
+(\cref{conj:shell}), and the density bound $\Delta_4=\pi^2/16$ for all
+packings follows once that case is settled. An earlier version of this
+paper, with version v1.3.0 of its supplement, asserted the general bound
+without that hypothesis, through a reduction to contact configurations
+(\cref{lem:shell-new,lem:radial-new} in their earlier form) that fails
+when a neighbour does not touch the centre; \cref{sec:noncontact} gives
+the reduction that holds and the examples that show the earlier one
+fails. One more point of provenance needs saying. The classification of $24$-point
 contact configurations was first proved by de Laat, Leijenhorst and de
 Muinck Keizer \cite{LLM24}, whose paper is at the time of writing a
 preprint. It is not quoted. It is proved here, as
@@ -235,16 +243,22 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 }
 
 \begin{abstract}
-We prove that every Voronoi cell of a unit-ball packing of $\mathbb{R}^4$
-has volume at least $8$, with equality only at the $D_4$ configuration,
-so that the twenty-four-cell conjecture holds and the density of a sphere
-packing in four dimensions is at most $\pi^2/16$. The proof runs through
-the number of contacts of a cell. Up to twenty-two a covering estimate
-suffices; at twenty-three the cell is bounded through an exact volume
-identity inside a ball and a semidefinite certificate for one inequality
-between pair angles; at twenty-four the configuration is the root system,
-which we prove from the second level of the semidefinite hierarchy with
-its equality case, the positive kernel verified in exact arithmetic.
+The twenty-four-cell conjecture asserts that every Voronoi cell of a
+unit-ball packing of $\mathbb{R}^4$ has volume at least $8$, with
+equality only at the $D_4$ configuration, and it gives the density bound
+$\pi^2/16$. We prove it for contact configurations, the directions to
+the neighbours at distance $2$. The proof runs through the number of
+contacts. Up to twenty-two a covering estimate suffices; at twenty-three
+the cell is bounded through an exact volume identity inside a ball and a
+semidefinite certificate for one inequality between pair angles; at
+twenty-four the configuration is the root system, which we prove from
+the second level of the semidefinite hierarchy with its equality case,
+the positive kernel verified in exact arithmetic. For the Voronoi cell
+of an arbitrary packing we prove the bound whenever every neighbour
+closer than $2\sqrt2$ touches the centre, and more generally whenever
+the distances of those neighbours pass a covering criterion that does
+not look at their directions. The case left open is a centre crowded by
+near-contacts, for which we give numerical evidence.
 \end{abstract}
 
 \maketitle
@@ -259,9 +273,11 @@ $D_4$ root lattice, scaled so that nearest centres lie at distance $2$,
 packs balls at density $\pi^2/16=0.6169\ldots$ and is the densest
 lattice packing in dimension $4$, by a theorem of Korkine and Zolotareff
 \cite{KZ1872}. Whether it is densest among all packings, periodic or
-not, has been an open question. The present paper settles a local statement
-that answers it, and proves within the text every ingredient the
-argument uses, the one classification it needs included.
+not, has been an open question, and it remains one. The present paper
+proves a local statement that answers it for a large class of packings
+and reduces the rest to one precisely stated case, and it proves within
+the text every ingredient the argument uses, the one classification it
+needs included.
 
 We say at the outset what that statement is and where it
 stood. The statement is that every Voronoi cell of a unit-ball packing
@@ -273,8 +289,9 @@ direction leaves a root of $D_4$ had been proved before: the general
 estimates of Blichfeldt and Rogers stop short of $8$, the linear
 programming bound stalls above the density of $D_4$, and the
 second-order analysis of the cell degenerates exactly at the dense
-configurations that matter (\cref{sec:hessian-technique}). Three
-theorems below cover it. When at most one contact direction leaves a
+configurations that matter (\cref{sec:hessian-technique}). For contact
+configurations, where every neighbour that can cut the cell touches the
+centre, three theorems below cover it. When at most one contact direction leaves a
 root the bound is proved by elementary means, in exact arithmetic, with
 no restriction on the deviation (\cref{thm:local-uncond}). When there
 are at most $22$ contacts it is proved, with room to spare and with any
@@ -294,10 +311,15 @@ computation, and it is proved here in full (\cref{thm:twentyfour-points}):
 the positive kernel their computation found is redistributed with this
 paper, its properties are verified in exact arithmetic, and the bound it
 gives, with the equality case that identifies the configuration, is
-proved in the text. So the twenty-four-cell conjecture and the density
-bound rest on no statement outside this paper and on no computation that
-has not been checked. The theorem for $23$ contacts is the piece that was
-missing.
+proved in the text. So the twenty-four-cell conjecture for contact
+configurations rests on no statement outside this paper and on no
+computation that has not been checked; the theorem for $23$ contacts is
+the piece that was missing there. What separates it from the conjecture
+for Voronoi cells is the neighbours that do not touch the centre.
+\Cref{sec:noncontact} proves the bound for every centre whose neighbours
+within $2\sqrt2$ all touch it, or whose neighbour distances pass a
+covering criterion, and isolates the one case that remains, a centre
+crowded by near-contacts (\cref{conj:shell}).
 
 Let $\mathcal{C}\subset\mathbb{R}^4$ be the centre set of a packing of
 unit balls and let $c\in\mathcal{C}$. The Voronoi cell
@@ -315,23 +337,32 @@ cell losing any volume at all, and when several tilt at once the
 first-order and second-order changes can cancel exactly, leaving the
 sign of the total to be decided at fourth order.
 
-We settle the case in which the local configuration departs from the
-lattice in a single direction.
+We first treat the case in which the local configuration departs from
+the lattice in a single direction. Call the centres within distance
+$2\sqrt2$ of $c$ its \emph{active neighbours}, and write
+$V_c^{\mathrm{act}}\supseteq V_c$ for the cell they alone cut out.
 
 \begin{thm}[Local cell bound, single deviation]\label{thm:local-uncond}
-Let $c$ be a centre of a unit-ball packing of $\mathbb{R}^4$ at which at
-most one active neighbour direction fails to be a root direction of the
-$D_4$ root system $\Rt$. Then $\vol(V_c)\ge8$, with equality if and only
-if the active neighbours of $c$ form a copy of $\sqrt2\,\Rt$ centred at
-$c$. Nothing is assumed about the deviating direction or about the size
-of its deviation.
+Let $c$ be a centre of a unit-ball packing of $\mathbb{R}^4$ whose active
+neighbours lie in root directions of a copy of the $D_4$ root system
+$\Rt$ except for at most one, and, if there is one, suppose that some
+root direction of $\Rt$ is taken by no active neighbour. Then
+$\vol(V_c^{\mathrm{act}})\ge8$, with equality if and only if the active
+neighbours of $c$ form a copy of $\sqrt2\,\Rt$ centred at $c$. Nothing is
+assumed about the deviating direction or about the size of its
+deviation.
 \end{thm}
 
+The cell $V_c$ itself is $V_c^{\mathrm{act}}$ cut by the centres beyond
+$2\sqrt2$, which do not meet the ball of radius $\sqrt2$ about $c$
+(\cref{lem:shell-new}) but can cut $V_c^{\mathrm{act}}$ outside it. When
+every active neighbour touches $c$, $\vol(V_c)\ge8$ holds as well, by
+\cref{thm:local-general} below.
+
 \begin{cor}[Density bound, single deviation]\label{cor:density-uncond}
-Every periodic packing all of whose centres satisfy the hypothesis of
-\cref{thm:local-uncond} has density at most $\pi^2/16$, with equality
-for the $D_4$ lattice; the same bound holds for general packings of this
-class by the compactness argument of \cref{sec:periodic}.
+Every periodic packing each of whose centres satisfies the hypothesis of
+\cref{thm:local-uncond}, with every active neighbour in contact, has
+density at most $\pi^2/16$, with equality for the $D_4$ lattice.
 \end{cor}
 
 The mechanism behind \cref{thm:local-uncond} is a change of viewpoint,
@@ -379,9 +410,13 @@ With no bound on their number the same argument gives
 $\vol(V_c)\ge7.7989\ldots$ for every contact configuration whatever.
 \end{thm}
 
-By \cref{lem:radial-new} the all-contact corner is where the volume is
-smallest for a fixed pattern of active directions, so this is the case
-that matters.
+The hypothesis that every active neighbour touches the centre cannot
+be removed by pulling the others in: pulling a neighbour in shrinks the
+cell, but the configuration it produces need not be a packing
+(\cref{lem:radial-new}). What survives is sharper than the theorem. The
+same covering argument, applied to every centre within $2\sqrt2$, each
+counted by the cap it actually cuts, gives a lower bound that depends on
+the distances of those centres alone (\cref{prop:distance-criterion}).
 
 The proof is short. Writing $\delta(\theta)$ for the angular distance
 from a direction $\theta$ to the nearest contact direction, the cell has
@@ -392,7 +427,10 @@ uncovered, and integrating that estimate against $d(\sec^4r)$ gives
 $\vol(V_c)\ge\tfrac{\pi m}{3}\tan^3r_m$ with $2r_m-\sin2r_m=2\pi/m$
 (\cref{thm:covering-bound}). Since a contact configuration has at most
 $24$ members, by Musin's kissing theorem \cite{Mus08}, and the bound
-decreases in $m$, twenty numbers settle the whole range.
+decreases in $m$, twenty numbers settle the whole range. (For $m\le11$
+the angle $r_m$ exceeds $45^\circ$; stopping the integral there, so that
+no centre beyond $2\sqrt2$ can enter, leaves the bound above $11.5$,
+\cref{prop:distance-criterion}.)
 
 The case our own arguments do not reach is that of several simultaneous
 deviations at a centre with $24$ neighbours, all of them active. The
@@ -426,9 +464,9 @@ kissing configurations in $\mathbb{R}^4$: any $24$ unit vectors with
 pairwise inner products at most $\tfrac12$ form a copy of the $D_4$ root
 system. That settles \cref{conj:multidir-new} outright, since a full
 active set of $24$ contacts then admits no deviation at all
-(\cref{cor:conj-resolved}), and it leaves the general local bound with
-one case, a centre with exactly $23$ contacts whose cell admits no
-twenty-fourth, which is the subject of the second half of
+(\cref{cor:conj-resolved}), and it leaves the bound for contact
+configurations with one case, a centre with exactly $23$ contacts whose
+cell admits no twenty-fourth, which is the subject of the second half of
 \cref{sec:deviation-domain} and is settled there. The classification was
 first proved by de Laat, Leijenhorst and de Muinck Keizer \cite{LLM24},
 by a semidefinite computation, in a preprint that has not yet been
@@ -497,10 +535,30 @@ we say in a footnote what that proof consists of.%
   witness being checked, and it is.}
 
 \begin{thm}[General local bound]\label{thm:local-general}
-Every Voronoi cell $V_c$ of a unit-ball packing of $\mathbb{R}^4$
-satisfies $\vol(V_c)\ge8$, with equality if and only if the active
-neighbours of $c$ form a copy of $\sqrt2\,\Rt$.
+Let $V_c$ be the Voronoi cell of a centre $c$ of a unit-ball packing of
+$\mathbb{R}^4$, and let $d_1\le d_2\le\dots$ be the distances from $c$ of
+the other centres closer than $2\sqrt2$. If every $d_i$ equals $2$, or if
+$\Phi(d_1,d_2,\dots)>8$ for the function $\Phi$ of
+\cref{prop:distance-criterion}, then $\vol(V_c)\ge8$, with equality if and
+only if the centres within $2\sqrt2$ of $c$ form a copy of $\sqrt2\,\Rt$
+about $c$.
 \end{thm}
+
+\begin{conjecture}[Crowded near-contacts]\label{conj:shell}
+The conclusion of \cref{thm:local-general} holds at every centre of every
+unit-ball packing of $\mathbb{R}^4$, also when some centre lies at a
+distance strictly between $2$ and $2\sqrt2$ from it and
+$\Phi(d_1,d_2,\dots)\le8$.
+\end{conjecture}
+
+The conjecture is what is left of the twenty-four-cell conjecture once
+\cref{thm:local-general} is proved, and \cref{sec:noncontact} says what
+it contains: a centre with at least twenty-three neighbours within
+$2\sqrt2$, at least one of which does not touch it, the ones that do not
+being close to contact (with twenty-two contacts and one further
+neighbour, closer than $2.1676$; with twenty-one and two, closer than
+$2.0705$). A numerical search of that case finds nothing below $8$
+(\cref{sec:noncontact}); that is evidence, not proof.
 
 The case of $23$ contacts is not a deviation problem at all. By
 \cref{prop:extendable}, a cell of circumradius at least $2$ is exactly
@@ -542,9 +600,10 @@ classification, of a code at one fixed size below the maximum, is not
 something an upper bound on the size of a code can deliver
 (\cref{rem:m23-uniqueness}), and we do not prove it;%
 \footnote{Nor is it needed, and since the point matters for what the
-  paper claims we set the dependence out precisely. The general local
-  bound, \cref{thm:local-general}, is assembled in \cref{cor:remaining}
-  from three cases by the number $m$ of contacts: $m\le22$ by the
+  paper claims we set the dependence out precisely. The bound for
+  contact configurations is assembled in \cref{cor:remaining} from three
+  cases by the number $m$ of contacts, and \cref{thm:local-general}
+  carries it to Voronoi cells (\cref{sec:noncontact}): $m\le22$ by the
   covering estimate (\cref{cor:m22}), $m=24$ by \cref{thm:m24}, and
   $m=23$ by \cref{thm:m23}. The density bound, \cref{thm:main-general},
   is the local bound followed by the averaging argument of
@@ -564,9 +623,9 @@ something an upper bound on the size of a code can deliver
   twenty-four-cell conjecture in the form in which it is usually
   stated, that every Voronoi cell of a unit-ball packing of
   $\mathbb{R}^4$ has volume at least that of the regular $24$-cell
-  circumscribed about the unit ball: that is exactly the statement of
-  \cref{thm:local-general}, and the classification of $23$-point codes
-  plays no part in it. \Cref{prop:cell600}, \cref{lem:h-limit} and the
+  circumscribed about the unit ball: that is \cref{thm:local-general}
+  together with \cref{conj:shell}, and the classification of $23$-point
+  codes plays no part in it. \Cref{prop:cell600}, \cref{lem:h-limit} and the
   computations of \cref{sec:slack-continuation} are therefore reported
   as what they are, information about the codes of $23$ points that is
   of interest in its own right, and nothing in
@@ -611,10 +670,12 @@ and in interval arithmetic that it proves
 $\sum_{i<j}\omega(\gamma_{ij})\ge0.0929$ for every $23$ contact
 directions, where $0.092855\ldots$ is what the truncated volume needs.
 
-\begin{thm}[General density bound]\label{thm:main-general}
-The supremum density of sphere packings in $\mathbb{R}^4$ is
-$\Delta_4=\pi^2/16$, attained by the $D_4$ lattice at nearest-neighbour
-distance $2$.
+\begin{thm}[Density bound]\label{thm:main-general}
+Every periodic unit-ball packing of $\mathbb{R}^4$ each of whose centres
+satisfies the hypothesis of \cref{thm:local-general} has density at most
+$\pi^2/16$, with equality for the $D_4$ lattice at nearest-neighbour
+distance $2$. If \cref{conj:shell} holds, the supremum density of sphere
+packings in $\mathbb{R}^4$ is $\Delta_4=\pi^2/16$.
 \end{thm}
 
 Both of those last statements use \cref{thm:m24} for the configurations
@@ -624,14 +685,16 @@ found by \cite{LLM24}, which \cref{sec:certificate-checked} redistributes
 and verifies, the bound it gives being proved in \cref{lem:las2}.
 It should be said at once what \cref{conj:multidir-new} is. Written in
 terms of the contact directions alone (\cref{prop:polar-form}), the
-inequality $\vol(V_c)\ge8$ is the $24$-cell conjecture, so
-\cref{thm:local-uncond} settles the part of that conjecture in which at
-most one contact direction leaves a root, and \cref{conj:multidir-new}
-is the remainder. It is a named problem, the twenty-four-cell
-conjecture, and not a hypothesis of our own making;
-\cref{cor:conj-resolved} settles it through the classification of
-\cref{thm:m24}, and nothing below suggests that restating it makes a
-proof that avoids the classification easier.
+inequality $\vol(V_c)\ge8$ is the twenty-four-cell conjecture for contact
+configurations, the form in which every neighbour that can cut the cell
+touches the centre; \cref{thm:local-uncond} settles the part of it in
+which at most one contact direction leaves a root, and
+\cref{conj:multidir-new} is the remainder. \Cref{cor:conj-resolved}
+settles it through the classification of \cref{thm:m24}, and nothing
+below suggests that restating it makes a proof that avoids the
+classification easier. The conjecture for Voronoi cells asks more, since
+it allows neighbours that do not touch, and that part is
+\cref{conj:shell}.
 
 \Cref{sec:hessian-technique} through \cref{sec:multidir-scope-summary}
 report what we know about it: the second-order
@@ -679,9 +742,11 @@ number of contacts rather than by these layers.%
   volume bookkeeping is finite there.}
 
 \smallskip\noindent\textit{Layer 1 (shell localisation, \cref{sec:shell-new}).}
-Only neighbours at distance in $[2,2\sqrt2)$ from a centre $c$ can
-affect the volume of $V_c$ at all; neighbours at distance $\ge2\sqrt2$
-leave $V_c$ at least as large as the reference $D_4$ Voronoi cell.
+A centre at distance $d$ from $c$ does not cut the ball of radius
+$d/2$ about $c$. So the centres at distance at least $2\sqrt2$ never cut
+the reference $24$-cell, and if every other centre is that far,
+$\vol(V_c)\ge8$ at once; they can still cut $V_c$ outside the ball of
+radius $\sqrt2$.
 
 \smallskip\noindent\textit{Layer 2 (the root-aligned case, \cref{sec:root-aligned-new}).}
 If every active neighbour direction is an exact root direction of
@@ -691,9 +756,11 @@ half-space and hence inside $V_c$: $\vol(V_c)\ge8$ immediately.
 
 \smallskip\noindent\textit{Layer 3 (radial reduction, \cref{sec:radial-new}).}
 The Voronoi volume is monotone non-decreasing in each contact radius,
-so the minimum over all packing-valid radius configurations is attained
-at the all-contact corner, where every active radius equals the
-packing radius exactly.
+so pulling every active neighbour in to distance $2$ gives a lower bound.
+That lower bound is the cell of a contact configuration when every
+active neighbour already touches the centre, and in general it is not:
+the pulled-in configuration need not be a packing
+(\cref{sec:noncontact}).
 
 \smallskip\noindent\textit{Layer 4 (cell positivity, \cref{sec:chamber-register,sec:stage-one,sec:stage-two}).}
 At the all-contact corner, $W(D_4)$ partitions every packing-valid
@@ -720,15 +787,17 @@ gives the sign of the resulting difference; that is
 the classification of \cref{thm:m24} and discussed from
 \cref{sec:hessian-technique} onward for what can be said about it
 without the classification.
-The six layers nest. Layers $1$ and $3$ are reductions, each replacing
-the problem by a smaller one, and between them they leave the
-all-contact corner; at that corner layers $2$, $4$, $5$ and $6$ are
+The six layers nest. Layers $1$ and $3$ are reductions; between them
+they leave the all-contact corner, for the cell $V_c^{\mathrm{act}}$ of
+\cref{thm:local-uncond} and for every centre whose active neighbours all
+touch it; at that corner layers $2$, $4$, $5$ and $6$ are
 classes of configurations, each containing the one before it, from the
 undeviated configuration out to simultaneous deviation in several
 directions. That outermost class is not settled by anything inside it
 but by the number of contacts: at most $22$ by
 \cref{thm:local-fewcontacts}, $23$ by \cref{thm:m23}, and $24$ by the
-classification.
+classification. Centres with active neighbours that do not touch them
+are the subject of \cref{sec:noncontact}.
 
 The same layers act on the three-dimensional analogue, where the objects
 can be drawn: the lattice is the face-centred cubic one, the reference
@@ -739,7 +808,7 @@ the volumes in its captions are computed from the half-space intersections, not 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.78\textwidth]{fig_c_corner}
-\caption{(a) The all-contact corner in dimension three: the unit ball about the centre (blue), its twelve contact points (clay), and the twelve unit balls that touch it, centres at distance $2$ in the twelve contact directions of the face-centred cubic lattice. (b) The Voronoi cell of that centre, the rhombic dodecahedron, with the unit ball inscribed: one facet per contact, each at distance $1$, and volume $5.6569$, computed from the half-space intersection and not quoted. (c) Layer $3$, radial monotonicity. One neighbour is pushed from distance $2$ out to $2.6$, its half-space recedes, and the cell grows from $5.6569$ to $5.9666$; the ochre solid is exactly the volume gained. The minimum over radii therefore sits at the corner. (d) Layers $4$ and $5$, deviation. One contact direction is tilted by $25^\circ$ at radius $2$: teal is the volume gained, clay the volume lost, and teal wins, the cell rising from $5.6569$ to $5.7470$. That is the defect being positive, with equality only at zero tilt.}
+\caption{(a) The all-contact corner in dimension three: the unit ball about the centre (blue), its twelve contact points (clay), and the twelve unit balls that touch it, centres at distance $2$ in the twelve contact directions of the face-centred cubic lattice. (b) The Voronoi cell of that centre, the rhombic dodecahedron, with the unit ball inscribed: one facet per contact, each at distance $1$, and volume $5.6569$, computed from the half-space intersection and not quoted. (c) Layer $3$, radial monotonicity. One neighbour is pushed from distance $2$ out to $2.6$, its half-space recedes, and the cell grows from $5.6569$ to $5.9666$; the ochre solid is exactly the volume gained. Pulling the neighbour back in is therefore a lower bound; \cref{sec:noncontact} explains why that lower bound need not be a packing. (d) Layers $4$ and $5$, deviation. One contact direction is tilted by $25^\circ$ at radius $2$: teal is the volume gained, clay the volume lost, and teal wins, the cell rising from $5.6569$ to $5.7470$. That is the defect being positive, with equality only at zero tilt.}
 \label{fig:corner}
 \end{figure}
 
@@ -982,24 +1051,33 @@ once in this paper, symbol by symbol, for reference.
 \subsection{Shell localisation}\label{sec:shell-new}
 
 \begin{lem}[Shell localisation]\label{lem:shell-new}
-In a unit-ball packing, only neighbours $y$ of a centre $c$ with
-$|y-c|\in[2,2\sqrt2)$ can affect $\vol(V_c)$: a neighbour at distance
-$\ge2\sqrt2$ contributes a supporting half-space that already contains
-the reference cell $\VCell$ (\cref{lem:refcell-vol} gives $\VCell$
-norm-$\sqrt2$ vertices, hence diameter contribution scaling to exactly
-$2\sqrt2$ at the packing normalisation used here), and so cannot cut
-$V_c$ below $\VCell$ itself.
+Let $c$ be a centre of a unit-ball packing and $R>0$. A centre $y$ with
+$|y-c|\ge2R$ does not cut the ball $B(c,R)$: its half-space
+$\{z:|z-c|\le|z-y|\}$ contains $B(c,R)$. In particular the centres at
+distance at least $2\sqrt2$ from $c$ contain $B(c,\sqrt2)$, and with it
+the reference cell $c+\VCell$, in their half-spaces; and if no other
+centre lies within $2\sqrt2$ of $c$, then $V_c\supseteq c+\VCell$ and
+$\vol(V_c)\ge8$.
 \end{lem}
 
-This is an immediate consequence of \cref{lem:hmin-new}: the half-space
-cut by a neighbour at distance $d\ge2\sqrt2$ has its bounding hyperplane
-at distance $\ge\sqrt2$ from $c$ along the contact direction, which is
-already outside every vertex of $\VCell$ along that direction once
-$d\ge2\sqrt2$, by direct comparison with the support function $h$.
-Consequently $\vol(V_c)\ge\vol(\VCell)=8$ is automatic whenever no
-neighbour lies in the closer shell $[2,2\sqrt2)$, and the entire
-remaining argument concerns configurations with at least one such
-neighbour.
+\begin{proof}
+The half-space of $y$ is $\{z:\langle z-c,u\rangle\le|y-c|/2\}$, with $u$
+the unit vector from $c$ towards $y$, and $|y-c|/2\ge R$. The reference
+cell has circumradius $\sqrt2$ (\cref{lem:refcell-vol}).
+\end{proof}
+
+An earlier version of this paper stated more: that only the centres at
+distance in $[2,2\sqrt2)$ can affect $\vol(V_c)$ at all. That is true of
+the part of $V_c$ inside $B(c,\sqrt2)$ and false outside it. A cell that
+reaches beyond $\sqrt2$, as the cell of the deletion of a root does, its
+circumradius being $2$, can be cut there by a centre farther than
+$2\sqrt2$: with the twenty-three roots of a deletion at distance $2$ and
+one more centre at distance $2.9$ on the axis of the deleted root, which
+is a packing, the cell loses $\tfrac13(2-1.45)^4$ and has volume
+$\tfrac{1328453}{160000}=8.3028\ldots$ instead of $\tfrac{25}3$
+(\texttt{shell\_reduction.py}). Every argument below that bounds the cell
+of a packing either stays inside $B(c,\sqrt2)$ or says what it assumes
+about the centres beyond $2\sqrt2$.
 
 \subsection{The root-aligned case}\label{sec:root-aligned-new}
 
@@ -1029,23 +1107,203 @@ deviation.
 \subsection{Radial reduction}\label{sec:radial-new}
 
 \begin{lem}[Monotonicity in the contact radii]\label{lem:radial-new}
-For fixed active contact directions, $\vol(V_c)$ is non-decreasing in
-each active contact radius (moving a cutting hyperplane strictly
-further from $c$ can only enlarge, never shrink, the region it helps
-bound). Consequently, among all packing-valid radius assignments for a
-fixed active-direction pattern, $\vol(V_c)$ attains its minimum at the
-\emph{all-contact corner}, where every active radius equals the minimum
-packing radius $2$ exactly.
+Let $u_1,\dots,u_n$ be the directions from $c$ of its active neighbours
+and $d_1,\dots,d_n$ their distances. For fixed directions, the volume of
+$\bigcap_i\{z:\langle z-c,u_i\rangle\le d_i/2\}$ is non-decreasing in each
+$d_i$, so it is at least the volume of the same intersection with every
+$d_i$ replaced by $2$. When every $d_i$ equals $2$ the directions are
+pairwise at least $60^\circ$ apart and form a contact configuration
+(\cref{def:contact-config}); when some $d_i$ exceeds $2$ they need not
+be, and the intersection with every $d_i$ set to $2$ is then a lower
+bound that belongs to no packing.
 \end{lem}
 
-This reduces the search for the worst-case local configuration, over
-the continuum of packing-valid contact radii, to the single extremal
-corner of that space, after which only the combinatorics of the
-active-direction pattern (\cref{sec:chamber-register}) and the
-deviation parameters $(\tilt,\arcp)$ (\cref{sec:stage-one,sec:stage-two}
-for the root-aligned single-deviation case; \cref{sec:hessian-technique,%
-sec:deviation-domain} onward for the general case) remain to be
-analysed.
+\begin{proof}
+Moving a bounding hyperplane away from $c$ can only enlarge the region it
+helps bound. Two centres at distance $2$ from $c$ and at least $2$ from
+each other make an angle of at least $60^\circ$ at $c$.
+\end{proof}
+
+An earlier version of this paper drew from the lemma the conclusion that
+the minimum over packing-valid radii is attained at the all-contact
+corner, and then treated that corner as a contact configuration. The
+corner is a lower bound but not a packing. Two centres at distance $2.4$
+from $c$ and $2$ from each other are $49.25^\circ$ apart as seen from
+$c$, and pulled in to distance $2$ they overlap
+(\cref{fig:noncontact}(a)). Forty-eight centres at distance $2.6131$ in
+the directions of the binary octahedral group, the vertices of two
+$24$-cells in dual position, make a packing of $49$ balls whose central
+cell has volume $19.216$; at the corner the $48$ directions have inner
+products up to $0.7071$, and the cell has volume $6.594$. So the
+reduction to contact configurations holds when every active neighbour
+touches the centre, and \cref{sec:noncontact} deals with the neighbours
+that do not.
+
+This reduces the search for the worst-case local configuration among
+centres whose active neighbours all touch, over the continuum of their
+directions, to the combinatorics of the active-direction pattern
+(\cref{sec:chamber-register}) and the deviation parameters
+$(\tilt,\arcp)$ (\cref{sec:stage-one,sec:stage-two} for the
+root-aligned single-deviation case; \cref{sec:hessian-technique,%
+sec:deviation-domain} onward for the general case).
+
+\subsection{Neighbours that do not touch}\label{sec:noncontact}
+
+Call $c$ \emph{shell-free} if every centre within $2\sqrt2$ of it lies at
+distance exactly $2$. The volume of a cell inside a ball is read off
+the sphere by the radial form of \cref{lem:radial-form}; the version
+needed here allows the centres to be at any distance.
+
+\begin{prop}[The distance criterion]\label{prop:distance-criterion}
+Let $c$ be a centre of a unit-ball packing of $\mathbb{R}^4$ and
+$d_1\le d_2\le\dots$ the distances from $c$ of the other centres within
+$2\sqrt2$. Then
+\[
+  \vol(V_c)\;\ge\;\vol\bigl(V_c\cap B(c,\sqrt2)\bigr)\;\ge\;
+  \Phi(d_1,d_2,\dots),
+\]
+\[
+  \Phi(d_1,d_2,\dots)=\frac14\Bigl[2\pi^2+\int_0^{\pi/4}
+  \Bigl(2\pi^2-\sum_iC\bigl(\arccos(\tfrac{d_i}2\cos r)\bigr)\Bigr)_+\,
+  d(\sec^4r)\Bigr],
+\]
+where $C(\rho)=\pi(2\rho-\sin2\rho)$ is the measure of a cap of angular
+radius $\rho$ on $S^3$ and the $i$-th term is omitted when
+$\tfrac{d_i}2\cos r\ge1$. $\Phi$ depends on the distances alone and is
+non-decreasing in each of them. For $m$ contacts and no other centre
+within $2\sqrt2$, $\Phi>8.044$ for every $m\le22$.
+\end{prop}
+
+\begin{proof}
+Put $c=0$. The cell is star-shaped about $0$, with radial function
+$\rho(\theta)=\min_y(|y|/2)/\langle\theta,u_y\rangle$ over the centres $y$
+with $\langle\theta,u_y\rangle>0$, and $\rho\ge1$. A centre beyond
+$2\sqrt2$ contributes a value at least $\sqrt2$, so
+$\min(\sqrt2,\rho)$ is determined by the centres within $2\sqrt2$, and
+$\vol(V_c\cap B(\sqrt2))=\tfrac14\int_{S^3}\min(\sqrt2,\rho)^4
+=\tfrac14\bigl[2\pi^2+\int_0^{\pi/4}U(r)\,d(\sec^4r)\bigr]$, $U(r)$ being
+the measure of $\{\theta:\rho(\theta)>\sec r\}$. The complement of that
+set is the union over the centres of
+$\{\theta:\langle\theta,u_i\rangle\ge\tfrac{d_i}2\cos r\}$, a cap of
+angular radius $\arccos(\tfrac{d_i}2\cos r)\le r$, and so
+$U(r)\ge\bigl(2\pi^2-\sum_iC(\cdot)\bigr)_+$. A cap shrinks as its centre
+moves out, which is the monotonicity. For $m$ contacts the bound is the
+covering estimate of \cref{thm:covering-bound} stopped at $45^\circ$,
+which changes it only for $m\le11$, where it stays above $11.5$; its value at
+$m=22$ is evaluated in ball arithmetic by \texttt{shell\_reduction.py}.
+\end{proof}
+
+\begin{lem}[Twenty-four contacts leave no room]\label{lem:24-no-shell}
+A centre with $24$ contacts has no other centre within $2\sqrt2$, and its
+Voronoi cell is the $24$-cell.
+\end{lem}
+
+\begin{proof}
+By \cref{thm:m24} the contact directions are the normalised roots of a
+copy of $\Rt$. For a unit vector $\theta$ whose absolute coordinates in
+the frame of \cref{sec:root-system} are $a\ge b\ge c'\ge d'$, the largest
+inner product with a normalised root is $(a+b)/\sqrt2$, and
+$(a+b)^2\ge a^2+b^2+c'^2+d'^2=1$ because $2ab\ge2b^2\ge c'^2+d'^2$; so
+every direction is within $45^\circ$ of a contact direction, which is to
+say that the covering radius of the root directions is $45^\circ$. A
+centre $y$ at distance $d$ from $c$ and at an angle of at most $45^\circ$
+from the contact $2w$ has $|y-2w|^2\le d^2+4-2\sqrt2\,d$, which is at
+least $4$ only when $d\ge2\sqrt2$. The contacts cut out the $24$-cell,
+of circumradius $\sqrt2$, and by \cref{lem:shell-new} no centre beyond
+$2\sqrt2$ cuts it.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:local-general}]
+If $\Phi(d_1,d_2,\dots)>8$ this is \cref{prop:distance-criterion}, with
+strict inequality. Let $c$ be shell-free with $m$ contacts, whose
+directions form a contact configuration $W$; by \cref{lem:shell-new},
+$V_c\cap B(c,\sqrt2)=V_c(W)\cap B(c,\sqrt2)$. If $m\le22$,
+\cref{prop:distance-criterion} gives $\vol(V_c)>8.044$. If $m=24$,
+\cref{lem:24-no-shell} makes $V_c$ the $24$-cell, of volume $8$. Let
+$m=23$. The cell $V_c(W)$ is bounded, since a direction $\theta$ with
+$\langle\theta,w\rangle\le0$ for every $w\in W$ would make $W\cup\{\theta\}$
+a contact configuration of $24$ directions, hence a copy of the root
+directions by \cref{thm:m24}, whose deletions have bounded cells. The
+proof of \cref{thm:m23} bounds the part of that cell inside the smaller
+ball, $\vol\bigl(V_c(W)\cap B(c,\sqrt{3/2})\bigr)>8$
+(\cref{thm:certificate}), whatever the circumradius, and
+$V_c\cap B(c,\sqrt{3/2})=V_c(W)\cap B(c,\sqrt{3/2})$; so
+$\vol(V_c)>8$. Equality occurs only for $m=24$, where the contacts form
+a copy of $\sqrt2\,\Rt$.
+\end{proof}
+
+\Cref{thm:local-general} leaves \cref{conj:shell}, a centre that is not
+shell-free and whose distances fail the criterion, and
+\cref{prop:distance-criterion} places that case precisely. At most
+twenty-two centres within $2\sqrt2$ never fail it, and neither does any
+profile in which the centres that do not touch are far enough out;
+\cref{tab:distance-thresholds} gives the thresholds for a few profiles,
+certified in ball arithmetic by \texttt{shell\_reduction.py}. Twenty-three
+contacts and any further centre within $2\sqrt2$ always fail it, since
+the criterion counts caps and the case of $23$ contacts needs the pair
+terms of \cref{sec:strict-inequality}. The open case is therefore a
+centre crowded by at least twenty-three neighbours within $2\sqrt2$,
+among them near-contacts, centres a little farther than $2$. Both
+examples above are settled by the criterion, the $49$ balls with
+$\Phi>18.33$.
+
+\begin{table}[t]
+\centering
+\caption{The distance criterion for $m$ contacts and $k$ further centres
+at a common distance $d$: $\Phi>8$, and so $\vol(V_c)>8$, as soon as $d$
+is at least the value shown (ball arithmetic, \texttt{shell\_reduction.py}).}
+\label{tab:distance-thresholds}
+\small
+\begin{tabular}{@{}rrr@{\qquad}rrr@{}}
+\toprule
+$m$ & $k$ & $d\ge$ & $m$ & $k$ & $d\ge$\\
+\midrule
+$22$ & $1$ & $2.1676$ & $22$ & $2$ & $2.2340$\\
+$21$ & $2$ & $2.0705$ & $21$ & $3$ & $2.1267$\\
+$20$ & $3$ & $2.0451$ & $18$ & $6$ & $2.0560$\\
+$19$ & $4$ & $2.0332$ & $12$ & $12$ & $2.0267$\\
+$23$ & $1$ & never & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_noncontact}
+\caption{Neighbours that do not touch. (a) A two-dimensional section, to
+scale: two centres at distance $2.4$ from the central one and $2$ from
+each other, a packing; pulled in to distance $2$ they overlap (shaded),
+so the configuration at the all-contact corner is not a packing and the
+earlier form of \cref{lem:radial-new} fails. (b) The distance criterion
+of \cref{prop:distance-criterion} for $m$ contacts and $k$ further centres
+at a common distance $d$; it passes $8$ at the thresholds of
+\cref{tab:distance-thresholds} (dots). (c) The open case, searched: with
+one neighbour held at distance $2+\delta$, the least cell volume found
+over $60$ starts (\texttt{shell\_neighbour\_search.py}), against the exact
+volume $\tfrac{25}3-\tfrac13(1-\tfrac\delta2)^4$ of the deletion of a root
+with that neighbour on the deleted root's axis. Nothing falls below $8$.}
+\label{fig:noncontact}
+\end{figure}
+
+\emph{The open case, searched.} \texttt{shell\_neighbour\_search.py}
+minimises the exact volume of the cell over configurations of $22$ to $26$
+centres around a fixed one, with the packing constraints imposed exactly
+and the exact gradient of the volume, from starts that crowd the centre
+with near-contacts: the root system with every root pushed out and
+turned a little and centres added in its holes, deletions of a root with
+up to three centres near the deleted one, and random configurations in
+the shell. Without further constraint, over $240$ starts, $224$ of the
+$239$ feasible endpoints brought their non-contacts into contact or moved
+them beyond $2\sqrt2$, the least volume found being $8$, at the root
+system; the other $15$ kept a centre in the shell, and the least volume
+among them was $8.3362$. With one neighbour held
+at a prescribed distance $2+\delta$, for eight values of $\delta$ from
+$0.001$ to $0.8$ and $60$ starts each, SEARCHSENTENCE
+(\cref{fig:noncontact}(c)). This is evidence and not proof. Closing the
+case would take, for caps of unequal radii, what the proof of
+\cref{thm:m23} does for equal ones, an exact account of the pairs, with
+the three-point method of \cite{BV08} carried from the sphere to a shell.
+
 \section{The combinatorial cell register}\label{sec:chamber-register}
 
 \subsection{Cell types under the Weyl group}
@@ -1347,11 +1605,16 @@ deviation directions.%
 \subsection{Proof of \texorpdfstring{\cref{thm:local-uncond}}{the single-deviation theorem}}
 
 Combining \cref{sec:hessian-def-new,prop:stage-two-positivity-new} with
-the four-layer reduction of \cref{sec:argument-structure}: shell
-localisation (\cref{sec:shell-new}) reduces to the all-contact corner;
-the root-aligned case (\cref{sec:root-aligned-new}) handles
+the four-layer reduction of \cref{sec:argument-structure}: the statement
+concerns $V_c^{\mathrm{act}}$, so the centres beyond $2\sqrt2$ play no
+part; the root-aligned case (\cref{sec:root-aligned-new}) handles
 undeviated configurations directly; radial reduction
-(\cref{sec:radial-new}) reduces to the all-contact radii; and cell
+(\cref{sec:radial-new}) replaces every active distance by $2$, which only
+shrinks the cell, and since the deviating direction replaces a root that
+no active neighbour takes, the result is the cell $Q$ of at most
+twenty-three roots cut by one more half-space at unit distance, which
+\cref{sec:cap-theorem} bounds for every direction of that half-space
+whether or not the configuration is a packing; and cell
 positivity, established here for every one of the $176$ cells and
 every root-aligned deviation arc by the two independent exact arguments
 of \stageone\ and \stagetwo, gives $\defect_k\ge0$ throughout. Summing
@@ -1364,11 +1627,12 @@ type completes the proof of \cref{thm:local-uncond}. $\blacksquare$
 \begin{proof}[Proof of \cref{cor:density-uncond}]
 For a periodic packing with fundamental domain $\mathcal{F}$, the
 density equals $\vol(B^4)/\bar v$, where $\bar v$ is the average
-Voronoi cell volume over $\mathcal{F}$ and $\vol(B^4)=\pi^2/2$. By
-\cref{thm:local-uncond}, every cell in $\mathcal{F}$ has volume at
-least $8$, so $\bar v\ge8$ and the density is at most
-$(\pi^2/2)/8=\pi^2/16$. The $D_4$ lattice attains $\bar v=8$ exactly
-(\cref{lem:refcell-vol}), so this bound is sharp.
+Voronoi cell volume over $\mathcal{F}$ and $\vol(B^4)=\pi^2/2$. Every
+centre is shell-free, so by \cref{thm:local-general} every cell in
+$\mathcal{F}$ has volume at least $8$, so $\bar v\ge8$ and the density is
+at most $(\pi^2/2)/8=\pi^2/16$. The $D_4$ lattice attains $\bar v=8$
+exactly (\cref{lem:refcell-vol}), so this bound is sharp. The same
+argument proves the first statement of \cref{thm:main-general}.
 \end{proof}
 
 \subsection{General packings and the compactness argument}\label{sec:periodic}
@@ -1402,12 +1666,15 @@ $\mathcal{C}'$ agreeing with $\mathcal{C}$ to within $\varepsilon$ on
 the ball of radius $1/\varepsilon$. The Voronoi cells of $\mathcal{C}'$
 at centres well inside that ball differ from the corresponding cells of
 $\mathcal{C}$ by an amount that tends to zero as the radius grows,
-because \cref{lem:shell-new} confines the dependence of a cell on the
-configuration to a bounded neighbourhood of its own centre. The bound
-$\vol(V_c)\ge8$ holds at every centre of every periodic approximant by
-\cref{thm:local-uncond}, so it passes to the limit and bounds
-$\delta(\mathcal{C})$. This gives \cref{cor:density-uncond} for the full
-class of packings satisfying the single-deviation hypothesis, and it is
+because a cell is determined by the centres within twice its
+circumradius. If the bound $\vol(V_c)\ge8$ holds at every centre of every
+periodic packing, it passes to the limit and bounds $\delta(\mathcal{C})$
+by $\pi^2/16$; that is how the second statement of
+\cref{thm:main-general} follows from \cref{thm:local-general} and
+\cref{conj:shell}. A hypothesis on the centres of $\mathcal{C}$ alone does
+not pass to the approximants, whose centres near the boundary of the
+ball can have other neighbourhoods, which is why the unconditional
+density statements above are made for periodic packings. The argument is
 the mechanism, with the appropriate substitutions, by which every
 sphere-packing upper bound from Blichfeldt \cite{Bli29} onward turns a
 local statement about individual cells into a global statement about
@@ -1415,24 +1682,27 @@ density.
 
 \subsection{The general case, and what it rests on}
 
-\Cref{thm:local-general,thm:main-general} follow from
-\cref{thm:local-uncond,cor:density-uncond} by the same argument once
-\cref{cor:remaining} is available. The free-volume identity behind
-everything here, stated as \cref{thm:freevol-new} in
-\cref{sec:deviation-domain}, holds for every packing configuration, not
-only the single-deviation ones; what \cref{thm:local-uncond} adds to the
-identity is the sign, and \cref{conj:multidir-new} is exactly the
-assertion that the sign survives when several directions deviate at
-once. That assertion is settled in \cref{cor:conj-resolved}, and it is
-settled by the classification of \cref{thm:m24}; the remaining case,
-\cref{thm:m23}, is proved in \cref{sec:strict-inequality,sec:certificate},
-and the two statements above therefore rest, beyond the arguments of
-this paper, on the one verified kernel of \cref{sec:certificate-checked}
-alone, and say so wherever they appear.
+\Cref{thm:local-general} rests on the bound for contact configurations,
+which is \cref{cor:remaining} with \cref{thm:m23}, and on
+\cref{sec:noncontact}, which carries that bound to the Voronoi cell of a
+packing when every active neighbour touches the centre or the distances
+pass the criterion of \cref{prop:distance-criterion}. The free-volume
+identity behind everything here, stated as \cref{thm:freevol-new} in
+\cref{sec:deviation-domain}, holds for every packing configuration; what
+\cref{thm:local-uncond} adds to it is the sign, and
+\cref{conj:multidir-new} is the assertion that the sign survives when
+several directions deviate at once at a centre whose twenty-four active
+neighbours all touch it. That is settled in \cref{cor:conj-resolved} by
+the classification of \cref{thm:m24}, and the case of $23$ contacts,
+\cref{thm:m23}, is proved in \cref{sec:strict-inequality,sec:certificate};
+beyond the arguments of this paper these rest on the one verified kernel
+of \cref{sec:certificate-checked} alone, and say so wherever they appear.
+What remains of the twenty-four-cell conjecture is \cref{conj:shell}, and
+the density bound $\Delta_4=\pi^2/16$ for all packings waits on it.
 
 \subsection{Remark: what a proof that did not use the classification would need}\label{rem:what-would-close-new}
 
-\Cref{thm:main-general} is proved above, and it is proved using the
+\Cref{thm:local-general} is proved above, and it is proved using the
 classification of \cref{thm:m24} at the configurations of twenty-four
 contacts, that is, using a semidefinite certificate. This subsection is
 about the other thing, a proof of the same statement that uses no
@@ -1751,10 +2021,13 @@ alone, which is \eqref{eq:polar}. Item (i) is immediate from
 kissing-number theorem in dimension four, since a contact configuration
 is precisely a set of directions to mutually non-overlapping unit balls
 touching a fixed one. The final sentence is
-\cref{thm:freevol-new} together with the observation that a
-configuration at the all-contact corner with a full active set is a
-contact configuration of exactly the shape in
-\cref{def:contact-config}.
+\cref{thm:freevol-new} together with the observation that a packing
+configuration at the all-contact corner, every active neighbour at
+distance exactly $2$, is a contact configuration of exactly the shape in
+\cref{def:contact-config}: two centres at distance $2$ from $c$ and at
+least $2$ apart make an angle of at least $60^\circ$ at $c$. A
+configuration obtained by pulling neighbours that do not touch in to
+distance $2$ need not be one (\cref{sec:noncontact}).
 \end{proof}
 
 \begin{cor}[A worst configuration exists, and may be taken maximal]\label{cor:minimiser}
@@ -1992,11 +2265,14 @@ the conjecture is tight
 problem. The assertion that every Voronoi cell of a unit-ball
 packing of $\mathbb{R}^4$ has volume at least that of the regular
 $24$-cell, with equality only at the $D_4$ configuration, is the
-$24$-cell conjecture; \cref{thm:local-uncond} settles the part of it in
-which at most one contact direction leaves a root, and
-\cref{conj:multidir-new} is the remainder, settled in
-\cref{cor:conj-resolved} by the classification of \cref{thm:m24} and by
-nothing else in this paper. We record this plainly. The reformulations
+$24$-cell conjecture. For contact configurations, where every
+neighbour that can cut the cell touches the centre,
+\cref{thm:local-uncond} settles the part of it in which at most one
+contact direction leaves a root, and \cref{conj:multidir-new} is the
+remainder, settled in \cref{cor:conj-resolved} by the classification of
+\cref{thm:m24} and by nothing else in this paper; what the conjecture
+asks beyond contact configurations is \cref{conj:shell}. We record this
+plainly. The reformulations
 of this subsection do not diminish the problem of proving it directly,
 and we do not claim otherwise; what they do is fix the exact shape of
 the obstacle and remove three families of approach from consideration,
@@ -3046,9 +3322,9 @@ from the supplementary archive, and on nothing outside this paper. All
 the other results in this paper are independent even of that.
 
 \begin{cor}[The multi-direction conjecture]\label{cor:conj-resolved}
-\Cref{conj:multidir-new} holds. Indeed a configuration at the
-all-contact corner with a full active set is a contact configuration of
-size $24$, so by \cref{thm:m24} it is a copy of the root system; if the
+\Cref{conj:multidir-new} holds. Indeed a packing configuration at the
+all-contact corner with a full active set, twenty-four neighbours at
+distance exactly $2$, is a contact configuration of size $24$, so by \cref{thm:m24} it is a copy of the root system; if the
 $24-m$ undeviated directions are the roots $\base_i$, $i\notin D$, the
 orthogonal map fixing them is the identity, so every tilt $\tilt_j$
 vanishes and $\vol(V_c)=8$ with equality.
@@ -3264,7 +3540,13 @@ $1.01\times10^{-2}$. The rational arithmetic is exact; only $\omega_3$
 is numerical, and it enters through the value alone, where the
 quadrature error is below $10^{-12}$ against a margin of $0.18$. Since
 $5.9826875<\tau=6.1650791$, no degree-$6$ certificate of this form
-exists, with no appeal to the conditioning of any solver.
+exists, with no appeal to the conditioning of any solver. That rational
+measure is not in the supplement, so a reader cannot recheck it from
+there; the supplement carries the floating-point measure of
+\texttt{m24\_primal\_sdp.py}, of value $5.9424$ on $2170$ triples as
+deposited and $5.9851$ on $522$ triples when rerun with a later solver,
+both below $\tau$ by more than $0.18$, which is evidence of the same
+conclusion rather than a proof of it.
 
 At degrees $8$ through $20$, on a grid of $1264$ triples, the dual
 minimum is $6.0395$, $6.0700$, $6.0879$, $6.1060$, $6.1256$, $6.1416$
@@ -8282,10 +8564,13 @@ verified in \cref{sec:certificate-checked}, the bound and its equality
 case being \cref{lem:las2,lem:gram}. With \cref{cor:m22} at one end and
 that at the other, \cref{cor:remaining} leaves a single case, a
 configuration of exactly $23$ directions whose cell has circumradius
-below $2$, and \cref{thm:m23} settles it; so \cref{thm:local-general}
-and \cref{thm:main-general} hold with no statement from outside this
-paper among their ingredients, and every statement here that uses a
-certificate is marked accordingly.
+below $2$, and \cref{thm:m23} settles it; so the bound holds for every
+contact configuration, and \cref{thm:local-general,thm:main-general}
+carry it to the Voronoi cells of packings and to density whenever the
+centres within $2\sqrt2$ of a centre touch it or pass the distance
+criterion, with no statement from outside this paper among their
+ingredients; every statement here that uses a certificate is marked
+accordingly.
 
 \subsection{The twenty-three-point case}
 
@@ -8346,8 +8631,14 @@ ceiling of one hundred and fifteen.
 
 \subsection{Open}
 
-Two things remain open, and neither is a case of the local
-bound. The first is the classification of the $23$-point codes of
+Three things remain open. The first is a case of the local bound:
+\cref{conj:shell}, a centre crowded by near-contacts
+(\cref{sec:noncontact}), on which the density bound for all packings
+waits. Closing it would take, for caps of unequal radii, what the proof
+of \cref{thm:m23} does for equal ones, an exact account of the pairs,
+with the three-point method carried from the sphere to a shell. The
+other two are not cases of the local bound. The second is the
+classification of the $23$-point codes of
 minimal angle $60^\circ$ on $S^3$, the hypothesis of
 \cref{thm:m23-from-codes}: that every such code is a deletion of one
 root, which would say that no saturated configuration of $23$
@@ -8771,14 +9062,14 @@ computations, built on \texttt{numpy} \cite{Har20}, \texttt{scipy}
 \cref{sec:reproducibility-new} in its own directory, is publicly
 available at the repository given in the Data availability statement
 below.
-\section*{Data availability}
+\section*{Data and code availability}
 
 The supplementary code package, with every script, certificate, run
 log and Lean file named in \cref{app:code-index}, is maintained at
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
 and is archived on Zenodo. The version that corresponds to this paper is
-\texttt{v1.3.0}, released at
-\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.3.0}{the
+\texttt{v1.4.0}, released at
+\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.4.0}{the
 tag of that name}, and the Zenodo record that collects every version, and resolves to the
 most recent of them, has
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{10.5281/zenodo.22766562}
@@ -8790,7 +9081,15 @@ with its checksum and its licence notice, is included in the
 supplementary archive, cut into parts below the file size the repository
 accepts and reassembled by a script that checks the checksum, so that
 the proof of \cref{thm:twentyfour-points} can be rerun from that archive
-alone.
+alone. Version \texttt{v1.4.0} adds an independent re-verification of
+every computation of the paper, in the directory
+\texttt{independent\_verification} with its report and the logs of every
+run, the two programs of \cref{sec:noncontact}
+(\texttt{shell\_reduction.py} and \texttt{shell\_neighbour\_search.py}),
+and the corrections to the supplement that the re-verification found.
+The code of the re-verification, those two programs and the corrections
+were developed with the assistance of Claude, an AI model made by
+Anthropic.
 
 \section*{Competing interests}
 
@@ -9946,6 +10245,33 @@ it prints, for each of the $73$ structures, how many starts reached a
 feasible endpoint at $\delta=0$, the largest inradius among them, the
 largest at $\delta=0.01$, and whether the best endpoint is a deletion.
 
+\subsection*{Neighbours that do not touch}
+
+\Cref{sec:noncontact} rests on two scripts. \texttt{shell\_reduction.py}
+checks, in the ball arithmetic of Arb \cite{Joh17} through
+\texttt{python-flint}, the covering radius $45^\circ$ of the root
+directions behind \cref{lem:24-no-shell}; the value of $\Phi$ for $m$
+contacts, above $8.044$ for every $m\le22$; the thresholds of
+\cref{tab:distance-thresholds}; and the two examples that falsify the
+earlier forms of \cref{lem:shell-new,lem:radial-new}. Each value of $\Phi$
+is a lower Riemann sum in which the first factor of the integrand is
+taken at the right end of each interval and the second at the left, both
+factors being monotone, so every printed bound is a bound.
+\texttt{shell\_neighbour\_search.py} is the search of
+\cref{sec:noncontact}; it is floating point and exploration, and its
+output says so.
+
+\subsection*{The independent re-verification}
+
+The directory \texttt{independent\_verification} of the supplement
+records a re-run of every computation of this paper from a fresh copy of
+the package: the seven Lean verifications, the certificates for $23$ and
+$24$ contacts, including steps $3$ and $5$ of
+\cref{sec:certificate-checked} with all fifty sum-of-squares blocks of the
+four-point constraint, every script with its output compared against the
+shipped logs, the figures, and the manuscript itself. Its report lists
+what was found and corrected.
+
 \subsection*{Software}
 
 The computations were carried out in Python, with exact rational
@@ -10295,7 +10621,7 @@ preprint, version 11, Preprints.org (2026).
 \bibitem[BBMB26]{D4Zenodo}
 D.~Bhattacharjee, U.~Bhattacharya, P.~Mandal, and S.~Bhattacharya,
 \textit{Supplementary code for: The sphere packing problem in dimension 4 and the twenty-four-cell conjecture},
-software, version v1.3.0, Zenodo (2026).
+software, version v1.4.0, Zenodo (2026).
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{doi:10.5281/zenodo.22766562}
 (the record of all versions, which resolves to the latest).
 Source repository:

@@ -23,7 +23,59 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: concept DOI 10.5281/zenodo.22766562, which always resolves to the
-newest release; this release, v1.3.0, is 10.5281/zenodo.22880335.
+newest release. This release, v1.4.0, receives its own version DOI under
+that concept record when it is published; the previous release, v1.3.0, is
+10.5281/zenodo.22880335.
+
+## What is new in v1.4.0
+
+An independent re-verification of every computation of the paper, and the
+corrections it led to, in the paper and in the package.  The re-verification,
+the two new programs of multi_cap/ below and the corrections were developed
+with the assistance of Claude, an AI model made by Anthropic.
+
+  independent_verification/
+                      A re-run of the whole package from a fresh copy: the
+                        seven Lean verifications, both lake builds, the
+                        certificates for 23 and 24 contacts (steps 3 and 5
+                        of the certificate of Section 7.5.3 included, all
+                        fifty sum-of-squares blocks), every script against
+                        its shipped log, the figures and the manuscript.
+                        REPORT.md lists what was found and corrected; logs/
+                        holds every run; proof_gaps/ the two counterexamples
+                        below.
+  paper/              The reduction from the Voronoi cell of a packing to the
+                        cell of its contacts is corrected (Section 2.4, 2.6
+                        and the new Section 2.7, "Neighbours that do not
+                        touch").  Shell localisation and radial reduction, as
+                        stated in v1.3.0, fail when a neighbour does not
+                        touch the centre: a centre at distance 2.9 cuts the
+                        cell of a deletion (8.3028 instead of 25/3), and the
+                        all-contact corner of a packing of 49 balls has volume
+                        6.594 while its true cell has 19.216.  The paper now
+                        proves the bound for contact configurations in full,
+                        and for the Voronoi cell of a packing whenever the
+                        centres within 2 sqrt 2 all touch it or their
+                        distances pass a covering criterion (Proposition
+                        2.10, Theorem 1.5); the case of a centre crowded by
+                        near-contacts is stated as Conjecture 1.6, with the
+                        evidence of a numerical search.  Theorem 1.1 is
+                        restated for the cell of the active neighbours with
+                        the hypothesis its proof uses.  Title-page note,
+                        abstract, introduction, Section 6, the conclusion,
+                        the data and code availability statement and one
+                        new figure (fig_noncontact) follow.
+  multi_cap/shell_reduction.py
+                      The distance criterion in ball arithmetic: covering
+                        radius 45 degrees of the root directions, Phi above
+                        8.044 for every m <= 22 contacts, the thresholds of
+                        Table 1, the two counterexamples.
+  multi_cap/shell_neighbour_search.py
+                      The numerical search of the open case (exploration,
+                        not proof); its runs are in multi_cap/runs.
+  zonal/run_sos4.sh   Runs all fifty sum-of-squares blocks of constraint 4,
+                        refuses to report success unless every block ran,
+                        and exits 1 on a failure.
 
 ## What is new in v1.3.0
 
@@ -61,6 +113,8 @@ newest release; this release, v1.3.0, is 10.5281/zenodo.22880335.
 ## Directory Structure
 
   paper/              The manuscript, its figures and their scripts
+  independent_verification/
+                      The re-verification of v1.4.0 (see above)
   third_party/        The redistributed certificate data set (see above)
   cap_certificate/    The cap inequality, end to end (Section 13)
   multi_cap/          The multi-cap, polar and boundary reformulations of
@@ -535,6 +589,32 @@ newest release; this release, v1.3.0, is 10.5281/zenodo.22880335.
                               ten seconds.
 
 ## multi_cap/ -- the 23-point case, reformulated and settled
+
+  shell_reduction.py
+                              Supports Section 2.7 (Proposition 2.10,
+                              Lemma 2.11, Theorem 1.5, Table 1). The
+                              covering bound with every centre within
+                              2 sqrt 2 counted by the cap it cuts, as a
+                              function Phi of the distances alone, stopped
+                              at 45 degrees so that no centre beyond
+                              2 sqrt 2 enters.  Checks in ball arithmetic
+                              (python-flint): the covering radius of the
+                              root directions is 45 degrees; Phi > 8.044
+                              for m <= 22 contacts; the thresholds of
+                              Table 1; the two counterexamples to the
+                              uncorrected Lemmas 2.7 and 2.9.  About 50 s.
+                              Log: runs/shell_reduction.log.
+
+  shell_neighbour_search.py
+                              Supports the paragraph "The open case,
+                              searched" of Section 2.7 and Figure 3(c).
+                              Minimises the exact volume of the cell, with
+                              its exact gradient, over configurations of
+                              22 to 26 centres under the packing
+                              constraints (SLSQP); optionally one
+                              neighbour held at distance 2 + delta.
+                              Floating point: exploration, not proof.
+                              Logs: runs/shell_neighbour_search_*.log.
 
   root_deletions_exact.py
                               Supports Propositions 7.55 and 7.56.
@@ -1368,7 +1448,8 @@ that the consuming scripts need not wait for them.
   cvxpy >= 1.9, with a working SDP solver (e.g. CLARABEL, bundled with
     cvxpy's default install) -- gram_sos_lib.py and quartic_fit_and_check.py
     only
-  python-flint >= 0.9 -- llm24_certificate_check.py only
+  python-flint >= 0.9 -- llm24_certificate_check.py and
+    shell_reduction.py only
 
 ## Usage
 
@@ -1392,6 +1473,9 @@ Each script can be run directly, from any working directory:
   python multi_cap/cell600_exact.py
   python multi_cap/inradius_search.py 300 1
   python multi_cap/slack_continuation.py 40 1
+  python multi_cap/shell_reduction.py
+  python multi_cap/shell_neighbour_search.py 240 1 3
+  python multi_cap/shell_neighbour_search.py 60 7 3 0.05
   python verification/refcell_verify.py
   python arc1_v1w1/regionA_boxcover.py
   python hessian_multidir/multidir_nullspace_broad_sample.py

@@ -1,5 +1,12 @@
 # Two gaps in the reduction from a Voronoi cell to a contact configuration
 
+*Written against v1.3.0, whose numbering it uses.  v1.4.0 corrects both
+lemmas, proves the bound for the Voronoi cell of a packing whenever the
+centres within 2 sqrt 2 all touch it or pass the distance criterion
+(Section 2.7 of the paper, `multi_cap/shell_reduction.py`), and states the
+remaining case, a centre crowded by near-contacts, as Conjecture 1.6.  See
+the addendum of `../REPORT.md`.*
+
 Everything the paper proves about volumes after Section 2 is stated for
 *contact configurations*: finite sets W of unit vectors with pairwise inner
 products at most 1/2 (Definition 7.7, Proposition 7.8 "Polar form",

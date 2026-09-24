@@ -18,8 +18,8 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "v1.3.0"
-date-released: "2026-09-21"
+version: "v1.4.0"
+date-released: "2026-09-24"
 keywords:
   - sphere packing
   - Voronoi cell
@@ -36,5 +36,10 @@ abstract: >-
   de Laat, Leijenhorst and de Muinck Keizer for the twenty-four-contact case
   that their own code leaves out, the construction of the zonal matrices and
   the four polynomial identities, recomputed here from their published data in
-  exact rational arithmetic on an ordinary machine.
+  exact rational arithmetic on an ordinary machine. Version v1.4.0 adds an
+  independent re-verification of every computation of the paper, the distance
+  criterion for neighbours that do not touch the centre (in ball arithmetic)
+  and a numerical search of the case it leaves open, with the corrections the
+  re-verification found; these were developed with the assistance of Claude,
+  an AI model made by Anthropic.
 doi: "10.5281/zenodo.22766562"
