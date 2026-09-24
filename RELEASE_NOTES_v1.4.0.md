@@ -102,4 +102,4 @@ Published on 24 September 2026 as the tag `v1.4.0` on `main`
 (https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.4.0) and
 archived by Zenodo under the concept DOI 10.5281/zenodo.22766562, which
 always resolves to the newest version and is the identifier the paper cites.
-The version DOI of v1.4.0 is recorded in `README.md` once Zenodo shows it.
+The version DOI of v1.4.0 is 10.5281/zenodo.22940045.
