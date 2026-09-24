@@ -43,3 +43,10 @@ abstract: >-
   re-verification found; these were developed with the assistance of Claude,
   an AI model made by Anthropic.
 doi: "10.5281/zenodo.22766562"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22766562"
+    description: "Concept DOI: every version, resolving to the latest"
+  - type: doi
+    value: "10.5281/zenodo.22940045"
+    description: "Version DOI of v1.4.0"

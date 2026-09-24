@@ -23,9 +23,11 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: concept DOI 10.5281/zenodo.22766562, which always resolves to the
-newest release. This release, v1.4.0, receives its own version DOI under
-that concept record when it is published; the previous release, v1.3.0, is
-10.5281/zenodo.22880335.
+newest release; cite it.  The new release is v1.4.0, published on
+24 September 2026 at
+https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.4.0 and filed
+by Zenodo under that concept record as 10.5281/zenodo.22940045.  The
+previous release, v1.3.0, is 10.5281/zenodo.22880335.
 
 ## What is new in v1.4.0
 
