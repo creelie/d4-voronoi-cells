@@ -466,7 +466,30 @@ Theorem 1.5 (Theorem 1.7).  For all packings it depends on the conjecture.
   `multi_cap/shell_neighbour_search.py` agrees with finite differences to
   1e-8.  It reproduces the volumes 8 (the root system) and 25/3 (a deletion).
 - The search of the open case, which is exploration and not proof:
-{SEARCH}
+  - Free search, 240 starts (`shell_neighbour_search_free_240_seed1.log`):
+    239 endpoints were feasible.  224 of them brought every non-contact into
+    contact or beyond 2 sqrt 2, and the least volume among them was
+    8.000000000, at the root system.  The other 15 kept a centre in the
+    shell, and the least volume among those was 8.336218986 (22 contacts,
+    one centre at 2.3986).
+  - One neighbour held at distance 2 + delta, 60 starts for each of eight
+    values of delta (`shell_neighbour_search_delta_*_60_seed7.log`):
+
+    | delta | feasible | least volume | contacts | on-axis value 25/3 - (1/3)(1 - delta/2)^4 |
+    | --- | --- | --- | --- | --- |
+    | 0.001 | 59 | 8.000666167 | 23 | 8.000666167 |
+    | 0.005 | 59 | 8.003320854 | 23 | 8.003320854 |
+    | 0.02 | 56 | 8.013134663 | 23 | 8.013134663 |
+    | 0.05 | 53 | 8.032104036 | 23 | 8.032104036 |
+    | 0.1 | 54 | 8.061831250 | 23 | 8.061831250 |
+    | 0.2 | 55 | 8.114633333 | 23 | 8.114633333 |
+    | 0.4 | 55 | 8.196800000 | 23 | 8.196800000 |
+    | 0.8 | 52 | 8.283732535 | 22 | 8.290133333 |
+
+    For every delta up to 0.4, the least volume found is the on-axis value:
+    the deletion of a root, with the held neighbour on the deleted root's
+    axis.  No endpoint fell below 8.  As delta tends to 0 the values tend to
+    8, so the open case is tight near the 24-cell.
 
 **The manuscript.**  The revised paper was built with `latexmk -pdf`: 0
 undefined references, 0 overfull boxes, and no "??" in the text.  Every new
