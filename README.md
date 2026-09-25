@@ -60,6 +60,12 @@ Anthropic.
                         (C), and two new branch and bounds (30 051 and
                         6 482 boxes).  Log: runs/labelled_certificate_check.log
                         (about six minutes).
+  multi_cap/count_bound_sqrt6.py
+                      At most 49 other centres lie within sqrt 6 of a
+                        centre: their directions have inner products
+                        below 2/3, and an exact Delsarte polynomial of
+                        degree 13 (Sturm's theorem, sympy) gives
+                        N <= 49.577.  Log: runs/count_bound_sqrt6.log.
   multi_cap/truncated_search.py
                       Floating-point minimisation of the truncated volume
                         with exactly M centres within sqrt 6 (evidence, not

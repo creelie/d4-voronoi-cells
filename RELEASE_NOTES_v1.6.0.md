@@ -107,6 +107,9 @@ Everything proved in v1.5.0 still stands.  New:
   - runs the two new branch and bounds.
 
   It takes about six minutes.  Log: `multi_cap/runs/labelled_certificate_check.log`.
+- `multi_cap/count_bound_sqrt6.py` is new: at most 49 other centres lie
+  within sqrt 6 of a centre, by an exact Delsarte polynomial checked with
+  Sturm's theorem (f(1) = 49.577).  Log: `multi_cap/runs/count_bound_sqrt6.log`.
 - `multi_cap/truncated_search.py` is new: the floating-point search quoted
   above.  Logs: `multi_cap/runs/truncated_search_M24.log` to `_M27.log`.
 - `lean/D4Closure.lean` gains two theorems:
