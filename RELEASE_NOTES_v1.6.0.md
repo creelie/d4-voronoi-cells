@@ -50,8 +50,9 @@ Everything proved in v1.5.0 still stands.  New:
   centres the pair terms alone cannot decide.  Figure 8 draws the corners.
 - **Numerical evidence (not proof).**  `truncated_search.py` minimises the
   right side of Lemma 2.15 over configurations of exactly M centres within
-  sqrt 6, from twelve starts each.
-  - M = 24: every run ends at the root system, 7.906940.
+  sqrt 6, from twelve starts each, of which four or five end at a local
+  minimum.
+  - M = 24: every local minimum found is the root system, 7.906940.
   - M = 25, 26 and 27: every local minimum found lies above 8.26.
 
   If that is the whole truth, the pair terms fail only at 24 centres near

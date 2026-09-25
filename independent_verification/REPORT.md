@@ -595,9 +595,10 @@ Checks:
 - **`multi_cap/truncated_search.py`** is exploration, not proof.  Its
   closed form of the pair terms agrees with quadrature to about 1e-15.  It
   minimises the right side of Lemma 2.15 with exactly M centres within
-  sqrt 6, from twelve starts each; the logs are
-  `multi_cap/runs/truncated_search_M24.log` to `_M27.log`.
-  - M = 24: every run ends at the root system, 7.906940.
+  sqrt 6, from twelve starts each, of which four or five end at a local
+  minimum; the logs are `multi_cap/runs/truncated_search_M24.log` to
+  `_M27.log`.
+  - M = 24: every local minimum found is the root system, 7.906940.
   - M = 25 to 27: every local minimum found lies above 8.26.
 - **`lean/D4Closure.lean`** proves two more theorems:
   - `amax_tangent` (grind, three standard axioms);

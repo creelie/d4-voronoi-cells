@@ -65,7 +65,16 @@ def pair_quad(h1, h2, u):
             return 0.0
         rm = max(h1 / c1, h2 / c2)
         return math.pi / 4 * (R2 - rm * rm) ** 2 if rm < R else 0.0
-    return quad(f, max(-math.pi / 2, g - math.pi / 2), min(math.pi / 2, g + math.pi / 2), limit=400, epsabs=1e-14)[0]
+    lo, hi = max(-math.pi / 2, g - math.pi / 2), min(math.pi / 2, g + math.pi / 2)
+    # break the range where the integrand has kinks: where each hyperplane leaves
+    # the ball, and where the binding hyperplane changes
+    pts = [lo, hi]
+    for h, off in ((h1, 0.0), (h2, g)):
+        if h < R:
+            a = math.acos(h / R); pts += [off - a, off + a]
+    pts.append(math.atan2(h2 - h1 * math.cos(g), h1 * math.sin(g)))
+    pts = sorted(p for p in set(pts) if lo <= p <= hi)
+    return sum(quad(f, a, b, limit=400, epsabs=1e-15, epsrel=1e-13)[0] for a, b in zip(pts[:-1], pts[1:]) if b > a)
 
 
 def S(d):
@@ -132,7 +141,9 @@ def main():
             continue
         r = minimize(lambda x: T(x.reshape(M, 4)), x0, method='SLSQP', constraints=[{'type': 'ineq', 'fun': cons}],
                      options={'maxiter': 500, 'ftol': 1e-11})
-        if np.min(cons(r.x)) > -1e-6:
+        if np.min(cons(r.x)) <= -1e-6:
+            print('start %2d: the local solver ended at an infeasible point (discarded)' % k, flush=True)
+        else:
             found += 1
             v = T(r.x.reshape(M, 4))
             print('start %2d: T = %.6f' % (k, v), flush=True)
@@ -142,7 +153,7 @@ def main():
         print('M = %d: no feasible configuration found from %d starts' % (M, nstart))
         return
     d = np.sort(np.linalg.norm(best[1], axis=1))
-    print('M = %d: least T over %d local minima = %.6f; distances of that configuration:' % (M, found, best[0]))
+    print('M = %d: least T over %d local minima (of %d starts) = %.6f; distances of that configuration:' % (M, found, nstart, best[0]))
     print('  ' + ' '.join('%.4f' % x for x in d))
     print('(floating point and local optimisation: evidence about where the truncated bound fails, not a bound)')
 
