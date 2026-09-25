@@ -159,74 +159,22 @@
 \title[The sphere packing problem in dimension 4]{The Sphere Packing Problem in
 Dimension 4 and the Twenty-Four-Cell Conjecture}
 
-\author[D. Bhattacharjee]{Deep Bhattacharjee}
+\author[D. Bhattacharjee]{Deep Bhattacharjee$^{\dag}$}
 \address{Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL),
 Bhubaneswar, Odisha 751030, India}
 \email{itsdeep@live.com}
-\thanks{Deep Bhattacharjee is the corresponding author.
+\thanks{$^{\dag}$\,Corresponding author: Deep Bhattacharjee,
+\texttt{itsdeep@live.com}. $^{\ddag}$\,Corresponding author: Priyabrata
+Mandal, \texttt{priyabrata@manit.ac.in}.
 ORCID: Deep Bhattacharjee 0000-0003-0466-750X,
 Ushashi Bhattacharya 0009-0002-2254-3914,
 Priyabrata Mandal 0000-0001-6472-6239.}
-\thanks{The title of this paper begins with the same words as an
-earlier preprint by the first, second and fourth authors, \emph{The
-sphere packing problem in dimension 4} \cite{BBB26}, posted on the
-Preprints.org platform (MDPI); the present title extends it to name the
-twenty-four-cell conjecture. That preprint approached the same density
-bound through an additivity property of free volumes under several
-simultaneous deviations, asserted there without proof and not true in
-the form stated, which \cref{rem:sums-not-unions} explains; no
-argument, statement or computation of it is used here. What the present
-paper closes, and where, can be said exactly. For contact
-configurations, the directions to the neighbours at distance exactly
-$2$, the bound $\vol\ge8$ with equality only at the root system is proved
-in full: simultaneous deviation in several directions, which the
-preprint assumed away, is settled by the contact count, at most $22$
-contacts by \cref{thm:local-fewcontacts}, exactly $23$ by
-\cref{thm:m23} and exactly $24$ by \cref{thm:m24}, and that is
-\cref{cor:conj-resolved}. The single-deviation bound, with no
-restriction on the deviation, is \cref{thm:local-uncond}. For the
-Voronoi cell of a packing the bound is proved whenever the centres
-within $2\sqrt2$ of the given one all touch it, or their distances pass
-the covering criterion of \cref{prop:distance-criterion}; that is
-\cref{thm:local-general}, and \cref{thm:main-general} is the density
-bound it gives. The case left open is a centre crowded by at least
-twenty-three neighbours within $2\sqrt2$ some of which do not touch it
-(\cref{conj:shell}), and the density bound $\Delta_4=\pi^2/16$ for all
-packings follows once that case is settled. An earlier version of this
-paper, with version v1.3.0 of its supplement, asserted the general bound
-without that hypothesis, through a reduction to contact configurations
-(\cref{lem:shell-new,lem:radial-new} in their earlier form) that fails
-when a neighbour does not touch the centre; \cref{sec:noncontact} gives
-the reduction that holds and the examples that show the earlier one
-fails. The present version goes with the new release v1.4.0 of the
-supplement, archived on Zenodo as
-\bluelink{https://doi.org/10.5281/zenodo.22940045}{10.5281/zenodo.22940045}
-under the concept DOI
-\bluelink{https://doi.org/10.5281/zenodo.22766562}{10.5281/zenodo.22766562}
-\cite{D4Zenodo}. One more point of provenance needs saying. The classification of $24$-point
-contact configurations was first proved by de Laat, Leijenhorst and de
-Muinck Keizer \cite{LLM24}, whose paper is at the time of writing a
-preprint. It is not quoted. It is proved here, as
-\cref{thm:twentyfour-points}, from a positive kernel their computation
-found and this paper verifies and redistributes
-(\cref{sec:certificate-checked}); the bound that the kernel gives and its
-equality case are \cref{lem:las2,lem:gram}, proved in the text, so that
-no statement of an unrefereed source enters the proof. Its local
-half is proved a second way, without any certificate, first
-qualitatively in \cref{cor:root-rigid} and then with an explicit radius
-in \cref{thm:local-uniqueness}, which rests on the spectrum computed in
-\cref{lem:rigidity-spectrum}: a contact configuration of $24$ directions
-is either an orthogonal image of the root system or at distance at least
-$2/\sqrt{577}$ from its orbit, so that the volume statement holds
-outright inside that radius (\cref{cor:m24-local}). The present paper is deliberately titled to replace the preprint and not to sit beside it; a reader who encounters
-that preprint on Preprints.org should treat this one as the corrected
-version.}
 
 \author[U. Bhattacharya]{Ushashi Bhattacharya}
 \address{Formerly, National Taiwan University, Taipei 106319, Taiwan}
 \email{rai.bhattacharya.in@gmail.com}
 
-\author[P. Mandal]{Priyabrata Mandal}
+\author[P. Mandal]{Priyabrata Mandal$^{\ddag}$}
 \address{Department of Mathematics, Bioinformatics and Computer Applications,
 Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 \email{priyabrata@manit.ac.in}
@@ -262,8 +210,14 @@ the positive kernel verified in exact arithmetic. For the Voronoi cell
 of an arbitrary packing we prove the bound whenever every neighbour
 closer than $2\sqrt2$ touches the centre, and more generally whenever
 the distances of those neighbours pass a covering criterion that does
-not look at their directions. The case left open is a centre crowded by
-near-contacts, for which we give numerical evidence.
+not look at their directions. We also prove it whenever at most
+twenty-two neighbours lie within $\sqrt6$, whenever the contacts contain
+most of a root system, and whenever no neighbour lies at a distance
+between $2+\varepsilon_0$ and $\sqrt6$, for an absolute constant
+$\varepsilon_0>0$; the last makes the $D_4$ configuration a strict local
+minimum of the cell volume among all packings. The case left open is a
+centre crowded by neighbours at intermediate distances, for which we give
+numerical evidence.
 \end{abstract}
 
 \maketitle
@@ -282,7 +236,9 @@ not, has been an open question, and it remains one. The present paper
 proves a local statement that answers it for a large class of packings
 and reduces the rest to one precisely stated case, and it proves within
 the text every ingredient the argument uses, the one classification it
-needs included.
+needs included. It supersedes the preprint \cite{BBB26} of the first,
+second and fourth authors, whose additivity argument is not true in the
+form stated there (\cref{rem:sums-not-unions}) and is not used here.
 
 We say at the outset what that statement is and where it
 stood. The statement is that every Voronoi cell of a unit-ball packing
@@ -444,7 +400,7 @@ number of deviating directions, and reduces the general local bound to
 a single comparison of two volumes; whether that comparison goes the
 right way at such a centre is what our own arguments leave undecided.
 
-\begin{conjecture}[Multi-direction positivity]\label{conj:multidir-new}
+\begin{conjecture}[Multi-direction positivity; proved in \cref{cor:conj-resolved}]\label{conj:multidir-new}
 Let the configuration be at the all-contact corner with a full active
 set, and let $D$ be any set of $m\ge2$ roots whose directions are
 deviated, with arbitrary tilts and arbitrary deviation directions. Then,
@@ -562,8 +518,35 @@ it contains: a centre with at least twenty-three neighbours within
 $2\sqrt2$, at least one of which does not touch it, the ones that do not
 being close to contact (with twenty-two contacts and one further
 neighbour, closer than $2.1676$; with twenty-one and two, closer than
-$2.0705$). A numerical search of that case finds nothing below $8$
-(\cref{sec:noncontact}); that is evidence, not proof.
+$2.0705$). \Cref{sec:closure} narrows it further.
+
+\begin{thm}[Further cases of the local bound]\label{thm:intro-closure}
+The conclusion of \cref{thm:local-general} holds at a centre $c$ of a
+unit-ball packing of $\mathbb{R}^4$ also in each of the following cases:
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
+\item at most $22$ other centres lie within $\sqrt6$ of $c$;
+\item the contact directions of $c$ contain all but at most two of the
+normalised roots of a copy of $\Rt$, or more generally one of the three
+orthogonal pairs of normalised roots at each vertex of its $24$-cell;
+\item $c$ has exactly $23$ contacts, and their directions are a deletion
+of a copy of the normalised roots or have covering radius at most
+$\arccos(\sqrt6/4)=52.24^\circ$;
+\item no centre lies at a distance from $c$ strictly between
+$2+\varepsilon_0$ and $\sqrt6$, where $\varepsilon_0>0$ is an absolute
+constant.
+\end{enumerate}
+\end{thm}
+
+These are \cref{cor:count,cor:root-subsets,cor:m23-shell,thm:near-contact}.
+Case (d) is a local form of the conjecture at the root system, for all
+packings: the $D_4$ configuration is a strict local minimum of the cell
+volume, whatever the centres beyond $\sqrt6$ do. Its constant
+$\varepsilon_0$ comes from a compactness argument and is not explicit, so
+what is left of \cref{conj:shell} is a centre with at least twenty-three
+other centres within $\sqrt6$, one of them at an intermediate distance,
+between $2+\varepsilon_0$ and $\sqrt6$. A numerical search of that case
+finds nothing below $8$ (\cref{sec:noncontact}); that is evidence, not
+proof.
 
 The case of $23$ contacts is not a deviation problem at all. By
 \cref{prop:extendable}, a cell of circumradius at least $2$ is exactly
@@ -655,6 +638,7 @@ above anything a perturbed deletion can reach, and then collapsing to
 $\tfrac12+O(\delta)$ from $\delta=0.008$ down, with every configuration
 found at $\delta=0$ a deletion.
 
+\enlargethispage{4pt}%
 The proof of \cref{thm:m23} takes a different road, on which nothing
 has to be classified. The volume of the cell inside the ball of radius
 $\sqrt{3/2}$ is an exact function of the pairwise angles of the
@@ -1318,6 +1302,369 @@ case would take, for caps of unequal radii, what the proof of
 \cref{thm:m23} does for equal ones, an exact account of the pairs, with
 the three-point method of \cite{BV08} carried from the sphere to a shell.
 
+\subsection{Further reductions, and the conjecture near the contact regime}\label{sec:closure}
+
+This subsection narrows \cref{conj:shell} in four directions. It removes
+every centre with at most twenty-two others within $\sqrt6$, every centre
+whose contacts contain most of a root system, every centre with
+twenty-three contacts save one family, and every centre around which no
+other centre lies at a distance between $2+\varepsilon_0$ and $\sqrt6$,
+for an absolute constant $\varepsilon_0>0$; the last is a local form of
+the twenty-four-cell conjecture at the root system, for all packings. The
+tools are three elementary facts about packings that hold whatever the
+distances. Throughout, $c=0$, and the half-space of a centre $z$ is
+$H_z=\{x:\langle x,z\rangle\le|z|^2/2\}$. The identities in the proofs of
+\cref{lem:holes,prop:inversion-hull,lem:no-triple} and the combinatorics
+of \cref{cor:root-subsets} are checked twice, by
+\texttt{closure\_lemmas.py} and in Lean's kernel by
+\texttt{lean/D4Closure.lean} (\cref{sec:reproducibility-new}).
+
+\begin{lem}[Holes]\label{lem:holes}
+Let $W$ be the set of contact directions of $c$, so that $2w$ is a centre
+for every $w\in W$. Every other centre $z$ satisfies
+$|z|\ge4\langle z/|z|,w\rangle$ for every $w\in W$, and so
+$|z|\ge4g(W)$, where
+$g(W)=\min_{\theta\in S^3}\max_{w\in W}\langle\theta,w\rangle$ is the
+cosine of the covering radius of $W$ on $S^3$.
+\end{lem}
+
+\begin{proof}
+$4\le|z-2w|^2=|z|^2-4\langle z,w\rangle+4$.
+\end{proof}
+
+For the root system $g=1/\sqrt2$, and the lemma returns the bound
+$2\sqrt2$ of \cref{lem:24-no-shell}. A centre that does not touch $c$
+can come close to it only in a deep hole of its contacts: at distance
+$2+\delta$ only where the contact directions leave a cap of angular
+radius $\arccos(\tfrac12+\tfrac\delta4)$ empty (\cref{fig:tikz-closure}(b)).
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.92\textwidth]{fig_tikz_closure}
+\caption{Two elementary facts behind \cref{sec:closure}, to scale.
+(a) \Cref{lem:no-triple}: four points pairwise at least $2$ apart do not
+fit in a ball of radius less than $\sqrt{3/2}$, and the regular
+tetrahedron of edge $2$ in the ball of radius $\sqrt{3/2}$ is the extreme
+case; so no point $x$ of the open ball $B(\sqrt{3/2})$ about the centre
+$0$ is closer to three other centres than to $0$. (b) \Cref{lem:holes} in
+a plane section: the balls of the contacts (green) leave a hole of
+angular radius $\rho$, here $50^\circ$, and a further centre $z$ can
+enter it only at a distance $|z|\ge4\cos\rho$ from $c$, where it meets
+the circles of radius $2$ (dashed) about the two contacts at the rim.}
+\label{fig:tikz-closure}
+\end{figure}
+
+\begin{prop}[The inversion hull]\label{prop:inversion-hull}
+Let $Y$ be any set of centres other than $c$, and let $K(Y)$ be the
+convex hull of $0$ and the points $4y/|y|^2$, $y\in Y$, the images of the
+centres under inversion in the sphere of radius $2$. Every centre
+$z\notin Y\cup\{0\}$ has $K(Y)\subseteq H_z$. Consequently
+\[
+  V_c\ \supseteq\ V(Y)\cap K(Y),\qquad V(Y)=\bigcap_{y\in Y}H_y .
+\]
+\end{prop}
+
+\begin{proof}
+$H_z$ is convex and contains $0$, so it suffices to test the points
+$q=4y/|y|^2$, and for these
+\[
+  \frac{|z|^2}{2}-\langle q,z\rangle
+  =\frac{(|z|^2-4)(|y|^2-4)+4\,(|y-z|^2-4)}{2|y|^2}\ \ge\ 0 ,
+\]
+since centres are at least $2$ apart and at least $2$ from $0$.
+\end{proof}
+
+The bound depends on $Y$ alone: whatever the rest of the packing does,
+it does not cut into $V(Y)\cap K(Y)$ (\cref{fig:closure}(b) shows the
+three-dimensional analogue). With $Y$ the twenty-four
+neighbours of a centre near the root system it is sharp to first order
+(\texttt{near\_contact\_probe.py}).
+
+\begin{cor}[Contacts that contain most of a root system]\label{cor:root-subsets}
+Let $U=\{\alpha/\sqrt2:\alpha\in\Rt'\}$ be the normalised roots of a
+copy $\Rt'$ of $\Rt$, and $Q=\{x:\langle x,u\rangle\le1,\ u\in U\}$ its
+$24$-cell. Every vertex of $Q$ is the sum $u+u'$ of exactly three pairs
+of orthogonal elements of $U$. If the contact directions $W$ of $c$
+contain, for every vertex of $Q$, one of its three pairs, then
+$Q\subseteq V_c$, so $\vol(V_c)\ge8$, with equality only if $W=U$. The
+hypothesis holds whenever $W$ contains all but at most two elements of
+$U$, and whenever it contains all but three, unless the three missing
+ones are pairwise at $60^\circ$ with a common vertex ($96$ of the $2024$
+triples).
+\end{cor}
+
+\begin{proof}
+A vertex $v=u+u'$ with $u,u'\in W$ is the midpoint of the points $2u$ and
+$2u'$, which $K(2W)$ contains, so $Q$, the convex hull of its vertices,
+lies in $K(2W)$, and by \cref{prop:inversion-hull} in the half-space of
+every centre that is not a contact. It lies in the half-space
+$\{\langle x,w\rangle\le1\}$ of every contact too: for $w\in U$ because
+$v\in Q$, and for $w\notin U$ because
+$\langle v,w\rangle=\langle u,w\rangle+\langle u',w\rangle\le\frac12+\frac12$,
+the contact directions being pairwise at least $60^\circ$ apart. So
+$Q\subseteq V_c$. If some $u\in U$ is not in $W$, then
+$\langle u,w\rangle<1$ for every contact direction $w$, and a centre $z$
+with $|z|>2$ has $\langle(1+t)u,z\rangle\le(1+t)|z|<|z|^2/2$ as soon as
+$2(1+t)<|z|$; only finitely many centres lie within $3$ of $c$, so for
+small $t>0$ a neighbourhood of $(1+t)u$ lies in $V_c$ and outside $Q$,
+and $\vol(V_c)>8$. If $W\supseteq U$, then $W=U$ by the kissing
+number and $V_c=Q$ by \cref{lem:24-no-shell}. The combinatorial
+statements are finite and are checked in integer arithmetic by
+\texttt{closure\_lemmas.py}: the $72$ orthogonal pairs, three at each of
+the $24$ vertices; no set of one or two roots meets all three pairs at a
+vertex; exactly $96$ sets of three do, the triples of pairwise
+$60^\circ$ roots at a common vertex, which are also the triples whose
+deletion raises the circumradius of the cell to $\sqrt6$ (\texttt{root\_deletions\_exact.py}, \cref{app:code-index}).
+The same statements are proved again in Lean's kernel by
+\texttt{lean/D4Closure.lean}. \Cref{fig:closure}(a) shows one vertex and
+its three pairs.
+\end{proof}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_closure}
+\caption{(a) \Cref{cor:root-subsets}: a vertex $v$ of the $24$-cell and
+its three orthogonal pairs of normalised roots, in the linear projection
+of $\mathbb{R}^4$ that keeps the vertex direction vertical and sends the
+other three coordinate directions to horizontal unit vectors at
+$120^\circ$. The six roots at $v$ lie on a hexagon, the points $2u$ on a
+larger one, and $v$ is the midpoint of the chord from $2u$ to $2u'$ of
+each pair, so it lies in the inversion hull of any contact set that
+keeps one pair. One root is missing (hollow), its chord is lost
+(dashed), and $v$ keeps the other two. (b) \Cref{prop:inversion-hull}
+in three dimensions: the Voronoi cell of the twelve contacts of the
+face-centred cubic packing, a rhombic dodecahedron (blue), lies in the
+convex hull of the points $2u$ (orange) and touches its boundary only at
+its six four-valent vertices (black), as the $24$-cell touches the hull
+of the points $2u$ at its $24$ vertices; every other centre leaves that
+hull whole. (c) \Cref{thm:near-contact} to first order: the exact volume
+excess of the root system pushed out uniformly, $8(1+\delta/2)^4-8$ with
+$\sum\delta_i=24\delta$, and of the deletion with one centre at
+$2+\delta$ on the deleted axis, $\frac13-\frac13(1-\frac\delta2)^4$,
+against the total excess distance; both are tangent at the root system
+to $\frac23\sum\delta_i$.}
+\label{fig:closure}
+\end{figure}
+
+\begin{lem}[No three centres cut the same point of $B(\sqrt{3/2})$]\label{lem:no-triple}
+If $|x|<\sqrt{3/2}$, at most two centres $y$ satisfy $|x-y|<|x|$. Hence,
+for $R\le\sqrt{3/2}$,
+\[
+  \vol\bigl(V_c\cap B(R)\bigr)=\vol B(R)-\sum_{y}S_R(|y|)
+  +\sum_{\{y,y'\}}\vol\bigl(B(R)\setminus(H_y\cup H_{y'})\bigr),
+\]
+where $S_R(d)$ is the volume of the part of $B(R)$ beyond a hyperplane at
+distance $d/2$ from $0$, and the sums run over the centres other than
+$c$, only those closer than $2R$ contributing.
+\end{lem}
+
+\begin{proof}
+If three centres $y_1,y_2,y_3$ did, the four points $0,y_1,y_2,y_3$,
+pairwise at least $2$ apart, would lie in the closed ball of radius $|x|$
+about $x$ (\cref{fig:tikz-closure}(a)). For four points $p_i$ with centroid $g$,
+$\sum_{i<j}|p_i-p_j|^2=4\sum_i|p_i-g|^2\le4\sum_i|p_i-x|^2$, so
+$24\le16|x|^2$, against $|x|<\sqrt{3/2}$. The formula is
+inclusion--exclusion, whose terms of order three vanish.
+\end{proof}
+
+For contact configurations this is the absence of triple overlaps on
+which \cref{thm:certificate} rests; the lemma says that it holds for every
+packing.
+
+\begin{cor}[At most twenty-two centres within $\sqrt6$]\label{cor:count}
+Put $S=S_{\sqrt{3/2}}$ and
+$\Psi(d_1,d_2,\dots)=\tfrac98\pi^2-\sum_iS(d_i)$. For every centre,
+$\vol(V_c)\ge\Psi(d_1,d_2,\dots)$. In particular, if at most $22$ centres
+other than $c$ lie within $\sqrt6$ of $c$, then $\vol(V_c)>8.046$.
+\end{cor}
+
+\begin{proof}
+Take $R=\sqrt{3/2}$ in \cref{lem:no-triple} and drop the pair terms,
+which are nonnegative. $S$ decreases and vanishes for $d\ge\sqrt6$, so
+at most twenty-two centres within $\sqrt6$ give
+$\vol(V_c)\ge\tfrac98\pi^2-22S(2)=8.04610\ldots$, in ball arithmetic by
+\texttt{closure\_lemmas.py}.
+\end{proof}
+
+$\Psi$ is a second distance criterion beside $\Phi$, with thresholds
+within $0.003$ of those of \cref{tab:distance-thresholds} (the script
+prints both). What is new is where the count is taken: within $\sqrt6$,
+and not within $2\sqrt2$, so that any number of centres between $\sqrt6$
+and $2\sqrt2$ is allowed.
+
+\begin{cor}[Twenty-three contacts]\label{cor:m23-shell}
+Let $c$ have exactly $23$ contacts, with directions $W$. If $W$ is a
+deletion of a copy of the root system, or if its covering radius on
+$S^3$ is at most $\arccos(\sqrt6/4)=52.2388^\circ$, then $\vol(V_c)>8$,
+whatever the other centres.
+\end{cor}
+
+\begin{proof}
+A deletion is \cref{cor:root-subsets} with one root missing. Otherwise,
+by \cref{lem:holes}, every centre other than the contacts is at distance
+at least $4\cos(52.2388^\circ)=\sqrt6$, so it does not meet
+$B(\sqrt{3/2})$ (\cref{lem:shell-new}); hence
+$V_c\cap B(\sqrt{3/2})=V_c(W)\cap B(\sqrt{3/2})$, the cell $V_c(W)$ is
+bounded (proof of \cref{thm:local-general}), and \cref{thm:certificate}
+bounds the volume of that intersection above $8$.
+\end{proof}
+
+A contact configuration of $23$ directions whose cell has circumradius
+at least $2$ is a deletion (\cref{prop:extendable,thm:m24}). So what
+\cref{cor:m23-shell} leaves of the case of $23$ contacts is a
+configuration that is not a deletion, whose existence is itself open
+(\cref{thm:m23-from-codes}), with a hole of angular radius between
+$52.24^\circ$ and $60^\circ$ and another centre in it closer than
+$\sqrt6$.
+
+\begin{thm}[The conjecture near the contact regime]\label{thm:near-contact}
+There is an absolute constant $\varepsilon_0>0$ with the following
+property. If no centre of a unit-ball packing of $\mathbb{R}^4$ lies at a
+distance from $c$ strictly between $2+\varepsilon_0$ and $\sqrt6$, then
+$\vol(V_c)\ge8$, with equality only if the contacts of $c$ form a copy
+of $\sqrt2\,\Rt$ and $V_c$ is the regular $24$-cell they cut out.
+\end{thm}
+
+In particular the $D_4$ configuration is a strict local minimum of the
+cell volume among all packings: every packing whose centres within
+$\sqrt6$ of $c$ are close enough to $\sqrt2\,\Rt'$, for some copy $\Rt'$ of $\Rt$, and
+whose other centres are unrestricted, has $\vol(V_c)\ge8$, with equality
+only at $\sqrt2\,\Rt'$ itself, and to first order the excess is
+$\frac23\sum\delta_i$ (\cref{fig:closure}(c)). The constant
+$\varepsilon_0$ comes from a compactness argument and is not explicit.
+
+\begin{proof}
+\emph{Step 1: a centre with $\vol(V_c)\le8$ in this regime is close to
+the root system.} We show that for every $\eta>0$ there is $\varepsilon>0$
+such that, if no centre lies at a distance from $c$ in
+$(2+\varepsilon,\sqrt6)$ and $\vol(V_c)\le8$, then the centres within
+$\sqrt6$ of $c$ can be matched with the points of $\sqrt2\,\Rt'$, for
+some copy $\Rt'$ of $\Rt$, each within $\eta$ of its partner. If not, there are $\eta>0$
+and packings $\mathcal P_n$ with a centre at $0$, no centre at a distance
+in $(2+1/n,\sqrt6)$, $\vol(V^{(n)})\le8$ for the cell of $0$, and no such
+matching. The packing condition bounds the number of centres in every
+ball independently of $n$, so after passing to a subsequence the
+centres within $B(\rho)$ converge, as finite sets, to those of a packing
+$\mathcal P$, for every $\rho$ outside the countable set of distances
+at which $\mathcal P$ has a centre (a diagonal argument). In
+$\mathcal P$ every centre is at distance $2$ from $0$ or at distance at
+least $\sqrt6$. For each such $\rho\ge3$ the set $V^{(n)}\cap B(\rho/2)$ is cut out
+by the finitely many centres within $\rho$ and converges in the
+Hausdorff metric to $V\cap B(\rho/2)$, $V$ the cell of $0$ in
+$\mathcal P$, which contains $B(1)$; so
+$\vol(V\cap B(\rho/2))\le\liminf\vol(V^{(n)})\le8$ for all these $\rho$,
+and $\vol(V)\le8$. Let $m$ be the number of contacts of
+$0$ in $\mathcal P$. If $m\le22$, \cref{cor:count} gives $\vol(V)>8$; if
+$m=23$, the centres other than the contacts do not meet
+$B(\sqrt{3/2})$, and \cref{thm:certificate} gives
+$\vol(V)\ge\vol(V\cap B(\sqrt{3/2}))>8$. So $m=24$, the contacts form a
+copy of $\sqrt2\,\Rt'$ (\cref{thm:m24}), and the centres of $\mathcal P_n$ within
+$\sqrt6$, which converge to them, can be matched with them within $\eta$
+for large $n$, a contradiction.
+
+\emph{Step 2: the root system is a strict local minimum.} Let $Y$ be the
+set of centres within $\sqrt6$ of $c$, matched as in Step 1 with the
+points of $\sqrt2\,\Rt'$ within a small $\eta$. Rotate so that $\Rt'=\Rt$, write
+$u_i$ for the normalised roots and $y_i=d_iw_i$ for the partner of
+$2u_i$, with $|w_i|=1$ and $d_i=2+\delta_i$, $0\le\delta_i\le\varepsilon$,
+and choose the rotation and the labelling that attain the minimum
+$d(W)$ of \cref{thm:local-uniqueness} for $W=\{w_i\}$. Put
+$\varepsilon_i=w_i-u_i$, $e_i=|\varepsilon_i|$ and
+$\|\varepsilon\|^2=\sum_ie_i^2$, so that $\|\varepsilon\|\to0$ as
+$\eta\to0$. Three estimates hold once $\eta$ and $\varepsilon$ are small.
+
+(a) \emph{Rigidity with slack: $\|\varepsilon\|\le6\sum_i\delta_i$.} The
+proof of \cref{thm:local-uniqueness} goes through with the contact
+condition $\langle w_i,w_j\rangle\le\frac12$ on the $96$ pairs of $T$
+replaced by the packing condition $|y_i-y_j|\ge2$, which reads
+$\langle w_i,w_j\rangle\le\frac12+\kappa_{ij}$ with
+$\kappa_{ij}=(d_i^2+d_j^2-d_id_j-4)/(2d_id_j)
+\le\frac14(\delta_i+\delta_j)+\frac18(\delta_i+\delta_j)^2$. The positive
+parts of $\Lambda\tau$ then sum to at most
+$6\|\varepsilon\|^2+\kappa$, $\kappa=\sum_T\kappa_{ij}$; the constant
+stress still makes the entries of $\Lambda\tau$ sum to $0$, so
+$\|\tau\|_2\le\|\Lambda\tau\|_1\le12\|\varepsilon\|^2+2\kappa$ by
+\eqref{eq:sigma-one}, and with $\sum_i\rho_i^2\le\frac14\|\varepsilon\|^4$,
+$\|\varepsilon\|\le\frac14\|\varepsilon\|+2\kappa+\frac12\|\varepsilon\|^2$.
+For $\|\varepsilon\|\le1/48$ this gives $\|\varepsilon\|\le\frac{192}{71}\kappa$,
+and every index lies in eight pairs of $T$, so
+$\kappa\le2(1+\varepsilon)\sum_i\delta_i$.
+
+(b) \emph{The volume to first order: $\vol(V(Y))\ge8+\frac23\sum_i\delta_i
+-C\bigl(\|\varepsilon\|+\sum_i\delta_i\bigr)^2$.} Move the data linearly,
+$w_i(t)=u_i+t\varepsilon_i$ and $h_i(t)=1+t\delta_i/2$ for $0\le t\le1$,
+and let $P(t)=\{x:\langle x,w_i(t)\rangle\le h_i(t)\}$, so that $P(0)=Q$
+and $P(1)=V(Y)$. Each facet of $P(t)$ moves with normal velocity
+$(\dot h_i-\langle x,\dot w_i\rangle)/|w_i|$, so
+\[
+  \frac{d}{dt}\vol P(t)=\sum_i\frac{1}{|w_i(t)|}
+  \Bigl(\frac{\delta_i}{2}A_i(t)-\langle\varepsilon_i,M_i(t)\rangle\Bigr),
+\]
+$A_i$ the $3$-volume of the $i$-th facet and $M_i=\int x\,dA$ over it. At
+$t=0$ every facet is a regular octahedron of volume $\frac43$ centred at
+$u_i$, so the right side is
+$\frac23\sum_i\delta_i-\frac43\sum_i\langle\varepsilon_i,u_i\rangle
+=\frac23\sum_i\delta_i+\frac23\sum_ie_i^2$, by \eqref{eq:radial-part}.
+Each facet of $P(t)$ is the solution set, in its hyperplane, of a system
+of linear inequalities whose coefficients depend smoothly on $t$, and at
+$t=0$ its centre satisfies every inequality with a margin of at least
+$\frac12$; shrinking a solution set towards such an interior point by the
+factor $1-\lambda$ keeps it feasible after a perturbation of size
+$O(\lambda)$, so the facet moves by $O(\|\varepsilon\|+\max_i\delta_i)$
+in the Hausdorff metric, uniformly for $t\le1$, and so do $A_i$, $M_i$
+and $|w_i|$. Integrating the derivative gives (b).
+
+(c) \emph{The hull costs only a fourth-order amount:
+$\vol(V(Y)\setminus K(Y))\le C\bigl(\|\varepsilon\|+\max_i\delta_i\bigr)^4$.}
+For $x\in V(Y)$, $\langle x,u_i\rangle\le h_i+|x|e_i$, so
+$V(Y)\subseteq(1+\theta)Q$ with $\theta=O(\|\varepsilon\|+\max_i\delta_i)$.
+The points $4w_i/d_i$ spanning $K(Y)$ lie within $\delta_i+2e_i$ of
+$2u_i$, and the convex hull of the $2u_i$ has inradius $\sqrt2$, so
+$K(Y)\supseteq(1-\theta')\conv\{2u_i\}$ with $\theta'$ of the same order.
+$Q$ lies in $\conv\{2u_i\}$ and meets its boundary only at its $24$
+vertices, each of which is the unique point of $Q$ on the supporting
+hyperplane there, because $v=r+r'$ is a positive combination of the six
+roots at $v$ and so lies in the interior of the normal cone of $Q$ at
+$v$. Hence $(1+\theta)Q\setminus(1-\theta')\conv\{2u_i\}$ consists of $24$
+caps of height $O(\theta+\theta')$ cut from the vertex cones of $Q$,
+whose volume is $O((\theta+\theta')^4)$.
+
+By \cref{prop:inversion-hull}, (b), (c) and (a),
+\[
+  \vol(V_c)\ \ge\ \vol(V(Y)\cap K(Y))\ \ge\ 8+\tfrac23\sum_i\delta_i
+  -C'\Bigl(\sum_i\delta_i\Bigr)^2 ,
+\]
+which is at least $8$ once $\sum_i\delta_i\le2/(3C')$, with equality only
+if every $\delta_i=0$. Then $\kappa=0$, so $\varepsilon=0$ by (a), $Y=\sqrt2\,\Rt$,
+and $V_c\supseteq V(Y)\cap K(Y)=Q$ with $\vol(V_c)=8$, so $V_c=Q$.
+Choosing $\eta$ and then $\varepsilon$ in Step 1 small enough for (a), (b)
+and (c) gives $\varepsilon_0$.
+\end{proof}
+
+\emph{What is left, and the evidence.} Together with
+\cref{prop:distance-criterion}, the corollaries above and
+\cref{thm:near-contact} confine \cref{conj:shell} to a centre $c$ with all
+of the following: at least $23$ other centres within $\sqrt6$; at least
+one of them at a distance between $2+\varepsilon_0$ and $\sqrt6$;
+$\Phi\le8$ and $\Psi\le8$; contacts that do not contain one orthogonal
+pair of roots at each vertex of a $24$-cell; and, if there are $23$
+contacts, a configuration that is not a deletion, with a hole of angular
+radius above $52.24^\circ$. Near the root system the inversion hull is
+sharp to first order: \texttt{near\_contact\_probe.py} finds
+$\vol(V(Y)\cap K(Y))-8$ and $\vol(V_c)-8$ equal to
+$\frac23\sum\delta_i$ to first order on the root system pushed out, and
+over $200$ minimisations of the volume near the root system with one
+centre held out, $\|\varepsilon\|/\kappa$ at most $0.0003$ (estimate (a)
+allows $2.71$) and the quantity
+$(\vol(V_c)-8-\frac23\sum\delta_i)/(\|\varepsilon\|^2+\sum\delta_i^2)$ at least
+$-\frac12$, the value on the deleted root's axis. Closing what is left
+would take an explicit $\varepsilon_0$, which needs a quantitative form
+of \cref{thm:m24}, and a proof for the intermediate distances, for which
+the pair terms of \cref{lem:no-triple} are exact and a three-point bound
+on the shell, as in \cref{thm:certificate} for the sphere, is the natural
+tool.
+
+
 \section{The combinatorial cell register}\label{sec:chamber-register}
 
 \subsection{Cell types under the Weyl group}
@@ -1711,8 +2058,10 @@ the classification of \cref{thm:m24}, and the case of $23$ contacts,
 \cref{thm:m23}, is proved in \cref{sec:strict-inequality,sec:certificate};
 beyond the arguments of this paper these rest on the one verified kernel
 of \cref{sec:certificate-checked} alone, and say so wherever they appear.
-What remains of the twenty-four-cell conjecture is \cref{conj:shell}, and
-the density bound $\Delta_4=\pi^2/16$ for all packings waits on it.
+What remains of the twenty-four-cell conjecture is \cref{conj:shell},
+which \cref{sec:closure} narrows to centres crowded by neighbours at
+intermediate distances, and the density bound $\Delta_4=\pi^2/16$ for all
+packings waits on it.
 
 \subsection{Remark: what a proof that did not use the classification would need}\label{rem:what-would-close-new}
 
@@ -3545,22 +3894,20 @@ $2024\,\mathbb{E}_p[h]<\tau$ rules out every degree-$d$ certificate at
 once. Restricting $p$ to a finite set of triples only shrinks the dual
 feasible set, so such a $p$ is a proof and not an estimate.
 
-At degree $6$ there is one. On a rational grid of $670$ admissible
-triples a measure supported on $632$ of them, with denominator
-$10^{10}$, has value $5.9826875$, least two-point slack
-$1.09\times10^{-2}$, and all seven moment matrices positive definite,
-every pivot of an exact rational $LDL^\top$ being at least
-$1.01\times10^{-2}$. The rational arithmetic is exact; only $\omega_3$
-is numerical, and it enters through the value alone, where the
-quadrature error is below $10^{-12}$ against a margin of $0.18$. Since
-$5.9826875<\tau=6.1650791$, no degree-$6$ certificate of this form
-exists, with no appeal to the conditioning of any solver. That rational
-measure is not in the supplement, so a reader cannot recheck it from
-there; the supplement carries the floating-point measure of
-\texttt{m24\_primal\_sdp.py}, of value $5.9424$ on $2170$ triples as
-deposited and $5.9851$ on $522$ triples when rerun with a later solver,
-both below $\tau$ by more than $0.18$, which is evidence of the same
-conclusion rather than a proof of it.
+At degree $6$ the computation points to one, and we state what it
+shows and no more. \texttt{m24\_primal\_sdp.py} solves the dual on a grid
+of admissible triples with every constraint held with a margin
+$\varepsilon=10^{-6}$, and rechecks the returned measure against the
+constraints without the margin: the measure deposited in the supplement
+has value $5.9424$ on $2170$ triples, and a rerun with a later solver
+gives $5.9851$ on $522$ triples, with least eigenvalue $10^{-6}$ in the
+moment matrices and least two-point slack $7.7\times10^{-3}$; both values
+lie below $\tau=6.1650791$ by more than $0.18$. That is strong evidence
+that no degree-$6$ certificate of this form exists. It is not a proof in
+the sense of \cref{sec:certificate}: a proof would round the measure to
+rationals, check the moment matrices by an exact $LDL^\top$, and bound
+$\omega_3$ rigorously in the value, and the supplement does not carry
+such a check. Nothing in this paper depends on the conclusion.
 
 At degrees $8$ through $20$, on a grid of $1264$ triples, the dual
 minimum is $6.0395$, $6.0700$, $6.0879$, $6.1060$, $6.1256$, $6.1416$
@@ -8648,9 +8995,15 @@ ceiling of one hundred and fifteen.
 Three things remain open. The first is a case of the local bound:
 \cref{conj:shell}, a centre crowded by near-contacts
 (\cref{sec:noncontact}), on which the density bound for all packings
-waits. Closing it would take, for caps of unequal radii, what the proof
-of \cref{thm:m23} does for equal ones, an exact account of the pairs,
-with the three-point method carried from the sphere to a shell. The
+waits. By \cref{sec:closure} it is a centre with at least twenty-three
+others within $\sqrt6$, one of them at a distance between
+$2+\varepsilon_0$ and $\sqrt6$; closer to contact the bound holds
+(\cref{thm:near-contact}). Closing it would take an explicit
+$\varepsilon_0$, which needs a quantitative form of \cref{thm:m24}, and,
+for the intermediate distances, what the proof of \cref{thm:m23} does for
+equal caps, an exact account of the pairs, which \cref{lem:no-triple}
+provides for every packing, with the three-point method carried from the
+sphere to a shell. The
 other two are not cases of the local bound. The second is the
 classification of the $23$-point codes of
 minimal angle $60^\circ$ on $S^3$, the hypothesis of
@@ -8666,7 +9019,7 @@ angle $\arccos(\tfrac12+\delta)$, and the computations of
 $\delta=0.009$ and then collapsing to $\tfrac12+O(\delta)$, with every
 configuration reached at $\delta=0$ a deletion. That is evidence, and
 \cref{rem:m23-uniqueness} explains why no bound on the size of a code
-can turn it into a proof. The second is formal. The verification of \cref{thm:certificate} runs in
+can turn it into a proof. The third is formal. The verification of \cref{thm:certificate} runs in
 Lean as well as in Python, in exact dyadic arithmetic and with the
 closed forms of $\omega$ entering only through tables of bounds; but
 the statement Lean proves is that a program returns true, and the
@@ -8695,9 +9048,9 @@ contacts, to the inequality $E(W)\ge8-32\pi+10\pi^2$ between pair and
 triple angles, through a third-order inclusion and exclusion inside the
 ball of radius $\sqrt2$ that is exact at the root configuration
 (\cref{prop:m24-exact}). A certificate for that inequality must be
-sharp; its three-point relaxation is not sharp at degree $6$, and at
-higher degree the question needs extended-precision arithmetic
-(\cref{rem:m24-three-point}). The cardinality bound of \cite{BV08}, at
+sharp; its three-point relaxation is, by the floating-point
+computation of \cref{rem:m24-three-point}, not sharp at degree $6$, and at
+higher degree the question needs extended-precision arithmetic. The cardinality bound of \cite{BV08}, at
 $24.10$, is not sharp either, so no route to the global statement that
 stays at the three-point level is complete.
 
@@ -8838,11 +9191,11 @@ cell.
 
 \subsection{A machine-checked kernel}
 
-Seven parts of the paper are verified by a proof assistant and not by a
-program whose output has to be trusted, and all seven are finite
-arithmetic. The supplement carries them as Lean~4 sources in a directory
-of their own: five files that compile against a bare toolchain, and two
-small Lake projects.
+Eight parts of the paper are verified by a proof assistant and not by a
+program whose output has to be trusted, and all eight are finite
+arithmetic or polynomial identities. The supplement carries them as
+Lean~4 sources in a directory of their own: six files that compile
+against a bare toolchain, and two small Lake projects.
 
 The first is \texttt{lean/D4Stress.lean}, on the equilibrium relation
 \eqref{eq:stress}, which is what carries \cref{prop:deletion-rigid} and
@@ -8976,6 +9329,24 @@ theorems are settled by \texttt{native\_decide} in a few seconds, and
 the axiom report lists \texttt{propext} and the tactic's own axiom, as
 for the $600$-cell.
 
+The eighth is \texttt{lean/D4Closure.lean}, on \cref{sec:closure}. It
+proves the identity of \cref{lem:holes}, the identity of
+\cref{prop:inversion-hull} with its denominator cleared, and the two
+identities of four points in the proof of \cref{lem:no-triple}, the sum
+of the squared distances and the minimality of the centroid, over every
+commutative ring, by the ring normaliser of Lean's \texttt{grind}, so
+that they hold verbatim over $\mathbb{R}$; and it proves by kernel
+computation (\texttt{decide +kernel}) the finite content of
+\cref{cor:root-subsets}: the $24$ vertices of the $24$-cell, each on six
+facets; each the sum of exactly three orthogonal pairs of roots, $72$
+pairs in all; no deleted set of one or two roots meets all three pairs
+at any vertex; and of the $2024$ deleted triples exactly $96$ do, each
+pairwise at $60^\circ$ with a common vertex. The identities depend on
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, the
+standard axioms of Lean's logic, and the combinatorial theorems on
+\texttt{propext} at most; none uses \texttt{native\_decide}. The file
+checks in about a minute and a half.
+
 That is a stronger form of checking than anything else in this paper,
 and it is available here only because these particular arguments are
 finite and, after the scaling by $315$, dyadic. The rest of the paper
@@ -9082,12 +9453,12 @@ The supplementary code package, with every script, certificate, run
 log and Lean file named in \cref{app:code-index}, is maintained at
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
 and is archived on Zenodo. The version that corresponds to this paper is
-the new release \texttt{v1.4.0}, of 24 September 2026, at
-\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.4.0}{the
-tag of that name}, archived on Zenodo with the version DOI
+release \texttt{v1.5.0}, at
+\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.5.0}{the
+tag of that name}; the previous release, \texttt{v1.4.0}, has the version DOI
 \bluelink{https://doi.org/10.5281/zenodo.22940045}{10.5281/zenodo.22940045}.
 The Zenodo record that collects every version, and
-resolves to the most recent of them, now \texttt{v1.4.0}, has the concept DOI
+resolves to the most recent of them, has the concept DOI
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{10.5281/zenodo.22766562}
 \cite{D4Zenodo}; that identifier is the one to cite, since it does not
 change from version to version. The certificate that \cref{sec:certificate-checked}
@@ -9105,7 +9476,9 @@ run, the two programs of \cref{sec:noncontact}
 and the corrections to the supplement that the re-verification found.
 The code of the re-verification, those two programs and the corrections
 were developed with the assistance of Claude, an AI model made by
-Anthropic.
+Anthropic. Version \texttt{v1.5.0} adds the two programs of
+\cref{sec:closure}, \texttt{closure\_lemmas.py} and
+\texttt{near\_contact\_probe.py}, developed in the same way.
 
 \section*{Competing interests}
 
@@ -10073,11 +10446,11 @@ exploration and the script says so in its output.
 
 \subsection*{The formalised part}
 
-Seven parts of the paper are also verified in Lean~4: the five files
+Eight parts of the paper are also verified in Lean~4: the six files
 \texttt{D4Stress.lean}, \texttt{D4Meet.lean}, \texttt{D4Certificate.lean},
-\texttt{D4InnerProducts.lean} and \texttt{D4RootLattices.lean} in the
-directory \texttt{lean}, and the Lake projects in \texttt{lean/cell600}
-and \texttt{lean/certificate}.
+\texttt{D4InnerProducts.lean}, \texttt{D4RootLattices.lean} and
+\texttt{D4Closure.lean} in the directory \texttt{lean}, and the Lake
+projects in \texttt{lean/cell600} and \texttt{lean/certificate}.
 All are independent of everything else
 in the supplement and of every Lean library: the first two use only
 integer arithmetic on the unnormalised roots and settle each statement
@@ -10134,7 +10507,14 @@ finite content of \cref{lem:root-lattice}: the census of positive
 definite Gram matrices of norm-$2$ bases in rank at most $4$, the
 enclosure of the norm-$2$ vectors of each lattice in an exact box, the
 counts $2$, $6$, $12$, $24$, and a $D_4$ basis among the roots of every
-lattice that has $24$, by \texttt{native\_decide} in a few seconds. The theorems in each file are listed in
+lattice that has $24$, by \texttt{native\_decide} in a few seconds. The
+eighth, \texttt{lean/D4Closure.lean}, is the exact content of
+\cref{sec:closure}: the identities behind
+\cref{lem:holes,prop:inversion-hull,lem:no-triple}, proved over every
+commutative ring by the ring normaliser of \texttt{grind}, and the
+orthogonal root pairs and deleted sets of \cref{cor:root-subsets}, by
+\texttt{decide +kernel}; it checks in about a minute and a half, and
+its axiom report lists the three standard axioms at most. The theorems in each file are listed in
 \texttt{lean/README.md}, together with the axiom report that each file
 prints when it is checked. Nothing else in the paper is formalised.
 
@@ -10277,11 +10657,23 @@ factors being monotone, so every printed bound is a bound.
 \cref{sec:noncontact}; it is floating point and exploration, and its
 output says so.
 
+\Cref{sec:closure} rests on two more. \texttt{closure\_lemmas.py} checks
+the identities behind \cref{lem:holes,prop:inversion-hull,lem:no-triple}
+symbolically; the combinatorics of \cref{cor:root-subsets} in integer
+arithmetic, the $72$ orthogonal pairs at the $24$ vertices and every set
+of at most four deleted roots; and, in ball arithmetic, $S(2)$, the bound
+$\tfrac98\pi^2-22S(2)>8.046$ of \cref{cor:count}, the thresholds of
+$\Psi$ beside those of $\Phi$, and the angle $\arccos(\sqrt6/4)$ of
+\cref{cor:m23-shell}. \texttt{near\_contact\_probe.py} is floating point
+and exploration: the inversion hull beside the volume, and the
+minimisations near the root system quoted after \cref{thm:near-contact}.
+
 \subsection*{The independent re-verification}
 
 The directory \texttt{independent\_verification} of the supplement
 records a re-run of every computation of this paper from a fresh copy of
-the package: the seven Lean verifications, the certificates for $23$ and
+the package: the Lean verifications (seven at the time;
+\texttt{D4Closure.lean} was added in v1.5.0), the certificates for $23$ and
 $24$ contacts, including steps $3$ and $5$ of
 \cref{sec:certificate-checked} with all fifty sum-of-squares blocks of the
 four-point constraint, every script with its output compared against the
@@ -10637,10 +11029,10 @@ preprint, version 11, Preprints.org (2026).
 \bibitem[BBMB26]{D4Zenodo}
 D.~Bhattacharjee, U.~Bhattacharya, P.~Mandal, and S.~Bhattacharya,
 \textit{Supplementary code for: The sphere packing problem in dimension 4 and the twenty-four-cell conjecture},
-software, version v1.4.0 (released 24 September 2026), Zenodo (2026).
+software, version v1.5.0, Zenodo (2026).
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{doi:10.5281/zenodo.22766562}
 (concept DOI: the record of all versions, which resolves to the latest);
-version v1.4.0:
+previous version v1.4.0:
 \bluelink{https://doi.org/10.5281/zenodo.22940045}{doi:10.5281/zenodo.22940045}.
 Source repository:
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}

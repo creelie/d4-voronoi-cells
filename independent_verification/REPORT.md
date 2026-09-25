@@ -3,7 +3,8 @@
 This report was written against v1.3.0.  The corrections it led to, in the
 package and in the manuscript, are released as v1.4.0; the section
 "Addendum: v1.4.0" at the end says what v1.4.0 proves and what it leaves
-open.  Theorem, lemma and section numbers in the body are those of v1.3.0.
+open, and "Addendum: v1.5.0" what v1.5.0 adds (Section 2.8 of the paper and
+the Lean file D4Closure.lean).  Theorem, lemma and section numbers in the body are those of v1.3.0.
 
 Scope: the manuscript `paper/D4.tex` ("The Sphere Packing Problem in
 Dimension 4 and the Twenty-Four-Cell Conjecture") and everything in this
@@ -500,3 +501,61 @@ data and code availability statement are revised to the claims above.
 Theorem 1.1 is now stated for the cell cut out by the active neighbours,
 under the hypothesis its proof uses: the deviating direction replaces a root
 that no active neighbour takes.
+
+## Addendum: v1.5.0
+
+v1.5.0 narrows Conjecture 1.6 in a new Section 2.8 of the paper, and adds a
+Lean layer for its exact content.  It does not prove the conjecture, and the
+paper does not claim that it does.  The case still open is a centre with at
+least 23 other centres within sqrt 6, one of them at a distance between
+2 + epsilon_0 and sqrt 6, where epsilon_0 is not explicit.
+
+Checks:
+
+- **`multi_cap/closure_lemmas.py`** passes every check; the log is
+  `multi_cap/runs/closure_lemmas.log`.  It checks symbolically the
+  identities of Lemma 2.12, Proposition 2.13 and Lemma 2.15.  It checks in
+  integers the root-pair combinatorics of Corollary 2.14:
+  - 72 orthogonal pairs, three at each of the 24 vertices;
+  - no deleted set of one or two roots meets all three pairs at any vertex;
+  - of the 2024 deleted triples, 96 do, and so do 1728 of the 10626 deleted
+    quadruples.
+
+  It computes in ball arithmetic S(2) = 0.138963500936 and
+  9 pi^2/8 - 22 S(2) = 8.04610793064 > 8.046, the thresholds of Psi (within
+  0.003 of those of Phi), and arccos(sqrt 6 / 4) = 52.238756 degrees.
+- **`lean/D4Closure.lean`** proves the same exact content again: the four
+  identities over every commutative ring (`grind`) and the combinatorics by
+  `decide +kernel`.  It has no `sorry` and no Mathlib.  The axioms are
+  propext, Classical.choice and Quot.sound at most, and nothing uses
+  `native_decide`.  `lean/run_all.sh` checks all six standalone files in
+  3 minutes; the log is `lean/runs/run_all_2026-09-25.log`.
+- **`multi_cap/near_contact_probe.py`** is exploration, not proof; the log
+  is `multi_cap/runs/near_contact_probe_200_seed5.log`.  On the root system
+  pushed out by delta, the inversion-hull bound and the volume agree to
+  first order, (2/3) sum delta.  Over 200 volume minimisations near the root
+  system with one centre held out:
+  - ||eps|| / kappa is at most 0.000262, where the proof of Theorem 2.18
+    allows 2.71;
+  - (vol - 8 - (2/3) sum delta) / (||eps||^2 + |delta|^2) is at least -0.5,
+    the value on the deleted root's axis.
+- **The proof of Theorem 2.18** was read against these numbers.  Its three
+  estimates are the rigidity with slack, the first-order volume expansion
+  and the hull's fourth-order cost.  Its constants come from the explicit
+  spectrum of Lemma 7.50, from a Lipschitz stability argument for polytopes
+  with an interior point, and from compactness; only the last makes
+  epsilon_0 non-explicit.
+- **The manuscript** builds with `latexmk -pdf` to 157 pages: no undefined
+  references, no overfull or underfull boxes, and no "??".
+- **F4 (Remark 7.36)** is resolved in the text.  The remark no longer
+  claims a proof from a rational measure that the supplement does not
+  carry; it states the floating-point evidence and says that nothing
+  depends on it.
+- **The bibliography:** `check_bibliography.py` finds all 57 entries
+  cited, no undefined citation, no duplicate key, and every one of the 51
+  DOI links equal to the DOI printed beside it.  Live resolution against
+  Crossref and DataCite (`--online`) was not possible here: this
+  environment's network policy denies doi.org and api.crossref.org.  The
+  DOIs are unchanged since v1.3.0, whose release notes record that every
+  one was resolved and compared with its metadata.  The exceptions are the
+  two Zenodo DOIs of this package.

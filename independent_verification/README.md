@@ -17,6 +17,7 @@ A re-verification of this package and of the manuscript, run on
 | `compare_figures.py` | pixel comparison of `paper/figures/*.png` with the committed files |
 | `gegenbauer_check.py` | the check of `zonal/README.md` item 3, which the package describes but did not contain |
 | `numscan.py` | lists the numbers quoted in the paper that no log or script of the package contains |
+| `check_bibliography.py` | checks that every entry is cited, every citation is defined and every DOI link equals the printed DOI; `--online` compares titles and years with Crossref and DataCite |
 
 ## Reproducing
 

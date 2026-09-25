@@ -4,8 +4,9 @@
 lemmas, proves the bound for the Voronoi cell of a packing whenever the
 centres within 2 sqrt 2 all touch it or pass the distance criterion
 (Section 2.7 of the paper, `multi_cap/shell_reduction.py`), and states the
-remaining case, a centre crowded by near-contacts, as Conjecture 1.6.  See
-the addendum of `../REPORT.md`.*
+remaining case, a centre crowded by near-contacts, as Conjecture 1.6;
+v1.5.0 narrows that case further (Section 2.8) and proves the bound near
+the contact regime.  See the addenda of `../REPORT.md`.*
 
 Everything the paper proves about volumes after Section 2 is stated for
 *contact configurations*: finite sets W of unit vectors with pairwise inner
