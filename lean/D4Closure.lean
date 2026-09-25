@@ -2,11 +2,12 @@
 D4Closure.lean
 
 A machine check of the exact content of Section 2.8 of "The Sphere Packing
-Problem in Dimension 4 and the Twenty-Four-Cell Conjecture" (v1.5.0): the
+Problem in Dimension 4 and the Twenty-Four-Cell Conjecture" (v1.6.0): the
 three identities behind Lemma 2.12 (holes), Proposition 2.13 (the inversion
 hull) and Lemma 2.15 (no three centres cut the same point of B(sqrt(3/2))),
-and the finite combinatorics of Corollary 2.14 (contacts that contain most
-of a root system).
+the identity and the count used in the proof of Theorem 2.17 (at most
+twenty-three centres within sqrt 6), and the finite combinatorics of
+Corollary 2.14 (contacts that contain most of a root system).
 
 The identities are proved over every commutative ring, with the ring solver
 of `grind`, so they hold verbatim over the reals; in the paper each is
@@ -68,7 +69,21 @@ theorem centroid (a b c d x : α) :
         + 4*((a+b+c+d) - 4*x)^2 := by
   grind
 
+/-- Theorem 2.17, range II_s: the packing bound `a(d1, d2) = (d1^2 + d2^2 - 4)/(2 d1 d2)`
+    lies below its tangent plane `1/2 + (d1 + d2 - 4)/4` at `(2, 2)`; with the
+    denominator `4 d1 d2` cleared the difference is
+    `d1 d2 (d1 + d2 - 2) - 2 d1^2 - 2 d2^2 + 8 = (d1 - 2)(d2 - 2)(d1 + d2 + 2)`,
+    which is nonnegative for `d1, d2 >= 2`. -/
+theorem amax_tangent (d1 d2 : α) :
+    d1*d2*(d1 + d2 - 2) - 2*d1^2 - 2*d2^2 + 8 = (d1 - 2)*(d2 - 2)*(d1 + d2 + 2) := by
+  grind
+
 end Identities
+
+/-- Theorem 2.17, Step 2: of 23 centres, each pair lies in 21 triples and each
+    centre in `C(22, 2) = 231 = 21 * 11` triples, which fixes the weight 1/11. -/
+theorem triple_counts : 23 - 2 = 21 ∧ 22 * 21 / 2 = 231 ∧ 231 = 21 * 11 := by
+  decide
 
 /-! ## Corollary 2.14: the orthogonal root pairs at the vertices of the 24-cell -/
 
@@ -166,6 +181,8 @@ end D4Closure
 #print axioms D4Closure.inversion_hull
 #print axioms D4Closure.four_points
 #print axioms D4Closure.centroid
+#print axioms D4Closure.amax_tangent
+#print axioms D4Closure.triple_counts
 #print axioms D4Closure.verts_are_vertices
 #print axioms D4Closure.three_pairs_each
 #print axioms D4Closure.orthogonal_pairs

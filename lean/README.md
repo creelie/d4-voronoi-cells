@@ -7,21 +7,26 @@ the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
 prints the axiom report of each; the two Lake projects are built with
 `lake build` in their directories.
 
-`D4Closure.lean` (new in v1.5.0) covers the exact content of Section 2.8.
-The identities behind Lemma 2.12 (holes), Proposition 2.13 (the inversion
-hull, its denominator 2|y|^2 cleared) and Lemma 2.15 (four points pairwise
-at least 2 apart need a ball of radius sqrt(3/2): the sum of the squared
-distances and the minimality of the centroid) are proved over every
-commutative ring with the ring normaliser of `grind`, so they hold verbatim
-over the reals.  The finite content of Corollary 2.14 is proved by
-`decide +kernel`: the 24 vertices of the 24-cell, each on six facets; each
-the sum of exactly three orthogonal root pairs, 72 pairs in all; no deleted
-set of one or two roots meets all three pairs at a vertex; and of the 2024
-deleted triples exactly 96 do, each pairwise at 60 degrees with a common
-vertex.  The identities depend on propext, Classical.choice and Quot.sound,
-the combinatorial theorems on propext at most; nothing uses
-`native_decide`.  About a minute and a half.  The log of the run behind
-v1.5.0 is `runs/run_all_2026-09-25.log`.
+`D4Closure.lean` (new in v1.5.0, extended in v1.6.0) covers the exact
+content of Section 2.8.  The identities behind Lemma 2.12 (holes),
+Proposition 2.13 (the inversion hull, its denominator 2|y|^2 cleared),
+Lemma 2.15 (four points pairwise at least 2 apart need a ball of radius
+sqrt(3/2): the sum of the squared distances and the minimality of the
+centroid) and Theorem 2.17 (the packing bound a(d1, d2) lies below its
+tangent plane at (2, 2): `d1 d2 (d1 + d2 - 2) - 2 d1^2 - 2 d2^2 + 8 =
+(d1 - 2)(d2 - 2)(d1 + d2 + 2)`) are proved over every commutative ring with
+the ring normaliser of `grind`, so they hold verbatim over the reals.  The
+counts of Theorem 2.17 (each pair of 23 centres in 21 triples, each centre
+in 231 = 21 * 11) and the finite content of Corollary 2.14 are proved by
+`decide`: the 24 vertices of the 24-cell, each on six facets; each the sum
+of exactly three orthogonal root pairs, 72 pairs in all; no deleted set of
+one or two roots meets all three pairs at a vertex; and of the 2024 deleted
+triples exactly 96 do, each pairwise at 60 degrees with a common vertex.
+The identities depend on propext, Classical.choice and Quot.sound, the
+combinatorial theorems on propext at most; nothing uses `native_decide`.
+About two minutes.  The log of the run behind v1.6.0 is
+`runs/run_all_2026-09-25_v1.6.0.log` (behind v1.5.0,
+`runs/run_all_2026-09-25.log`).
 
 `D4Stress.lean` covers Proposition 7.48 and the corollary that follows it:
 the equilibrium stress on the eighty-eight tight pairs of a deletion

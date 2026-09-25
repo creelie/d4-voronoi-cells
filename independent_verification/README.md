@@ -18,6 +18,7 @@ A re-verification of this package and of the manuscript, run on
 | `gegenbauer_check.py` | the check of `zonal/README.md` item 3, which the package describes but did not contain |
 | `numscan.py` | lists the numbers quoted in the paper that no log or script of the package contains |
 | `check_bibliography.py` | checks that every entry is cited, every citation is defined and every DOI link equals the printed DOI; `--online` compares titles and years with Crossref and DataCite |
+| `logs/doi_audit_2026-09-25.md` | every DOI of the bibliography compared with the publisher's or indexer's page (v1.6.0) |
 
 ## Reproducing
 

@@ -23,10 +23,59 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: concept DOI 10.5281/zenodo.22766562, which always resolves to the
-newest release; cite it.  This release, v1.5.0, receives its own version
-DOI under that concept record when it is published.  The previous
-releases are v1.4.0, 10.5281/zenodo.22940045 (24 September 2026), and
-v1.3.0, 10.5281/zenodo.22880335.
+newest release; cite it.  This release, v1.6.0, receives its own version
+DOI under that concept record when it is published; it contains the
+changes listed under v1.5.0 below as well.  Earlier archived releases:
+v1.4.0, 10.5281/zenodo.22940045 (24 September 2026), and v1.3.0,
+10.5281/zenodo.22880335.
+
+## What is new in v1.6.0
+
+Theorem 2.17: a centre with at most 23 other centres within sqrt 6 has a
+Voronoi cell of volume greater than 8, whatever the distances of those
+centres.  The three-point certificate of Theorem 7.73 is carried from
+contacts to centres at mixed distances: a centre that moves out from
+distance 2 hands back part of its cap, and one eleventh of that, spent in
+each triple of centres, pays for every pair of directions closer than
+60 degrees that the packing then allows.  Conjecture 1.6 is narrowed to a
+centre with at least 24 other centres within sqrt 6, one of them at an
+intermediate distance; at 24 the pair terms cannot decide, since at the
+root system they give 7.906940 < 8.  The new code was developed, and its
+computations run, with the assistance of Claude, an AI model made by
+Anthropic.
+
+  paper/              Theorem 2.17 with its full proof replaces Corollary
+                        2.17 (twenty-three contacts), which it contains;
+                        Theorem 1.7 of the introduction, the abstract, the
+                        opening of Section 2.8, "What is left" and the
+                        conclusion are revised to it.  Three new figures:
+                        Figure 6 (figures_new/tikz_labelled.tex, TikZ),
+                        Figure 7 (figures_new/fig_labelled.py) and
+                        Figure 8 (figures_new/tikz_stop.tex, TikZ); later
+                        figures are renumbered by three.  New footnotes in
+                        the proof, and new rows in the index of notation.
+  multi_cap/labelled_certificate_check.py
+                      The verification of Theorem 2.17: the constants in
+                        ball arithmetic, a rerun of the branch and bound of
+                        (C), and two new branch and bounds (30 051 and
+                        6 482 boxes).  Log: runs/labelled_certificate_check.log
+                        (about six minutes).
+  multi_cap/count_bound_sqrt6.py
+                      At most 49 other centres lie within sqrt 6 of a
+                        centre: their directions have inner products
+                        below 2/3, and an exact Delsarte polynomial of
+                        degree 13 (Sturm's theorem, sympy) gives
+                        N <= 49.577.  Log: runs/count_bound_sqrt6.log.
+  multi_cap/truncated_search.py
+                      Floating-point minimisation of the truncated volume
+                        with exactly M centres within sqrt 6 (evidence, not
+                        proof).  Logs: runs/truncated_search_M*.log.
+  lean/D4Closure.lean Two more theorems: the identity behind the packing
+                        bound a(d1, d2) <= 1/2 + (d1 + d2 - 4)/4, and the
+                        counts 21 and 231 = 21 * 11 of the proof.
+  independent_verification/logs/doi_audit_2026-09-25.md
+                      Every DOI of the bibliography checked against the
+                        publisher's or indexer's page.
 
 ## What is new in v1.5.0
 
@@ -55,9 +104,10 @@ made by Anthropic.
                         figures_new/tikz_closure.tex).  The long note on the
                         title page is removed; Deep Bhattacharjee and
                         Priyabrata Mandal are both corresponding authors.
-                        What is still open: a centre with at least 23
+                        What v1.5.0 left open: a centre with at least 23
                         centres within sqrt 6, one of them at a distance
-                        between 2 + epsilon_0 and sqrt 6.
+                        between 2 + epsilon_0 and sqrt 6 (narrowed to 24
+                        in v1.6.0).
   multi_cap/closure_lemmas.py
                       The exact content of Section 2.8, in sympy, integer
                         and ball arithmetic.
@@ -182,7 +232,7 @@ with the assistance of Claude, an AI model made by Anthropic.
                         the zonal matrices and the four polynomial
                         identities that use them (see zonal/README.md)
   misc/               Utility and diagnostic scripts
-  lean/               Seven Lean 4 verifications: the equilibrium stress of
+  lean/               Eight Lean 4 verifications: the equilibrium stress of
                         Proposition 7.48 and of the corollary after it, with
                         the surrounding root-system combinatorics
                         (D4Stress.lean); the finite half of
@@ -214,9 +264,11 @@ with the assistance of Claude, an AI model made by Anthropic.
                         taken from certificate_check.py (D4CertData.lean,
                         generated by gen_data.py), the theorem settled by
                         native_decide (D4CertMain.lean).
-                        D4Closure.lean (v1.5.0) proves the identities of
-                        Section 2.8 over every commutative ring and its
-                        root-pair combinatorics by kernel computation.
+                        D4Closure.lean (v1.5.0, extended in v1.6.0)
+                        proves the identities of Section 2.8, those of
+                        Theorem 2.17 included, over every commutative ring
+                        and its root-pair combinatorics and counts by
+                        kernel computation.
                         The six files need no Mathlib and no lakefile:
                         run "lean D4Stress.lean", "lean D4Meet.lean",
                         "lean D4Certificate.lean",
@@ -637,8 +689,9 @@ with the assistance of Claude, an AI model made by Anthropic.
 
   closure_lemmas.py
                               Supports Section 2.8 (Lemmas 2.12 and 2.15,
-                              Proposition 2.13, Corollaries 2.14, 2.16 and
-                              2.17).  Symbolic checks of the identities,
+                              Proposition 2.13, Corollaries 2.14 and 2.16,
+                              and the angle quoted after Theorem 2.17).
+                              Symbolic checks of the identities,
                               integer enumeration of the orthogonal root
                               pairs at the vertices of the 24-cell and of
                               every set of at most four deleted roots, and
@@ -648,6 +701,27 @@ with the assistance of Claude, an AI model made by Anthropic.
                               A few seconds.  Log: runs/closure_lemmas.log.
                               The same exact content is in
                               lean/D4Closure.lean.
+
+  labelled_certificate_check.py
+                              Supports Theorem 2.17 (at most 23 centres
+                              within sqrt 6).  Rebuilds the certificate of
+                              Theorem 7.73 and its bound exactly, rechecks
+                              the positivity of its matrices, evaluates the
+                              constants s(D), a_D, fr(1, 1, 1/2), r, kappa
+                              and c in ball arithmetic (python-flint), reruns
+                              the branch and bound of (C), and runs the two
+                              branch and bounds of the ranges II_s and II_f
+                              of t, with the tables of the Gamma_i in ball
+                              arithmetic.  About six minutes.  Log:
+                              runs/labelled_certificate_check.log.  Option
+                              --skip-region-1 leaves out the rerun of (C).
+
+  truncated_search.py M [starts] [seed]
+                              Supports "What is left" after Theorem 2.18.
+                              Floating point, exploration: minimises the
+                              right side of Lemma 2.15 over configurations
+                              of exactly M centres within sqrt 6.  Logs:
+                              runs/truncated_search_M24.log to _M27.log.
 
   near_contact_probe.py
                               Supports the remarks after Theorem 2.18.
@@ -1514,8 +1588,8 @@ that the consuming scripts need not wait for them.
   cvxpy >= 1.9, with a working SDP solver (e.g. CLARABEL, bundled with
     cvxpy's default install) -- gram_sos_lib.py and quartic_fit_and_check.py
     only
-  python-flint >= 0.9 -- llm24_certificate_check.py, shell_reduction.py
-    and closure_lemmas.py only
+  python-flint >= 0.9 -- llm24_certificate_check.py, shell_reduction.py,
+    closure_lemmas.py and labelled_certificate_check.py only
 
 ## Usage
 

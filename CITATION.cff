@@ -18,7 +18,7 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "v1.5.0"
+version: "v1.6.0"
 date-released: "2026-09-25"
 keywords:
   - sphere packing
@@ -44,7 +44,12 @@ abstract: >-
   an AI model made by Anthropic. Version v1.5.0 narrows the remaining case (a
   strict local minimum at D4 among all packings, and further reductions), with
   a second machine-verification layer in Lean 4 for its exact content,
-  developed in the same way.
+  developed in the same way. Version v1.6.0 carries the three-point
+  certificate from contacts to centres at any distance and proves the bound
+  whenever at most twenty-three centres lie within sqrt 6, with its
+  verification in ball and interval arithmetic
+  (labelled_certificate_check.py); it too was developed, and its
+  computations run, with the assistance of Claude.
 doi: "10.5281/zenodo.22766562"
 identifiers:
   - type: doi
