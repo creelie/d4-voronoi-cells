@@ -1,5 +1,10 @@
 # v1.5.0
 
+*v1.5.0 was merged but not archived as a release of its own; its changes
+are part of v1.6.0, where Theorem 2.17 (at most twenty-three centres within
+sqrt 6) replaces Corollary 2.17 below and the figures after Figure 5 are
+renumbered by three.  See RELEASE_NOTES_v1.6.0.md.*
+
 Supplementary package for *The Sphere Packing Problem in Dimension 4 and the
 Twenty-Four-Cell Conjecture*.  This release narrows the case that v1.4.0
 left open and adds a second machine-verification layer, in Lean 4, for the

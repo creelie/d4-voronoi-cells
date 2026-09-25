@@ -3,8 +3,9 @@
 This report was written against v1.3.0.  The corrections it led to, in the
 package and in the manuscript, are released as v1.4.0; the section
 "Addendum: v1.4.0" at the end says what v1.4.0 proves and what it leaves
-open, and "Addendum: v1.5.0" what v1.5.0 adds (Section 2.8 of the paper and
-the Lean file D4Closure.lean).  Theorem, lemma and section numbers in the body are those of v1.3.0.
+open, "Addendum: v1.5.0" what v1.5.0 adds (Section 2.8 of the paper and
+the Lean file D4Closure.lean), and "Addendum: v1.6.0" the theorem for at
+most twenty-three centres within sqrt 6 and the DOI audit.  Theorem, lemma and section numbers in the body are those of v1.3.0.
 
 Scope: the manuscript `paper/D4.tex` ("The Sphere Packing Problem in
 Dimension 4 and the Twenty-Four-Cell Conjecture") and everything in this
@@ -559,3 +560,70 @@ Checks:
   DOIs are unchanged since v1.3.0, whose release notes record that every
   one was resolved and compared with its metadata.  The exceptions are the
   two Zenodo DOIs of this package.
+
+## Addendum: v1.6.0
+
+v1.6.0 proves Theorem 2.17: a centre with at most 23 other centres within
+sqrt 6 has vol(V_c) > 8, whatever their distances.  It replaces Corollary
+2.17 of v1.5.0 (twenty-three contacts), which it contains.  Conjecture 1.6
+is narrowed to a centre with at least 24 other centres within sqrt 6, one of
+them at a distance between 2 + epsilon_0 and sqrt 6.  It is not proved, and
+the paper does not claim that it is.
+
+Checks:
+
+- **`multi_cap/labelled_certificate_check.py`** passes every step; the log
+  is `multi_cap/runs/labelled_certificate_check.log` (about six minutes).
+  - It rebuilds the certificate of Theorem 7.73 and B = 0.0929000002
+    exactly, and rechecks the positivity of the matrices.
+  - In ball arithmetic it gets s(D) = 0.0928820620 > 8 - A_* for
+    D = 2.1648, a_D = 0.5732294553, a_D / (1 - (D/2) a_D) = 1.5103 < 2,
+    fr(1, 1, 1/2) = 0.02371033 < 1/22, r >= 0.03790036,
+    kappa >= 0.69636299 and c >= 0.105569628 (in units of 1/1000,
+    105.569628).
+  - It reruns the branch and bound of (C) (313 780 boxes).
+  - It runs the new ones on 1/2 <= t <= 0.51 (30 051 boxes verified,
+    3 408 outside the domain) and on 0.51 <= t <= a_D (6 482 verified,
+    1 242 outside).
+- **The reduction** Q >= Q_0 + Gamma_1 + Gamma_2 + Gamma_3 and the table
+  bound were tested against the true labelled quantity, the six-variable
+  function computed by quadrature.  The test used 1 600 random admissible
+  triples with t > 1/2 and 1 500 in the slab.  There was no violation: the
+  true value was never below either bound, and the least gap in the slab
+  was 0.00019.  At the corner d_i = D, u = v = t = a_D the true value is
+  11.02 (in units of 1/1000), against -1.85 for Q_0 alone.
+- **`multi_cap/truncated_search.py`** is exploration, not proof.  Its
+  closed form of the pair terms agrees with quadrature to about 1e-15.  It
+  minimises the right side of Lemma 2.15 with exactly M centres within
+  sqrt 6, from twelve starts each; the logs are
+  `multi_cap/runs/truncated_search_M24.log` to `_M27.log`.
+  - M = 24: every run ends at the root system, 7.906940.
+  - M = 25 to 27: every local minimum found lies above 8.26.
+- **`lean/D4Closure.lean`** proves two more theorems:
+  - `amax_tangent` (grind, three standard axioms);
+  - `triple_counts` (decide, no axioms).
+
+  `lean/run_all.sh` passes; the log is
+  `lean/runs/run_all_2026-09-25_v1.6.0.log`.
+- **The figures.**
+  - `fig_labelled.py` passes the label collision test (0 collisions).
+  - `tikz_labelled.tex` and `tikz_stop.tex` were rendered at 500 dpi and
+    inspected: no label touches a line or another label.
+- **The manuscript** builds to 162 pages, with no undefined references and
+  no overfull or underfull boxes.  No sentence of more than 90 characters
+  occurs twice.  The two repeated attributions of the classification of
+  24-point codes, in the introduction and the conclusion, are reworded.
+- **The bibliography** was checked entry by entry against the publishers'
+  and indexers' pages found by web search.  doi.org, api.crossref.org,
+  api.datacite.org, arxiv.org and data.4tu.nl are not reachable from here.
+  The record is `logs/doi_audit_2026-09-25.md`.
+  - 49 of the 51 DOIs are confirmed with matching title, authors, volume,
+    year and pages.
+  - BBB26 is confirmed apart from its version suffix `.v11`, which the
+    authors should check against the current version on Preprints.org.
+  - LLM24data (4TU.ResearchData) is consistent with the archive downloaded
+    through it, which matches the recorded MD5, but is not indexed by the
+    search engines.
+
+  No DOI points to a different work.
+
