@@ -1,10 +1,27 @@
 # Lean 4 verification
 
-Five files and two small Lake projects: machine checks of finite
-arithmetic taken from the paper.  `run_all.sh` checks the five files with
+Six files and two small Lake projects: machine checks of finite
+arithmetic and of polynomial identities taken from the paper.
+`run_all.sh` checks the six files with
 the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
 prints the axiom report of each; the two Lake projects are built with
 `lake build` in their directories.
+
+`D4Closure.lean` (new in v1.5.0) covers the exact content of Section 2.8.
+The identities behind Lemma 2.12 (holes), Proposition 2.13 (the inversion
+hull, its denominator 2|y|^2 cleared) and Lemma 2.15 (four points pairwise
+at least 2 apart need a ball of radius sqrt(3/2): the sum of the squared
+distances and the minimality of the centroid) are proved over every
+commutative ring with the ring normaliser of `grind`, so they hold verbatim
+over the reals.  The finite content of Corollary 2.14 is proved by
+`decide +kernel`: the 24 vertices of the 24-cell, each on six facets; each
+the sum of exactly three orthogonal root pairs, 72 pairs in all; no deleted
+set of one or two roots meets all three pairs at a vertex; and of the 2024
+deleted triples exactly 96 do, each pairwise at 60 degrees with a common
+vertex.  The identities depend on propext, Classical.choice and Quot.sound,
+the combinatorial theorems on propext at most; nothing uses
+`native_decide`.  About a minute and a half.  The log of the run behind
+v1.5.0 is `runs/run_all_2026-09-25.log`.
 
 `D4Stress.lean` covers Proposition 7.48 and the corollary that follows it:
 the equilibrium stress on the eighty-eight tight pairs of a deletion
@@ -84,16 +101,18 @@ three counts the enumeration returns and settles them by `native_decide`.
 ## What they need
 
 A Lean 4 toolchain, and nothing else. There is no Mathlib dependency. For
-the five files there is no `lakefile`: install elan and run
+the six files there is no `lakefile`: install elan and run
 
     lean D4Stress.lean
     lean D4Meet.lean
     lean D4Certificate.lean
     lean D4InnerProducts.lean
     lean D4RootLattices.lean
+    lean D4Closure.lean
 
 or `sh run_all.sh`. The first two take a few seconds, the third about
-twenty, the fourth about forty and the fifth about six. Silence means
+twenty, the fourth about forty, the fifth about six and the sixth about
+ninety. Silence means
 every theorem in the file was accepted by the kernel; the axiom audit at the foot of each file then prints
 one line per theorem. For the projects,
 

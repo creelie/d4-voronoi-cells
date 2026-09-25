@@ -1,5 +1,9 @@
 # v1.4.0
 
+*Theorem numbers below are those of the v1.4.0 manuscript.  In v1.5.0 a
+new Theorem 1.7 is inserted, so the density bound is Theorem 1.8 there, and
+Section 2.8 narrows Conjecture 1.6; see RELEASE_NOTES_v1.5.0.md.*
+
 Supplementary package for *The Sphere Packing Problem in Dimension 4 and the
 Twenty-Four-Cell Conjecture*, after an independent re-verification of every
 computation of the paper, with the corrections it led to in the paper and in
