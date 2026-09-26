@@ -733,9 +733,13 @@ What is new, and how it was checked:
 - **Correction 3: 2/sqrt(397).**  The submitted patch printed 0.1003774;
   the value is 0.1003771.
 - **Theorem 2.18.**
-  - `multi_cap/explicit_eps0.py` now uses
-    c_a = (sqrt 11/2)/(1 - (3 sqrt 11 + 1/2)/48), bounded above with the
-    rational 3.3166248 > sqrt 11.
+  - Estimate (a) was sharpened and rederived by hand.  The positive parts
+    of g = Lambda tau are at most a entrywise, and the negative parts sum to
+    at most A = sum a.  With ||g||_inf <= (sqrt 11/4) ||g||_2 this gives
+    ||g||_2 <= (sqrt 11/8) A + ((11/64) A^2 + ||a||_2^2)^(1/2), hence
+    ||eps|| <= 2.129 (1 + delta) S + 9.49 ||eps||^2.  `multi_cap/explicit_eps0.py`
+    uses rational upper bounds for sqrt 11, sqrt(27/16) and sqrt(75/64), and
+    concludes ||eps|| <= 2.3674 (1 + delta) S at S = 4e-3.
   - Step (b) of the proof is new and was checked in three ways.
     1. The derivation was redone by hand.  The facet formula of step (b) is an
        identity, and the two facet bounds follow from face-by-face
@@ -747,7 +751,7 @@ What is new, and how it was checked:
     3. `explicit_eps0.py` evaluates the resulting bracket in exact
        arithmetic.  It checks that the coefficient of |eps|^2 in the losses
        exceeds 2/3, so that the largest |eps| is the worst case.
-  - The bracket is 0.2197 at S = 1.5e-3, and the theorem now states that
+  - The bracket is 0.1355 at S = 4e-3, and the theorem now states that
     neighbourhood.
 - **Remark 7.78.**  `multi_cap/robust_ceiling.py` recomputes L2 = 0.22572
   and q_min = 2.6209e-4 from the exact sigma_2 and gives the ceilings
