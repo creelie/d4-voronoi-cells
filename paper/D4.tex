@@ -6288,7 +6288,8 @@ its minors is an integer. Every $5\times5$ minor of $2G$ vanishes, since
 $G$ has rank at most $4$; so every $5\times5$ minor of $2g$ vanishes, and
 $2g$ has rank at most $4$. Every principal minor of $2G$ is nonnegative;
 so every principal minor of $2g$ of order at most $4$ is an integer above
-$-1$, hence nonnegative, and $2g$ is positive semidefinite. It is
+$-1$, hence nonnegative, those of higher order vanish, and $2g$ is
+positive semidefinite. It is
 therefore the Gram matrix of $24$ vectors of $\mathbb R^4$ of norm $\sqrt2$
 with pairwise inner products in $\{-2,-1,0,1\}$, distinct because no
 inner product is $2$, and \cref{lem:root-lattice} makes $g$ the Gram
@@ -6336,9 +6337,10 @@ the bound is linear and the window is far wider than needed.}
 Neither statement is sharp. The bound $E$ counts every triple and every
 quadruple of the $24$ points as if each had an inner product above
 $\tfrac12$, and bounds each sum of squares on the whole cube
-$[-1,1]^6$; and the lemma asks for inner products within $3\cdot10^{-4}$
-of the four values where a tenth of that would be plenty, because it
-deduces integrality from a single determinant. What matters for
+$[-1,1]^6$; and the lemma needs the inner products within
+$3\cdot10^{-4}$ of the four values, far closer than the conclusion should
+require, because it deduces integrality from a bound on each determinant
+separately. What matters for
 \cref{thm:near-contact} is that every constant is a number.%
 \footnote{The constant that dominates is the sum of squares of the
   four-point constraint with weight $e_1$, the sum of the six values

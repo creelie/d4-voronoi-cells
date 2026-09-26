@@ -80,7 +80,7 @@ sqrt 6.  Two pieces of work would close it.
   - The opening of Section 2.8, "What is left" and the conclusion.
   - The index of notation, the code index, the data and code availability
     statement, and the archive entry of the bibliography (v1.7.0).
-- **Build.**  165 pages, with no undefined references and no overfull or
+- **Build.**  166 pages, with no undefined references and no overfull or
   underfull boxes.
 
 ## The package

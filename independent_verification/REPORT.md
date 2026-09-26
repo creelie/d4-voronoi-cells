@@ -674,7 +674,7 @@ sum delta_i = 0.1551 with all 24 centres pushed out evenly, and at
 delta = 0.1971 with one centre pushed out.  The explicit neighbourhood of
 Theorem 2.18 ends at sum delta_i = 4e-5.  The log is
 `multi_cap/runs/truncated_search_rays.log`.
-The paper builds to 165 pages with no undefined references and no overfull or
+The paper builds to 166 pages with no undefined references and no overfull or
 underfull boxes; the new section is 7.13, at the end of Section 7, so no
 theorem, lemma or section number changes.  The new Figure 25
 (`paper/figures_new/tikz_eps0.tex`) was rendered at 500 dpi and inspected: no
