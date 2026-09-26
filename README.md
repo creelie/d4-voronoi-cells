@@ -101,7 +101,11 @@ by Anthropic.
                         or more found.  Logs: runs/count_survey.log,
                         runs/count_survey_pack.log.
   paper/figures_new/tikz_overlap_check.py
-                      The collision test of the TikZ figures.
+                      The collision test of the TikZ figures: no two nodes
+                        overlap, tick labels included, and nothing drawn
+                        passes under any text.  All six TikZ figures pass it
+                        (tikz_overlap_check.log); Figures 4, 6, 8 and 27 are
+                        redrawn to do so.
   multi_cap/certify_cardinality.py, multi_cap/cardinality_sdp.py,
   multi_cap/cardinality_certificates/
                       Theorem 7.79: the proof, the search, and three

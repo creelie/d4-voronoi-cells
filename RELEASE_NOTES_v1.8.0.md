@@ -116,8 +116,11 @@ Everything proved in v1.7.0 still stands.  New or sharper:
 - New: level2/ (above) and multi_cap/count_survey.py, with logs in
   level2/runs and multi_cap/runs/count_survey*.log.
 - New: paper/figures_new/tikz_overlap_check.py, the collision test of the
-  TikZ figures: no two named nodes overlap, and under each free label the
-  drawing without labels is blank or one flat fill.
+  TikZ figures, run on all six of them in two modes (log:
+  tikz_overlap_check.log).  No two nodes overlap, pgfplots tick labels
+  included, and no line, curve, marker or outline passes under any text;
+  a label may sit on a fill or a smooth shading.  Figures 4, 6, 8 and 27
+  had labels touching lines or balls; they are redrawn.
 - New: independent_verification/rebuilt_from_text/d4_independent_check.py,
   a recomputation of the paper's numerical claims from the statements
   alone.
