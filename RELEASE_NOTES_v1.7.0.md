@@ -98,6 +98,11 @@ sqrt 6.  Two pieces of work would close it.
   Log: `multi_cap/runs/explicit_eps0.log`.
 - `multi_cap/truncated_search.py` gains the mode `rays` (log
   `runs/truncated_search_rays.log`), quoted in "What is left".
+- `multi_cap/three_point_probes.py` is new (exploration; log
+  `runs/three_point_probes.log`).  Three-point certificates cannot force the
+  pair inner products of a 24-point code into windows about the D4 values,
+  and at degree 7 they cannot exclude 24 contacts plus one centre at sqrt 6.
+  So the missing statement needs the second level of the hierarchy.
 - `README.md`, `independent_verification/REPORT.md` (Addendum: v1.7.0),
   `CITATION.cff` and `.zenodo.json` are updated to v1.7.0.  The descriptions
   in `CITATION.cff` and `.zenodo.json`, which Zenodo shows on the record,

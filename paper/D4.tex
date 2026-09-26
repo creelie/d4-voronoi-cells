@@ -1920,7 +1920,19 @@ the certificate is exact at slack $0$, and its two-point polynomial has
 double zeros at $-\frac12$ and $0$, so the distance it controls is the
 square root of the error. A form at moderate slack would need a new
 computation at the second level of the hierarchy, with a margin, of the
-kind carried out in \cite{LLM24}.
+kind carried out in \cite{LLM24}. The first level cannot supply it
+(\texttt{three\_point\_probes.py}, floating point with sampled constraints).
+Asked at degree $12$ for a three-point certificate that charges a positive
+amount to every pair of a $24$-point code whose inner product lies outside
+windows of half-width $0.1$, or even $0.2$, about $-1$, $-\frac12$, $0$ and
+$\frac12$, the programme finds that the best one charges nothing, at a count
+bound of $24.05$. And at degree $7$ no three-point certificate excludes
+twenty-four contacts together with one more centre whose inner products with
+them reach $\sqrt6/4=0.612$, which is where a centre at distance $\sqrt6$
+sits, although one with inner products up to $\frac12$ is excluded. The
+second obstacle is the first in another guise: it is the uniqueness of the
+root system, whose covering radius leaves no room for a twenty-fifth centre
+within $\sqrt6$, that the first level does not see.
 
 
 \section{The combinatorial cell register}\label{sec:chamber-register}

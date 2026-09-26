@@ -783,6 +783,19 @@ with the assistance of Claude, an AI model made by Anthropic.
                               in exact arithmetic.  Sixteen seconds.  Log:
                               runs/explicit_eps0.log.
 
+  three_point_probes.py windows d kappa win [rounds]
+  three_point_probes.py cap d tau [rounds]
+                              Supports "What is left" after Theorem 2.18.
+                              Floating point, sampled constraints,
+                              exploration: whether a three-point certificate
+                              can force the pair inner products of a 24-point
+                              code into windows about -1, -1/2, 0, 1/2 (at
+                              degree 12 it cannot, even with half-width 0.2),
+                              and whether it can exclude 24 contacts plus one
+                              centre with inner products up to tau (at degree
+                              7: yes at tau = 1/2, no at tau = 0.612).  Log:
+                              runs/three_point_probes.log.
+
   truncated_search.py M [starts] [seed]
   truncated_search.py rays
                               Supports "What is left" after Theorem 2.18.
