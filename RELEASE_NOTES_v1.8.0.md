@@ -30,8 +30,15 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   - No constant of this argument can pass 0.244.  A single displaced
     direction has ||Lambda tau||_1 / ||tau||_2 = sqrt(96/11).
 - **Theorem 2.18, second statement.**
+  - The explicit neighbourhood grows from sum delta_i <= 4e-5 to 1.5e-3,
+    a factor of about 40.
   - The constant of estimate (a) falls from 192/71 to below 2.1199.
-  - The explicit neighbourhood grows from sum delta_i <= 4e-5 to 6e-5.
+  - Step (b) is new.  The derivative of the volume along the linear path is
+    written exactly, facet by facet.  Each facet is compared, face by face,
+    with the regular octahedron of the 24-cell.  The losses are summed over
+    the 8-regular edge graph of the 24-cell, so every loss is of second
+    order with no factor of the largest perturbation.
+  - The bracket is at least 0.2 at 1.5e-3 and positive up to 2e-3.
   - epsilon_0 = 4e-26 is unchanged.
 - **Remark 7.78 (the ceiling of Theorem 7.76).**
   - Even with the triple and quadruple terms set to zero, the robust reading
@@ -66,17 +73,20 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   - cardinality_sdp.py, the search and the sweep.
   - cardinality_certificates/, three certificates.
   - robust_ceiling.py and code25_search.py.
+  - facet_bounds_probe.py, a numerical check of the new step (b).
   - Logs in runs/.
 - Changed in multi_cap:
   - rigidity_spectrum.py adds the exact 11/16 check and sqrt(96/11).
-  - explicit_eps0.py uses the new constant of estimate (a).
+  - explicit_eps0.py uses the new constant of estimate (a) and the new
+    step (b).
 - New: independent_verification/rebuilt_from_text/d4_independent_check.py,
   a recomputation of the paper's numerical claims from the statements
   alone.
 - Paper:
   - New: Theorem 7.79, Remark 7.78 and Figure 26
     (figures_new/fig_cardinality.py).
-  - Revised: Lemma 7.50, Theorem 7.51, Theorem 2.18, "What is left", the
+  - Revised: Lemma 7.50, Theorem 7.51, Theorem 2.18 (a new proof of its
+    step (b)), "What is left", the
     abstract, the introduction, the code index and the data availability
     statement.
   - Figure 16(d) and Figure 25 redrawn; later figures renumbered by one.

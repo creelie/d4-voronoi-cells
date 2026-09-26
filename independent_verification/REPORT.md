@@ -728,11 +728,23 @@ What is new, and how it was checked:
   nu <= sqrt(96/11), so this argument cannot give a radius above 0.244.
 - **Correction 3: 2/sqrt(397).**  The submitted patch printed 0.1003774;
   the value is 0.1003771.
-- **Theorem 2.18.**  `multi_cap/explicit_eps0.py` now uses
-  c_a = (sqrt 11/2)/(1 - (3 sqrt 11 + 1/2)/48), bounded above with the
-  rational 3.3166248 > sqrt 11.  It checks 2 c_a (1 + 6e-5) + 1 <= 5.24 and
-  sqrt 24 c_a 2 (1 + 6e-5) < 20.8.  The bracket is 0.0443 at S = 6e-5, in
-  exact arithmetic.
+- **Theorem 2.18.**
+  - `multi_cap/explicit_eps0.py` now uses
+    c_a = (sqrt 11/2)/(1 - (3 sqrt 11 + 1/2)/48), bounded above with the
+    rational 3.3166248 > sqrt 11.
+  - Step (b) of the proof is new and was checked in three ways.
+    1. The derivation was redone by hand.  The facet formula of step (b) is an
+       identity, and the two facet bounds follow from face-by-face
+       comparisons with the octahedron.
+    2. `multi_cap/facet_bounds_probe.py` confirms the identity numerically
+       (relative 1e-7) and the facet bounds on 4320 facets of random and
+       adversarial perturbations.  The bounds are used to at most 82 and
+       14 per cent.
+    3. `explicit_eps0.py` evaluates the resulting bracket in exact
+       arithmetic.  It checks that the coefficient of |eps|^2 in the losses
+       exceeds 2/3, so that the largest |eps| is the worst case.
+  - The bracket is 0.2197 at S = 1.5e-3, and the theorem now states that
+    neighbourhood.
 - **Remark 7.78.**  `multi_cap/robust_ceiling.py` recomputes L2 = 0.22572
   and q_min = 2.6209e-4 from the exact sigma_2 and gives the ceilings
   4.73e-14 (delta = 3e-4) and 9.24e-9 (delta = 1/4).

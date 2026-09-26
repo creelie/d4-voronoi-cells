@@ -1749,7 +1749,7 @@ $2+\varepsilon_0$ and $\sqrt6$, then $\vol(V_c)\ge8$, with equality only if
 the contacts of $c$ form a copy of $\sqrt2\,\Rt$ and $V_c$ is the regular
 $24$-cell they cut out. The same conclusion holds whenever exactly $24$
 centres lie within $\sqrt6$ of $c$, at distances $2+\delta_i$ with
-$\sum_i\delta_i\le6\cdot10^{-5}$, and their directions $W$ satisfy
+$\sum_i\delta_i\le1.5\cdot10^{-3}$, and their directions $W$ satisfy
 $d(W)\le\frac1{48}$, with $d$ as in \cref{thm:local-uniqueness}.
 \end{thm}
 
@@ -1805,54 +1805,99 @@ $\|\varepsilon\|\le(3\sqrt{11}+\frac12)\|\varepsilon\|^2+\frac{\sqrt{11}}2\kappa
 For $\|\varepsilon\|\le1/48$ this gives $\|\varepsilon\|\le c_a\kappa$ with
 $c_a=\frac{\sqrt{11}}2\big/\bigl(1-\frac{1}{48}(3\sqrt{11}+\frac12)\bigr)<2.1199$,
 and every index lies in eight pairs of $T$, so
-$\kappa\le2(1+\delta)S$. Consequently
-$\sum_ie_i\le\sqrt{24}\,\|\varepsilon\|\le20.8\,S$ and
-$\Theta\le\|\varepsilon\|+S\le5.24\,S\le3.2\cdot10^{-4}$.
+$\kappa\le2(1+\delta)S$. Consequently $\|\varepsilon\|\le4.25\,S$ and
+$\Theta\le\|\varepsilon\|+S\le5.25\,S\le8\cdot10^{-3}$.
 
-(b) \emph{The volume to first order, with its error.} Move the data
+(b) \emph{The volume to second order, facet by facet.} Move the data
 linearly, $w_i(t)=u_i+t\varepsilon_i$ and $h_i(t)=1+t\delta_i/2$ for
 $0\le t\le1$, and let $P(t)=\{x:\langle x,w_i(t)\rangle\le h_i(t)\}$, so that
-$P(0)=Q$ and $P(1)=V(Y)$. Each facet of $P(t)$ moves with normal velocity
-$(\dot h_i-\langle x,\dot w_i\rangle)/|w_i|$, so
+$P(0)=Q$ and $P(1)=V(Y)$. Each facet $F_i(t)$ of $P(t)$ moves with normal
+velocity $(\dot h_i-\langle x,\dot w_i\rangle)/|w_i|$, so the derivative of
+$\vol P(t)$ is $\sum_i\int_{F_i(t)}(\frac12\delta_i-\langle x,\varepsilon_i\rangle)\,dA/|w_i(t)|$.
+Parametrise $F_i(t)$ by its projection along $u_i$ onto the hyperplane of
+$F_i^0$: $x=u_i+z+s(z)u_i$ with $z\perp u_i$ and
+$s(z)=q_i(\frac12\delta_i+\frac12e_i^2-\langle z,\varepsilon_i\rangle)$,
+$q_i=t/(1-\frac12te_i^2)$, which is what $\langle x,w_i(t)\rangle=h_i(t)$
+requires. Let $G_i(t)\subset u_i^\perp$ be the image and
+$m_i(t)=\int_{G_i(t)}z\,dz$. The area element of the hyperplane is
+$|w_i(t)|/(1-\frac12te_i^2)$ times $dz$, and, as
+$\langle u_i,\varepsilon_i\rangle=-\frac12e_i^2$,
+$\frac12\delta_i-\langle x,\varepsilon_i\rangle=(\frac12\delta_i+\frac12e_i^2-\langle z,\varepsilon_i\rangle)/(1-\frac12te_i^2)$;
+so, exactly,
+\begin{equation}\label{eq:facet-derivative}
+  \frac{d}{dt}\vol P(t)=\sum_i\frac{(\frac12\delta_i+\frac12e_i^2)\vol G_i(t)-\langle\varepsilon_i,m_i(t)\rangle}{(1-\frac12te_i^2)^2} .
+\end{equation}
+At $t=0$, $G_i$ is the regular octahedron $O_i$ with vertices $\pm u_k$ at
+the six roots orthogonal to $u_i$: its volume is $\frac43$, its circumradius
+$1$, $m_i(0)=0$, and its faces lie on the planes $\langle z,u_j\rangle=\frac12$
+of the eight neighbours $j\sim i$, those with $\langle u_i,u_j\rangle=\frac12$,
+at distance $1/\sqrt3$ from $0$. Its sections parallel to a face at distance
+$c\le1/\sqrt3$ from $0$ have area $\frac{3\sqrt3}4(1-c^2)$, and so those of
+$\lambda O_i$ have area $\frac{3\sqrt3}4(\lambda^2-c^2)$.
+
+For $t>0$, $G_i(t)$ is cut out by the affine functions
+$\phi_j(z)=\langle x,w_j(t)\rangle-h_j(t)$, $j\ne i$. A first homothety
+locates it. $P(t)$ lies in the ball of radius
+$r_1=\sqrt2(1+\frac12\delta)/(1-\sqrt2e)$, because
+$\langle x,u_j\rangle\le h_j+|x|e$ and $\max_j\langle x,u_j\rangle\ge|x|/\sqrt2$; so
+a point $x$ of $F_i(t)$ has $|\langle x,u_i\rangle-1|\le\eta_1=\frac12\delta+r_1e$,
+and then $\langle z,u_j\rangle\le\frac12+\eta_2$ with
+$\eta_2=\eta_1+\frac12\delta+r_1e$, which puts $G_i(t)$ in $RO_i$,
+$R=1+2\eta_2$. For a neighbour $j$, with $x_0=u_i+z$ and
+$\langle u_j,\varepsilon_j\rangle=-\frac12e_j^2$,
 \[
-  \frac{d}{dt}\vol P(t)=\sum_i\frac{1}{|w_i(t)|}
-  \Bigl(\frac{\delta_i}{2}A_i(t)-\langle\varepsilon_i,M_i(t)\rangle\Bigr),
+  \phi_j(z)=\langle z,u_j\rangle-\tfrac12+\Delta_j(z),\qquad
+  \Delta_j(z)=t\langle x_0-u_j,\varepsilon_j\rangle-\tfrac12t(e_j^2+\delta_j)
+  +(\tfrac12+t\langle u_i,\varepsilon_j\rangle)\,s(z),
 \]
-$A_i$ the $3$-volume of the $i$-th facet $F_i(t)$ and $M_i=\int x\,dA$
-over it. At $t=0$ the facet $F_i^0$ is a regular octahedron of volume
-$\frac43$, centred at $u_i$ and symmetric about it, with circumradius $1$
-in its hyperplane, and every other constraint has slack at least $\tfrac12$
-at $u_i$, since $\langle u_i,u_j\rangle\le\frac12$. Two homotheties about
-$u_i$ trap $F_i(t)$. For the inner one put
-$\sigma=(\frac12\delta+\sqrt2e)/(1-e)$ and $\lambda_0=2(\sqrt2e+\sigma(1+e))$:
-for $z\in F_i^0$ the point $u_i+(1-\lambda_0)(z-u_i)$ has
-$\langle\cdot,u_j\rangle\le1-\frac12\lambda_0$ for $j\ne i$, and moving it
-along $u_i$ by at most $\sigma$ into the hyperplane of $F_i(t)$ gives a point
-with $\langle\cdot,w_j(t)\rangle\le1-\frac12\lambda_0+\sqrt2e+\sigma(1+e)\le h_j(t)$,
-a point of $F_i(t)$; the move along $u_i$ does not decrease $3$-volume, so
-$A_i(t)\ge\frac43(1-\lambda_0)^3$. For the outer one, $P(t)$ lies in the
-ball of radius $r_1=\sqrt2(1+\frac12\delta)/(1-\sqrt2e)$, because
-$\langle x,u_j\rangle\le h_j+|x|e$ and $\max_j\langle x,u_j\rangle\ge|x|/\sqrt2$;
-so a point $x$ of $F_i(t)$ has $|\langle x,u_i\rangle-1|\le\eta_1=\frac12\delta+r_1e$,
-and its projection $y$ along $u_i$ onto the hyperplane of $F_i^0$ has
-$\langle y,u_j\rangle\le1+\eta_2$, $\eta_2=\eta_1+\frac12\delta+r_1e$, which puts
-$y$ in $u_i+(1+2\eta_2)(F_i^0-u_i)$, since shrinking towards $u_i$ by the
-factor $1+2\eta_2$ restores every constraint. The facet is the lift of
-these projections, with area element multiplied by at most
-$(1+e)/(1-e)$. As $F_i^0$ is symmetric about $u_i$, the moment
-$\int(y-u_i)$ over the projection is at most the volume between the two
-homothets times $1+2\eta_2$, and collecting the terms,
+and $|x_0-u_j|^2=\frac14+|z-u_j+\frac12u_i|^2$ is at most $R^2$ on the part
+of $RO_i$ beyond the plane of face $j$ and at most $1+\sqrt3D$ at depth $D$
+beneath it in $O_i$. So, with
 \[
-  \frac{|M_i(t)-\tfrac43u_i|}{|w_i(t)|}\ \le\ \mu,\qquad
-  \lambda_0\le6.7\,\Theta,\quad \mu\le95\,\Theta ,
+  D_{ij}=Re_j+\tfrac12e_j^2+\tfrac12\delta_j
+  +\frac{(\frac12+e_j)(\frac12\delta_i+\frac12e_i^2+Re_i)}{1-\frac12e_i^2},\qquad
+  \theta_{ij}=\frac{2D_{ij}}{\sqrt3\,(1-e_j)},
 \]
-where $\mu$ is the explicit expression evaluated in
-\texttt{explicit\_eps0.py}. Since $1-\frac14e^2\le|w_i(t)|\le1$ and
-$\langle\varepsilon_i,u_i\rangle=-\frac12e_i^2$, the derivative is at least
-$\frac23(1-\lambda_0)^3S+\frac23\sum_ie_i^2-\mu\sum_ie_i$, and integrating,
+a point of $G_i(t)$ outside $O_i$ lies within $t\theta_{ij}$ beyond the plane
+of some face $j$, and a point of $O_i$ outside $G_i(t)$ lies within
+$t\theta_{ij}$ beneath the plane of some face $j$ or in the cap
+$\{\langle z,u_k\rangle\ge1-tD_\perp\}$ of $O_i$ at a vertex $u_k$, of volume
+$\frac23(tD_\perp)^3$, where
+$D_\perp=\sqrt5e+\frac12e^2+\frac12\delta+e(\frac12\delta+\frac12e^2+e)/(1-\frac12e^2)$
+bounds $|\Delta_k|/t$ on $O_i$ for the orthogonal roots $k$ in the same way;
+the roots at inner product $-\frac12$ and $-1$ with $u_i$ never cut $RO_i$.
+In particular $G_i(t)\subseteq\lambda O_i$ with
+$\lambda=1+\sqrt3\max\theta_{ij}$. Put $\theta_i=\sum_{j\sim i}\theta_{ij}$,
+$a_{\mathrm{in}}=\frac{3\sqrt3}4\bigl(1-(1/\sqrt3-\max\theta_{ij})^2\bigr)$ and
+$a_{\mathrm{out}}=\frac{3\sqrt3}4(\lambda^2-\frac13)$, the largest section areas
+of the slabs just found. Since $\int_{O_i}z\,dz=0$, the moment is at most
+$\int_{G_i\setminus O_i}|z|+\int_{O_i\setminus G_i}|z|$, and
 \[
-  \vol V(Y)\ \ge\ 8+\tfrac23(1-\lambda_0)^3S-20.8\,\mu\,S .
+  \vol G_i(t)\ \ge\ \tfrac43-a_{\mathrm{in}}\,t\theta_i-4(tD_\perp)^3,\qquad
+  |m_i(t)|\ \le\ (a_{\mathrm{in}}+R\,a_{\mathrm{out}})\,t\theta_i+4(tD_\perp)^3 .
 \]
+The denominators in \eqref{eq:facet-derivative} lie between $1$ and
+$\bar\gamma=(1-\frac12e^2)^{-2}$, so integrating over $t$,
+\begin{align*}
+  \vol V(Y)-8\ \ge\ \tfrac23\bigl(S+\|\varepsilon\|^2\bigr)
+  &-\tfrac12a_{\mathrm{in}}\sum_i\bigl(\tfrac12\delta_i+\tfrac12e_i^2\bigr)\theta_i
+  -\tfrac12\bar\gamma\,(a_{\mathrm{in}}+Ra_{\mathrm{out}})\sum_ie_i\theta_i\\
+  &-\bigl(\tfrac12S+\tfrac12\|\varepsilon\|^2+\bar\gamma\sqrt{24}\,\|\varepsilon\|\bigr)D_\perp^3 .
+\end{align*}
+Each facet is charged only with the perturbations of its own eight
+neighbours, and the neighbour relation is the edge graph of the $24$-cell,
+regular of degree $8$; so
+$\sum_i\sum_{j\sim i}e_ie_j\le8\|\varepsilon\|^2$ and
+$\sum_i\sum_{j\sim i}e_i\delta_j\le8\|\varepsilon\|\,\|\delta\|_2$, and with
+$D_{ij}\le R'e_j+\frac12\delta_j+c_3(\frac12\delta_i+R'e_i)$,
+$R'=R+\frac12e$, $c_3=(\frac12+e)/(1-\frac12e^2)$,
+\[
+  \sum_ie_i\theta_i\le k_1\bigl(8(1+c_3)R'\|\varepsilon\|^2+4(1+c_3)\|\varepsilon\|S\bigr),\quad
+  \sum_i\delta_i\theta_i\le k_1\bigl(8(1+c_3)R'S\|\varepsilon\|+4(1+c_3)S^2\bigr),
+\]
+$k_1=2/(\sqrt3(1-e))$, using $\|\delta\|_2\le S$. Every loss is thus of
+second order in $S$, through $\|\varepsilon\|\le4.25\,S$, with no factor of
+the size of the largest perturbation.
 
 (c) \emph{The hull costs only a fourth-order amount.} For $x\in V(Y)$,
 $\langle x,u_i\rangle\le h_i+|x|e_i$, so $V(Y)\subseteq(1+\theta)Q$ with
@@ -1872,14 +1917,17 @@ of volume $2s^4$, and
 $\vol(V(Y)\setminus K(Y))\le48s^4\le13\,958\,\Theta^4$.
 
 By \cref{prop:inversion-hull}, (b), (c) and (a),
-\[
-  \vol(V_c)\ \ge\ \vol(V(Y)\cap K(Y))\ \ge\ 8+S\Bigl(\tfrac23(1-\lambda_0)^3-20.8\,\mu
-  -13\,958\cdot5.24^4S^3\Bigr),
-\]
-and \texttt{explicit\_eps0.py} finds the bracket at least $0.02$ for
-$S\le6\cdot10^{-5}$, in exact arithmetic with the expressions for
-$\lambda_0$ and $\mu$ at $\Theta=5.24\,S$ (each is increasing in $\Theta$). So
-$\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
+$\vol(V_c)\ge\vol(V(Y)\cap K(Y))\ge8+S\cdot\beta(S)$, where $\beta(S)$ is
+$\frac23$ less the losses of (b) and the hull term $13\,958\,\Theta^4$ of (c),
+all divided by $S$ and evaluated at $\|\varepsilon\|=2c_a(1+S)S$, $e=\|\varepsilon\|$,
+$\delta=S$ and $\Theta=e+\delta$. With these constants frozen, the losses are
+$\alpha\|\varepsilon\|^2+\beta'\|\varepsilon\|+\gamma'$ with $\alpha>\frac23$, so the
+largest $\|\varepsilon\|$ is the worst case; and every part of $\beta(S)$ other
+than $\frac23$ is increasing in $S$. \texttt{explicit\_eps0.py} evaluates
+$\beta$ in exact rational arithmetic and finds $\beta(1.5\cdot10^{-3})\ge0.2$:
+at that point the moment term costs $0.41\,S$, the volume term $0.02\,S$,
+the caps $10^{-4}S$ and the hull $0.04\,S$ (and $\beta$ stays positive up to
+$S=2\cdot10^{-3}$). So $\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
 (a), $Y=\sqrt2\,\Rt$, and $V_c\supseteq V(Y)\cap K(Y)=Q$ with
 $\vol(V_c)=8$ only if $V_c=Q$.
 \end{proof}
@@ -1913,7 +1961,7 @@ can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
 $\delta=0.197$ with one centre pushed out and the others in contact
 (\texttt{truncated\_search.py rays}), while the explicit neighbourhood of
-\cref{thm:near-contact} ends at $\sum\delta_i=6\cdot10^{-5}$. Letting the
+\cref{thm:near-contact} ends at $\sum\delta_i=1.5\cdot10^{-3}$. Letting the
 truncation radius grow with the distances does not change this: four points
 pairwise at least $2$ apart within $|x|$ of a point $x$ force
 $16|x|^2\ge12+d_1^2+d_2^2+d_3^2$ for the distances of the three centres
@@ -1924,8 +1972,10 @@ the crossing only from $0.1551$ to $0.1473$
 closing the rest would take is, at intermediate distances, a lower bound for
 the part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
 \cref{lem:no-triple} do not see, strong enough to bridge that factor of about
-two and a half thousand. The missing ingredient is the same on both sides of
-it. The rigidity of \cref{thm:local-uniqueness} controls the directions only
+a hundred. The facet-by-facet estimate of step (b) stays positive up to
+$\sum\delta_i=2\cdot10^{-3}$, and the rigidity it rests on stops soon after, so
+no sharpening of its constants closes that factor. The missing ingredient is
+the same on both sides of it. The rigidity of \cref{thm:local-uniqueness} controls the directions only
 while $d(W)\le\frac1{48}$, which estimate (a) guarantees only for
 $\sum_i\delta_i$ up to about $0.005$; beyond that, twenty-four directions
 whose inner products exceed $\tfrac12$ by an amount of order $10^{-2}$
@@ -10105,7 +10155,8 @@ and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{truncated\_search.py}, \texttt{count\_bound\_sqrt6.py},
 \texttt{explicit\_eps0.py}, \texttt{three\_point\_probes.py},
 \texttt{cardinality\_sdp.py}, \texttt{certify\_cardinality.py},
-\texttt{robust\_ceiling.py} and \texttt{code25\_search.py}), the
+\texttt{robust\_ceiling.py}, \texttt{code25\_search.py} and
+\texttt{facet\_bounds\_probe.py}), the
 scripts \texttt{level2\_numeric.py}, \texttt{level2\_sampled.py} and
 \texttt{d4\_independent\_check.py}, the
 Lean file \texttt{D4Closure.lean} and the scripts of the figures of
@@ -11332,8 +11383,12 @@ transformed vectors in ball arithmetic; it divides $\sigma_2$ exactly by
 its zeros and bounds the quotient from below; it checks the minor bounds
 of \cref{lem:root-lattice-robust}; and it evaluates the facet estimates of
 \cref{thm:near-contact} in exact arithmetic, finding
-$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le6\cdot10^{-5}$
-in about fifteen seconds. \texttt{certify\_cardinality.py} is the proof of
+$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le1.5\cdot10^{-3}$
+in about fifteen seconds. \texttt{facet\_bounds\_probe.py} checks step (b) of
+\cref{thm:near-contact} numerically on random and adversarial perturbations of
+the root system: the facet formula \eqref{eq:facet-derivative}, integrated
+over $t$, reproduces $\vol V(Y)-8$ to relative $10^{-7}$, and over $4320$
+facets the two facet bounds are used to at most $82$ and $14$ per cent. \texttt{certify\_cardinality.py} is the proof of
 \cref{thm:kissing-stable}: it reads a certificate of
 \texttt{cardinality\_certificates}, takes its entries as exact rationals,
 checks $f_k\ge0$ and the positive definiteness of every $F_k$ by exact

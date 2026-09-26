@@ -46,9 +46,16 @@ corresponds to the paper is v1.8.0.
   2/sqrt(577) = 0.08326 to 2/sqrt(397) = 0.10038.  No constant of this
   argument can pass 0.244: a single displaced direction has
   ||Lambda tau||_1/||tau||_2 = sqrt(96/11).
-- Theorem 2.18.  Estimate (a) improves from 192/71 to c_a < 2.1199, and the
-  explicit neighbourhood of the second statement from sum of delta_i <=
-  4e-5 to 6e-5 (explicit_eps0.py); epsilon_0 = 4e-26 is unchanged.
+- Theorem 2.18.  The explicit neighbourhood of the second statement grows
+  from sum of delta_i <= 4e-5 to 1.5e-3.  Estimate (a) improves from 192/71
+  to c_a < 2.1199, and step (b) is new: the derivative of the volume along the
+  linear path is written exactly facet by facet, each facet is compared face
+  by face with the regular octahedron, and the losses are summed over the
+  edge graph of the 24-cell, which is 8-regular, so that every loss is of
+  second order with no factor of the largest perturbation
+  (explicit_eps0.py, exact arithmetic; facet_bounds_probe.py checks the
+  formula and the facet bounds numerically).  epsilon_0 = 4e-26 is
+  unchanged.
 - Remark 7.78 (the ceiling of Theorem 7.76).  Even with the triple and
   quadruple terms set to zero, the robust reading of the LLM24 kernel pins
   the inner products only for slack kappa < 5.2e-7 delta^2, so it cannot
@@ -88,6 +95,11 @@ by Anthropic.
                       Remark 7.78; the 25-point code.  Logs:
                         runs/robust_ceiling.log, runs/code25_search.log,
                         runs/code25_best.txt.
+  multi_cap/explicit_eps0.py, multi_cap/facet_bounds_probe.py
+                      Theorem 2.18 with the facet-by-facet step (b): the
+                        bracket is at least 0.2 for sum of delta_i <= 1.5e-3
+                        and positive up to 2e-3.  Logs: runs/explicit_eps0.log,
+                        runs/facet_bounds_probe.log.
 
 ## What is new in v1.7.0
 
@@ -846,6 +858,16 @@ with the assistance of Claude, an AI model made by Anthropic.
                               runs/labelled_certificate_check.log.  Option
                               --skip-region-1 leaves out the rerun of (C).
 
+  facet_bounds_probe.py [trials] [seed]
+                              Supports step (b) of Theorem 2.18.  Floating
+                              point, exploration: on random and adversarial
+                              perturbations of the root system, the facet
+                              formula for the derivative of the volume
+                              reproduces vol P(1) - 8, and the facet bounds of
+                              step (b) hold (used to at most 82 and 14 per
+                              cent over 4320 facets).  Log:
+                              runs/facet_bounds_probe.log.
+
   explicit_eps0.py DATA      Supports Theorems 7.76 and 2.18 (the explicit
                               epsilon_0 = 4e-26).  DATA is the folder
                               proofs/4_24 of the certificate in
@@ -855,8 +877,10 @@ with the assistance of Claude, an AI model made by Anthropic.
                               python-flint), divides sigma_2 exactly by its
                               zeros and bounds the quotient below, checks
                               the minor bounds of Lemma 7.77, and evaluates
-                              the facet and hull estimates of Theorem 2.18
-                              in exact arithmetic.  Sixteen seconds.  Log:
+                              the facet-by-facet and hull estimates of
+                              Theorem 2.18 in exact arithmetic (the
+                              neighbourhood sum of delta_i <= 1.5e-3).
+                              About fifteen seconds.  Log:
                               runs/explicit_eps0.log.
 
   certify_cardinality.py CERT [e1] [e2] [wmin]
