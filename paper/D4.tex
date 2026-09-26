@@ -1749,7 +1749,7 @@ $2+\varepsilon_0$ and $\sqrt6$, then $\vol(V_c)\ge8$, with equality only if
 the contacts of $c$ form a copy of $\sqrt2\,\Rt$ and $V_c$ is the regular
 $24$-cell they cut out. The same conclusion holds whenever exactly $24$
 centres lie within $\sqrt6$ of $c$, at distances $2+\delta_i$ with
-$\sum_i\delta_i\le1.5\cdot10^{-3}$, and their directions $W$ satisfy
+$\sum_i\delta_i\le4\cdot10^{-3}$, and their directions $W$ satisfy
 $d(W)\le\frac1{48}$, with $d$ as in \cref{thm:local-uniqueness}.
 \end{thm}
 
@@ -1789,24 +1789,34 @@ $\varepsilon_i=w_i-u_i$, $e_i=|\varepsilon_i|$,
 $\|\varepsilon\|^2=\sum_ie_i^2=d(W)^2$, $S=\sum_i\delta_i$,
 $e=\max_ie_i$, $\delta=\max_i\delta_i$ and $\Theta=e+\delta$.
 
-(a) \emph{Rigidity with slack: $\|\varepsilon\|\le4.24\,(1+\delta)S$.} The
-proof of \cref{thm:local-uniqueness} goes through with the contact
-condition $\langle w_i,w_j\rangle\le\frac12$ on the $96$ pairs of $T$
-replaced by the packing condition $|y_i-y_j|\ge2$, which reads
+(a) \emph{Rigidity with slack: $\|\varepsilon\|\le2.38\,(1+\delta)S$ for
+$S\le4\cdot10^{-3}$.} The proof of \cref{thm:local-uniqueness} goes through
+with the contact condition $\langle w_i,w_j\rangle\le\frac12$ on the $96$
+pairs of $T$ replaced by the packing condition $|y_i-y_j|\ge2$, which reads
 $\langle w_i,w_j\rangle\le\frac12+\kappa_{ij}$ with
 $\kappa_{ij}=(d_i^2+d_j^2-d_id_j-4)/(2d_id_j)
-\le\frac14(\delta_i+\delta_j)+\frac18(\delta_i+\delta_j)^2$. The positive
-parts of $\Lambda\tau$ then sum to at most
-$6\|\varepsilon\|^2+\kappa$, $\kappa=\sum_T\kappa_{ij}$; the constant
-stress still makes the entries of $\Lambda\tau$ sum to $0$, so
-$\|\tau\|_2\le\frac{\sqrt{11}}4\|\Lambda\tau\|_1\le3\sqrt{11}\|\varepsilon\|^2+\frac{\sqrt{11}}2\kappa$ by
-\eqref{eq:sigma-one} and \eqref{eq:image-linf}, and with $\sum_i\rho_i^2\le\frac14\|\varepsilon\|^4$,
-$\|\varepsilon\|\le(3\sqrt{11}+\frac12)\|\varepsilon\|^2+\frac{\sqrt{11}}2\kappa$.
-For $\|\varepsilon\|\le1/48$ this gives $\|\varepsilon\|\le c_a\kappa$ with
-$c_a=\frac{\sqrt{11}}2\big/\bigl(1-\frac{1}{48}(3\sqrt{11}+\frac12)\bigr)<2.1199$,
-and every index lies in eight pairs of $T$, so
-$\kappa\le2(1+\delta)S$. Consequently $\|\varepsilon\|\le4.25\,S$ and
-$\Theta\le\|\varepsilon\|+S\le5.25\,S\le8\cdot10^{-3}$.
+\le\frac14(\delta_i+\delta_j)(1+\delta)$. So $g=\Lambda\tau$ satisfies
+$g_p\le a_p:=\kappa_{ij}+\frac14(e_i^2+e_j^2)+e_ie_j$ on every pair $p=\{i,j\}$ of
+$T$, and the constant stress still makes the entries of $g$ sum to $0$.
+Hence the positive parts of $g$ are at most $a$ entrywise, the negative
+parts sum to at most $A=\sum_Ta_p$, and by \eqref{eq:image-linf}
+\[
+  \|g\|_2^2\ \le\ \|a\|_2^2+\|g\|_\infty A\ \le\ \|a\|_2^2+\tfrac{\sqrt{11}}4\|g\|_2A,
+  \qquad
+  \|g\|_2\ \le\ \tfrac{\sqrt{11}}8A+\bigl(\tfrac{11}{64}A^2+\|a\|_2^2\bigr)^{1/2}.
+\]
+Every index lies in eight pairs of $T$, so $A\le2(1+\delta)S+6\|\varepsilon\|^2$
+and $\|a\|_2\le(1+\delta)\|\delta\|_2+6\|\varepsilon\|^2\le(1+\delta)S+6\|\varepsilon\|^2$.
+With $\|\tau\|_2\le\|g\|_2$ by \eqref{eq:sigma-one}, and
+$\|\varepsilon\|\le\|\tau\|_2+\frac12\|\varepsilon\|^2$, this gives
+$\|\varepsilon\|\le2.129(1+\delta)S+9.49\|\varepsilon\|^2$. For $\|\varepsilon\|\le1/48$
+the last term is at most $0.198\|\varepsilon\|$, so $\|\varepsilon\|\le2.66(1+\delta)S$;
+fed back once, $\|\varepsilon\|\le2.129(1+\delta)S/(1-9.49\cdot2.66(1+\delta)S)$,
+which is at most $2.38(1+\delta)S$ for $S\le4\cdot10^{-3}$. Consequently
+$\|\varepsilon\|\le2.39\,S$ and $\Theta\le\|\varepsilon\|+S\le3.39\,S\le1.4\cdot10^{-2}$.
+The argument of \cref{thm:local-uniqueness} passed from $\|g\|_1$ to $\|g\|_2$
+directly; bounding the positive and the negative parts separately is what
+halves the constant.
 
 (b) \emph{The volume to second order, facet by facet.} Move the data
 linearly, $w_i(t)=u_i+t\varepsilon_i$ and $h_i(t)=1+t\delta_i/2$ for
@@ -1896,7 +1906,7 @@ $R'=R+\frac12e$, $c_3=(\frac12+e)/(1-\frac12e^2)$,
   \sum_i\delta_i\theta_i\le k_1\bigl(8(1+c_3)R'S\|\varepsilon\|+4(1+c_3)S^2\bigr),
 \]
 $k_1=2/(\sqrt3(1-e))$, using $\|\delta\|_2\le S$. Every loss is thus of
-second order in $S$, through $\|\varepsilon\|\le4.25\,S$, with no factor of
+second order in $S$, through $\|\varepsilon\|\le2.39\,S$, with no factor of
 the size of the largest perturbation.
 
 (c) \emph{The hull costs only a fourth-order amount.} For $x\in V(Y)$,
@@ -1919,15 +1929,15 @@ $\vol(V(Y)\setminus K(Y))\le48s^4\le13\,958\,\Theta^4$.
 By \cref{prop:inversion-hull}, (b), (c) and (a),
 $\vol(V_c)\ge\vol(V(Y)\cap K(Y))\ge8+S\cdot\beta(S)$, where $\beta(S)$ is
 $\frac23$ less the losses of (b) and the hull term $13\,958\,\Theta^4$ of (c),
-all divided by $S$ and evaluated at $\|\varepsilon\|=2c_a(1+S)S$, $e=\|\varepsilon\|$,
+all divided by $S$ and evaluated at the bound of (a) for $\|\varepsilon\|$, $e=\|\varepsilon\|$,
 $\delta=S$ and $\Theta=e+\delta$. With these constants frozen, the losses are
 $\alpha\|\varepsilon\|^2+\beta'\|\varepsilon\|+\gamma'$ with $\alpha>\frac23$, so the
 largest $\|\varepsilon\|$ is the worst case; and every part of $\beta(S)$ other
 than $\frac23$ is increasing in $S$. \texttt{explicit\_eps0.py} evaluates
-$\beta$ in exact rational arithmetic and finds $\beta(1.5\cdot10^{-3})\ge0.2$:
-at that point the moment term costs $0.41\,S$, the volume term $0.02\,S$,
-the caps $10^{-4}S$ and the hull $0.04\,S$ (and $\beta$ stays positive up to
-$S=2\cdot10^{-3}$). So $\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
+$\beta$ in exact rational arithmetic and finds $\beta(4\cdot10^{-3})\ge0.1$:
+at that point the moment term costs $0.39\,S$, the volume term $0.04\,S$,
+the caps $2\cdot10^{-4}S$ and the hull $0.12\,S$ (and $\beta$ stays positive up to
+$S=4.5\cdot10^{-3}$). So $\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
 (a), $Y=\sqrt2\,\Rt$, and $V_c\supseteq V(Y)\cap K(Y)=Q$ with
 $\vol(V_c)=8$ only if $V_c=Q$.
 \end{proof}
@@ -1961,7 +1971,7 @@ can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
 $\delta=0.197$ with one centre pushed out and the others in contact
 (\texttt{truncated\_search.py rays}), while the explicit neighbourhood of
-\cref{thm:near-contact} ends at $\sum\delta_i=1.5\cdot10^{-3}$. Letting the
+\cref{thm:near-contact} ends at $\sum\delta_i=4\cdot10^{-3}$. Letting the
 truncation radius grow with the distances does not change this: four points
 pairwise at least $2$ apart within $|x|$ of a point $x$ force
 $16|x|^2\ge12+d_1^2+d_2^2+d_3^2$ for the distances of the three centres
@@ -1972,12 +1982,12 @@ the crossing only from $0.1551$ to $0.1473$
 closing the rest would take is, at intermediate distances, a lower bound for
 the part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
 \cref{lem:no-triple} do not see, strong enough to bridge that factor of about
-a hundred. The facet-by-facet estimate of step (b) stays positive up to
-$\sum\delta_i=2\cdot10^{-3}$, and the rigidity it rests on stops soon after, so
-no sharpening of its constants closes that factor. The missing ingredient is
+forty. The facet-by-facet estimate of step (b) stays positive up to
+$\sum\delta_i=4.5\cdot10^{-3}$, and the rigidity it rests on stops near
+$8\cdot10^{-3}$, so no sharpening of its constants closes that factor. The missing ingredient is
 the same on both sides of it. The rigidity of \cref{thm:local-uniqueness} controls the directions only
 while $d(W)\le\frac1{48}$, which estimate (a) guarantees only for
-$\sum_i\delta_i$ up to about $0.005$; beyond that, twenty-four directions
+$\sum_i\delta_i$ up to about $0.008$; beyond that, twenty-four directions
 whose inner products exceed $\tfrac12$ by an amount of order $10^{-2}$
 would have to be shown close to the root system, a quantitative form of
 \cref{thm:m24} at moderate slack. Its cardinality half holds:
@@ -11385,7 +11395,7 @@ transformed vectors in ball arithmetic; it divides $\sigma_2$ exactly by
 its zeros and bounds the quotient from below; it checks the minor bounds
 of \cref{lem:root-lattice-robust}; and it evaluates the facet estimates of
 \cref{thm:near-contact} in exact arithmetic, finding
-$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le1.5\cdot10^{-3}$
+$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le4\cdot10^{-3}$
 in about fifteen seconds. \texttt{facet\_bounds\_probe.py} checks step (b) of
 \cref{thm:near-contact} numerically on random and adversarial perturbations of
 the root system: the facet formula \eqref{eq:facet-derivative}, integrated

@@ -278,10 +278,19 @@ def part_C(delta):
 
 # ------------------------------------------------------------------ D
 S11 = Fr(33166248, 10 ** 7)                                  # > sqrt 11
-CA_EXACT = (S11 / 2) / (1 - (3 * S11 + Fr(1, 2)) / 48)      # > the constant c_a of estimate (a)
-CA = CA_EXACT
-ONE_D = Fr(10015, 10000)                                     # 1 + delta, delta <= S <= 1.5e-3
-assert S11 * S11 > 11 and CA < Fr(21199, 10000)
+RIG_L = S11 / 4 + Fr(12991, 10000)                          # sqrt11/4 + sqrt(27/16): the linear coefficient in (a)
+RIG_M = 6 * S11 / 8 + 6 * Fr(10826, 10000) + Fr(1, 2)        # 6 sqrt11/8 + 6 sqrt(75/64) + 1/2: the quadratic one
+
+
+def rigidity(S):
+    """estimate (a): an upper bound for ||eps|| when sum delta_i = S (so delta <= S) and d(W) <= 1/48.
+    From ||eps|| <= RIG_L (1 + delta) S + RIG_M ||eps||^2: first with ||eps|| <= 1/48, then fed back once."""
+    x1 = RIG_L * (1 + S) * S / (1 - RIG_M / 48)
+    assert x1 <= Fr(1, 48)
+    return RIG_L * (1 + S) * S / (1 - RIG_M * x1)
+
+
+assert S11 * S11 > 11 and Fr(12991, 10000) ** 2 > Fr(27, 16) and Fr(10826, 10000) ** 2 > Fr(75, 64)
 
 
 def local_bracket(S):
@@ -292,7 +301,7 @@ def local_bracket(S):
     increasing in S, e = max e_i and delta = max delta_i, so evaluating at upper bounds is safe."""
     s2, s3, s3l, s5, s24 = Fr(14143, 10000), Fr(17321, 10000), Fr(1732, 1000), Fr(22361, 10000), Fr(4899, 1000)
     d = S                                           # delta = max delta_i <= S
-    E = 2 * CA * (1 + d) * S                        # ||eps|| <= c_a kappa <= 2 c_a (1 + delta) S   (a)
+    E = rigidity(S)                                 # ||eps||, by (a)
     e = E                                           # e = max e_i <= ||eps||
     r1 = s2 * (1 + d / 2) / (1 - s2 * e)            # P(t) lies in B(r1)
     eta1 = d / 2 + r1 * e
@@ -381,23 +390,22 @@ def main():
           % (2 * kap[0], kap[1]) if 2 * kap[0] < 10 else 'epsilon_0 = 2 kappa*: 1/2 - 2/(2 + epsilon_0)^2 <= kappa*')
 
     Smax = 24 * Fr(2 * kap[0], 10 ** kap[1])
-    TH = Fr(525, 100)                                       # Theta <= 2 c_a (1 + delta) S + S <= 5.25 S
-    check(2 * CA * ONE_D <= Fr(425, 100) and 2 * CA * ONE_D + 1 <= TH,
-          'estimate (a): c_a = %.6f < 2.1199, so ||eps|| <= %.4f S <= 4.25 S and Theta <= 5.25 S for delta <= 1.5e-3'
-          % (float(CA), float(2 * CA * ONE_D)))
+    check(RIG_L < Fr(21283, 10000) and RIG_M < Fr(949, 100) and rigidity(Fr(4, 1000)) <= Fr(238, 100) * Fr(4, 1000) * (1 + Fr(4, 1000)),
+          'estimate (a): ||eps|| <= %.4f (1 + delta) S + %.3f ||eps||^2, hence ||eps|| <= %.4f (1 + delta) S <= 2.38 (1 + delta) S for S <= 4e-3'
+          % (float(RIG_L), float(RIG_M), float(rigidity(Fr(4, 1000)) / (Fr(4, 1000) * (1 + Fr(4, 1000))))))
     br, parts = local_bracket(Smax)
     check(br > 0, 'at every S = sum delta_i in (0, 24 epsilon_0] the bracket is positive (%.6f): vol > 8; at S = 0 the root system' % float(br))
     # the same bound on a fixed neighbourhood of the root system, independent of the certificate
-    Sl = Fr(15, 10000)
+    Sl = Fr(4, 1000)
     br, parts = local_bracket(Sl)
-    print('D. facet by facet at S = 1.5e-3: R = %.5f, theta_max = %.5f, a_in = %.5f, a_out = %.5f; losses/S: volume %.4f, moment %.4f, caps %.2e, hull %.4f'
+    print('D. facet by facet at S = 4e-3: R = %.5f, theta_max = %.5f, a_in = %.5f, a_out = %.5f; losses/S: volume %.4f, moment %.4f, caps %.2e, hull %.4f'
           % tuple(float(parts[k]) for k in ('R', 'theta', 'a_in', 'a_out', 'v', 'm', 'c', 'hull')))
-    check(TH * Sl <= Fr(1, 100) and 2 * CA * ONE_D * Sl <= Fr(1, 48) and br >= Fr(2, 10),
-          'the same holds whenever d(W) <= 1/48 and 0 < S <= 1.5e-3 (bracket %.4f >= 0.2 at S = 1.5e-3)' % float(br))
-    grid = [Fr(k, 10 ** 5) for k in range(1, 151)]
+    check(rigidity(Sl) + Sl <= Fr(14, 1000) and br >= Fr(1, 10),
+          'the same holds whenever d(W) <= 1/48 and 0 < S <= 4e-3 (bracket %.4f >= 0.1 at S = 4e-3; Theta <= %.5f)' % (float(br), float(rigidity(Sl) + Sl)))
+    grid = [Fr(k, 10 ** 5) for k in range(1, 401)]
     vals = [local_bracket(x)[0] for x in grid]
-    check(all(a >= b for a, b in zip(vals, vals[1:])), 'the bracket decreases in S on a grid of step 1e-5 up to 1.5e-3 (each loss is increasing in S)')
-    for Sx in ('1e-3', '1.8e-3', '2e-3', '2.1e-3'):
+    check(all(a >= b for a, b in zip(vals, vals[1:])), 'the bracket decreases in S on a grid of step 1e-5 up to 4e-3 (each loss is increasing in S)')
+    for Sx in ('1e-3', '2e-3', '3e-3', '4.5e-3', '4.6e-3'):
         print('    bracket at S = %s: %.4f' % (Sx, float(local_bracket(Fr(Sx))[0])))
     print('elapsed %.0f s' % (time.time() - t0))
     if OK:

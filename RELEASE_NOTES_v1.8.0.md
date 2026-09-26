@@ -32,15 +32,17 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   - No constant of this argument can pass 0.244.  A single displaced
     direction has ||Lambda tau||_1 / ||tau||_2 = sqrt(96/11).
 - **Theorem 2.18, second statement.**
-  - The explicit neighbourhood grows from sum delta_i <= 4e-5 to 1.5e-3,
-    a factor of about 40.
-  - The constant of estimate (a) falls from 192/71 to below 2.1199.
+  - The explicit neighbourhood grows from sum delta_i <= 4e-5 to 4e-3,
+    a factor of 100.
+  - Estimate (a) is sharper.  The positive and the negative parts of
+    Lambda tau are bounded separately, which gives ||eps|| <= 2.38 (1 + delta) S
+    in place of (384/71) (1 + delta) S.
   - Step (b) is new.  The derivative of the volume along the linear path is
     written exactly, facet by facet.  Each facet is compared, face by face,
     with the regular octahedron of the 24-cell.  The losses are summed over
     the 8-regular edge graph of the 24-cell, so every loss is of second
     order with no factor of the largest perturbation.
-  - The bracket is at least 0.2 at 1.5e-3 and positive up to 2e-3.
+  - The bracket is at least 0.1 at 4e-3 and positive up to 4.5e-3.
   - epsilon_0 = 4e-26 is unchanged.
 - **Remark 7.78 (the ceiling of Theorem 7.76).**
   - Even with the triple and quadruple terms set to zero, the robust reading
