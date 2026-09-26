@@ -214,9 +214,10 @@ not look at their directions. We also prove it whenever at most
 twenty-three neighbours lie within $\sqrt6$, at any distances, by carrying
 the semidefinite certificate from contacts to centres at mixed distances;
 whenever the contacts contain most of a root system; and whenever no
-neighbour lies at a distance between $2+\varepsilon_0$ and $\sqrt6$, for an
-absolute constant $\varepsilon_0>0$, which makes the $D_4$ configuration a
-strict local minimum of the cell volume among all packings. The case left
+neighbour lies at a distance between $2+\varepsilon_0$ and $\sqrt6$, for
+$\varepsilon_0=4\cdot10^{-26}$, which makes the $D_4$ configuration a strict
+local minimum of the cell volume among all packings, in an explicit
+neighbourhood. The case left
 open is a centre with at least twenty-four neighbours within $\sqrt6$, one
 of them at an intermediate distance, for which we give numerical evidence.
 \end{abstract}
@@ -530,19 +531,22 @@ unit-ball packing of $\mathbb{R}^4$ also in each of the following cases:
 normalised roots of a copy of $\Rt$, or more generally one of the three
 orthogonal pairs of normalised roots at each vertex of its $24$-cell;
 \item no centre lies at a distance from $c$ strictly between
-$2+\varepsilon_0$ and $\sqrt6$, where $\varepsilon_0>0$ is an absolute
-constant.
+$2+\varepsilon_0$ and $\sqrt6$, where $\varepsilon_0=4\cdot10^{-26}$.
 \end{enumerate}
 \end{thm}
 
 These are \cref{thm:m23-labelled,cor:root-subsets,thm:near-contact}.
 Case (c) is a local form of the conjecture at the root system, for all
 packings: the $D_4$ configuration is a strict local minimum of the cell
-volume, whatever the centres beyond $\sqrt6$ do. Its constant
-$\varepsilon_0$ comes from a compactness argument and is not explicit, so
-what is left of \cref{conj:shell} is a centre with at least twenty-four
-other centres within $\sqrt6$, one of them at an intermediate distance,
-between $2+\varepsilon_0$ and $\sqrt6$. A numerical search of that case
+volume, whatever the centres beyond $\sqrt6$ do, in an explicit
+neighbourhood that uses no certificate. The constant $\varepsilon_0$ is
+explicit too: it comes from a robust form of the certificate of
+\cref{thm:m24} (\cref{thm:m24-robust}), which places twenty-four
+directions with inner products at most $\tfrac12+\tfrac12\varepsilon_0$
+within that neighbourhood, and it is small because the sums of squares of
+the certificate are large. What is left of \cref{conj:shell} is a centre
+with at least twenty-four other centres within $\sqrt6$, one of them at
+an intermediate distance, between $2+\varepsilon_0$ and $\sqrt6$. A numerical search of that case
 finds nothing below $8$ (\cref{sec:noncontact}); that is evidence, not
 proof.
 
@@ -1306,9 +1310,9 @@ This subsection narrows \cref{conj:shell} in three directions. It
 removes every centre with at most twenty-three others within $\sqrt6$,
 at any distances; every centre whose contacts contain most of a root
 system; and every centre around which no other centre lies at a distance
-between $2+\varepsilon_0$ and $\sqrt6$, for an absolute constant
-$\varepsilon_0>0$, which is a local form of the twenty-four-cell
-conjecture at the root system, for all packings. The tools are three
+between $2+\varepsilon_0$ and $\sqrt6$, for $\varepsilon_0=4\cdot10^{-26}$,
+which is a local form of the twenty-four-cell conjecture at the root
+system, for all packings, with an explicit neighbourhood. The tools are three
 elementary facts about packings that hold whatever the distances, and,
 for the first, the certificate of \cref{thm:certificate} carried from
 contacts to centres at any distance. Throughout, $c=0$, and the half-space of a centre $z$ is
@@ -1730,61 +1734,52 @@ $8-7.906940=0.093060$ of the volume of $Q$.}
 \end{figure}
 
 \begin{thm}[The conjecture near the contact regime]\label{thm:near-contact}
-There is an absolute constant $\varepsilon_0>0$ with the following
-property. If no centre of a unit-ball packing of $\mathbb{R}^4$ lies at a
-distance from $c$ strictly between $2+\varepsilon_0$ and $\sqrt6$, then
-$\vol(V_c)\ge8$, with equality only if the contacts of $c$ form a copy
-of $\sqrt2\,\Rt$ and $V_c$ is the regular $24$-cell they cut out.
+Let $\varepsilon_0=4\cdot10^{-26}$. If no centre of a unit-ball packing of
+$\mathbb{R}^4$ lies at a distance from $c$ strictly between
+$2+\varepsilon_0$ and $\sqrt6$, then $\vol(V_c)\ge8$, with equality only if
+the contacts of $c$ form a copy of $\sqrt2\,\Rt$ and $V_c$ is the regular
+$24$-cell they cut out. The same conclusion holds whenever exactly $24$
+centres lie within $\sqrt6$ of $c$, at distances $2+\delta_i$ with
+$\sum_i\delta_i\le4\cdot10^{-5}$, and their directions $W$ satisfy
+$d(W)\le\frac1{48}$, with $d$ as in \cref{thm:local-uniqueness}.
 \end{thm}
 
 In particular the $D_4$ configuration is a strict local minimum of the
-cell volume among all packings: every packing whose centres within
-$\sqrt6$ of $c$ are close enough to $\sqrt2\,\Rt'$, for some copy $\Rt'$ of $\Rt$, and
-whose other centres are unrestricted, has $\vol(V_c)\ge8$, with equality
-only at $\sqrt2\,\Rt'$ itself, and to first order the excess is
-$\frac23\sum\delta_i$ (\cref{fig:closure}(c)). The constant
-$\varepsilon_0$ comes from a compactness argument and is not explicit.
+cell volume among all packings, in an explicit neighbourhood: every
+packing whose twenty-four centres within $\sqrt6$ of $c$ are that close to
+$\sqrt2\,\Rt'$, for some copy $\Rt'$ of $\Rt$, and whose other centres are
+unrestricted, has $\vol(V_c)\ge8$, with equality only at $\sqrt2\,\Rt'$
+itself, and to first order the excess is $\frac23\sum\delta_i$
+(\cref{fig:closure}(c)). The two constants are of very different
+sizes. The neighbourhood of the second statement comes from the rigidity
+of \cref{thm:local-uniqueness} and from elementary estimates for the
+facets of a polytope near the $24$-cell, and uses no certificate. The
+constant $\varepsilon_0$ is what it takes for \cref{thm:m24-robust} to
+place twenty-four directions with inner products at most
+$\tfrac12+\tfrac12\varepsilon_0$ inside that neighbourhood, and it
+inherits the size of the sums of squares of the certificate.
 
 \begin{proof}
-\emph{Step 1: a centre with $\vol(V_c)\le8$ in this regime is close to
-the root system.} We show that for every $\eta>0$ there is $\varepsilon>0$
-such that, if no centre lies at a distance from $c$ in
-$(2+\varepsilon,\sqrt6)$ and $\vol(V_c)\le8$, then the centres within
-$\sqrt6$ of $c$ can be matched with the points of $\sqrt2\,\Rt'$, for
-some copy $\Rt'$ of $\Rt$, each within $\eta$ of its partner. If not, there are $\eta>0$
-and packings $\mathcal P_n$ with a centre at $0$, no centre at a distance
-in $(2+1/n,\sqrt6)$, $\vol(V^{(n)})\le8$ for the cell of $0$, and no such
-matching. The packing condition bounds the number of centres in every
-ball independently of $n$, so after passing to a subsequence the
-centres within $B(\rho)$ converge, as finite sets, to those of a packing
-$\mathcal P$, for every $\rho$ outside the countable set of distances
-at which $\mathcal P$ has a centre (a diagonal argument). In
-$\mathcal P$ every centre is at distance $2$ from $0$ or at distance at
-least $\sqrt6$. For each such $\rho\ge3$ the set $V^{(n)}\cap B(\rho/2)$ is cut out
-by the finitely many centres within $\rho$ and converges in the
-Hausdorff metric to $V\cap B(\rho/2)$, $V$ the cell of $0$ in
-$\mathcal P$, which contains $B(1)$; so
-$\vol(V\cap B(\rho/2))\le\liminf\vol(V^{(n)})\le8$ for all these $\rho$,
-and $\vol(V)\le8$. Let $m$ be the number of contacts of
-$0$ in $\mathcal P$. If $m\le23$, the only centres of $\mathcal P$
-within $\sqrt6$ of $0$ are its $m$ contacts, and
-\cref{thm:m23-labelled} gives $\vol(V)>8$. So $m=24$, the contacts form a
-copy of $\sqrt2\,\Rt'$ (\cref{thm:m24}), and the centres of $\mathcal P_n$ within
-$\sqrt6$, which converge to them, can be matched with them within $\eta$
-for large $n$, a contradiction.
+\emph{Step 1: the first statement follows from the second.} Let $Y$ be the
+set of centres within $\sqrt6$ of $c$; by hypothesis every one of them is
+at a distance $d_i=2+\delta_i$ with $0\le\delta_i\le\varepsilon_0$. If
+$|Y|\le23$, \cref{thm:m23-labelled} gives $\vol(V_c)>8$. Otherwise the
+packing condition gives
+$\langle w_i,w_j\rangle\le(d_i^2+d_j^2-4)/(2d_id_j)$ for the directions,
+and the right side, which increases in $d_i$ and in $d_j$, is at most
+$1-2/(2+\varepsilon_0)^2\le\tfrac12+\tfrac12\varepsilon_0$. By
+\cref{thm:m24-robust}, with $\kappa=\tfrac12\varepsilon_0$, $|Y|=24$ and
+$d(W)\le0.0113<\frac1{48}$; and $\sum_i\delta_i\le24\varepsilon_0$. So the
+second statement applies.
 
-\emph{Step 2: the root system is a strict local minimum.} Let $Y$ be the
-set of centres within $\sqrt6$ of $c$, matched as in Step 1 with the
-points of $\sqrt2\,\Rt'$ within a small $\eta$. Rotate so that $\Rt'=\Rt$, write
-$u_i$ for the normalised roots and $y_i=d_iw_i$ for the partner of
-$2u_i$, with $|w_i|=1$ and $d_i=2+\delta_i$, $0\le\delta_i\le\varepsilon$,
-and choose the rotation and the labelling that attain the minimum
-$d(W)$ of \cref{thm:local-uniqueness} for $W=\{w_i\}$. Put
-$\varepsilon_i=w_i-u_i$, $e_i=|\varepsilon_i|$ and
-$\|\varepsilon\|^2=\sum_ie_i^2$, so that $\|\varepsilon\|\to0$ as
-$\eta\to0$. Three estimates hold once $\eta$ and $\varepsilon$ are small.
+\emph{Step 2: the second statement.} Rotate and relabel so that $d(W)$
+is attained at $R=I$ and the identity labelling, write $u_i$ for the
+normalised roots and $y_i=d_iw_i$ for the partner of $2u_i$, put
+$\varepsilon_i=w_i-u_i$, $e_i=|\varepsilon_i|$,
+$\|\varepsilon\|^2=\sum_ie_i^2=d(W)^2$, $S=\sum_i\delta_i$,
+$e=\max_ie_i$, $\delta=\max_i\delta_i$ and $\Theta=e+\delta$.
 
-(a) \emph{Rigidity with slack: $\|\varepsilon\|\le6\sum_i\delta_i$.} The
+(a) \emph{Rigidity with slack: $\|\varepsilon\|\le\frac{384}{71}(1+\delta)S$.} The
 proof of \cref{thm:local-uniqueness} goes through with the contact
 condition $\langle w_i,w_j\rangle\le\frac12$ on the $96$ pairs of $T$
 replaced by the packing condition $|y_i-y_j|\ge2$, which reads
@@ -1799,57 +1794,83 @@ $\|\tau\|_2\le\|\Lambda\tau\|_1\le12\|\varepsilon\|^2+2\kappa$ by
 $\|\varepsilon\|\le\frac14\|\varepsilon\|+2\kappa+\frac12\|\varepsilon\|^2$.
 For $\|\varepsilon\|\le1/48$ this gives $\|\varepsilon\|\le\frac{192}{71}\kappa$,
 and every index lies in eight pairs of $T$, so
-$\kappa\le2(1+\varepsilon)\sum_i\delta_i$.
+$\kappa\le2(1+\delta)S$. Consequently
+$\sum_ie_i\le\sqrt{24}\,\|\varepsilon\|\le26.5\,S$ and
+$\Theta\le\|\varepsilon\|+S\le6.42\,S\le2.6\cdot10^{-4}$.
 
-(b) \emph{The volume to first order: $\vol(V(Y))\ge8+\frac23\sum_i\delta_i
--C\bigl(\|\varepsilon\|+\sum_i\delta_i\bigr)^2$.} Move the data linearly,
-$w_i(t)=u_i+t\varepsilon_i$ and $h_i(t)=1+t\delta_i/2$ for $0\le t\le1$,
-and let $P(t)=\{x:\langle x,w_i(t)\rangle\le h_i(t)\}$, so that $P(0)=Q$
-and $P(1)=V(Y)$. Each facet of $P(t)$ moves with normal velocity
+(b) \emph{The volume to first order, with its error.} Move the data
+linearly, $w_i(t)=u_i+t\varepsilon_i$ and $h_i(t)=1+t\delta_i/2$ for
+$0\le t\le1$, and let $P(t)=\{x:\langle x,w_i(t)\rangle\le h_i(t)\}$, so that
+$P(0)=Q$ and $P(1)=V(Y)$. Each facet of $P(t)$ moves with normal velocity
 $(\dot h_i-\langle x,\dot w_i\rangle)/|w_i|$, so
 \[
   \frac{d}{dt}\vol P(t)=\sum_i\frac{1}{|w_i(t)|}
   \Bigl(\frac{\delta_i}{2}A_i(t)-\langle\varepsilon_i,M_i(t)\rangle\Bigr),
 \]
-$A_i$ the $3$-volume of the $i$-th facet and $M_i=\int x\,dA$ over it. At
-$t=0$ every facet is a regular octahedron of volume $\frac43$ centred at
-$u_i$, so the right side is
-$\frac23\sum_i\delta_i-\frac43\sum_i\langle\varepsilon_i,u_i\rangle
-=\frac23\sum_i\delta_i+\frac23\sum_ie_i^2$, by \eqref{eq:radial-part}.
-Each facet of $P(t)$ is the solution set, in its hyperplane, of a system
-of linear inequalities whose coefficients depend smoothly on $t$, and at
-$t=0$ its centre satisfies every inequality with a margin of at least
-$\frac12$; shrinking a solution set towards such an interior point by the
-factor $1-\lambda$ keeps it feasible after a perturbation of size
-$O(\lambda)$, so the facet moves by $O(\|\varepsilon\|+\max_i\delta_i)$
-in the Hausdorff metric, uniformly for $t\le1$, and so do $A_i$, $M_i$
-and $|w_i|$. Integrating the derivative gives (b).
+$A_i$ the $3$-volume of the $i$-th facet $F_i(t)$ and $M_i=\int x\,dA$
+over it. At $t=0$ the facet $F_i^0$ is a regular octahedron of volume
+$\frac43$, centred at $u_i$ and symmetric about it, with circumradius $1$
+in its hyperplane, and every other constraint has slack at least $\tfrac12$
+at $u_i$, since $\langle u_i,u_j\rangle\le\frac12$. Two homotheties about
+$u_i$ trap $F_i(t)$. For the inner one put
+$\sigma=(\frac12\delta+\sqrt2e)/(1-e)$ and $\lambda_0=2(\sqrt2e+\sigma(1+e))$:
+for $z\in F_i^0$ the point $u_i+(1-\lambda_0)(z-u_i)$ has
+$\langle\cdot,u_j\rangle\le1-\frac12\lambda_0$ for $j\ne i$, and moving it
+along $u_i$ by at most $\sigma$ into the hyperplane of $F_i(t)$ gives a point
+with $\langle\cdot,w_j(t)\rangle\le1-\frac12\lambda_0+\sqrt2e+\sigma(1+e)\le h_j(t)$,
+a point of $F_i(t)$; the move along $u_i$ does not decrease $3$-volume, so
+$A_i(t)\ge\frac43(1-\lambda_0)^3$. For the outer one, $P(t)$ lies in the
+ball of radius $r_1=\sqrt2(1+\frac12\delta)/(1-\sqrt2e)$, because
+$\langle x,u_j\rangle\le h_j+|x|e$ and $\max_j\langle x,u_j\rangle\ge|x|/\sqrt2$;
+so a point $x$ of $F_i(t)$ has $|\langle x,u_i\rangle-1|\le\eta_1=\frac12\delta+r_1e$,
+and its projection $y$ along $u_i$ onto the hyperplane of $F_i^0$ has
+$\langle y,u_j\rangle\le1+\eta_2$, $\eta_2=\eta_1+\frac12\delta+r_1e$, which puts
+$y$ in $u_i+(1+2\eta_2)(F_i^0-u_i)$, since shrinking towards $u_i$ by the
+factor $1+2\eta_2$ restores every constraint. The facet is the lift of
+these projections, with area element multiplied by at most
+$(1+e)/(1-e)$. As $F_i^0$ is symmetric about $u_i$, the moment
+$\int(y-u_i)$ over the projection is at most the volume between the two
+homothets times $1+2\eta_2$, and collecting the terms,
+\[
+  \frac{|M_i(t)-\tfrac43u_i|}{|w_i(t)|}\ \le\ \mu,\qquad
+  \lambda_0\le6.7\,\Theta,\quad \mu\le95\,\Theta ,
+\]
+where $\mu$ is the explicit expression evaluated in
+\texttt{explicit\_eps0.py}. Since $1-\frac14e^2\le|w_i(t)|\le1$ and
+$\langle\varepsilon_i,u_i\rangle=-\frac12e_i^2$, the derivative is at least
+$\frac23(1-\lambda_0)^3S+\frac23\sum_ie_i^2-\mu\sum_ie_i$, and integrating,
+\[
+  \vol V(Y)\ \ge\ 8+\tfrac23(1-\lambda_0)^3S-26.5\,\mu\,S .
+\]
 
-(c) \emph{The hull costs only a fourth-order amount:
-$\vol(V(Y)\setminus K(Y))\le C\bigl(\|\varepsilon\|+\max_i\delta_i\bigr)^4$.}
-For $x\in V(Y)$, $\langle x,u_i\rangle\le h_i+|x|e_i$, so
-$V(Y)\subseteq(1+\theta)Q$ with $\theta=O(\|\varepsilon\|+\max_i\delta_i)$.
-The points $4w_i/d_i$ spanning $K(Y)$ lie within $\delta_i+2e_i$ of
-$2u_i$, and the convex hull of the $2u_i$ has inradius $\sqrt2$, so
-$K(Y)\supseteq(1-\theta')\conv\{2u_i\}$ with $\theta'$ of the same order.
-$Q$ lies in $\conv\{2u_i\}$ and meets its boundary only at its $24$
-vertices, each of which is the unique point of $Q$ on the supporting
-hyperplane there, because $v=r+r'$ is a positive combination of the six
-roots at $v$ and so lies in the interior of the normal cone of $Q$ at
-$v$. Hence $(1+\theta)Q\setminus(1-\theta')\conv\{2u_i\}$ consists of $24$
-caps of height $O(\theta+\theta')$ cut from the vertex cones of $Q$,
-whose volume is $O((\theta+\theta')^4)$.
+(c) \emph{The hull costs only a fourth-order amount.} For $x\in V(Y)$,
+$\langle x,u_i\rangle\le h_i+|x|e_i$, so $V(Y)\subseteq(1+\theta)Q$ with
+$\theta=(\frac12\delta+\sqrt2e)/(1-\sqrt2e)\le1.5\,\Theta$. The points
+$4w_i/d_i$ spanning $K(Y)$ lie within $\delta_i+2e_i\le2\Theta$ of $2u_i$,
+and a convex hull of points within $r$ of the vertices of a polytope of
+inradius $\sqrt2$ about $0$ contains its homothet by $1-r/\sqrt2$, so
+$K(Y)\supseteq(1-\theta')\conv\{2u_i\}$ with $\theta'\le\sqrt2\,\Theta$. The
+polytope $\conv\{2u_i\}$ is the $24$-cell $\{x:\langle x,v\rangle\le2$ for
+the $24$ vertices $v$ of $Q\}$, and $Q$ lies in it and meets its boundary
+only at those vertices. So $(1+\theta)Q\setminus(1-\theta')\conv\{2u_i\}$
+lies in the union of $24$ caps, one at each vertex, cut off by a hyperplane at
+depth $s=\sqrt2(\theta+\theta')$ below the vertex $(1+\theta)v$. The tangent
+cone of $Q$ at $v=\sqrt2e_1$ is $\{|x_k|\le\sqrt2-x_1,\ k=2,3,4\}$, whose
+section at depth $s$ is a cube of side $2s$, so each cap lies in a pyramid
+of volume $2s^4$, and
+$\vol(V(Y)\setminus K(Y))\le48s^4\le13\,958\,\Theta^4$.
 
 By \cref{prop:inversion-hull}, (b), (c) and (a),
 \[
-  \vol(V_c)\ \ge\ \vol(V(Y)\cap K(Y))\ \ge\ 8+\tfrac23\sum_i\delta_i
-  -C'\Bigl(\sum_i\delta_i\Bigr)^2 ,
+  \vol(V_c)\ \ge\ \vol(V(Y)\cap K(Y))\ \ge\ 8+S\Bigl(\tfrac23(1-\lambda_0)^3-26.5\,\mu
+  -13\,958\cdot6.42^4S^3\Bigr),
 \]
-which is at least $8$ once $\sum_i\delta_i\le2/(3C')$, with equality only
-if every $\delta_i=0$. Then $\kappa=0$, so $\varepsilon=0$ by (a), $Y=\sqrt2\,\Rt$,
-and $V_c\supseteq V(Y)\cap K(Y)=Q$ with $\vol(V_c)=8$, so $V_c=Q$.
-Choosing $\eta$ and then $\varepsilon$ in Step 1 small enough for (a), (b)
-and (c) gives $\varepsilon_0$.
+and \texttt{explicit\_eps0.py} finds the bracket at least $0.02$ for
+$S\le4\cdot10^{-5}$, in exact arithmetic with the expressions for
+$\lambda_0$ and $\mu$ at $\Theta=6.42\,S$ (each is increasing in $\Theta$). So
+$\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
+(a), $Y=\sqrt2\,\Rt$, and $V_c\supseteq V(Y)\cap K(Y)=Q$ with
+$\vol(V_c)=8$ only if $V_c=Q$.
 \end{proof}
 
 \emph{What is left, and the evidence.} Together with
@@ -1875,11 +1896,12 @@ minimum. For $M=24$ every local minimum it finds is the root system, at
 $7.906940\ldots$; for $M=25$, $26$ and $27$ every one lies above $8.26$. If that is the whole truth, the pair terms fail
 only at twenty-four centres near the root system, and twenty-five or more
 could be settled as in \cref{thm:m23-labelled}, with a certificate for each
-count up to the largest that fits within $\sqrt6$. Closing what is left
-would take an explicit $\varepsilon_0$, which needs a quantitative form
-of \cref{thm:m24}, and, at intermediate distances, a lower bound for the
-part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
-\cref{lem:no-triple} do not see.
+count up to the largest that fits within $\sqrt6$, and at most $49$ fit
+(\texttt{count\_bound\_sqrt6.py}). With $\varepsilon_0$ explicit, what
+closing the rest would take is, at intermediate distances, a lower bound
+for the part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
+\cref{lem:no-triple} do not see, strong enough to meet the explicit
+neighbourhood of \cref{thm:near-contact}.
 
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
@@ -6148,6 +6170,154 @@ the Taylor form and the monotonicity of $\omega$, which are written
 out above. The Taylor form is applied only on boxes inside the open
 interval where $\omega$ is analytic.
 \end{remark}
+\subsection{Twenty-four points, approximately}\label{sec:m24-robust}
+
+The equality argument of \cref{lem:las2} needs the inner products to be at
+most $\tfrac12$ exactly, and it says nothing about a code whose inner
+products exceed $\tfrac12$ by a little. \Cref{thm:near-contact} needs that
+case, with a quantitative conclusion, and the certificate gives it,
+because the only terms of the identities of \cref{prop:verified}(iii)
+that can change sign outside $\mathcal I_4$ are those whose weight carries
+a factor $(u+1)(\tfrac12-u)$ with $u>\tfrac12$.
+
+\begin{thm}[Twenty-four points, approximately]\label{thm:m24-robust}
+Let $0\le\kappa\le2\cdot10^{-26}$, and let $C\subset S^3$ be a set whose
+pairwise inner products are at most $\tfrac12+\kappa$. Then $|C|\le24$. If
+$|C|=24$, every pairwise inner product of $C$ lies within $3\cdot10^{-4}$
+of $\{-1,-\tfrac12,0,\tfrac12\}$, and there are an orthogonal map $R$ and a
+labelling $C=\{w_1,\dots,w_{24}\}$ with
+$\sum_i|w_i-Ra_i/\sqrt2|^2\le0.0113^2$.
+\end{thm}
+
+\begin{proof}
+The set $C$ is finite, since its points are at angular distance at least
+$\arccos(\tfrac12+\kappa)$ from one another. The maps
+$\psi_{\lambda,a}$ of \eqref{eq:psi} are defined on every subset of $S^3$
+of at most two points, whatever its inner product, so \cref{lem:gram}
+makes the certificate kernel positive on the subsets of $C$ of size at
+most $2$, and the identities of \cref{prop:verified}(iii) hold at every
+subset $Q$ of $C$, being identities between polynomials. The first chain
+of the proof of \cref{lem:las2}, with \cref{prop:verified}(ii), gives
+\begin{equation}\label{eq:robust-chain}
+  \sum_{\substack{Q\subseteq C\\2\le|Q|\le4}}\sigma_{|Q|}(Q)\ \le\ 24-|C| .
+\end{equation}
+Each $\sigma_k$ is a sum of terms $c\,w\,\sigma$ with $c\ge0$, $\sigma=m^{\mathsf T}Mm\ge0$
+and $w$ one of the weights of \cref{prop:verified}(iii). The constants,
+the Gram determinants and the principal minors are nonnegative at every
+set of real vectors. Put $p(u)=(u+1)(\tfrac12-u)$; it lies in
+$[0,\tfrac9{16}]$ for $u\in[-1,\tfrac12]$ and in $[-a,0)$ for
+$u\in(\tfrac12,\tfrac12+\kappa]$, with $a=\kappa(\tfrac32+\kappa)$, so an
+elementary symmetric function $e_r$ of the $n$ values of $p$ at the inner
+products of $Q$ is at least $-\binom nr a(\tfrac9{16})^{r-1}$, and is
+nonnegative unless $Q$ has an inner product above $\tfrac12$. Hence
+$\sigma_k(Q)\ge-aB_k$ for $k=3,4$, where $B_k=\sum_r\binom{n_k}r(\tfrac9{16})^{r-1}S_{k,r}$,
+$n_3=3$, $n_4=6$, and $S_{k,r}$ bounds the sum of $c\,\sigma$ over the terms of
+$\sigma_k$ with weight $e_r$. The program \texttt{explicit\_eps0.py} bounds
+these sums from the deposited data in ball arithmetic, bounding the
+largest eigenvalue of each positive definite block by its trace or its
+largest absolute row sum and each entry of $m$ by the $\ell^1$ norm of its
+coefficients in the tensor Chebyshev basis, which is at least its
+supremum on $[-1,1]^6$; it finds $B_3\le8.75\cdot10^{7}$ and
+$B_4\le7.34\cdot10^{9}$. For a pair, $\sigma_2(\tfrac12)=0$ and
+$|\sigma_2'|\le0.226$ on $[\tfrac12,\tfrac12+10^{-3}]$, so
+$\sigma_2(u)\ge-0.226\,\kappa$ at an inner product above $\tfrac12$. So the
+left side of \eqref{eq:robust-chain} is at least $-E(|C|,\kappa)$, where
+\[
+  E(m,\kappa)=\tbinom m2\,0.226\,\kappa+\tbinom m3\,aB_3+\tbinom m4\,aB_4 .
+\]
+If $|C|\ge25$, the same holds for $25$ of its points, and
+\eqref{eq:robust-chain} gives $E(25,\kappa)\ge1$; but
+$E(25,2\cdot10^{-26})<10^{-11}$. So $|C|\le24$.
+
+Let $|C|=24$ and let $u$ be an inner product of $C$ at most $\tfrac12$.
+Every other term of \eqref{eq:robust-chain} is at least the lower bound
+just found for it, these lower bounds add up to at least $-E(24,\kappa)$,
+and the right side is $0$; so
+$\sigma_2(u)\le E(24,\kappa)\le2.35\cdot10^{-12}$. By
+\cref{prop:verified}(iv), $\sigma_2$ is divisible by
+$f(u)=(u+1)(u+\tfrac12)^2u^2(\tfrac12-u)$, and the quotient is at least
+$2.62\cdot10^{-4}$ on $[-1,\tfrac12]$ (an exact division, and a mean value
+bound in ball arithmetic on $30\,000$ intervals). Between consecutive
+zeros $f$ has a single critical point, by Rolle's theorem applied to its
+derivative of degree $5$, which vanishes at $-\tfrac12$ and $0$; so at
+distance at least $\delta=3\cdot10^{-4}$ from its zeros $f$ is at least its
+least value at the six points $-1+\delta$, $-\tfrac12\pm\delta$, $\pm\delta$,
+$\tfrac12-\delta$, and there $\sigma_2\ge2.94\cdot10^{-12}$. So $u$ lies
+within $\delta$ of $\{-1,-\tfrac12,0,\tfrac12\}$, and an inner product above
+$\tfrac12$ lies within $\kappa<\delta$ of $\tfrac12$.
+\Cref{lem:root-lattice-robust} gives the rest.
+\end{proof}
+
+\begin{lem}[From approximate inner products to the root
+system]\label{lem:root-lattice-robust}
+Let $w_1,\dots,w_{24}$ be unit vectors of $\mathbb R^4$ with Gram matrix
+$G$, and let $\delta\le3\cdot10^{-4}$. If every off-diagonal entry
+$G_{ij}$ lies within $\delta$ of a number $g_{ij}\in\{-1,-\tfrac12,0,\tfrac12\}$,
+then the matrix $g$ with these entries and $1$ on the diagonal is the
+Gram matrix of the normalised roots in some order, and for an orthogonal
+map $R$,
+\[
+  \Bigl(\sum_i\bigl|w_i-Ra_i/\sqrt2\bigr|^2\Bigr)^{1/2}
+  \ \le\ \frac{2D}{\sqrt{6-D}}+\frac{\sqrt{24}\,D}{6},\qquad D=23\delta ,
+\]
+which is below $0.0113$ at $\delta=3\cdot10^{-4}$.
+\end{lem}
+
+\begin{proof}
+A row of $G$ has at most one entry near $-1$ off the diagonal: two
+would belong to vectors within $\sqrt{2\delta}$ of $-w_i$, hence within
+$2\sqrt{2\delta}$ of each other, with inner product at least
+$1-4\delta>\tfrac12+\delta$. So a row of $2G$ restricted to five columns
+has at most two entries of absolute value above $1+2\delta$, both at most
+$2$, and its norm is at most $\rho=\sqrt{8+3(1+2\delta)^2}$. For a $k\times
+k$ submatrix, $k\le5$, expanding the determinant of $2g=2G-2\Delta$
+multilinearly in its rows and bounding every term by Hadamard's
+inequality,
+\[
+  \bigl|\det(2g)_{IJ}-\det(2G)_{IJ}\bigr|\ \le\ (\rho+2\delta\sqrt k)^k-\rho^k\ <\ 1 ,
+\]
+the last at $k=5$ being $0.81$. The matrix $2g$ is integral, so each of
+its minors is an integer. Every $5\times5$ minor of $2G$ vanishes, since
+$G$ has rank at most $4$; so every $5\times5$ minor of $2g$ vanishes, and
+$2g$ has rank at most $4$. Every principal minor of $2G$ is nonnegative;
+so every principal minor of $2g$ of order at most $4$ is an integer above
+$-1$, hence nonnegative, and $2g$ is positive semidefinite. It is
+therefore the Gram matrix of $24$ vectors of $\mathbb R^4$ of norm $\sqrt2$
+with pairwise inner products in $\{-2,-1,0,1\}$, distinct because no
+inner product is $2$, and \cref{lem:root-lattice} makes $g$ the Gram
+matrix $V^{\mathsf T}V$ of the normalised roots $V=(v_1,\dots,v_{24})$ in
+some order.
+
+For the distance, let $W=(w_1,\dots,w_{24})$ and $\Delta=G-g$, so
+$\|\Delta\|\le D$ by the row sums. Since $VV^{\mathsf T}=6I$, the matrix
+$P=g/6$ is the orthogonal projection onto the row space of $V$. If
+$Gx=\lambda x$ with $\lambda>0$, then $\lambda(I-P)x=(I-P)\Delta x$, since
+$(I-P)g=0$, and the four positive eigenvalues of $G$ are at least $6-D$
+by Weyl's inequality; so
+$\|W(I-P)\|_F^2=\operatorname{tr}(I-P)G(I-P)\le4D^2/(6-D)$. Put
+$M=WV^{\mathsf T}/6$, so that $WP=MV$. From $PGP=g+P\Delta P$ and
+$VV^{\mathsf T}=6I$ follows $M^{\mathsf T}M=I+V\Delta V^{\mathsf T}/36$, so
+$\|M^{\mathsf T}M-I\|\le D/6$, and the orthogonal factor $R$ of the polar
+decomposition $M=R(M^{\mathsf T}M)^{1/2}$ has $\|M-R\|\le D/6$. Hence
+$\|W-RV\|_F\le\|W(I-P)\|_F+\|M-R\|\,\|V\|_F\le2D/\sqrt{6-D}+\sqrt{24}D/6$.
+\end{proof}
+
+Neither statement is sharp. The bound $E$ counts every triple and every
+quadruple of the $24$ points as if each had an inner product above
+$\tfrac12$, and bounds each sum of squares on the whole cube
+$[-1,1]^6$; and the lemma asks for inner products within $3\cdot10^{-4}$
+of the four values where a tenth of that would be plenty, because it
+deduces integrality from a single determinant. What matters for
+\cref{thm:near-contact} is that every constant is a number.%
+\footnote{The constant that dominates is the sum of squares of the
+  four-point constraint with weight $e_1$, the sum of the six values
+  $(u+1)(\tfrac12-u)$, for which the bound is $1.22\cdot10^{9}$; with the
+  $\binom{24}4=10\,626$ quadruples and the factor $6$ of $e_1$, it makes
+  $E(24,\kappa)$ about $1.2\cdot10^{14}\kappa$. Against it stands the
+  value $2.9\cdot10^{-12}$ of $\sigma_2$ at distance $3\cdot10^{-4}$ from a
+  double zero, which is quadratic in the distance. The ratio of the two
+  is the $2\cdot10^{-26}$ of the theorem.}
+
 \section{The deviation domain and its fundamental triangle}\label{sec:deviation-triangle}
 
 The identities of \cref{sec:deviation-domain} hold for any number of
@@ -9217,11 +9387,12 @@ others within $\sqrt6$, one of them at a distance between
 $2+\varepsilon_0$ and $\sqrt6$: with at most twenty-three the three-point
 method carries over from the sphere to the shell
 (\cref{thm:m23-labelled}), and closer to contact the bound holds
-(\cref{thm:near-contact}). Closing it would take an explicit
-$\varepsilon_0$, which needs a quantitative form of \cref{thm:m24}, and,
-at intermediate distances, a bound for the part of the cell outside
-$B(\sqrt{3/2})$, since inside that ball the root system itself falls
-short of $8$. The
+(\cref{thm:near-contact}), with $\varepsilon_0=4\cdot10^{-26}$ explicit
+through the robust form \cref{thm:m24-robust} of the certificate. Closing
+it would take, at intermediate distances, a bound for the part of the
+cell outside $B(\sqrt{3/2})$, since inside that ball the root system
+itself falls short of $8$, strong enough to reach the explicit
+neighbourhood of the root system in \cref{thm:near-contact}. The
 other two are not cases of the local bound. The second is the
 classification of the $23$-point codes of
 minimal angle $60^\circ$ on $S^3$, the hypothesis of
@@ -9673,8 +9844,8 @@ The supplementary code package, with every script, certificate, run
 log and Lean file named in \cref{app:code-index}, is maintained at
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
 and is archived on Zenodo. The version that corresponds to this paper is
-release \texttt{v1.6.0}, at
-\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.6.0}{the
+release \texttt{v1.7.0}, at
+\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.7.0}{the
 tag of that name}; the release \texttt{v1.4.0} has the version DOI
 \bluelink{https://doi.org/10.5281/zenodo.22940045}{10.5281/zenodo.22940045}.
 The Zenodo record that collects every version, and
@@ -9698,9 +9869,10 @@ The code of the re-verification, those two programs and the corrections
 were developed with the assistance of Claude, an AI model made by
 Anthropic. Versions \texttt{v1.5.0} and \texttt{v1.6.0} add the
 programs of \cref{sec:closure}, \texttt{closure\_lemmas.py},
-\texttt{near\_contact\_probe.py} and
-\texttt{labelled\_certificate\_check.py}, the Lean file
-\texttt{D4Closure.lean} and the scripts of the figures of that section;
+\texttt{near\_contact\_probe.py}, \texttt{labelled\_certificate\_check.py},
+\texttt{truncated\_search.py} and \texttt{count\_bound\_sqrt6.py}, the
+Lean file \texttt{D4Closure.lean} and the scripts of the figures of that
+section, and version \texttt{v1.7.0} adds \texttt{explicit\_eps0.py};
 these too were developed with the assistance of Claude, and their
 computations were run with it.
 
@@ -9767,7 +9939,7 @@ $P$, $B$ & \parbox[t]{0.76\textwidth}{\raggedright the polynomial and the bound 
 $\Phi$, $\Psi$ & \parbox[t]{0.76\textwidth}{\raggedright the two distance criteria (\cref{prop:distance-criterion,cor:count})}\\
 $S(d)$, $s(d)$ & \parbox[t]{0.76\textwidth}{\raggedright the cap of $B(\sqrt{3/2})$ beyond distance $d/2$, and $S(2)-S(d)$ (\cref{cor:count,thm:m23-labelled})}\\
 $H_z$, $K(Y)$ & \parbox[t]{0.76\textwidth}{\raggedright the half-space of a centre $z$, and the inversion hull of a set $Y$ of centres (\cref{sec:closure,prop:inversion-hull})}\\
-$\varepsilon_0$ & \parbox[t]{0.76\textwidth}{\raggedright the absolute constant of \cref{thm:near-contact}}\\
+$\varepsilon_0$ & \parbox[t]{0.76\textwidth}{\raggedright the constant $4\cdot10^{-26}$ of \cref{thm:near-contact}}\\
 $\Pi$, $\mathrm{fr}$, $\Gamma_i$ & \parbox[t]{0.76\textwidth}{\raggedright the pair volume, the share of a section, and the one-centre terms of the proof of \cref{thm:m23-labelled}}\\
 $a(d,d')$, $D$, $a_D$ & \parbox[t]{0.76\textwidth}{\raggedright the largest inner product the packing allows at distances $d,d'$; $2.1648$; and $a(D,D)=0.573229\ldots$ (\cref{thm:m23-labelled})}\\
 \end{longtable}
@@ -10891,7 +11063,7 @@ factors being monotone, so every printed bound is a bound.
 \cref{sec:noncontact}; it is floating point and exploration, and its
 output says so.
 
-\Cref{sec:closure} rests on three more. \texttt{closure\_lemmas.py} checks
+\Cref{sec:closure} rests on five more. \texttt{closure\_lemmas.py} checks
 the identities behind \cref{lem:holes,prop:inversion-hull,lem:no-triple}
 symbolically; the combinatorics of \cref{cor:root-subsets} in integer
 arithmetic, the $72$ orthogonal pairs at the $24$ vertices and every set
@@ -10906,7 +11078,21 @@ $\mathrm{fr}(1,1,\frac12)$, $r$, $\kappa$ and $c$ in ball arithmetic,
 reruns the branch and bound of \eqref{eq:C}, and runs the two new ones,
 over $30\,051$ and $6\,482$ boxes, with the tables of the $\Gamma_i$ in
 ball arithmetic and outward rounding throughout; with the rerun it takes
-about six minutes. \texttt{near\_contact\_probe.py} is floating point
+about six minutes. \texttt{explicit\_eps0.py} makes the constants of
+\cref{thm:m24-robust,thm:near-contact} explicit: it reads the deposited
+certificate, identifies the weight of every sum-of-squares term and, for
+those whose weight contains the pair factors, bounds the largest
+eigenvalue of the block and the Chebyshev $\ell^1$ norms of the
+transformed vectors in ball arithmetic; it divides $\sigma_2$ exactly by
+its zeros and bounds the quotient from below; it checks the minor bounds
+of \cref{lem:root-lattice-robust}; and it evaluates the facet estimates of
+\cref{thm:near-contact} in exact arithmetic, finding
+$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le4\cdot10^{-5}$
+in sixteen seconds. \texttt{count\_bound\_sqrt6.py} proves that at most
+$49$ other centres lie within $\sqrt6$ of a centre: their directions have
+inner products below $\tfrac23$, and a Delsarte polynomial of degree $13$
+with rational coefficients, nonpositive on $[-1,\tfrac23]$ by a Sturm
+sequence, bounds such a code by $49.58$. \texttt{near\_contact\_probe.py} is floating point
 and exploration: the inversion hull beside the volume, and the
 minimisations near the root system quoted after \cref{thm:near-contact}.
 So is \texttt{truncated\_search.py}, the minimisation of the truncated
@@ -11275,7 +11461,7 @@ preprint, version 11, Preprints.org (2026).
 \bibitem[BBMB26]{D4Zenodo}
 D.~Bhattacharjee, U.~Bhattacharya, P.~Mandal, and S.~Bhattacharya,
 \textit{Supplementary code for: The sphere packing problem in dimension 4 and the twenty-four-cell conjecture},
-software, version v1.6.0, Zenodo (2026).
+software, version v1.7.0, Zenodo (2026).
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{doi:10.5281/zenodo.22766562}
 (concept DOI: the record of all versions, which resolves to the latest);
 version v1.4.0:

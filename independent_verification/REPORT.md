@@ -4,8 +4,9 @@ This report was written against v1.3.0.  The corrections it led to, in the
 package and in the manuscript, are released as v1.4.0; the section
 "Addendum: v1.4.0" at the end says what v1.4.0 proves and what it leaves
 open, "Addendum: v1.5.0" what v1.5.0 adds (Section 2.8 of the paper and
-the Lean file D4Closure.lean), and "Addendum: v1.6.0" the theorem for at
-most twenty-three centres within sqrt 6 and the DOI audit.  Theorem, lemma and section numbers in the body are those of v1.3.0.
+the Lean file D4Closure.lean), "Addendum: v1.6.0" the theorem for at
+most twenty-three centres within sqrt 6 and the DOI audit, and "Addendum:
+v1.7.0" the explicit constant epsilon_0.  Theorem, lemma and section numbers in the body are those of v1.3.0.
 
 Scope: the manuscript `paper/D4.tex` ("The Sphere Packing Problem in
 Dimension 4 and the Twenty-Four-Cell Conjecture") and everything in this
@@ -628,3 +629,44 @@ Checks:
 
   No DOI points to a different work.
 
+## Addendum: v1.7.0
+
+v1.7.0 makes the constant of Theorem 2.18 explicit: epsilon_0 = 4e-26.
+Before, it came from a compactness argument.  Conjecture 1.6 is still
+open, and the paper does not claim otherwise; what is left keeps its shape,
+a centre with at least 24 other centres within sqrt 6, one of them at a
+distance between 2 + epsilon_0 and sqrt 6.
+
+What is new, and how it was checked:
+
+- **Theorem 7.76 (twenty-four points, approximately).**  The sum-of-squares
+  identities of the certificate of de Laat, Leijenhorst and de Muinck
+  Keizer hold as polynomial identities, and the certificate kernel is a
+  Gram kernel on every subset of at most two points, so the chain of
+  Lemma 7.27 holds for any finite set of directions.  If the inner products
+  may exceed 1/2 by kappa, only the terms whose weight is an elementary
+  symmetric function of the pair factors (u + 1)(1/2 - u) can be negative.
+  `multi_cap/explicit_eps0.py` classifies every prefactor of the deposited
+  data (constants, Gram determinants, principal minors, or those
+  functions), and for the sign-changing ones bounds, in ball arithmetic,
+  the largest eigenvalue of the block (trace or row sum) and the Chebyshev
+  l1 norms of the transformed vectors.  Result: B_3 <= 8.75e7,
+  B_4 <= 7.34e9, and E(24, 2e-26) <= 2.35e-12.
+- **The two-point polynomial.**  sigma_2 is divided exactly by
+  (u+1)(u+1/2)^2 u^2 (u-1/2); the quotient is bounded below by 2.62e-4 on
+  [-1, 1/2] with a mean value form on 30 000 intervals (a floating-point
+  scan on 200 001 points gives the minimum 2.6209e-4 at u = -0.8575).
+- **Lemma 7.77.**  The minor bound (rho + 2 delta sqrt 5)^5 - rho^5 = 0.81
+  < 1 at delta = 3e-4 is checked in ball arithmetic.  The distance bound
+  was also tested in floating point on 2 000 random perturbations of the
+  normalised roots with Gram error below 3e-4: the Procrustes distance was
+  at most 0.073 times the bound.
+- **Theorem 2.18.**  The facet and hull estimates are evaluated in exact
+  rational arithmetic, at an upper bound of Theta; every expression is
+  increasing in Theta.  The bracket is positive at S <= 24 epsilon_0 and
+  at S = 4e-5 (0.0204).
+
+The run takes sixteen seconds; the log is `multi_cap/runs/explicit_eps0.log`.
+The paper builds to 164 pages with no undefined references and no overfull or
+underfull boxes; the new section is 7.13, at the end of Section 7, so no
+earlier number changes.

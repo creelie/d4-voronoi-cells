@@ -23,11 +23,59 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: concept DOI 10.5281/zenodo.22766562, which always resolves to the
-newest release; cite it.  This release, v1.6.0, receives its own version
-DOI under that concept record when it is published; it contains the
+newest release; cite it.  This release, v1.7.0, receives its own version
+DOI under that concept record when it is published.  v1.6.0 contains the
 changes listed under v1.5.0 below as well.  Earlier archived releases:
 v1.4.0, 10.5281/zenodo.22940045 (24 September 2026), and v1.3.0,
 10.5281/zenodo.22880335.
+
+## What is new in v1.7.0
+
+The constant epsilon_0 of Theorem 2.18 is explicit: epsilon_0 = 4e-26.  If
+no centre lies at a distance from c strictly between 2 + epsilon_0 and
+sqrt 6, then vol(V_c) >= 8, with equality only at the 24-cell.  Before,
+epsilon_0 came from a compactness argument.  Three new pieces make it a
+number:
+
+- Theorem 7.76 (twenty-four points, approximately).  A set of directions
+  with pairwise inner products at most 1/2 + 2e-26 has at most 24 points,
+  and 24 of them lie within 0.0113 (root sum of squares) of a copy of the
+  normalised roots.  The proof reads the certificate of de Laat,
+  Leijenhorst and de Muinck Keizer robustly: in its sum-of-squares
+  identities only the terms whose weight contains a factor
+  (u + 1)(1/2 - u) with u > 1/2 can turn negative, and their size is
+  bounded from the deposited data.
+- Lemma 7.77.  If a Gram matrix of 24 unit vectors is within 3e-4 of a
+  matrix g with entries in {-1, -1/2, 0, 1/2}, then 2g is integral and
+  every 5 x 5 minor of it is an integer of absolute value below 1, so
+  zero; hence g is the Gram matrix of the root system, and a Davis-Kahan
+  estimate bounds the distance to it.
+- Theorem 2.18, second statement.  The root system is a strict local
+  minimum in an explicit neighbourhood that uses no certificate: exactly
+  24 centres within sqrt 6, directions within 1/48 of the normalised roots
+  (root sum of squares), and sum of delta_i <= 4e-5.  The constants of
+  the facet and hull estimates are explicit.
+
+What is left of Conjecture 1.6 is unchanged in shape: a centre with at
+least 24 other centres within sqrt 6, one of them at a distance between
+2 + epsilon_0 and sqrt 6.  The new code was developed, and its
+computations run, with the assistance of Claude, an AI model made by
+Anthropic.
+
+  paper/              Theorem 2.18 restated with epsilon_0 = 4e-26 and
+                        the explicit neighbourhood, its proof rewritten
+                        with explicit constants; Section 7.13
+                        (Theorem 7.76, Lemma 7.77) is new; the abstract,
+                        Theorem 1.7, the opening of Section 2.8, "What is
+                        left", the conclusion, the notation, the code index
+                        and the data availability statement are revised.
+  multi_cap/explicit_eps0.py
+                      The constants of Theorems 7.76 and 2.18: the sizes
+                        of the sign-changing sum-of-squares terms of the
+                        certificate in ball arithmetic, the exact division
+                        of sigma_2 by its zeros, the minor bounds of Lemma
+                        7.77 and the facet estimates in exact arithmetic.
+                        Sixteen seconds.  Log: runs/explicit_eps0.log.
 
 ## What is new in v1.6.0
 
@@ -715,6 +763,19 @@ with the assistance of Claude, an AI model made by Anthropic.
                               arithmetic.  About six minutes.  Log:
                               runs/labelled_certificate_check.log.  Option
                               --skip-region-1 leaves out the rerun of (C).
+
+  explicit_eps0.py DATA      Supports Theorems 7.76 and 2.18 (the explicit
+                              epsilon_0 = 4e-26).  DATA is the folder
+                              proofs/4_24 of the certificate in
+                              ../third_party/llm24-certificate.  Bounds the
+                              sum-of-squares terms of the certificate whose
+                              weight can change sign (ball arithmetic,
+                              python-flint), divides sigma_2 exactly by its
+                              zeros and bounds the quotient below, checks
+                              the minor bounds of Lemma 7.77, and evaluates
+                              the facet and hull estimates of Theorem 2.18
+                              in exact arithmetic.  Sixteen seconds.  Log:
+                              runs/explicit_eps0.log.
 
   truncated_search.py M [starts] [seed]
                               Supports "What is left" after Theorem 2.18.
