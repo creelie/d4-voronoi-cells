@@ -1932,7 +1932,19 @@ them reach $\sqrt6/4=0.612$, which is where a centre at distance $\sqrt6$
 sits, although one with inner products up to $\frac12$ is excluded. The
 second obstacle is the first in another guise: it is the uniqueness of the
 root system, whose covering radius leaves no room for a twenty-fifth centre
-within $\sqrt6$, that the first level does not see.
+within $\sqrt6$, that the first level does not see. The second level can at
+least be evaluated on an ordinary machine: \texttt{level2\_numeric.py}
+computes $A_2K$ for the kernel of \cite{LLM24} in floating point from the
+zonal matrices of \cref{sec:certificate-checked}, and reproduces
+$K(\emptyset,\emptyset)=24$, $A_2K(\{x\})=-1$, $\sigma_2$ to within
+$2\cdot10^{-14}$ and the zeros at the subsets of the root system. Solving a
+new programme at that level is another matter. With the sums of squares
+replaced by the constraints at $8000$ sampled quadruples,
+\texttt{level2\_sampled.py} returns $19.42$ in place of $24$, fresh
+quadruples violating its constraints by up to $0.23$, and one round of it
+needs most of the $15$ gigabytes of the machine used here; the certificate's
+own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
+\cite{LLM24} solved the programme in $256$-bit arithmetic.
 
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
@@ -9921,9 +9933,11 @@ run. The code of the re-verification, the programs of
 \texttt{shell\_neighbour\_search.py}), the programs of \cref{sec:closure}
 and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{near\_contact\_probe.py}, \texttt{labelled\_certificate\_check.py},
-\texttt{truncated\_search.py}, \texttt{count\_bound\_sqrt6.py} and
-\texttt{explicit\_eps0.py}), the Lean file \texttt{D4Closure.lean} and the
-scripts of the figures of \cref{sec:closure} were developed with the
+\texttt{truncated\_search.py}, \texttt{count\_bound\_sqrt6.py},
+\texttt{explicit\_eps0.py} and \texttt{three\_point\_probes.py}), the
+scripts \texttt{level2\_numeric.py} and \texttt{level2\_sampled.py}, the
+Lean file \texttt{D4Closure.lean} and the scripts of the figures of
+\cref{sec:closure} were developed with the
 assistance of Claude, an AI model made by Anthropic, and their
 computations were run with it.
 
@@ -11149,7 +11163,12 @@ minimisations near the root system quoted after \cref{thm:near-contact}.
 So is \texttt{truncated\_search.py}, the minimisation of the truncated
 volume with exactly $M$ centres within $\sqrt6$ quoted there; the closed
 form it uses for the pair terms is checked against quadrature before it
-starts.
+starts. So are the probes quoted in the same paragraph:
+\texttt{three\_point\_probes.py}, and, in the directory \texttt{zonal},
+\texttt{level2\_numeric.py}, which evaluates the second-level kernel of
+\cite{LLM24} in floating point and checks it against the certificate
+first, and \texttt{level2\_sampled.py}, the sampled second-level
+programme.
 
 \subsection*{The independent re-verification}
 

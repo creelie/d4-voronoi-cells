@@ -69,6 +69,18 @@ Anthropic.
                         (figures_new/tikz_eps0.tex, TikZ), the chain of
                         explicit bounds and, to scale, sigma_2 against the
                         error level; later figures are renumbered by one.
+  multi_cap/three_point_probes.py
+                      Three-point certificates cannot force the pair inner
+                        products of a 24-point code into windows about the
+                        D4 values, nor exclude 24 contacts plus one centre
+                        at sqrt 6 (exploration).  Log:
+                        runs/three_point_probes.log.
+  zonal/level2_numeric.py, zonal/level2_sampled.py
+                      The second-level kernel of the LLM24 certificate in
+                        floating point, validated against the certificate,
+                        and a sampled second-level programme; at slack 0
+                        with 8000 quadruples it gives 19.42, not 24
+                        (exploration; see zonal/README.md).
   multi_cap/truncated_search.py rays
                       Where the pair terms reach 8 near the root system:
                         sum of delta_i = 0.155 pushed out evenly, and

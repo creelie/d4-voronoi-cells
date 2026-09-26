@@ -135,3 +135,30 @@ difference is zero term by term. A wrong zonal matrix would not do that.
 | steps 4 and 5, wall clock | about three hours, the four-point constraint in pieces |
 | signatures passing the semidefiniteness check | 60 of 60 |
 | Gegenbauer ratio, verified for every k from 0 to 14 | 8^k/(k+1)^2 |
+
+## The second level, numerically (exploration)
+
+Two scripts use the zonal matrices for something other than the check: they
+evaluate the second-level kernel in floating point, as a sampled programme
+needs.  Neither is part of any proof.
+
+- `level2_numeric.py DATA PSPICKLE` builds, for configurations of 0 to 4 points
+  given by their Gram matrices, the linear map from the 60 kernel blocks
+  (5298 unknowns) to A_2K(Q), and validates it against the deposited
+  certificate (log `runs/level2_numeric.log`, 30 s):
+  - A_2K(empty) = 24 and A_2K({x}) = -1;
+  - A_2K({x,y}) = -sigma_2(u) to 2e-14, against the exact coefficients;
+  - 0 at subsets of the root system;
+  - at most -3e-6 at random admissible triples and quadruples.
+- `level2_sampled.py DATA PSPICKLE MODE KAP NQ ROUNDS [WIN]` solves the
+  programme with the sums of squares replaced by constraints at sampled
+  configurations (Clarabel, native interface), either for the bound or for a
+  certificate that charges pairs outside windows about -1, -1/2, 0, 1/2.  At
+  slack 0 with 8000 quadruples one round gives 19.42 in place of 24, fresh
+  quadruples violating its constraints by up to 0.23, and needs about 10 GB
+  (log `runs/level2_sampled.log`).  The certificate's own blocks have
+  eigenvalues from 1e-18 to 25; a faithful solve needs the sums of squares, or
+  far more samples, and extended precision.
+
+DATA is the folder `proofs/4_24` of the certificate; PSPICKLE is
+`ps.txt.reduced.pkl`, which `verify45.py` writes next to psker's `ps.txt`.

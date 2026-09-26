@@ -103,6 +103,13 @@ sqrt 6.  Two pieces of work would close it.
   pair inner products of a 24-point code into windows about the D4 values,
   and at degree 7 they cannot exclude 24 contacts plus one centre at sqrt 6.
   So the missing statement needs the second level of the hierarchy.
+- `zonal/level2_numeric.py` and `zonal/level2_sampled.py` are new
+  (exploration; logs in `zonal/runs`).  The first evaluates the second-level
+  kernel of the certificate in floating point and reproduces it exactly
+  (24, -1, sigma_2 to 2e-14, zeros on the root system).  The second samples
+  the second-level programme: with 8000 quadruples at slack 0 it gives 19.42
+  in place of 24, and it uses about 10 GB.  A faithful new second-level
+  certificate is out of reach of this machine.
 - `README.md`, `independent_verification/REPORT.md` (Addendum: v1.7.0),
   `CITATION.cff` and `.zenodo.json` are updated to v1.7.0.  The descriptions
   in `CITATION.cff` and `.zenodo.json`, which Zenodo shows on the record,
