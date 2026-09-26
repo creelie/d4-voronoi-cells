@@ -28,13 +28,14 @@ corresponds to the paper is v1.8.0.
 ## What is new in v1.8.0
 
 - Theorem 7.79 (the kissing number is stable).  No 25 points of S^3 have
-  pairwise inner products at most 1/2 + 0.0065; so at most 24 other
-  centres of a unit-ball packing lie within 2/sqrt(1 - 0.013) = 2.0131 of
-  any centre.  A Bachoc-Vallentin certificate of degree 8 on the enlarged
-  domain [-1, 1/2 + 0.0065], verified in exact rational and outward-rounded
-  interval arithmetic by multi_cap/certify_cardinality.py, which covers the
-  exact decimal threshold (the double nearest 0.5065 lies below it).  A
-  second certificate proves the same at slack 0.005.  The three-point bound
+  pairwise inner products at most 1/2 + 0.008; so at most 24 other
+  centres of a unit-ball packing lie within 2/sqrt(1 - 0.016) = 2.0161 of
+  any centre.  A Bachoc-Vallentin certificate of degree 10 on the enlarged
+  domain [-1, 1/2 + 0.008], verified in exact rational and outward-rounded
+  interval arithmetic by multi_cap/certify_cardinality.py (2.7 million
+  boxes, under an hour), which covers the exact decimal threshold.  Two
+  certificates of degree 8 prove the same at slack 0.005 and 0.0065 in
+  about 80 seconds each.  The three-point bound
   on the enlarged domain rises about 97 per unit of slack from 24.13, so
   this route stops near 0.009; 25 points with inner products at most
   0.53743 exist (multi_cap/code25_search.py).
@@ -84,10 +85,9 @@ by Anthropic.
   multi_cap/certify_cardinality.py, multi_cap/cardinality_sdp.py,
   multi_cap/cardinality_certificates/
                       Theorem 7.79: the proof, the search, and three
-                        certificates: s = 0.005 and 0.0065 at degree 8,
-                        both verified, and s = 0.008 at degree 10, whose
-                        branch and bound is long (see
-                        runs/certify_cardinality_d10_s008.log).  Logs:
+                        certificates, all verified: s = 0.005 and 0.0065 at
+                        degree 8, and s = 0.008 at degree 10, the one the
+                        theorem uses.  Logs:
                         runs/certify_cardinality_*.log,
                         runs/cardinality_search_*.log,
                         runs/cardinality_sweep_d8.log, _d10.log.

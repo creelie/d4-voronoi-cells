@@ -14,12 +14,14 @@ Claude, an AI model made by Anthropic.
 Everything proved in v1.7.0 still stands.  New or sharper:
 
 - **Theorem 7.79 (the kissing number is stable).**
-  - No 25 points of S^3 have pairwise inner products at most 1/2 + 0.0065.
+  - No 25 points of S^3 have pairwise inner products at most 1/2 + 0.008.
   - So at most 24 other centres of a unit-ball packing of R^4 lie within
-    2/sqrt(1 - 0.013) = 2.0131 of any centre.
-  - The proof is a Bachoc-Vallentin certificate of degree 8 on the enlarged
-    domain [-1, 1/2 + 0.0065], verified in exact rational and outward-rounded
-    interval arithmetic.
+    2/sqrt(1 - 0.016) = 2.0161 of any centre.
+  - The proof is a Bachoc-Vallentin certificate of degree 10 on the enlarged
+    domain [-1, 1/2 + 0.008], verified in exact rational and outward-rounded
+    interval arithmetic (2.7 million boxes, under an hour).
+  - Degree-8 certificates prove the same at slack 0.005 and 0.0065 in about
+    80 seconds each.
 - **Lemma 7.50 and Theorem 7.51, sharper.**
   - Every pair of T carries weight 11/16 in the image of the rigidity
     operator, since the Weyl group of F4 is transitive on the edges of the
