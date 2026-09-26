@@ -18,8 +18,8 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "v1.6.0"
-date-released: "2026-09-25"
+version: "v1.7.0"
+date-released: "2026-09-26"
 keywords:
   - sphere packing
   - Voronoi cell
@@ -48,8 +48,12 @@ abstract: >-
   certificate from contacts to centres at any distance and proves the bound
   whenever at most twenty-three centres lie within sqrt 6, with its
   verification in ball and interval arithmetic
-  (labelled_certificate_check.py); it too was developed, and its
-  computations run, with the assistance of Claude.
+  (labelled_certificate_check.py). Version v1.7.0 makes the constant of the
+  near-contact theorem explicit, epsilon_0 = 4e-26, through a robust form of
+  the twenty-four-point certificate and explicit estimates near the root
+  system (explicit_eps0.py, in ball and exact arithmetic). The code of
+  v1.6.0 and v1.7.0 too was developed, and its computations run, with the
+  assistance of Claude.
 doi: "10.5281/zenodo.22766562"
 identifiers:
   - type: doi
