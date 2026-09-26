@@ -28,32 +28,24 @@ keywords:
   - Lean 4
 abstract: >-
   Scripts, certificates, run logs and Lean 4 verifications supporting the paper
-  "The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture": the exact chamber certificates of the single-deviation bound, the
+  "The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell
+  Conjecture": the exact chamber certificates of the single-deviation bound, the
   covering bound, the root-system and 600-cell enumerations, the slack
-  continuation, and the three-point semidefinite certificate for the
-  twenty-three-contact case with its verification in exact rational, interval
-  and Lean arithmetic. It also carries the two steps of the certificate of
-  de Laat, Leijenhorst and de Muinck Keizer for the twenty-four-contact case
-  that their own code leaves out, the construction of the zonal matrices and
-  the four polynomial identities, recomputed here from their published data in
-  exact rational arithmetic on an ordinary machine. Version v1.4.0 adds an
-  independent re-verification of every computation of the paper, the distance
-  criterion for neighbours that do not touch the centre (in ball arithmetic)
-  and a numerical search of the case it leaves open, with the corrections the
-  re-verification found; these were developed with the assistance of Claude,
-  an AI model made by Anthropic. Version v1.5.0 narrows the remaining case (a
-  strict local minimum at D4 among all packings, and further reductions), with
-  a second machine-verification layer in Lean 4 for its exact content,
-  developed in the same way. Version v1.6.0 carries the three-point
-  certificate from contacts to centres at any distance and proves the bound
-  whenever at most twenty-three centres lie within sqrt 6, with its
-  verification in ball and interval arithmetic
-  (labelled_certificate_check.py). Version v1.7.0 makes the constant of the
-  near-contact theorem explicit, epsilon_0 = 4e-26, through a robust form of
-  the twenty-four-point certificate and explicit estimates near the root
-  system (explicit_eps0.py, in ball and exact arithmetic). The code of
-  v1.6.0 and v1.7.0 too was developed, and its computations run, with the
-  assistance of Claude.
+  continuation, and the three-point semidefinite certificate for the twenty-
+  three-contact case with its verification in exact rational, interval and Lean
+  arithmetic. It also carries the two steps of the certificate of de Laat,
+  Leijenhorst and de Muinck Keizer for the twenty-four-contact case that their
+  own code leaves out, the construction of the zonal matrices and the four
+  polynomial identities, recomputed from their published data in exact rational
+  arithmetic on an ordinary machine; the distance criterion for neighbours that
+  do not touch the centre and a numerical search of the case it leaves open; the
+  verification of the local bound whenever at most twenty-three centres lie
+  within sqrt 6 (labelled_certificate_check.py); the exact content of the
+  further reductions, also in Lean 4; the explicit constant epsilon_0 = 4e-26 of
+  the near-contact theorem (explicit_eps0.py); and an independent re-
+  verification of every computation of the paper. The re-verification and these
+  programs were developed, and their computations run, with the assistance of
+  Claude, an AI model made by Anthropic.
 doi: "10.5281/zenodo.22766562"
 identifiers:
   - type: doi

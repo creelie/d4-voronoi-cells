@@ -78,8 +78,10 @@ sqrt 6.  Two pieces of work would close it.
 - **Other revisions.**
   - The abstract, Theorem 1.7(c) and the remark after it.
   - The opening of Section 2.8, "What is left" and the conclusion.
-  - The index of notation, the code index, the data and code availability
-    statement, and the archive entry of the bibliography (v1.7.0).
+  - The index of notation and the code index.
+  - The data and code availability statement names only release v1.7.0 and
+    the archive DOI 10.5281/zenodo.22766562, with no version history; the
+    bibliography entry of the archive likewise.
 - **Build.**  166 pages, with no undefined references and no overfull or
   underfull boxes.
 
@@ -97,7 +99,9 @@ sqrt 6.  Two pieces of work would close it.
 - `multi_cap/truncated_search.py` gains the mode `rays` (log
   `runs/truncated_search_rays.log`), quoted in "What is left".
 - `README.md`, `independent_verification/REPORT.md` (Addendum: v1.7.0),
-  `CITATION.cff` and `.zenodo.json` are updated to v1.7.0.
+  `CITATION.cff` and `.zenodo.json` are updated to v1.7.0.  The descriptions
+  in `CITATION.cff` and `.zenodo.json`, which Zenodo shows on the record,
+  describe the package as it stands, without a version history.
 
 ## Release
 

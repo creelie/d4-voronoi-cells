@@ -22,12 +22,8 @@ and archived on Zenodo through that repository (CITATION.cff and
 .zenodo.json carry the metadata of the archive). It is also obtainable
 from Deep Bhattacharjee <itsdeep@live.com>.
 
-Archive: concept DOI 10.5281/zenodo.22766562, which always resolves to the
-newest release; cite it.  This release, v1.7.0, receives its own version
-DOI under that concept record when it is published.  v1.6.0 contains the
-changes listed under v1.5.0 below as well.  Earlier archived releases:
-v1.4.0, 10.5281/zenodo.22940045 (24 September 2026), and v1.3.0,
-10.5281/zenodo.22880335.
+Archive: DOI 10.5281/zenodo.22766562; cite it.  The release that
+corresponds to the paper is v1.7.0.
 
 ## What is new in v1.7.0
 
