@@ -219,8 +219,8 @@ $\varepsilon_0=4\cdot10^{-26}$, which makes the $D_4$ configuration a strict
 local minimum of the cell volume among all packings, in an explicit
 neighbourhood. The kissing number is stable: a three-point certificate on an
 enlarged domain shows that no twenty-five points of $S^3$ have pairwise
-inner products at most $\tfrac12+0.0065$, so at most twenty-four neighbours lie
-within $2.0131$ of any centre. The case left
+inner products at most $\tfrac12+0.008$, so at most twenty-four neighbours lie
+within $2.0161$ of any centre. The case left
 open is a centre with at least twenty-four neighbours within $\sqrt6$, one
 of them at an intermediate distance, for which we give numerical evidence.
 \end{abstract}
@@ -550,8 +550,8 @@ within that neighbourhood, and it is small because the sums of squares of
 the certificate are large. What is left of \cref{conj:shell} is a centre
 with at least twenty-four other centres within $\sqrt6$, one of them at
 an intermediate distance, between $2+\varepsilon_0$ and $\sqrt6$. Of those,
-at most twenty-four lie within $2.0131$: the kissing number is stable under
-a slack of $0.0065$ in the inner products (\cref{thm:kissing-stable}), which
+at most twenty-four lie within $2.0161$: the kissing number is stable under
+a slack of $0.008$ in the inner products (\cref{thm:kissing-stable}), which
 a three-point certificate on the enlarged domain proves in exact and interval
 arithmetic. That is the cardinality half of a quantitative form of
 \cref{thm:m24}; the other half, that such twenty-four directions lie near a
@@ -1981,8 +1981,8 @@ $\sum_i\delta_i$ up to about $0.005$; beyond that, twenty-four directions
 whose inner products exceed $\tfrac12$ by an amount of order $10^{-2}$
 would have to be shown close to the root system, a quantitative form of
 \cref{thm:m24} at moderate slack. Its cardinality half holds:
-\cref{thm:kissing-stable} excludes a twenty-fifth point up to slack $0.0065$,
-so at most $24$ other centres lie within $2.0131$ of any centre. Its shape
+\cref{thm:kissing-stable} excludes a twenty-fifth point up to slack $0.008$,
+so at most $24$ other centres lie within $2.0161$ of any centre. Its shape
 half is what is missing. \Cref{thm:m24-robust} gives it only for slack up to
 $2\cdot10^{-26}$, and \cref{rem:robust-ceiling} shows that no reading of the
 same kernel passes $10^{-8}$: the certificate is exact at slack $0$, and its
@@ -6522,10 +6522,10 @@ domain is the cardinality half of that statement, with a slack twenty-three
 orders of magnitude larger than in \cref{thm:m24-robust}.
 
 \begin{thm}[The kissing number is stable]\label{thm:kissing-stable}
-Let $s_0=0.0065$. Every set of points of $S^3$ whose pairwise inner
+Let $s_0=0.008$. Every set of points of $S^3$ whose pairwise inner
 products are at most $\tfrac12+s_0$ has at most $24$ elements.
 Consequently, in a packing of unit balls in $\mathbb{R}^4$, at most $24$ other
-centres lie within distance $2/\sqrt{1-2s_0}=2.0131\ldots$ of any centre.
+centres lie within distance $2/\sqrt{1-2s_0}=2.0161\ldots$ of any centre.
 \end{thm}
 
 \begin{proof}
@@ -6552,22 +6552,22 @@ Then $(|C|-1)(1-e_1)-(|C|-1)(|C|-2)e_2\le f(1)+F(1,1,1)$. A set of $25$ or
 more points contains one of exactly $25$, so $|C|\le24$ as soon as
 $24(1-e_1)-552e_2>f(1)+F(1,1,1)$.
 
-The certificate has degree $d=8$. It was found by solving the
+The certificate has degree $d=10$. It was found by solving the
 corresponding programme in floating point, with (i) and (ii) imposed at
-sampled points and refined in rounds, $f(1)+F(1,1,1)$ held at $23.975$ and
+sampled points and refined in rounds, $f(1)+F(1,1,1)$ held at $23.96$ and
 the least slack maximised (\texttt{cardinality\_sdp.py}), and its entries
 are read as the exact rationals they denote.
 \texttt{certify\_cardinality.py} establishes, with no floating point beyond
 outward-rounded interval arithmetic and with the polynomial and
 branch-and-bound routines of \texttt{certificate\_check.py}: that every $f_k$
 is nonnegative and every $F_k$ positive definite, by exact
-$LDL^{\mathsf T}$ factorisation; the value $f(1)+F(1,1,1)=23.974999950\ldots$,
+$LDL^{\mathsf T}$ factorisation; the value $f(1)+F(1,1,1)=23.959999949\ldots$,
 exactly; (i) with $e_1=10^{-6}$, by branch and bound on the exact univariate
-polynomial; and (ii) with $e_2=10^{-5}$ on the ordered admissible domain
+polynomial; and (ii) with $e_2=7\cdot10^{-5}$ on the ordered admissible domain
 $-1\le u\le v\le w\le t$, $1+2uvw-u^2-v^2-w^2\ge0$, which suffices because
 $F$ is symmetric, every box being decided by a second-order Taylor bound
-about its centre. Both domains are run up to the least double at or above
-$t$. Then $24(1-e_1)-552e_2=23.994456>23.975$.
+about its centre, $2.7$ million boxes in all. Both domains are run up to the
+least double at or above $t$. Then $24(1-e_1)-552e_2=23.961336>23.96$.
 
 For the second statement, let $y_i$ be centres at distances
 $d_i\le D=2/\sqrt{1-2s_0}$ from $c=0$. Two of them satisfy
@@ -6579,8 +6579,10 @@ therefore at most $1-2/D^2=\tfrac12+s_0$.
 Musin's theorem \cite{Mus08} is the case $s_0=0$; the content of
 \cref{thm:kissing-stable} is that the count does not jump there, the first
 slack at which a twenty-fifth point could enter being bounded away from $0$
-by an explicit amount. A degree-$8$ certificate at $s_0=0.005$ passes the
-same check, and \cref{fig:positive-slack}(a) shows why the method stops soon after:
+by an explicit amount. Two certificates of degree $8$, at $s_0=0.005$ and
+$s_0=0.0065$, pass the same check in about eighty seconds each, the one of
+degree $10$ in under an hour; \cref{fig:positive-slack}(a) shows why the
+method stops soon after:
 the three-point bound on the enlarged domain rises by about $97$ per unit of
 $s$ from about $24.13$ at $s=0$, so no certificate of this kind reaches much
 beyond $s=0.009$, while a numerical search finds $25$ points of $S^3$ with
@@ -6596,9 +6598,9 @@ shape of a set of $24$ points with slack $s_0$, which is what
 three-point bound on the number of points of $S^3$ with inner products at
 most $\tfrac12+s$, from sampled programmes of degree $8$ and $10$
 (\texttt{cardinality\_sdp.py sweep}; each sampled value is slightly
-optimistic), with the two certified values of \cref{thm:kissing-stable} and
-its companion at $s=0.005$. It crosses $25$ near $s=0.009$; a $25$-point
-code exists from $s=0.0374$ on. (b) How far the proof of
+optimistic), with the three certified values: degree $8$ at $s=0.005$ and
+$0.0065$, degree $10$ at $s=0.008$, the one \cref{thm:kissing-stable} uses. It
+crosses $25$ near $s=0.009$; a $25$-point code exists from $s=0.0374$ on. (b) How far the proof of
 \cref{thm:m24-robust} could be pushed if the triple and quadruple terms
 cost nothing ($B_3=B_4=0$): the largest slack $\kappa$ it reaches, against
 the tolerance $\delta$ that a rounding lemma would allow
@@ -11395,7 +11397,8 @@ checks $f_k\ge0$ and the positive definiteness of every $F_k$ by exact
 $LDL^{\mathsf T}$, computes $f(1)+F(1,1,1)$ exactly, and runs the two branch and
 bounds, over the interval $[-1,t]$ and the ordered admissible domain in
 $[-1,t]^3$, with the interval routines of \texttt{certificate\_check.py}; at
-degree $8$ it takes about eighty seconds. \texttt{cardinality\_sdp.py}, which
+degree $8$ it takes about eighty seconds, and on the degree-$10$ certificate of
+the theorem it decides $2.7$ million boxes in under an hour. \texttt{cardinality\_sdp.py}, which
 found the certificates and draws \cref{fig:positive-slack}(a), is floating point with
 sampled constraints, and so are \texttt{robust\_ceiling.py}, which evaluates
 \cref{rem:robust-ceiling} from the exact $\sigma_2$, and

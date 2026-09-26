@@ -44,7 +44,7 @@ abstract: >-
   further reductions, also in Lean 4; the explicit constant epsilon_0 = 4e-26 of
   the near-contact theorem (explicit_eps0.py); the three-point certificate on an
   enlarged domain that makes the kissing number in dimension four stable, no 25
-  points of S^3 with inner products at most 1/2 + 0.0065
+  points of S^3 with inner products at most 1/2 + 0.008
   (certify_cardinality.py); and an independent re-verification of every
   computation of the paper. The re-verification and these
   programs were developed, and their computations run, with the assistance of

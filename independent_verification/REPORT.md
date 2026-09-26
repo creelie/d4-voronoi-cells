@@ -704,8 +704,10 @@ What is new, and how it was checked:
     sum over ordered pairs and triples, then a 25-point subset of any
     larger set.  The subset replaces the monotonicity argument of the
     submission, which fails for very large |C|.
-  - The degree-10 certificate at s = 0.008 was not verified here to the
-    end; see its log.
+  - The degree-10 certificate at s = 0.008, the one the theorem states,
+    passes as well: f(1) + F(1,1,1) = 23.959999949, e2 = 7e-5, 2 642 578
+    boxes in 48 minutes, and 24(1 - e1) - 552 e2 = 23.961336 > 23.96.  The
+    shipped log is a second run with the final version of the checker.
 - **Correction 1: the threshold.**  The submitted checker ran its boxes to
   the double nearest 0.5065, which lies 5e-17 below 0.5065.  The checker
   now takes the recorded decimal exactly and runs to the least double at

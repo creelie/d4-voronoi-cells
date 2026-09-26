@@ -57,14 +57,16 @@ fig, (ax, bx) = plt.subplots(1, 2, figsize=(6.5, 2.75), gridspec_kw=dict(wspace=
 # (a)
 ax.plot(*zip(*d8), color=BLUE, marker="o", ms=3.2, label="degree 8, sampled")
 ax.plot(*zip(*d10), color=ORANGE, marker="o", ms=3.2, label="degree 10, sampled")
-ax.plot([c[0] for c in cert], [c[1] for c in cert], ls="none", marker="s", ms=4.8, color=AQUA,
-        label="certified")
+ax.plot([c[0] for c in cert], [c[1] for c in cert], ls="none", marker="s", ms=3.0, color=AQUA,
+        label="certified", zorder=5)
 ax.axhline(25, color=INK3, lw=0.8, ls="--")
 ax.axvline(s25, color=MAGENTA, lw=0.9, ls=":")
 ax.text(s25 + 0.0025, 26.75, "25 points\nexist from\n$s=%.4f$" % s25, color=MAGENTA, fontsize=6.8,
         va="center", ha="left", bbox=dict(facecolor=SURFACE, edgecolor="none", pad=0.8))
 ax.text(0.062, 25.2, "bound $=25$", color=INK3, fontsize=6.8, va="bottom",
         bbox=dict(facecolor=SURFACE, edgecolor="none", pad=0.8))
+ax.text(0.0115, 24.3, "certified at $s=%s$" % ", ".join("%g" % c[0] for c in cert), color="#12805a",
+        fontsize=6.4, va="center", ha="left", zorder=6, bbox=dict(facecolor=SURFACE, edgecolor="none", pad=0.6))
 ax.set_xlim(-0.003, 0.084)
 ax.set_ylim(23.6, 34.3)
 ax.set_xticks([0, 0.02, 0.04, 0.06, 0.08])
