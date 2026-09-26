@@ -28,6 +28,9 @@ Starts: the root system pushed out a little with random extra centres, and
 random points spread by a penalty until the packing conditions hold.
 
 Usage: python3 truncated_search.py M [starts] [seed]
+       python3 truncated_search.py rays
+The second form prints where T reaches 8 along two families through the root
+system: all 24 centres pushed out to 2 + delta, and one centre pushed out.
 """
 import math
 import sys
@@ -101,7 +104,26 @@ def roots():
     return math.sqrt(2) * np.array(out)
 
 
+def rays():
+    from scipy.optimize import brentq
+    U = roots() / 2
+    print('T at the root system: %.6f' % T(2 * U))
+    d1 = brentq(lambda d: T(U * (2 + d)) - 8, 1e-4, 0.05, xtol=1e-12)
+    print('all 24 centres at distance 2 + delta: T = 8 at delta = %.5f, sum of the delta_i = %.4f' % (d1, 24 * d1))
+
+    def one(d):
+        Y = 2 * U.copy()
+        Y[0] = U[0] * (2 + d)
+        return T(Y) - 8
+    d2 = brentq(one, 1e-3, 0.4, xtol=1e-12)
+    print('one centre at distance 2 + delta, 23 at 2: T = 8 at delta = %.4f' % d2)
+    print('(floating point: where the pair terms of Lemma 2.15 reach 8, not a bound)')
+
+
 def main():
+    if sys.argv[1] == 'rays':
+        rays()
+        return
     M = int(sys.argv[1]); nstart = int(sys.argv[2]) if len(sys.argv) > 2 else 40
     seed = int(sys.argv[3]) if len(sys.argv) > 3 else 1
     rng = np.random.default_rng(seed)

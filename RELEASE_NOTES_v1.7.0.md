@@ -52,7 +52,14 @@ sqrt 6.  Two pieces of work would close it.
   the truncated volume stays above 8.26 there.
 - **Exactly 24 centres, at intermediate distances.**  This needs a lower
   bound for the part of the cell outside B(sqrt(3/2)), strong enough to
-  reach the explicit neighbourhood of Theorem 2.18.
+  reach the explicit neighbourhood of Theorem 2.18.  The size of the gap is
+  measured by `truncated_search.py rays` (floating point):
+  - the pair terms reach 8 only at sum delta_i = 0.155 when all 24 centres
+    are pushed out evenly, and at delta = 0.197 when one centre is pushed
+    out;
+  - the explicit neighbourhood ends at sum delta_i = 4e-5.
+
+  That is a factor of about four thousand.
 
 ## The manuscript (paper/)
 
@@ -87,6 +94,8 @@ sqrt 6.  Two pieces of work would close it.
   - evaluates the estimates of Theorem 2.18 in exact arithmetic.
 
   Log: `multi_cap/runs/explicit_eps0.log`.
+- `multi_cap/truncated_search.py` gains the mode `rays` (log
+  `runs/truncated_search_rays.log`), quoted in "What is left".
 - `README.md`, `independent_verification/REPORT.md` (Addendum: v1.7.0),
   `CITATION.cff` and `.zenodo.json` are updated to v1.7.0.
 

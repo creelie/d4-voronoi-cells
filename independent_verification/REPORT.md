@@ -667,6 +667,13 @@ What is new, and how it was checked:
   at S = 4e-5 (0.0204).
 
 The run takes sixteen seconds; the log is `multi_cap/runs/explicit_eps0.log`.
+
+`multi_cap/truncated_search.py rays` (floating point, exploration) locates
+where the pair terms of Lemma 2.15 reach 8 near the root system: at
+sum delta_i = 0.1551 with all 24 centres pushed out evenly, and at
+delta = 0.1971 with one centre pushed out.  The explicit neighbourhood of
+Theorem 2.18 ends at sum delta_i = 4e-5.  The log is
+`multi_cap/runs/truncated_search_rays.log`.
 The paper builds to 165 pages with no undefined references and no overfull or
 underfull boxes; the new section is 7.13, at the end of Section 7, so no
 theorem, lemma or section number changes.  The new Figure 25

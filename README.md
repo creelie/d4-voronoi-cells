@@ -73,6 +73,12 @@ Anthropic.
                         (figures_new/tikz_eps0.tex, TikZ), the chain of
                         explicit bounds and, to scale, sigma_2 against the
                         error level; later figures are renumbered by one.
+  multi_cap/truncated_search.py rays
+                      Where the pair terms reach 8 near the root system:
+                        sum of delta_i = 0.155 pushed out evenly, and
+                        delta = 0.197 for one centre, against the explicit
+                        neighbourhood 4e-5 of Theorem 2.18.  Log:
+                        runs/truncated_search_rays.log.
   multi_cap/explicit_eps0.py
                       The constants of Theorems 7.76 and 2.18: the sizes
                         of the sign-changing sum-of-squares terms of the
@@ -782,11 +788,17 @@ with the assistance of Claude, an AI model made by Anthropic.
                               runs/explicit_eps0.log.
 
   truncated_search.py M [starts] [seed]
+  truncated_search.py rays
                               Supports "What is left" after Theorem 2.18.
                               Floating point, exploration: minimises the
                               right side of Lemma 2.15 over configurations
                               of exactly M centres within sqrt 6.  Logs:
                               runs/truncated_search_M24.log to _M27.log.
+                              With "rays" it prints where that right side
+                              reaches 8 on two families through the root
+                              system (sum of delta_i = 0.155 pushed out
+                              evenly, delta = 0.197 for one centre).  Log:
+                              runs/truncated_search_rays.log.
 
   near_contact_probe.py
                               Supports the remarks after Theorem 2.18.
