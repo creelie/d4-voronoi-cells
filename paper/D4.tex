@@ -1970,7 +1970,11 @@ count up to the largest that fits within $\sqrt6$, and at most $49$ fit
   finds has $43$ centres, $29$ of them within $10^{-4}$ of the sphere of radius
   $\sqrt6$. Two centres on that sphere at least $2$ apart subtend an angle of at
   least $\arccos\frac23=48.19^\circ$ at $c$, so near the top of the range the
-  question is one about spherical codes of that angle in $S^3$.} Such a certificate has to see that
+  question is one about spherical codes of that angle in $S^3$. For such codes
+  the three-point bound is no better than the bound $49.58$ used here: at
+  degree $8$ it gives $49.5$ (\texttt{cardinality\_sdp.py}). A smaller count
+  needs a bound that sees the distances as well, since two centres at distance
+  $2$ from $c$ are at least $60^\circ$ apart.} Such a certificate has to see that
 twenty-four centres close to $c$ leave no room for another within $\sqrt6$;
 at the root system the nearest room is at $2\sqrt2$. That is a statement about
 the shape of twenty-four directions at positive slack, the one discussed
