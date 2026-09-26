@@ -22,12 +22,8 @@ and archived on Zenodo through that repository (CITATION.cff and
 .zenodo.json carry the metadata of the archive). It is also obtainable
 from Deep Bhattacharjee <itsdeep@live.com>.
 
-Archive: concept DOI 10.5281/zenodo.22766562, which always resolves to the
-newest release; cite it.  This release, v1.7.0, receives its own version
-DOI under that concept record when it is published.  v1.6.0 contains the
-changes listed under v1.5.0 below as well.  Earlier archived releases:
-v1.4.0, 10.5281/zenodo.22940045 (24 September 2026), and v1.3.0,
-10.5281/zenodo.22880335.
+Archive: DOI 10.5281/zenodo.22766562; cite it.  The release that
+corresponds to the paper is v1.7.0.
 
 ## What is new in v1.7.0
 
@@ -73,6 +69,18 @@ Anthropic.
                         (figures_new/tikz_eps0.tex, TikZ), the chain of
                         explicit bounds and, to scale, sigma_2 against the
                         error level; later figures are renumbered by one.
+  multi_cap/three_point_probes.py
+                      Three-point certificates cannot force the pair inner
+                        products of a 24-point code into windows about the
+                        D4 values, nor exclude 24 contacts plus one centre
+                        at sqrt 6 (exploration).  Log:
+                        runs/three_point_probes.log.
+  zonal/level2_numeric.py, zonal/level2_sampled.py
+                      The second-level kernel of the LLM24 certificate in
+                        floating point, validated against the certificate,
+                        and a sampled second-level programme; at slack 0
+                        with 8000 quadruples it gives 19.42, not 24
+                        (exploration; see zonal/README.md).
   multi_cap/truncated_search.py rays
                       Where the pair terms reach 8 near the root system:
                         sum of delta_i = 0.155 pushed out evenly, and
@@ -786,6 +794,19 @@ with the assistance of Claude, an AI model made by Anthropic.
                               the facet and hull estimates of Theorem 2.18
                               in exact arithmetic.  Sixteen seconds.  Log:
                               runs/explicit_eps0.log.
+
+  three_point_probes.py windows d kappa win [rounds]
+  three_point_probes.py cap d tau [rounds]
+                              Supports "What is left" after Theorem 2.18.
+                              Floating point, sampled constraints,
+                              exploration: whether a three-point certificate
+                              can force the pair inner products of a 24-point
+                              code into windows about -1, -1/2, 0, 1/2 (at
+                              degree 12 it cannot, even with half-width 0.2),
+                              and whether it can exclude 24 contacts plus one
+                              centre with inner products up to tau (at degree
+                              7: yes at tau = 1/2, no at tau = 0.612).  Log:
+                              runs/three_point_probes.log.
 
   truncated_search.py M [starts] [seed]
   truncated_search.py rays

@@ -1907,7 +1907,44 @@ $\delta=0.197$ with one centre pushed out and the others in contact
 $\varepsilon_0$ explicit, what closing the rest would take is, at
 intermediate distances, a lower bound for the part of the cell outside
 $B(\sqrt{3/2})$, which the pair terms of \cref{lem:no-triple} do not see,
-strong enough to bridge that factor of about four thousand.
+strong enough to bridge that factor of about four thousand. The missing
+ingredient is the same on both sides of it. The rigidity of
+\cref{thm:local-uniqueness} controls the directions only while
+$d(W)\le\frac1{48}$, which estimate (a) guarantees only for
+$\sum_i\delta_i$ up to about $0.004$; beyond that, twenty-four directions
+whose inner products exceed $\tfrac12$ by an amount of order $10^{-2}$
+would have to be shown close to the root system, a quantitative form of
+\cref{thm:m24} at moderate slack. \Cref{thm:m24-robust} gives that form only
+for slack up to $2\cdot10^{-26}$, and not because of loose constants alone:
+the certificate is exact at slack $0$, and its two-point polynomial has
+double zeros at $-\frac12$ and $0$, so the distance it controls is the
+square root of the error. A form at moderate slack would need a new
+computation at the second level of the hierarchy, with a margin, of the
+kind carried out in \cite{LLM24}. The first level cannot supply it
+(\texttt{three\_point\_probes.py}, floating point with sampled constraints).
+Asked at degree $12$ for a three-point certificate that charges a positive
+amount to every pair of a $24$-point code whose inner product lies outside
+windows of half-width $0.1$, or even $0.2$, about $-1$, $-\frac12$, $0$ and
+$\frac12$, the programme finds that the best one charges nothing, at a count
+bound of $24.05$. And at degree $7$ no three-point certificate excludes
+twenty-four contacts together with one more centre whose inner products with
+them reach $\sqrt6/4=0.612$, which is where a centre at distance $\sqrt6$
+sits, although one with inner products up to $\frac12$ is excluded. The
+second obstacle is the first in another guise: it is the uniqueness of the
+root system, whose covering radius leaves no room for a twenty-fifth centre
+within $\sqrt6$, that the first level does not see. The second level can at
+least be evaluated on an ordinary machine: \texttt{level2\_numeric.py}
+computes $A_2K$ for the kernel of \cite{LLM24} in floating point from the
+zonal matrices of \cref{sec:certificate-checked}, and reproduces
+$K(\emptyset,\emptyset)=24$, $A_2K(\{x\})=-1$, $\sigma_2$ to within
+$2\cdot10^{-14}$ and the zeros at the subsets of the root system. Solving a
+new programme at that level is another matter. With the sums of squares
+replaced by the constraints at $8000$ sampled quadruples,
+\texttt{level2\_sampled.py} returns $19.42$ in place of $24$, fresh
+quadruples violating its constraints by up to $0.23$, and one round of it
+needs most of the $15$ gigabytes of the machine used here; the certificate's
+own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
+\cite{LLM24} solved the programme in $256$-bit arithmetic.
 
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
@@ -9876,37 +9913,32 @@ below.
 The supplementary code package, with every script, certificate, run
 log and Lean file named in \cref{app:code-index}, is maintained at
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
-and is archived on Zenodo. The version that corresponds to this paper is
-release \texttt{v1.7.0}, at
-\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.7.0}{the
-tag of that name}; the release \texttt{v1.4.0} has the version DOI
-\bluelink{https://doi.org/10.5281/zenodo.22940045}{10.5281/zenodo.22940045}.
-The Zenodo record that collects every version, and
-resolves to the most recent of them, has the concept DOI
+and archived on Zenodo under the DOI
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{10.5281/zenodo.22766562}
-\cite{D4Zenodo}; that identifier is the one to cite, since it does not
-change from version to version. The certificate that \cref{sec:certificate-checked}
+\cite{D4Zenodo}. The version that corresponds to this paper is release
+\texttt{v1.7.0}, at
+\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.7.0}{the
+tag of that name}. The certificate that \cref{sec:certificate-checked}
 verifies is the data set of \cite{LLM24data}, deposited by its authors
 under the MIT licence; the archive \texttt{LasserreSphericalCodes.zip},
 with its checksum and its licence notice, is included in the
 supplementary archive, cut into parts below the file size the repository
 accepts and reassembled by a script that checks the checksum, so that
 the proof of \cref{thm:twentyfour-points} can be rerun from that archive
-alone. Version \texttt{v1.4.0} adds an independent re-verification of
-every computation of the paper, in the directory
-\texttt{independent\_verification} with its report and the logs of every
-run, the two programs of \cref{sec:noncontact}
-(\texttt{shell\_reduction.py} and \texttt{shell\_neighbour\_search.py}),
-and the corrections to the supplement that the re-verification found.
-The code of the re-verification, those two programs and the corrections
-were developed with the assistance of Claude, an AI model made by
-Anthropic. Versions \texttt{v1.5.0} and \texttt{v1.6.0} add the
-programs of \cref{sec:closure}, \texttt{closure\_lemmas.py},
+alone. The package also contains an independent re-verification of every
+computation of the paper, in the directory
+\texttt{independent\_verification}, with its report and the logs of every
+run. The code of the re-verification, the programs of
+\cref{sec:noncontact} (\texttt{shell\_reduction.py} and
+\texttt{shell\_neighbour\_search.py}), the programs of \cref{sec:closure}
+and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{near\_contact\_probe.py}, \texttt{labelled\_certificate\_check.py},
-\texttt{truncated\_search.py} and \texttt{count\_bound\_sqrt6.py}, the
-Lean file \texttt{D4Closure.lean} and the scripts of the figures of that
-section, and version \texttt{v1.7.0} adds \texttt{explicit\_eps0.py};
-these too were developed with the assistance of Claude, and their
+\texttt{truncated\_search.py}, \texttt{count\_bound\_sqrt6.py},
+\texttt{explicit\_eps0.py} and \texttt{three\_point\_probes.py}), the
+scripts \texttt{level2\_numeric.py} and \texttt{level2\_sampled.py}, the
+Lean file \texttt{D4Closure.lean} and the scripts of the figures of
+\cref{sec:closure} were developed with the
+assistance of Claude, an AI model made by Anthropic, and their
 computations were run with it.
 
 \section*{Competing interests}
@@ -11131,14 +11163,19 @@ minimisations near the root system quoted after \cref{thm:near-contact}.
 So is \texttt{truncated\_search.py}, the minimisation of the truncated
 volume with exactly $M$ centres within $\sqrt6$ quoted there; the closed
 form it uses for the pair terms is checked against quadrature before it
-starts.
+starts. So are the probes quoted in the same paragraph:
+\texttt{three\_point\_probes.py}, and, in the directory \texttt{zonal},
+\texttt{level2\_numeric.py}, which evaluates the second-level kernel of
+\cite{LLM24} in floating point and checks it against the certificate
+first, and \texttt{level2\_sampled.py}, the sampled second-level
+programme.
 
 \subsection*{The independent re-verification}
 
 The directory \texttt{independent\_verification} of the supplement
 records a re-run of every computation of this paper from a fresh copy of
-the package: the Lean verifications (seven at the time;
-\texttt{D4Closure.lean} was added in v1.5.0), the certificates for $23$ and
+the package: the Lean verifications (seven at the time of the re-run;
+the eighth, \texttt{D4Closure.lean}, came with \cref{sec:closure}), the certificates for $23$ and
 $24$ contacts, including steps $3$ and $5$ of
 \cref{sec:certificate-checked} with all fifty sum-of-squares blocks of the
 four-point constraint, every script with its output compared against the
@@ -11495,10 +11532,7 @@ preprint, version 11, Preprints.org (2026).
 D.~Bhattacharjee, U.~Bhattacharya, P.~Mandal, and S.~Bhattacharya,
 \textit{Supplementary code for: The sphere packing problem in dimension 4 and the twenty-four-cell conjecture},
 software, version v1.7.0, Zenodo (2026).
-\bluelink{https://doi.org/10.5281/zenodo.22766562}{doi:10.5281/zenodo.22766562}
-(concept DOI: the record of all versions, which resolves to the latest);
-version v1.4.0:
-\bluelink{https://doi.org/10.5281/zenodo.22940045}{doi:10.5281/zenodo.22940045}.
+\bluelink{https://doi.org/10.5281/zenodo.22766562}{doi:10.5281/zenodo.22766562}.
 Source repository:
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
 
