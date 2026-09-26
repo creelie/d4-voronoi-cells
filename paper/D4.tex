@@ -6214,11 +6214,12 @@ nonnegative unless $Q$ has an inner product above $\tfrac12$. Hence
 $\sigma_k(Q)\ge-aB_k$ for $k=3,4$, where $B_k=\sum_r\binom{n_k}r(\tfrac9{16})^{r-1}S_{k,r}$,
 $n_3=3$, $n_4=6$, and $S_{k,r}$ bounds the sum of $c\,\sigma$ over the terms of
 $\sigma_k$ with weight $e_r$. The program \texttt{explicit\_eps0.py} bounds
-these sums from the deposited data in ball arithmetic, bounding the
-largest eigenvalue of each positive definite block by its trace or its
-largest absolute row sum and each entry of $m$ by the $\ell^1$ norm of its
-coefficients in the tensor Chebyshev basis, which is at least its
-supremum on $[-1,1]^6$; it finds $B_3\le8.75\cdot10^{7}$ and
+these sums from the deposited data in ball arithmetic. The data give
+each $M$ as $TXT^{\mathsf T}$ with $X$ positive definite, so
+$m^{\mathsf T}Mm\le\lambda_{\max}(X)\,|T^{\mathsf T}m|^2$; the program bounds
+$\lambda_{\max}(X)$ by the trace or the largest absolute row sum of $X$, and
+each entry of $T^{\mathsf T}m$ by the $\ell^1$ norm of its coefficients in the
+tensor Chebyshev basis, which is at least its supremum on $[-1,1]^6$; it finds $B_3\le8.75\cdot10^{7}$ and
 $B_4\le7.34\cdot10^{9}$. For a pair, $\sigma_2(\tfrac12)=0$ and
 $|\sigma_2'|\le0.226$ on $[\tfrac12,\tfrac12+10^{-3}]$, so
 $\sigma_2(u)\ge-0.226\,\kappa$ at an inner product above $\tfrac12$. So the
@@ -6255,8 +6256,8 @@ Let $w_1,\dots,w_{24}$ be unit vectors of $\mathbb R^4$ with Gram matrix
 $G$, and let $\delta\le3\cdot10^{-4}$. If every off-diagonal entry
 $G_{ij}$ lies within $\delta$ of a number $g_{ij}\in\{-1,-\tfrac12,0,\tfrac12\}$,
 then the matrix $g$ with these entries and $1$ on the diagonal is the
-Gram matrix of the normalised roots in some order, and for an orthogonal
-map $R$,
+Gram matrix of the normalised roots in some order, and, with the roots
+numbered in that order, for an orthogonal map $R$,
 \[
   \Bigl(\sum_i\bigl|w_i-Ra_i/\sqrt2\bigr|^2\Bigr)^{1/2}
   \ \le\ \frac{2D}{\sqrt{6-D}}+\frac{\sqrt{24}\,D}{6},\qquad D=23\delta ,
