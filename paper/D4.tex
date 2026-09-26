@@ -3992,7 +3992,12 @@ on the subsets of size at most two of any set of points, which nothing in the
 computation forces; on random four-point sets the least eigenvalue is at the
 precision of the arithmetic for every signature, including those with
 $\lambda_2>0$, which the comparison with the Gegenbauer polynomials does not
-reach.
+reach. The entries can also be set beside the authors' own. Their
+construction needs its memory for all signatures at once, and run for one
+signature at a time it fits in a few gigabytes for the smaller ones: for the
+thirteen signatures with $|\lambda|\le10$ and $\lambda_2\le4$ on which it was
+run, all $88$ entries it writes agree with ours coefficient by coefficient
+(\texttt{level2/compare\_entries.py}).
 
 \begin{figure}[tb]
 \centering
@@ -10170,7 +10175,8 @@ and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{robust\_ceiling.py}, \texttt{code25\_search.py} and
 \texttt{facet\_bounds\_probe.py}), the
 scripts \texttt{level2\_numeric.py}, \texttt{level2\_sampled.py} and
-\texttt{d4\_independent\_check.py}, the
+\texttt{d4\_independent\_check.py}, those of the directory
+\texttt{level2}, the
 Lean file \texttt{D4Closure.lean} and the scripts of the figures of
 \cref{sec:closure,sec:m24-robust} were developed with the
 assistance of Claude, an AI model made by Anthropic, and their
@@ -10914,6 +10920,15 @@ pieces of the four-point one, which is too large to hold in one process.
 \texttt{ps\_ref.py} recomputes the integral the slow way for $|\lambda|\le5$
 and agrees with the kernel exactly, and \texttt{check\_psd.py} tests the
 positive semidefiniteness of the zonal matrices on random point sets.
+The directory \texttt{level2/} writes the same zonal matrices in the file
+format that the authors' code reads (\texttt{pkl2cache.py}), so that their
+second-level programme runs without its own construction of them;
+\texttt{xcheck\_zonal.jl} and \texttt{xcheck\_zonal.py} check that their
+evaluation of an entry from these files equals ours, and
+\texttt{their\_entries.jl} and \texttt{compare\_entries.py} compare the
+entries their construction writes, one signature at a time, with ours, in
+exact rationals. \texttt{las2\_slack.jl} runs their programme on the
+enlarged domain $[-1,\tfrac12+s]$.
 
 \subsection*{The overlaps put back}
 
