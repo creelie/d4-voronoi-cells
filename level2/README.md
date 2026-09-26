@@ -55,23 +55,22 @@ The entries themselves can be compared as well.  The authors' construction
 needs its 128 GB for all signatures at once; run one signature at a time it
 fits in a few gigabytes for the smaller ones.  `compare_entries.py` reads the
 files written by their `compute_PS`, run from scratch in a clean folder, and
-compares them with ours.  Every entry of every signature with |lambda| <= 8,
-and of (9, 1) and (10, 0), 78 entries in all, is identical, coefficient by
-coefficient (`runs/compare_entries.log`).
+compares them with ours.  It was run for thirteen signatures, (2, 0), (3, 1),
+(4, 0), (4, 2), (5, 1), (5, 3), (6, 2), (6, 4), (7, 1), (8, 0), (8, 2), (9, 1)
+and (10, 0), and every one of their 88 entries is identical, coefficient by
+coefficient (`runs/compare_entries.log`).  The signatures with larger lambda_2
+cost more: (10, 2) passed 3 GB, and was stopped there.
 
 ## What the programme gives here
 
-At slack 0, on four cores of a machine with 16 GB:
+At slack 0, on a machine with four cores and 16 GB:
 
 | degrees (d1, delta) | bound | iterations | time | memory |
 | --- | --- | --- | --- | --- |
 | (4, 6) | 32 | | 100 s in all | |
-| (8, 10) | 26.0000 | 68 | 42 min | 3.5 GB |
+| (8, 10) | 26.0000 | 68 | 42 min on one core | 3.5 GB |
 
-The certificate of the authors uses (14, 16), where the bound is 24.  At the
-degrees such a machine reaches the second level is weaker than the
-three-point bound of Section 7 of the paper, 24.13 at slack 0, so it cannot
-improve the stability of the kissing number there.  The time of an iteration
-grows about eightfold from (8, 10) to (10, 12), and the memory threefold, so
-(14, 16) needs a larger machine, now for the programme alone and no longer for
-the zonal matrices.
+At (10, 12) an iteration takes about 220 s on four cores and the programme
+holds 11.5 GB, eight times the time and three times the memory of (8, 10).
+The certificate of the authors uses (14, 16), where the bound is 24.  The
+logs are in `runs/`.
