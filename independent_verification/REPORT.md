@@ -5,8 +5,10 @@ package and in the manuscript, are released as v1.4.0; the section
 "Addendum: v1.4.0" at the end says what v1.4.0 proves and what it leaves
 open, "Addendum: v1.5.0" what v1.5.0 adds (Section 2.8 of the paper and
 the Lean file D4Closure.lean), "Addendum: v1.6.0" the theorem for at
-most twenty-three centres within sqrt 6 and the DOI audit, and "Addendum:
-v1.7.0" the explicit constant epsilon_0.  Theorem, lemma and section numbers in the body are those of v1.3.0.
+most twenty-three centres within sqrt 6 and the DOI audit, "Addendum:
+v1.7.0" the explicit constant epsilon_0, and "Addendum: v1.8.0" the
+stability of the kissing number and the wider neighbourhood of Theorem 2.18.
+Theorem, lemma and section numbers in the body are those of v1.3.0.
 
 Scope: the manuscript `paper/D4.tex` ("The Sphere Packing Problem in
 Dimension 4 and the Twenty-Four-Cell Conjecture") and everything in this
