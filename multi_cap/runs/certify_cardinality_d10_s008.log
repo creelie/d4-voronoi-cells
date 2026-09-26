@@ -1,0 +1,14 @@
+$ python3 certify_cardinality.py cardinality_certificates/cert_d10_t0.50800.npz 1e-6 7e-5 1e-6
+certificate degree 10, t = 127/250 = 1/2 + 1/125 exactly; the boxes run to 0.508
+1. positivity:
+   f_k >= 0, F_0..F_10 positive definite (exact LDL^T)  [0s]
+2. B = 1 + f(1) + F(1,1,1) = 24.959999949  (exact rational; 756 monomials in P2)  [1s]
+3. constraint (i):
+  (i) verified: P1 <= 1.00e-06 on [-1,0.508]; 1479 intervals, largest centre value -3.767e-05  [0s]
+4. constraint (ii):
+  level  5: 0 boxes verified, 2 outside, 28 to bisect, largest centre value -4.773e-05  [1s]
+  level 10: 0 boxes verified, 78 outside, 330 to bisect, largest centre value -3.151e-05  [2s]
+  level 15: 115 boxes verified, 745 outside, 5628 to bisect, largest centre value -1.487e-05  [5s]
+  level 20: 11546 boxes verified, 5153 outside, 102244 to bisect, largest centre value -1.487e-05  [73s]
+  level 25: 516590 boxes verified, 28924 outside, 655846 to bisect, largest centre value -1.441e-05  [999s]
+  [the branch and bound was still running when this log was copied; no conclusion is drawn from it]

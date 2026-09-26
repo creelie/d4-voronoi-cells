@@ -217,7 +217,10 @@ whenever the contacts contain most of a root system; and whenever no
 neighbour lies at a distance between $2+\varepsilon_0$ and $\sqrt6$, for
 $\varepsilon_0=4\cdot10^{-26}$, which makes the $D_4$ configuration a strict
 local minimum of the cell volume among all packings, in an explicit
-neighbourhood. The case left
+neighbourhood. The kissing number is stable: a three-point certificate on an
+enlarged domain shows that no twenty-five points of $S^3$ have pairwise
+inner products at most $\tfrac12+0.0065$, so at most twenty-four neighbours lie
+within $2.0131$ of any centre. The case left
 open is a centre with at least twenty-four neighbours within $\sqrt6$, one
 of them at an intermediate distance, for which we give numerical evidence.
 \end{abstract}
@@ -546,7 +549,13 @@ directions with inner products at most $\tfrac12+\tfrac12\varepsilon_0$
 within that neighbourhood, and it is small because the sums of squares of
 the certificate are large. What is left of \cref{conj:shell} is a centre
 with at least twenty-four other centres within $\sqrt6$, one of them at
-an intermediate distance, between $2+\varepsilon_0$ and $\sqrt6$. A numerical search of that case
+an intermediate distance, between $2+\varepsilon_0$ and $\sqrt6$. Of those,
+at most twenty-four lie within $2.0131$: the kissing number is stable under
+a slack of $0.0065$ in the inner products (\cref{thm:kissing-stable}), which
+a three-point certificate on the enlarged domain proves in exact and interval
+arithmetic. That is the cardinality half of a quantitative form of
+\cref{thm:m24}; the other half, that such twenty-four directions lie near a
+root system, is what the remaining case needs. A numerical search of that case
 finds nothing below $8$ (\cref{sec:noncontact}); that is evidence, not
 proof.
 
@@ -1740,7 +1749,7 @@ $2+\varepsilon_0$ and $\sqrt6$, then $\vol(V_c)\ge8$, with equality only if
 the contacts of $c$ form a copy of $\sqrt2\,\Rt$ and $V_c$ is the regular
 $24$-cell they cut out. The same conclusion holds whenever exactly $24$
 centres lie within $\sqrt6$ of $c$, at distances $2+\delta_i$ with
-$\sum_i\delta_i\le4\cdot10^{-5}$, and their directions $W$ satisfy
+$\sum_i\delta_i\le6\cdot10^{-5}$, and their directions $W$ satisfy
 $d(W)\le\frac1{48}$, with $d$ as in \cref{thm:local-uniqueness}.
 \end{thm}
 
@@ -1780,7 +1789,7 @@ $\varepsilon_i=w_i-u_i$, $e_i=|\varepsilon_i|$,
 $\|\varepsilon\|^2=\sum_ie_i^2=d(W)^2$, $S=\sum_i\delta_i$,
 $e=\max_ie_i$, $\delta=\max_i\delta_i$ and $\Theta=e+\delta$.
 
-(a) \emph{Rigidity with slack: $\|\varepsilon\|\le\frac{384}{71}(1+\delta)S$.} The
+(a) \emph{Rigidity with slack: $\|\varepsilon\|\le4.24\,(1+\delta)S$.} The
 proof of \cref{thm:local-uniqueness} goes through with the contact
 condition $\langle w_i,w_j\rangle\le\frac12$ on the $96$ pairs of $T$
 replaced by the packing condition $|y_i-y_j|\ge2$, which reads
@@ -1790,14 +1799,15 @@ $\kappa_{ij}=(d_i^2+d_j^2-d_id_j-4)/(2d_id_j)
 parts of $\Lambda\tau$ then sum to at most
 $6\|\varepsilon\|^2+\kappa$, $\kappa=\sum_T\kappa_{ij}$; the constant
 stress still makes the entries of $\Lambda\tau$ sum to $0$, so
-$\|\tau\|_2\le\|\Lambda\tau\|_1\le12\|\varepsilon\|^2+2\kappa$ by
-\eqref{eq:sigma-one}, and with $\sum_i\rho_i^2\le\frac14\|\varepsilon\|^4$,
-$\|\varepsilon\|\le\frac14\|\varepsilon\|+2\kappa+\frac12\|\varepsilon\|^2$.
-For $\|\varepsilon\|\le1/48$ this gives $\|\varepsilon\|\le\frac{192}{71}\kappa$,
+$\|\tau\|_2\le\frac{\sqrt{11}}4\|\Lambda\tau\|_1\le3\sqrt{11}\|\varepsilon\|^2+\frac{\sqrt{11}}2\kappa$ by
+\eqref{eq:sigma-one} and \eqref{eq:image-linf}, and with $\sum_i\rho_i^2\le\frac14\|\varepsilon\|^4$,
+$\|\varepsilon\|\le(3\sqrt{11}+\frac12)\|\varepsilon\|^2+\frac{\sqrt{11}}2\kappa$.
+For $\|\varepsilon\|\le1/48$ this gives $\|\varepsilon\|\le c_a\kappa$ with
+$c_a=\frac{\sqrt{11}}2\big/\bigl(1-\frac{1}{48}(3\sqrt{11}+\frac12)\bigr)<2.1199$,
 and every index lies in eight pairs of $T$, so
 $\kappa\le2(1+\delta)S$. Consequently
-$\sum_ie_i\le\sqrt{24}\,\|\varepsilon\|\le26.5\,S$ and
-$\Theta\le\|\varepsilon\|+S\le6.42\,S\le2.6\cdot10^{-4}$.
+$\sum_ie_i\le\sqrt{24}\,\|\varepsilon\|\le20.8\,S$ and
+$\Theta\le\|\varepsilon\|+S\le5.24\,S\le3.2\cdot10^{-4}$.
 
 (b) \emph{The volume to first order, with its error.} Move the data
 linearly, $w_i(t)=u_i+t\varepsilon_i$ and $h_i(t)=1+t\delta_i/2$ for
@@ -1841,7 +1851,7 @@ where $\mu$ is the explicit expression evaluated in
 $\langle\varepsilon_i,u_i\rangle=-\frac12e_i^2$, the derivative is at least
 $\frac23(1-\lambda_0)^3S+\frac23\sum_ie_i^2-\mu\sum_ie_i$, and integrating,
 \[
-  \vol V(Y)\ \ge\ 8+\tfrac23(1-\lambda_0)^3S-26.5\,\mu\,S .
+  \vol V(Y)\ \ge\ 8+\tfrac23(1-\lambda_0)^3S-20.8\,\mu\,S .
 \]
 
 (c) \emph{The hull costs only a fourth-order amount.} For $x\in V(Y)$,
@@ -1863,12 +1873,12 @@ $\vol(V(Y)\setminus K(Y))\le48s^4\le13\,958\,\Theta^4$.
 
 By \cref{prop:inversion-hull}, (b), (c) and (a),
 \[
-  \vol(V_c)\ \ge\ \vol(V(Y)\cap K(Y))\ \ge\ 8+S\Bigl(\tfrac23(1-\lambda_0)^3-26.5\,\mu
-  -13\,958\cdot6.42^4S^3\Bigr),
+  \vol(V_c)\ \ge\ \vol(V(Y)\cap K(Y))\ \ge\ 8+S\Bigl(\tfrac23(1-\lambda_0)^3-20.8\,\mu
+  -13\,958\cdot5.24^4S^3\Bigr),
 \]
 and \texttt{explicit\_eps0.py} finds the bracket at least $0.02$ for
-$S\le4\cdot10^{-5}$, in exact arithmetic with the expressions for
-$\lambda_0$ and $\mu$ at $\Theta=6.42\,S$ (each is increasing in $\Theta$). So
+$S\le6\cdot10^{-5}$, in exact arithmetic with the expressions for
+$\lambda_0$ and $\mu$ at $\Theta=5.24\,S$ (each is increasing in $\Theta$). So
 $\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
 (a), $Y=\sqrt2\,\Rt$, and $V_c\supseteq V(Y)\cap K(Y)=Q$ with
 $\vol(V_c)=8$ only if $V_c=Q$.
@@ -1903,24 +1913,33 @@ can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
 $\delta=0.197$ with one centre pushed out and the others in contact
 (\texttt{truncated\_search.py rays}), while the explicit neighbourhood of
-\cref{thm:near-contact} ends at $\sum\delta_i=4\cdot10^{-5}$. With
-$\varepsilon_0$ explicit, what closing the rest would take is, at
-intermediate distances, a lower bound for the part of the cell outside
-$B(\sqrt{3/2})$, which the pair terms of \cref{lem:no-triple} do not see,
-strong enough to bridge that factor of about four thousand. The missing
-ingredient is the same on both sides of it. The rigidity of
-\cref{thm:local-uniqueness} controls the directions only while
-$d(W)\le\frac1{48}$, which estimate (a) guarantees only for
-$\sum_i\delta_i$ up to about $0.004$; beyond that, twenty-four directions
+\cref{thm:near-contact} ends at $\sum\delta_i=6\cdot10^{-5}$. Letting the
+truncation radius grow with the distances does not change this: four points
+pairwise at least $2$ apart within $|x|$ of a point $x$ force
+$16|x|^2\ge12+d_1^2+d_2^2+d_3^2$ for the distances of the three centres
+other than $0$, so the pair terms are exact in a slightly larger ball once
+the centres move out, but along the root system pushed out evenly that moves
+the crossing only from $0.1551$ to $0.1473$
+(\texttt{d4\_independent\_check.py}). With $\varepsilon_0$ explicit, what
+closing the rest would take is, at intermediate distances, a lower bound for
+the part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
+\cref{lem:no-triple} do not see, strong enough to bridge that factor of about
+two and a half thousand. The missing ingredient is the same on both sides of
+it. The rigidity of \cref{thm:local-uniqueness} controls the directions only
+while $d(W)\le\frac1{48}$, which estimate (a) guarantees only for
+$\sum_i\delta_i$ up to about $0.005$; beyond that, twenty-four directions
 whose inner products exceed $\tfrac12$ by an amount of order $10^{-2}$
 would have to be shown close to the root system, a quantitative form of
-\cref{thm:m24} at moderate slack. \Cref{thm:m24-robust} gives that form only
-for slack up to $2\cdot10^{-26}$, and not because of loose constants alone:
-the certificate is exact at slack $0$, and its two-point polynomial has
-double zeros at $-\frac12$ and $0$, so the distance it controls is the
-square root of the error. A form at moderate slack would need a new
-computation at the second level of the hierarchy, with a margin, of the
-kind carried out in \cite{LLM24}. The first level cannot supply it
+\cref{thm:m24} at moderate slack. Its cardinality half holds:
+\cref{thm:kissing-stable} excludes a twenty-fifth point up to slack $0.0065$,
+so at most $24$ other centres lie within $2.0131$ of any centre. Its shape
+half is what is missing. \Cref{thm:m24-robust} gives it only for slack up to
+$2\cdot10^{-26}$, and \cref{rem:robust-ceiling} shows that no reading of the
+same kernel passes $10^{-8}$: the certificate is exact at slack $0$, and its
+two-point polynomial has double zeros at $-\frac12$ and $0$, so the distance
+it controls is the square root of the error. A form at moderate slack would
+need a new computation at the second level of the hierarchy, on the enlarged
+domain and with a margin, of the kind carried out in \cite{LLM24}. The first level cannot supply it
 (\texttt{three\_point\_probes.py}, floating point with sampled constraints).
 Asked at degree $12$ for a three-point certificate that charges a positive
 amount to every pair of a $24$-point code whose inner product lies outside
@@ -3358,7 +3377,7 @@ configuration; what it asks of an arbitrary configuration of $23$
 directions is worked out in \cref{prop:pair-budget}, and
 \cref{sec:strict-inequality} takes the matter further. At $m=24$ the
 same computation gives $7.858738\ldots$ at $R=r_{24}$ and
-$7.907070\ldots$ at $R=r_*$, against the true value $8$; there the
+$7.906940\ldots$ at $R=r_*$, against the true value $8$; there the
 truncation discards the deep holes of the root system, which sit at
 $45^\circ$.
 
@@ -4841,6 +4860,15 @@ value is exactly $1$, so
   \|\Lambda\tau\|_2\ \ge\ \|\tau\|_2
   \qquad\text{for every } \tau\in\mathcal{T} \text{ orthogonal to } \ker\Lambda .
 \end{equation}
+Moreover, the orthogonal projection $\Pi$ of $\mathbb{R}^{96}$, indexed by the
+pairs of $T$, onto $\operatorname{im}\Lambda$ has every diagonal entry equal to
+$\tfrac{11}{16}$, and consequently
+\begin{equation}\label{eq:image-linf}
+  \|g\|_\infty\ \le\ \tfrac{\sqrt{11}}{4}\,\|g\|_2,
+  \qquad
+  \|g\|_2\ \le\ \tfrac{\sqrt{11}}{4}\,\|g\|_1
+  \qquad\text{for every } g\in\operatorname{im}\Lambda .
+\end{equation}
 \end{lem}
 
 \begin{proof}
@@ -4873,7 +4901,31 @@ values. The identity and the ranks are computed by
 $\mathbb{Z}$, with no floating point at any step; the $96$ tight pairs it
 starts from, and the neighbour sum of \cref{cor:root-rigid}, are checked
 again by Lean's kernel in \texttt{D4Stress.lean}.
+
+For the second statement, an orthogonal map $R$ that permutes the roots, $Ra_i=a_{\pi(i)}$, acts on
+$\mathcal{T}$ by $(R\tau)_{\pi(i)}=R\tau_i$ and on $\mathbb{R}^{96}$ by permuting
+the pairs, and \eqref{eq:rigidity-operator} gives
+$\Lambda(R\tau)_{\pi(i)\pi(j)}=(\Lambda\tau)_{ij}$. So $\operatorname{im}\Lambda$ is
+invariant under these permutations and $\Pi$ commutes with them. The group
+of such maps, the Weyl group of $F_4$, acts transitively on the $96$ edges of
+the $24$-cell, which are the pairs of $T$, so the diagonal entries of $\Pi$
+are all equal; they sum to $\operatorname{tr}\Pi=\operatorname{rank}\Lambda=72-6=66$
+by the first statement, so each is $\tfrac{66}{96}=\tfrac{11}{16}$. For
+$g\in\operatorname{im}\Lambda$ and a pair $p$,
+$|g_p|=|\langle g,\Pi e_p\rangle|\le\|g\|_2\,\|\Pi e_p\|_2=\tfrac{\sqrt{11}}4\|g\|_2$,
+and then $\|g\|_2^2\le\|g\|_\infty\|g\|_1\le\tfrac{\sqrt{11}}4\|g\|_2\|g\|_1$. The
+value $\tfrac{11}{16}$ of every diagonal entry is also checked directly, in
+integer arithmetic, by \texttt{rigidity\_spectrum.py}: with
+$2K=\Lambda'(2P)\Lambda'^{\mathsf T}$, which is integral and annihilated by
+$x(x-4)(x-10)(x-12)(x-16)$, the projection onto $\ker K$ is
+$(2K-4I)(2K-10I)(2K-12I)(2K-16I)/7680$, and each of its diagonal entries is
+$\tfrac5{16}$.
 \end{proof}
+
+The second statement is what makes the passage from $\|\Lambda\tau\|_1$, which the
+stress argument below controls, to $\|\Lambda\tau\|_2$ cheap: the trivial
+$\|g\|_2\le\|g\|_1$ is sharp only for a vector concentrated on one pair, and
+the image of $\Lambda$ contains no such vector.
 
 \begin{thm}[A radius for the rigidity]\label{thm:local-uniqueness}
 Let $W=\{w_1,\dots,w_{24}\}\subset S^3$ be a contact configuration and
@@ -4886,7 +4938,7 @@ the minimum over orthogonal maps and over bijections $\pi$. Then either
 $d(W)=0$, and $W$ is an orthogonal image of the normalised root system,
 or
 \[
-  d(W)\ \ge\ \frac{2}{\sqrt{577}}\ =\ 0.0832611\ldots
+  d(W)\ \ge\ \frac{2}{\sqrt{397}}\ =\ 0.1003771\ldots
 \]
 \end{thm}
 
@@ -4926,25 +4978,26 @@ $\sum_{T}e_ie_j\le\tfrac12\sum_{T}(e_i^2+e_j^2)=4\|\varepsilon\|^2$,
 and therefore $\sum_{T}g_{ij}^{+}\le6\|\varepsilon\|^2$ for the
 positive parts. The constant stress of \cref{cor:root-rigid} gives
 $\sum_{T}g_{ij}=0$ exactly, so the negative parts sum to as much
-as the positive ones and
+as the positive ones and $\|\Lambda\tau\|_1=2\sum_{T}g_{ij}^{+}\le12\|\varepsilon\|^2$.
+With \eqref{eq:sigma-one} and \eqref{eq:image-linf},
 \[
-  \|\Lambda\tau\|_2\ \le\ \|\Lambda\tau\|_1
-  \ =\ 2\sum_{T}g_{ij}^{+}\ \le\ 12\|\varepsilon\|^2 .
+  \|\tau\|_2\ \le\ \|\Lambda\tau\|_2
+  \ \le\ \tfrac{\sqrt{11}}{4}\,\|\Lambda\tau\|_1
+  \ \le\ 3\sqrt{11}\,\|\varepsilon\|^2 .
 \]
-With \eqref{eq:sigma-one} this reads $\|\tau\|_2\le12\|\varepsilon\|^2$.
 Finally $\sum_i\rho_i^2=\tfrac14\sum_ie_i^4\le\tfrac14\|\varepsilon\|^4$
 by \eqref{eq:radial-part}, so
 \[
   \|\varepsilon\|^2=\|\tau\|_2^2+\sum_i\rho_i^2
-  \ \le\ 144\|\varepsilon\|^4+\tfrac14\|\varepsilon\|^4
-  \ =\ \tfrac{577}4\|\varepsilon\|^4 ,
+  \ \le\ 99\|\varepsilon\|^4+\tfrac14\|\varepsilon\|^4
+  \ =\ \tfrac{397}4\|\varepsilon\|^4 ,
 \]
-and $\|\varepsilon\|$ is either $0$ or at least $2/\sqrt{577}$.
+and $\|\varepsilon\|$ is either $0$ or at least $2/\sqrt{397}$.
 \end{proof}
 
 \begin{cor}[The twenty-four-contact case near the root
 system]\label{cor:m24-local}
-A contact configuration $W$ with $|W|=24$ and $d(W)<2/\sqrt{577}$ is an
+A contact configuration $W$ with $|W|=24$ and $d(W)<2/\sqrt{397}$ is an
 orthogonal image of the normalised roots, so $V_c(W)$ is a regular
 $24$-cell and $\vol(V_c(W))=8$. Nothing in this uses a certificate.
 \end{cor}
@@ -4960,16 +5013,22 @@ closed arguments of this paper now falls. The global classification at
 $24$ contacts is \cref{thm:twentyfour-points}, proved from the verified
 kernel. What this section supplies is the quantitative statement that
 the classification by itself does not give: an explicit isolation
-radius about the normalised root system, $2/\sqrt{577}$ in the
-root-sum-of-squares displacement and about $0.017$ per direction,
+radius about the normalised root system, $2/\sqrt{397}$ in the
+root-sum-of-squares displacement and about $0.02$ per direction,
 within which \cref{thm:m24} is proved by hand and the kernel is not
 used at all. Beyond that radius the kernel is doing the work, and it is
 doing it on the whole of the rest of a
 $66$-dimensional quotient, $(S^3)^{24}$ modulo $O(4)$, which is by far
-the larger part. The constant $577/4$ is not optimal and a sharper
-reading of the same inequalities would enlarge the ball, but no argument
-of this kind reaches a configuration that is nowhere near $\Rt$, which
-is the whole of the remaining difficulty.
+the larger part. The constant $397/4$ is not optimal either. What the
+argument really uses is the least value $\nu$ of $\|\Lambda\tau\|_1$ over
+unit vectors $\tau\in\mathcal{T}$ orthogonal to $\ker\Lambda$, for which
+\cref{lem:rigidity-spectrum} gives $\nu\ge4/\sqrt{11}=1.206$, and the radius is
+$(144/\nu^2+\tfrac14)^{-1/2}$. A displacement of a single direction, with its
+rotational part removed, has $\|\Lambda\tau\|_1/\|\tau\|_2=\sqrt{96/11}=2.954$ (\texttt{rigidity\_spectrum.py}), so
+$\nu\le2.954$ and no sharpening of the constant can take this argument past
+$0.244$. No argument of this kind
+reaches a configuration that is nowhere near $\Rt$, which is the whole of
+the remaining difficulty.
 \Cref{fig:rig}(a) and (b) draw the neighbour sum that makes the stress
 work, \cref{fig:rig}(c) the spectrum that supplies the constant, and
 \cref{fig:rig}(d) the two sides of the final inequality.
@@ -4977,7 +5036,7 @@ work, \cref{fig:rig}(c) the spectrum that supplies the constant, and
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.82\textwidth]{fig_c_rig}
-\caption{(a) The neighbour sum in dimension three, where it fits in one picture: a contact direction of the face-centred cubic lattice (teal), the four contact directions at $60^\circ$ from it (clay), and their sum (ochre), which is twice the direction itself. (b) The same identity in dimension four, drawn where it lives. The eight roots at inner product $1$ from a root $\alpha$ fill the hyperplane $\langle\alpha,x\rangle=1$, a copy of $\mathbb{R}^3$, as the vertices of a cube centred at $\alpha/2$ (dark); eight times that centre is $4\alpha$. (c) The singular values of the rigidity operator $\Lambda$ on the $72$-dimensional tangent space, with multiplicities (\cref{lem:rigidity-spectrum}). The kernel is the six infinitesimal rotations, and the smallest nonzero value is the constant that turns the first-order argument into a radius. (d) The two sides of the inequality that closes \cref{thm:local-uniqueness}. Feasibility forces $\|\varepsilon\|^2\le\tfrac{577}{4}\|\varepsilon\|^4$, so the displacement is either zero or at least $2/\sqrt{577}$: the shaded band holds no contact configuration of $24$ directions.}
+\caption{(a) The neighbour sum in dimension three, where it fits in one picture: a contact direction of the face-centred cubic lattice (teal), the four contact directions at $60^\circ$ from it (clay), and their sum (ochre), which is twice the direction itself. (b) The same identity in dimension four, drawn where it lives. The eight roots at inner product $1$ from a root $\alpha$ fill the hyperplane $\langle\alpha,x\rangle=1$, a copy of $\mathbb{R}^3$, as the vertices of a cube centred at $\alpha/2$ (dark); eight times that centre is $4\alpha$. (c) The singular values of the rigidity operator $\Lambda$ on the $72$-dimensional tangent space, with multiplicities (\cref{lem:rigidity-spectrum}). The kernel is the six infinitesimal rotations, and the smallest nonzero value is one of the two constants that turn the first-order argument into a radius; the other is the weight $\tfrac{11}{16}$ that every pair carries in the image of $\Lambda$. (d) The two sides of the inequality that closes \cref{thm:local-uniqueness}. Feasibility forces $\|\varepsilon\|^2\le\tfrac{397}{4}\|\varepsilon\|^4$, so the displacement is either zero or at least $2/\sqrt{397}$: the shaded band holds no contact configuration of $24$ directions.}
 \label{fig:rig}
 \end{figure}
 
@@ -6387,6 +6446,116 @@ separately. What matters for
   value $2.9\cdot10^{-12}$ of $\sigma_2$ at distance $3\cdot10^{-4}$ from a
   double zero, which is quadratic in the distance. The ratio of the two
   is the $2\cdot10^{-26}$ of the theorem.}
+
+\begin{remark}[The ceiling of \cref{thm:m24-robust}]\label{rem:robust-ceiling}
+No sharpening of $B_3$ and $B_4$ carries the proof of \cref{thm:m24-robust}
+to a slack of order $10^{-2}$. The pairs above $\tfrac12$ contribute
+$\binom{24}2\,0.226\,\kappa=62.4\,\kappa$ to $E(24,\kappa)$ whatever $B_3$ and
+$B_4$ are, and an inner product near the double zero $0$ is pinned to within
+$\delta$ only when $2.62\cdot10^{-4}f(\delta)>E(24,\kappa)$, with
+$f(\delta)\approx\delta^2/8$; so the proof needs
+$\kappa<5.2\cdot10^{-7}\delta^2$ even with $B_3=B_4=0$. At the tolerance
+$\delta=3\cdot10^{-4}$ of \cref{lem:root-lattice-robust} that is
+$4.7\cdot10^{-14}$, and since the four target values are $\tfrac12$ apart,
+no rounding lemma can allow $\delta\ge\tfrac14$, which caps $\kappa$ at
+$9.2\cdot10^{-9}$ (\texttt{robust\_ceiling.py}, \cref{fig:positive-slack}(b)). The
+square root comes from the double zeros of $\sigma_2$ at $-\tfrac12$ and $0$,
+and every kernel whose bound is exactly $24$ has them, since $\sigma_2\ge0$
+vanishes at those inner products of the root system. A form of
+\cref{thm:m24} at slack of order $10^{-2}$ therefore needs a kernel computed
+on the enlarged domain $[-1,\tfrac12+s]$, with a margin, and not a better
+reading of this one.
+\end{remark}
+
+What the three-point bound of \cref{sec:certificate} can do on the enlarged
+domain is the cardinality half of that statement, with a slack twenty-three
+orders of magnitude larger than in \cref{thm:m24-robust}.
+
+\begin{thm}[The kissing number is stable]\label{thm:kissing-stable}
+Let $s_0=0.0065$. Every set of points of $S^3$ whose pairwise inner
+products are at most $\tfrac12+s_0$ has at most $24$ elements.
+Consequently, in a packing of unit balls in $\mathbb{R}^4$, at most $24$ other
+centres lie within distance $2/\sqrt{1-2s_0}=2.0131\ldots$ of any centre.
+\end{thm}
+
+\begin{proof}
+Let $t=\tfrac12+s_0$, let $f(u)=\sum_{k=1}^{d}f_kG_k(u)$ with $f_k\ge0$, and
+let $F(u,v,w)=\sum_{k=0}^{d}\langle F_k,S_k(u,v,w)\rangle$ with every $F_k$
+positive semidefinite, in the notation of \cref{sec:certificate}. For a
+finite $C\subset S^3$ with inner products $u_{xy}\le t$, Schoenberg's theorem
+gives $\sum_{x,y\in C}f(u_{xy})\ge0$ and \cref{lem:three-point-psd} gives
+$\sum_{x,y,z\in C}F(u_{xy},u_{xz},u_{yz})\ge0$. Separating the terms with
+coincident points as in the proof of \cref{lem:certificate} and adding,
+\[
+  |C|\bigl(f(1)+F(1,1,1)\bigr)
+  +\sum_{x\ne y}\bigl(f(u_{xy})+3F(1,u_{xy},u_{xy})\bigr)
+  +\sum_{x,y,z\ \text{distinct}}F(u_{xy},u_{xz},u_{yz})\ \ge\ 0 ,
+\]
+the sums running over ordered pairs and triples. Suppose that
+\begin{align*}
+  \text{(i)}\quad& f(u)+3F(1,u,u)+1\ \le\ e_1
+  \qquad\text{for } u\in[-1,t],\\
+  \text{(ii)}\quad& F(u,v,w)\ \le\ e_2
+  \qquad\text{for admissible } (u,v,w)\in[-1,t]^3 .
+\end{align*}
+Then $(|C|-1)(1-e_1)-(|C|-1)(|C|-2)e_2\le f(1)+F(1,1,1)$. A set of $25$ or
+more points contains one of exactly $25$, so $|C|\le24$ as soon as
+$24(1-e_1)-552e_2>f(1)+F(1,1,1)$.
+
+The certificate has degree $d=8$. It was found by solving the
+corresponding programme in floating point, with (i) and (ii) imposed at
+sampled points and refined in rounds, $f(1)+F(1,1,1)$ held at $23.975$ and
+the least slack maximised (\texttt{cardinality\_sdp.py}), and its entries
+are read as the exact rationals they denote.
+\texttt{certify\_cardinality.py} establishes, with no floating point beyond
+outward-rounded interval arithmetic and with the polynomial and
+branch-and-bound routines of \texttt{certificate\_check.py}: that every $f_k$
+is nonnegative and every $F_k$ positive definite, by exact
+$LDL^{\mathsf T}$ factorisation; the value $f(1)+F(1,1,1)=23.974999950\ldots$,
+exactly; (i) with $e_1=10^{-6}$, by branch and bound on the exact univariate
+polynomial; and (ii) with $e_2=10^{-5}$ on the ordered admissible domain
+$-1\le u\le v\le w\le t$, $1+2uvw-u^2-v^2-w^2\ge0$, which suffices because
+$F$ is symmetric, every box being decided by a second-order Taylor bound
+about its centre. Both domains are run up to the least double at or above
+$t$. Then $24(1-e_1)-552e_2=23.994456>23.975$.
+
+For the second statement, let $y_i$ be centres at distances
+$d_i\le D=2/\sqrt{1-2s_0}$ from $c=0$. Two of them satisfy
+$|y_i-y_j|\ge2$, so their directions have inner product at most
+$(d_i^2+d_j^2-4)/(2d_id_j)$, which increases in each $d_i$ on $[2,D]$ and is
+therefore at most $1-2/D^2=\tfrac12+s_0$.
+\end{proof}
+
+Musin's theorem \cite{Mus08} is the case $s_0=0$; the content of
+\cref{thm:kissing-stable} is that the count does not jump there, the first
+slack at which a twenty-fifth point could enter being bounded away from $0$
+by an explicit amount. A degree-$8$ certificate at $s_0=0.005$ passes the
+same check, and \cref{fig:positive-slack}(a) shows why the method stops soon after:
+the three-point bound on the enlarged domain rises by about $97$ per unit of
+$s$ from about $24.13$ at $s=0$, so no certificate of this kind reaches much
+beyond $s=0.009$, while a numerical search finds $25$ points of $S^3$ with
+pairwise inner products at most $0.53743$, a minimal angle of $57.49^\circ$, so
+the true threshold lies below $s=0.0375$ (\texttt{code25\_search.py}). The theorem says nothing about the
+shape of a set of $24$ points with slack $s_0$, which is what
+\cref{sec:closure} needs.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_cardinality}
+\caption{The two halves of \cref{thm:m24} at positive slack. (a) The
+three-point bound on the number of points of $S^3$ with inner products at
+most $\tfrac12+s$, from sampled programmes of degree $8$ and $10$
+(\texttt{cardinality\_sdp.py sweep}; each sampled value is slightly
+optimistic), with the two certified values of \cref{thm:kissing-stable} and
+its companion at $s=0.005$. It crosses $25$ near $s=0.009$; a $25$-point
+code exists from $s=0.0374$ on. (b) How far the proof of
+\cref{thm:m24-robust} could be pushed if the triple and quadruple terms
+cost nothing ($B_3=B_4=0$): the largest slack $\kappa$ it reaches, against
+the tolerance $\delta$ that a rounding lemma would allow
+(\cref{rem:robust-ceiling}). The curve grows like $\delta^2$ and stops below
+$10^{-8}$; the proof as it stands gives $2\cdot10^{-26}$.}
+\label{fig:positive-slack}
+\end{figure}
 
 \section{The deviation domain and its fundamental triangle}\label{sec:deviation-triangle}
 
@@ -9916,8 +10085,8 @@ log and Lean file named in \cref{app:code-index}, is maintained at
 and archived on Zenodo under the DOI
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{10.5281/zenodo.22766562}
 \cite{D4Zenodo}. The version that corresponds to this paper is release
-\texttt{v1.7.0}, at
-\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.7.0}{the
+\texttt{v1.8.0}, at
+\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.8.0}{the
 tag of that name}. The certificate that \cref{sec:certificate-checked}
 verifies is the data set of \cite{LLM24data}, deposited by its authors
 under the MIT licence; the archive \texttt{LasserreSphericalCodes.zip},
@@ -9934,10 +10103,13 @@ run. The code of the re-verification, the programs of
 and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{near\_contact\_probe.py}, \texttt{labelled\_certificate\_check.py},
 \texttt{truncated\_search.py}, \texttt{count\_bound\_sqrt6.py},
-\texttt{explicit\_eps0.py} and \texttt{three\_point\_probes.py}), the
-scripts \texttt{level2\_numeric.py} and \texttt{level2\_sampled.py}, the
+\texttt{explicit\_eps0.py}, \texttt{three\_point\_probes.py},
+\texttt{cardinality\_sdp.py}, \texttt{certify\_cardinality.py},
+\texttt{robust\_ceiling.py} and \texttt{code25\_search.py}), the
+scripts \texttt{level2\_numeric.py}, \texttt{level2\_sampled.py} and
+\texttt{d4\_independent\_check.py}, the
 Lean file \texttt{D4Closure.lean} and the scripts of the figures of
-\cref{sec:closure} were developed with the
+\cref{sec:closure,sec:m24-robust} were developed with the
 assistance of Claude, an AI model made by Anthropic, and their
 computations were run with it.
 
@@ -10752,7 +10924,15 @@ the ranks over $\mathbb{Q}$ from below, the five multiplicities they
 give sum to $96$, so each bound is attained; the eigenvalues of $N$ are
 therefore $0,2,5,6,8$ with multiplicities $30,29,8,21,8$ and the
 singular values of $\Lambda$ on the tangent space are
-$0,1,\sqrt{5/2},\sqrt3,2$ with multiplicities $6,29,8,21,8$.
+$0,1,\sqrt{5/2},\sqrt3,2$ with multiplicities $6,29,8,21,8$. The second
+constant of the radius, the value $\tfrac{11}{16}$ in the second statement of
+\cref{lem:rigidity-spectrum}, is checked in the same script and again in integers: the matrix
+$2K=\Lambda'(2P)\Lambda'^{\mathsf T}$ is shown to annihilate
+$x(x-4)(x-10)(x-12)(x-16)$, the product $(2K-4I)(2K-10I)(2K-12I)(2K-16I)$, which is
+$7680$ times the projection onto $\ker K$, has every diagonal entry equal to
+$2400$, and the trace of the projection onto the image is $66$. The script
+also evaluates, in rational arithmetic, the ratio $\sqrt{96/11}$ of the
+single-direction displacement quoted after \cref{cor:m24-local}.
 \texttt{D4Stress.lean} repeats the finite part of this inside Lean's
 kernel with no library beyond core Lean: the root list, the eight tight
 neighbours of every root and their sum, and the count of $96$ tight
@@ -11152,8 +11332,20 @@ transformed vectors in ball arithmetic; it divides $\sigma_2$ exactly by
 its zeros and bounds the quotient from below; it checks the minor bounds
 of \cref{lem:root-lattice-robust}; and it evaluates the facet estimates of
 \cref{thm:near-contact} in exact arithmetic, finding
-$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le4\cdot10^{-5}$
-in sixteen seconds. \texttt{count\_bound\_sqrt6.py} proves that at most
+$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le6\cdot10^{-5}$
+in about fifteen seconds. \texttt{certify\_cardinality.py} is the proof of
+\cref{thm:kissing-stable}: it reads a certificate of
+\texttt{cardinality\_certificates}, takes its entries as exact rationals,
+checks $f_k\ge0$ and the positive definiteness of every $F_k$ by exact
+$LDL^{\mathsf T}$, computes $f(1)+F(1,1,1)$ exactly, and runs the two branch and
+bounds, over the interval $[-1,t]$ and the ordered admissible domain in
+$[-1,t]^3$, with the interval routines of \texttt{certificate\_check.py}; at
+degree $8$ it takes about eighty seconds. \texttt{cardinality\_sdp.py}, which
+found the certificates and draws \cref{fig:positive-slack}(a), is floating point with
+sampled constraints, and so are \texttt{robust\_ceiling.py}, which evaluates
+\cref{rem:robust-ceiling} from the exact $\sigma_2$, and
+\texttt{code25\_search.py}, whose output, $25$ points with inner products at
+most $0.53743$, is checked by recomputing their Gram matrix. \texttt{count\_bound\_sqrt6.py} proves that at most
 $49$ other centres lie within $\sqrt6$ of a centre: their directions have
 inner products below $\tfrac23$, and a Delsarte polynomial of degree $13$
 with rational coefficients, nonpositive on $[-1,\tfrac23]$ by a Sturm
@@ -11531,7 +11723,7 @@ preprint, version 11, Preprints.org (2026).
 \bibitem[BBMB26]{D4Zenodo}
 D.~Bhattacharjee, U.~Bhattacharya, P.~Mandal, and S.~Bhattacharya,
 \textit{Supplementary code for: The sphere packing problem in dimension 4 and the twenty-four-cell conjecture},
-software, version v1.7.0, Zenodo (2026).
+software, version v1.8.0, Zenodo (2026).
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{doi:10.5281/zenodo.22766562}.
 Source repository:
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}

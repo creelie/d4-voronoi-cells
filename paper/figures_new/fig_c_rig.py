@@ -10,9 +10,9 @@ are drawn here from the statements they illustrate.
     (the lemma on the rigidity spectrum): 0 with multiplicity 6, the
     infinitesimal rotations; 1 with multiplicity 29; sqrt(5/2) with 8;
     sqrt 3 with 21; 2 with 8.  The multiplicities add to 72.
-(d) The inequality |e|^2 <= (577/4)|e|^4 that feasibility forces on the
+(d) The inequality |e|^2 <= (397/4)|e|^4 that feasibility forces on the
     displacement e from the orbit of the root system: its two sides cross at
-    |e| = 2/sqrt(577), and below that no contact configuration of 24
+    |e| = 2/sqrt(397), and below that no contact configuration of 24
     directions exists.
 """
 import numpy as np
@@ -55,21 +55,21 @@ panel_label(ax, "(c)", x=-0.3, y=1.0)
 
 # (d) the two sides of the inequality
 ax2 = fig.add_subplot(gs[1, 1]); clean_axes(ax2)
-e = np.linspace(0, 0.135, 400)
-e0 = 2 / np.sqrt(577)
-ax2.fill_between([0, e0], 0, 0.02, color=PANEL, zorder=0)
+e = np.linspace(0, 0.16, 400)
+e0 = 2 / np.sqrt(397)
+ax2.fill_between([0, e0], 0, 0.03, color=PANEL, zorder=0)
 ax2.plot(e, e**2, color=BLUE, lw=1.3, label=r"$\|\varepsilon\|^2$")
-ax2.plot(e, 577 / 4 * e**4, color=ORANGE, lw=1.3, label=r"$\frac{577}{4}\|\varepsilon\|^4$")
+ax2.plot(e, 397 / 4 * e**4, color=ORANGE, lw=1.3, label=r"$\frac{397}{4}\|\varepsilon\|^4$")
 ax2.axvline(e0, color=INK2, lw=0.7, ls=(0, (3, 2)))
 ax2.scatter([e0], [e0**2], s=16, color=INK, zorder=5)
-ax2.set_xlim(0, 0.135); ax2.set_ylim(0, 0.019)
-ax2.set_xticks([0, 0.04, 0.08, 0.12])
-ax2.set_yticks([0, 0.005, 0.010, 0.015])
+ax2.set_xlim(0, 0.16); ax2.set_ylim(0, 0.029)
+ax2.set_xticks([0, 0.05, 0.10, 0.15])
+ax2.set_yticks([0, 0.01, 0.02])
 ax2.tick_params(labelsize=6.5)
 ax2.set_xlabel(r"displacement $\|\varepsilon\|=d(W)$", fontsize=7.5)
 ax2.set_ylabel("the two sides", fontsize=7.5)
-ax2.text(0.041, 0.0135, "no contact\nconfiguration\nin this band", ha="center", va="center", fontsize=6, color=INK2)
-ax2.text(e0 - 0.003, 0.0178, r"$2/\sqrt{577}$", ha="right", va="center", fontsize=6.5, color=INK2)
+ax2.text(0.050, 0.0205, "no contact\nconfiguration\nin this band", ha="center", va="center", fontsize=6, color=INK2)
+ax2.text(e0 - 0.004, 0.0272, r"$2/\sqrt{397}$", ha="right", va="center", fontsize=6.5, color=INK2)
 ax2.legend(loc="lower right", fontsize=6.5, frameon=True, framealpha=1, edgecolor="none", handlelength=1.6, borderpad=0.3)
 panel_label(ax2, "(d)", x=-0.34, y=1.0)
 save(fig, "fig_c_rig", outdir="../figures")

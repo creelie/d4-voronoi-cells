@@ -26,6 +26,10 @@ x(x-8)(x-20)(x-24)(x-32) and has rank 66.  So the eigenvalues of N lie in
 {0, 2, 5, 6, 8}, the kernel has dimension 30 (the 24 radial directions and
 the 6 infinitesimal rotations), and the smallest nonzero eigenvalue is at
 least 2.  Hence sigma_min(Lambda|_T) >= 1.
+
+It then proves, again in integers, that the orthogonal projector onto the image
+of Lambda has every diagonal entry equal to 11/16, the second constant of that
+theorem (the lemma on the coordinates of the image).
 """
 import itertools
 import numpy as np
@@ -103,6 +107,53 @@ print('The kernel of N is 30-dimensional: the 24 radial directions, on which')
 print('P vanishes, and the 6 infinitesimal rotations.  Halving and taking')
 print('square roots, the singular values of Lambda on the tangent space are')
 print('0, 1, sqrt(5/2), sqrt3, 2 with multiplicities 6, 29, 8, 21, 8.')
-print('The smallest nonzero singular value is exactly 1, which is the')
-print('constant the radius 2/sqrt(577) of Theorem (a radius for the')
-print('rigidity) is built from.')
+print('The smallest nonzero singular value is exactly 1, the first of the')
+print('two constants the radius of Theorem (a radius for the rigidity) is built from.')
+
+# ---------------------------------------------------------------------------
+# The image of Lambda: every one of the 96 coordinates carries the same weight.
+#
+# K = Lambda' P Lambda'^T is the Gram matrix of the image, with the nonzero
+# eigenvalues of N; so 2K = Lambda' (2P) Lambda'^T is integral with eigenvalues in
+# {0, 4, 10, 12, 16}.  If 2K annihilates x(x-4)(x-10)(x-12)(x-16), the projector
+# onto ker K is E0 = (2K-4I)(2K-10I)(2K-12I)(2K-16I) / 7680 (Lagrange), and the
+# projector onto im Lambda is I - E0.  Its diagonal is 11/16 at every pair exactly
+# when every diagonal entry of 7680 E0 equals 7680 * 5/16 = 2400.  All in integers.
+print()
+Lo = Lam.astype(object)
+K2 = Lo @ P2.astype(object) @ Lo.T
+I96o = np.eye(96, dtype=np.int64).astype(object)
+M = I96o.copy()
+for c in (4, 10, 12, 16):
+    M = M @ (K2 - c * I96o)
+print('2K annihilates x(x-4)(x-10)(x-12)(x-16):', bool(np.all(K2 @ M == 0)))
+diag = sorted(set(int(M[p, p]) for p in range(96)))
+print('diagonal of 7680 E0 takes the values', diag, '(2400 means 11/16 on im Lambda)')
+trace_im = sum(Fraction(7680 - int(M[p, p]), 7680) for p in range(96))
+print('trace of the projector onto im Lambda:', trace_im, '(its rank, 72 - 6)')
+assert bool(np.all(K2 @ M == 0)) and diag == [2400] and trace_im == 66
+print('So |g_p| <= (sqrt11/4) |g|_2 for every g in im Lambda and every pair p, and')
+print('|g|_1 >= (4/sqrt11) |g|_2: the constant behind the radius 2/sqrt(397).')
+
+# ---------------------------------------------------------------------------
+# How far the constant can be pushed: nu = min |Lambda tau|_1 / |tau|_2 over the
+# tangent vectors orthogonal to the rotations.  The lemma gives nu >= 4/sqrt11; a
+# displacement of one direction, with its rotational part removed, gives an upper
+# bound, computed here exactly: ratio^2 = |Lambda' tau|_1^2 / (2 |tau|^2).
+print()
+ROT = []
+for a, b in itertools.combinations(range(4), 2):
+    Mab = np.zeros((4, 4), dtype=np.int64); Mab[a, b] = 1; Mab[b, a] = -1
+    ROT.append([Fraction(int(x)) for x in (A @ Mab.T).reshape(-1)])
+Gr = [[sum(x * y for x, y in zip(r, q)) for q in ROT] for r in ROT]
+assert all(Gr[i][j] == (Gr[0][0] if i == j else 0) for i in range(6) for j in range(6))   # orthogonal, equal norms
+x = [Fraction(0)] * 96
+x[0:4] = [Fraction(int(v)) for v in (2 * np.eye(4, dtype=np.int64) - np.outer(A[0], A[0]))[:, 2]]   # 2P e_2 at root 0
+for r in ROT:
+    c = sum(a * b for a, b in zip(x, r)) / Gr[0][0]
+    x = [a - c * b for a, b in zip(x, r)]
+lx = [sum(Fraction(int(Lam[p, k])) * x[k] for k in range(96)) for p in range(96)]
+ratio2 = sum(abs(v) for v in lx) ** 2 / (2 * sum(v * v for v in x))
+print('one direction displaced, rotations removed: |Lambda tau|_1/|tau|_2 = sqrt(%s) = %.6f' % (ratio2, float(ratio2) ** 0.5))
+print('so nu <= %.4f, and the radius (144/nu^2 + 1/4)^(-1/2) of this argument cannot pass %.4f'
+      % (float(ratio2) ** 0.5, (144 / float(ratio2) + 0.25) ** -0.5))

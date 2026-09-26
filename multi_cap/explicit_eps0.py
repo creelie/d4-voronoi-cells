@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 explicit_eps0.py -- an explicit value for the constant epsilon_0 of the
-near-contact theorem (Section 2.8 of the paper, v1.7.0), in exact and ball
+near-contact theorem (Section 2.8 of the paper, v1.8.0), in exact and ball
 arithmetic.
 
 The theorem says: if no centre of a unit-ball packing of R^4 lies at a distance
@@ -275,6 +275,13 @@ def part_C(delta):
 
 
 # ------------------------------------------------------------------ D
+S11 = Fr(33166248, 10 ** 7)                                  # > sqrt 11
+CA_EXACT = (S11 / 2) / (1 - (3 * S11 + Fr(1, 2)) / 48)      # > the constant c_a of estimate (a)
+CA = CA_EXACT
+ONE_D = Fr(100006, 100000)                                   # 1 + delta, delta <= S <= 6e-5
+assert S11 * S11 > 11 and CA < Fr(21199, 10000)
+
+
 def local_bracket(Th):
     """Step 2 of the proof of the near-contact theorem with explicit constants: with e = max e_i,
     delta = max delta_i and e + delta <= Th, vol(V(Y) cap K(Y)) - 8 >= S * bracket - C2 * Th^4,
@@ -292,7 +299,7 @@ def local_bracket(Th):
     ymax = s2 * (1 + 2 * eta2) + eta1
     dvol = Fr(4, 3) * max((1 + 2 * eta2) ** 3 - 1, 1 - (1 - lam0) ** 3)
     mu = ((1 / cosphi - 1) * Gup * ymax + ring * (1 + 2 * eta2) + dvol + eta1 * Gup) / (1 - Th * Th / 4)
-    sumE = Fr(4899, 1000) * Fr(384, 71) * Fr(10001, 10000)  # sum e_i <= sqrt 24 (192/71) 2 (1 + eps) S
+    sumE = Fr(208, 10)                                      # sum e_i <= sqrt 24 c_a 2 (1 + delta) S < 20.8 S
     bracket = Alow / 2 - mu * sumE                          # (delta_i / 2) A_i - e_i mu, summed
     C2 = 24 * 2 * 4 * (Fr(3, 2) + Fr(142, 100)) ** 4        # 24 vertex caps of volume 2 s^4, s = sqrt2 (theta + theta')
     return bracket, C2, lam0 / Th, mu / Th
@@ -349,17 +356,20 @@ def main():
           % (2 * kap[0], kap[1]) if 2 * kap[0] < 10 else 'epsilon_0 = 2 kappa*: 1/2 - 2/(2 + epsilon_0)^2 <= kappa*')
 
     Smax = 24 * Fr(2 * kap[0], 10 ** kap[1])
-    Thb = Fr(642, 100) * Smax                               # Theta <= (384/71)(1 + eps) S + S <= 6.42 S
+    TH = Fr(524, 100)                                       # Theta <= 2 c_a (1 + eps) S + S <= 5.24 S
+    check(2 * CA * ONE_D + 1 <= TH and Fr(4899, 1000) * 2 * CA * ONE_D < Fr(208, 10),
+          'estimate (a): c_a = %.6f < 2.1199, so Theta <= 5.24 S and sum e_i <= %.3f S < 20.8 S' % (float(CA), float(Fr(4899, 1000) * 2 * CA * ONE_D)))
+    Thb = TH * Smax
     bracket, C2, lr, mr = local_bracket(Thb)
-    print('D. local bound: vol >= 8 + S (bracket - C2 (6.42)^4 S^3), bracket = %.6f, C2 = %.0f; lam0 <= %.2f Theta, mu <= %.1f Theta'
+    print('D. local bound: vol >= 8 + S (bracket - C2 (5.24)^4 S^3), bracket = %.6f, C2 = %.0f; lam0 <= %.2f Theta, mu <= %.1f Theta'
           % (float(bracket), float(C2), float(lr), float(mr)))
-    check(bracket - C2 * Fr(642, 100) ** 4 * Smax ** 3 > 0,
+    check(bracket - C2 * TH ** 4 * Smax ** 3 > 0,
           'at every S = sum delta_i in (0, 24 epsilon_0] the bracket is positive: vol > 8; at S = 0 the root system')
     # the same bound on a fixed neighbourhood of the root system, independent of the certificate
-    Sl = Fr(4, 100000)
-    br, C2l, _, _ = local_bracket(Fr(642, 100) * Sl)
-    check(Fr(642, 100) * Sl <= Fr(1, 1000) and br - C2l * Fr(642, 100) ** 4 * Sl ** 3 > 0,
-          'the same holds whenever d(W) <= 1/48 and 0 < S <= 4e-5 (bracket %.4f at S = 4e-5)' % float(br - C2l * Fr(642, 100) ** 4 * Sl ** 3))
+    Sl = Fr(6, 100000)
+    br, C2l, _, _ = local_bracket(TH * Sl)
+    check(TH * Sl <= Fr(1, 1000) and br - C2l * TH ** 4 * Sl ** 3 >= Fr(2, 100),
+          'the same holds whenever d(W) <= 1/48 and 0 < S <= 6e-5 (bracket %.4f at S = 6e-5)' % float(br - C2l * TH ** 4 * Sl ** 3))
     print('elapsed %.0f s' % (time.time() - t0))
     if OK:
         print('PASS: epsilon_0 = %s works in the near-contact theorem' % eps0.str(3, radius=False))

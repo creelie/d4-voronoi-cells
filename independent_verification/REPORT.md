@@ -679,3 +679,88 @@ underfull boxes; the new section is 7.13, at the end of Section 7, so no
 theorem, lemma or section number changes.  The new Figure 25
 (`paper/figures_new/tikz_eps0.tex`) was rendered at 500 dpi and inspected: no
 label touches a line or another label.
+
+## Addendum: v1.8.0
+
+v1.8.0 adds a theorem, sharpens two constants, and corrects one printed
+value.  Conjecture 1.6 is still open, and the paper does not claim
+otherwise.  The results came to this package as a separate submission (a
+certificate package and a technical note); every part was rerun or
+recomputed here before it went into the paper, and three things in it were
+corrected.
+
+What is new, and how it was checked:
+
+- **Theorem 7.79 (the kissing number is stable).**
+  - `multi_cap/certify_cardinality.py` passes on both degree-8
+    certificates, at s = 0.0065 and at s = 0.005, in about 80 seconds each.
+    It checks exact LDL^T positivity of every F_k and computes
+    f(1) + F(1,1,1) exactly (23.974999950 at s = 0.0065).  Its interval
+    branch and bounds reuse `certificate_check.py`: 150 225 boxes at
+    s = 0.0065, and the univariate check.
+  - The derivation of the bound from (i) and (ii) was redone by hand: the
+    sum over ordered pairs and triples, then a 25-point subset of any
+    larger set.  The subset replaces the monotonicity argument of the
+    submission, which fails for very large |C|.
+  - The degree-10 certificate at s = 0.008 was not verified here to the
+    end; see its log.
+- **Correction 1: the threshold.**  The submitted checker ran its boxes to
+  the double nearest 0.5065, which lies 5e-17 below 0.5065.  The checker
+  now takes the recorded decimal exactly and runs to the least double at
+  or above it.  It also rounds e1 and e2 down to doubles, so that
+  "P <= e" holds as printed.  The rerun passes.
+- **Lemma 7.50, second statement.**  `multi_cap/rigidity_spectrum.py`
+  checks it in integers:
+  - 2K = Lambda'(2P)Lambda'^T annihilates x(x-4)(x-10)(x-12)(x-16).
+  - (2K-4I)(2K-10I)(2K-12I)(2K-16I) has every diagonal entry 2400, which
+    is 7680 times 5/16.
+  - The trace of the projection onto the image is 66.
+
+  The symmetry argument of the text gives the same value.
+- **Correction 2: the l1 constant nu.**  The technical note reported
+  nu = 3.361 from 400 Nelder-Mead restarts.  That is not the minimum.
+  - A single displaced direction, with its rotational part removed, has
+    ratio sqrt(96/11) = 2.954, computed in rational arithmetic.
+  - Three hundred linear programmes of the form "minimise ||Lambda x||_1
+    subject to <c, x> = 1" find nothing lower.
+
+  The paper states only the proved facts: nu >= 4/sqrt 11 and
+  nu <= sqrt(96/11), so this argument cannot give a radius above 0.244.
+- **Correction 3: 2/sqrt(397).**  The submitted patch printed 0.1003774;
+  the value is 0.1003771.
+- **Theorem 2.18.**  `multi_cap/explicit_eps0.py` now uses
+  c_a = (sqrt 11/2)/(1 - (3 sqrt 11 + 1/2)/48), bounded above with the
+  rational 3.3166248 > sqrt 11.  It checks 2 c_a (1 + 6e-5) + 1 <= 5.24 and
+  sqrt 24 c_a 2 (1 + 6e-5) < 20.8.  The bracket is 0.0443 at S = 6e-5, in
+  exact arithmetic.
+- **Remark 7.78.**  `multi_cap/robust_ceiling.py` recomputes L2 = 0.22572
+  and q_min = 2.6209e-4 from the exact sigma_2 and gives the ceilings
+  4.73e-14 (delta = 3e-4) and 9.24e-9 (delta = 1/4).
+- **The erratum.**  7.906940 at the root system truncated at r_*: confirmed
+  against `multi_cap/runs/truncated_search_M24.log` and by
+  `rebuilt_from_text/d4_independent_check.py`.
+- **The 25-point code.**  `multi_cap/code25_search.py` finds 25 points with
+  largest inner product 0.537429, written to
+  `multi_cap/runs/code25_best.txt` and rechecked from the file.
+
+`rebuilt_from_text/d4_independent_check.py` recomputes, from the statements
+of the paper alone:
+
+- the covering bounds of Table 2;
+- the four pair-bound values;
+- the rigidity spectrum and the 11/16 diagonal;
+- the crossings 0.15511 and 0.197054;
+- the crossing 0.147332 with the truncation radius grown with the
+  distances.
+
+It agrees with the paper on every item.  Its log is beside it.
+
+The paper builds with no undefined references and no overfull boxes.
+
+- **Numbering.**  The new results are Remark 7.78 and Theorem 7.79, at the
+  end of Section 7.13, and the 11/16 statement is part of Lemma 7.50.  No
+  theorem, lemma or proposition number of v1.7.0 changes; the new
+  Figure 26 renumbers the later figures by one.
+- **Figures.**  Figures 16 and 25 were redrawn and Figure 26 is new.  The
+  two matplotlib figures pass the label-collision test, the TikZ figure was
+  rendered at 500 dpi, and all three were inspected.
