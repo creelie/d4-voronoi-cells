@@ -63,13 +63,17 @@ sqrt 6.  Two pieces of work would close it.
     constants.
 - **Section 7.13 is new**, with Theorem 7.76, Lemma 7.77 and a footnote on
   the size of the constants.  It sits at the end of Section 7, so no
-  earlier number changes.
+  theorem, lemma or section number changes.
+- **One new figure.**  Figure 25 (TikZ, `figures_new/tikz_eps0.tex`) shows
+  the chain of explicit bounds from kappa to the volume, and, to scale,
+  the lower bound of sigma_2 near its double zero against the error level
+  E.  Figures 25 to 32 of v1.6.0 become 26 to 33.
 - **Other revisions.**
   - The abstract, Theorem 1.7(c) and the remark after it.
   - The opening of Section 2.8, "What is left" and the conclusion.
   - The index of notation, the code index, the data and code availability
     statement, and the archive entry of the bibliography (v1.7.0).
-- **Build.**  164 pages, with no undefined references and no overfull or
+- **Build.**  165 pages, with no undefined references and no overfull or
   underfull boxes.
 
 ## The package

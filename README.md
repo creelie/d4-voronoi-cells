@@ -69,6 +69,10 @@ Anthropic.
                         Theorem 1.7, the opening of Section 2.8, "What is
                         left", the conclusion, the notation, the code index
                         and the data availability statement are revised.
+                        One new figure: Figure 25
+                        (figures_new/tikz_eps0.tex, TikZ), the chain of
+                        explicit bounds and, to scale, sigma_2 against the
+                        error level; later figures are renumbered by one.
   multi_cap/explicit_eps0.py
                       The constants of Theorems 7.76 and 2.18: the sizes
                         of the sign-changing sum-of-squares terms of the

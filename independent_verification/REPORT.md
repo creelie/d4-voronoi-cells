@@ -667,6 +667,8 @@ What is new, and how it was checked:
   at S = 4e-5 (0.0204).
 
 The run takes sixteen seconds; the log is `multi_cap/runs/explicit_eps0.log`.
-The paper builds to 164 pages with no undefined references and no overfull or
+The paper builds to 165 pages with no undefined references and no overfull or
 underfull boxes; the new section is 7.13, at the end of Section 7, so no
-earlier number changes.
+theorem, lemma or section number changes.  The new Figure 25
+(`paper/figures_new/tikz_eps0.tex`) was rendered at 500 dpi and inspected: no
+label touches a line or another label.

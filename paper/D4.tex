@@ -1757,7 +1757,8 @@ facets of a polytope near the $24$-cell, and uses no certificate. The
 constant $\varepsilon_0$ is what it takes for \cref{thm:m24-robust} to
 place twenty-four directions with inner products at most
 $\tfrac12+\tfrac12\varepsilon_0$ inside that neighbourhood, and it
-inherits the size of the sums of squares of the certificate.
+inherits the size of the sums of squares of the certificate
+(\cref{fig:tikz-eps0}).
 
 \begin{proof}
 \emph{Step 1: the first statement follows from the second.} Let $Y$ be the
@@ -6301,6 +6302,30 @@ $\|M^{\mathsf T}M-I\|\le D/6$, and the orthogonal factor $R$ of the polar
 decomposition $M=R(M^{\mathsf T}M)^{1/2}$ has $\|M-R\|\le D/6$. Hence
 $\|W-RV\|_F\le\|W(I-P)\|_F+\|M-R\|\,\|V\|_F\le2D/\sqrt{6-D}+\sqrt{24}D/6$.
 \end{proof}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_eps0}
+\caption{Where $\varepsilon_0=4\cdot10^{-26}$ comes from. (a) The chain of
+explicit bounds that replaces the compactness argument of
+\cref{thm:near-contact}, with the number each step produces
+(\texttt{explicit\_eps0.py}). Twenty-four directions with inner products
+at most $\tfrac12+\kappa$ make every sign-changing sum-of-squares term of
+the certificate at least $-E$ in total (\cref{thm:m24-robust}); so
+$\sigma_2\le E$ at each inner product up to $\tfrac12$, which pins it near
+a zero of $\sigma_2$; \cref{lem:root-lattice-robust} turns that into a
+distance from the root system; the rigidity of
+\cref{thm:local-uniqueness}, with slack, bounds the displacement by the sum
+$S$ of the distances beyond contact; and the facet, moment and hull
+estimates close the argument. (b) To scale: the lower bound
+$2.62\cdot10^{-4}f(u)$ of $\sigma_2$ near its double zero $u=0$, for $u>0$
+and $u<0$, against the level $E(24,\kappa)=2.35\cdot10^{-12}$. The two cross
+at $|u|\approx2.7\cdot10^{-4}$, inside the window $|u|\le\delta=3\cdot10^{-4}$,
+where the bound is already $2.94\cdot10^{-12}$. The other double zero,
+$-\tfrac12$, gives the same picture; at the simple zeros $-1$ and $\tfrac12$
+the bound is linear and the window is far wider than needed.}
+\label{fig:tikz-eps0}
+\end{figure}
 
 Neither statement is sharp. The bound $E$ counts every triple and every
 quadruple of the $24$ points as if each had an inner product above
