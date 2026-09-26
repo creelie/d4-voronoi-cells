@@ -77,13 +77,31 @@ Conjecture 1.6 stays open in the same shape.  The new code was developed,
 and its computations run, with the assistance of Claude, an AI model made
 by Anthropic.
 
-  paper/              Theorem 7.79, Remark 7.78 and Figure 26 are new
-                        (figures_new/fig_cardinality.py); Lemma 7.50,
-                        Theorem 7.51, Theorem 2.18 and "What is left" are
-                        revised; Figures 16 and 25 are redrawn; the
-                        abstract, the introduction, the code index and the
-                        data availability statement are revised.  Later
-                        figures are renumbered by one.
+  paper/              Theorem 7.79, Remark 7.78 and Figure 28 are new
+                        (figures_new/fig_cardinality.py), and so are
+                        Figures 9 and 10 (figures_new/tikz_counts.tex,
+                        tikz_level2.tex); Lemma 7.50, Theorem 7.51, Theorem
+                        2.18 and "What is left" are revised; Figures 18 and
+                        27 are redrawn; the abstract is rewritten; the
+                        introduction, the code index and the data
+                        availability statement are revised.  Later figures
+                        are renumbered.
+  level2/             The zonal matrices of zonal/ in the file format of
+                        the LLM24 code, which then runs its second-level
+                        programme without its own construction of them;
+                        their evaluator agrees with ours on eight entries
+                        and their compute_PS with ours on all 88 entries of
+                        thirteen signatures; the bound on the enlarged
+                        domain (las2_slack.jl) and with a margin
+                        (las2_margin.jl).  See level2/README.md.
+  multi_cap/count_survey.py
+                      The right side of Lemma 2.15 for every count of
+                        centres within sqrt 6: least value 8.264115 at
+                        M = 25, rising to 10.895 at M = 43; no packing of 44
+                        or more found.  Logs: runs/count_survey.log,
+                        runs/count_survey_pack.log.
+  paper/figures_new/tikz_overlap_check.py
+                      The collision test of the TikZ figures.
   multi_cap/certify_cardinality.py, multi_cap/cardinality_sdp.py,
   multi_cap/cardinality_certificates/
                       Theorem 7.79: the proof, the search, and three

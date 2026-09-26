@@ -46,7 +46,12 @@ abstract: >-
   enlarged domain that makes the kissing number in dimension four stable, no 25
   points of S^3 with inner products at most 1/2 + 0.008
   (certify_cardinality.py); and an independent re-verification of every
-  computation of the paper. The re-verification and these
+  computation of the paper. The directory level2 writes the zonal matrices in
+  the file format of the code of de Laat, Leijenhorst and de Muinck Keizer, so
+  that their second-level programme runs on an ordinary machine, and checks
+  them against that code entry by entry; count_survey.py minimises the
+  truncated volume for every count of centres within sqrt 6. The
+  re-verification and these
   programs were developed, and their computations run, with the assistance of
   Claude, an AI model made by Anthropic.
 doi: "10.5281/zenodo.22766562"

@@ -1,0 +1,20 @@
+% tikzcheck.tex -- the hooks of tikz_overlap_check.py, input by the TikZ figures.
+% \figboxes and \figlabels list the named nodes; \checkfigure, at the end of the
+% picture, writes their four corners (so that rotated nodes are measured by their
+% true extent) and those of the picture to the log when
+% \checkbboxes is defined.  With \nolabels defined, nodes in the style lbl are
+% drawn invisibly, so that the test can look at what lies under them.
+\tikzset{lbl/.style={}}
+\ifdefined\nolabels\tikzset{lbl/.append style={opacity=0}}\fi
+\newcommand\checkfigure{%
+  \ifdefined\checkbboxes
+    \path let \p1=(current bounding box.south west), \p2=(current bounding box.north east)
+      in \pgfextra{\typeout{PICBB \x1\space\y1\space\x2\space\y2}};
+    \typeout{BORDER 4.0pt}%
+    \foreach \nm in \figboxes {\path let \p1=(\nm.south west), \p2=(\nm.north east),
+        \p3=(\nm.north west), \p4=(\nm.south east)
+      in \pgfextra{\typeout{BBOX box \nm\space\x1\space\y1\space\x2\space\y2\space\x3\space\y3\space\x4\space\y4}};}
+    \foreach \nm in \figlabels {\path let \p1=(\nm.south west), \p2=(\nm.north east),
+        \p3=(\nm.north west), \p4=(\nm.south east)
+      in \pgfextra{\typeout{BBOX label \nm\space\x1\space\y1\space\x2\space\y2\space\x3\space\y3\space\x4\space\y4}};}
+  \fi}

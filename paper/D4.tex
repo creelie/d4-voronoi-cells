@@ -196,33 +196,15 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 }
 
 \begin{abstract}
-The twenty-four-cell conjecture asserts that every Voronoi cell of a
-unit-ball packing of $\mathbb{R}^4$ has volume at least $8$, with
-equality only at the $D_4$ configuration, and it gives the density bound
-$\pi^2/16$. We prove it for contact configurations, the directions to
-the neighbours at distance $2$. The proof runs through the number of
-contacts. Up to twenty-two a covering estimate suffices; at twenty-three
-the cell is bounded through an exact volume identity inside a ball and a
-semidefinite certificate for one inequality between pair angles; at
-twenty-four the configuration is the root system, which we prove from
-the second level of the semidefinite hierarchy with its equality case,
-the positive kernel verified in exact arithmetic. For the Voronoi cell
-of an arbitrary packing we prove the bound whenever every neighbour
-closer than $2\sqrt2$ touches the centre, and more generally whenever
-the distances of those neighbours pass a covering criterion that does
-not look at their directions. We also prove it whenever at most
-twenty-three neighbours lie within $\sqrt6$, at any distances, by carrying
-the semidefinite certificate from contacts to centres at mixed distances;
-whenever the contacts contain most of a root system; and whenever no
-neighbour lies at a distance between $2+\varepsilon_0$ and $\sqrt6$, for
-$\varepsilon_0=4\cdot10^{-26}$, which makes the $D_4$ configuration a strict
-local minimum of the cell volume among all packings, in an explicit
-neighbourhood. The kissing number is stable: a three-point certificate on an
-enlarged domain shows that no twenty-five points of $S^3$ have pairwise
-inner products at most $\tfrac12+0.008$, so at most twenty-four neighbours lie
-within $2.0161$ of any centre. The case left
-open is a centre with at least twenty-four neighbours within $\sqrt6$, one
-of them at an intermediate distance, for which we give numerical evidence.
+We prove that a Voronoi cell of a unit-ball packing of $\mathbb{R}^4$ has
+volume at least $8$, that of the regular twenty-four-cell, with equality
+only at the $D_4$ configuration, whenever at most twenty-three other centres
+lie within $\sqrt6$, and whenever none lies at a distance strictly between
+$2+4\cdot10^{-26}$ and $\sqrt6$. This settles the twenty-four-cell
+conjecture for contact configurations and makes $D_4$ a strict local minimum
+among all packings. We prove that the kissing number in dimension four is
+stable: at most twenty-four centres lie within $2.0161$ of any centre. One
+precisely stated case remains.
 \end{abstract}
 
 \maketitle
@@ -1962,11 +1944,34 @@ $-\frac12$, the value on the deleted root's axis. Where the pair terms of
 \cref{lem:no-triple} over configurations of exactly $M$ centres within
 $\sqrt6$, from twelve starts each, of which four or five end at a local
 minimum. For $M=24$ every local minimum it finds is the root system, at
-$7.906940\ldots$; for $M=25$, $26$ and $27$ every one lies above $8.26$. If that is the whole truth, the pair terms fail
+$7.906940\ldots$. \texttt{count\_survey.py} repeats the minimisation for every
+count from $24$ up, with the exact gradient of the right side and with
+starts that carry the best configuration of one count on to the next
+(\cref{fig:counts}). The least value it finds is $8.264115$ at $M=25$, and it
+rises with $M$, not quite monotonically, to $10.895$ at $M=43$. All $196$
+local minima it finds for $M\ge25$ lie at or above $8.264$, every one of them
+has some of its centres on the sphere of radius $\sqrt6$, where their caps
+are empty, and the least one for each count has at most $22$ strictly
+inside.\footnote{Adding a centre never raises the right side of
+  \cref{lem:no-triple}: its cap loses to each other cap the lens they share,
+  and these lenses are disjoint, since no point of $B(\sqrt{3/2})$ lies in
+  three caps, so together they are at most the cap. So the least value over
+  $M$ centres is at most that over $M-1$ whenever one more centre fits on the
+  sphere of radius $\sqrt6$. That the survey finds it rising instead suggests that
+  past twenty-four the extra centres crowd those near $c$ outward.} For $M\ge44$
+it finds no packing at all: from $300$ random starts for each count up to
+$49$, the least squared violation of the constraints grows from $0.14$ at $44$
+to $6.5$ at $49$, while $42$ and $43$ centres fit with most of them on that
+sphere. If this is the whole truth, the pair terms fail
 only at twenty-four centres near the root system, and twenty-five or more
 could be settled as in \cref{thm:m23-labelled}, with a certificate for each
 count up to the largest that fits within $\sqrt6$, and at most $49$ fit
-(\texttt{count\_bound\_sqrt6.py}). At twenty-four the size of the gap
+(\texttt{count\_bound\_sqrt6.py}). Such a certificate has to see that
+twenty-four centres close to $c$ leave no room for another within $\sqrt6$;
+at the root system the nearest room is at $2\sqrt2$. That is a statement about
+the shape of twenty-four directions at positive slack, the one discussed
+below, and the three-point bound does not see it
+(\texttt{three\_point\_probes.py}). At twenty-four the size of the gap
 can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
 $\delta=0.197$ with one centre pushed out and the others in contact
@@ -1999,7 +2004,23 @@ same kernel passes $10^{-8}$: the certificate is exact at slack $0$, and its
 two-point polynomial has double zeros at $-\frac12$ and $0$, so the distance
 it controls is the square root of the error. A form at moderate slack would
 need a new computation at the second level of the hierarchy, on the enlarged
-domain and with a margin, of the kind carried out in \cite{LLM24}. The first level cannot supply it
+domain and with a margin, of the kind carried out in \cite{LLM24}. That
+programme is now written (\texttt{level2/las2\_margin.jl}), and it runs on an
+ordinary machine: the zonal matrices of \cref{sec:certificate-checked},
+written in the file format of the authors' code, replace their own
+construction of them (\cref{fig:level2}). What limits it now is the size of
+the programme. At the degrees such a machine reaches, the second level is
+weaker than the three-point bound, $26$ at slack $0$ at the degrees
+$(d_1,\delta)=(8,10)$ against $24.13$, and the degrees $(14,16)$ of the
+certificate, where it is $24$, need a larger machine for the programme
+itself.\footnote{The programme fixes the bound at a number $N$ and maximises
+  $\mu$ subject to $A_2K(\{x,y\})+\mathrm{SOS}_2(u)+\mu\,w(u)=0$, with
+  $w(u)=(u+1)(u+\frac12)^2u^2(\frac12+s-u)$, the other constraints being those
+  of \cite{LLM24}; for twenty-four points with inner products at most
+  $\frac12+s$ the chain of \cref{lem:las2} then gives $w(u)\le(N-24)/\mu$ at
+  every inner product. Near the double zeros $w(u)\approx u^2/8$, so the window
+  is about $(8(N-24)/\mu)^{1/2}$, and unless $N-24$ grows more slowly than $s$
+  the square root of \cref{rem:robust-ceiling} returns.} The first level cannot supply it
 (\texttt{three\_point\_probes.py}, floating point with sampled constraints).
 Asked at degree $12$ for a three-point certificate that charges a positive
 amount to every pair of a $24$-point code whose inner product lies outside
@@ -2024,6 +2045,36 @@ quadruples violating its constraints by up to $0.23$, and one round of it
 needs most of the $15$ gigabytes of the machine used here; the certificate's
 own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
 \cite{LLM24} solved the programme in $256$-bit arithmetic.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_counts}
+\caption{The right side of \cref{lem:no-triple} for every count of centres
+within $\sqrt6$ (\texttt{count\_survey.py}; floating point and local
+optimisation, evidence and not a bound). (a) The least value found for $M$
+centres, $M=24,\dots,43$, against the level $8$; at $M=24$ it is the root
+system, $7.906940\ldots$. For $M\ge44$ no packing was found, in $300$ random
+starts for each count. (b) How the configurations of (a) meet the count: the
+centres strictly inside the sphere of radius $\sqrt6$, and those on it, whose
+caps are empty.}
+\label{fig:counts}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_level2}
+\caption{The second level on an ordinary machine (\texttt{level2/}). (a) The
+zonal matrices of \cref{sec:certificate-checked}, written in the file format
+of the code of \cite{LLM24}, which then runs its second-level programme
+without its own construction of them, and the two checks against that code.
+(b) The bound of the programme at slack $0$ against the degree $d_1$ of the
+kernel, with $\delta=d_1+2$: $32$ at $(4,6)$; $26$ at $(8,10)$, in $42$ minutes
+and $3.5$ gigabytes; and the certificate's $24$ at $(14,16)$; beside the
+three-point bound $24.13$ and the level $25$ that a bound on the number of
+points has to beat. At $(10,12)$ an iteration takes about $220$ seconds on four
+cores and the programme holds $11.5$ gigabytes.}
+\label{fig:level2}
+\end{figure}
 
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
@@ -3997,7 +4048,12 @@ construction needs its memory for all signatures at once, and run for one
 signature at a time it fits in a few gigabytes for the smaller ones: for the
 thirteen signatures with $|\lambda|\le10$ and $\lambda_2\le4$ on which it was
 run, all $88$ entries it writes agree with ours coefficient by coefficient
-(\texttt{level2/compare\_entries.py}).
+(\texttt{level2/compare\_entries.py}).\footnote{Run one signature at a time,
+  their construction took about a second for $(3,1)$ and $(4,0)$, half a
+  minute for $(10,0)$ and four minutes for $(6,4)$ and $(8,2)$, and for $(10,2)$
+  it passed three gigabytes and was stopped: its cost grows with $\lambda_2$
+  far faster than with $|\lambda|$. Ours computes every entry of every
+  signature with $|\lambda|\le14$ in the same pass, in under $400$ megabytes.}
 
 \begin{figure}[tb]
 \centering
@@ -10172,11 +10228,11 @@ and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{truncated\_search.py}, \texttt{count\_bound\_sqrt6.py},
 \texttt{explicit\_eps0.py}, \texttt{three\_point\_probes.py},
 \texttt{cardinality\_sdp.py}, \texttt{certify\_cardinality.py},
-\texttt{robust\_ceiling.py}, \texttt{code25\_search.py} and
-\texttt{facet\_bounds\_probe.py}), the
+\texttt{robust\_ceiling.py}, \texttt{code25\_search.py},
+\texttt{facet\_bounds\_probe.py} and \texttt{count\_survey.py}), the
 scripts \texttt{level2\_numeric.py}, \texttt{level2\_sampled.py} and
 \texttt{d4\_independent\_check.py}, those of the directory
-\texttt{level2}, the
+\texttt{level2}, the collision test \texttt{tikz\_overlap\_check.py}, the
 Lean file \texttt{D4Closure.lean} and the scripts of the figures of
 \cref{sec:closure,sec:m24-robust} were developed with the
 assistance of Claude, an AI model made by Anthropic, and their
@@ -11438,7 +11494,11 @@ minimisations near the root system quoted after \cref{thm:near-contact}.
 So is \texttt{truncated\_search.py}, the minimisation of the truncated
 volume with exactly $M$ centres within $\sqrt6$ quoted there; the closed
 form it uses for the pair terms is checked against quadrature before it
-starts. So are the probes quoted in the same paragraph:
+starts. \texttt{count\_survey.py} carries the same minimisation to every
+count, with the exact gradient of the truncated volume (checked against
+central differences to $3\cdot10^{-9}$, mode \texttt{gradcheck}) and with starts that carry the best
+configuration of one count to the next, and in its mode \texttt{pack} looks
+only for packings of a given count (\cref{fig:counts}). So are the probes quoted in the same paragraph:
 \texttt{three\_point\_probes.py}, and, in the directory \texttt{zonal},
 \texttt{level2\_numeric.py}, which evaluates the second-level kernel of
 \cite{LLM24} in floating point and checks it against the certificate

@@ -1,0 +1,67 @@
+% tikz_level2.tex -- the second level on an ordinary machine (level2/ of the package).
+%   (a) The zonal matrices of zonal/ written in the file format of the code of de Laat,
+%       Leijenhorst and de Muinck Keizer, which then runs its second-level programme without
+%       its own construction of them; the two checks against their code.
+%   (b) The bound of that programme at slack 0 against the degree d1 of the kernel (delta =
+%       d1 + 2), from level2/runs, with the certificate's value 24 at (14, 16), the
+%       three-point bound 24.13 and the level 25 that a cardinality bound has to beat.
+% Build:  pdflatex tikz_level2.tex && pdftoppm -r 500 -png -singlefile tikz_level2.pdf ../figures/fig_tikz_level2
+% Test:   python3 tikz_overlap_check.py tikz_level2.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cviolet}{HTML}{4A3AA7}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\begin{document}
+\begin{tikzpicture}[font=\small,
+  state/.style={draw=cblue!70!black, fill=cblue!7, rounded corners=2pt, line width=0.6pt,
+                align=center, text width=4.6cm, inner xsep=4pt, inner ysep=5pt, minimum height=1.0cm},
+  check/.style={state, draw=caqua!70!black, fill=caqua!9, text width=4.9cm},
+  gone/.style={state, draw=cink3, fill=white, text=cink3, text width=4.9cm, dashed},
+  arr/.style={-{Latex[length=2.2mm]}, line width=0.6pt, cink2},
+  darr/.style={arr, dashed}]
+%% ------------------------------------------------------------------ (a)
+\node[font=\bfseries] (pa) at (-3.1,1.0) {(a)};
+\node[state] (z) at (0,0) {\texttt{zonal/}: the $490$ entries of $P(S)$\\ exact rationals, $2$\,h, $400$\,MB};
+\node[state] (c) [below=0.9cm of z] {\texttt{pkl2cache.py}: the file format\\ of the authors' code};
+\node[state] (p) [below=0.9cm of c] {their second-level programme\\ on $[-1,\tfrac12+s]$ (\texttt{las2\_slack.jl})};
+\node[state, draw=cviolet!80!black, fill=cviolet!7] (m) [below=0.9cm of p] {with a margin in the two-point\\ constraint (\texttt{las2\_margin.jl})};
+\foreach \a/\b in {z/c,c/p,p/m} \draw[arr] (\a.south) -- (\b.north);
+\node[gone] (g) [right=1.0cm of z] {not needed: their construction of all\\ entries at once, $3$ days, $128$\,GB};
+\node[check] (e) [right=1.0cm of c] {their \texttt{evaluate\_zonal\_matrix}\\ on our files: $8$ of $8$ equal};
+\node[check] (f) [right=1.0cm of p] {their \texttt{compute\_PS}, one signature\\ at a time: $88$ of $88$ entries identical};
+\draw[darr, cink3] (g.west) -- (z.east);
+\draw[darr, caqua!60!black] (e.west) -- (c.east);
+\draw[darr, caqua!60!black] (f.west) -- (p.east);
+%% ------------------------------------------------------------------ (b)
+\begin{axis}[at={(10.6cm,-5.6cm)}, anchor=south west, width=7.2cm, height=7.4cm,
+    xmin=2.5, xmax=15.5, ymin=22.5, ymax=33.5, xtick={4,8,10,14}, ytick={24,25,26,28,30,32},
+    xlabel={degree $d_1$ of the kernel ($\delta=d_1+2$)}, ylabel={bound at slack $0$},
+    axis lines=left, tick style={cink2}, label style={font=\small}, tick label style={font=\footnotesize},
+    clip=false]
+  \addplot[cink3, dashed, line width=0.5pt, domain=2.5:15.5, samples=2] {25};
+  \addplot[corange, densely dotted, line width=0.8pt, domain=2.5:15.5, samples=2] {24.13};
+  \addplot[only marks, mark=*, mark size=2.2pt, cblue] table[x=d1, y=bound] {level2_data.dat};
+  \addplot[only marks, mark=square*, mark size=2.2pt, caqua!70!black] coordinates {(14,24)};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=cblue!80!black] (l32) at (axis cs:4.4,32) {$32$};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=cblue!80!black] (l26) at (axis cs:8.4,26) {$26$};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=north, text=caqua!60!black] (l24) at (axis cs:14,23.55) {$24$};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=north east, text=corange!90!black] (l3p) at (axis cs:13.2,23.98) {three-point, $24.13$};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=south east, text=cink3] (l25) at (axis cs:13.2,25.12) {$25$};
+\end{axis}
+\node[font=\bfseries] (pb) at (10.2,1.0) {(b)};
+\def\figboxes{pa,pb,z,c,p,m,g,e,f}
+\def\figlabels{l32,l26,l24,l3p,l25}
+\checkfigure
+\end{tikzpicture}
+\end{document}
