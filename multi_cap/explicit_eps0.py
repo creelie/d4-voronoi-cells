@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 explicit_eps0.py -- an explicit value for the constant epsilon_0 of the
-near-contact theorem (Section 2.8 of the paper, v1.7.0), in exact and ball
+near-contact theorem (Section 2.8 of the paper, v1.8.0), in exact and ball
 arithmetic.
 
 The theorem says: if no centre of a unit-ball packing of R^4 lies at a distance
@@ -31,7 +31,9 @@ argument.  Here every step is quantitative.
     principal minor of order <= 4 exceeds -1, so it is >= 0; so 2g is positive
     semidefinite of rank <= 4 and the vectors are near a copy of the
     normalised roots: d(W) <= 2 D / sqrt(6 - D) + sqrt(24) D / 6, D = 23 delta.
- D. The local volume bound near the root system, with explicit constants.
+ D. The local volume bound near the root system, with explicit constants: the
+    derivative of the volume along the linear path, facet by facet, each facet
+    compared with the regular octahedron face by face (Theorem 2.18, step (b)).
  E. Assembly: kappa*, epsilon_0 = 2 kappa*.
 
 Usage: python3 explicit_eps0.py /path/to/LasserreSphericalCodes/proofs/4_24
@@ -275,27 +277,57 @@ def part_C(delta):
 
 
 # ------------------------------------------------------------------ D
-def local_bracket(Th):
-    """Step 2 of the proof of the near-contact theorem with explicit constants: with e = max e_i,
-    delta = max delta_i and e + delta <= Th, vol(V(Y) cap K(Y)) - 8 >= S * bracket - C2 * Th^4,
-    S = sum delta_i.  Every quantity below is increasing in Th, so evaluating at an upper bound is safe."""
-    s2 = Fr(14143, 10000)                                   # > sqrt 2
-    sigma = (Th / 2 + s2 * Th) / (1 - Th)                   # the lift onto the moved hyperplane
-    lam0 = 2 * (s2 * Th + sigma * (1 + Th))                 # inner homothety: (1 - lam0) F_i^0 lifts into F_i
-    r1 = s2 * (1 + Th / 2) / (1 - s2 * Th)                  # P(t) lies in B(r1)
-    eta1 = Th / 2 + r1 * Th                                 # |<x, u_i> - 1| on F_i
-    eta2 = Th / 2 + r1 * Th + eta1                          # outer homothety 1 + 2 eta2
-    cosphi = (1 - Th) / (1 + Th)
-    Gup = Fr(4, 3) * (1 + 2 * eta2) ** 3
-    Alow = Fr(4, 3) * (1 - lam0) ** 3
-    ring = Fr(4, 3) * ((1 + 2 * eta2) ** 3 - (1 - lam0) ** 3)
-    ymax = s2 * (1 + 2 * eta2) + eta1
-    dvol = Fr(4, 3) * max((1 + 2 * eta2) ** 3 - 1, 1 - (1 - lam0) ** 3)
-    mu = ((1 / cosphi - 1) * Gup * ymax + ring * (1 + 2 * eta2) + dvol + eta1 * Gup) / (1 - Th * Th / 4)
-    sumE = Fr(4899, 1000) * Fr(384, 71) * Fr(10001, 10000)  # sum e_i <= sqrt 24 (192/71) 2 (1 + eps) S
-    bracket = Alow / 2 - mu * sumE                          # (delta_i / 2) A_i - e_i mu, summed
-    C2 = 24 * 2 * 4 * (Fr(3, 2) + Fr(142, 100)) ** 4        # 24 vertex caps of volume 2 s^4, s = sqrt2 (theta + theta')
-    return bracket, C2, lam0 / Th, mu / Th
+S11 = Fr(33166248, 10 ** 7)                                  # > sqrt 11
+CA_EXACT = (S11 / 2) / (1 - (3 * S11 + Fr(1, 2)) / 48)      # > the constant c_a of estimate (a)
+CA = CA_EXACT
+ONE_D = Fr(10015, 10000)                                     # 1 + delta, delta <= S <= 1.5e-3
+assert S11 * S11 > 11 and CA < Fr(21199, 10000)
+
+
+def local_bracket(S):
+    """Step 2 of the proof of the near-contact theorem with explicit constants, facet by facet:
+    with S = sum delta_i and d(W) <= 1/48, returns B with
+        vol(V(Y) cap K(Y)) - 8 >= S * B,
+    in exact rational arithmetic, together with the parts of the loss.  Every bound used is
+    increasing in S, e = max e_i and delta = max delta_i, so evaluating at upper bounds is safe."""
+    s2, s3, s3l, s5, s24 = Fr(14143, 10000), Fr(17321, 10000), Fr(1732, 1000), Fr(22361, 10000), Fr(4899, 1000)
+    d = S                                           # delta = max delta_i <= S
+    E = 2 * CA * (1 + d) * S                        # ||eps|| <= c_a kappa <= 2 c_a (1 + delta) S   (a)
+    e = E                                           # e = max e_i <= ||eps||
+    r1 = s2 * (1 + d / 2) / (1 - s2 * e)            # P(t) lies in B(r1)
+    eta1 = d / 2 + r1 * e
+    eta2 = eta1 + d / 2 + r1 * e
+    R = 1 + 2 * eta2                                # G_i(t) lies in R O_i (outer homothety)
+    Rp = R + e / 2                                  # R e_j + e_j^2 / 2 <= Rp e_j
+    c3 = (Fr(1, 2) + e) / (1 - e * e / 2)
+    k1 = 2 / (s3l * (1 - e))                        # theta_ij = 2 D_ij / (sqrt3 (1 - e_j))
+    Dmax = Rp * e + d / 2 + c3 * (d / 2 + Rp * e)   # the largest D_ij
+    thmax = k1 * Dmax
+    c0 = 1 / s3 - thmax                             # 1/s3 < 1/sqrt3: the sections below are overestimated
+    a_in = 3 * s3 / 4 * (1 - c0 * c0)               # sections of O_i within thmax beneath a face
+    lam = 1 + s3 * thmax                            # G_i(t) lies in lam O_i
+    a_out = 3 * s3 / 4 * (lam * lam - Fr(1, 3))     # sections of lam O_i beyond a face plane
+    gbar = 1 / (1 - e * e / 2) ** 2
+    # sum_i e_i theta_i and sum_i delta_i theta_i, theta_i = sum over the 8 neighbours j of i of theta_ij,
+    # by e^T A e <= 8 |e|^2 and e^T A delta <= 8 |e| |delta| for the neighbour graph (8-regular)
+    A1 = k1 * 8 * (Rp + c3 * Rp)
+    B1 = k1 * 4 * (1 + c3)
+    nd = S                                          # ||delta||_2 <= sum delta_i
+    s_e = A1 * E * E + B1 * E * nd
+    s_d = A1 * nd * E + B1 * nd * nd
+    loss_v = Fr(1, 2) * a_in * (Fr(1, 2) * s_d + Fr(1, 2) * e * s_e)
+    loss_m = Fr(1, 2) * gbar * (a_in + R * a_out) * s_e
+    Dperp = s5 * e + e * e / 2 + d / 2 + e * (d / 2 + e * e / 2 + e) / (1 - e * e / 2)
+    loss_c = Fr(1, 4) * (Fr(1, 2) * S + Fr(1, 2) * E * E + gbar * s24 * E) * 4 * Dperp ** 3
+    Theta = e + d
+    hull = 24 * 2 * 4 * (Fr(3, 2) + Fr(142, 100)) ** 4 * Theta ** 4     # part (c): 48 s^4 <= 13 958 Theta^4
+    # (2/3)(S + |eps|^2) minus the losses.  With the constants frozen at their values for e = E, the losses
+    # are alpha |eps|^2 + beta |eps| + gamma with alpha > 2/3 (checked), so the difference decreases in |eps|
+    # and |eps| = E is the worst case
+    alpha = Fr(1, 2) * gbar * (a_in + R * a_out) * A1 + Fr(1, 4) * a_in * e * A1
+    assert alpha > Fr(2, 3)
+    total = Fr(2, 3) * S + Fr(2, 3) * E * E - loss_v - loss_m - loss_c - hull
+    return total / S, dict(R=R, theta=thmax, a_in=a_in, a_out=a_out, v=loss_v / S, m=loss_m / S, c=loss_c / S, hull=hull / S)
 
 
 def main():
@@ -349,17 +381,24 @@ def main():
           % (2 * kap[0], kap[1]) if 2 * kap[0] < 10 else 'epsilon_0 = 2 kappa*: 1/2 - 2/(2 + epsilon_0)^2 <= kappa*')
 
     Smax = 24 * Fr(2 * kap[0], 10 ** kap[1])
-    Thb = Fr(642, 100) * Smax                               # Theta <= (384/71)(1 + eps) S + S <= 6.42 S
-    bracket, C2, lr, mr = local_bracket(Thb)
-    print('D. local bound: vol >= 8 + S (bracket - C2 (6.42)^4 S^3), bracket = %.6f, C2 = %.0f; lam0 <= %.2f Theta, mu <= %.1f Theta'
-          % (float(bracket), float(C2), float(lr), float(mr)))
-    check(bracket - C2 * Fr(642, 100) ** 4 * Smax ** 3 > 0,
-          'at every S = sum delta_i in (0, 24 epsilon_0] the bracket is positive: vol > 8; at S = 0 the root system')
+    TH = Fr(525, 100)                                       # Theta <= 2 c_a (1 + delta) S + S <= 5.25 S
+    check(2 * CA * ONE_D <= Fr(425, 100) and 2 * CA * ONE_D + 1 <= TH,
+          'estimate (a): c_a = %.6f < 2.1199, so ||eps|| <= %.4f S <= 4.25 S and Theta <= 5.25 S for delta <= 1.5e-3'
+          % (float(CA), float(2 * CA * ONE_D)))
+    br, parts = local_bracket(Smax)
+    check(br > 0, 'at every S = sum delta_i in (0, 24 epsilon_0] the bracket is positive (%.6f): vol > 8; at S = 0 the root system' % float(br))
     # the same bound on a fixed neighbourhood of the root system, independent of the certificate
-    Sl = Fr(4, 100000)
-    br, C2l, _, _ = local_bracket(Fr(642, 100) * Sl)
-    check(Fr(642, 100) * Sl <= Fr(1, 1000) and br - C2l * Fr(642, 100) ** 4 * Sl ** 3 > 0,
-          'the same holds whenever d(W) <= 1/48 and 0 < S <= 4e-5 (bracket %.4f at S = 4e-5)' % float(br - C2l * Fr(642, 100) ** 4 * Sl ** 3))
+    Sl = Fr(15, 10000)
+    br, parts = local_bracket(Sl)
+    print('D. facet by facet at S = 1.5e-3: R = %.5f, theta_max = %.5f, a_in = %.5f, a_out = %.5f; losses/S: volume %.4f, moment %.4f, caps %.2e, hull %.4f'
+          % tuple(float(parts[k]) for k in ('R', 'theta', 'a_in', 'a_out', 'v', 'm', 'c', 'hull')))
+    check(TH * Sl <= Fr(1, 100) and 2 * CA * ONE_D * Sl <= Fr(1, 48) and br >= Fr(2, 10),
+          'the same holds whenever d(W) <= 1/48 and 0 < S <= 1.5e-3 (bracket %.4f >= 0.2 at S = 1.5e-3)' % float(br))
+    grid = [Fr(k, 10 ** 5) for k in range(1, 151)]
+    vals = [local_bracket(x)[0] for x in grid]
+    check(all(a >= b for a, b in zip(vals, vals[1:])), 'the bracket decreases in S on a grid of step 1e-5 up to 1.5e-3 (each loss is increasing in S)')
+    for Sx in ('1e-3', '1.8e-3', '2e-3', '2.1e-3'):
+        print('    bracket at S = %s: %.4f' % (Sx, float(local_bracket(Fr(Sx))[0])))
     print('elapsed %.0f s' % (time.time() - t0))
     if OK:
         print('PASS: epsilon_0 = %s works in the near-contact theorem' % eps0.str(3, radius=False))

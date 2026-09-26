@@ -23,7 +23,83 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: DOI 10.5281/zenodo.22766562; cite it.  The release that
-corresponds to the paper is v1.7.0.
+corresponds to the paper is v1.8.0.
+
+## What is new in v1.8.0
+
+- Theorem 7.79 (the kissing number is stable).  No 25 points of S^3 have
+  pairwise inner products at most 1/2 + 0.0065; so at most 24 other
+  centres of a unit-ball packing lie within 2/sqrt(1 - 0.013) = 2.0131 of
+  any centre.  A Bachoc-Vallentin certificate of degree 8 on the enlarged
+  domain [-1, 1/2 + 0.0065], verified in exact rational and outward-rounded
+  interval arithmetic by multi_cap/certify_cardinality.py, which covers the
+  exact decimal threshold (the double nearest 0.5065 lies below it).  A
+  second certificate proves the same at slack 0.005.  The three-point bound
+  on the enlarged domain rises about 97 per unit of slack from 24.13, so
+  this route stops near 0.009; 25 points with inner products at most
+  0.53743 exist (multi_cap/code25_search.py).
+- Lemma 7.50 and Theorem 7.51.  The orthogonal projection onto the image
+  of the rigidity operator has every diagonal entry 11/16 (the Weyl group
+  of F4 is transitive on the 96 edges of the 24-cell; checked again in
+  integers by rigidity_spectrum.py), so ||g||_2 <= (sqrt 11/4) ||g||_1 on
+  the image, and the isolation radius of the root system improves from
+  2/sqrt(577) = 0.08326 to 2/sqrt(397) = 0.10038.  No constant of this
+  argument can pass 0.244: a single displaced direction has
+  ||Lambda tau||_1/||tau||_2 = sqrt(96/11).
+- Theorem 2.18.  The explicit neighbourhood of the second statement grows
+  from sum of delta_i <= 4e-5 to 1.5e-3.  Estimate (a) improves from 192/71
+  to c_a < 2.1199, and step (b) is new: the derivative of the volume along the
+  linear path is written exactly facet by facet, each facet is compared face
+  by face with the regular octahedron, and the losses are summed over the
+  edge graph of the 24-cell, which is 8-regular, so that every loss is of
+  second order with no factor of the largest perturbation
+  (explicit_eps0.py, exact arithmetic; facet_bounds_probe.py checks the
+  formula and the facet bounds numerically).  epsilon_0 = 4e-26 is
+  unchanged.
+- Remark 7.78 (the ceiling of Theorem 7.76).  Even with the triple and
+  quadruple terms set to zero, the robust reading of the LLM24 kernel pins
+  the inner products only for slack kappa < 5.2e-7 delta^2, so it cannot
+  pass 9.2e-9 under any rounding lemma (robust_ceiling.py).  A form of the
+  classification at slack 1e-2 needs a kernel computed on the enlarged
+  domain.
+- Erratum: the pair bound at the root system truncated at r_* is
+  7.906940, not 7.907070 (paragraph after the second-order proposition).
+- independent_verification/rebuilt_from_text/d4_independent_check.py
+  recomputes, from the statements of the paper alone, the covering bounds,
+  the pair-bound values, the rigidity spectrum, the 11/16 diagonal, the
+  crossings 0.155 and 0.197, and the truncation radius grown with the
+  distances (crossing 0.1473 instead of 0.1551).
+
+Conjecture 1.6 stays open in the same shape.  The new code was developed,
+and its computations run, with the assistance of Claude, an AI model made
+by Anthropic.
+
+  paper/              Theorem 7.79, Remark 7.78 and Figure 26 are new
+                        (figures_new/fig_cardinality.py); Lemma 7.50,
+                        Theorem 7.51, Theorem 2.18 and "What is left" are
+                        revised; Figures 16 and 25 are redrawn; the
+                        abstract, the introduction, the code index and the
+                        data availability statement are revised.  Later
+                        figures are renumbered by one.
+  multi_cap/certify_cardinality.py, multi_cap/cardinality_sdp.py,
+  multi_cap/cardinality_certificates/
+                      Theorem 7.79: the proof, the search, and three
+                        certificates: s = 0.005 and 0.0065 at degree 8,
+                        both verified, and s = 0.008 at degree 10, whose
+                        branch and bound is long (see
+                        runs/certify_cardinality_d10_s008.log).  Logs:
+                        runs/certify_cardinality_*.log,
+                        runs/cardinality_search_*.log,
+                        runs/cardinality_sweep_d8.log, _d10.log.
+  multi_cap/robust_ceiling.py, multi_cap/code25_search.py
+                      Remark 7.78; the 25-point code.  Logs:
+                        runs/robust_ceiling.log, runs/code25_search.log,
+                        runs/code25_best.txt.
+  multi_cap/explicit_eps0.py, multi_cap/facet_bounds_probe.py
+                      Theorem 2.18 with the facet-by-facet step (b): the
+                        bracket is at least 0.2 for sum of delta_i <= 1.5e-3
+                        and positive up to 2e-3.  Logs: runs/explicit_eps0.log,
+                        runs/facet_bounds_probe.log.
 
 ## What is new in v1.7.0
 
@@ -782,6 +858,16 @@ with the assistance of Claude, an AI model made by Anthropic.
                               runs/labelled_certificate_check.log.  Option
                               --skip-region-1 leaves out the rerun of (C).
 
+  facet_bounds_probe.py [trials] [seed]
+                              Supports step (b) of Theorem 2.18.  Floating
+                              point, exploration: on random and adversarial
+                              perturbations of the root system, the facet
+                              formula for the derivative of the volume
+                              reproduces vol P(1) - 8, and the facet bounds of
+                              step (b) hold (used to at most 82 and 14 per
+                              cent over 4320 facets).  Log:
+                              runs/facet_bounds_probe.log.
+
   explicit_eps0.py DATA      Supports Theorems 7.76 and 2.18 (the explicit
                               epsilon_0 = 4e-26).  DATA is the folder
                               proofs/4_24 of the certificate in
@@ -791,9 +877,45 @@ with the assistance of Claude, an AI model made by Anthropic.
                               python-flint), divides sigma_2 exactly by its
                               zeros and bounds the quotient below, checks
                               the minor bounds of Lemma 7.77, and evaluates
-                              the facet and hull estimates of Theorem 2.18
-                              in exact arithmetic.  Sixteen seconds.  Log:
+                              the facet-by-facet and hull estimates of
+                              Theorem 2.18 in exact arithmetic (the
+                              neighbourhood sum of delta_i <= 1.5e-3).
+                              About fifteen seconds.  Log:
                               runs/explicit_eps0.log.
+
+  certify_cardinality.py CERT [e1] [e2] [wmin]
+                              Supports Theorem 7.79 (the kissing number is
+                              stable).  CERT is a file of
+                              cardinality_certificates/.  Exact LDL^T of the
+                              matrices F_k, the bound f(1) + F(1,1,1)
+                              exactly, and the two interval branch and bounds
+                              (on [-1, t] and on the ordered admissible
+                              domain in [-1, t]^3) with the routines of
+                              certificate_check.py, run up to the least
+                              double at or above t.  About 80 seconds at
+                              degree 8.  Logs: runs/certify_cardinality_*.log.
+
+  cardinality_sdp.py d t [rounds] [bound]
+  cardinality_sdp.py sweep d rounds t1 t2 ...
+                              Finds the certificates of Theorem 7.79 (with a
+                              bound, it fixes f(1) + F(1,1,1) and maximises
+                              the least slack) and draws the curve of Figure
+                              26(a).  Floating point, sampled constraints
+                              (cvxpy, Clarabel).  Logs:
+                              runs/cardinality_search_*.log,
+                              runs/cardinality_sweep_d*.log.
+
+  robust_ceiling.py           Supports Remark 7.78: the largest slack the
+                              proof of Theorem 7.76 can reach with the triple
+                              and quadruple terms set to zero, from the exact
+                              sigma_2.  Log: runs/robust_ceiling.log.
+
+  code25_search.py [seed] [starts]
+                              25 points of S^3 with largest inner product
+                              0.53743 (minimal angle 57.49 degrees), by descent
+                              on a smoothed maximum; writes
+                              runs/code25_best.txt and rechecks its Gram
+                              matrix.  Log: runs/code25_search.log.
 
   three_point_probes.py windows d kappa win [rounds]
   three_point_probes.py cap d tau [rounds]
@@ -1619,6 +1741,15 @@ with the assistance of Claude, an AI model made by Anthropic.
                               configurations is a rotation.
                               Runtime well under a second.
 
+  rigidity_spectrum.py        Supports Lemma 7.50 and Theorem 7.51.  In
+                              integer arithmetic: 4N annihilates
+                              x(x-8)(x-20)(x-24)(x-32) and the ranks of 4N - cI
+                              (the spectrum of the rigidity operator); the
+                              projection onto the image of the operator has
+                              every diagonal entry 11/16; and a single displaced
+                              direction has ratio sqrt(96/11).  Under a second.
+                              Log: runs/rigidity_spectrum.log.
+
   rigidity24.py               Supports the corollary after Proposition
                               7.42, the same statement for the root
                               system itself with nothing deleted. Four
@@ -1703,6 +1834,9 @@ Each script can be run directly, from any working directory:
   python multi_cap/saturation_search.py
   python multi_cap/rigidity23.py
   python multi_cap/rigidity24.py
+  python multi_cap/rigidity_spectrum.py
+  python multi_cap/certify_cardinality.py multi_cap/cardinality_certificates/cert_d8_t0.50650.npz 1e-6 1e-5 1e-5
+  python multi_cap/robust_ceiling.py
   python multi_cap/llm24_certificate_check.py /path/to/LasserreSphericalCodes/proofs/4_24
   python multi_cap/local_cell_obstruction.py
   python multi_cap/second_order_estimate.py

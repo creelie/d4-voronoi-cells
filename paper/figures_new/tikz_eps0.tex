@@ -35,14 +35,14 @@
 \node[state] (s2) [below=1.05cm of s1] {$\sigma_2(u)\le E(24,\kappa)\le2.35\cdot10^{-12}$\\ at every inner product $u\le\tfrac12$};
 \node[state] (s3) [below=1.05cm of s2] {every inner product within\\ $\delta=3\cdot10^{-4}$ of $\{-1,-\tfrac12,0,\tfrac12\}$};
 \node[state] (s4) [below=1.05cm of s3] {$d(W)\le0.0113<\tfrac1{48}$:\\ near a copy of the normalised roots};
-\node[state] (s5) [below=1.05cm of s4] {$\|\varepsilon\|\le5.41\,S$, $\ \Theta\le6.42\,S$,\\ $S=\sum\delta_i\le24\,\varepsilon_0$};
-\node[state, draw=caqua!70!black, fill=caqua!9] (s6) [below=1.05cm of s5] {$\operatorname{vol}(V_c)\ge8+S\,(\text{bracket})\ge8$,\\ bracket $\ge0.02$ for $S\le4\cdot10^{-5}$};
+\node[state] (s5) [below=1.05cm of s4] {$\|\varepsilon\|\le4.25\,S$, $\ \Theta\le5.25\,S$,\\ $S=\sum\delta_i\le24\,\varepsilon_0$};
+\node[state, draw=caqua!70!black, fill=caqua!9] (s6) [below=1.05cm of s5] {$\operatorname{vol}(V_c)\ge8+S\,(\text{bracket})\ge8$,\\ bracket $\ge0.2$ for $S\le1.5\cdot10^{-3}$};
 \foreach \a/\b in {s1/s2,s2/s3,s3/s4,s4/s5,s5/s6} \draw[arr] (\a.south) -- (\b.north);
 \node[stepnote] at ($(s1.south)!0.5!(s2.north)+(0.25,0)$) {Theorem 7.76: only terms weighted by\\ $(u+1)(\tfrac12-u)$, $u>\tfrac12$, turn negative};
 \node[stepnote] at ($(s2.south)!0.5!(s3.north)+(0.25,0)$) {$\sigma_2\ge2.62\cdot10^{-4}f$, and $f\ge1.12\cdot10^{-8}$\\ outside the $\delta$-windows (panel (b))};
 \node[stepnote] at ($(s3.south)!0.5!(s4.north)+(0.25,0)$) {Lemma 7.77: the $5\times5$ minors of $2g$ are\\ integers of size below $0.81$, so $0$};
 \node[stepnote] at ($(s4.south)!0.5!(s5.north)+(0.25,0)$) {rigidity with slack, Theorem 2.18(a)};
-\node[stepnote] at ($(s5.south)!0.5!(s6.north)+(0.25,0)$) {facets, moments and hull, Theorem 2.18(b), (c)};
+\node[stepnote] at ($(s5.south)!0.5!(s6.north)+(0.25,0)$) {facet by facet, and the hull,\\ Theorem 2.18(b), (c)};
 %% ------------------------------------------------------------------ (b)
 \node[font=\bfseries] at (6.35,0.9) {(b)};
 \begin{axis}[at={(7.2cm,-9.3cm)}, anchor=south west, width=7.6cm, height=9.6cm,

@@ -1,4 +1,4 @@
-$ (cd multi_cap && rigidity_spectrum.py)
+$ python3 rigidity_spectrum.py
 max |4N| entry: 16
 4N annihilates x(x-8)(x-20)(x-24)(x-32): True
 eigenvalue 0 of N: rank of 4N -  0I is 66, multiplicity 30
