@@ -55,9 +55,9 @@ The entries themselves can be compared as well.  The authors' construction
 needs its 128 GB for all signatures at once; run one signature at a time it
 fits in a few gigabytes for the smaller ones.  `compare_entries.py` reads the
 files written by their `compute_PS`, run from scratch in a clean folder, and
-compares them with ours.  Every entry of every signature with |lambda| <= 8, and of (9, 1) and
-(10, 0), 78 entries in all, is identical, coefficient by coefficient
-(`runs/compare_entries.log`).
+compares them with ours.  Every entry of every signature with |lambda| <= 8,
+and of (9, 1) and (10, 0), 78 entries in all, is identical, coefficient by
+coefficient (`runs/compare_entries.log`).
 
 ## What the programme gives here
 
