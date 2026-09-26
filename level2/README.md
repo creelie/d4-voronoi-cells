@@ -23,6 +23,7 @@ coefficient by coefficient.
 | `pkl2cache.py` | writes that cache from `ps.txt.reduced.pkl`, the reduced output of `../zonal`; the tarball is its output |
 | `setup_cache.sh` | installs the cache into a copy of the authors' package |
 | `las2_slack.jl` | the second-level bound on the enlarged domain [-1, 1/2 + s], for several s |
+| `las2_margin.jl` | the same programme with a margin in the two-point constraint (below) |
 | `xcheck_zonal.jl` | evaluates entries of Z_lambda with the authors' `evaluate_zonal_matrix` from the installed cache |
 | `their_entries.jl` | runs the authors' `compute_PS` one signature at a time, in a clean folder |
 | `compare_entries.py` | compares the entries it writes with ours, in exact rationals |
@@ -74,3 +75,27 @@ At (10, 12) an iteration takes about 220 s on four cores and the programme
 holds 11.5 GB, eight times the time and three times the memory of (8, 10).
 The certificate of the authors uses (14, 16), where the bound is 24.  The
 logs are in `runs/`.
+
+## A margin in the two-point constraint
+
+`las2_margin.jl` fixes the bound K(empty, empty) at a number N and maximises
+mu subject to
+
+    A_2K({x, y}) + SOS_2(u) + mu w(u) = 0,
+    w(u) = (u + 1) (u + 1/2)^2 u^2 (1/2 + s - u),
+
+which is nonnegative on [-1, 1/2 + s]; the other constraints are those of the
+authors.  For a code of 24 points with inner products in that interval the
+chain of their proof then gives mu times the sum of w over the pairs at most
+N - 24, so every inner product has w(u) <= (N - 24)/mu, and lies close to
+-1, -1/2 or 0, or within s of 1/2.  That is the form of the classification
+of 24 points at positive slack that the paper asks for.  Near the double
+zeros w(u) is about u^2/8, so the window is about (8 (N - 24)/mu)^(1/2): the
+programme turns a bound N - 24 of order s into a window of order s^(1/2)
+unless the bound grows more slowly than s.
+
+Here it runs at (4, 6) with s = 0 and N = 33, where it finds mu = 2.2134
+(`runs/las2_margin_4_6_s0_N33.log`); at that degree the bound itself is 32,
+(N - 24)/mu = 4.07 exceeds the largest value of w on the interval, and nothing
+is pinned.  It is meant for (14, 16).
+
