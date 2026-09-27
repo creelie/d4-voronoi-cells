@@ -1,6 +1,6 @@
 # The second order at the root system
 
-The scripts of Section 2.9 of the paper (Lemma 2.19 to Remark 2.25, Figure 11).
+The scripts of Section 2.9 of the paper (Lemma 2.19 to Proposition 2.24, Figure 11).
 Run them from this directory.
 
 | file | what it does |
