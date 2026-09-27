@@ -1,0 +1,18 @@
+$ python3 radial_count_sdp.py scan 14 5 25 26 27 28 29 30 31 32 34 37 40 43 46 49
+/home/user/d4-voronoi-cells/multi_cap/radial_count_sdp.py:122: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver='CLARABEL')
+M = 25: best two-point bound on the union 3.32990 against 3.10330 (above) [46 s]
+M = 26: best two-point bound on the union 3.35951 against 3.10330 (above) [45 s]
+M = 27: best two-point bound on the union 3.30650 against 3.10330 (above) [39 s]
+M = 28: best two-point bound on the union 3.25317 against 3.10330 (above) [36 s]
+M = 29: best two-point bound on the union 3.19937 against 3.10330 (above) [38 s]
+M = 30: best two-point bound on the union 3.14415 against 3.10330 (above) [37 s]
+M = 31: best two-point bound on the union 3.07980 against 3.10330 (below) [40 s]
+M = 32: best two-point bound on the union 3.00318 against 3.10330 (below) [38 s]
+M = 34: best two-point bound on the union 2.82847 against 3.10330 (below) [46 s]
+M = 37: best two-point bound on the union 2.50558 against 3.10330 (below) [47 s]
+M = 40: best two-point bound on the union 2.12472 against 3.10330 (below) [53 s]
+M = 43: best two-point bound on the union 1.64739 against 3.10330 (below) [47 s]
+M = 46: best two-point bound on the union 1.00142 against 3.10330 (below) [52 s]
+M = 49: best two-point bound on the union 0.17362 against 3.10330 (below) [64 s]
+(floating point, sampled constraints: where the method can work, not a proof)

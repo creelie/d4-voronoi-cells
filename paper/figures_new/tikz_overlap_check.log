@@ -18,5 +18,7 @@ tikz_stop: 16 nodes checked automatically (0 frames and 0 points or empty nodes 
   PASS
 tikz_hexloop: 30 nodes checked automatically (0 frames and 11 points or empty nodes left out)
   PASS
-tikz_codes: 50 nodes checked automatically (0 frames and 3 points or empty nodes left out)
+tikz_count31: 53 nodes checked automatically (0 frames and 5 points or empty nodes left out)
+  PASS
+tikz_codes: 51 nodes checked automatically (0 frames and 3 points or empty nodes left out)
   PASS

@@ -31,7 +31,8 @@ The paper is in journal form, and Conjecture 1.6 is reduced to two explicit
 statements (Proposition 2.30): (G), a lower bound of 8 for
 vol(V(Y) ∩ K(Y)) over sets Y of 24 centres within sqrt 6 whose pair-term
 bound T(Y) is at most 8, and (C), T(Y) > 8 for 25 or more centres within
-sqrt 6.  Neither is proved, and the conjecture remains open.  New results:
+sqrt 6.  (C) is proved for every count from 31 on (Theorem 2.32); (G), and
+(C) from 25 to 30, are not, and the conjecture remains open.  New results:
 
 - Section 2.9, the second order of the cell volume at the root system
   (Lemma 2.19 to Proposition 2.24): the Hessian in closed form, its minimum
@@ -45,7 +46,17 @@ sqrt 6.  Neither is proved, and the conjecture remains open.  New results:
 - Proposition 2.28: 24 rational points of S^3 with inner products at most
   1/2 + 849/50000 and d(W) >= 57/500 from the root system, so a statement
   placing 24 directions near the root system fails from slack 0.01698.
-- Eight new parts in Lean, fifteen in all (Table 4 of the paper).
+- Theorem 2.32: if at least 31 centres lie within sqrt 6 of c, then
+  T(Y) > 8.0179.  A two-point kernel certificate with the distance from c
+  as a continuous label, proved in exact and ball arithmetic by
+  multi_cap/radial_count_check.py (under two minutes); Lemma 2.31 gives the
+  pair term in closed form with its monotonicity.
+- Corollary 2.34: 24 centres whose directions are each within
+  1/sqrt2 - a(sqrt 6, rho) of a root system (0.093 for rho = 2.0161) leave
+  no room for another within sqrt 6.
+- Section 2.10: what (G), and (C) from 25 to 30, still need, and why kernels
+  on pairs and three-point certificates stop short (Table 2, Figure 14).
+- Eight new parts in Lean, fifteen in all (Table 5 of the paper).
 
 Numerically: the contact-cell volume drops to 7.96553 without the packing
 constraint; (G) fails without the condition T(Y) <= 8 (4.750 at
@@ -61,10 +72,12 @@ assistance of Claude, an AI model made by Anthropic.
                         verification) and Appendix F (Methods of
                         computation) replace the reproducibility sections,
                         and the text no longer names files of this package;
-                        Section 2.9 and Propositions 2.25 to 2.30 are new,
-                        with Figures 11, 12 and 13
-                        (figures_new/tikz_secondorder.tex, tikz_hexloop.tex,
-                        tikz_codes.tex); later figures are renumbered.
+                        Section 2.9, Propositions 2.25 to 2.30 and Section
+                        2.10 (Lemma 2.31 to Remark 2.36) are new, with
+                        Figures 11 to 14 (figures_new/tikz_secondorder.tex,
+                        tikz_hexloop.tex, tikz_codes.tex, tikz_count31.tex
+                        with count31_data.py) and Table 2; later figures
+                        are renumbered.
   multi_cap/second_order/
                       Section 2.9 and Propositions 2.25 to 2.28, with the
                         searches behind Remark 2.29 (cell_hull_search.py)
@@ -76,10 +89,18 @@ assistance of Claude, an AI model made by Anthropic.
                         centres within 2.0161?  Not at degree 7: the
                         least value is 0 at slack 0.008 and inner product
                         0.6141.  Log: runs/cap_probe_d7.log.
+  multi_cap/radial_count_sdp.py, multi_cap/radial_count_check.py,
+  multi_cap/radial_certificates/
+                      Theorem 2.32: the programme that finds the
+                        certificate (and, with "scan", the two-point bound
+                        for every count, Table 2), the exact check, and the
+                        certificate.  Logs: runs/radial_count_sdp_31.log,
+                        runs/radial_count_check_31.log,
+                        runs/radial_count_scan.log.
   paper/figures_new/tikz_overlap_check.py
                       The collision test of the TikZ figures, now also for
                         tick labels and for anything drawn under text.  All
-                        nine TikZ figures pass it (tikz_overlap_check.log).
+                        ten TikZ figures pass it (tikz_overlap_check.log).
   lean/               Eight new parts, fifteen in all: D4SecondOrder.lean
                         (Section 2.9 and the tilt block), D4HexagonLoop.lean
                         (Proposition 2.26), D4SecondCode.lean (Proposition
@@ -1026,6 +1047,43 @@ with the assistance of Claude, an AI model made by Anthropic.
                               kappa = 0.008 and tau = 0.6141 (a further centre
                               within sqrt 6), the best certificate has value
                               0: no exclusion.  Log: runs/cap_probe_d7.log.
+
+  radial_count_sdp.py M D r [eps [nd nu]]
+  radial_count_sdp.py scan D r M1 M2 ...
+                              Theorem 2.32 and Table 2.  Floating point,
+                              sampled constraints: finds a two-point kernel,
+                              polynomial of degree r in the distance and
+                              of degree D in the inner product, whose
+                              pair inequality bounds the union of the caps
+                              of Lemma 2.15 by M m + t/2 with m < 0, and
+                              writes it in exact dyadic form to
+                              radial_certificates/radial_M.json.  With
+                              "scan" it prints the best such bound for each
+                              count.  Logs: runs/radial_count_sdp_31.log
+                              (python3 radial_count_sdp.py 31 12 4 1e-5 31
+                              80), runs/radial_count_scan.log.
+
+  radial_count_check.py radial_certificates/radial_31.json
+                              Proves Theorem 2.32 from the certificate
+                              alone: exact LDL^T for the positivity and the
+                              Schur complement, a Bernstein branch and
+                              bound of the pair inequality with the pair
+                              term (Lemma 2.31) in Arb ball arithmetic at
+                              the corners of 191 740 boxes, the per-point
+                              bracket on 356 intervals, and
+                              31 m + t/2 = 3.08537 < 9 pi^2/8 - 8.  Under
+                              two minutes.  Log:
+                              runs/radial_count_check_31.log.
+
+  count_core_survey.py M K [starts] [seed]
+                              Remark 2.35.  Floating point, exploration: the
+                              least T over packings of M centres within
+                              sqrt 6 with K of them held within rho_M, the
+                              radius inside which at least 23 centres must
+                              lie when T <= 8 (2.2677 for M = 25, 2.3273 for
+                              M = 30).  With K = 23: 8.353, 8.472, 8.681,
+                              8.781, 8.771, 8.937 for M = 25..30.  Log:
+                              runs/count_core_survey.log.
 
   truncated_search.py M [starts] [seed]
   truncated_search.py rays

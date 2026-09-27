@@ -195,12 +195,12 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 \begin{abstract}
 We prove that a Voronoi cell of a unit-ball packing of $\mathbb{R}^4$ has
 volume at least $8$, that of the twenty-four-cell, with equality only at
-$D_4$, whenever at most twenty-three other centres lie within $\sqrt6$ of
-its centre, and whenever none lies at a distance strictly between
-$2+4\cdot10^{-26}$ and $\sqrt6$. This settles the twenty-four-cell
-conjecture for contact configurations and makes $D_4$ a strict local
-minimum among all packings. We also prove that at most twenty-four
-centres lie within $2.0161$ of any centre, and reduce the remaining case
+$D_4$, whenever at most twenty-three or at least thirty-one other centres
+lie within $\sqrt6$ of its centre, and whenever none lies at a distance
+strictly between $2+4\cdot10^{-26}$ and $\sqrt6$. This settles the
+twenty-four-cell conjecture for contact configurations and makes $D_4$ a
+strict local minimum among all packings. We also prove that at most
+twenty-four centres lie within $2.0161$ of any centre, and reduce the rest
 to two explicit inequalities.
 \end{abstract}
 
@@ -538,11 +538,15 @@ root system first. It reduces instead to two statements
 (\cref{prop:reduction-G}): a lower bound for the volume of the cell cut
 out by twenty-four centres and their inversion hull, wherever the pair
 terms fall below $8$, and a bound on the pair terms for twenty-five or more
-centres within $\sqrt6$. The second order of the first is computed exactly
-and certified in \cref{sec:second-order}, where it is also shown to be
-attained along closed curves of direction sets (\cref{prop:hexagon-loop});
-numerical searches of both find nothing below $8$
-(\cref{sec:noncontact,rem:what-g-needs}).
+centres within $\sqrt6$. The second of these we prove for every count from
+thirty-one on, with a two-point kernel that carries the distances from the
+centre as a continuous label (\cref{thm:count31}), which leaves the counts
+from twenty-five to thirty. The second order of the first is computed
+exactly and certified in \cref{sec:second-order}, where it is also shown to
+be attained along closed curves of direction sets
+(\cref{prop:hexagon-loop}); numerical searches of both find nothing below
+$8$ (\cref{sec:noncontact,rem:what-g-needs}), and \cref{sec:G-and-C} sets out
+what each still needs.
 
 The case of $23$ contacts is not a deviation problem at all. By
 \cref{prop:extendable}, a cell of circumradius at least $2$ is exactly
@@ -1975,8 +1979,8 @@ through four statements.
   $2+\delta$ removes $S(2+\delta)\approx0.14$.
 \item \emph{Certificates for the other configurations.} The right side of
   \cref{lem:no-triple} is at least $8$ for $24$ centres within $\sqrt6$ away
-  from the root system, and for each count from $25$ to the largest that
-  fits, as \cref{thm:m23-labelled} shows for $23$.
+  from the root system, and for each count from $25$ to $30$; it is for $23$
+  by \cref{thm:m23-labelled}, and from $31$ on by \cref{thm:count31}.
 \end{enumerate}
 By \cref{prop:second-code}, statement (i) cannot hold at slack $0.017$ or
 more, so for twenty-four centres (i) and (ii) cannot be proved one after the
@@ -2019,20 +2023,20 @@ $49$, the least squared violation of the constraints grows from $0.14$ at $44$
 to $6.5$ at $49$, while $42$ and $43$ centres fit with most of them on that
 sphere. If this is the whole truth, the pair terms fail
 only at twenty-four centres near the root system, and twenty-five or more
-could be settled as in \cref{thm:m23-labelled}, with a certificate for each
-count up to the largest that fits within $\sqrt6$, and at most $49$ fit.\footnote{The largest packing the survey
+can be settled by certificates that see the distances; at most $49$ centres
+fit within $\sqrt6$, and from $31$ on a single such certificate settles every
+count (\cref{thm:count31}).\footnote{The largest packing the survey
   finds has $43$ centres, $29$ of them within $10^{-4}$ of the sphere of radius
   $\sqrt6$. Two centres on that sphere at least $2$ apart subtend an angle of at
   least $\arccos\frac23=48.19^\circ$ at $c$, so near the top of the range the
   question is one about spherical codes of that angle in $S^3$. For such codes
   the three-point bound is no better than the bound $49.58$ used here: at
-  degree $8$ it gives $49.5$. A smaller count
-  needs a bound that sees the distances as well, since two centres at distance
-  $2$ from $c$ are at least $60^\circ$ apart.} Such a certificate has to see that
-twenty-four centres close to $c$ leave no room for another within $\sqrt6$;
-at the root system the nearest room is at $2\sqrt2$. That is a statement about
-the shape of twenty-four directions at positive slack, statement (i), and
-the three-point bound does not see it. At twenty-four the size of the gap
+  degree $8$ it gives $49.5$.} From $25$ to $30$ a certificate
+has to see that twenty-four centres close to $c$ leave no room for another
+within $\sqrt6$; at the root system the nearest room is at $2\sqrt2$. That is
+a statement about the shape of twenty-four directions at positive slack,
+statement (i), which neither the three-point bound nor a kernel on pairs
+sees (\cref{rem:what-c-needs}). At twenty-four the size of the gap
 can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
 $\delta=0.197$ with one centre pushed out and the others in contact, while the explicit neighbourhood of
@@ -2622,15 +2626,17 @@ the region $T(Y)\le8$, in line with the survey of \cref{sec:closure}, where
 every local minimum of $T$ with $24$ centres is the root system. Of $64$
 starts made inside it, with tilts up to $0.3$ and up to four centres pushed
 out, one as far as $2.19$, the $20$ that stay in the region all end at the
-root system with volume $8$. What would prove (G) is not known: it is
-the part of \cref{conj:shell} that the pair terms and the inversion hull
-leave between them.
+root system with volume $8$. No proof of (G) is known: it is the part of
+\cref{conj:shell} that the pair terms and the inversion hull leave between
+them, and \cref{rem:what-g-needs-2} sets out what a proof needs.
 \end{remark}
 
-For twenty-five or more centres within $\sqrt6$ the pair terms alone are
-expected to suffice: the least value of $T$ found for such configurations is
-$8.264$ (\cref{fig:counts}). Together with (G) this is all that stands
-between the theorems of this section and \cref{conj:shell}.
+For twenty-five or more centres within $\sqrt6$ the pair terms alone
+suffice from thirty-one centres on (\cref{thm:count31}), and are expected to
+suffice from twenty-five: the least value of $T$ found for such
+configurations is $8.264$ (\cref{fig:counts}). Together with (G), the counts
+from twenty-five to thirty are all that stands between the theorems of this
+section and \cref{conj:shell}.
 
 \begin{prop}[The two statements that remain]\label{prop:reduction-G}
 Let $T(Y)$ denote the right side of \cref{lem:no-triple} for a set $Y$ of
@@ -2671,11 +2677,314 @@ found; a further centre within $\sqrt6$ beside twenty-four within $2.0161$
 needs $0.6141$ or less, which the codes found reach only near $s=0.025$,
 beyond the slack $0.008$ of \cref{thm:kissing-stable} and the slack $0.01698$
 of the second code. (c) The least contact-cell volume found over codes of
-slack $s$. (d) The cases of \cref{prop:reduction-G}; the shaded green boxes
-are proved, the orange ones are the statements (G) and (C). Panels (b) and
-(c) are floating-point minimisations, evidence and not bounds.}
+slack $s$. (d) The cases of \cref{prop:reduction-G}; the green boxes are
+proved, the orange ones are statement (G) and statement (C) for twenty-five
+to thirty centres, (C) being proved from thirty-one on by \cref{thm:count31}.
+Panels (b) and (c) are floating-point minimisations, evidence and not
+bounds.}
 \label{fig:codes}
 \end{figure}
+
+\subsection{The statements (G) and (C)}\label{sec:G-and-C}
+
+This subsection proves (C) for every count from thirty-one on, shows that
+twenty-four centres close to a root system leave no room for another within
+$\sqrt6$, and then sets out what (G), and (C) for the counts from twenty-five
+to thirty, still require. Throughout, $Y$ is the set of centres $y$ with
+$2\le|y|<\sqrt6$, $\hat y=y/|y|$, $R=\sqrt{3/2}$, and
+\[
+  U(Y)=\sum_{y\in Y}S(|y|)-\sum_{\{y,y'\}\subset Y}
+  \Pi\bigl(\tfrac{|y|}2,\tfrac{|y'|}2,\langle\hat y,\hat y'\rangle\bigr)
+\]
+is the volume of the union of the caps of \cref{lem:no-triple}, $\Pi$ being
+the pair term of the proof of \cref{thm:m23-labelled}. So
+$T(Y)=\frac98\pi^2-U(Y)$, and (C) asks that $U(Y)<\frac98\pi^2-8=3.10330\ldots$
+whenever $|Y|\ge25$.
+
+\begin{lem}[The pair term]\label{lem:pair-closed}
+Let $1\le h_1,h_2<R$ and $-1<u<1$. Put $\gamma=\arccos u$,
+$\alpha_k=\arccos(h_k/R)$, $L=\max(-\alpha_1,\gamma-\alpha_2)$,
+$U=\min(\alpha_1,\gamma+\alpha_2)$, let $\phi_c$ be the angle of the vector
+$(h_1\sin\gamma,\,h_2-h_1\cos\gamma)$, clipped to $[L,U]$, and let
+$G(h,x)=R^4x-2R^2h^2\tan x+h^4(\tan x+\frac13\tan^3x)$. Then
+\[
+  \Pi(h_1,h_2,u)=\tfrac\pi4\bigl(G(h_2,\phi_c-\gamma)-G(h_2,L-\gamma)
+  +G(h_1,U)-G(h_1,\phi_c)\bigr)
+\]
+if $L<U$, and $\Pi(h_1,h_2,u)=0$ otherwise. Moreover $\Pi$ is nonincreasing
+in $h_1$ and in $h_2$, and nondecreasing in $u$.
+\end{lem}
+
+\begin{proof}
+Write $x=(p,q)$ with $p$ in the plane $P$ of the two normals $w_1,w_2$ and
+$q\perp P$. The two conditions $\langle x,w_k\rangle>h_k$ involve $p$ alone,
+and for fixed $p$ the condition $|x|<R$ leaves a disc of area
+$\pi(R^2-|p|^2)$ for $q$; so $\Pi=\int\pi(R^2-|p|^2)\,dp$ over the part of
+$P$ beyond both lines. In polar coordinates $p=\rho(\cos\phi,\sin\phi)$,
+with $w_1$ at $\phi=0$ and $w_2$ at $\phi=\gamma$, the admissible $\rho$ run
+from $\rho_m(\phi)=\max\bigl(h_1/\cos\phi,\,h_2/\cos(\phi-\gamma)\bigr)$ to
+$R$, and $\int_{\rho_m}^R\pi(R^2-\rho^2)\rho\,d\rho=\frac\pi4(R^2-\rho_m^2)^2$.
+This is positive exactly for $L<\phi<U$. The two terms of the maximum cross
+once, at $\tan\phi=(h_2-h_1\cos\gamma)/(h_1\sin\gamma)$; the second line
+binds before the crossing and the first after it, and
+$\int\frac\pi4(R^2-h^2\sec^2x)^2\,dx=\frac\pi4G(h,x)$. For the monotonicity,
+read the same integral circle by circle. On the circle of radius $\rho$ the
+admissible angles form the intersection of the arcs
+$(-\beta_1,\beta_1)$ and $(\gamma-\beta_2,\gamma+\beta_2)$, where
+$\beta_k=\arccos(h_k/\rho)<\frac\pi2$; the second arc lies in
+$(-\frac\pi2,\frac{3\pi}2)$ and meets the first only inside
+$(-\frac\pi2,\frac\pi2)$, so the length of the intersection is
+$\max(0,\min(\beta_1,\gamma+\beta_2)-\max(-\beta_1,\gamma-\beta_2))$, which
+does not increase when $h_1$, $h_2$ or $\gamma\in[0,\pi]$ increases. The
+weight $\pi(R^2-\rho^2)\rho$ depends on none of them.
+\end{proof}
+
+\begin{thm}[Thirty-one or more centres]\label{thm:count31}
+If at least $31$ centres other than $c$ lie within $\sqrt6$ of $c$, then
+$U(Y)<3.0854$, and so $\vol(V_c)\ge T(Y)>8.0179$. In particular, statement
+(C) of \cref{prop:reduction-G} holds for every packing set of at least $31$
+centres.
+\end{thm}
+
+\begin{proof}
+For $2\le d\le\sqrt6$ let $p(d)=(T_0(x),\dots,T_r(x))$, where the $T_a$ are
+the Chebyshev polynomials and $x=(2d-c_1)/c_2$ for rationals $c_1,c_2$ close
+to $2+\sqrt6$ and $\sqrt6-2$; let $U_k$ be the Chebyshev polynomials of the
+second kind, which are the zonal polynomials of $S^3$ \cite{DGS77}. For
+symmetric matrices $A_0,\dots,A_D$ put
+\[
+  K(y,y')=\sum_{k=0}^{D}\frac{U_k(\langle\hat y,\hat y'\rangle)}{k+1}\;
+  p(|y|)^{\mathsf T}A_k\,p(|y'|).
+\]
+If $A_1,\dots,A_D$ are positive semidefinite, then for every finite set $Y$
+each term with $k\ge1$ contributes a nonnegative amount to
+$\sum_{y,y'\in Y}K(y,y')$, by Schoenberg's theorem \cite{Sch42} applied to
+each eigenvector of $A_k$, and the term with $k=0$ contributes
+$v^{\mathsf T}A_0v$, where $v=\sum_{y\in Y}p(|y|)$. Suppose further that
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
+\item $K(y,y')\le\Pi\bigl(\frac{|y|}2,\frac{|y'|}2,\langle\hat y,\hat y'\rangle\bigr)$
+  whenever $2\le|y|,|y'|\le\sqrt6$ and
+  $\langle\hat y,\hat y'\rangle\le a(|y|,|y'|)$, the condition \eqref{eq:amax}
+  for $|y-y'|\ge2$;
+\item $\begin{pmatrix}A_0&z\\ z^{\mathsf T}&t\end{pmatrix}$ is positive
+  semidefinite for some vector $z$ and number $t$;
+\item $S(d)+\frac12\sum_kp(d)^{\mathsf T}A_kp(d)-z\cdot p(d)\le m$ for
+  $2\le d\le\sqrt6$, with $m<0$.
+\end{enumerate}
+Summing (a) over ordered pairs of distinct centres gives
+$2\sum_{\{y,y'\}}\Pi\ge v^{\mathsf T}A_0v-\sum_yK(y,y)$, and (b) gives
+$-\frac12v^{\mathsf T}A_0v\le-z\cdot v+\frac t2$. Since $K(y,y)$ is the sum
+in (c),
+\[
+  U(Y)\le\sum_{y\in Y}\Bigl(S(|y|)+\tfrac12K(y,y)-z\cdot p(|y|)\Bigr)+\tfrac t2
+  \le|Y|\,m+\tfrac t2 ,
+\]
+and the right side decreases as $|Y|$ grows. The certificate has $D=12$ and
+$r=4$, $m=-0.072797\ldots$, and $31m+\frac t2=3.08537\ldots$, below
+$\frac98\pi^2-8$. The semidefinite programme that finds it imposes (a) at
+about $41\,000$ sampled triples with a margin of $10^{-5}$; the proof does not
+use the samples. The matrices are rounded to dyadic rationals and are
+positive semidefinite by an exact $LDL^{\mathsf T}$, and $t$ is set to
+$z^{\mathsf T}A_0^{-1}z$ rounded up, which makes (b) exact. For (a), $K$ is a
+polynomial in $(|y|,|y'|,u)$; its tensor Bernstein coefficients on
+$[2,d_{\max}]^2\times[-1,a(d_{\max},d_{\max})]$, with
+$d_{\max}=2.4494898>\sqrt6$, are computed exactly and subdivided at
+midpoints, and on each box the largest coefficient bounds $K$, while by
+\cref{lem:pair-closed} $\Pi$ is at least its value at the corner with the
+larger distances and the smaller inner product, computed from the closed form
+in ball arithmetic \cite{Joh17}. Boxes with $|y|>|y'|$ ($K$ and $\Pi$ are
+symmetric) or lying wholly beyond $u=a(|y|,|y'|)$ are set aside by exact
+rational tests, and the branch and bound closes (a) with $191\,740$ boxes.
+Condition (c) is checked in the same way on $356$ intervals, $S$ being
+decreasing, and the final inequality in ball arithmetic. The whole check
+takes under two minutes.
+\end{proof}
+
+With at most $23$ centres within $\sqrt6$ the bound holds by
+\cref{thm:m23-labelled}, and with $31$ or more by \cref{thm:count31}
+(\cref{fig:count31}); what remains of (C) is the range from $25$ to $30$.
+
+\begin{remark}[Where the kernel stops]\label{rem:kernel-limit}
+The argument is Delsarte's linear programming method \cite{DGS77}, with the
+distance from $c$ carried along as a continuous label, and it is blind in
+the same way: a kernel that sees only pairs bounds the kissing number of
+$\mathbb{R}^4$ by $25$ and not $24$ \cite{OS79}. \Cref{tab:kernel-limit}
+gives, for each count, the least value of $|Y|m+\frac t2$ that such a
+certificate reaches, against the largest union the search of
+\cref{fig:counts} finds. Below $31$ the kernel cannot separate the
+configurations that exist from those it allows; at $25$ it does not even
+reach the value $3.19636\ldots$ of the root system, which has only
+twenty-four centres. Adding to the programme the bound of
+\cref{thm:kissing-stable}, at most $24$ centres within $2.0161$, leaves these
+values unchanged.
+\end{remark}
+
+\begin{table}[tb]
+\centering
+\caption{The best two-point bound on the union of the caps for $|Y|$
+centres within $\sqrt6$ (floating point, sampled constraints), the largest
+union found by the search of \cref{fig:counts}, and the least $T$ found; (C)
+requires the union to stay below $\frac98\pi^2-8=3.10330$. At $31$ the
+certificate of \cref{thm:count31}, solved with a margin, proves $3.0854$.}
+\label{tab:kernel-limit}
+\begin{tabular}{@{}rccc@{}}
+\toprule
+$|Y|$ & two-point bound & largest union found & $T$ found\\
+\midrule
+$25$ & $3.330$ & $2.839$ & $8.264$\\
+$26$ & $3.360$ & $2.711$ & $8.393$\\
+$27$ & $3.307$ & $2.586$ & $8.517$\\
+$28$ & $3.253$ & $2.512$ & $8.592$\\
+$29$ & $3.199$ & $2.327$ & $8.776$\\
+$30$ & $3.144$ & $2.186$ & $8.917$\\
+$31$ & $3.080$ & $2.055$ & $9.048$\\
+$32$ & $3.003$ & $2.049$ & $9.054$\\
+$34$ & $2.828$ & $1.648$ & $9.455$\\
+$37$ & $2.506$ & $1.243$ & $9.860$\\
+$40$ & $2.125$ & $0.703$ & $10.400$\\
+$43$ & $1.647$ & $0.208$ & $10.895$\\
+$46$ & $1.001$ & none found & none found\\
+$49$ & $0.174$ & none found & none found\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_count31}
+\caption{Statement (C) from thirty-one centres on. (a) The best two-point
+bound on the union of the caps of \cref{lem:no-triple} for $M$ centres within
+$\sqrt6$, and the largest union found by the search of \cref{fig:counts}
+(at $24$, the root system); (C) asks for values below $\frac98\pi^2-8$, and
+\cref{thm:count31} proves it from $31$ on (shaded). (b) The kernel $K$ of the
+certificate of \cref{thm:count31} and the pair term $\Pi$ at $d=d'=2$, times
+$10^3$. Condition (a) of the proof asks that $K\le\Pi$: the kernel comes
+within $10^{-5}$ of $0$ at $u=-0.82$, $-0.43$ and $-0.12$, and nearly meets
+$\Pi$ at $u=\frac12$, the inner product of neighbouring roots
+($1.4354\cdot10^{-3}$ against $1.4454\cdot10^{-3}$). (c) The same near
+$u=\frac12$; $\Pi$ is positive from $u=\frac13$, where the two caps first
+meet. (d) The counts of centres within $\sqrt6$ and what settles each.
+Panel (a) is floating point, except the value $3.0854$ at $31$, which is
+proved.}
+\label{fig:count31}
+\end{figure}
+
+Twenty-four centres close to a root system leave no room for a
+twenty-fifth. The proof of \cref{lem:24-no-shell} shows that every unit
+vector makes an angle of at most $45^\circ$ with some normalised root; the
+following is the version with a margin.
+
+\begin{cor}[No room beside a near root system]\label{cor:no-room}
+Let $2\le\rho<\sqrt6$, and let $24$ centres $y_1,\dots,y_{24}$ lie within
+$\rho$ of $c$, with $|\hat y_i-\sigma(a_i)/\sqrt2|\le\eta$ for all $i$, some
+orthogonal map $\sigma$ and a labelling of the roots $a_i$, where
+$\eta<1/\sqrt2-a(\sqrt6,\rho)$. Then no other centre lies within $\sqrt6$ of
+$c$. For $\rho=2/\sqrt{1-0.016}=2.0161\ldots$ the condition reads
+$\eta<0.0930$. If $24$ centres lie within $2/\sqrt{1-4\cdot10^{-26}}$ of $c$,
+no other centre lies within $\sqrt6$ of $c$.
+\end{cor}
+
+\begin{proof}
+Let $z$ be a further centre with $|z|<\sqrt6$. By \eqref{eq:amax}, and since
+$a$ increases in each argument on $[2,\sqrt6]^2$,
+$\langle\hat z,\hat y_i\rangle\le a(|z|,|y_i|)\le a(\sqrt6,\rho)$ for every
+$i$. The covering radius of the normalised roots is $45^\circ$, so some $i$
+has $\langle\hat z,\sigma(a_i)/\sqrt2\rangle\ge1/\sqrt2$, and then
+$\langle\hat z,\hat y_i\rangle\ge1/\sqrt2-\eta>a(\sqrt6,\rho)$, a
+contradiction. For the last statement, the directions of the $24$ centres
+have pairwise inner products at most $a(\rho,\rho)=\frac12+2\cdot10^{-26}$,
+so \cref{thm:m24-robust} places them within $0.0113$ of a copy of the
+normalised roots, and $0.0113<1/\sqrt2-a(\sqrt6,2.0001)$.
+\end{proof}
+
+\begin{remark}[What (C) needs from twenty-five to thirty centres]\label{rem:what-c-needs}
+Let $Y$ be a packing set of $M$ centres, $25\le M\le30$, with
+$U(Y)\ge3.10330$. Since $U(Y)\le\sum_yS(|y|)$ and $S$ falls steeply,
+from $S(2)=0.13896$ to $S(2.0161)=0.12733$, $S(2.1)=0.07581$ and
+$S(2.2)=0.03340$, most of the union must come from centres close to $c$: if
+at most $22$ centres lay within $\rho$, then
+$U(Y)\le22S(2)+(M-22)S(\rho)$, which is below $3.10330$ once
+$S(\rho)<0.00576$, that is, once $\rho\ge2.328$ for $M=30$ and
+$\rho\ge2.268$ for $M=25$. So at least $23$ centres lie within
+$2.328$, and by \cref{thm:kissing-stable} at most $24$ within $2.0161$. The
+two cases differ in kind.
+
+With $24$ centres close to $c$, the others must find room beside them, and
+\cref{cor:no-room} says there is none as soon as the $24$ directions are
+within $0.093$ each of a root system. The search behind
+\cref{fig:codes}(b) finds no $24$-point code of slack up to $0.02$ with a
+hole deeper than inner product $0.632$, while a centre within $\sqrt6$ beside
+centres within $2.0161$ needs one at $0.6141$ or deeper; at slack $0.008$,
+where \cref{thm:kissing-stable} applies, the deepest hole found is at
+$0.678$, well clear. The statement needed is therefore the shape
+half of \cref{thm:kissing-stable} in a weak form, with a tolerance of $0.093$
+per direction in place of the $\frac1{48}$ in root mean square of
+\cref{thm:near-contact}; \cref{prop:second-code} does not contradict it,
+since the deepest hole of its code is at inner product $0.659$ (floating
+point, over $3000$ local minimisations). The three-point bound does not
+see holes: at degree $7$ no labelled certificate excludes $24$ directions of
+slack $0.008$ with a further one at inner product at most $0.6141$ with each,
+and the kernel of \cref{thm:count31}, which sees pairs only, is weaker still.
+The natural tool is the second level of the Lasserre hierarchy, which sees
+twenty-four points exactly \cite{LLM24}, in the form with a margin of
+\cref{fig:level2}.
+
+With $23$ centres close to $c$, the case is \cref{thm:m23-labelled} with two
+or more further centres, and \cref{thm:certificate} has a margin of only
+$4.4\cdot10^{-5}$ there, against $S(2.2)=0.0334$ for each further centre
+within $2.2$; so the further centres must be paid for by their own pair terms
+with the $23$, which is what the search finds. The least values of $T$ in
+\cref{tab:kernel-limit} come from configurations that keep only $22$ centres
+within $\rho$, in the part of the range settled above; minimised again with
+at least $23$ centres held within $\rho$, which is the part that remains, $T$
+does not come below $8.353$, $8.472$, $8.681$, $8.781$, $8.771$ and $8.937$
+for $M=25,\dots,30$, and each minimiser presses its extra centres against
+the bound $\rho$. A proof along the lines of \cref{thm:m23-labelled}, with a
+three-point certificate for $M$ points spent on the triples, is the natural
+route for this case, count by count, and it has a room of at least $0.35$ in
+$T$ at every count.
+\end{remark}
+
+\begin{remark}[What (G) needs]\label{rem:what-g-needs-2}
+Statement (G) is sharp at the root system and holds near it:
+\cref{thm:near-contact} proves it whenever $\sum_i\delta_i\le4\cdot10^{-3}$
+and $d(W)\le\frac1{48}$. The region $T(Y)\le8$ in which it is asked is
+larger, but not by much. Along the root system pushed out evenly the pair
+terms reach $8$ at $\sum_i\delta_i=0.155$, and along the ray of one centre
+at $\delta=0.197$; every local minimum of $T$ found with $24$ centres is the
+root system itself; and configurations far from it, such as the packing with
+$\vol(V(Y)\cap K(Y))=4.750$ of \cref{rem:what-g-needs}, have $T$ far above $8$.
+Inside the region the structure of the volume is known to second order. The
+push-outs raise it at the rate $\frac23$ (\cref{thm:near-contact}), and on
+the first-order packing cone the Hessian loses at most
+$(\sum_i\delta_i)^2$ (\cref{prop:cone-min}), so that the second-order model
+$\frac23S-\frac12S^2$ is positive up to $S=\frac43$, far beyond $0.197$. The
+tilts alone never lower the volume at second order (\cref{prop:tilt-block}),
+and along the closed curves of \cref{prop:hexagon-loop} they leave it at
+exactly $8$; but those curves break the packing constraint at first order,
+the largest inner product rising to $4C^2/(4C^2+3)>\frac12$, so a packing can
+follow them only by moving centres out, which the first-order term rewards
+at the rate $\frac23$. This is the mechanism by which (G) should hold, and
+the numerical searches of \cref{rem:what-g-needs} find nothing below $8$.
+
+A proof needs two quantitative statements. The first is a localisation: if
+$|Y|=24$ and $T(Y)\le8$, then $Y$ lies within an explicit distance of a copy
+of $\sqrt2\,\Rt$. For contacts this is the uniqueness theorem of
+\cite{LLM24}; its robust form is proved only at slack $2\cdot10^{-26}$
+(\cref{thm:m24-robust}), and \cref{prop:second-code} shows that no form of it
+that looks at the directions alone can pass slack $0.017$, so the
+localisation has to use the distances, through $T$ itself. The second is the
+volume bound in that neighbourhood, which needs the third-order remainder
+and the part of $V(Y)$ outside the inversion hull under control
+(\cref{rem:second-order-gap}); \cref{thm:near-contact} provides it up to
+$\sum_i\delta_i=4\cdot10^{-3}$, a factor of about forty short of the region.
+Together, (G) and the remaining counts of (C) would prove
+\cref{conj:shell} and with it the bound $\pi^2/16$ for the density of every
+packing of $\mathbb{R}^4$, which is open; the kissing problem in dimension
+four \cite{Mus08} and the uniqueness of its solution \cite{LLM24} each needed
+a new semidefinite method, and the evidence of this section is that the
+remaining step does too.
+\end{remark}
 
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
@@ -10365,16 +10674,22 @@ shell (\cref{thm:m23-labelled}), and closer to contact the bound holds
 (\cref{thm:near-contact}). By \cref{prop:reduction-G} the conjecture
 follows from two statements: the volume bound (G) for twenty-four centres
 within $\sqrt6$ wherever the pair terms fall below $8$, and the bound (C)
-on the pair terms for twenty-five or more. What is proved towards them is
-the cardinality bound of \cref{thm:kissing-stable}, the second order of
-(G) (\cref{prop:cone-min,prop:tilt-block}) with the push-outs integrated
+on the pair terms for twenty-five or more. Statement (C) is proved for
+every count from thirty-one on (\cref{thm:count31}), by a two-point kernel
+that carries the distance from the centre as a continuous label, so that
+what remains of it is the counts from twenty-five to thirty. What is proved
+towards the rest is the cardinality bound of \cref{thm:kissing-stable},
+the absence of room for a twenty-fifth centre beside twenty-four near a
+root system (\cref{cor:no-room}), the second order of (G)
+(\cref{prop:cone-min,prop:tilt-block}) with the push-outs integrated
 exactly (\cref{prop:push-integrated}), the exact curves of contact cells of
 volume $8$ that any proof of (G) has to control (\cref{prop:hexagon-loop}),
 and the count for twenty-three (\cref{thm:m23-labelled}). The route
 through the shape of twenty-four directions stops at slack $0.01698$,
-where a second code appears (\cref{prop:second-code}); the evidence for
-the rest, and the ceiling of the present certificate
-(\cref{rem:robust-ceiling}), are set out in \cref{sec:closure}.
+where a second code appears (\cref{prop:second-code}). What (G) and the
+remaining counts of (C) need, and why neither three-point certificates nor
+kernels on pairs reach them, is set out in \cref{sec:G-and-C}; the
+ceiling of the present certificate is \cref{rem:robust-ceiling}.
 
 The checks are also formal where they are finite. The verifications of
 \cref{thm:certificate,thm:m23-labelled,thm:kissing-stable} run in Lean as
@@ -10551,7 +10866,7 @@ arithmetic with outward rounding \cite[Ch.~5]{MKC09}: the pivots of
 \cref{sec:stage-one}, the certificates of
 \cref{sec:stage-two,sec:arc1-cert,sec:arc2-cert,sec:cap-theorem}, the
 certificates of \cref{sec:certificate,sec:certificate-checked,sec:closure,sec:m24-robust},
-the certificate of \cref{prop:cone-min}, and the identities of
+the certificates of \cref{prop:cone-min,thm:count31}, and the identities of
 \cref{prop:hexagon-loop,prop:second-code}. The second is a
 high-precision evaluation, at a stated working precision between $35$ and
 $400$ digits and cross-checked at a second one; this is where
@@ -11301,6 +11616,20 @@ checked by exact $LDL^{\mathsf T}$.
 ball arithmetic, and the bracket $\beta$ of its proof in exact rational
 arithmetic on a grid of step $10^{-5}$.
 
+\emph{The count from thirty-one on.} The kernel of \cref{thm:count31} is
+found by a semidefinite programme that imposes the pair inequality at
+sampled triples; after each solution the inequality is tested at two
+million further admissible triples, weighted towards the edges $|y|=2$ and
+$|y'|=\sqrt6$ and the boundary $u=a(|y|,|y'|)$, and the worst are added
+until none is violated. The matrices are then read as the dyadic rationals
+they denote, and everything after that is exact: positivity by
+$LDL^{\mathsf T}$, the Bernstein subdivision of the kernel with its
+floating-point error bounded a priori (each midpoint step is an average,
+so it adds at most one unit in the last place of the largest coefficient),
+and the pair term at the corners of the boxes in ball arithmetic. The
+algorithm is the one above, with the bound $b$ the largest Bernstein
+coefficient of the kernel less the corner value of $\Pi$.
+
 \subsection*{Software}
 
 The computations use NumPy \cite{Har20}, SciPy \cite{Vir20}, SymPy
@@ -11912,6 +12241,12 @@ O.~R.~Musin,
 \textit{Towards a proof of the $24$-cell conjecture},
 Acta Math.\ Hungar.\ \textbf{155} (2018), no.~1, 184--199.
 \bluelink{https://doi.org/10.1007/s10474-018-0828-5}{doi:10.1007/s10474-018-0828-5}
+
+\bibitem[OS79]{OS79}
+A.~M.~Odlyzko and N.~J.~A.~Sloane,
+\textit{New bounds on the number of unit spheres that can touch a unit sphere in $n$ dimensions},
+J.\ Combin.\ Theory Ser.\ A \textbf{26} (1979), no.~2, 210--214.
+\bluelink{https://doi.org/10.1016/0097-3165(79)90074-8}{doi:10.1016/0097-3165(79)90074-8}
 
 \bibitem[Par03]{Par03}
 P.~A.~Parrilo,
