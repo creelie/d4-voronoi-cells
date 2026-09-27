@@ -2421,7 +2421,13 @@ lowers the volume at second order. By \cref{prop:push-integrated}, a lower
 bound $\vol(Q_w)\ge8$ on an explicit neighbourhood of the root system would
 give the first inequality of statement (ii) for every $Y$ whose directions
 lie in it, with no packing constraint and no rigidity estimate, leaving the
-hull bound and statement (i) to place the directions there.
+hull bound and statement (i) to place the directions there. The
+neighbourhood cannot be the whole space of direction sets. Without the
+packing constraint the contact cell can be smaller than the $24$-cell: a set
+of $24$ unit directions with inner products up to $0.579$ has a contact
+cell with $24$ facets, $99$ vertices and volume $7.96553$, the same to eight
+digits whether computed directly or as a quarter of its surface area
+(\texttt{contact\_cell\_scan.py}).
 
 \begin{remark}[The contact-cell volume is flat along a curve]\label{rem:contact-valley}
 The nine flat directions are not directions of growth once the other tilts

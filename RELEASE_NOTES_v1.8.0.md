@@ -105,6 +105,23 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   (exact LDL^T, 30 zero pivots with zero rows), the push-out block and the
   identity of Proposition 2.20, the equality on the one-centre rays, and the
   expansions of Lemma 2.23 (grind).  About thirty seconds.
+- Proposition 2.25 (the tilt block): the Hessian of the contact-cell volume in
+  the directions alone is positive semidefinite, by an exact LDL^T with 15
+  zero pivots (the 6 rotations and 9 further directions, none a strain);
+  least positive eigenvalue 1/12 (multi_cap/second_order/tilt_block.py, and
+  theorem tilt_block in lean/D4SecondOrder.lean).  With Proposition 2.24, a
+  bound vol(Q_w) >= 8 near the root system would carry the first inequality
+  of statement (ii) with no packing constraint.
+- Remark 2.26: that bound is not strict.  Along straight lines in the flat
+  directions the volume grows at fourth order, but with the other tilts
+  relaxed there is a curve of direction sets that are not rotations of the
+  root system along which vol(Q_w) - 8 stays below 3e-10 up to tilt 0.45
+  (multi_cap/second_order/contact_valley.py).  So no fourth-order positivity
+  argument can prove it; the zero set has to be found.
+- The bound can only be local: with no packing constraint, 24 unit directions
+  with inner products up to 0.579 have a contact cell of volume 7.96553 < 8
+  (multi_cap/second_order/contact_cell_scan.py, minimiser saved in
+  contact_cell_min.npy).
 - In Lean, five more parts, thirteen in all:
   - lean/cardinality/, a new Lake project that checks the certificates of
     Theorem 7.79 (degree 8 at s = 0.0065, degree 10 at s = 0.008) from their

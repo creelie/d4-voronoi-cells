@@ -1,72 +1,87 @@
 #!/usr/bin/env python3
 """
-contact_cell_scan.py -- how far the root system stays a minimum of the
-contact-cell volume vol{x : <x, w_i> <= 1} among sets of 24 unit directions
-(floating point, qhull volumes; exploration).
+contact_cell_scan.py -- the least contact-cell volume vol{x : <x, w_i> <= 1}
+over all sets of 24 unit directions, with no packing constraint (floating
+point, qhull; exploration).
 
-(a) Neighbourhood: for t = 0.05, 0.1, 0.2, 0.3, 0.4 (the norm of the tilt
-    field, rotations removed, in radians), minimise vol - 8 over tilts of that
-    norm from 10 random starts (L-BFGS with central differences, the norm
-    held by rescaling), and print the least value and (vol - 8)/t^4.
-(b) Globally, without the packing constraint: minimise vol over all sets of
-    24 unit vectors from 20 random starts, and print the least volume found.
-    The packing constraint (pairwise angles at least 60 degrees) is what
-    forces the root system; without it a smaller circumscribed polytope with
-    24 facets would show that the local statement cannot be globalised.
-Usage: python3 contact_cell_scan.py [a|b]
+Near the root system the contact-cell volume is at least 8 on every set
+tested, with equality along a curve (contact_valley.py).  Far from it the
+packing constraint (pairwise angles at least 60 degrees) is what forces the
+root system, by Theorem 7.25.  Without the constraint, the question is the
+least volume of a polytope with 24 facets circumscribed about the unit ball.
+The script minimises the volume over 24 unit vectors from random starts
+(L-BFGS on the unnormalised vectors, central differences) and prints the
+least volume found and the largest inner product of the minimiser, which
+says how far it is from satisfying the packing constraint.
+Usage: python3 contact_cell_scan.py [starts]
 """
 import sys
 import time
 import numpy as np
 from scipy.optimize import minimize
 from scipy.spatial import HalfspaceIntersection, ConvexHull
-import tilt_quartic as TQ
 
 
-def vol_dirs(w):
+def vol_dirs(z):
+    w = z.reshape(24, 4)
     w = w / np.linalg.norm(w, axis=1, keepdims=True)
     try:
-        hs = np.hstack([w, -np.ones((len(w), 1))])
-        return ConvexHull(HalfspaceIntersection(hs, np.zeros(4)).intersections).volume
+        hs = np.hstack([w, -np.ones((24, 1))])
+        P = HalfspaceIntersection(hs, np.zeros(4)).intersections
+        if not np.all(np.isfinite(P)) or np.abs(P).max() > 1e3:
+            return 1e3
+        return ConvexHull(P, qhull_options='QJ').volume
     except Exception:
-        return 1e6            # unbounded or degenerate
+        return 1e3            # unbounded or degenerate
 
 
-def part_a():
-    basis = np.vstack([TQ.FLAT, TQ.TRANS])          # 66 x 72, orthonormal, rotations removed
-    rng = np.random.default_rng(7)
-    print('t      least vol - 8     (vol-8)/t^4   [time]')
-    for t in (0.05, 0.1, 0.2, 0.3, 0.4):
-        t0 = time.time(); best = np.inf
-        for s in range(10):
-            def f(z):
-                c = z @ basis
-                c = t * c / np.sqrt(TQ.ip(c, c))
-                return TQ.vol(c) - 8
-            def g(z, h=1e-6):
-                out = np.zeros_like(z)
-                for j in range(len(z)):
-                    e = np.zeros_like(z); e[j] = h
-                    out[j] = (f(z + e) - f(z - e)) / (2 * h)
-                return out
-            r = minimize(f, rng.normal(size=66), jac=g, method='L-BFGS-B', options={'maxiter': 150})
-            best = min(best, r.fun)
-        print('%.2f   %.3e        %.4f        [%.0fs]' % (t, best, best / t ** 4, time.time() - t0), flush=True)
+def grad(z, h=1e-6):
+    g = np.zeros_like(z)
+    for j in range(len(z)):
+        e = np.zeros_like(z); e[j] = h
+        g[j] = (vol_dirs(z + e) - vol_dirs(z - e)) / (2 * h)
+    return g
 
 
-def part_b():
+def facet_check(w):
+    hs = np.hstack([w, -np.ones((24, 1))])
+    V = np.unique(np.round(HalfspaceIntersection(hs, np.zeros(4)).intersections, 9), axis=0)
+    area, nf = 0.0, 0
+    for i in range(24):
+        P = V[np.abs(V @ w[i] - 1) < 1e-7]
+        if len(P) < 4:
+            continue
+        B = np.linalg.svd(np.eye(4) - np.outer(w[i], w[i]))[0][:, :3]
+        try:
+            a = ConvexHull((P - w[i]) @ B, qhull_options='QJ').volume
+        except Exception:
+            continue
+        if a > 1e-12:
+            area += a; nf += 1
+    return ConvexHull(V, qhull_options='Qt').volume, area / 4, nf, len(V)
+
+
+def main():
+    starts = int(sys.argv[1]) if len(sys.argv) > 1 else 10
     rng = np.random.default_rng(11)
-    best = np.inf
-    t0 = time.time()
-    for s in range(20):
-        x0 = rng.normal(size=(24, 4)).ravel()
-        f = lambda z: vol_dirs(z.reshape(24, 4))
-        r = minimize(f, x0, method='Powell', options={'maxiter': 20000, 'xtol': 1e-6, 'ftol': 1e-10})
-        best = min(best, r.fun)
-        print('start %2d: volume %.6f   (best %.6f)  [%.0fs]' % (s, r.fun, best, time.time() - t0), flush=True)
-    print('least contact-cell volume found over 24 unit directions, no packing constraint: %.6f' % best)
+    best = (np.inf, None); t0 = time.time()
+    for s in range(starts):
+        z0 = rng.normal(size=96)
+        while vol_dirs(z0) >= 1e3:
+            z0 = rng.normal(size=96)
+        r = minimize(vol_dirs, z0, jac=grad, method='L-BFGS-B', options={'maxiter': 400})
+        w = r.x.reshape(24, 4); w /= np.linalg.norm(w, axis=1, keepdims=True)
+        G = w @ w.T; mx = G[~np.eye(24, dtype=bool)].max()
+        if r.fun < best[0]:
+            best = (r.fun, mx); wbest = w.copy()
+        print('start %2d: volume %.6f, largest inner product %.4f   [%.0fs]' % (s, r.fun, mx, time.time() - t0), flush=True)
+    print('least contact-cell volume found over 24 unit directions, no packing constraint: %.6f '
+          '(largest inner product %.4f); the root system gives 8' % best)
+    v1, v2, nf, nv = facet_check(wbest)
+    print('best minimiser: volume %.8f without joggling, %.8f as a quarter of the surface area; %d facets, %d vertices'
+          % (v1, v2, nf, nv))
+    np.save('contact_cell_min.npy', wbest)
 
 
 if __name__ == '__main__':
-    part = sys.argv[1] if len(sys.argv) > 1 else 'a'
-    part_a() if part == 'a' else part_b()
+    main()
