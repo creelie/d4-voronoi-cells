@@ -2039,10 +2039,10 @@ ordinary machine: the zonal matrices of \cref{sec:certificate-checked},
 written in the file format of the authors' code, replace their own
 construction of them (\cref{fig:level2}). What limits it now is the size of
 the programme. At the degrees such a machine reaches, the second level is
-weaker than the three-point bound, $26$ at slack $0$ at the degrees
-$(d_1,\delta)=(8,10)$ against $24.13$, and the degrees $(14,16)$ of the
-certificate, where it is $24$, need a larger machine for the programme
-itself.\footnote{The programme fixes the bound at a number $N$ and maximises
+weaker than the three-point bound: at slack $0$ it gives $26$ at the degrees
+$(d_1,\delta)=(8,10)$ and $24.942$ at $(10,12)$, the most that fits in its
+memory, against $24.13$; the degrees $(14,16)$ of the certificate, where it
+is $24$, need a larger machine for the programme itself.\footnote{The programme fixes the bound at a number $N$ and maximises
   $\mu$ subject to $A_2K(\{x,y\})+\mathrm{SOS}_2(u)+\mu\,w(u)=0$, with
   $w(u)=(u+1)(u+\frac12)^2u^2(\frac12+s-u)$, the other constraints being those
   of \cite{LLM24}; for twenty-four points with inner products at most
@@ -2098,10 +2098,10 @@ of the code of \cite{LLM24}, which then runs its second-level programme
 without its own construction of them, and the two checks against that code.
 (b) The bound of the programme at slack $0$ against the degree $d_1$ of the
 kernel, with $\delta=d_1+2$: $32$ at $(4,6)$; $26$ at $(8,10)$, in $42$ minutes
-and $3.5$ gigabytes; and the certificate's $24$ at $(14,16)$; beside the
+and $3.5$ gigabytes; $24.942$ at $(10,12)$, in $3.9$ hours on four cores and
+$11.8$ gigabytes; and the certificate's $24$ at $(14,16)$; beside the
 three-point bound $24.13$ and the level $25$ that a bound on the number of
-points has to beat. At $(10,12)$ an iteration takes about $220$ seconds on four
-cores and the programme holds $11.5$ gigabytes.}
+points has to beat.}
 \label{fig:level2}
 \end{figure}
 

@@ -3,7 +3,8 @@
 %       Leijenhorst and de Muinck Keizer, which then runs its second-level programme without
 %       its own construction of them; the two checks against their code.
 %   (b) The bound of that programme at slack 0 against the degree d1 of the kernel (delta =
-%       d1 + 2), from level2/runs, with the certificate's value 24 at (14, 16), the
+%       d1 + 2), from level2/runs (32, 26 and 24.9423 at d1 = 4, 8, 10), with the certificate's
+%       value 24 at (14, 16), the
 %       three-point bound 24.13 and the level 25 that a cardinality bound has to beat.
 % Build:  pdflatex tikz_level2.tex && pdftoppm -r 500 -png -singlefile tikz_level2.pdf ../figures/fig_tikz_level2
 % Test:   python3 tikz_overlap_check.py tikz_level2.tex
@@ -26,8 +27,8 @@
 \begin{tikzpicture}[font=\small,
   state/.style={draw=cblue!70!black, fill=cblue!7, rounded corners=2pt, line width=0.6pt,
                 align=center, text width=4.6cm, inner xsep=4pt, inner ysep=5pt, minimum height=1.0cm},
-  check/.style={state, draw=caqua!70!black, fill=caqua!9, text width=4.9cm},
-  gone/.style={state, draw=cink3, fill=white, text=cink3, text width=4.9cm, dashed},
+  check/.style={state, draw=caqua!70!black, fill=caqua!9, text width=5.3cm},
+  gone/.style={state, draw=cink3, fill=white, text=cink3, text width=5.3cm, dashed},
   arr/.style={-{Latex[length=2.2mm]}, line width=0.6pt, cink2},
   darr/.style={arr, dashed}]
 %% ------------------------------------------------------------------ (a)
@@ -37,9 +38,9 @@
 \node[state] (p) [below=0.9cm of c] {their second-level programme\\ on $[-1,\tfrac12+s]$ (\texttt{las2\_slack.jl})};
 \node[state, draw=cviolet!80!black, fill=cviolet!7] (m) [below=0.9cm of p] {with a margin in the two-point\\ constraint (\texttt{las2\_margin.jl})};
 \foreach \a/\b in {z/c,c/p,p/m} \draw[arr] (\a.south) -- (\b.north);
-\node[gone] (g) [right=1.0cm of z] {not needed: their construction of all\\ entries at once, $3$ days, $128$\,GB};
+\node[gone] (g) [right=1.0cm of z] {not needed: their construction of all entries at once, $3$ days, $128$\,GB};
 \node[check] (e) [right=1.0cm of c] {their \texttt{evaluate\_zonal\_matrix}\\ on our files: $8$ of $8$ equal};
-\node[check] (f) [right=1.0cm of p] {their \texttt{compute\_PS}, one signature\\ at a time: $88$ of $88$ entries identical};
+\node[check] (f) [right=1.0cm of p] {their \texttt{compute\_PS}, one signature at a time: $88$ of $88$ entries identical};
 \draw[darr, cink3] (g.west) -- (z.east);
 \draw[darr, caqua!60!black] (e.west) -- (c.east);
 \draw[darr, caqua!60!black] (f.west) -- (p.east);
@@ -56,12 +57,13 @@
   \node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=cblue!80!black] (l32) at (axis cs:4.4,32) {$32$};
   \node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=cblue!80!black] (l26) at (axis cs:8.4,26) {$26$};
   \node[lbl, inner sep=1pt, font=\footnotesize, anchor=north, text=caqua!60!black] (l24) at (axis cs:14,23.55) {$24$};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=north east, text=cblue!80!black] (l2494) at (axis cs:9.72,24.8) {$24.94$};
   \node[lbl, inner sep=1pt, font=\footnotesize, anchor=north east, text=corange!90!black] (l3p) at (axis cs:13.2,23.98) {three-point, $24.13$};
   \node[lbl, inner sep=1pt, font=\footnotesize, anchor=south east, text=cink3] (l25) at (axis cs:13.2,25.12) {$25$};
 \end{axis}
 \node[font=\bfseries] (pb) at (10.2,1.0) {(b)};
 \def\figboxes{pa,pb,z,c,p,m,g,e,f}
-\def\figlabels{l32,l26,l24,l3p,l25}
+\def\figlabels{l32,l26,l24,l3p,l25,l2494}
 \checkfigure
 \end{tikzpicture}
 \end{document}

@@ -70,10 +70,12 @@ At slack 0, on a machine with four cores and 16 GB:
 | --- | --- | --- | --- | --- |
 | (4, 6) | 32 | | 100 s in all | |
 | (8, 10) | 26.0000 | 68 | 42 min on one core | 3.5 GB |
+| (10, 12) | 24.9423 | 62 | 3.9 h on four cores | 11.8 GB |
 
-At (10, 12) an iteration takes about 220 s on four cores and the programme
-holds 11.5 GB, eight times the time and three times the memory of (8, 10).
-The certificate of the authors uses (14, 16), where the bound is 24.  The
+(10, 12) is the most that fits in 16 GB: from (8, 10) the time of an
+iteration grows about eightfold and the memory more than threefold.  The
+certificate of the authors uses (14, 16), where the bound is 24.  At slack 0
+every degree reached here is weaker than the three-point bound, 24.13.  The
 logs are in `runs/`.
 
 ## A margin in the two-point constraint

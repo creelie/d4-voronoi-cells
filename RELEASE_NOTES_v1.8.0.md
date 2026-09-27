@@ -86,7 +86,8 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   (level2/, Figure 10):
   - degrees (4, 6): 32;
   - degrees (8, 10): 26.0000, in 42 minutes and 3.5 GB;
-  - degrees (10, 12): about 220 s per iteration and 11.5 GB;
+  - degrees (10, 12): 24.9423, in 3.9 hours and 11.8 GB, the most that
+    fits in 16 GB;
   - the certificate's degrees (14, 16), where the bound is 24, need a larger
     machine for the programme itself.
 - level2/las2_margin.jl is the programme with a margin in the two-point
