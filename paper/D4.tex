@@ -199,8 +199,9 @@ $D_4$, whenever at most twenty-three other centres lie within $\sqrt6$ of
 its centre, and whenever none lies at a distance strictly between
 $2+4\cdot10^{-26}$ and $\sqrt6$. This settles the twenty-four-cell
 conjecture for contact configurations and makes $D_4$ a strict local
-minimum among all packings. At most twenty-four centres lie within $2.0161$
-of any centre.
+minimum among all packings. We also prove that at most twenty-four
+centres lie within $2.0161$ of any centre, and reduce the remaining case
+to two explicit inequalities.
 \end{abstract}
 
 \maketitle
@@ -461,9 +462,8 @@ proof consists of.%
   $10$, $12$, $12$, $14$, $20$ and $24$ roots, the last being $D_4$
   alone. So the $24$ scaled vectors are all the roots of a copy of
   $D_4$. This half is \cref{lem:root-lattice}, and its finite content
-  is checked by an exact enumeration
-  (\texttt{root\_lattices\_rank4.py}, and in Lean
-  \texttt{D4RootLattices.lean}): every positive definite Gram
+  is checked by an exact enumeration,
+  carried out twice, the second time in Lean: every positive definite Gram
   matrix with $2$ on the diagonal and $-1$, $0$, $1$ off it, of order up
   to $4$, there are $393$ of order $4$, has at most $24$ integer
   solutions of $x^{\mathsf T}Gx=2$, with $24$ only at determinant $4$
@@ -533,11 +533,16 @@ a three-point certificate on the enlarged domain proves in exact and interval
 arithmetic. That is the cardinality half of a quantitative form of
 \cref{thm:m24}; the other half, that such twenty-four directions lie near a
 root system, holds at best for a slack below $0.01698$, where a second
-twenty-four-point code appears (\cref{prop:second-code}), and it is what
-the remaining case needs, together with a lower bound
-for the volume near the root system, whose second order
-\cref{sec:second-order} computes exactly and certifies. A numerical search
-of that case finds nothing below $8$ (\cref{sec:noncontact}).
+twenty-four-point code appears (\cref{prop:second-code}), so the remaining case cannot be settled by placing the directions near the
+root system first. It reduces instead to two statements
+(\cref{prop:reduction-G}): a lower bound for the volume of the cell cut
+out by twenty-four centres and their inversion hull, wherever the pair
+terms fall below $8$, and a bound on the pair terms for twenty-five or more
+centres within $\sqrt6$. The second order of the first is computed exactly
+and certified in \cref{sec:second-order}, where it is also shown to be
+attained along closed curves of direction sets (\cref{prop:hexagon-loop});
+numerical searches of both find nothing below $8$
+(\cref{sec:noncontact,rem:what-g-needs}).
 
 The case of $23$ contacts is not a deviation problem at all. By
 \cref{prop:extendable}, a cell of circumradius at least $2$ is exactly
@@ -1050,8 +1055,7 @@ circumradius being $2$, can be cut there by a centre farther than
 $2\sqrt2$: with the twenty-three roots of a deletion at distance $2$ and
 one more centre at distance $2.9$ on the axis of the deleted root, which
 is a packing, the cell loses $\tfrac13(2-1.45)^4$ and has volume
-$\tfrac{1328453}{160000}=8.3028\ldots$ instead of $\tfrac{25}3$
-(\texttt{shell\_reduction.py}). Every argument below that bounds the cell
+$\tfrac{1328453}{160000}=8.3028\ldots$ instead of $\tfrac{25}3$. Every argument below that bounds the cell
 of a packing either stays inside $B(c,\sqrt2)$ or says what it assumes
 about the centres beyond $2\sqrt2$.
 
@@ -1165,7 +1169,7 @@ $U(r)\ge\bigl(2\pi^2-\sum_iC(\cdot)\bigr)_+$. A cap shrinks as its centre
 moves out, which is the monotonicity. For $m$ contacts the bound is the
 covering estimate of \cref{thm:covering-bound} stopped at $45^\circ$,
 which changes it only for $m\le11$, where it stays above $11.5$; its value at
-$m=22$ is evaluated in ball arithmetic by \texttt{shell\_reduction.py}.
+$m=22$ is evaluated in ball arithmetic.
 \end{proof}
 
 \begin{lem}[Twenty-four contacts leave no room]\label{lem:24-no-shell}
@@ -1213,7 +1217,7 @@ shell-free and whose distances fail the criterion, and
 twenty-two centres within $2\sqrt2$ never fail it, and neither does any
 profile in which the centres that do not touch are far enough out;
 \cref{tab:distance-thresholds} gives the thresholds for a few profiles,
-certified in ball arithmetic by \texttt{shell\_reduction.py}. Twenty-three
+certified in ball arithmetic. Twenty-three
 contacts and any further centre within $2\sqrt2$ always fail it, since
 the criterion counts caps and the case of $23$ contacts needs the pair
 terms of \cref{sec:strict-inequality}. The remaining case is therefore a
@@ -1226,7 +1230,7 @@ $\Phi>18.33$.
 \centering
 \caption{The distance criterion for $m$ contacts and $k$ further centres
 at a common distance $d$: $\Phi>8$, and so $\vol(V_c)>8$, as soon as $d$
-is at least the value shown (ball arithmetic, \texttt{shell\_reduction.py}).}
+is at least the value shown (in ball arithmetic).}
 \label{tab:distance-thresholds}
 \small
 \begin{tabular}{@{}rrr@{\qquad}rrr@{}}
@@ -1254,14 +1258,13 @@ of \cref{prop:distance-criterion} for $m$ contacts and $k$ further centres
 at a common distance $d$; it passes $8$ at the thresholds of
 \cref{tab:distance-thresholds} (dots). (c) The remaining case, searched: with
 one neighbour held at distance $2+\delta$, the least cell volume found
-over $60$ starts (\texttt{shell\_neighbour\_search.py}), against the exact
+over $60$ starts, against the exact
 volume $\tfrac{25}3-\tfrac13(1-\tfrac\delta2)^4$ of the deletion of a root
 with that neighbour on the deleted root's axis. Nothing falls below $8$.}
 \label{fig:noncontact}
 \end{figure}
 
-\emph{The remaining case, searched.} \texttt{shell\_neighbour\_search.py}
-minimises the exact volume of the cell over configurations of $22$ to $26$
+\emph{The remaining case, searched.} We minimised the exact volume of the cell over configurations of $22$ to $26$
 centres around a fixed one, with the packing constraints imposed exactly
 and the exact gradient of the volume, from starts that crowd the centre
 with near-contacts: the root system with every root pushed out and
@@ -1289,7 +1292,7 @@ account of the pairs, with the three-point method of \cite{BV08} carried
 from the sphere to a shell; \cref{sec:closure} does that for at most
 twenty-three centres within $\sqrt6$.
 
-\subsection{Further reductions, and the conjecture near the contact regime}\label{sec:closure}
+\subsection{Further reductions near the contact regime}\label{sec:closure}
 
 This subsection narrows \cref{conj:shell} in three directions. It
 removes every centre with at most twenty-three others within $\sqrt6$,
@@ -1303,9 +1306,8 @@ for the first, the certificate of \cref{thm:certificate} carried from
 contacts to centres at any distance. Throughout, $c=0$, and the half-space of a centre $z$ is
 $H_z=\{x:\langle x,z\rangle\le|z|^2/2\}$. The identities in the proofs of
 \cref{lem:holes,prop:inversion-hull,lem:no-triple} and the combinatorics
-of \cref{cor:root-subsets} are checked twice, by
-\texttt{closure\_lemmas.py} and in Lean's kernel by
-\texttt{lean/D4Closure.lean} (\cref{sec:reproducibility-new}).
+of \cref{cor:root-subsets} are checked twice, in exact arithmetic and in Lean's kernel
+(\cref{sec:reproducibility-new}).
 
 \begin{lem}[Holes]\label{lem:holes}
 Let $W$ be the set of contact directions of $c$, so that $2w$ is a centre
@@ -1365,8 +1367,7 @@ since centres are at least $2$ apart and at least $2$ from $0$.
 The bound depends on $Y$ alone: whatever the rest of the packing does,
 it does not cut into $V(Y)\cap K(Y)$ (\cref{fig:closure}(b) shows the
 three-dimensional analogue). With $Y$ the twenty-four
-neighbours of a centre near the root system it is sharp to first order
-(\texttt{near\_contact\_probe.py}).
+neighbours of a centre near the root system it is sharp to first order.
 
 \begin{cor}[Contacts that contain most of a root system]\label{cor:root-subsets}
 Let $U=\{\alpha/\sqrt2:\alpha\in\Rt'\}$ be the normalised roots of a
@@ -1397,14 +1398,12 @@ $2(1+t)<|z|$; only finitely many centres lie within $3$ of $c$, so for
 small $t>0$ a neighbourhood of $(1+t)u$ lies in $V_c$ and outside $Q$,
 and $\vol(V_c)>8$. If $W\supseteq U$, then $W=U$ by the kissing
 number and $V_c=Q$ by \cref{lem:24-no-shell}. The combinatorial
-statements are finite and are checked in integer arithmetic by
-\texttt{closure\_lemmas.py}: the $72$ orthogonal pairs, three at each of
+statements are finite and are checked in integer arithmetic: the $72$ orthogonal pairs, three at each of
 the $24$ vertices; no set of one or two roots meets all three pairs at a
 vertex; exactly $96$ sets of three do, the triples of pairwise
 $60^\circ$ roots at a common vertex, which are also the triples whose
-deletion raises the circumradius of the cell to $\sqrt6$ (\texttt{root\_deletions\_exact.py}, \cref{app:code-index}).
-The same statements are proved again in Lean's kernel by
-\texttt{lean/D4Closure.lean}. \Cref{fig:closure}(a) shows one vertex and
+deletion raises the circumradius of the cell to $\sqrt6$.
+The same statements are proved again in Lean's kernel. \Cref{fig:closure}(a) shows one vertex and
 its three pairs.
 \end{proof}
 
@@ -1470,9 +1469,7 @@ other than $c$ lie within $\sqrt6$ of $c$, then $\vol(V_c)>8.046$.
 Take $R=\sqrt{3/2}$ in \cref{lem:no-triple} and drop the pair terms,
 which are nonnegative. $S$ decreases and vanishes for $d\ge\sqrt6$, so
 at most twenty-two centres within $\sqrt6$ give
-$\vol(V_c)\ge\tfrac98\pi^2-22S(2)=8.04610\ldots$, in ball arithmetic by
-\texttt{closure\_lemmas.py} and in interval arithmetic in Lean
-(\texttt{lean/certificate/D4OmegaMain.lean}).
+$\vol(V_c)\ge\tfrac98\pi^2-22S(2)=8.04610\ldots$, in ball arithmetic, and again in interval arithmetic in Lean.
 \end{proof}
 
 $\Psi$ is a second distance criterion beside $\Phi$, with thresholds
@@ -1645,15 +1642,15 @@ It verifies $6\,482$ boxes and discards $1\,242$ outside the domain.
 
 So every $Q_{ijk}\ge0$, and Step 2 concludes. The constants of Steps 1
 and 3, the two branch and bounds and a rerun of the verification of
-\eqref{eq:C} are \texttt{labelled\_certificate\_check.py}; the identity
-for $a$ is also proved in Lean, in \texttt{D4Closure.lean}, and the two
+\eqref{eq:C} are computed in ball and interval arithmetic; the identity
+for $a$ is also proved in Lean, and the two
 branch and bounds are repeated in Lean in exact dyadic arithmetic, over
 $39\,399$ and $9\,545$ boxes, with the shares, the packing bounds and the
 envelopes of the $\Gamma_i$ computed there and only the tables of $\omega$,
 the constant $c$ and the enclosures of the cell integrals taken from ball
 arithmetic, and then a second time with those computed in Lean as well,
 together with $s(D)>8-A_*$, $a_D/(1-\frac D2a_D)<2$ and $\mathrm{fr}(1,\frac12)<\frac1{22}$
-(\texttt{lean/certificate}, \cref{sec:reproducibility-new}).
+(\cref{sec:reproducibility-new}).
 \end{proof}
 
 \begin{figure}[tb]
@@ -1916,9 +1913,8 @@ all divided by $S$ and evaluated at the bound of (a) for $\|\varepsilon\|$, $e=\
 $\delta=S$ and $\Theta=e+\delta$. With these constants frozen, the losses are
 $\alpha\|\varepsilon\|^2+\beta'\|\varepsilon\|+\gamma'$ with $\alpha>\frac23$, so the
 largest $\|\varepsilon\|$ is the worst case; and every part of $\beta(S)$ other
-than $\frac23$ is increasing in $S$. \texttt{explicit\_eps0.py} evaluates
-$\beta$ in exact rational arithmetic, and \texttt{lean/D4NearContact.lean}
-repeats the evaluation in Lean, and finds $\beta(4\cdot10^{-3})\ge0.1$:
+than $\frac23$ is increasing in $S$. We evaluate
+$\beta$ in exact rational arithmetic, and again in Lean, and find $\beta(4\cdot10^{-3})\ge0.1$:
 at that point the moment term costs $0.39\,S$, the volume term $0.04\,S$,
 the caps $2\cdot10^{-4}S$ and the hull $0.12\,S$ (and $\beta$ stays positive up to
 $S=4.5\cdot10^{-3}$). So $\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
@@ -1932,8 +1928,11 @@ $\vol(V_c)=8$ only if $V_c=Q$.
 $24$ other centres within $\sqrt6$; at least one of them at a distance
 between $2+\varepsilon_0$ and $\sqrt6$; $\Phi\le8$ and $\Psi\le8$; and
 contacts that do not contain one orthogonal pair of roots at each vertex
-of a $24$-cell. A proof of the bound at such a centre, and with it of
-\cref{conj:shell}, consists of four statements.
+of a $24$-cell. By \cref{prop:reduction-G} the bound at such a centre, and
+with it \cref{conj:shell}, follows from two statements: the volume bound
+(G) for exactly twenty-four centres within $\sqrt6$, and the bound (C) on
+the pair terms for twenty-five or more. The natural route to them passes
+through four statements.
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
 \item \emph{The shape of twenty-four directions at positive slack.} Any
   $24$ unit vectors of $\mathbb{R}^4$ with pairwise inner products at most
@@ -1976,14 +1975,14 @@ of a $24$-cell. A proof of the bound at such a centre, and with it of
 \end{enumerate}
 By \cref{prop:second-code}, statement (i) cannot hold at slack $0.017$ or
 more, so for twenty-four centres (i) and (ii) cannot be proved one after the
-other over the whole range; what that case needs is the single volume
-statement (G) of \cref{rem:what-g-needs}.
+other over the whole range, and the case has to be treated through the
+single volume statement (G) of \cref{prop:reduction-G}.
 Statements (i) and (iii) are classifications of codes, (ii) is an inequality
 for the volume whose second order is certified below, and (iv) needs (i) and
 (iii) to see that twenty-four centres close to $c$ leave no room for another
 within $\sqrt6$. What follows is the evidence for each, and where the
 methods of this paper stop. Near the root system the inversion hull is
-sharp to first order: \texttt{near\_contact\_probe.py} finds
+sharp to first order: numerically,
 $\vol(V(Y)\cap K(Y))-8$ and $\vol(V_c)-8$ equal to
 $\frac23\sum\delta_i$ to first order on the root system pushed out, and
 over $200$ minimisations of the volume near the root system with one
@@ -1991,12 +1990,11 @@ centre held out, $\|\varepsilon\|/\kappa$ at most $0.0003$ (estimate (a)
 allows $2.71$) and the quantity
 $(\vol(V_c)-8-\frac23\sum\delta_i)/(\|\varepsilon\|^2+\sum\delta_i^2)$ at least
 $-\frac12$, the value on the deleted root's axis. Where the pair terms of
-\cref{lem:no-triple} fail is a question for numerics too:
-\texttt{truncated\_search.py} minimises the right side of
+\cref{lem:no-triple} fail is a question for numerics too. We minimised the right side of
 \cref{lem:no-triple} over configurations of exactly $M$ centres within
 $\sqrt6$, from twelve starts each, of which four or five end at a local
-minimum. For $M=24$ every local minimum it finds is the root system, at
-$7.906940\ldots$. \texttt{count\_survey.py} repeats the minimisation for every
+minimum. For $M=24$ every local minimum found is the root system, at
+$7.906940\ldots$. We repeated the minimisation for every
 count from $24$ up, with the exact gradient of the right side and with
 starts that carry the best configuration of one count on to the next
 (\cref{fig:counts}). The least value it finds is $8.264115$ at $M=25$, and it
@@ -2017,33 +2015,29 @@ to $6.5$ at $49$, while $42$ and $43$ centres fit with most of them on that
 sphere. If this is the whole truth, the pair terms fail
 only at twenty-four centres near the root system, and twenty-five or more
 could be settled as in \cref{thm:m23-labelled}, with a certificate for each
-count up to the largest that fits within $\sqrt6$, and at most $49$ fit
-(\texttt{count\_bound\_sqrt6.py}).\footnote{The largest packing the survey
+count up to the largest that fits within $\sqrt6$, and at most $49$ fit.\footnote{The largest packing the survey
   finds has $43$ centres, $29$ of them within $10^{-4}$ of the sphere of radius
   $\sqrt6$. Two centres on that sphere at least $2$ apart subtend an angle of at
   least $\arccos\frac23=48.19^\circ$ at $c$, so near the top of the range the
   question is one about spherical codes of that angle in $S^3$. For such codes
   the three-point bound is no better than the bound $49.58$ used here: at
-  degree $8$ it gives $49.5$ (\texttt{cardinality\_sdp.py}). A smaller count
+  degree $8$ it gives $49.5$. A smaller count
   needs a bound that sees the distances as well, since two centres at distance
   $2$ from $c$ are at least $60^\circ$ apart.} Such a certificate has to see that
 twenty-four centres close to $c$ leave no room for another within $\sqrt6$;
 at the root system the nearest room is at $2\sqrt2$. That is a statement about
 the shape of twenty-four directions at positive slack, statement (i), and
-the three-point bound does not see it
-(\texttt{three\_point\_probes.py}). At twenty-four the size of the gap
+the three-point bound does not see it. At twenty-four the size of the gap
 can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
-$\delta=0.197$ with one centre pushed out and the others in contact
-(\texttt{truncated\_search.py rays}), while the explicit neighbourhood of
+$\delta=0.197$ with one centre pushed out and the others in contact, while the explicit neighbourhood of
 \cref{thm:near-contact} ends at $\sum\delta_i=4\cdot10^{-3}$. Letting the
 truncation radius grow with the distances does not change this: four points
 pairwise at least $2$ apart within $|x|$ of a point $x$ force
 $16|x|^2\ge12+d_1^2+d_2^2+d_3^2$ for the distances of the three centres
 other than $0$, so the pair terms are exact in a slightly larger ball once
 the centres move out, but along the root system pushed out evenly that moves
-the crossing only from $0.1551$ to $0.1473$
-(\texttt{d4\_independent\_check.py}). With $\varepsilon_0$ explicit, what
+the crossing only from $0.1551$ to $0.1473$. With $\varepsilon_0$ explicit, what
 statement (ii) asks for is, at intermediate distances, a lower bound for
 the part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
 \cref{lem:no-triple} do not see, strong enough to bridge that factor of about
@@ -2067,7 +2061,7 @@ two-point polynomial has double zeros at $-\frac12$ and $0$, so the distance
 it controls is the square root of the error. A form at moderate slack
 needs a new computation at the second level of the hierarchy, on the enlarged
 domain and with a margin, of the kind carried out in \cite{LLM24}. That
-programme is written (\texttt{level2/las2\_margin.jl}), and it runs on an
+programme can be written down and run on an
 ordinary machine: the zonal matrices of \cref{sec:certificate-checked},
 written in the file format of the authors' code, replace their own
 construction of them (\cref{fig:level2}). Two things limit it. The first
@@ -2094,8 +2088,7 @@ level is weaker than the three-point bound: at slack $0$ it gives $26$ at
 the degrees $(d_1,\delta)=(8,10)$ and $24.942$ at $(10,12)$, the most that
 fits in its memory, against $24.13$; the degrees $(14,16)$ of the
 certificate, where it is $24$, need a larger machine for the programme
-itself. The first level cannot supply the shape half
-(\texttt{three\_point\_probes.py}, floating point with sampled constraints).
+itself. The first level cannot supply the shape half.
 Asked at degree $12$ for a three-point certificate that charges a positive
 amount to every pair of a $24$-point code whose inner product lies outside
 windows of half-width $0.1$, or even $0.2$, about $-1$, $-\frac12$, $0$ and
@@ -2107,14 +2100,14 @@ sits, although one with inner products up to $\frac12$ is excluded. The
 second obstacle is the first in another guise: it is the uniqueness of the
 root system, whose covering radius leaves no room for a twenty-fifth centre
 within $\sqrt6$, that the first level does not see. The second level can at
-least be evaluated on an ordinary machine: \texttt{level2\_numeric.py}
-computes $A_2K$ for the kernel of \cite{LLM24} in floating point from the
-zonal matrices of \cref{sec:certificate-checked}, and reproduces
+least be evaluated on an ordinary machine: $A_2K$ for the kernel of
+\cite{LLM24}, computed in floating point from the zonal matrices of
+\cref{sec:certificate-checked}, reproduces
 $K(\emptyset,\emptyset)=24$, $A_2K(\{x\})=-1$, $\sigma_2$ to within
 $2\cdot10^{-14}$ and the zeros at the subsets of the root system. Solving a
 new programme at that level is another matter. With the sums of squares
 replaced by the constraints at $8000$ sampled quadruples,
-\texttt{level2\_sampled.py} returns $19.42$ in place of $24$, fresh
+the programme returns $19.42$ in place of $24$, fresh
 quadruples violating its constraints by up to $0.23$, and one round of it
 needs most of the $15$ gigabytes of the machine used here; the certificate's
 own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
@@ -2124,7 +2117,7 @@ own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_counts}
 \caption{The right side of \cref{lem:no-triple} for every count of centres
-within $\sqrt6$ (\texttt{count\_survey.py}; floating point and local
+within $\sqrt6$ (floating point and local
 optimisation, evidence and not a bound). (a) The least value found for $M$
 centres, $M=24,\dots,43$, against the level $8$; at $M=24$ it is the root
 system, $7.906940\ldots$. For $M\ge44$ no packing was found, in $300$ random
@@ -2137,7 +2130,7 @@ caps are empty.}
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_level2}
-\caption{The second level on an ordinary machine (\texttt{level2/}). (a) The
+\caption{The second level on an ordinary machine. (a) The
 zonal matrices of \cref{sec:certificate-checked}, written in the file format
 of the code of \cite{LLM24}, which then runs its second-level programme
 without its own construction of them, and the two checks against that code.
@@ -2157,7 +2150,7 @@ Statement (ii) of the list above asks for the volume of the cell of
 twenty-four centres near the root system beyond the explicit neighbourhood of
 \cref{thm:near-contact}. Its step (b) charges the tilts of the directions a
 loss of order $10^2S^2$, from $73S^2$ at $S=10^{-3}$ to $98S^2$ at
-$S=4\cdot10^{-3}$ (\texttt{explicit\_eps0.py}), against the gain
+$S=4\cdot10^{-3}$, against the gain
 $\frac23S$, and that is what stops it. This subsection computes the second
 order exactly, certifies its minimum on the packing cone, integrates the
 push-outs exactly, and says at its end what separates the result from
@@ -2237,10 +2230,9 @@ the regular $24$-cell. With $\tau=0$ each triangle contributes
 $2\eta_i\eta_j-\frac12(\eta_i^2+\eta_j^2)$, and each vertex of the edge graph
 lies on eight edges, which gives $H(\eta,\eta)$; adding
 $(\sum_i\delta_i)^2=4\sum_i\eta_i^2+8\sum_{i<j}\eta_i\eta_j$ gives
-\eqref{eq:eta-identity}. The spectrum is computed in floating point
-(\texttt{hessian.py}), and the form is checked against second differences of
-the exact volume of the polytope, computed afresh by intersecting halfspaces,
-to $6\cdot10^{-8}$ (\texttt{independent\_check.py}).
+\eqref{eq:eta-identity}. The spectrum is computed in floating point, and
+the form is checked against second differences of the exact volume of the
+polytope, computed afresh by intersecting halfspaces, to $6\cdot10^{-8}$.
 \end{proof}
 
 \begin{prop}[The worst second-order loss on the packing cone]\label{prop:cone-min}
@@ -2270,8 +2262,8 @@ $120$ rows of the cone, since $c\cdot\xi=\sum_i\delta_i$; and a certificate is
   H+cc^{\mathsf T}\;=\;P+B^{\mathsf T}NB,\qquad P\succeq0,\quad N\ge0\ \text{entrywise},
 \]
 since then $\xi^{\mathsf T}(H+cc^{\mathsf T})\xi=\xi^{\mathsf T}P\xi+(B\xi)^{\mathsf T}N(B\xi)\ge0$
-on $\mathcal C$. Such a pair is in \texttt{exact\_certificate.pkl} and is
-verified by \texttt{verify\_cone\_certificate.py} with no floating point:
+on $\mathcal C$. Such a pair exists, and it is verified with no floating
+point:
 in the scaled integral model of $Q$ (roots $(\pm1,\pm1,0,0)$, vertices
 $(\pm2,0,0,0)$ and $(\pm1,\pm1,\pm1,\pm1)$, rational bases of the tangent
 spaces, $t_i=\sqrt2\,\tau_i$) the form $H$, the rows $B$ and $c$ are
@@ -2281,19 +2273,19 @@ nonnegative rational values, $35$ of them positive; and $P$ is assembled
 exactly and is positive semidefinite by an exact $LDL^{\mathsf T}$, whose $30$
 zero pivots are the push-outs and the rotations. The certificate was found as
 the dual of the Shor relaxation with the products of the cone constraints,
-whose value is $-1$ (\texttt{cone\_min.py}), averaged over the group and made
+whose value is $-1$, averaged over the group and made
 exact. That the rows $B$ are the first-order packing constraints, the
 derivative of $|y_i-y_j|^2$ being $8(B\xi)_{ij}$ on the tight pairs, is checked
-against the exact distances to $2\cdot10^{-9}$ (\texttt{independent\_check.py}).
+against the exact distances to $2\cdot10^{-9}$.
 The verification takes three seconds, and it is repeated in Lean, where $H$,
 $B$ and $c$ are built from the root system in the proof assistant itself
-(\texttt{lean/D4SecondOrder.lean}, \cref{sec:reproducibility-new}).
+(\cref{sec:reproducibility-new}).
 \end{proof}
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_secondorder}
-\caption{The second order at the root system (\texttt{multi\_cap/second\_order}).
+\caption{The second order at the root system.
 (a) $\vol V(Y)-8$ against $S=\sum_i\delta_i$: the second-order model
 $\frac23S-\frac12S^2$, which is the worst case on the packing cone
 (\cref{prop:cone-min}), the exact value with one centre pushed out, on which
@@ -2303,7 +2295,7 @@ reach $8$ along the even push. Step (b) of the proof of
 \cref{thm:near-contact} ends at $S=4.5\cdot10^{-3}$. (b) What is left over,
 $\vol V(Y)-8-\frac23S+\frac12S^2$, on $300$ packings near the root system with
 tilts along the edges of the cone of up to $5.8\,S$
-(\texttt{remainder\_test.py}; floating point, evidence and not a bound), and
+(in floating point, evidence and not a bound), and
 exactly on the one-centre ray, $\frac16\delta^3-\frac1{48}\delta^4$: it is
 positive on every one, and least on that ray.}
 \label{fig:second-order}
@@ -2314,7 +2306,7 @@ The expansion says that the second-order loss on the cone is exactly the
 loss on the deleted root's axis, $\tfrac12S^2$: the tilts, which step (b) of
 \cref{thm:near-contact} charges at order $10^2S^2$, cost nothing more at
 second order than the pushes do. Three things separate this from statement
-(ii). Tilting is not monotone: \texttt{untilt.py} finds feasible packings
+(ii). Tilting is not monotone: there are feasible packings
 near the root system whose cell is smaller than that of the same distances
 at the roots, in $103$ of $237$ trials and by up to $3.6\cdot10^{-5}$, and by
 $0.117\,S^2$ at second order in the worst push pattern, so the bound does not
@@ -2340,7 +2332,7 @@ $K(Y)$ (\cref{prop:inversion-hull}), which part (c) of the proof of
 from the truth: along the ray of one centre pushed out and along the even
 push, $\vol(V(Y)\setminus K(Y))$ stays below $10^{-6}$ up to $S=0.197$,
 where the bound is $21$, and it grows as the seventh power of $S$ on the
-first ray and as the fourth on the second (\texttt{hull\_along\_rays.py}).
+first ray and as the fourth on the second.
 Statement (ii) needs a hull estimate of that quality beside the inequality
 above.
 \end{remark}
@@ -2398,11 +2390,10 @@ that tie the tilts to the pushes. At second order that is
 \cref{prop:cone-min}; beyond it, what statement (ii) asks for is bounds on
 the three functionals to second order in the tilts with explicit
 remainders. The tilts, not the pushes, are where the difficulty
-lives.\footnote{\texttt{exact\_push.py}
-  checks \cref{prop:push-integrated} on $63$ tilted packings, where the least
-  excess of the volume over the bound is $3.9\cdot10^{-6}$, and
-  \texttt{independent\_check.py} checks \cref{lem:pure-push} on $400$ push
-  patterns and the one-centre formula to $10^{-14}$.}
+lives.\footnote{On $63$ tilted packings the least excess of the volume
+  over the bound of \cref{prop:push-integrated} is $3.9\cdot10^{-6}$;
+  \cref{lem:pure-push} holds on $400$ random push patterns, and the
+  one-centre formula agrees with the computed volume to $10^{-14}$.}
 
 Setting the push-outs to zero isolates the tilts. The block of $H$ on the
 $72$ tangent coordinates is the Hessian of $\vol(Q_w)$, the volume of the
@@ -2421,8 +2412,8 @@ symmetric. Its least positive eigenvalue is $\tfrac1{12}$.
 An exact $LDL^{\mathsf T}$ factorisation of the $72\times72$ block over $\mathbb{Q}$
 has $57$ positive pivots, the least $\tfrac5{66}$, and $15$ zero pivots, each
 with the rest of its row zero; the kernel is computed exactly, contains the
-six rotation fields, and meets the nine strain fields only in $0$
-(\texttt{tilt\_block.py}; again in Lean, \texttt{D4SecondOrder.lean}).
+six rotation fields, and meets the nine strain fields only in $0$. The
+factorisation is repeated in Lean.
 \end{proof}
 
 So the root system is a critical point of $\vol(Q_w)$ at which no tilt
@@ -2435,8 +2426,7 @@ neighbourhood cannot be the whole space of direction sets. Without the
 packing constraint the contact cell can be smaller than the $24$-cell: a set
 of $24$ unit directions with inner products up to $0.579$ has a contact
 cell with $24$ facets, $99$ vertices and volume $7.96553$, the same to eight
-digits whether computed directly or as a quarter of its surface area
-(\texttt{contact\_cell\_scan.py}).
+digits whether computed directly or as a quarter of its surface area.
 
 The lower bound, if true, is not strict. The kernel in
 \cref{prop:tilt-block} contains the tangent of a closed curve of direction
@@ -2504,12 +2494,33 @@ trivially, and both hold for $|\varphi|\le\frac\pi6$. The inner product of
 $(e(\theta),0)$ with $(\sigma e(30^\circ),\cdot)$ is
 $\sigma C=4C^2/(4C^2+3)$, which exceeds $\frac12$ exactly when $4C^2>3$. At
 $\theta=0$ the Gram matrix is that of the unit roots under an explicit
-labelling, and $w(\pi/3)=w(0)$ as a set. The identities are checked with
-sympy in \texttt{hexagon\_loop.py} and in Lean in
-\texttt{D4HexagonLoop.lean}, together with the Gram matrix at $\theta=0$.
-The same script finds $|\vol Q_{w(\theta)}-8|\le10^{-14}$ at thirteen points
-with qhull and below $10^{-48}$ at three with $50$-digit arithmetic.
+labelling, and $w(\pi/3)=w(0)$ as a set. The identities, and the Gram
+matrix at $\theta=0$, are checked symbolically and again in Lean; as an
+independent check, $|\vol Q_{w(\theta)}-8|$ is below $10^{-14}$ at thirteen
+points in double precision and below $10^{-48}$ at three with $50$-digit
+arithmetic.
 \end{proof}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_hexloop}
+\caption{The curve of \cref{prop:hexagon-loop}, drawn at $\theta=17^\circ$.
+(a) The plane $P$: the six roots of the hexagon turned by $\theta$ from the
+reference direction (dotted), the hexagon $\mathrm{Hex}_\theta$ of inradius
+$1$ that they cut out, the directions in $P$ of the other eighteen roots,
+at radius $\sigma$ (filled: the triangle $T_+$ at $30^\circ,150^\circ,270^\circ$;
+open: $T_-$), and the sector between the rays at $30^\circ$ and $90^\circ$,
+split at the vertex $v$ into the two triangles (blue and green) over which
+$J_1$ and $J_2$ are computed. (b) The slice over a point of
+$\mathrm{Hex}_\theta$: the intersection of two opposite triangles of inradii
+$h_+$ and $h_-$ in $P'$, a hexagon while $h_+\le2h_-$ and $h_-\le2h_+$. (c) The
+cell as the union of its slices over $\mathrm{Hex}_\theta$, with the exact
+slices over three points; the two-dimensional slices are drawn in one plane
+transverse to $P$. (d) Along the curve: the tilt $\sin\psi$ of the eighteen
+roots and the largest inner product, which exceeds $\frac12$ for
+$0<\theta<\pi/3$ and reaches $\frac47$ at $\theta=\pi/6$.}
+\label{fig:hexloop}
+\end{figure}
 
 \begin{remark}[What the curve means]\label{rem:contact-valley}
 Through each of the $16$ hexagons of $A_2$ roots there is such a curve. So
@@ -2517,8 +2528,8 @@ the root system is not a strict local minimum of $\vol(Q_w)$ up to
 rotations, and no positivity of higher-order terms can prove
 $\vol(Q_w)\ge8$ near it. Along straight lines $tk$ in the flat directions the
 volume grows at fourth order, $(\vol Q_w-8)/t^4$ between $0.05$ and $0.23$ for
-random unit $k$. The relaxed minimisation of \texttt{contact\_valley.py},
-which lets the other $57$ tilt coordinates move, finds this curve. At the
+random unit $k$. A minimisation that lets the other $57$ tilt coordinates
+move finds this curve. At the
 points $\theta=0.1$, $0.3$ and $\pi/6$ of it the Hessian of $\vol(Q_w)$ on the
 $72$ tangent directions is positive semidefinite, with seven zero
 eigenvalues (the rotations and the curve) and the next $0.0055$, $0.031$ and
@@ -2533,7 +2544,7 @@ there.
 \end{remark}
 
 Away from the root system the bound $\vol(Q_w)\ge8$ can hold only for a
-small slack. \texttt{contact\_cell\_constrained.py} minimises $\vol(Q_w)$
+small slack. We minimised $\vol(Q_w)$
 over $24$ unit directions with inner products at most $\tfrac12+s$, from
 $48$ random starts spread into codes of that slack and eight perturbations
 of the root system, with the exact gradient $-A_i^wc_i$ ($c_i$ the centroid
@@ -2556,10 +2567,9 @@ has $d(W)\ge\tfrac{57}{500}$, with $d$ as in \cref{thm:local-uniqueness}.
 \end{prop}
 
 \begin{proof}
-The points are listed in \texttt{code24\_exact.txt}; each is the inverse
+The points are listed in the supplementary data; each is the inverse
 stereographic image of a rational point of $\mathbb{R}^3$, so its norm is
-exactly $1$. In exact arithmetic
-(\texttt{code24\_exact.py}, and in Lean, \texttt{D4SecondCode.lean}) every
+exactly $1$. In exact arithmetic, and again in Lean, every
 two of them have inner product at most $\tfrac12+\tfrac{849}{50000}$, and
 the inner product $-0.72817\ldots$ of the ninth and eleventh is at distance
 at least $\tfrac{57}{250}$ from each of $-1,-\tfrac12,0,\tfrac12,1$. If an
@@ -2569,10 +2579,10 @@ within $e_i+e_j\le2d(W)$ of one of those five values; so
 $d(W)\ge\tfrac{57}{500}$.
 \end{proof}
 
-The code is not an accident of rounding.
-\texttt{code24\_second.py} spreads $64$ random configurations into codes of
-slack $0.03$ and then minimises their largest inner product. Three return to
-the root system, and the other $59$ all stop at the same value
+The code is not an accident of rounding. Of $64$ random configurations,
+spread into codes of slack $0.03$ and then pushed to the least possible
+largest inner product, three return to the root system, and the other $59$
+all stop at the same value
 $0.516978$, a code with no antipodal pair, $84$ pairs at that inner product
 and five kinds of point. Its contact cell has volume $8.0948$; realised as
 the directions of a packing with all centres at one distance, it needs that
@@ -2596,10 +2606,9 @@ system,
 a statement about $24$ points in which statements (i) and (ii) of
 \cref{sec:closure} enter together, and which \cref{prop:second-code} does
 not touch. The condition $T(Y)\le8$ cannot be dropped. When centres move
-out towards $\sqrt6$ the inversion hull shrinks, and
-\texttt{cell\_hull\_search.py} finds a packing with
+out towards $\sqrt6$ the inversion hull shrinks, and there is a packing with
 $\vol(V(Y)\cap K(Y))=4.750$; there $T(Y)=10.82$. With the condition, the
-same script (SLSQP under the packing constraints and $T(Y)\le8$) finds
+constrained minimisation (under the packing constraints and $T(Y)\le8$) finds
 nothing below $8$. None of $40$ random configurations can be brought into
 the region $T(Y)\le8$, in line with the survey of \cref{sec:closure}, where
 every local minimum of $T$ with $24$ centres is the root system. Of $64$
@@ -2609,6 +2618,56 @@ root system with volume $8$. What would prove (G) is not known: it is
 the part of \cref{conj:shell} that the pair terms and the inversion hull
 leave between them.
 \end{remark}
+
+For twenty-five or more centres within $\sqrt6$ the pair terms alone are
+expected to suffice: the least value of $T$ found for such configurations is
+$8.264$ (\cref{fig:counts}). Together with (G) this is all that stands
+between the theorems of this section and \cref{conj:shell}.
+
+\begin{prop}[The two statements that remain]\label{prop:reduction-G}
+Let $T(Y)$ denote the right side of \cref{lem:no-triple} for a set $Y$ of
+centres within $\sqrt6$ of $c$. Suppose that
+\begin{enumerate}[leftmargin=2.6em]
+\item[\textup{(G)}] for every packing set $Y$ of exactly $24$ centres with
+  $2\le|y|<\sqrt6$ and $T(Y)\le8$ one has $\vol(V(Y)\cap K(Y))\ge8$, with
+  equality only if $Y$ is a copy of $\sqrt2\,\Rt$ about $c$; and
+\item[\textup{(C)}] for every packing set $Y$ of at least $25$ centres with
+  $2\le|y|<\sqrt6$ one has $T(Y)>8$.
+\end{enumerate}
+Then \cref{conj:shell} holds: every Voronoi cell of a unit-ball packing of
+$\mathbb{R}^4$ has volume at least $8$, with equality only for the
+$24$-cell of a copy of $\sqrt2\,\Rt$.
+\end{prop}
+
+\begin{proof}
+Let $Y$ be the set of centres other than $c$ within $\sqrt6$ of it. Only
+these have nonempty caps in $B(\sqrt{3/2})$, so \cref{lem:no-triple} gives
+$\vol(V_c)\ge\vol(V_c\cap B(\sqrt{3/2}))=T(Y)$, and
+\cref{prop:inversion-hull} gives $\vol(V_c)\ge\vol(V(Y)\cap K(Y))$. If
+$|Y|\le23$, then $\vol(V_c)>8$ by \cref{thm:m23-labelled}. If
+$|Y|\ge25$, then $\vol(V_c)\ge T(Y)>8$ by (C). If $|Y|=24$ and
+$T(Y)>8$, then $\vol(V_c)>8$. If $|Y|=24$ and $T(Y)\le8$, then
+$\vol(V_c)\ge8$ by (G), and equality forces $Y$ to be a copy of
+$\sqrt2\,\Rt$; then $c$ has $24$ contacts, and $V_c$ is the $24$-cell by
+\cref{lem:24-no-shell}.
+\end{proof}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_codes}
+\caption{Twenty-four-point codes at positive slack, and the two statements
+that remain. (a) The inner products of the $276$ pairs of the root system and
+of the second code of \cref{prop:second-code}. (b) The deepest hole of a
+$24$-point code of slack $s$, the least value of $\max_i\langle\theta,w_i\rangle$
+found; a further centre within $\sqrt6$ beside twenty-four within $2.0161$
+needs $0.6141$ or less, which the codes found reach only near $s=0.025$,
+beyond the slack $0.008$ of \cref{thm:kissing-stable} and the slack $0.01698$
+of the second code. (c) The least contact-cell volume found over codes of
+slack $s$. (d) The cases of \cref{prop:reduction-G}; the shaded green boxes
+are proved, the orange ones are the statements (G) and (C). Panels (b) and
+(c) are floating-point minimisations, evidence and not bounds.}
+\label{fig:codes}
+\end{figure}
 
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
@@ -2990,7 +3049,7 @@ sphere-packing upper bound from Blichfeldt \cite{Bli29} onward turns a
 local statement about individual cells into a global statement about
 density.
 
-\subsection{The general case, and what it rests on}
+\subsection{The general case}
 
 \Cref{thm:local-general} rests on the bound for contact configurations,
 which is \cref{cor:remaining} with \cref{thm:m23}, and on
@@ -3011,7 +3070,7 @@ What remains of the twenty-four-cell conjecture is \cref{conj:shell},
 which \cref{sec:closure} narrows to centres crowded by neighbours at
 intermediate distances.
 
-\subsection{What a proof without the classification has to supply}\label{rem:what-would-close-new}
+\subsection{Beyond the classification}\label{rem:what-would-close-new}
 
 \Cref{thm:local-general} is proved using the classification of
 \cref{thm:m24} at the configurations of twenty-four contacts, that is,
@@ -3142,8 +3201,7 @@ face. The two effects do not cancel, and neither dominates. In a search
 over packing-valid configurations with $2\le m\le6$ and tilts up to
 $0.9$ we found $\vol(E_j)$ both exceeding its single-deviation value and
 falling short of it, in the latter case by more than $0.1$, against
-defects of order $0.3$. The search is reproduced by
-\texttt{multi\_cap\_reformulation.py} in the supplement. So \cref{thm:eperp-closed} gives no bound at all
+defects of order $0.3$. So \cref{thm:eperp-closed} gives no bound at all
 on $\vol(E_j)-\vol(C_j)$ once $m\ge2$, and \eqref{eq:termwise-hope}
 cannot be reached term by term.
 
@@ -3545,9 +3603,7 @@ $\vol(K)\le\vol(B^4)=\pi^2/2$ returns $64/(3\pi^2)=2.16\ldots$.
 Both evaluations, together with the facet-local bound of
 \cref{rem:facet-local-obstruction}, the boundary identity
 \eqref{eq:surface} and the facet description \eqref{eq:facet-shape}, are
-reproduced by \texttt{polar\_surface\_reformulation.py} in the
-supplement, and collected in
-\cref{fig:boundary}.
+checked numerically and collected in \cref{fig:boundary}.
 \end{remark}
 
 \begin{figure}[tb]
@@ -3711,7 +3767,7 @@ below $8$ at $m=23$. Each $r_m$ is the root of \eqref{eq:rm}, computed
 to the digits shown by bisection on an exactly evaluated monotone
 function. That the bound exceeds $8$ for $5\le m\le22$ is also checked in
 Lean, in interval arithmetic: it says $2\rho-\sin2\rho<2\pi/m$ at
-$\rho=\arctan c$, $c^3=24/(\pi m)$ (\texttt{lean/certificate/D4OmegaMain.lean}).}
+$\rho=\arctan c$, $c^3=24/(\pi m)$.}
 \label{tab:covering-bound}
 \end{table}
 
@@ -3862,8 +3918,7 @@ contains.
 So the deficit that \cref{prop:area-optimal} shows is needed is not
 additive over cells. Cells worse than round exist in both
 decompositions, and what makes the root configuration extremal is the way its cells fit together, not the shape of any one of them. All
-of this is checked by \texttt{local\_cell\_obstruction.py}, whose
-integrals over $S^3$ are Monte Carlo and are labelled as such; the
+of this is checked numerically, with integrals over $S^3$ by Monte Carlo; the
 margins above are percentages, not last digits.
 \end{remark}
 
@@ -4053,13 +4108,11 @@ Everything in this subsection, the cap-area formula, the radial
 identity, the layer-cake step, the closed form, the whole of
 \cref{tab:covering-bound} including its monotonicity, and the absence of
 any violation of \eqref{eq:covering-bound} at the root configuration, at
-its subsets and at random configurations, is checked by
-\texttt{covering\_bound.py} in the supplement, and \cref{lem:no-triples}
-together with \eqref{eq:lens} and the two values above by
-\texttt{second\_order\_estimate.py}.
+its subsets and at random configurations, is checked numerically, and so
+are \cref{lem:no-triples}, \eqref{eq:lens} and the two values above.
 \end{remark}
 
-\subsection{Twenty-four contacts, and what is left}\label{sec:m24}
+\subsection{Twenty-four contacts}\label{sec:m24}
 
 At the top of the range the problem changes character completely, because
 a contact configuration of the maximal size is rigid.
@@ -4118,8 +4171,8 @@ $\sqrt2\,W$ is its full set of roots. The $D_4$ root system is unique up
 to isometry, which gives the last statement.
 
 The finite content of this argument is checked, without appeal to the
-classification, by \texttt{root\_lattices\_rank4.py} and again by Lean's
-kernel in \texttt{D4RootLattices.lean}, which also exhibits in every
+classification, by an exact enumeration and again by Lean's kernel,
+which also exhibits in every
 lattice with $24$ roots four of them with the Cartan matrix of $D_4$ as
 Gram matrix, so that the lattice contains a copy of the $D_4$ lattice of
 its own determinant and is that lattice:
@@ -4486,11 +4539,9 @@ redistributed, which the supplementary archive of this paper
 of writing, a preprint; nothing below depends on it.
 
 We have verified \cref{prop:verified} from the deposited data in code of
-our own that shares nothing with theirs
-(\texttt{llm24\_certificate\_check.py}, Python with the exact rational
-arithmetic of FLINT and the ball arithmetic of Arb \cite{Joh17}, the
-programs of the directory \texttt{zonal}, and
-\texttt{D4InnerProducts.lean}). The verification has seven steps, and
+our own that shares nothing with theirs, using the exact rational
+arithmetic of FLINT and the ball arithmetic of Arb \cite{Joh17}, with the
+last step repeated in Lean. The verification has seven steps, and
 we describe them in the order in which they are run. The data
 are read and their format checked: $127$ positive semidefinite blocks
 of total dimension $3726$, the largest $350\times350$, sixty of them
@@ -4577,8 +4628,8 @@ reach. The entries can also be set beside the authors' own. Their
 construction needs its memory for all signatures at once, and run for one
 signature at a time it fits in a few gigabytes for the smaller ones: for the
 thirteen signatures with $|\lambda|\le10$ and $\lambda_2\le4$ on which it was
-run, all $88$ entries it writes agree with ours coefficient by coefficient
-(\texttt{level2/compare\_entries.py}).\footnote{Run one signature at a time,
+run, all $88$ entries it writes agree with ours coefficient by
+coefficient.\footnote{Run one signature at a time,
   their construction took about a second for $(3,1)$ and $(4,0)$, half a
   minute for $(10,0)$ and four minutes for $(6,4)$ and $(8,2)$, and for $(10,2)$
   it passed three gigabytes and was stopped: its cost grows with $\lambda_2$
@@ -4790,8 +4841,7 @@ value of $\omega_2(\tfrac12)$.
 The value of $\omega_3(\tfrac12,\tfrac12,\tfrac12)$ obtained this way
 agrees with a direct quadrature of the triple intersection to
 $1\times10^{-7}$, and the cap, pair and triple volumes agree with
-Monte Carlo estimates in $\mathbb{R}^4$ within their standard errors
-(\texttt{m24\_exact\_reduction.py}, \cref{app:code-index}).
+Monte Carlo estimates in $\mathbb{R}^4$ within their standard errors.
 
 \begin{cor}[The $24$-contact case as an inequality between angles]\label{cor:m24-reduction}
 For a contact configuration $W=\{w_1,\dots,w_{24}\}$ put
@@ -4847,7 +4897,7 @@ once. Restricting $p$ to a finite set of triples only shrinks the dual
 feasible set, so such a $p$ is a proof and not an estimate.
 
 At degree $6$ the computation points to one, and we state what it
-shows and no more. \texttt{m24\_primal\_sdp.py} solves the dual on a grid
+shows and no more. We solved the dual on a grid
 of admissible triples with every constraint held with a margin
 $\varepsilon=10^{-6}$, and rechecks the returned measure against the
 constraints without the margin: the measure deposited in the supplement
@@ -4908,8 +4958,7 @@ five returns $L=7.25\times10^{-5}$ with $q=0.654$ and residuals below
 $9\times10^{-7}$, and dropping any one of the five moves $L$ only
 within $[7.03,7.43]\times10^{-5}$. The improvement available at the
 root configuration therefore does not tend to zero with the degree,
-where a certificate reaching $\tau$ would need it to be zero. The sweep
-is \texttt{m24\_descent\_sweep.py}.
+where a certificate reaching $\tau$ would need it to be zero.
 
 That the three-point level is the wrong level is not a conclusion of
 ours alone. Cohn, de Laat and Leijenhorst \cite{CdLL24} settle a family
@@ -5084,7 +5133,7 @@ $2r_{23}=69.2213\ldots^\circ$ and at $2r_*=70.5288\ldots^\circ$.}
 \label{fig:counting}
 \end{figure}
 
-\subsection{The saturated case, written out}\label{sec:m23-explicit}
+\subsection{The saturated case}\label{sec:m23-explicit}
 
 Everything \cref{thm:m23} asserts can be written down explicitly, and it
 is worth doing so, because what it concerns is a single polytope with
@@ -5195,8 +5244,7 @@ configuration of $23$ directions satisfies. \Cref{prop:two-point-barrier}
 says how much of it the pair angles supply on their own, and
 \cref{sec:strict-inequality} sets the statement out in full.
 \Cref{fig:counting}(c) and (d) set the numbers down, for both
-integration limits. The script is \texttt{pair\_budget.py} for the
-limit $r_{23}$ and \texttt{three\_point\_reduction.py} for $r_*$.
+integration limits.
 \end{remark}
 
 Two further facts about the pair angles are worth setting down, because
@@ -5259,11 +5307,9 @@ together with $\sigma(\bigcup_iC_i(t))\le2\pi^2$ for the first family,
 and the positive definiteness of $G_k$ on $S^3$, which gives
 $\sum_{i,j}G_k(\langle w_i,w_j\rangle)\ge0$ and hence
 $\sum_{i<j}G_k(\cos\gamma_{ij})\ge-\tfrac{23}2$, for the second. The
-values are the optima of finite linear programmes: in
-\texttt{covering\_multiplicity.py} on a grid of $601$ angles with $24$
-radii between $r_{23}$ and $45^\circ$ and $12$ degrees, for the weight
-integrated to $r_{23}$, and in \texttt{three\_point\_reduction.py} on a
-grid of $1201$ angles with $60$ radii between $r_{23}$ and $90^\circ$
+values are the optima of finite linear programmes: on a grid of $601$
+angles with $24$ radii between $r_{23}$ and $45^\circ$ and $12$ degrees,
+for the weight integrated to $r_{23}$, and on a grid of $1201$ angles with $60$ radii between $r_{23}$ and $90^\circ$
 and $24$ degrees, for both weights. Adding radii or degrees does not
 raise either optimum, and the same measure attains both: $103.7$ pairs
 at $62.3^\circ$, $90.0$ at $103.0^\circ$, $39.2$ at $122.6^\circ$ and
@@ -5337,8 +5383,7 @@ exactly when that type is infeasible. Its minimum over the $528$ types is
 $0.0740002839\ldots$, attained at $(a,b)=(8,17)$. The maximum of affine
 functions is convex, so each $\delta(a,b)$ is found exactly by evaluating
 at the endpoints and at the crossings of pairs of the $22$ functions; the
-computation is carried out at $60$ digits in
-\texttt{saturation\_search.py}, and a margin of $0.074$ in an inner
+computation is carried out at $60$ digits, and a margin of $0.074$ in an inner
 product is not a rounding effect.
 \end{proof}
 
@@ -5351,7 +5396,7 @@ for first, and it is consistent with the rest of what is known about the
 case, since the configurations that do exist at $23$ directions are the
 deletions, whose symmetry group is the stabiliser of a root in the Weyl
 group and has four orbits on the remaining directions, of sizes
-$1,8,6,8$. The search of \texttt{saturation\_search.py} looks for the
+$1,8,6,8$. A search looks for the
 rest: it minimises $\max_I|z_I|$ directly, from perturbed deletions, from
 random starts and from partially completed root systems, and over $202$
 starts it reached $12$ contact configurations, all with the inner-product
@@ -5430,8 +5475,8 @@ the sense of Roth and Whiteley \cite[Thm.~5.7]{RW81}: no continuous
 deformation through contact configurations moves it except by rotation.
 A saturated $23$-point configuration therefore cannot be a small
 perturbation of a deletion, which is the same conclusion the facet
-average reached above, now from the contact graph, not from the volume. Both are checked by \texttt{rigidity23.py} in the supplement,
-the stress and the dimension count in exact integer arithmetic.
+average reached above, now from the contact graph, not from the volume. Both are checked by
+computer, the stress and the dimension count in exact integer arithmetic.
 
 The same argument, with nothing deleted, places the root system itself.
 
@@ -5463,9 +5508,9 @@ $\langle d_i,a_i\rangle=0$ has, over $\mathbb{Q}$, a solution space of
 dimension $6$, which the rotations fill. Rigidity follows from
 infinitesimal rigidity by \cite[Thm.~5.7]{RW81}, the pairs at inner
 products $0$, $-1$ and $-2$ staying strictly slack under a small motion.
-The count and the dimension are checked by \texttt{rigidity24.py}, and
+The count and the dimension are checked in exact arithmetic, and
 the equilibrium relation, the sum of the eight neighbours of every root
-being four times the root, by Lean's kernel in \texttt{D4Stress.lean}.
+being four times the root, by Lean's kernel.
 \end{proof}
 
 \Cref{cor:root-rigid} is the local half of \cref{thm:m24}: the root
@@ -5526,8 +5571,7 @@ $\tfrac{11}{16}$, and consequently
 What has to be established is a finite exact statement about one
 integral matrix, and it is established by computation, carried out twice
 on independent code paths: in integer arithmetic in Python and again in
-Lean, from the integral roots (\texttt{lean/D4Rigidity.lean}, by
-\texttt{native\_decide}, with the ranks computed over $\mathbb{Q}$). What follows sets out what is computed and why it
+Lean, from the integral roots, with the ranks computed over $\mathbb{Q}$. What follows sets out what is computed and why it
 determines the spectrum.
 
 Let $\Lambda'=\sqrt2\,\Lambda$, whose coefficients $\langle a_i,\cdot\rangle$
@@ -5548,11 +5592,10 @@ each bound is met and the multiplicities are $30$, $29$, $8$, $21$, $8$.
 The kernel of $N$ contains the $24$ radial directions, on which $P$
 vanishes, together with $\ker\Lambda$, and $30=24+6$ accounts for it
 exactly. Dividing by two and taking square roots gives the singular
-values. The identity and the ranks are computed by
-\texttt{rigidity\_spectrum.py} by fraction-free elimination over
-$\mathbb{Z}$, with no floating point at any step; the $96$ tight pairs it
-starts from, and the neighbour sum of \cref{cor:root-rigid}, are checked
-again by Lean's kernel in \texttt{D4Stress.lean}.
+values. The identity and the ranks are computed by fraction-free
+elimination over $\mathbb{Z}$, with no floating point at any step; the $96$
+tight pairs the computation starts from, and the neighbour sum of
+\cref{cor:root-rigid}, are checked again by Lean's kernel.
 
 For the second statement, an orthogonal map $R$ that permutes the roots, $Ra_i=a_{\pi(i)}$, acts on
 $\mathcal{T}$ by $(R\tau)_{\pi(i)}=R\tau_i$ and on $\mathbb{R}^{96}$ by permuting
@@ -5567,11 +5610,11 @@ $g\in\operatorname{im}\Lambda$ and a pair $p$,
 $|g_p|=|\langle g,\Pi e_p\rangle|\le\|g\|_2\,\|\Pi e_p\|_2=\tfrac{\sqrt{11}}4\|g\|_2$,
 and then $\|g\|_2^2\le\|g\|_\infty\|g\|_1\le\tfrac{\sqrt{11}}4\|g\|_2\|g\|_1$. The
 value $\tfrac{11}{16}$ of every diagonal entry is also checked directly, in
-integer arithmetic, by \texttt{rigidity\_spectrum.py}: with
+integer arithmetic: with
 $2K=\Lambda'(2P)\Lambda'^{\mathsf T}$, which is integral and annihilated by
 $x(x-4)(x-10)(x-12)(x-16)$, the projection onto $\ker K$ is
 $(2K-4I)(2K-10I)(2K-12I)(2K-16I)/7680$, and each of its diagonal entries is
-$\tfrac5{16}$; \texttt{D4Rigidity.lean} checks the same in Lean.
+$\tfrac5{16}$, in integer arithmetic and again in Lean.
 \end{proof}
 
 The second statement is what makes the passage from $\|\Lambda\tau\|_1$, which the
@@ -5676,7 +5719,7 @@ argument really uses is the least value $\nu$ of $\|\Lambda\tau\|_1$ over
 unit vectors $\tau\in\mathcal{T}$ orthogonal to $\ker\Lambda$, for which
 \cref{lem:rigidity-spectrum} gives $\nu\ge4/\sqrt{11}=1.206$, and the radius is
 $(144/\nu^2+\tfrac14)^{-1/2}$. A displacement of a single direction, with its
-rotational part removed, has $\|\Lambda\tau\|_1/\|\tau\|_2=\sqrt{96/11}=2.954$ (\texttt{rigidity\_spectrum.py}, and again in \texttt{D4Rigidity.lean}), so
+rotational part removed, has $\|\Lambda\tau\|_1/\|\tau\|_2=\sqrt{96/11}=2.954$, so
 $\nu\le2.954$ and no sharpening of the constant can take this argument past
 $0.244$. No argument of this kind
 reaches a configuration that is nowhere near $\Rt$, which is the whole of
@@ -5698,8 +5741,7 @@ from annealed random starts produced no contact configuration of $23$
 directions with $g(W)>\tfrac12$; the largest value found was $\tfrac12$
 itself, attained exactly at the deletions, and the random starts reached
 no $23$-point contact configuration at all. That is exploration and not
-evidence of nonexistence, and we report it as such; the script is
-\texttt{extendability.py}. What a proof has to supply is clear
+evidence of nonexistence, and we report it as such. What a proof has to supply is clear
 from \cref{prop:area-optimal}: the covering estimate already uses the
 areas of the spherical Voronoi cells to the full, so the missing
 $0.083272\ldots$ has to come from their shape, and that is what the
@@ -5926,10 +5968,8 @@ doorways at twenty roots hold two directions but not three, which would
 push \cref{cor:meet20} to nineteen. This is a computation and not a
 proof: it is a search over a family of local minima, not an exhaustive
 argument, and the case analysis that turns it into one is four times
-the length of \cref{prop:meet21}. The script is
-\texttt{root\_meet.py}, with \texttt{root\_deletions\_exact.py} carrying
-out the same enumeration for one, two and three removed roots in exact
-integer arithmetic as a check on \cref{prop:meet22} and
+the length of \cref{prop:meet21}. The same enumeration is carried out for
+one, two and three removed roots in exact integer arithmetic as a check on \cref{prop:meet22} and
 \cref{prop:meet21}.
 \end{remark}
 
@@ -6042,8 +6082,7 @@ eighty-eight times, which is an invariant of the orbit under $O(4)$.
 The tables \cite{Slo} record $60.0000000^\circ$ at $23$ points, the same
 value as at $24$, and $60.1398863^\circ$ at $22$. None of this proves
 the hypothesis of \cref{thm:m23-from-codes}; what it does is say which
-statement to aim at. The script is
-\texttt{spherical\_code\_23.py}.
+statement to aim at.
 
 \end{remark}
 
@@ -6112,9 +6151,8 @@ values, the degree $12$, the twenty-five cells, their inner products and
 the fact that five pass through each vertex are all checked by the
 kernel from the $\mathbb{Z}[\phi]$ coordinates, and the three counts
 $0$, $5$ and $115$ are established by the same depth-first search
-compiled to native code and run by \texttt{native\_decide}. The scripts
-are \texttt{cell600\_exact.py} and \texttt{cell600\_enum.c}, and the
-Lean development is described in \cref{sec:reproducibility-new}.
+compiled to native code inside Lean
+(\cref{sec:reproducibility-new}).
 \end{proof}
 
 
@@ -6142,7 +6180,7 @@ which two directions are closer than $60^\circ$ exactly when they lie
 in different copies and are $45^\circ$ apart, returns the two copies of
 $\Rt$ and their forty-eight deletions
 and nothing else; that one is a second of computation, in
-$\mathbb{Z}[\sqrt2]$, and is \texttt{octahedral48\_exact.py}.
+$\mathbb{Z}[\sqrt2]$.
 \end{remark}
 
 \subsection{The largest inradius as the minimal angle rises}\label{sec:slack-continuation}
@@ -6307,8 +6345,8 @@ what a perturbed deletion gives.}
 A configuration invariant under a nontrivial element of $O(4)$ is a
 union of orbits of that element, and inside such a class the search has
 far fewer parameters and can be run from enough starts to cover it.
-\Cref{prop:no-transitive} disposes of the transitive case. The script
-\texttt{symmetric\_search.py} treats every rotation of order $n\le12$,
+\Cref{prop:no-transitive} disposes of the transitive case. We treated
+every rotation of order $n\le12$,
 through angles $2\pi a/n$ and $2\pi b/n$ in two orthogonal planes with
 $\gcd(a,b,n)=1$, together with the two improper involutions, a
 reflection in a hyperplane and $\diag(1,-1,-1,-1)$; for each it lists
@@ -6543,8 +6581,7 @@ deletion with $0.034$ to spare, and at every configuration reached in
 $\vol(V_c\cap B(\sqrt{3/2}))$ found over the configurations of
 \cref{tab:slack-continuation} and over a direct minimisation of that
 quantity on $K(\delta)$ is $8.028$, at $\delta=0.05$, and the least
-value of $\vol(V_c\cap B(\sqrt{8/5}))$ is $8.129$
-(\texttt{truncated\_volume.py}). A statement with slack is one that a
+value of $\vol(V_c\cap B(\sqrt{8/5}))$ is $8.129$. A statement with slack is one that a
 relaxation can certify, and \cref{sec:certificate} does.
 
 Second, it needs no classification and no saturation. It is the
@@ -6587,7 +6624,7 @@ the target.
 \label{fig:pftwo}
 \end{figure}
 
-\subsection{The inequality between pair angles holds}\label{sec:certificate}
+\subsection{The inequality between pair angles}\label{sec:certificate}
 
 The inequality \eqref{eq:strict-pairs} is a lower bound for a linear
 functional of the pair distribution of a spherical code of fixed size
@@ -6743,7 +6780,7 @@ bound $B$ is computed exactly from \eqref{eq:certificate-bound}; here
 $F(1,1,1)$ is the sum of the entries of $F_0$, because every entry of
 $Y_k(1,1,1)$ vanishes for $k\ge1$ and $T_i(1)=1$. These two steps, with
 the certificate written into the source as exact rationals, are also
-carried out by the Lean kernel (\texttt{lean/D4Certificate.lean}).
+carried out by the Lean kernel.
 
 \emph{The constants.} $A_*$ is elementary. With $S(r)=\sec^4r$ one has
 $\int r\,dS=r\sec^4r-\tan r-\tfrac13\tan^3r$ and
@@ -6794,8 +6831,8 @@ $\gamma$ are rational in $u$; the result, and the closed form it integrates to, 
 \]
 with $\tau=\tan\frac\gamma2=((1-u)/(1+u))^{1/2}$ and $t_*=\tan r_*=1/\sqrt2$,
 for $\tfrac13\le u<1$. The first shows at once that $\omega$ increases and
-vanishes to second order at $u=\tfrac13$; \texttt{omega\_closed\_form.py}
-checks symbolically that the second has the first as its derivative and
+vanishes to second order at $u=\tfrac13$; a symbolic computation
+checks that the second has the first as its derivative and
 vanishes at $\tfrac13$, and that both agree with the form above to
 $10^{-15}$. They are what the Lean check below evaluates.
 
@@ -6828,8 +6865,8 @@ Taylor remainder. Starting from $[-1,\tfrac12]^3$, the process ends
 after $44$ levels with $313\,780$ boxes verified and $13\,517$
 discarded, in under ten minutes (\cref{fig:dom3d}(a)), and no box reaching the minimum width
 $10^{-6}$ undecided. The same branch and bound is then carried out a
-second time, independently and in exact arithmetic, by a Lean program
-(\texttt{lean/certificate}): it expands $P$ from the certificate on its
+second time, independently and in exact arithmetic, by a Lean program: it
+expands $P$ from the certificate on its
 own, multiplies it by $315$ so that every coefficient becomes an integer
 over a power of two, and runs the subdivision with the same Taylor form
 in dyadic arithmetic, integers and exponents only, with no rounding at
@@ -6839,14 +6876,13 @@ fewer than the Python run because its nested evaluation of the
 polynomials encloses more tightly than a sum of monomials, subdivides
 down to the width $2^{-20}$ where it has to, and returns true, which
 Lean records as a theorem under \texttt{native\_decide}. A third run removes
-the tables as well: \texttt{D4Omega.lean} evaluates the simpler forms above,
-and $A_*$, in outward-rounded $256$-bit interval arithmetic inside Lean, with
-arctan from its series and $\pi$ from Machin's formula, tabulates $\omega$ and
-$\omega'$ on the grid of step $2^{-16}$ with $|\omega''|\le0.2856$, and
-\texttt{D4OmegaMain.lean} checks that $A_*$ exceeds $8-0.0928555703$;
-\texttt{D4OmegaRegionI.lean} reruns the branch and bound with that table,
-and it passes in sixteen minutes, on $419\,913$ boxes, so that nothing is
-taken from outside Lean but the certificate. Hence \eqref{eq:C} holds on the
+the tables as well. Inside Lean, in outward-rounded $256$-bit interval
+arithmetic, with arctan from its series and $\pi$ from Machin's formula, the
+simpler forms above and $A_*$ are evaluated, $\omega$ and $\omega'$ are
+tabulated on the grid of step $2^{-16}$ with $|\omega''|\le0.2856$, $A_*$ is
+checked to exceed $8-0.0928555703$, and the branch and bound is run again
+with that table. It passes, on $419\,913$ boxes, so that nothing is taken
+from outside Lean but the certificate. Hence \eqref{eq:C} holds on the
 admissible domain,
 \cref{lem:certificate} gives \eqref{eq:strict-pairs} for every contact
 configuration of $23$ directions, and \cref{thm:strict-reduction}
@@ -6873,7 +6909,7 @@ bound is fixed at $0.0929$ and the least slack is maximised.}
 The programme of \cref{lem:certificate}, with \eqref{eq:C} imposed on a
 sample of admissible triples and $B$ maximised
 (\cref{fig:certpair}), is solved by an
-interior-point method (\texttt{three\_point\_sdp.py}); the sample is
+interior-point method; the sample is
 refined four times by adding the triples at which the current solution
 violates \eqref{eq:C} most, on a check over about $1.15$ million further
 triples, and the value reported is reduced by $\binom{23}3/21$ times
@@ -6945,7 +6981,7 @@ the Taylor form and the monotonicity of $\omega$, which are written
 out above. The Taylor form is applied only on boxes inside the open
 interval where $\omega$ is analytic.
 \end{remark}
-\subsection{Twenty-four points, approximately}\label{sec:m24-robust}
+\subsection{Twenty-four points at positive slack}\label{sec:m24-robust}
 
 The equality argument of \cref{lem:las2} needs the inner products to be at
 most $\tfrac12$ exactly, and it says nothing about a code whose inner
@@ -6987,8 +7023,7 @@ products of $Q$ is at least $-\binom nr a(\tfrac9{16})^{r-1}$, and is
 nonnegative unless $Q$ has an inner product above $\tfrac12$. Hence
 $\sigma_k(Q)\ge-aB_k$ for $k=3,4$, where $B_k=\sum_r\binom{n_k}r(\tfrac9{16})^{r-1}S_{k,r}$,
 $n_3=3$, $n_4=6$, and $S_{k,r}$ bounds the sum of $c\,\sigma$ over the terms of
-$\sigma_k$ with weight $e_r$. The program \texttt{explicit\_eps0.py} bounds
-these sums from the deposited data in ball arithmetic. The data give
+$\sigma_k$ with weight $e_r$. We bound these sums from the deposited data in ball arithmetic. The data give
 each $M$ as $TXT^{\mathsf T}$ with $X$ positive definite, so
 $m^{\mathsf T}Mm\le\lambda_{\max}(X)\,|T^{\mathsf T}m|^2$; the program bounds
 $\lambda_{\max}(X)$ by the trace or the largest absolute row sum of $X$, and
@@ -7015,7 +7050,7 @@ $f(u)=(u+1)(u+\tfrac12)^2u^2(\tfrac12-u)$, and the quotient is at least
 $2.62\cdot10^{-4}$ on $[-1,\tfrac12]$ (an exact division, and a mean value
 bound in ball arithmetic on $30\,000$ intervals; the division and the bound
 are repeated in Lean in exact rationals, with a second-order Taylor form on
-$135$ intervals, \texttt{lean/D4NearContact.lean}). Between consecutive
+$135$ intervals). Between consecutive
 zeros $f$ has a single critical point, by Rolle's theorem applied to its
 derivative of degree $5$, which vanishes at $-\tfrac12$ and $0$; so at
 distance at least $\delta=3\cdot10^{-4}$ from its zeros $f$ is at least its
@@ -7088,8 +7123,7 @@ $\|W-RV\|_F\le\|W(I-P)\|_F+\|M-R\|\,\|V\|_F\le2D/\sqrt{6-D}+\sqrt{24}D/6$.
 \includegraphics[width=\textwidth]{fig_tikz_eps0}
 \caption{Where $\varepsilon_0=4\cdot10^{-26}$ comes from. (a) The chain of
 explicit bounds that replaces the compactness argument of
-\cref{thm:near-contact}, with the number each step produces
-(\texttt{explicit\_eps0.py}). Twenty-four directions with inner products
+\cref{thm:near-contact}, with the number each step produces. Twenty-four directions with inner products
 at most $\tfrac12+\kappa$ make every sign-changing sum-of-squares term of
 the certificate at least $-E$ in total (\cref{thm:m24-robust}); so
 $\sigma_2\le E$ at each inner product up to $\tfrac12$, which pins it near
@@ -7135,7 +7169,7 @@ $\kappa<5.2\cdot10^{-7}\delta^2$ even with $B_3=B_4=0$. At the tolerance
 $\delta=3\cdot10^{-4}$ of \cref{lem:root-lattice-robust} that is
 $4.7\cdot10^{-14}$, and since the four target values are $\tfrac12$ apart,
 no rounding lemma can allow $\delta\ge\tfrac14$, which caps $\kappa$ at
-$9.2\cdot10^{-9}$ (\texttt{robust\_ceiling.py}, \cref{fig:positive-slack}(b)). The
+$9.2\cdot10^{-9}$ (\cref{fig:positive-slack}(b)). The
 square root comes from the double zeros of $\sigma_2$ at $-\tfrac12$ and $0$,
 and every kernel whose bound is exactly $24$ has them, since $\sigma_2\ge0$
 vanishes at those inner products of the root system. A form of
@@ -7182,11 +7216,10 @@ $24(1-e_1)-552e_2>f(1)+F(1,1,1)$.
 The certificate has degree $d=10$. It was found by solving the
 corresponding programme in floating point, with (i) and (ii) imposed at
 sampled points and refined in rounds, $f(1)+F(1,1,1)$ held at $23.96$ and
-the least slack maximised (\texttt{cardinality\_sdp.py}), and its entries
-are read as the exact rationals they denote.
-\texttt{certify\_cardinality.py} establishes, with no floating point beyond
+the least slack maximised, and its entries are read as the exact
+rationals they denote. We establish, with no floating point beyond
 outward-rounded interval arithmetic and with the polynomial and
-branch-and-bound routines of \texttt{certificate\_check.py}: that every $f_k$
+branch-and-bound routines of \cref{sec:certificate}: that every $f_k$
 is nonnegative and every $F_k$ positive definite, by exact
 $LDL^{\mathsf T}$ factorisation; the value $f(1)+F(1,1,1)=23.959999949\ldots$,
 exactly; (i) with $e_1=10^{-6}$, by branch and bound on the exact univariate
@@ -7196,8 +7229,7 @@ $F$ is symmetric, every box being decided by a second-order Taylor bound
 about its centre, $2.7$ million boxes in all. Both domains are run up to the
 least double at or above $t$. Then $24(1-e_1)-552e_2=23.961336>23.96$.
 The check is repeated in Lean, in exact dyadic arithmetic, from the
-certificate entries alone: the Lake project \texttt{lean/cardinality}
-expands $F$ and $f+3F(1,\cdot,\cdot)+1$ from the recurrences ($756$
+certificate entries alone: the Lean development expands $F$ and $f+3F(1,\cdot,\cdot)+1$ from the recurrences ($756$
 monomials, as in the Python expansion), and checks the positivity, the
 value of the bound, the inequality at $|C|=25$ and both branch and bounds;
 (i) takes $2\,957$ intervals, and the certificate of degree $8$ at
@@ -7222,7 +7254,7 @@ the three-point bound on the enlarged domain rises by about $97$ per unit of
 $s$ from about $24.13$ at $s=0$, so no certificate of this kind reaches much
 beyond $s=0.009$, while a numerical search finds $25$ points of $S^3$ with
 pairwise inner products at most $0.53743$, a minimal angle of $57.49^\circ$, so
-the true threshold lies below $s=0.0375$ (\texttt{code25\_search.py}). The theorem says nothing about the
+the true threshold lies below $s=0.0375$. The theorem says nothing about the
 shape of a set of $24$ points with slack $s_0$, which is what
 \cref{sec:closure} needs.
 
@@ -7232,8 +7264,7 @@ shape of a set of $24$ points with slack $s_0$, which is what
 \caption{The two halves of \cref{thm:m24} at positive slack. (a) The
 three-point bound on the number of points of $S^3$ with inner products at
 most $\tfrac12+s$, from sampled programmes of degree $8$ and $10$
-(\texttt{cardinality\_sdp.py sweep}; each sampled value is slightly
-optimistic), with the three certified values: degree $8$ at $s=0.005$ and
+(each sampled value is slightly optimistic), with the three certified values: degree $8$ at $s=0.005$ and
 $0.0065$, degree $10$ at $s=0.008$, the one \cref{thm:kissing-stable} uses. It
 crosses $25$ near $s=0.009$; a $25$-point code exists from $s=0.0374$ on. (b) How far the proof of
 \cref{thm:m24-robust} could be pushed if the triple and quadruple terms
@@ -7555,7 +7586,7 @@ two-dimensional interior is not reachable this way. It is reached in
 \cref{sec:cap-theorem} by an argument that abandons the triangle
 altogether.
 
-\subsection{The interior: a falsified shortcut, and what the interior's own structure looks like}\label{sec:interior-structure}
+\subsection{The interior of the fundamental triangle}\label{sec:interior-structure}
 
 Since the boundary is now fully settled, it is natural to ask whether
 some soft structural argument drags the interior along for free without
@@ -7728,7 +7759,7 @@ crossings $\arcp_1,\arcp_2,\arcp_3$.}
 \end{figure}
 \section{Certificates on the first arc}\label{sec:arc1-cert}
 
-\subsection{Method: exact remapping versus box-covering}\label{sec:method-overview-new}
+\subsection{Exact remapping and box covering}\label{sec:method-overview-new}
 
 Two complementary exact techniques are used across the eight regions of
 \cref{thm:arc1-breakpoints-new}, chosen region by region according to
@@ -8046,7 +8077,7 @@ volume-defect quantity numerically at $55$ points scattered across the
 full $(\arcp,\tilt)$-domain: all $55$ strictly positive, with zero
 exceptions, fully consistent with the certificate.
 
-\subsection{The band below region top: a box-covering attempt}\label{sec:arc2-band-cert-new}
+\subsection{The band below region top}\label{sec:arc2-band-cert-new}
 
 For the middle sub-part of the band described in
 \cref{sec:band-below-top-new}, bounded above by $\mathsf W'$ and below
@@ -8583,9 +8614,7 @@ the largest of the $303$ corner values is $0.99755\ldots$. The nodes at a corner
 are taken at rational points $t_k$ with $t_k^2$ at least the corner
 coordinate, and ties are broken upward, both of which only increase the
 bound. The computation is exact rational arithmetic throughout, and is
-reproduced by \texttt{cap\_inequality\_certificate.py} in the supplement
-and again in Lean (\texttt{lean/D4Cap.lean}), which finds the same $303$
-boxes and the same largest value, and also checks the three polynomial
+repeated in Lean, which finds the same $303$ boxes and the same largest value, and also checks the three polynomial
 identities and signs above.
 Since $\sup_R F=0.76583\ldots$, attained at $(\tfrac34,\tfrac14,0,0)$, the
 certificate has a margin of about a quarter and does not depend on the
@@ -8899,7 +8928,7 @@ so the two need not (and, as the worked example of \cref{sec:hessian-def-new}
 shows, generally do not) share the same numerical value.
 \end{lem}
 
-\subsection{A first step toward a first-principles derivation for \texorpdfstring{$m=2$}{m=2}}\label{sec:m2-firstprinciples-new}
+\subsection{The case \texorpdfstring{$m=2$}{m=2} from first principles}\label{sec:m2-firstprinciples-new}
 
 The closed-form cross-term underlying \cref{lem:m2-exact-new} was obtained
 by fitting the numerically observed cross-Hessian to a small family of natural
@@ -8985,7 +9014,7 @@ on the whole chain family.}
 \label{fig:chain-plateau}
 \end{figure}
 
-\subsection{Dense (non-chain) configurations: the floor does not plateau}\label{sec:dense-configs-new}
+\subsection{Dense configurations}\label{sec:dense-configs-new}
 
 Chains are not the worst topology. A \emph{star} configuration (one
 root together with all eight of its Gram-$\tfrac12$ neighbours, $m=9$)
@@ -9056,7 +9085,7 @@ exactly zero, or negative requires arithmetic of a fundamentally higher
 precision than double, not merely a finer step size; this is the
 subject of \cref{sec:exact-sing}.
 
-\subsection{Why quartic positivity is not merely a harder version of the same problem}\label{sec:quartic-hardness-new}
+\subsection{Quartic positivity}\label{sec:quartic-hardness-new}
 
 What matters is \emph{why} the transition from quadratic
 to quartic, at $A_{18}$, is a change of category and not merely of
@@ -9167,7 +9196,7 @@ to within $1.1\times10^{-9}$, exactly at qhull's own known precision
 floor, confirming both that the two independent methods compute the
 same underlying quantity and that this method's extra precision is not an artefact.
 
-\subsection{The dimension count, done properly}\label{sec:dim-count-new}
+\subsection{The dimension count}\label{sec:dim-count-new}
 
 \begin{prop}[Four-dimensional near-null space]\label{prop:4d-nullspace-new}
 At $A_{18}$, examining the double-precision joint Hessian's spectrum at
@@ -9434,7 +9463,7 @@ the quartic form is positive-definite on the near-null subspace; that
 needs the further steps of \cref{sec:a18-invariant-quartics}, which
 reduce the question to five coefficients without settling it.
 
-\subsection{The exact invariant-quartic space at \texorpdfstring{$A_{18}$}{A18}, and what fitting it gives}\label{sec:a18-invariant-quartics}
+\subsection{The invariant quartics at \texorpdfstring{$A_{18}$}{A18}}\label{sec:a18-invariant-quartics}
 
 Completing the exact character-table computation of
 \cref{prop:a18-stabiliser} (all $10$ conjugacy classes of the order-$48$
@@ -9733,7 +9762,7 @@ the difficulty sits, and at $|W|=24$ it coincides with the uniqueness
 half of the kissing problem in dimension four, which is exactly what
 the kernel of \cref{thm:twentyfour-points} supplies and \cref{thm:m24}
 records.
-\section{Beyond the Hessian: finite-angle results on swap configurations}\label{sec:swap-configs}
+\section{Swap configurations at finite angle}\label{sec:swap-configs}
 
 Every result of \cref{sec:hessian-technique,sec:musin-degeneracy,%
 sec:exact-sing,sec:broad-sample} is second-order: a statement about the
@@ -9780,8 +9809,7 @@ the single-deviation breakpoints of \cref{sec:stage-two}).
     exactly. The dashed line is the single combinatorial transition, at
     $\theta=\pi/6$, visible as the corner in the $m=2$ curve; the $m=6$
     path has none, and its curve is smooth there. The values plotted are
-    enumerated cell volumes, computed by
-    \texttt{swap\_defect\_curves.py} through a route independent of the
+    enumerated cell volumes, computed by a route independent of the
     closed forms, and for $m=6$ they agree with the closed form of
     \cref{sec:swap-m6} to $9\times10^{-9}$. (b) The swap path against the mixed path, the two differing only
     in the sign $c_1$. The more adversarial of the two is the lower one,
@@ -9833,9 +9861,7 @@ denominator in $t$ with coefficients in $\mathbb{Z}[\sqrt3]$, and the
 common denominator of the whole sum is large enough to defeat a direct
 cancellation. The sum is a rational function of $t$ all the same, and
 grouping the terms into batches, cancelling within each batch and only
-then combining the batches reaches it. Carried out that way, by
-\texttt{staged\_groups0to3.py} and \texttt{staged\_group4.py} and
-assembled by \texttt{staged\_simplify.py}, the result is
+then combining the batches reaches it. Carried out that way, the result is
 \[
   F_{\mathrm{swap}}(t) = \frac{\mathrm{num}(t)}{\mathrm{den}(t)}, \qquad
   t=\tan(\theta/2),
@@ -9895,7 +9921,7 @@ $F_{\mathrm{swap}}>0$ throughout by \cref{thm:swap-m2-new}. By
 \cref{lem:swapsym}, this one-piece proof on $(0,\pi/6]$ extends
 immediately to all of $(0,\theta_*)$.
 
-\subsection{A precision check: the swap path is not the worst 2-direction path at every angle}\label{sec:swap-not-worst}
+\subsection{The swap path is not the worst path at every angle}\label{sec:swap-not-worst}
 
 \Cref{thm:swap-m2-new} concerns one path, and a dedicated check
 shows how far it is from the whole of the $m=2$ case of
@@ -9943,7 +9969,7 @@ about the mixed path, its values above are numerical
 clarification of scope, not as a further positivity claim of the kind
 \cref{thm:swap-m2-new} makes.
 
-\subsection{The \texorpdfstring{$m=3$}{m=3} triangle swap, and a determinant that has to be computed with care}\label{sec:swap-m3}
+\subsection{The triangle swap, \texorpdfstring{$m=3$}{m=3}}\label{sec:swap-m3}
 
 The natural next configuration is a real $3$-clique: three pairwise
 Gram-$\tfrac12$ roots (not three roots merely sharing a coordinate
@@ -9974,7 +10000,7 @@ $\theta=\pi/6$ and the expected exact vanishing $F_{\mathrm{tri}}(\theta_*)=0$
 at the swap point itself.
 \end{thm}
 
-\subsection{A single-piece proof: the \texorpdfstring{$m=6$}{m=6} hexagon swap}\label{sec:swap-m6}
+\subsection{The hexagon swap, \texorpdfstring{$m=6$}{m=6}}\label{sec:swap-m6}
 
 The third configuration is a $6$-direction cyclic ``hexagon'' rotation
 (the natural $D_4$-Weyl-orbit generalisation of the pairwise swap),
@@ -10060,7 +10086,7 @@ carries the single-deviation case to a complete result precisely because
 that case has a fixed body behind it; it stops where the body itself
 starts to move.
 
-\subsection{Why there is no magic function in dimension four}
+\subsection{Linear programming bounds in dimension four}
 
 The magic functions in dimensions $8$ and $24$ are not found by search.
 They are pinned down by an interpolation formula that works because, at
@@ -10095,7 +10121,7 @@ bounds the Voronoi cell one configuration at a time, at the cost of a
 case analysis and of having to classify the equality case by hand, is
 not a second choice here. It is the only choice on offer.
 
-\subsection{What each method leaves the reader to check}
+\subsection{What each method asks of the reader}
 
 The methods differ sharply in the kind of verification they demand. A
 linear or semidefinite programming bound, whether Cohn--Elkies style or
@@ -10123,7 +10149,7 @@ solver, no tolerance, and no formalisation needed to repeat them. The
 price is scope. The method reaches a complete theorem on the
 single-deviation problem and stops there.
 
-\subsection{What the atlas is for}
+\subsection{The role of the atlas}
 
 The $176$-cell decomposition of \cref{sec:chamber-register} is what
 makes the root-aligned case a finite computation. It plays no part in
@@ -10161,7 +10187,7 @@ centre with at most twenty-three others within $\sqrt6$ and at every
 centre near the root system, and states the one case it does not
 reach. This section puts all of that in one place.
 
-\subsection{Proved}
+\subsection{What is proved}
 
 \Cref{thm:local-uncond} and \cref{cor:density-uncond}: every Voronoi
 cell of a unit-ball packing of $\mathbb{R}^4$ at which at most one
@@ -10189,9 +10215,8 @@ is the case of the cap inequality in which two or more of the four
 squared coordinates exceed $\tfrac14$; it is settled by a finite
 certificate of $303$ boxes in exact rational arithmetic, with a margin
 of about a quarter. The whole chain, from the vertex enumeration of $Q$
-to the box certificate, is reproduced by the single script
-\texttt{cap\_inequality\_certificate.py} described in
-\cref{app:code-index}.
+to the box certificate, is reproduced by a single program
+(\cref{app:code-index}).
 
 \Cref{cor:second-order} adds a quantitative form below
 $42.17598\ldots^\circ$: there the defect is at least the explicit
@@ -10329,18 +10354,19 @@ within $\sqrt6$, one of them at a distance between $2+\varepsilon_0$ and
 $\sqrt6$, at most twenty-four of them within $2.0161$: with at most
 twenty-three the three-point method carries over from the sphere to the
 shell (\cref{thm:m23-labelled}), and closer to contact the bound holds
-(\cref{thm:near-contact}). A proof there consists of the four statements
-listed at the end of \cref{sec:closure}: the shape of twenty-four
-directions at slack of order $10^{-2}$, a lower bound for the volume
-between the explicit neighbourhood of the root system and the pair terms,
-the configurations of twenty-three contacts with one near-contact, and
-certificates for the counts from twenty-five up. What is proved towards
-them is the cardinality half of the first (\cref{thm:kissing-stable}),
-the second order of the second (\cref{prop:cone-min}) with the push-outs
-integrated exactly (\cref{prop:push-integrated}), and the count for
-twenty-three (\cref{thm:m23-labelled}); the evidence for the rest, and
-the ceiling of the present certificate (\cref{rem:robust-ceiling}), are
-set out there.
+(\cref{thm:near-contact}). By \cref{prop:reduction-G} the conjecture
+follows from two statements: the volume bound (G) for twenty-four centres
+within $\sqrt6$ wherever the pair terms fall below $8$, and the bound (C)
+on the pair terms for twenty-five or more. What is proved towards them is
+the cardinality bound of \cref{thm:kissing-stable}, the second order of
+(G) (\cref{prop:cone-min,prop:tilt-block}) with the push-outs integrated
+exactly (\cref{prop:push-integrated}), the exact curves of contact cells of
+volume $8$ that any proof of (G) has to control (\cref{prop:hexagon-loop}),
+and the count for twenty-three (\cref{thm:m23-labelled}). The route
+through the shape of twenty-four directions stops at slack $0.01698$,
+where a second code appears (\cref{prop:second-code}); the evidence for
+the rest, and the ceiling of the present certificate
+(\cref{rem:robust-ceiling}), are set out in \cref{sec:closure}.
 
 The checks are also formal where they are finite. The verifications of
 \cref{thm:certificate,thm:m23-labelled,thm:kissing-stable} run in Lean as
@@ -10472,7 +10498,7 @@ and by \cref{prop:second-order} the measures of the contact caps and of
 their pairwise intersections, used to the last drop, return
 $7.997885\ldots$ at twenty-three contacts, so they too stop short.
 
-\subsection{What we take from this}
+\subsection{Outlook}
 
 The single-deviation problem turned out to have a fixed body behind it,
 and once that body was identified the problem stopped being about the
@@ -10506,442 +10532,163 @@ footing rather than on the certificate of \cref{thm:twentyfour-points};
 the exact $5$-dimensional invariant space is in hand, so what that route
 needs is a derivation rather than a search.
 
-\section{Reproducibility}\label{sec:reproducibility-new}
+\section{Computer verification}\label{sec:reproducibility-new}
 
-\subsection{Two independent arithmetic paths}
-
-Every exact rational claim in \cref{sec:stage-one}, which is to say the
-$LDL^\top$ pivots for all $176$ cells, was produced twice: once with
-Python's \texttt{fractions.Fraction} and no computer-algebra library at
-all, once with \texttt{sympy}'s rational type on a separate code path
-\cite{Meu17}. The two agree digit for digit on every pivot of every
-cell.
-
-\subsection{A machine-checked kernel}
-
-Fifteen parts of the paper are verified by a proof assistant and not by a
-program whose output has to be trusted, and all fifteen are finite
-arithmetic or polynomial identities. The supplement carries them as
-Lean~4 sources in a directory of their own: twelve files that compile
-against a bare toolchain, and three small Lake projects.
-
-The first is \texttt{lean/D4Stress.lean}, on the equilibrium relation
-\eqref{eq:stress}, which is what carries \cref{prop:deletion-rigid} and
-with it the statement that a saturated configuration cannot be reached
-by bending a deletion. Formalised there are the twenty-four roots and
-their squared length, the fact that every inner product between distinct
-roots is one of $-2,-1,0,1$ in the integer scaling, the degree eight of
-every root in the graph of pairs at $60^\circ$, the count of $23$
-directions and $88$ tight pairs after a deletion, the multiplicities
-$1,8,6,8$ of the four values of $\langle a_i,a_0\rangle$, the positivity
-of the weights $y_{ij}$ on every tight pair, and the relation
-\eqref{eq:stress} itself at each of the $23$ directions; and, for
-\cref{cor:root-rigid}, the $96$ tight pairs of the full root system and
-the relation for the constant stress, that the eight neighbours of every
-root sum to four times it, which is also the finite content that
-\cref{lem:rigidity-spectrum} starts from.
-
-The second is \texttt{lean/D4Meet.lean}, on the finite half of
-\cref{prop:meet22,prop:meet21}. The proofs there split into three
-inequalities in the coordinates of a unit vector, which are written out
-in the text, and a set of statements about the six supports of the roots
-and the three couples of complementary index pairs, which are finite.
-Formalised are the support of each root and the fact that it is well
-defined, that each support carries four roots and each couple uses two
-supports, that every pair of roots leaves some couple whole, that
-exactly $48$ ordered triples of supports do not and that each of those
-consists of three distinct supports forming a star or a triangle, which
-is the eight unordered patterns of the proof and, since each support
-carries four roots, the $512$ triples of roots that the script counts,
-that $96$ triples of roots are pairwise at $60^\circ$ and no root is at
-$60^\circ$ from all three members of such a triple, that the Hadamard
-map permutes the roots, preserves inner products and carries the
-standard triangle to the standard star, and that removing the standard
-star leaves the twelve roots of the lower block together with three of
-the four roots at each of the remaining supports.
-
-Neither file has a \texttt{sorry} in it and neither depends on a
-library, Mathlib included: they compile against a bare Lean~4 toolchain,
-and the axiom report at the foot of each states that every one of its
-theorems depends on no axiom whatever.
-
-The third, on \cref{prop:cell600}, is a Lake project in the
-directory \texttt{lean/cell600}. Its first module,
-\texttt{D4Cell600Enum.lean}, carries the $120$ vertices of the $600$-cell with doubled coordinates
-in $\mathbb{Z}[\phi]$, written as pairs of integers, and has the kernel
-check by \texttt{decide} that there are $120$ of them, pairwise
-distinct and of unit length; that $4\langle u,v\rangle$ takes only the
-nine values listed in the proof of \cref{prop:cell600}; that every
-vertex has twelve neighbours at $36^\circ$ and seventy-one partners at
-one of the four root-system angles; and that the twenty-five listed
-cells have $24$ vertices each, all pairwise at root-system angles, with
-exactly five cells through every vertex. The same module defines the
-depth-first search over $64$-bit bitsets, with its clique-cover bound,
-as an ordinary Lean function. The second module,
-\texttt{D4Cell600Main.lean}, states the three counts, no independent
-set of size $25$ through a fixed vertex, five of size $24$ and $115$ of
-size $23$ with every one of the $115$ inside a cell, and settles each by
-\texttt{native\_decide}, which compiles the search and runs it. That
-tactic trusts the Lean compiler as well as the kernel, and the axiom
-report says so: each of the three theorems depends on
-\texttt{propext}, \texttt{Quot.sound} and its own
-\texttt{native\_decide} axiom, while every theorem of the first module
-depends on nothing beyond \texttt{propext}. Building the project with
-\texttt{lake build} compiles the first module to native code before the
-second is checked, and the whole run takes about four minutes, most of
-it the kernel's own evaluation of the $14400$ inner products. The same
-enumeration is run independently in Python and in C
-(\cref{app:code-index}), and the three agree.
-
-The fourth is \texttt{lean/D4Certificate.lean}, on the exact half of
-the verification of \cref{thm:certificate}. The file is generated from
-the certificate by \texttt{lean/gen\_certificate\_lean.py}, each
-floating-point number written as the dyadic rational it is, an integer
-over a power of two; it then proves, by \texttt{decide +kernel} on
-\texttt{Rat} and with no compiled code, that $f_1,\dots,f_8$ are
-nonnegative, that each of the nine matrices $F_k$ is symmetric and
-positive definite by an exact $LDL^{\mathsf T}$ elimination with every
-pivot positive, and that the bound \eqref{eq:certificate-bound} exceeds
-$92.8555703$ in the units of the solver, above $1000(8-A_*)$. It
-compiles in under a minute and its axiom report lists
-\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}
-only, the three standard axioms that arithmetic on \texttt{Rat} brings
-in.
-
-The fifth is the Lake project \texttt{lean/certificate}, on the
-branch and bound of \cref{thm:certificate}. Its module
-\texttt{D4CertDomain.lean} expands the polynomial $P$ of the certificate
-exactly over the rationals from the same numbers, multiplies it by
-$315$, the least odd integer that clears the denominators of the
-Gegenbauer and symmetrisation coefficients, so that every coefficient
-is an integer over a power of two, and runs the subdivision of the
-ordered admissible domain with the second-order Taylor form in dyadic
-arithmetic, integers and exponents with no rounding; the tables of
-bounds for $\omega$, $\omega'$ and $\omega''$ are the one input it
-takes from \texttt{certificate\_check.py}, written into
-\texttt{D4CertData.lean} as dyadic numbers by \texttt{gen\_data.py}.
-The module \texttt{D4CertMain.lean} states that the check returns true
-and settles it by \texttt{native\_decide}; the build compiles the
-arithmetic to native code first, as for the $600$-cell, and the run,
-which processes $421\,881$ boxes, takes about twenty minutes; a fourth
-module, \texttt{D4CertStat.lean}, repeats it with a counter and records
-that number. The same project carries the regions II$_s$ and II$_f$ of
-the proof of \cref{thm:m23-labelled}, whose region I is \eqref{eq:C}:
-\texttt{D4LabelledDomain.lean} reruns the branch and bound with the
-tables of $\omega$ extended to $a_D$, with the linear term $c\,(t-\tfrac12)$
-on the slab ($39\,399$ boxes) and, beyond it, with the lower bound for
-$\Gamma_1+\Gamma_2+\Gamma_3$ ($9\,545$ boxes), whose shares $\mathrm{fr}$
-at $256\times1601$ points, from exact bounds for the square roots, packing
-bounds $a(d_i,d_j)$, envelopes and minimisation over the cells are all
-computed in Lean. It takes from \texttt{labelled\_certificate\_check.py}
-only the tables of $\omega$, the constant $c$ and the enclosures of the
-$256$ cell integrals of $A$, written as dyadic numbers by
-\texttt{gen\_labelled\_data.py}; \texttt{D4LabelledMain.lean} states the
-three theorems, and the two runs take about a minute. Finally
-\texttt{D4Omega.lean} computes those inputs in Lean too, in outward-rounded
-$256$-bit interval arithmetic from the closed forms of $\omega$, $\omega'$,
-$A_*$ and the cap $S(d)$, with arctan from its series and $\pi$ from Machin's
-formula; \texttt{D4OmegaMain.lean} proves that $A_*>8-0.0928555703$, that
-$s(D)>8-A_*$, that the constant $c$ and the $256$ cell integrals of the data
-are confirmed, and reruns II$_s$ and II$_f$ with the Lean tables ($39\,551$ and
-$9\,545$ boxes), which then take nothing from outside Lean but the
-certificate; \texttt{D4OmegaRegionI.lean} reruns region I with them as well,
-in sixteen minutes.
-
-The sixth is \texttt{lean/D4InnerProducts.lean}, on the certificate
-behind \cref{thm:twentyfour-points}: the two-point polynomial
-$\sigma_2$ of \cref{prop:verified}, computed exactly from the deposited
-data \cite{LLM24data} by \texttt{llm24\_certificate\_check.py}
-and written into the file with its coefficients scaled to integers of
-about fifteen thousand digits, is shown by kernel computation on
-\texttt{Rat} to vanish on $[-1,\tfrac12]$ exactly at
-$-1,-\tfrac12,0,\tfrac12$, with multiplicities $1,2,2,1$, the count of
-further zeros being a Sturm sequence; \cref{sec:certificate-checked} says
-what this establishes.
-
-The seventh is \texttt{lean/D4RootLattices.lean}, on the finite content
-of \cref{lem:root-lattice}, the step that carries
-\cref{thm:twentyfour-points} to \cref{thm:m24}. It enumerates every
-symmetric integer matrix of order $r\le4$ with $2$ on the diagonal and
-$-1$, $0$ or $1$ off it, keeps the positive definite ones by Sylvester's
-criterion on the leading minors, $1$, $3$, $23$ and $393$ of them,
-encloses the vectors of norm $2$ of each lattice in the box
-$x_i^2\le2A_{ii}/D$ that Cauchy--Schwarz in the inner product of the
-lattice gives, $A_{ii}$ the cofactor and $D$ the determinant, and counts
-the integer vectors of norm $2$ in the box. It proves that the largest
-counts are $2$, $6$, $12$ and $24$, that $24$ occurs only at rank $4$
-and determinant $4$, that between $20$ and $24$ no count occurs, and
-that in every case with $24$ vectors four of them have the Cartan matrix
-of $D_4$ as their Gram matrix, so that the lattice contains a copy of
-the $D_4$ root lattice of its own determinant and is that lattice. The
-theorems are settled by \texttt{native\_decide} in a few seconds, and
-the axiom report lists \texttt{propext} and the tactic's own axiom, as
-for the $600$-cell.
-
-The eighth is \texttt{lean/D4Closure.lean}, on \cref{sec:closure}. It
-proves the identity of \cref{lem:holes}, the identity of
-\cref{prop:inversion-hull} with its denominator cleared, and the two
-identities of four points in the proof of \cref{lem:no-triple}, the sum
-of the squared distances and the minimality of the centroid, and the
-identity for $a(d_1,d_2)$ in the proof of \cref{thm:m23-labelled}, over
-every commutative ring, by the ring normaliser of Lean's \texttt{grind},
-so that they hold verbatim over $\mathbb{R}$; it checks the counts $21$
-and $231=21\cdot11$ of that proof; and it proves by kernel computation
-(\texttt{decide +kernel}) the finite content of
-\cref{cor:root-subsets}: the $24$ vertices of the $24$-cell, each on six
-facets; each the sum of exactly three orthogonal pairs of roots, $72$
-pairs in all; no deleted set of one or two roots meets all three pairs
-at any vertex; and of the $2024$ deleted triples exactly $96$ do, each
-pairwise at $60^\circ$ with a common vertex. The identities depend on
-\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, the
-standard axioms of Lean's logic, and the combinatorial theorems on
-\texttt{propext} at most; none uses \texttt{native\_decide}. The file
-checks in about a minute and a half.
-
-The ninth is \texttt{lean/D4SecondOrder.lean}, on \cref{sec:second-order}.
-It takes nothing from the computations of that section but the certificate:
-from the integral root system it builds the $24$ roots, the $24$ vertices of
-the scaled $24$-cell, a rational basis of each tangent space, the $96$ tight
-pairs and their triangles, the form $H$ of \cref{prop:hessian-d4} by the
-midpoint rule, the $120$ rows of the packing cone and the vector $c$; and it
-proves that the $43$ orbit values of $N$ are nonnegative and cover every pair
-of rows exactly once, that $P=H+cc^{\mathsf T}-B^{\mathsf T}NB$ is symmetric and
-positive semidefinite by an exact $LDL^{\mathsf T}$ with $30$ zero pivots, each
-with a zero row, so that $H(\xi,\xi)\ge-(\sum_i\delta_i)^2$ on the cone
-(\cref{prop:cone-min}), that $H$ is $\mathrm{Adj}-4I$ on the push-outs and that
-\eqref{eq:eta-identity} holds, and that equality holds on the $24$ one-centre
-rays; and, by \texttt{grind} over every commutative ring, the expansions of
-\cref{lem:pure-push} and of the one-centre formula. The finite checks use
-\texttt{native\_decide}, and the file checks in about thirty seconds. That $H$
-is the Hessian of the volume and that the rows are the linearised packing
-constraints are \cref{lem:second-variation} and the text, checked numerically
-but not formalised.
-
-The tenth is \texttt{lean/D4NearContact.lean}, on the explicit constant
-$\varepsilon_0$ of \cref{thm:near-contact}, generated from the exact
-coefficients of $\sigma_2$ by \texttt{gen\_near\_contact\_lean.py}. It
-divides $\sigma_2$ exactly by $(u+1)(u+\tfrac12)^2u^2(u-\tfrac12)$; proves by
-a branch and bound in exact rationals, with a second-order Taylor form, that
-the quotient is at most $-2.62\cdot10^{-4}$ on $[-1,\tfrac12]$ ($135$
-intervals) and that $f$ is at least $1.12\cdot10^{-8}$ at distance at least
-$3\cdot10^{-4}$ from its zeros ($133$ intervals); checks the arithmetic of
-\cref{lem:root-lattice-robust}, with every square root replaced by a
-rational whose square is compared; bounds $|\sigma_2'|$ near $\tfrac12$ by
-$0.22573$ and checks $E(24,\kappa)<2.62\cdot10^{-4}\cdot1.12\cdot10^{-8}$,
-$E(25,\kappa)<1$ and $\tfrac12-2/(2+\varepsilon_0)^2\le\kappa$ at
-$\kappa=2\cdot10^{-26}$, taking the bounds $B_3\le8.75\cdot10^7$ and
-$B_4\le7.34\cdot10^9$ of the sums of squares as its only inputs; and
-evaluates the bracket $\beta$ of the proof of \cref{thm:near-contact} in
-exact rationals, positive at $S=24\varepsilon_0$, at least $0.1$ at
-$S=4\cdot10^{-3}$ and decreasing on a grid of step $10^{-5}$. Twelve
-theorems, settled by \texttt{native\_decide} in about twenty seconds; with
-the targets raised to $2.621\cdot10^{-4}$ and $1.125\cdot10^{-8}$, just
-above the true minima, the branch and bounds fail, as they should.
-
-The eleventh is the Lake project \texttt{lean/cardinality}, on
-\cref{thm:kissing-stable}. \texttt{gen\_data.py} writes the certificates of
-degree $8$ at $s_0=0.0065$ and of degree $10$ at $s_0=0.008$ into
-\texttt{KissData.lean} as dyadic numbers, with $t$ as the decimal of the
-paper, the least double at or above it, and $e_1$, $e_2$ as the largest
-doubles at or below their decimals. \texttt{KissDomain.lean} expands $F$ and
-$f+3F(1,\cdot,\cdot)+1$ from the Legendre, Chebyshev and Gegenbauer
-recurrences ($425$ and $756$ monomials, as in Python), scales them by the
-least odd integers that make their coefficients dyadic ($3$ and $21$, $3$ and
-$3465$), and checks that every $f_k$ is nonnegative, that every $F_k$ is
-symmetric and positive definite by an exact $LDL^{\mathsf T}$, that $F$ is
-symmetric, that $24(1-e_1)-552e_2$ exceeds $f(1)+F(1,1,1)$, and, by the
-branch and bound of \texttt{lean/certificate} without the $\omega$ terms, (i)
-on $[-1,t]$ and (ii) on the ordered admissible domain.
-\texttt{KissMain8.lean} and \texttt{KissMain10.lean} state three theorems
-each and settle them by \texttt{native\_decide}; degree $8$ takes $441$
-intervals, $181\,869$ boxes and seven minutes, and degree $10$ takes $2\,957$
-intervals for (i) and four hours and ten minutes for (ii). Nothing enters but
-the certificate entries.
-
-The twelfth is \texttt{lean/D4Rigidity.lean}, on \cref{lem:rigidity-spectrum}.
-From the integral roots it builds the $96\times96$ integral matrices $\Lambda'$,
-$2P$, $4N$ and $2K$ of the proof, and checks that $4N$ is annihilated by
-$x(x-8)(x-20)(x-24)(x-32)$, that the ranks of $4N-cI$ over $\mathbb{Q}$ are
-$66,67,88,75,88$, so that the multiplicities are $30,29,8,21,8$, that $2K$ is
-annihilated by $x(x-4)(x-10)(x-12)(x-16)$ with every diagonal entry of
-$(2K-4I)(2K-10I)(2K-12I)(2K-16I)$ equal to $2400$, which is the diagonal
-$\tfrac{11}{16}$, and that one displaced direction has
-$\|\Lambda\tau\|_1^2/\|\tau\|_2^2=\tfrac{96}{11}$; and, for
-\cref{thm:local-uniqueness}, that the tight inner products of a tangent vector
-sum to zero and that $12^2\cdot\tfrac{11}{16}+\tfrac14=\tfrac{397}4$; by
-\texttt{native\_decide}, in about ten seconds.
-
-The thirteenth is \texttt{lean/D4Cap.lean}, on \cref{sec:cap-theorem}. From
-the integral roots it enumerates the vertices of $Q$ exactly over all
-$4$-subsets of the $23$ remaining roots, $25$ of them, with one beyond the
-facet of the deleted root; computes $\vol(\VCell)=8$ and $\vol(Q)=\tfrac{25}3$
-exactly, each octahedral facet split into four tetrahedra; checks
-\cref{lem:crosspolytope} with equality attained; checks the formula for
-$g''''$ of \cref{lem:monotone} by applying $\frac1{2t}\frac{d}{dt}$ four times
-to $t^2(2t-1)^4$, and that $g'''$ vanishes at $a=\tfrac14$; checks the three
-polynomial identities of the case $|S|=1$ of \cref{thm:cap-inequality}, the
-signs of their factors on rational intervals containing the three ranges,
-and the integer inequalities at the endpoints; and reruns the box
-certificate of the case $|S|\ge2$, finding the same $303$ boxes and the
-largest corner value $0.99755\ldots$. About ten seconds.
-
-The fourteenth is \texttt{lean/D4HexagonLoop.lean}, on
-\cref{prop:hexagon-loop}. In the ring
-$\mathbb{Q}(\sqrt3)[c,s]/(c^2+s^2-1)$, with $c=\cos\theta$ and
-$s=\sin\theta$, it computes $J_1C^2$ and $J_2C^3$ from the vertices of the
-two triangles of one sector and proves their closed forms, the identity
-$3J_1^2-4\sqrt3\,J_2=32$ and the six conditions for no slice to be a
-triangle; it checks the Gram matrix at $\theta=0$ against the unit roots,
-and proves the perfect square over every commutative ring with
-\texttt{grind}. About a second.
-
-The fifteenth is \texttt{lean/D4SecondCode.lean}, on
-\cref{prop:second-code}: the $24$ rational points, each of norm $1$, every
-two with inner product at most $\tfrac12+\tfrac{849}{50000}$, and one inner
-product at distance at least $\tfrac{57}{250}$ from $-1,-\tfrac12,0,\tfrac12,1$.
-About a second.
-
-That is a stronger form of checking than anything else in this paper,
-and it is available here only because these particular arguments are
-finite and, after the scaling by $315$, dyadic. The rest of the paper
-is not formalised: the Lean theorem of
-the certificate is about a program, and the analysis that makes the
-program a proof is in the text; and where the objects are polytope
-volumes in $\mathbb{R}^4$ and cap measures on $S^3$ there is
-nothing in the standard libraries to build a formalisation on.
-
-\subsection{What kind of claim each claim is}
-
-Every assertion in this paper falls into one of three kinds, and the
-text says at each point which kind is in play. The first is an exact
-computation, in $\mathbb{Q}$ or $\mathbb{Q}(\sqrt2)$ with no
-floating-point step anywhere, or in rigorous interval arithmetic:
-\cref{sec:stage-one,sec:stage-two,sec:arc1-cert}, the exact parts of
-\cref{sec:arc2-cert}, the whole of \cref{sec:cap-theorem}, whose
-box certificate runs in exact rational arithmetic throughout, the
+Parts of the argument are computations, and this section says what kind
+of computation each is and how it has been checked. Every assertion of
+the paper is of one of three kinds, named at the point of use. The first
+is an exact computation, in $\mathbb{Q}$, $\mathbb{Q}(\sqrt2)$ or
+$\mathbb{Q}(\sqrt3)$ with no floating-point step, or in interval
+arithmetic with outward rounding \cite[Ch.~5]{MKC09}: the pivots of
+\cref{sec:stage-one}, the certificates of
+\cref{sec:stage-two,sec:arc1-cert,sec:arc2-cert,sec:cap-theorem}, the
 certificates of \cref{sec:certificate,sec:certificate-checked,sec:closure,sec:m24-robust},
-and the certificate of \cref{prop:cone-min}. The second
-is a high-precision numerical computation, carried out in \texttt{mpmath}
-at a stated working precision between $35$ and $400$ decimal digits,
-used where no symbolic route was pursued; this is where the
-material of \cref{sec:exact-sing,sec:broad-sample} sits. The third is an
-ordinary double-precision calculation, used only to locate candidate
-regions, breakpoints and configurations before an exact or
-high-precision verification, or reported as evidence, and never as the
-basis of a claim on its own. Where a claim is of the second kind the
-text says so at the point of use, gives the precision reached, and,
-where a second precision is available, the cross-check against it
-(\cref{sec:hp-volume-method,sec:broad-sample}).
+the certificate of \cref{prop:cone-min}, and the identities of
+\cref{prop:hexagon-loop,prop:second-code}. The second is a
+high-precision evaluation, at a stated working precision between $35$ and
+$400$ digits and cross-checked at a second one; this is where
+\cref{sec:exact-sing,sec:broad-sample} sit. The third is an ordinary
+double-precision calculation, used to locate breakpoints, active sets and
+candidate configurations before an exact check, or reported as evidence;
+no claim rests on it alone. Sign decisions of the third kind are made only
+above a threshold set well beyond the accumulated rounding error, in the
+sense of the backward-error accounting of \cite{GVL13}.
 
-Two conventions inherited from the numerical-analysis literature are
-worth naming, since they govern the third kind. Sign decisions near a
-breakpoint are made only when the quantity exceeds a threshold set well
-above the accumulated rounding bound for the computation in question, in
-the spirit of the standard backward-error accounting
-\cite{GVL13}; and where an interval enclosure is used rather than a
-threshold, the arithmetic follows the outward-rounding convention of
-\cite{MKC09}. Neither convention is load-bearing for any exact claim.
+\subsection{Independent arithmetic}
+
+Every exact rational claim of \cref{sec:stage-one}, the $LDL^\top$ pivots
+of all $176$ cells, was produced twice, once with plain rational
+arithmetic and no computer algebra system, once with the rational type of
+\cite{Meu17} on a separate code path; the two agree digit for digit on
+every pivot of every cell. The certificate of \cite{LLM24} is verified
+from the deposited data \cite{LLM24data} in code that shares nothing with
+its authors', with the exact rational arithmetic of FLINT and the ball
+arithmetic of Arb \cite{Joh17}. The box certificates are regenerated by
+the rule stated in \cref{app:box-cover-algo}, so that a quoted box count
+is exact and reproducible.
+
+\subsection{The formal part}\label{sec:formal-part}
+
+Fifteen parts of the paper are also verified in the Lean~4 proof
+assistant, with no external library; each is a finite computation or a
+polynomial identity, and \cref{tab:formal} lists them. Identities are
+proved over every commutative ring by Lean's ring normaliser, so that they
+hold verbatim over $\mathbb{R}$. Finite computations are settled either by
+the kernel itself or by compiled evaluation (\texttt{native\_decide}); the
+second trusts the compiler as well as the kernel, and the axiom report of
+each theorem says which was used. No proof in the formal part uses
+\texttt{sorry}. What is formalised is the arithmetic: that a certificate
+makes a program's inequality a theorem, that a Hessian is the Hessian of
+the volume, or that a cap measure has the stated closed form, is argued
+in the text and is not formalised, because the geometry of polytopes and
+cap measures in $\mathbb{R}^4$ has no counterpart in the standard
+libraries on which a formalisation could be built.
+
+\begin{longtable}{@{}p{0.27\textwidth}p{0.69\textwidth}@{}}
+\caption{The formally verified parts of the paper.}\label{tab:formal}\\
+\toprule
+Result & What Lean checks \\
+\midrule
+\endfirsthead
+\toprule
+Result & What Lean checks \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\cref{prop:deletion-rigid}, \cref{cor:root-rigid} & The $24$ roots, their
+inner products, the $96$ and $88$ tight pairs, the positivity of the
+stress and the equilibrium relation \eqref{eq:stress} at every direction;
+the neighbour sum of the full root system. \\
+\cref{prop:meet22,prop:meet21} & The supports of the roots, the couples of
+complementary index pairs, the $48$ exceptional ordered triples of
+supports, the $96$ triples of roots pairwise at $60^\circ$, and the
+Hadamard symmetry used in the proof. \\
+\cref{prop:cell600} & The $120$ vertices of the $600$-cell in
+$\mathbb{Z}[\phi]$, their inner products, the twenty-five inscribed
+$24$-cells, and the exhaustive search: no independent set of $25$, five of
+$24$ and $115$ of $23$. \\
+\cref{thm:certificate} & The exact half: nonnegativity of $f_1,\dots,f_8$,
+positive definiteness of the nine $F_k$ by exact $LDL^{\mathsf T}$, and the
+bound; and the branch and bound of \eqref{eq:C} on the admissible domain
+in exact dyadic arithmetic ($421\,881$ boxes). \\
+\cref{thm:m23-labelled} & Regions I, II$_s$ and II$_f$ of the proof
+($419\,913$, $39\,551$ and $9\,545$ boxes), with $\omega$, $\omega'$, $A_*$,
+the cap $S(d)$, the shares and the Gamma envelopes computed inside Lean
+in outward-rounded $256$-bit interval arithmetic. \\
+\cref{prop:verified} & The zeros of the two-point polynomial $\sigma_2$ on
+$[-1,\frac12]$, with their multiplicities, by a Sturm sequence. \\
+\cref{lem:root-lattice} & Every positive definite Gram matrix of order at
+most $4$ with $2$ on the diagonal and $-1,0,1$ off it, and the count of its
+norm-$2$ vectors; $24$ occurs only for $D_4$. \\
+\cref{sec:closure} & The identities of \cref{lem:holes,prop:inversion-hull,lem:no-triple},
+the identity for $a(d_1,d_2)$, the counts $21$ and $231$, and the finite
+content of \cref{cor:root-subsets}. \\
+\cref{sec:second-order} & The form $H$ built from the root system, the
+certificate of \cref{prop:cone-min} by exact $LDL^{\mathsf T}$, the push-out
+block, the tilt block of \cref{prop:tilt-block}, and the expansions of
+\cref{lem:pure-push}. \\
+\cref{thm:near-contact} & The arithmetic of $\varepsilon_0$: the quotient
+of $\sigma_2$, its bounds on $[-1,\frac12]$, the constants of
+\cref{lem:root-lattice-robust} and the bracket $\beta$. \\
+\cref{thm:kissing-stable} & Both certificates from their entries alone:
+positivity, the bound, and both branch and bounds ($441$ intervals and
+$181\,869$ boxes at degree $8$; $2\,957$ intervals at degree $10$). \\
+\cref{lem:rigidity-spectrum,thm:local-uniqueness} & The annihilating
+polynomials of $4N$ and $2K$, the ranks over $\mathbb{Q}$, the diagonal
+$\frac{11}{16}$, the ratio $\sqrt{96/11}$ and the arithmetic of the radius
+$2/\sqrt{397}$. \\
+\cref{sec:cap-theorem} & The $25$ vertices of $Q$, $\vol Q=\frac{25}3$,
+\cref{lem:crosspolytope}, the fourth derivative of \cref{lem:monotone},
+the three ranges of the case $|S|=1$ and the $303$ boxes of the case
+$|S|\ge2$. \\
+\cref{prop:hexagon-loop} & The integrals $J_1$ and $J_2$ in closed form in
+$\mathbb{Q}(\sqrt3)[c,s]/(c^2+s^2-1)$, the identity
+$3J_1^2-4\sqrt3J_2=32$, the conditions on the slices, the Gram matrix at
+$\theta=0$ and the perfect square. \\
+\cref{prop:second-code} & The $24$ rational points of $S^3$, their slack
+$\frac{849}{50000}$ and the inner product at distance $\frac{57}{250}$
+from $-1,-\frac12,0,\frac12,1$. \\
+\end{longtable}
 
 \subsection{Verifying from the text alone}
 
-This paper is written so that a reader can check it without running
-anything. Every exact rational, $\mathbb{Q}(\sqrt2)$-rational and
-Bernstein-coefficient claim appears explicitly, as a displayed fraction,
-a displayed polynomial, or a table entry, and not on the authority of a program the reader has not seen. A reader with a computer algebra
-system can re-derive any pivot, factorisation or coefficient list from
-the definitions in
-\cref{sec:hessian-def-new,def:joint-hessian-new} and the boundary curves
-of \cref{thm:arc1-breakpoints-new,thm:arc2-breakpoints-new}. The cap
-inequality of \cref{sec:cap-theorem} is self-contained in the same
-sense: the cap formula, the monotonicity, the three polynomial
-inequalities and the subdivision rule are all stated in full, and the
-only object that is not printed in the paper is the list of $303$ boxes,
-which the stated rule regenerates.
+The paper is written so that it can be checked without running anything.
+Every exact rational, $\mathbb{Q}(\sqrt2)$-rational and Bernstein
+coefficient claim appears explicitly, as a displayed fraction, a displayed
+polynomial or a table entry. A reader with a computer algebra system can
+re-derive any pivot, factorisation or coefficient list from the
+definitions in \cref{sec:hessian-def-new,def:joint-hessian-new} and the
+boundary curves of \cref{thm:arc1-breakpoints-new,thm:arc2-breakpoints-new}.
+The cap inequality of \cref{sec:cap-theorem} is self-contained in the same
+sense: the cap formula, the monotonicity, the three polynomial inequalities
+and the subdivision rule are stated in full, and the only object not
+printed is the list of $303$ boxes, which the stated rule regenerates. The
+longest single computation of the paper is the formal check of the
+degree-$10$ certificate of \cref{thm:kissing-stable}, about four hours on
+one core; every other step takes minutes.
 
-\subsection{Cost of the underlying computations}
-
-For context rather than for verification, the more demanding derivations
-took, on ordinary consumer hardware: a few minutes for the vertex and
-volume stage of the second arc's band certificate
-(\cref{sec:arc2-band-cert-new}); about seven minutes per configuration
-for the broadened directional sampling of \cref{sec:broad-sample},
-being $439$ seconds for the $36$-direction sweep at the first
-configuration and $376$ seconds for the $30$-direction sweep at the
-second; about four minutes for the closed-form rebuild behind the $m=2$
-swap configuration of \cref{sec:swap-configs}, after which the exact
-positivity argument runs in well under a second; under a minute for
-the whole cap-inequality certificate of \cref{sec:cap-theorem},
-including the exact vertex enumeration of $Q$; about a minute and a half
-for the exhaustive enumeration of \cref{prop:cell600} in Python and two
-seconds for the same enumeration in C; between a quarter of an hour
-and half an hour for one pass of the continuation of
-\cref{sec:slack-continuation} through its twenty values of $\delta$;
-about twenty minutes for the linear programmes of
-\cref{prop:two-point-barrier}; about two hours for one run of the
-minimisation of a truncated volume in \cref{sec:strict-inequality};
-between one and three minutes for each semidefinite programme of
-\cref{sec:certificate} and about a quarter of an hour for a run of
-five rounds; under ten minutes for the verification of the certificate
-and under a minute for its Lean file, and about twenty minutes for the
-Lean run of the branch and bound; about eight minutes for the
-re-verification of the cited certificate and under a minute for its
-Lean file. The checks of \cref{sec:m24-volume} take about two minutes, and
-each moment problem of \cref{rem:m24-three-point} between a few seconds
-at degree $6$ and a minute and a half at degree $12$ on one core. The slowest step
-anywhere is the exact region derivation behind the first arc's
-box covers, whose symbolic cancellation is dominated by a few hard
-terms and can run for an hour or more; its output is cached in the
-supplement so that nothing downstream waits for it. Every exact rational
-$LDL^\top$ and Bernstein sign check finishes in well under a second.
-
-\subsection{Data availability}
-
-Verifying any claim in this paper requires no external code
-(\cref{app:code-index}). A supplementary package reproducing the
-computations, built on \texttt{numpy} \cite{Har20}, \texttt{scipy}
-\cite{Vir20}, \texttt{sympy} \cite{Meu17} and the convex-hull code of
-\cite{BDH96}, together with the Lean~4 development of
-\cref{sec:reproducibility-new} in its own directory, is publicly
-available at the repository given in the Data availability statement
-below.
 \section*{Data and code availability}
 
-The supplementary code package, with every script, certificate, run
-log and Lean file named in \cref{app:code-index}, is maintained at
+The supplementary package, with the programs, certificates, run logs and
+the Lean development of \cref{sec:formal-part}, is maintained at
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
 and archived on Zenodo under the concept DOI
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{10.5281/zenodo.22766562}
 \cite{D4Zenodo}, which resolves to the latest archived release; the
 release that corresponds to this paper is the latest one at the time of
-submission. The certificate that \cref{sec:certificate-checked}
-verifies is the data set of \cite{LLM24data}, deposited by its authors
-under the MIT licence; the archive \texttt{LasserreSphericalCodes.zip},
-with its checksum and its licence notice, is included in the
-supplementary archive, cut into parts below the file size the repository
-accepts and reassembled by a script that checks the checksum, so that
-the proof of \cref{thm:twentyfour-points} can be rerun from that archive
-alone. The package also contains an independent re-verification of every
-computation of the paper, in the directory
-\texttt{independent\_verification}, with its report and the logs of every
-run. The code of the re-verification, the programs of
-\cref{sec:noncontact} (\texttt{shell\_reduction.py} and
-\texttt{shell\_neighbour\_search.py}), the programs of \cref{sec:closure}
-and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
-\texttt{near\_contact\_probe.py}, \texttt{labelled\_certificate\_check.py},
-\texttt{truncated\_search.py}, \texttt{count\_bound\_sqrt6.py},
-\texttt{explicit\_eps0.py}, \texttt{three\_point\_probes.py},
-\texttt{cardinality\_sdp.py}, \texttt{certify\_cardinality.py},
-\texttt{robust\_ceiling.py}, \texttt{code25\_search.py},
-\texttt{facet\_bounds\_probe.py}, \texttt{count\_survey.py} and
-\texttt{hull\_along\_rays.py}), the
-scripts \texttt{level2\_numeric.py}, \texttt{level2\_sampled.py} and
-\texttt{d4\_independent\_check.py}, those of the directory
-\texttt{level2} and \texttt{multi\_cap/second\_order}, the collision test
-\texttt{tikz\_overlap\_check.py}, the
-Lean file \texttt{D4Closure.lean} and the scripts of the figures of
-\cref{sec:closure,sec:m24-robust} were developed with the
-assistance of Claude, an AI model made by Anthropic, and their
-computations were run with it.
+submission. It is built on \cite{Har20,Vir20,Meu17,BDH96,Joh17}. The
+certificate verified in \cref{sec:certificate-checked} is the data set of
+\cite{LLM24data}, deposited by its authors under the MIT licence; it is
+included, with its checksum and licence notice, so that the proof of
+\cref{thm:twentyfour-points} can be rerun from the archive alone. The
+package also contains an independent re-verification of every
+computation of the paper, with its report and the logs of every run. Part
+of the code of the package, including the re-verification, the programs
+behind \cref{sec:noncontact,sec:closure,sec:second-order,sec:m24-robust},
+the second-level runs, the figure collision test and part of the Lean
+development, was developed with the assistance of Claude, an AI model
+made by Anthropic, and its computations were run with it.
 
 \section*{Competing interests}
 
@@ -11318,7 +11065,7 @@ procedure; we have selected these eight for explicit display because
 they already exhibit every denominator class twice, and because
 $\Cell1$ is the worked example carried through \cref{sec:hessian-def-new}
 and used repeatedly as a running illustration in the main text.
-\section{Sum-of-squares identities and the independent verification path}\label{app:sos}
+\section{Sum-of-squares identities}\label{app:sos}
 
 \subsection{From \texorpdfstring{$LDL^\top$}{LDLT} to a sum of squares}
 
@@ -11365,7 +11112,7 @@ $\Cell4$ (orbit D, class $\mathsf d$, $\norm4=48$), consistent with
 \cref{lem:mineig-new}'s statement that the eigenvalue floor is attained
 on the most symmetric denominator class.
 
-\subsection{What this adds}
+\subsection{Remarks}
 
 This appendix is narrow in scope: it introduces no mathematical claim
 beyond \cref{prop:ldlt-new}, and its purpose is to record that two
@@ -11380,7 +11127,7 @@ mathematics through two code paths is not an independent proof.
 \Cref{prop:ldlt-new} is proved by the exact $LDL^\top$ decomposition
 together with Sylvester's criterion, and this appendix corroborates
 that.
-\section{Computational methodology}\label{app:code-index}
+\section{Methods of computation}\label{app:code-index}
 
 Every exact and numerical claim in the main text is reproduced in full,
 as an explicit rational number, an explicit polynomial or Bernstein
@@ -11425,7 +11172,7 @@ value is labelled as numerical evidence and never used as a proof step.
 
 \emph{Numerical semidefinite programming.} The Gram-matrix check of
 \cref{sec:gram-sos-A18} is a floating-point semidefinite program
-(\texttt{cvxpy}, solver \texttt{CLARABEL}) run over a least-squares fit
+run over a least-squares fit
 of directional samples; the underlying method is the one of
 \cite{Par03,Las01}. Its output is numerical evidence about a fitted
 approximant, and nothing more. Before it was applied to any of our data
@@ -11454,20 +11201,15 @@ symbolic determinant computed by one algorithm in one implementation
 should not be trusted without a second, independently implemented check,
 however routine the computation looks.
 
-The same caution is what \texttt{swap\_defect\_curves.py} is for. It
-recomputes the three functions of \cref{sec:swap-configs} from the cell
-itself, enumerating the local region of the deviated configuration with
-\texttt{scipy}'s \texttt{HalfspaceIntersection} and \texttt{ConvexHull}
-and subtracting $8$, at $211$ angles across $(0,\theta_*)$, by a route
-that shares no code and no method with the closed forms. For the
-hexagon, where a closed form is printed in \cref{sec:swap-m6}, the two
-agree to $9\times10^{-9}$ across the interval, which also identifies the
-six-cycle the closed form belongs to; the script finds that cycle by
-testing every six-cycle of roots at inner product $\tfrac12$ against the
-printed formula. It supplies \cref{fig:swap},
-and it reproduces the two numbers of \cref{sec:swap-not-worst}
-independently, $0.002474$ against $0.000834$ at $\theta=0.05$ and the
-crossover at $\theta=0.6492$.
+The same caution is why the three functions of \cref{sec:swap-configs}
+are also recomputed from the cell itself, by enumerating the local region
+of the deviated configuration and subtracting $8$ at $211$ angles across
+$(0,\theta_*)$, on a route that shares no code and no method with the
+closed forms. For the hexagon, where a closed form is printed in
+\cref{sec:swap-m6}, the two agree to $9\times10^{-9}$ across the
+interval, and the same route reproduces the two numbers of
+\cref{sec:swap-not-worst}: $0.002474$ against $0.000834$ at
+$\theta=0.05$, and the crossover at $\theta=0.6492$.
 
 \subsection*{The box-covering certificate}\label{app:box-cover-algo}
 
@@ -11508,809 +11250,55 @@ supplied by the monotonicity of \cref{lem:monotone}. The bound used is
 in both cases an outward-rounded enclosure in the sense of
 \cite[Ch.~5]{MKC09}.
 
-\subsection*{The cap-inequality certificate as a single script}
+\subsection*{The main certificates in outline}
 
-The chain of \cref{sec:cap-theorem} is short enough to run end to end in
-one program, and the supplementary package contains it as
-\texttt{cap\_inequality\_certificate.py}. It performs, in order: the
-exact rational vertex enumeration of $Q$, confirming $25$ vertices and
-$\vol(Q)=\tfrac{25}{3}$, with the pyramid of volume $\tfrac13$ recovered
-as the difference from the $24$-cell; the exact check that every vertex
-of $Q$ has $\ell^1$ norm at most $\sqrt2$ in the frame, which is
-\cref{lem:crosspolytope}, together with the observation that the bound is
-attained; a comparison of the closed form of \cref{lem:cap-formula}
-against directly computed cap volumes at random directions; the symbolic
-verification that $g''''(t^2)=3(20t^2-3)/(2t^5)$ and that $g'''$ vanishes
-at $a=\tfrac14$, which is \cref{lem:monotone}; the exact real-root
-isolation showing that each of the three polynomials of
-\cref{thm:cap-inequality} has no root in its interval; the adaptive
-subdivision producing the $303$ boxes and their corner bounds, entirely
-in \texttt{fractions.Fraction}; and finally, as an independent check of
-the conclusion rather than a step in it, the direct computation of cell
-volumes at random tilts and deviation directions. Every step but the two
-floating-point cross-checks is repeated in Lean in \texttt{lean/D4Cap.lean},
-with $\vol(Q)=\tfrac{25}3$ and $\vol(\VCell)=8$ computed exactly by
-triangulating each octahedral facet, and the fourth derivative of $g$ checked
-by applying $\frac1{2t}\frac{d}{dt}$ four times to $t^2(2t-1)^4$. The script prints a
-pass or fail line for each of its twenty-one checks and exits nonzero if
-any fails.
+\emph{The cap inequality.} The chain of \cref{sec:cap-theorem} runs end to
+end in exact rational arithmetic: the vertex enumeration of $Q$ ($25$
+vertices, $\vol Q=\frac{25}3$), \cref{lem:crosspolytope}, the monotonicity
+of \cref{lem:monotone}, the three polynomial inequalities of the case
+$|S|=1$, and the $303$ boxes of the case $|S|\ge2$ produced by the
+algorithm above, whose largest corner value is $0.99755\ldots$.
 
-\subsection*{The multi-cap reformulation}
+\emph{The certificate of \cref{thm:certificate}.} The polynomial $P$ is
+expanded exactly from the certificate entries, multiplied by $315$ so that
+every coefficient is an integer over a power of two, and bounded on the
+ordered admissible domain by a second-order Taylor form over boxes, with
+tables of rigorous bounds for $\omega$, $\omega'$ and $\omega''$; the
+subdivision processes $421\,881$ boxes. The labelled certificate of
+\cref{thm:m23-labelled} uses the same routine on the regions of its proof.
 
-\Cref{prop:multi-cap} and \cref{rem:first-order-obstruction} are
-supported by a second short script,
-\texttt{multi\_cap\_reformulation.py}. It performs, in order: an
-exhaustive enumeration showing that $Q_D$ is bounded for every one of
-the $24$, $276$, $2024$, $10626$ and $42504$ packing-valid sets $D$ of
-size $1$ through $5$; the corresponding enumeration at size $6$, finding
-exactly $24$ failures among $134596$ sets and confirming that the
-complement of the first of them lies in a closed half-space; a check of
-the identity \eqref{eq:multicap-identity} against directly computed
-polytope volumes on random packing-valid configurations; a check that
-$\vol(Q_D)-8$ equals $m/3$ when $D$ contains no adjacent pair and
-exceeds it when it does; and the search recorded in
-\cref{rem:first-order-obstruction}, which finds $\vol(E_j)$ both above
-and below its single-deviation value. The first, second and fourth of
-these are exhaustive over the stated ranges; the third and fifth are
-random searches and are labelled as such in the output. The script
-prints a pass or fail line for each of its eleven checks.
+\emph{The cited certificate.} The verification of \cref{prop:verified}
+reads the deposited data \cite{LLM24data}, checks their format and the
+positive definiteness of the $127$ blocks, rebuilds the zonal matrices
+without holding the expansion of the integrand at once, checks the four
+polynomial identities and the value $24$ of the bound, and isolates the
+zeros of $\sigma_2$ by a Sturm sequence.
 
-\subsection*{The polar and boundary reformulations}
+\emph{The cardinality certificates.} The certificates of
+\cref{thm:kissing-stable} are found by a sampled semidefinite programme and
+then read as the exact rationals their entries denote; everything after
+that is exact: positivity by $LDL^{\mathsf T}$, the bound, and the two
+branch and bounds of the three-point condition in outward-rounded interval
+arithmetic.
 
-The material of \cref{sec:polar-surface} is checked by a third script,
-\texttt{polar\_surface\_reformulation.py}, in eighteen parts, among
-them the square-antiprism configuration \eqref{eq:antiprism} of
-\cref{rem:facet-local-obstruction}: that its nine directions are
-packing-valid, that its facet has $3$-volume $16\sqrt2-\tfrac{64}3$
-against the octahedron's $\tfrac43$, and that the resulting ceiling
-$96\sqrt2-128$ falls below both $8$ and the covering bound. It verifies
-that the cell is the polar dual of the convex hull of the contact
-directions, by computing both volumes at the root configuration
-($2$ and $8$, product $16$) and by confirming on random contact
-configurations that adjoining a point of the hull leaves the cell
-unchanged; the boundary identity \eqref{eq:surface}, exactly at the root
-configuration, where the twenty-four facets each have $3$-volume
-$\tfrac43$ and the total is $32$, and to fourteen digits on
-configurations obtained by dropping four roots, perturbing the rest and
-separating them again; the monotonicity of $\rho$ and the value
-$\rho(\tfrac12)=1/\sqrt3$; the inball claim of
-\cref{lem:facet-inball}, by computing the inradius of every facet
-directly; the arithmetic of \cref{rem:facet-local-obstruction}; the
-tight structure at a root facet, in exact rational arithmetic, finding
-eight tight neighbours with projected Gram values in
-$\{-1,-\tfrac13,\tfrac13\}$ and the regular octahedron of volume
-$\tfrac43$ as the region they cut out; the monotonicity of the volume
-under enlarging the configuration, which is
-\cref{prop:polar-form}(ii); and the two evaluations of
-\cref{rem:global-routes}, the Jensen bound $7.7351\ldots$ and the
-Mahler-type product $16$ against $\tfrac{32}3$. The two integrals over
-$S^3$ are Monte Carlo estimates at four million samples and are labelled
-as such in the output; every other part is exact or is double-precision
-polytope arithmetic on an exactly specified configuration. The
-separation step used to generate test configurations is ordinary
-pairwise repulsion and enters no argument.
+\emph{The second order at the root system.} The form $H$ of
+\cref{prop:hessian-d4} is assembled from the integral model of the
+$24$-cell by the midpoint rule over the triangles of the tight pairs; the
+certificate of \cref{prop:cone-min} is found as the dual of a Shor
+relaxation, averaged over the symmetry group and made exact, and is then
+checked by exact $LDL^{\mathsf T}$.
 
-\subsection*{The covering bound}
-
-\Cref{sec:covering-bound} is checked by a fourth script,
-\texttt{covering\_bound.py}, in nineteen parts: the cap-area formula
-$C(r)=\pi(2r-\sin2r)$, against both its value at $r=\pi$ and direct
-sampling at four radii; the radial identity \eqref{eq:radial} at the
-root configuration, where it returns $8$ and recovers the covering
-radius $45^\circ$, and on random configurations; the layer-cake
-rewriting used in the proof, against the direct form; the closed form
-$\tfrac{\pi m}{3}\tan^3r_m$ against numerical quadrature of the same
-estimate, agreeing to $10^{-14}$; the whole of
-\cref{tab:covering-bound}, including the monotonicity in $m$ that the
-proof of \cref{cor:m22} uses and the fact that $22$ is exactly the
-largest $m$ at which the bound reaches $8$; and the absence of any
-violation of \eqref{eq:covering-bound}, at the root configuration, at
-one hundred of its subsets of sizes $20$ through $23$, and at fifty
-random packing-valid configurations, where the smallest ratio of true
-volume to bound observed is $1.05$. It then checks
-\cref{prop:area-optimal}: the closed form
-$\phi'(s)=\tfrac{3}{4\pi}\sec^4(C^{-1}(s))$ against numerical
-differentiation at five areas, the convexity of $\phi$ over its whole
-range, and the fact that equal cell areas reproduce the global bound
-exactly and minimise the per-cell sum, against fifteen hundred random
-splittings of the total measure. It checks \cref{prop:covering-radius}, both the
-averaging step behind it and the bound itself against directly computed
-covering radii, and confirms that it moves the volume bound only in the
-fifth decimal. Finally it reproduces the split of the
-shortfall at $m=24$ into its overlap and tail parts, and the total
-overlap contributed by the ninety-six pairs of the root system at
-$60^\circ$. The integrals over $S^3$ are Monte Carlo and are labelled as
-such in the output; the table, the closed forms and the polytope volumes
-are not.
-
-\subsection*{The extendability criterion}
-
-\Cref{sec:m24} is checked by a fifth script,
-\texttt{extendability.py}, in six parts: that the three forms of
-\cref{prop:extendable} agree, on the root system, on the root system
-minus one root, and on random configurations; that the root
-configuration has circumradius $\sqrt2$ and $g=1/\sqrt2$ and is
-therefore saturated, as a $24$-point kissing configuration must be; that
-the root system minus one root has circumradius exactly $2$, cell volume
-exactly $\tfrac{25}3$, and is extended by the deleted root, so it sits
-on the boundary of the criterion; that the Gram values of the root
-configuration are $\{-1,-\tfrac12,0,\tfrac12\}$, which is what
-\cref{thm:twentyfour-points} asserts of every $24$-point configuration; the
-numerical chain of \cref{cor:remaining}; and a search, over the
-twenty-four one-root deletions, greedy random packings and annealed
-random starts, for a saturated $23$-point configuration, which found
-none. The last of these is exploration and is labelled as such in the
-output; it is not evidence that none exists.
-
-\subsection*{The cited certificate, re-verified}
-
-\Cref{lem:root-lattice} is checked by \texttt{root\_lattices\_rank4.py},
-an exact census of the $393$ positive definite Gram matrices of order
-$4$ with $2$ on the diagonal and $-1,0,1$ off it, described in its
-proof, and again by \texttt{lean/D4RootLattices.lean}. The certificate behind \cref{thm:twentyfour-points} is verified
-by \texttt{llm24\_certificate\_check.py}, which reads the deposited data
-set \cite{LLM24data} (included in the package under
-\texttt{third\_party/llm24-certificate}, with its MIT licence notice; the
-script takes the path of its \texttt{proofs/4\_24} folder) and shares no
-code with the authors' Julia package. It repeats five of
-the seven steps of their verification, as \cref{sec:certificate-checked}
-describes: the format of the data, with the block of every signature
-$\lambda$ checked to have exactly as many rows as there are admissible
-index tuples for $\lambda$; the positive definiteness of all $127$
-blocks by Cholesky in the ball arithmetic of Arb \cite{Joh17} at $256$
-bits, every pivot a ball inside the positive reals, and of the $81$
-blocks of size at most $16$ by an exact rational $LDL^{\mathsf T}$ as
-well; the nonnegativity structure of the $125$ sum-of-squares
-prefactors; the objective, exactly $24$; and the two-point polynomial
-$p_2$, of degree $16$, with its zeros on $[-1,\tfrac12]$ located by an
-exact Sturm sequence. It writes the exact coefficients of $p_2$, from
-which \texttt{lean/gen\_innerproducts\_lean.py} generates
-\texttt{lean/D4InnerProducts.lean}, and \texttt{p2\_zeroset\_check.py}
-locates the same zeros a third time, with the \texttt{Fraction} type of
-the standard library alone. The run takes about eight minutes and its
-log is in the package.
-
-The other two steps are repeated by the scripts in \texttt{zonal/}, whose
-\texttt{README.md} sets out the method described in \cref{sec:certificate-checked}.
-\texttt{o4.py} integrates monomials over $O(n)$ by the recursion of Gorin
-and L\'opez \cite{GL08} in exact rationals and carries the self-test; \texttt{gl2.py} builds the
-$GL(2)$ matrix coefficients and the scalars of the authors' Section 3.1;
-\texttt{ps\_build.py} writes the three factors of the integrand for each of
-the $490$ entries; \texttt{psker.c}, in C with GMP, walks the monomial triples
-and accumulates $P(S)$; \texttt{zonal.py} reduces $P(S)$ modulo $S^{\mathsf
-T}S=I$ and reads off an entry of $Z_\lambda$ at given inner products; and
-\texttt{verify45.py} assembles the four constraint polynomials and checks that
-they vanish, with \texttt{merge4.py} and \texttt{combine4.py} adding the
-pieces of the four-point one, which is too large to hold in one process.
-\texttt{ps\_ref.py} recomputes the integral the slow way for $|\lambda|\le5$
-and agrees with the kernel exactly, and \texttt{check\_psd.py} tests the
-positive semidefiniteness of the zonal matrices on random point sets.
-The directory \texttt{level2/} writes the same zonal matrices in the file
-format that the authors' code reads (\texttt{pkl2cache.py}), so that their
-second-level programme runs without its own construction of them;
-\texttt{xcheck\_zonal.jl} and \texttt{xcheck\_zonal.py} check that their
-evaluation of an entry from these files equals ours, and
-\texttt{their\_entries.jl} and \texttt{compare\_entries.py} compare the
-entries their construction writes, one signature at a time, with ours, in
-exact rationals. \texttt{las2\_slack.jl} runs their programme on the
-enlarged domain $[-1,\tfrac12+s]$.
-
-\subsection*{The overlaps put back}
-
-\Cref{lem:no-triples,prop:second-order} are checked in four parts by the
-script \texttt{second\_order\_estimate.py}, with the quadratures
-carried out at $30$ digits: the circumradius bound for a triple of
-contact directions, both by the Rayleigh-quotient argument of the proof
-and against forty thousand random admissible triples; that $r_{23}$ and
-$r_{24}$ both lie below $\arccos\sqrt{2/3}$, so that the caps meet only
-in pairs below $r_m$; the closed form \eqref{eq:lens} for the lens
-measure against direct sampling on $S^3$; and the value
-\eqref{eq:second-order-value} at the deletion configuration, together
-with $7.858738\ldots$ at the root system.
-
-\subsection*{The two local decompositions}
-
-\Cref{rem:no-local-cell} is checked by
-\texttt{local\_cell\_obstruction.py}, in five parts: that the mean of
-$\sec^4$ over a spherical Voronoi cell of the root configuration is
-$16/\pi^2$, so that \eqref{eq:local-cell} is sharp; that nine unit
-vectors of $\mathbb{R}^3$ with pairwise inner products at most
-$\tfrac13$ can be produced, so that nine contacts at $60^\circ$ are
-admissible, and that the resulting cell has mean $1.5732\ldots$, still
-$1.5954\ldots$ when the nine are moved out to $61^\circ$; that on a
-$22$-point configuration there are directions whose nearest contact lies
-outside the Delaunay cell containing them, by more than $0.1$ in cosine,
-so that the Delaunay decomposition does not localise the integrand;
-the closed form \eqref{eq:regular-simplex-mean} at the regular simplex,
-against direct sampling at edge $60^\circ$ and $62^\circ$; and that the
-Delaunay cells of $D_4$ are $24$ congruent spherical octahedra of
-circumradius $45^\circ$ while no four roots are pairwise at $60^\circ$,
-so the regular simplex occurs nowhere in $D_4$ although it does occur as
-a Delaunay cell of a contact configuration. The integrals over $S^3$ are
-Monte Carlo and the script says so; the margins reported are
-percentages.
-
-\subsection*{Rigidity of the deletion configuration}
-
-\Cref{prop:deletion-rigid} is checked by \texttt{rigidity23.py}, in five
-parts, all in exact integer arithmetic on the unnormalised roots: that
-deleting one root leaves $23$ directions and $88$ tight pairs, with the
-four values of $\langle a_i,a_0\rangle$ occurring $1,8,6,8$ times; that
-the six pair types listed in the proof are the only ones that occur;
-that the weights $y_{ij}\in\{1,2,3\}$ are strictly positive on
-every tight pair; that they satisfy the equilibrium relation
-\eqref{eq:stress} exactly, the $23\times4$ residual matrix being zero;
-and that the space of motions holding all $88$ pairs at equality has
-dimension exactly $6$ and is spanned by the infinitesimal rotations.
-There is no floating-point step anywhere in the script.
-\Cref{cor:root-rigid} is checked in the same way by
-\texttt{rigidity24.py}, in four parts: that the root system has $24$
-directions and $96$ tight pairs, every direction in $8$ of them; that the
-constant stress, weight $1$ on every tight pair and $-4$ on the diagonal,
-is positive on the pairs and in equilibrium, the $24\times4$ residual
-being zero; and that the space of motions holding all $96$ pairs at
-equality has dimension $6$ and is spanned by the rotations.
-
-The radius that \cref{thm:local-uniqueness} attaches to that rigidity
-needs one number beyond the kernel, the smallest nonzero singular value
-of the rigidity operator, and \texttt{rigidity\_spectrum.py} computes
-the whole spectrum to get it, again without a floating-point step. It
-assembles the integer matrix $\Lambda'$ of the $96$ differentiated tight
-inner products and the rational projection $P$ onto the tangent space,
-forms $4N=(2P)\Lambda'^{\mathsf T}\Lambda'(2P)$, which is integral with
-entries bounded by $16$, verifies the matrix identity
-$4N(4N-8)(4N-20)(4N-24)(4N-32)=0$ in \texttt{int64} arithmetic, where
-the bound on the entries keeps every partial product exact, and computes
-the ranks of $4N-cI$ for $c=0,8,20,24,32$ over a field of positive
-characteristic, getting $66$, $67$, $88$, $75$, $88$. Those ranks bound
-the ranks over $\mathbb{Q}$ from below, the five multiplicities they
-give sum to $96$, so each bound is attained; the eigenvalues of $N$ are
-therefore $0,2,5,6,8$ with multiplicities $30,29,8,21,8$ and the
-singular values of $\Lambda$ on the tangent space are
-$0,1,\sqrt{5/2},\sqrt3,2$ with multiplicities $6,29,8,21,8$. The second
-constant of the radius, the value $\tfrac{11}{16}$ in the second statement of
-\cref{lem:rigidity-spectrum}, is checked in the same script and again in integers: the matrix
-$2K=\Lambda'(2P)\Lambda'^{\mathsf T}$ is shown to annihilate
-$x(x-4)(x-10)(x-12)(x-16)$, the product $(2K-4I)(2K-10I)(2K-12I)(2K-16I)$, which is
-$7680$ times the projection onto $\ker K$, has every diagonal entry equal to
-$2400$, and the trace of the projection onto the image is $66$. The script
-also evaluates, in rational arithmetic, the ratio $\sqrt{96/11}$ of the
-single-direction displacement quoted after \cref{cor:m24-local}.
-\texttt{D4Stress.lean} repeats the finite part of this inside Lean's
-kernel with no library beyond core Lean: the root list, the eight tight
-neighbours of every root and their sum, and the count of $96$ tight
-pairs, each by \texttt{decide}. The matrix identity itself is a product
-of six $96\times96$ integer matrices and is not formalised; the
-elimination that settles it in the script is fraction-free over
-$\mathbb{Z}$, so it is exact as it stands.
-
-\subsection*{How much of a root system a configuration can keep}
-
-\Cref{prop:meet22,prop:meet21} are proved in the text and checked
-independently by two scripts. \texttt{root\_deletions\_exact.py} carries
-out the underlying question in exact integer arithmetic and settles no
-part of it by sampling. Writing the roots as integer vectors of squared
-length $2$ turns the cell of a subset $S$ into $\sqrt2\,P(S)$ with
-$P(S)=\{y:\langle y,r\rangle\le1,\ r\in S\}$, whose facet normals are
-integral and whose right-hand sides are $1$; every vertex of $P(S)$ is
-therefore the solution $m/e$ of a four-by-four integer system, obtained
-by Cramer's rule with $m$ integral and $e$ a positive integer, and the
-two tests that matter, $|m|^2\le2e^2$ for the circumradius and
-$|m|^2=2e^2$ for a direction that can be added, are comparisons of
-integers. Running it over all $24$, $276$ and $2024$ ways of removing
-one, two and three roots reproduces \cref{prop:meet22} and the
-classification in the proof of \cref{prop:meet21}: the circumradius is
-exactly $2$ except at the $96$ triples that are pairwise at $60^\circ$,
-where it is $\sqrt6$, and the directions that can be added are the
-removed roots and nothing else.
-
-\texttt{root\_meet.py} checks the combinatorial and coordinate
-statements the proofs actually use: that no pair of roots destroys a
-whole couple; that $512$ of the $2024$ triples do, in eight support
-patterns, four stars and four triangles; that the symmetry group of the
-root system, generated here and found to have order $1152$, is
-transitive on the $96$ tight triples; and, for the standard star, that
-every direction of the doorway has first coordinate at least $1/\sqrt2$
-and the other three nonnegative, and that no two of them are as much as
-$60^\circ$ apart unless both are removed roots. The last part is
-sampling and is reported as such; the first three are exact.
-\Cref{rem:meet-next} is the same script run one rung lower, at four
-removed roots, where the answer is a minimisation with a margin rather
-than a proof.
-
-\subsection*{The pairwise budget at twenty-three contacts}
-
-\Cref{prop:pair-budget,rem:pair-budget} are checked by
-\texttt{pair\_budget.py}, in five parts: the per-pair weight
-$\omega(\gamma)$ and its collapse away from $60^\circ$, which is where
-the quadrature sits; the recovery of \eqref{eq:second-order-value} from
-the $88$ tight pairs of the deletion configuration; the count of pairs
-at $60^\circ$ that would carry \eqref{eq:second-order} past $8$, with
-the values at $90$ and at $91$ either side of the target; the
-elementary degree bound on $S^2$ and the ceiling of $115$ it gives; and
-that the target lies strictly between the two. The quadratures are
-adaptive and the rest is arithmetic; nothing here is Monte Carlo.
-
-\subsection*{How far the pair angles reach}
-
-The script \texttt{covering\_multiplicity.py} checks
-\cref{prop:cov-mult,prop:two-point-barrier}, in two parts. The first
-evaluates
-both sides of \eqref{eq:cov-mult} at $m=23$ and at the deletion
-configuration, giving $155.172054\ldots$ against $162.566121\ldots$. The
-second sets up the linear programme of \cref{prop:two-point-barrier} on a
-grid of $601$ angles, with the Bonferroni constraint at $24$ radii
-between $r_{23}$ and $45^\circ$ and the Gegenbauer constraint at the
-first $12$ degrees, and reports its optimum, $0.041573648\ldots$. It also
-checks that the pair angles of the deletion configuration are feasible
-for that programme, so that the bound really is a relaxation of the
-truth and not an accident of the grid. Refining the grid, adding radii or
-adding degrees leaves the optimum where it is.
-
-\subsection*{The cell inside a ball}
-
-\Cref{prop:truncated,thm:strict-reduction,prop:two-point-barrier} and
-the $r_*$ values of \cref{prop:second-order,prop:pair-budget} are
-supported by \texttt{three\_point\_reduction.py}, in three parts.
-The first evaluates the constants of the pair-only bound at the two
-integration limits $r_{23}$ and $r_*$, the bracket, the weight of a
-pair at $60^\circ$, the value at a deletion and the number of pairs at
-$60^\circ$ that carry the bound past $8$; the second evaluates the
-three-point bound at $r_4$, with the triple measure of an equilateral
-$60^\circ$ triangle by Monte Carlo, at a deletion and at the root
-system, against the direct quadrature; the third solves the pair-angle
-relaxation of \cref{prop:two-point-barrier} for both weights, on a
-grid of $1201$ angles with $60$ radii and $24$ Gegenbauer degrees, and
-prints the minimising measure. \texttt{truncated\_volume.py} evaluates
-$\vol(V_c\cap B(R))$ by a fixed quasi-random quadrature on $S^3$ of
-$400000$ points, checks it against the exact volumes at the root system
-and at a deletion, and then minimises it over configurations with
-pairwise inner products at most $\tfrac12+\delta$, for a decreasing
-schedule of $\delta$, by the trust-region programme of
-\texttt{inradius\_search.py} with the analytic gradient of the
-quadrature; it takes the truncation radius as an argument, and the
-runs at $R=\sqrt{3/2}$ and $R=\sqrt{8/5}$ are recorded in the package.
-The identities are exact; the quadrature, the Monte Carlo triple
-measure and the minimisation are numerical and the output says so.
-
-\subsection*{The certificate}
-
-\Cref{thm:certificate} rests on two scripts and one Lean file.
-\texttt{three\_point\_sdp.py} sets up the programme of
-\cref{lem:certificate}: the Gegenbauer polynomials of $S^3$ by the
-Chebyshev recurrence, the matrices $Y_k$ of \eqref{eq:Yk} from the
-Legendre coefficients with the half-integer powers cancelled
-symbolically, their symmetrisation $S_k$ over the six orderings, and
-the condition \eqref{eq:C} imposed at a grid of admissible triples
-$u\le v\le t$, denser near $\tfrac12$, with the weight $\omega$
-interpolated from the quadrature of \texttt{three\_point\_reduction.py}
-and scaled by $1000$. It is solved through \texttt{cvxpy} \cite{DB16}
-with the interior-point solver Clarabel \cite{GC26}. In its first mode
-the bound is maximised, the solution is checked on a fine grid and a
-random sample of about $1.15$ million triples, the worst $3000$ of these
-are added to the constraints, and the cycle is repeated; the printed
-value is the sampled bound less $\binom{23}3/21$ times the largest
-violation on the check, and the two-point programme, with the matrices
-removed, is solved alongside for comparison. In its second mode the
-bound is fixed at a given value, here $0.0929$, the least slack of
-\eqref{eq:C} over the sample is maximised with $F_k-10^{-7}I$ and
-$f_k-10^{-7}$ constrained to be positive semidefinite and with a
-little static regularisation of the interior-point method, which the
-degenerate maximin problem needs, and the result is written to
-\texttt{continuation\_out/certificate\_d8.npz}, with a plain-text copy
-beside it in which every number is printed exactly.
-\texttt{certificate\_check.py} is the verification described in the
-proof of \cref{thm:certificate}, and it shares no code with the
-solver: the certificate is read as exact rationals, the matrices are
-tested by exact $LDL^{\mathsf T}$, the polynomial $P$ is expanded
-exactly from its own implementation of the three recurrences, the
-closed forms of $A_*$, $\omega$, $\omega'$ and $\omega''$ are
-differentiated with \texttt{sympy} and evaluated in the interval
-arithmetic of \texttt{mpmath}, and the branch and bound is run in an
-interval arithmetic on IEEE doubles written in \texttt{numpy} with
-outward rounding after every operation. It stops at the first failure
-and says where: a box below the minimum width on which \eqref{eq:C}
-could not be decided, or an admissible triple at which \eqref{eq:C} is
-negative. The run recorded in the package verifies the certificate in
-$44$ levels and under ten minutes, and a second recorded run, on the
-certificate with $10^{-5}$ added to $f_0$, is rejected with the triple
-$(-\tfrac1{16},-\tfrac1{16},-\tfrac1{16})$. The Lean file is described
-under the formalised part below.
-
-\subsection*{The covering radius as the objective}
-
-\Cref{prop:no-transitive,rem:no-transitive} are checked by
-\texttt{saturation\_search.py}. Where \texttt{extendability.py} and
-\texttt{spherical\_code\_23.py} look for a code of large minimal angle
-and read off the covering radius afterwards, this script takes the
-covering radius as the objective from the outset. It uses the fact that
-$g(W)=\min_\theta\max_i\langle\theta,w_i\rangle$ is the support function
-of $\conv(W)$ at its minimum, hence the distance from the origin to the
-nearest facet hyperplane of $\conv(W)$, so it is read off a convex hull exactly, not sampled. Four parts: the root system, where
-$g=1/\sqrt2$; all twenty-four deletions, where $g=\tfrac12$ with zero
-spread; the $528$ one-variable linear programmes of
-\cref{prop:no-transitive}, together with the least violation
-$0.0740002839\ldots$ computed at $60$ digits; and a projected-gradient
-minimisation of $\max_I|z_I|$, with the closed-form gradient
-$\partial|z_I|^2/\partial w_i=-2a_iz_I$ for $a=G_I^{-1}\mathbf1$, started
-from perturbed deletions, from random configurations and from partially
-completed root systems. The first three parts are proof; the fourth is
-exploration and the script says so in its output.
-
-\subsection*{The formalised part}
-
-Fifteen parts of the paper are also verified in Lean~4: the twelve files
-\texttt{D4Stress.lean}, \texttt{D4Meet.lean}, \texttt{D4Certificate.lean},
-\texttt{D4InnerProducts.lean}, \texttt{D4RootLattices.lean},
-\texttt{D4Closure.lean}, \texttt{D4SecondOrder.lean},
-\texttt{D4HexagonLoop.lean}, \texttt{D4SecondCode.lean},
-\texttt{D4NearContact.lean},
-\texttt{D4Rigidity.lean} and \texttt{D4Cap.lean}
-in the directory \texttt{lean}, and the Lake
-projects in \texttt{lean/cell600}, \texttt{lean/certificate} and
-\texttt{lean/cardinality}.
-All are independent of everything else
-in the supplement and of every Lean library: the first two use only
-integer arithmetic on the unnormalised roots and settle each statement
-by kernel computation, so a reader who compiles them is checking the
-arithmetic against Lean's kernel rather than against a Python program. The first covers the equilibrium relation
-\eqref{eq:stress} and the combinatorics around it, which is the
-arithmetic of \cref{prop:deletion-rigid}. The second covers the finite
-half of \cref{prop:meet22,prop:meet21}: that two removed roots always
-leave a whole couple of complementary supports, that exactly $48$
-ordered triples of supports do not and that these are the four stars and
-four triangles taken in every order, that $96$ triples of roots are
-pairwise at $60^\circ$ and no four roots are, that the Hadamard map is
-an isometry permuting
-the roots and carries the standard triangle to the standard star, and
-that the standard star leaves the twelve roots of the lower block and
-three of the four roots at each remaining support. The third covers
-\cref{prop:cell600}: the $600$-cell's vertices in $\mathbb{Z}[\phi]$,
-their inner products, the twelve-regular graph of pairs at $36^\circ$,
-the twenty-five inscribed copies of $\Rt$ with five through each
-vertex, all by kernel computation, and then the three counts of the
-enumeration, which are settled by \texttt{native\_decide} on the
-compiled search and therefore trust the compiler as well as the kernel,
-as \cref{sec:reproducibility-new} explains. The fourth,
-\texttt{lean/D4Certificate.lean}, is written by
-\texttt{lean/gen\_certificate\_lean.py} from the certificate file, with
-every floating-point number converted to the exact dyadic rational it
-denotes, an integer over a power of two, so that the Lean source and
-the Python verification hold the same numbers; it proves by kernel
-computation on \texttt{Rat}, with \texttt{decide +kernel} and no
-compiled code, that $f_1,\dots,f_8$ are nonnegative, that each of
-$F_0,\dots,F_8$ is symmetric and has positive pivots throughout an exact
-$LDL^{\mathsf T}$ elimination, and that the bound of
-\eqref{eq:certificate-bound} exceeds $92.8555703$ in the scaled units,
-that is $0.0928555703>8-A_*$; the check takes under a minute and the
-axiom report lists only the three standard axioms. The fifth, the Lake project \texttt{lean/certificate}, is the branch
-and bound of \cref{thm:certificate} in exact dyadic arithmetic, as
-\cref{sec:reproducibility-new} describes: \texttt{D4CertData.lean} holds
-the certificate and the tables, \texttt{D4CertDomain.lean} the
-polynomial arithmetic, the expansion of $P$, the dyadic intervals and
-the subdivision, and \texttt{D4CertMain.lean} the theorem, by
-\texttt{native\_decide}; its modules \texttt{D4LabelledData.lean},
-\texttt{D4LabelledDomain.lean} and \texttt{D4LabelledMain.lean}, the first
-written by \texttt{gen\_labelled\_data.py}, do the same for the regions
-II$_s$ and II$_f$ of \cref{thm:m23-labelled}, and \texttt{D4Omega.lean},
-\texttt{D4OmegaMain.lean} and \texttt{D4OmegaRegionI.lean} compute the tables of
-$\omega$, $A_*$ and the constants of that theorem inside Lean and rerun the
-branch and bounds of region I, II$_s$ and II$_f$ with them. The sixth, \texttt{lean/D4InnerProducts.lean},
-is the last step of the verification of the certificate: the two-point
-polynomial $\sigma_2$ of \cref{prop:verified}, computed exactly from the
-published data by \texttt{llm24\_certificate\_check.py} and written
-into the file with its coefficients scaled to integers, is shown by
-kernel computation on \texttt{Rat}, with \texttt{decide +kernel}, to
-vanish at $-1,-\tfrac12,0,\tfrac12$, to be exactly divisible by
-$(u+1)(u+\tfrac12)^2u^2(u-\tfrac12)$, and to have a quotient of degree
-$10$ that does not vanish at those points and whose Sturm sequence has
-the same number of sign changes at $-1$ as at $\tfrac12$; the check
-takes under a minute and the axiom report lists only the three
-standard axioms. The seventh, \texttt{lean/D4RootLattices.lean}, is the
-finite content of \cref{lem:root-lattice}: the census of positive
-definite Gram matrices of norm-$2$ bases in rank at most $4$, the
-enclosure of the norm-$2$ vectors of each lattice in an exact box, the
-counts $2$, $6$, $12$, $24$, and a $D_4$ basis among the roots of every
-lattice that has $24$, by \texttt{native\_decide} in a few seconds. The
-eighth, \texttt{lean/D4Closure.lean}, is the exact content of
-\cref{sec:closure}: the identities behind
-\cref{lem:holes,prop:inversion-hull,lem:no-triple,thm:m23-labelled},
-proved over every commutative ring by the ring normaliser of
-\texttt{grind}, and the orthogonal root pairs and deleted sets of
-\cref{cor:root-subsets}, by \texttt{decide +kernel}; it checks in about
-two minutes, and
-its axiom report lists the three standard axioms at most. The ninth,
-\texttt{lean/D4SecondOrder.lean}, generated by
-\texttt{gen\_second\_order\_lean.py} from the certificate alone, is the exact
-content of \cref{sec:second-order}: the form $H$, the cone and $c$ built from
-the integral root system, the copositivity certificate of
-\cref{prop:cone-min} by an exact $LDL^{\mathsf T}$, the push-out block and
-\eqref{eq:eta-identity}, the equality on the one-centre rays, by
-\texttt{native\_decide}, and the expansions of \cref{lem:pure-push} by
-\texttt{grind}; it checks in about thirty seconds. The tenth,
-\texttt{lean/D4NearContact.lean}, generated by
-\texttt{gen\_near\_contact\_lean.py} from the coefficients of $\sigma_2$, is the
-exact arithmetic of the explicit $\varepsilon_0$: the quotient bound, the
-bound for $f$ off the windows, the constants of
-\cref{lem:root-lattice-robust}, the assembly of $E(24,\kappa)$ and
-$E(25,\kappa)$ from the bounds $B_3$, $B_4$, and the bracket of
-\cref{thm:near-contact}, in about twenty seconds. The eleventh, the Lake
-project \texttt{lean/cardinality}, is the whole check of the certificates
-of \cref{thm:kissing-stable}, from their entries alone, with
-\texttt{gen\_data.py} writing \texttt{KissData.lean}, \texttt{KissDomain.lean}
-the polynomials and the two branch and bounds, and \texttt{KissMain8.lean},
-\texttt{KissMain10.lean} the theorems. The twelfth,
-\texttt{lean/D4Rigidity.lean}, is the exact linear algebra of
-\cref{lem:rigidity-spectrum}: the annihilating polynomials, the ranks over
-$\mathbb{Q}$, the diagonal $\tfrac{11}{16}$ and the ratio $\sqrt{96/11}$. The
-thirteenth, \texttt{lean/D4Cap.lean}, is the exact content of
-\cref{sec:cap-theorem}: the vertices and the volume of $Q$, the
-cross-polytope enclosure, the fourth derivative of $g$, the three ranges of
-the case $|S|=1$ and the $303$ boxes of the case $|S|\ge2$. The
-fourteenth, \texttt{lean/D4HexagonLoop.lean}, is the algebra of
-\cref{prop:hexagon-loop}: the two integrals in closed form, the identity
-between them, the conditions on the slices and the Gram matrix at
-$\theta=0$. The fifteenth, \texttt{lean/D4SecondCode.lean}, is the exact
-content of \cref{prop:second-code}. The theorems in each file are listed in
-\texttt{lean/README.md}, together with the axiom report that each file
-prints when it is checked. Nothing else in the paper is formalised.
-
-\subsection*{Contact configurations as spherical codes}
-
-\Cref{prop:code-slack,rem:code-search} are supported by
-\texttt{spherical\_code\_23.py}. The script does one thing, in four
-sizes: it minimises the Riesz energy $\sum_{i<j}|w_i-w_j|^{-s}$ on
-$(S^3)^m$ with $s$ running through $4,16,64,256,1024$, projecting back
-to the sphere after each step, and then reduces the largest inner
-product directly by a softmax descent with a shrinking step. The three
-calibration sizes are run first and are the reason to trust the fourth:
-$m=24$, where the answer is known to be $\tfrac12$; $m=22$, where a code
-with room to spare exists; and $m=25$, where no contact configuration
-exists at all. It then runs $m=23$ from $1500$ independent random
-starts, records the smallest largest inner product reached, counts the
-starts that fall below $\tfrac12$, and fingerprints every outcome that
-comes within $5\times10^{-3}$ of feasibility by the multiset of its
-Gram entries, which is invariant under $O(4)$ and therefore separates
-configurations that are not related by an isometry. Everything in the
-script is floating point and it is exploration, not proof; the output
-says so, and \cref{rem:code-search} repeats it.
-
-\subsection*{The volume identity at twenty-four contacts}
-
-\Cref{sec:m24-volume} is checked by \texttt{m24\_exact\_reduction.py} in
-five parts. The first derives in \texttt{sympy} the closed forms of the
-cap volume $c$, of $\omega_2(\tfrac12)$ and of
-$\omega_3(\tfrac12,\tfrac12,\tfrac12)$ and $\tau$ from
-\eqref{eq:m24-identity}. The second estimates the cap, pair and triple
-volumes inside the ball of radius $\sqrt2$ by Monte Carlo in
-$\mathbb{R}^4$, independently of the closed forms. The third checks the
-finite content of \cref{prop:m24-exact} in integer arithmetic: the only
-positive inner product between distinct roots, no four roots pairwise at
-inner product $1$ among the $10626$ quadruples, the determinant $5$, the
-$96$ pairs and $96$ triangles, and the $24$ vertices of norm $\sqrt2$. The
-fourth is an independent quadrature of the triple intersection, in
-polar coordinates on the three-dimensional span with Richardson
-extrapolation. The fifth reads the degree-$6$ pseudo-configuration of
-\cref{rem:m24-three-point} and checks its normalisation, the admissibility
-of its triples, the two-point moments, the positive definiteness of every
-moment matrix on its range, and its value with $\omega_3$ by direct
-quadrature. The computations behind \cref{rem:m24-three-point} are
-\texttt{m24\_volume\_functional.py} (the functions $c$, $\omega_2$,
-$\omega_3$), \texttt{m24\_omega3\_table.py} (a table of $\omega_3$ on
-$[0,\tfrac12]^3$ at step $\tfrac1{40}$),
-\texttt{m24\_dual\_sdp.py} (the certificate problem),
-\texttt{m24\_primal\_sdp.py} and \texttt{m24\_primal\_blocks.py} (the
-moment problem, rescaled on the range of each block),
-\texttt{m24\_descent.py} (the tangent cone at the root configuration) and
-\texttt{m24\_verify\_direction.py} (the recheck of a descent direction by
-actual steps). These take the grid and the degrees on the command
-line: the runs quoted here are \texttt{m24\_dual\_sdp.py 6 3 1},
-\texttt{m24\_primal\_blocks.py 12 8 6}, \texttt{m24\_primal\_sdp.py 12 8
-1e-6 6}, \texttt{m24\_descent.py 12 8 6} and
-\texttt{m24\_verify\_direction.py 6}, the two integers being the number of
-grid points in the pair variables and in the third; each of the five takes
-those same values by default, so running it with no arguments repeats the
-run quoted here. The primal run writes
-\texttt{continuation\_out/m24\_primal\_d6.npy}, which the fifth part of
-\texttt{m24\_exact\_reduction.py} reads; that file and
-\texttt{m24\_dir\_d6.npy} are in the package, so the reduction script runs
-on its own. The fifth part and these scripts are floating point; the
-first four parts are the proof-relevant checks.
-
-\subsection*{The $600$-cell, enumerated}
-
-\Cref{prop:cell600} is established by \texttt{cell600\_exact.py}, with
-\texttt{cell600\_enum.c} as an independent second implementation and
-the Lean project as a third. The Python script builds the $120$ vertices
-with doubled coordinates as pairs $(a,b)$ standing for $a+b\phi$ and
-computes every inner product in $\mathbb{Z}[\phi]$, so that no
-floating-point number appears anywhere; it checks that the nine values
-listed in the proof are the only ones, builds the $12$-regular graph of
-pairs at $36^\circ$ and the $71$-regular graph of pairs at root-system
-angles, finds the twenty-five inscribed copies of $\Rt$ as the
-$24$-cliques of the latter, and enumerates the independent sets of the
-former through a fixed vertex, of sizes $25$, $24$ and $23$, by
-depth-first search with the clique-cover bound. It reports $0$, $5$ and
-$115$, checks that each of the $115$ lies in one of the five cells
-through the vertex, and writes the graph and the cell list to a text
-file. The C program reads that file and repeats the enumeration of the
-$23$-sets with the same bound on $64$-bit words, in under two seconds;
-the Python enumeration takes about a minute and a half. Neither is
-sampling. The script \texttt{cell600.py}, which draws two
-million maximal independent sets by greedy growth along random orders,
-is a sampling of the same family and is kept in the package for
-comparison. \texttt{octahedral48\_exact.py} does the same for the
-$48$ unit quaternions of the binary octahedral group, in
-$\mathbb{Z}[\sqrt2]$, and finds the two root systems and their
-forty-eight deletions and nothing else.
-
-\subsection*{The inradius as the objective, and the continuation in the slack}
-
-\Cref{sec:slack-continuation} rests on two scripts.
-\texttt{inradius\_search.py} maximises the inradius $g(W)$ of
-$\conv(W)$ directly, subject to the contact constraints, by a
-sequential linear programme with a trust region: at each step the facet
-offsets and the pairwise inner products are linearised in a tangent
-move of bounded size, the linear programme maximising the smallest
-linearised offset is solved, and the move is accepted only if the true
-inradius, read from the facet equations of a fresh convex hull, has
-improved without any contact constraint being violated. The facet list
-is refreshed after every accepted move. Starts are of three kinds, taken
-in rotation: random points brought to feasibility by a relaxed-then-
-tightened schedule of the same programme; deletions of a root with each
-direction rotated through a random angle; and twenty random roots with
-three random directions. Every feasible endpoint is recorded with its
-inradius and the multiset of its inner products rounded to $10^{-6}$,
-which separates configurations not related by an isometry.
-\texttt{slack\_continuation.py} runs the same optimiser at each
-$\delta$ of a decreasing schedule from $0.05$ to $0$, starting from the
-best configurations of the previous level, restored to the new
-constraint by a feasibility programme of the same kind, together with
-fresh random starts at every level, and prints the table that
-\cref{sec:slack-continuation} reproduces. Both scripts are double
-precision throughout and both are exploration; their output says so.
-\texttt{symmetric\_search.py} runs the same continuation inside the
-classes of configurations invariant under a rotation of order at most
-$12$ or under one of the two improper involutions, one orbit structure
-at a time, with the orbit representatives as the parameters and
-sequential least-squares programming in place of the linear programme;
-it prints, for each of the $73$ structures, how many starts reached a
-feasible endpoint at $\delta=0$, the largest inradius among them, the
-largest at $\delta=0.01$, and whether the best endpoint is a deletion.
-
-\subsection*{Neighbours that do not touch}
-
-\Cref{sec:noncontact} rests on two scripts. \texttt{shell\_reduction.py}
-checks, in the ball arithmetic of Arb \cite{Joh17} through
-\texttt{python-flint}, the covering radius $45^\circ$ of the root
-directions behind \cref{lem:24-no-shell}; the value of $\Phi$ for $m$
-contacts, above $8.044$ for every $m\le22$; the thresholds of
-\cref{tab:distance-thresholds}; and the two examples that follow
-\cref{lem:shell-new,lem:radial-new}. Each value of $\Phi$
-is a lower Riemann sum in which the first factor of the integrand is
-taken at the right end of each interval and the second at the left, both
-factors being monotone, so every printed bound is a bound.
-\texttt{shell\_neighbour\_search.py} is the search of
-\cref{sec:noncontact}; it is floating point and exploration, and its
-output says so.
-
-\Cref{sec:closure} rests on five more. \texttt{closure\_lemmas.py} checks
-the identities behind \cref{lem:holes,prop:inversion-hull,lem:no-triple}
-symbolically; the combinatorics of \cref{cor:root-subsets} in integer
-arithmetic, the $72$ orthogonal pairs at the $24$ vertices and every set
-of at most four deleted roots; and, in ball arithmetic, $S(2)$, the bound
-$\tfrac98\pi^2-22S(2)>8.046$ of \cref{cor:count}, the thresholds of
-$\Psi$ beside those of $\Phi$, and the angle $\arccos(\sqrt6/4)$ quoted
-after \cref{thm:m23-labelled}. \texttt{labelled\_certificate\_check.py}
-is the verification of \cref{thm:m23-labelled}: it rebuilds the
-certificate of \cref{thm:certificate} and the bound $B$ exactly, rechecks
-the positivity of the matrices $F_k$, evaluates $s(D)$, $a_D$,
-$\mathrm{fr}(1,1,\frac12)$, $r$, $\kappa$ and $c$ in ball arithmetic,
-reruns the branch and bound of \eqref{eq:C}, and runs the two new ones,
-over $30\,051$ and $6\,482$ boxes, with the tables of the $\Gamma_i$ in
-ball arithmetic and outward rounding throughout; with the rerun it takes
-about six minutes. \texttt{explicit\_eps0.py} makes the constants of
-\cref{thm:m24-robust,thm:near-contact} explicit: it reads the deposited
-certificate, identifies the weight of every sum-of-squares term and, for
-those whose weight contains the pair factors, bounds the largest
-eigenvalue of the block and the Chebyshev $\ell^1$ norms of the
-transformed vectors in ball arithmetic; it divides $\sigma_2$ exactly by
-its zeros and bounds the quotient from below; it checks the minor bounds
-of \cref{lem:root-lattice-robust}; and it evaluates the facet estimates of
-\cref{thm:near-contact} in exact arithmetic, finding
-$\varepsilon_0=4\cdot10^{-26}$ and the neighbourhood $\sum\delta_i\le4\cdot10^{-3}$
-in about fifteen seconds. \texttt{facet\_bounds\_probe.py} checks step (b) of
-\cref{thm:near-contact} numerically on random and adversarial perturbations of
-the root system: the facet formula \eqref{eq:facet-derivative}, integrated
-over $t$, reproduces $\vol V(Y)-8$ to relative $10^{-7}$, and over $4320$
-facets the two facet bounds are used to at most $82$ and $14$ per cent. \texttt{certify\_cardinality.py} is the proof of
-\cref{thm:kissing-stable}: it reads a certificate of
-\texttt{cardinality\_certificates}, takes its entries as exact rationals,
-checks $f_k\ge0$ and the positive definiteness of every $F_k$ by exact
-$LDL^{\mathsf T}$, computes $f(1)+F(1,1,1)$ exactly, and runs the two branch and
-bounds, over the interval $[-1,t]$ and the ordered admissible domain in
-$[-1,t]^3$, with the interval routines of \texttt{certificate\_check.py}; at
-degree $8$ it takes about eighty seconds, and on the degree-$10$ certificate of
-the theorem it decides $2.7$ million boxes in under an hour. \texttt{cardinality\_sdp.py}, which
-found the certificates and draws \cref{fig:positive-slack}(a), is floating point with
-sampled constraints, and so are \texttt{robust\_ceiling.py}, which evaluates
-\cref{rem:robust-ceiling} from the exact $\sigma_2$, and
-\texttt{code25\_search.py}, whose output, $25$ points with inner products at
-most $0.53743$, is checked by recomputing their Gram matrix. \texttt{count\_bound\_sqrt6.py} proves that at most
-$49$ other centres lie within $\sqrt6$ of a centre: their directions have
-inner products below $\tfrac23$, and a Delsarte polynomial of degree $13$
-with rational coefficients, nonpositive on $[-1,\tfrac23]$ by a Sturm
-sequence, bounds such a code by $49.58$. \texttt{near\_contact\_probe.py} is floating point
-and exploration: the inversion hull beside the volume, and the
-minimisations near the root system quoted after \cref{thm:near-contact}.
-So is \texttt{truncated\_search.py}, the minimisation of the truncated
-volume with exactly $M$ centres within $\sqrt6$ quoted there; the closed
-form it uses for the pair terms is checked against quadrature before it
-starts. \texttt{count\_survey.py} carries the same minimisation to every
-count, with the exact gradient of the truncated volume (checked against
-central differences to $3\cdot10^{-9}$, mode \texttt{gradcheck}) and with starts that carry the best
-configuration of one count to the next, and in its mode \texttt{pack} looks
-only for packings of a given count (\cref{fig:counts}). So are the probes quoted in the same paragraph:
-\texttt{three\_point\_probes.py}, and, in the directory \texttt{zonal},
-\texttt{level2\_numeric.py}, which evaluates the second-level kernel of
-\cite{LLM24} in floating point and checks it against the certificate
-first, and \texttt{level2\_sampled.py}, the sampled second-level
-programme.
-
-The directory \texttt{multi\_cap/second\_order} carries
-\cref{sec:second-order}. \texttt{rational\_model.py} builds the form $H$, the
-rows of the packing cone and the vector $c$ in exact rationals from the
-integral root system, and \texttt{verify\_cone\_certificate.py} checks the
-certificate of \cref{prop:cone-min} against them with an exact $LDL^{\mathsf T}$,
-in three seconds; \texttt{cone\_min.py}, \texttt{certify\_m.py} and
-\texttt{exact\_cert*.py} are how it was found. \texttt{hessian.py} gives the
-form in floating point and its spectrum, \texttt{exact\_push.py} the push-out
-statements, and \texttt{untilt.py} and \texttt{remainder\_test.py} the
-experiments of \cref{rem:second-order-gap}, the second writing the data of
-\cref{fig:second-order}(b). \texttt{hull\_along\_rays.py}, in \texttt{multi\_cap}, measures the part of
-$V(Y)$ outside the inversion hull along the two rays of
-\cref{rem:second-order-gap}. \texttt{independent\_check.py} recomputes every
-volume it needs by intersecting halfspaces, and checks $H$ against second
-differences, the cone rows against the exact distances, the spectrum, the
-one-centre formula and \cref{lem:pure-push}.
-
-\subsection*{The independent re-verification}
-
-The directory \texttt{independent\_verification} of the supplement
-records a re-run of every computation of this paper from a fresh copy of
-the package: the Lean verifications (seven at the time of the re-run;
-the eighth, \texttt{D4Closure.lean}, came with \cref{sec:closure}), the certificates for $23$ and
-$24$ contacts, including steps $3$ and $5$ of
-\cref{sec:certificate-checked} with all fifty sum-of-squares blocks of the
-four-point constraint, every script with its output compared against the
-shipped logs, the figures, and the manuscript itself. Its report lists
-what was found and corrected.
+\emph{The explicit neighbourhood.} The constant $\varepsilon_0$ of
+\cref{thm:near-contact} is computed from the deposited sums of squares in
+ball arithmetic, and the bracket $\beta$ of its proof in exact rational
+arithmetic on a grid of step $10^{-5}$.
 
 \subsection*{Software}
 
-The computations were carried out in Python, with exact rational
-arithmetic from the standard-library \texttt{fractions} module,
-\texttt{sympy} \cite{Meu17} for symbolic manipulation, exact algebraic
-numbers and Sturm root counting, \texttt{mpmath} for the
-arbitrary-precision evidence, and \texttt{numpy} \cite{Har20} and
-\texttt{scipy} \cite{Vir20} for double-precision vertex enumeration and
-convex hull volumes, the latter through the Quickhull implementation of
-\cite{BDH96}. These are standard and widely available; the semidefinite
-programmes of \cref{sec:certificate} are modelled in \texttt{cvxpy}
-\cite{DB16} and solved by Clarabel \cite{GC26}, both open source, and
-the re-verification of the cited certificate uses the exact rational
-matrices and polynomials of FLINT and the ball arithmetic of Arb
-\cite{Joh17} through \texttt{python-flint}. No
-specialised computer algebra system and no commercial solver was used,
-the one proof assistant is Lean~4 as described above, and nothing
-reported here needed more than a few minutes on ordinary consumer
-hardware apart from the continuation of \cref{sec:slack-continuation},
-which takes up to half an hour per pass, the symmetric search, which
-takes about an hour, the minimisation of the truncated volumes in
-\cref{sec:strict-inequality}, which takes about two hours per run, and
-the semidefinite programmes of \cref{sec:certificate}, which take
-between one and three minutes per solve and about a quarter of an hour
-for a run of five rounds.
+The computations use NumPy \cite{Har20}, SciPy \cite{Vir20}, SymPy
+\cite{Meu17}, the convex-hull code of \cite{BDH96}, FLINT and Arb
+\cite{Joh17}, and the Lean~4 proof assistant.
+
 \section{Numerical tables}\label{app:numerical-tables}
 
 This appendix collects, in one place, the numerical evidence quoted at
@@ -12526,7 +11514,7 @@ starting point for a reader exploring the polytope computationally, but
 it is not a substitute for, and adds no logical strength beyond, 
 the exact proof of \cref{lem:refcell-vol,lem:hmin-new} already given in
 \cref{sec:root-system}.
-\section{An illustrative toy model of the Bernstein-basis certificate}\label{app:bernstein-toy}
+\section{A model example of the Bernstein-basis certificate}\label{app:bernstein-toy}
 
 The Bernstein-basis sign certificate used at scale throughout
 \cref{sec:stage-two,sec:arc1-cert,sec:arc2-cert} is a general technique
@@ -12573,7 +11561,7 @@ larger degree and in two variables at once, throughout
 positivity question on a bounded interval or box to a finite list of
 rational numbers with the right positivity property.
 
-\subsection{A limitation: the certificate is sufficient, not necessary}
+\subsection{Sufficiency without necessity}
 
 The Bernstein sign test just illustrated is a \emph{sufficient} condition
 for non-negativity, not a necessary one, and this distinction is not
@@ -12612,7 +11600,7 @@ symbolic volume formula for that sub-part was never obtained, so no
 Bernstein test was run there at all. It is covered instead by the
 symmetry of \cref{prop:arc2-is-arc1}.
 
-\subsection{Why this is not merely a numerical convenience}
+\subsection{The role of exactness}
 
 Every number appearing in this appendix, the change-of-basis
 coefficients $b_0,\dots,b_4$, the degree-$2$ and degree-$6$ Bernstein
