@@ -1,0 +1,62 @@
+% tikz_secondorder.tex -- the second order of the cell volume at the root system
+% (multi_cap/second_order).
+%   (a) vol(V(Y)) - 8 against S = sum delta_i: the second-order model (2/3) S - (1/2) S^2, the
+%       worst case on the first-order cone (certified); the exact value with one centre pushed
+%       out, 1/3 - (1 - S/2)^4/3; and the exact value with all 24 pushed out evenly
+%       (secondorder_even.dat, halfspace intersection); the dotted line is where the pair terms
+%       of Lemma 2.15 reach 8 along the even push.
+%   (b) vol(V(Y)) - 8 - (2/3) S + (1/2) S^2 on the 300 packings of remainder_test.py (tilts on
+%       the edges of the cone, up to 5.8 S), against the one-centre ray, exactly
+%       delta^3/6 - delta^4/48.  Floating point: evidence, not a bound.
+% Build:  pdflatex tikz_secondorder.tex && pdftoppm -r 500 -png -singlefile tikz_secondorder.pdf ../figures/fig_tikz_secondorder
+% Test:   python3 tikz_overlap_check.py --auto tikz_secondorder.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\autocheck
+\begin{document}
+\begin{tikzpicture}[font=\small]
+\begin{axis}[name=A, width=8.0cm, height=7.0cm, xmin=0, xmax=0.33, ymin=0, ymax=0.25,
+    xtick={0,0.1,0.2,0.3}, ytick={0.05,0.1,0.15,0.2},
+    xticklabel style={/pgf/number format/fixed}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+    xlabel={$S=\sum_i\delta_i$}, ylabel={$\operatorname{vol}V(Y)-8$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    legend cell align=left, legend style={font=\footnotesize, at={(0.03,0.98)}, anchor=north west, draw=cink3, fill=white},
+    clip=false]
+  \addplot[cblue, line width=0.9pt, domain=0:0.33, samples=60] {2/3*x - x^2/2};
+  \addlegendentry{$\tfrac23S-\tfrac12S^2$}
+  \addplot[only marks, mark=*, mark size=1.5pt, corange, domain=0:0.32, samples=17] {1/3 - (1 - x/2)^4/3};
+  \addlegendentry{one centre out, exact}
+  \addplot[only marks, mark=square*, mark size=1.4pt, caqua!80!black] table[x=S, y=excess] {secondorder_even.dat};
+  \addlegendentry{all $24$ out evenly, exact}
+  \draw[cink3, densely dotted, line width=0.6pt] (axis cs:0.155,0) -- (axis cs:0.155,0.075);
+  \coordinate (A-pair) at (axis cs:0.158,0.01);
+\end{axis}
+\node[anchor=south west, inner sep=2pt, font=\footnotesize, text=cink2, align=left] at (A-pair) {pair terms\\ reach $8$};
+\begin{axis}[name=B, at={($(A.east)+(2.3cm,0)$)}, anchor=west, width=8.0cm, height=7.0cm,
+    xmode=log, ymode=log, xmin=2e-3, xmax=0.7, ymin=1e-8, ymax=1,
+    xlabel={$S=\sum_i\delta_i$}, ylabel={$\operatorname{vol}V(Y)-8-\tfrac23S+\tfrac12S^2$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    legend cell align=left, legend style={font=\footnotesize, at={(0.97,0.03)}, anchor=south east, draw=cink3, fill=white},
+    clip=false]
+  \addplot[only marks, mark=o, mark size=1.3pt, cblue, line width=0.4pt] table[x=S, y=D] {secondorder_remainder.dat};
+  \addlegendentry{$300$ tilted packings}
+  \addplot[corange, line width=0.9pt, domain=4e-3:0.6, samples=80] {x^3/6 - x^4/48};
+  \addlegendentry{one centre: $\tfrac16\delta^3-\tfrac1{48}\delta^4$}
+\end{axis}
+\node[font=\bfseries] at ($(A.north west)+(-1.2cm,0.35cm)$) {(a)};
+\node[font=\bfseries] at ($(B.north west)+(-1.2cm,0.35cm)$) {(b)};
+\checkfigure
+\end{tikzpicture}
+\end{document}

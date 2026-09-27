@@ -77,12 +77,13 @@ Conjecture 1.6 stays open in the same shape.  The new code was developed,
 and its computations run, with the assistance of Claude, an AI model made
 by Anthropic.
 
-  paper/              Theorem 7.79, Remark 7.78 and Figure 28 are new
+  paper/              Theorem 7.79, Remark 7.78 and Figure 29 are new
                         (figures_new/fig_cardinality.py), and so are
-                        Figures 9 and 10 (figures_new/tikz_counts.tex,
+                        Section 2.9 with Figure 11 and Figures 9 and 10
+                        (figures_new/tikz_secondorder.tex, tikz_counts.tex,
                         tikz_level2.tex); Lemma 7.50, Theorem 7.51, Theorem
-                        2.18 and "What is left" are revised; Figures 18 and
-                        27 are redrawn; the abstract is rewritten; the
+                        2.18 and "What is left" are revised; Figures 19 and
+                        28 are redrawn; the abstract is rewritten; the
                         introduction, the code index and the data
                         availability statement are revised.  Later figures
                         are renumbered.
@@ -94,6 +95,14 @@ by Anthropic.
                         thirteen signatures; the bound on the enlarged
                         domain (las2_slack.jl) and with a margin
                         (las2_margin.jl).  See level2/README.md.
+  multi_cap/second_order/
+                      Section 2.9: the second variation of the cell volume
+                        at the root system, its minimum -1 on the packing
+                        cone by an exact copositivity certificate
+                        (verify_cone_certificate.py, three seconds), the
+                        push-outs integrated exactly, the remainder and
+                        non-monotonicity experiments, and an independent
+                        check.  See multi_cap/second_order/README.md.
   multi_cap/count_survey.py
                       The right side of Lemma 2.15 for every count of
                         centres within sqrt 6: least value 8.264115 at
@@ -104,7 +113,7 @@ by Anthropic.
                       The collision test of the TikZ figures: no two nodes
                         overlap, tick labels included, and nothing drawn
                         passes under any text.  All six TikZ figures pass it
-                        (tikz_overlap_check.log); Figures 4, 6, 8 and 27 are
+                        (tikz_overlap_check.log); Figures 4, 6, 8 and 28 are
                         redrawn to do so.
   multi_cap/certify_cardinality.py, multi_cap/cardinality_sdp.py,
   multi_cap/cardinality_certificates/
