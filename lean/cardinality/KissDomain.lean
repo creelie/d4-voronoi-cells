@@ -1,26 +1,29 @@
 /-
-D4CertDomain.lean: the interval branch and bound of the certificate check,
-in exact dyadic arithmetic.
+KissDomain.lean: the check of the three-point certificates of Theorem 7.79
+(the kissing number is stable) inside Lean, in exact arithmetic.
 
-This module re-does step 3 of certificate_check.py inside Lean: from the
-certificate (f, F_0, ..., F_8) of D4CertData it expands the polynomial
-P(u, v, t) exactly over the rationals, scales it by 315 so that every
-coefficient is a dyadic rational, and then verifies, by a depth-first
-branch and bound over boxes with the second-order Taylor form, that
+For a certificate (f_1, ..., f_d; F_0, ..., F_d) of KissData, this module
+establishes what multi_cap/certify_cardinality.py establishes:
 
-    315 * 1000 * (omega(u) + omega(v) + omega(t)) - 315 * P(u, v, t) >= 0
+  1. every f_k >= 0, and every F_k is symmetric and positive definite
+     (exact LDL^T over the rationals, every pivot positive);
+  2. B = 1 + f(1) + F(1,1,1), exactly, and 24 (1 - e1) - 552 e2 > B - 1;
+  3. (i)  P1(u) = f(u) + 3 F(1,u,u) + 1 <= e1 on [-1, top];
+  4. (ii) P2(u,v,w) = F(u,v,w) <= e2 on the ordered admissible domain
+          -1 <= u <= v <= w <= top, 1 + 2uvw - u^2 - v^2 - w^2 >= 0,
+          and P2 is symmetric in its three variables, so that the ordered
+          domain covers the admissible domain in [-1, top]^3;
+  5. top >= t, e1 <= 10^-6 and e2 <= e2Dec, the decimals of the paper.
 
-on the ordered admissible domain -1 <= u <= v <= t <= 1/2,
-1 + 2uvt - u^2 - v^2 - t^2 >= 0.  The only inputs that are not computed
-here are the tables of D4CertData for omega, omega' and omega'' (dyadic
-lower and upper bounds evaluated from the closed forms in interval
-arithmetic by certificate_check.py); everything else, the expansion of P,
-its derivatives, the enclosures and the subdivision, is exact integer
-arithmetic on numerators and exponents, with no rounding anywhere.  The
-theorem at the end is settled by native_decide, so it trusts the Lean
-compiler as well as the kernel.
+The polynomials G_k, S_k, P1 and P2 are expanded here from the Legendre,
+Chebyshev and Gegenbauer recurrences; they are scaled by the least odd
+integer that makes every coefficient dyadic, and the branch and bound
+(second-order Taylor form about the centre of each box, Hessian bounds by
+interval evaluation over the box) runs in exact dyadic arithmetic on
+numerators and exponents, with no rounding anywhere.  The polynomial
+routines and the dyadic arithmetic are those of lean/certificate/D4CertDomain.
 -/
-import D4CertData
+import KissData
 
 /-! ## Rational polynomials in three variables -/
 
@@ -129,29 +132,8 @@ def sEntry (i j : Nat) (phik : RPoly) (TC : List (List Rat)) : RPoly :=
 def RPoly.at1uu (p : RPoly) : RPoly :=
   RPoly.normalize (p.map fun (k, c) => ((k.2.1 + k.2.2, 0, 0), c))
 
-def Fmats : List (List (List Rat)) := [F0, F1, F2, F3, F4, F5, F6, F7, F8]
-
-/-- P = f(u)+f(v)+f(t) + F(u,v,t) + (F(1,u,u)+F(1,v,v)+F(1,t,t))/21. -/
-def buildP (d : Nat) : RPoly :=
-  let LC := legendre d
-  let G := gegenbauer d
-  let TC := chebyshev d
-  let fpart := (List.range (d + 1)).foldl (fun acc k =>
-    let fk := f.getD k 0
-    if fk == 0 then acc else
-    (List.range 3).foldl (fun acc2 var => RPoly.add acc2 (RPoly.scale (univariate (G.getD k []) var) fk)) acc) []
-  (List.range (d + 1)).foldl (fun acc k =>
-    let phik := phiPoly k LC
-    let Fk := Fmats.getD k []
-    let n := d - k + 1
-    (List.range n).foldl (fun acc2 i =>
-      (List.range n).foldl (fun acc3 j =>
-        let c := (Fk.getD i []).getD j 0
-        if c == 0 then acc3 else
-        let s := sEntry i j phik TC
-        let s1 := s.at1uu
-        let coinc := RPoly.add (RPoly.add s1 (s1.permute (1, 0, 2))) (s1.permute (2, 1, 0))
-        RPoly.add acc3 (RPoly.add (RPoly.scale s c) (RPoly.scale coinc (c / 21)))) acc2) acc) fpart
+/-- Sum of the coefficients: the value at (1, 1, 1). -/
+def RPoly.at111 (p : RPoly) : Rat := p.foldl (fun s (_, c) => s + c) 0
 
 /-! ## Dyadic numbers and intervals -/
 
@@ -291,43 +273,159 @@ def NPoly.evalPt (p : NPoly) (pu pv pt : Array Dy) : Dy :=
       acc2.add (innermost.mul pv[b]!)) Dy.zero
     acc.add (inner.mul pu[a]!)) Dy.zero
 
-/-! ## The tables -/
+/-! ## The certificate polynomials -/
 
-def mkDy (x : Int × Nat) : Dy := ⟨x.1, x.2⟩
-def usT : Array Dy := usRaw.map mkDy
-def olowT : Array Dy := olowRaw.map mkDy
-def d1loT : Array Dy := d1loRaw.map mkDy
-def d1hiT : Array Dy := d1hiRaw.map mkDy
-def duT : Dy := mkDy duRaw
-def m2T : Dy := mkDy m2Raw
+namespace Cert
 
-/-- The largest index i with us[i] <= x, or none if x < us[0]. -/
-def lookup (x : Dy) : Option Nat :=
-  if Dy.lt x (usT[0]!) then none else
-  let rec go (lo hi : Nat) : Nat → Nat
-    | 0 => lo
-    | fuel + 1 =>
-      if hi - lo ≤ 1 then lo else
-      let mid := (lo + hi) / 2
-      if Dy.le (usT[mid]!) x then go mid hi fuel else go lo mid fuel
-  some (go 0 usT.size 64)
+/-- f(u) = sum_k f_k G_k(u), in the first variable. -/
+def fPoly (c : Cert) : RPoly :=
+  let G := gegenbauer c.d
+  (List.range c.d).foldl (fun acc i =>
+    let fk := c.f.getD i 0
+    if fk == 0 then acc else RPoly.add acc (RPoly.scale (univariate (G.getD (i + 1) []) 0) fk)) []
+
+/-- F(u, v, w) = sum_k <F_k, S_k(u, v, w)>. -/
+def FPoly (c : Cert) : RPoly :=
+  let LC := legendre c.d
+  let TC := chebyshev c.d
+  (List.range (c.d + 1)).foldl (fun acc k =>
+    let phik := phiPoly k LC
+    let Fk := c.F.getD k []
+    let n := c.d - k + 1
+    (List.range n).foldl (fun acc2 i =>
+      (List.range n).foldl (fun acc3 j =>
+        let x := (Fk.getD i []).getD j 0
+        if x == 0 then acc3 else RPoly.add acc3 (RPoly.scale (sEntry i j phik TC) x)) acc2) acc) []
+
+/-- P1(u) = f(u) + 3 F(1, u, u) + 1, in the first variable. -/
+def P1 (c : Cert) (F : RPoly) : RPoly :=
+  RPoly.add (RPoly.add c.fPoly (RPoly.scale F.at1uu 3)) ONE
+
+/-- B = 1 + f(1) + F(1, 1, 1). -/
+def bound (c : Cert) (F : RPoly) : Rat := 1 + c.fPoly.at111 + F.at111
+
+end Cert
+
+/-! ## The exact half -/
+
+/-- Exact LDL^T over the rationals: true if every pivot is positive. -/
+def ldlPD (A : List (List Rat)) : Bool := Id.run do
+  let n := A.length
+  let mut a : Array (Array Rat) := (A.map List.toArray).toArray
+  for k in [0:n] do
+    let p := a[k]![k]!
+    if p ≤ 0 then return false
+    for i in [k+1:n] do
+      let l := a[i]![k]! / p
+      if l != 0 then
+        let mut row := a[i]!
+        for j in [k+1:n] do
+          row := row.set! j (row[j]! - l * a[k]![j]!)
+        a := a.set! i row
+  return true
+
+def isSymmetric (A : List (List Rat)) : Bool :=
+  let n := A.length
+  A.all (fun row => row.length == n) &&
+  (List.range n).all fun i => (List.range n).all fun j => (A.getD i []).getD j 0 == (A.getD j []).getD i 0
+
+namespace Cert
+
+/-- The shapes: d numbers f_1..f_d, and F_k of size d - k + 1 for k = 0..d. -/
+def shapesOk (c : Cert) : Bool :=
+  c.f.length == c.d && c.F.length == c.d + 1 &&
+  (List.range (c.d + 1)).all fun k => (c.F.getD k []).length == c.d - k + 1
+
+/-- 1. f_k >= 0 and every F_k symmetric positive definite. -/
+def positivityOk (c : Cert) : Bool :=
+  c.shapesOk && c.f.all (fun x => 0 ≤ x) && c.F.all (fun A => isSymmetric A && ldlPD A)
+
+/-- 5. The domains run to top >= t, and the tolerances are at most the decimals. -/
+def thresholdsOk (c : Cert) : Bool :=
+  c.tDec ≤ c.top && 0 ≤ c.e1 && c.e1 ≤ c.e1Dec && 0 ≤ c.e2 && c.e2 ≤ c.e2Dec
+
+/-- 2. (|C| - 1)(1 - e1) - (|C| - 1)(|C| - 2) e2 > B - 1 at |C| = 25, with the decimals. -/
+def countOk (c : Cert) (F : RPoly) : Bool :=
+  24 * (1 - c.e1Dec) - 552 * c.e2Dec > c.bound F - 1
+
+end Cert
+
+/-- P2 is symmetric in its three variables. -/
+def RPoly.symmetric (p : RPoly) : Bool := perms.all fun pm => p.permute pm == p
+
+/-! ## Scaling to dyadic coefficients -/
+
+def oddPart : Nat → Nat → Nat
+  | 0, n => n
+  | fuel + 1, n => if n > 0 && n % 2 == 0 then oddPart fuel (n / 2) else n
+
+/-- The least odd integer S that makes every coefficient of S p dyadic. -/
+def oddScale (p : RPoly) : Nat := p.foldl (fun s (_, q) => Nat.lcm s (oddPart 400 q.den)) 1
 
 /-! ## The branch and bound -/
 
-/-- 315 * 1000: the scale of the omega terms after the scaling of P by 315. -/
-def SC : Int := 315000
-/-- A dyadic number above 1/3. -/
-def THIRD : Dy := ⟨5592406, 24⟩
-/-- Boxes narrower than 2^-20 in every direction are not subdivided further. -/
-def WMIN : Dy := ⟨1, 20⟩
+/-- Boxes narrower than 2^-24 in every direction are not subdivided further. -/
+def WMIN : Dy := ⟨1, 24⟩
 /-- Hessian bounds are recomputed after this many bisections and inherited in between. -/
 def HAGE : Nat := 2
 
 structure Polys where
   P : NPoly
-  D : Array NPoly       -- three first derivatives
-  H : Array NPoly       -- six second derivatives, order (0,0),(0,1),(0,2),(1,1),(1,2),(2,2)
+  D : Array NPoly       -- first derivatives
+  H : Array NPoly       -- second derivatives, order (0,0),(0,1),(0,2),(1,1),(1,2),(2,2)
   deg : Nat
+  E : Dy                -- the scaled tolerance S e
+  top : Dy
+
+/-- S p, its derivatives, S e and top, all dyadic; none if some coefficient is not. -/
+def mkPolys (p : RPoly) (e top : Rat) : Option Polys :=
+  let S : Rat := oddScale p
+  match toDPoly (RPoly.scale p S), Dy.ofRat (e * S), Dy.ofRat top with
+  | some Pd, some E, some tp =>
+    let D := #[Pd.deriv 0, Pd.deriv 1, Pd.deriv 2]
+    let H := #[(Pd.deriv 0).deriv 0, (Pd.deriv 0).deriv 1, (Pd.deriv 0).deriv 2,
+               (Pd.deriv 1).deriv 1, (Pd.deriv 1).deriv 2, (Pd.deriv 2).deriv 2]
+    some ⟨toNPoly Pd, D.map toNPoly, H.map toNPoly, Pd.maxDeg, E, tp⟩
+  | _, _, _ => none
+
+inductive Outcome (α : Type) where
+  | verified
+  | failed
+  | split (b1 b2 : α)
+
+/-! ### Constraint (i): one variable -/
+
+structure Box1 where
+  lo : Dy
+  hi : Dy
+
+def ONEPT : Array Dy := #[Dy.one]
+def ONEIV : Array Iv := #[Iv.pt Dy.one]
+
+/-- S e1 - S P1 >= 0 on the interval, by the Taylor form about its centre. -/
+def process1 (ps : Polys) (b : Box1) : Outcome Box1 :=
+  let c := (b.lo.add b.hi).half
+  let r := (b.hi.sub b.lo).half
+  let cp := dyPowers c ps.deg
+  let pc := ps.P.evalPt cp ONEPT ONEPT
+  let g := ((ps.D[0]!).evalPt cp ONEPT ONEPT).abs
+  let h := ((ps.H[0]!).evalIv (ivPowers ⟨b.lo, b.hi⟩ ps.deg) ONEIV ONEIV).absHi
+  let qlo := ((ps.E.sub pc).sub (g.mul r)).sub (h.mul (r.mul r)).half
+  if qlo.isNonneg then .verified
+  else if Dy.lt (b.hi.sub b.lo) WMIN then .failed
+  else .split ⟨b.lo, c⟩ ⟨c, b.hi⟩
+
+/-- (status, intervals processed): status 0 done, 1 an interval failed, 2 fuel exhausted. -/
+def run1 (ps : Polys) (done : Nat) : Nat → List Box1 → Nat × Nat
+  | 0, _ => (2, done)
+  | _, [] => (0, done)
+  | fuel + 1, b :: rest =>
+    match process1 ps b with
+    | .verified => run1 ps (done + 1) fuel rest
+    | .failed => (1, done)
+    | .split b1 b2 => run1 ps (done + 1) fuel (b1 :: b2 :: rest)
+
+/-! ### Constraint (ii): three variables, ordered admissible domain -/
 
 structure Box where
   lo : Array Dy
@@ -335,69 +433,43 @@ structure Box where
   hess : Option (Array Dy)
   age : Nat            -- bisections since the Hessian bounds were computed
 
-inductive Outcome where
-  | verified
-  | failed
-  | split (b1 b2 : Box)
-
 def hIndex (v w : Nat) : Nat :=
   let (v, w) := if v ≤ w then (v, w) else (w, v)
   if v == 0 then w else if v == 1 then 2 + w else 5
 
 def detPoly : DPoly := #[⟨0, 0, 0, Dy.one⟩, ⟨1, 1, 1, ⟨2, 0⟩⟩, ⟨2, 0, 0, ⟨-1, 0⟩⟩, ⟨0, 2, 0, ⟨-1, 0⟩⟩, ⟨0, 0, 2, ⟨-1, 0⟩⟩]
 
-def process (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := Id.run do
+/-- S e2 - S P2 >= 0 on the part of the box in the ordered admissible domain. -/
+def process2 (ps : Polys) (maxAge : Nat) (b : Box) : Outcome Box := Id.run do
   let lo := b.lo; let hi := b.hi
-  -- the ordered region u <= v <= t
+  -- boxes that miss the ordered region u <= v <= w
   if Dy.lt (hi[1]!) (lo[0]!) || Dy.lt (hi[2]!) (lo[1]!) then return .verified
   let ivs : Array Iv := #[⟨lo[0]!, hi[0]!⟩, ⟨lo[1]!, hi[1]!⟩, ⟨lo[2]!, hi[2]!⟩]
+  -- boxes on which 1 + 2uvw - u^2 - v^2 - w^2 < 0 throughout
   let pw2 := ivs.map fun x => ivPowers x 2
   let det := detPoly.evalIv (pw2[0]!) (pw2[1]!) (pw2[2]!)
   if Dy.lt det.hi Dy.zero then return .verified
-  -- centre and half-widths
   let c : Array Dy := #[(lo[0]!).add (hi[0]!) |>.half, (lo[1]!).add (hi[1]!) |>.half, (lo[2]!).add (hi[2]!) |>.half]
   let r : Array Dy := #[(hi[0]!).sub (lo[0]!) |>.half, (hi[1]!).sub (lo[1]!) |>.half, (hi[2]!).sub (lo[2]!) |>.half]
   let width := Dy.max (Dy.max ((hi[0]!).sub (lo[0]!)) ((hi[1]!).sub (lo[1]!))) ((hi[2]!).sub (lo[2]!))
-  -- Hessian bounds: recomputed every maxAge bisections, inherited in between
+  -- Hessian bounds over the box: recomputed every maxAge bisections, inherited from a
+  -- containing box in between
   let recompute := b.hess.isNone || b.age ≥ maxAge
+  let fresh : Unit → Array Dy := fun _ =>
+    let pw := ivs.map fun x => ivPowers x ps.deg
+    ps.H.map fun hp => (hp.evalIv (pw[0]!) (pw[1]!) (pw[2]!)).absHi
   let hess : Array Dy :=
     match b.hess with
-    | some h => if !recompute then h else
-        let pw := ivs.map fun x => ivPowers x ps.deg
-        ps.H.map fun hp => (hp.evalIv (pw[0]!) (pw[1]!) (pw[2]!)).absHi
-    | none =>
-        let pw := ivs.map fun x => ivPowers x ps.deg
-        ps.H.map fun hp => (hp.evalIv (pw[0]!) (pw[1]!) (pw[2]!)).absHi
+    | some h => if recompute then fresh () else h
+    | none => fresh ()
   let age := if recompute then 0 else b.age
-  -- omega terms at the centre
-  let mut q0 : Dy := Dy.zero
-  let mut glo : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
-  let mut ghi : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
-  let mut m2v : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
-  let dM := m2T.mul duT
-  for v in [0, 1, 2] do
-    if Dy.le THIRD (lo[v]!) then
-      match lookup (c[v]!) with
-      | none => pure ()
-      | some idx =>
-        q0 := q0.add ((olowT[idx]!).mulInt SC)
-        glo := glo.set! v (((d1loT[idx]!).sub dM).mulInt SC)
-        ghi := ghi.set! v (((d1hiT[idx]!).add dM).mulInt SC)
-        m2v := m2v.set! v (m2T.mulInt SC)
-  -- P and its gradient at the centre
   let cp := c.map fun x => dyPowers x ps.deg
-  let pc := ps.P.evalPt (cp[0]!) (cp[1]!) (cp[2]!)
-  q0 := q0.sub pc
+  let q0 := ps.E.sub (ps.P.evalPt (cp[0]!) (cp[1]!) (cp[2]!))
   let mut first : Dy := Dy.zero
   let mut contrib : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
-  let mut gabs : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
   for v in [0, 1, 2] do
-    let g := (ps.D[v]!).evalPt (cp[0]!) (cp[1]!) (cp[2]!)
-    let dqlo := (glo[v]!).sub g
-    let dqhi := (ghi[v]!).sub g
-    let ga := Dy.max dqlo.abs dqhi.abs
-    gabs := gabs.set! v ga
-    let term := ga.mul (r[v]!)
+    let g := ((ps.D[v]!).evalPt (cp[0]!) (cp[1]!) (cp[2]!)).abs
+    let term := g.mul (r[v]!)
     first := first.add term
     contrib := contrib.set! v ((contrib[v]!).add term)
   let mut second : Dy := Dy.zero
@@ -406,7 +478,7 @@ def process (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := Id.run do
       if v ≤ w then
         let h := hess[hIndex v w]!
         if v == w then
-          let term := (h.add (m2v[v]!)).mul ((r[v]!).mul (r[v]!))
+          let term := h.mul ((r[v]!).mul (r[v]!))
           second := second.add term
           contrib := contrib.set! v ((contrib[v]!).add term)
         else
@@ -421,63 +493,43 @@ def process (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := Id.run do
   let axis := if Dy.le (contrib[1]!) (contrib[0]!) && Dy.le (contrib[2]!) (contrib[0]!) then 0
               else if Dy.le (contrib[2]!) (contrib[1]!) then 1 else 2
   let mid := c[axis]!
-  let b1 : Box := ⟨lo, hi.set! axis mid, some hess, age + 1⟩
-  let b2 : Box := ⟨lo.set! axis mid, hi, some hess, age + 1⟩
-  return .split b1 b2
+  return .split ⟨lo, hi.set! axis mid, some hess, age + 1⟩ ⟨lo.set! axis mid, hi, some hess, age + 1⟩
 
-def run (ps : Polys) (hw : Nat) : Nat → List Box → Bool
-  | 0, _ => false
-  | _, [] => true
-  | fuel + 1, b :: rest =>
-    match process ps hw b with
-    | .verified => run ps hw fuel rest
-    | .failed => false
-    | .split b1 b2 => run ps hw fuel (b1 :: b2 :: rest)
-
-/-- Diagnostic version: (status, boxes processed), status 0 done, 1 a box
-failed, 2 fuel exhausted. -/
-def runStat (ps : Polys) (hw : Nat) (done : Nat) : Nat → List Box → Nat × Nat
+/-- (status, boxes processed): status 0 done, 1 a box failed, 2 fuel exhausted. -/
+def run2 (ps : Polys) (hw : Nat) (done : Nat) : Nat → List Box → Nat × Nat
   | 0, _ => (2, done)
   | _, [] => (0, done)
   | fuel + 1, b :: rest =>
-    match process ps hw b with
-    | .verified => runStat ps hw (done + 1) fuel rest
+    match process2 ps hw b with
+    | .verified => run2 ps hw (done + 1) fuel rest
     | .failed => (1, done)
-    | .split b1 b2 => runStat ps hw (done + 1) fuel (b1 :: b2 :: rest)
+    | .split b1 b2 => run2 ps hw (done + 1) fuel (b1 :: b2 :: rest)
 
-/-- The whole check: expand P, scale by 315, differentiate, and run the
-branch and bound from the box [-1, 1/2]^3. -/
-def thePolys : Option Polys :=
-  let P := buildP 8
-  match toDPoly (RPoly.scale P 315) with
-  | none => none
-  | some Pd =>
-    let D := #[Pd.deriv 0, Pd.deriv 1, Pd.deriv 2]
-    let H := #[(Pd.deriv 0).deriv 0, (Pd.deriv 0).deriv 1, (Pd.deriv 0).deriv 2,
-               (Pd.deriv 1).deriv 1, (Pd.deriv 1).deriv 2, (Pd.deriv 2).deriv 2]
-    some ⟨toNPoly Pd, D.map toNPoly, H.map toNPoly, Pd.maxDeg⟩
+/-! ## The whole check of one certificate -/
 
-def startBox : Box := ⟨#[⟨-1, 0⟩, ⟨-1, 0⟩, ⟨-1, 0⟩], #[⟨1, 1⟩, ⟨1, 1⟩, ⟨1, 1⟩], none, 0⟩
+structure Checked where
+  F : RPoly
+  p1 : Option Polys
+  p2 : Option Polys
 
-def verifyWithFuel (fuel : Nat) : Bool :=
-  match thePolys with
-  | none => false
-  | some ps => run ps HAGE fuel [startBox]
+def prepare (c : Cert) : Checked :=
+  let F := c.FPoly
+  ⟨F, mkPolys (c.P1 F) c.e1 c.top, mkPolys F c.e2 c.top⟩
 
-def verifyStat (fuel : Nat) : Nat × Nat :=
-  match thePolys with
+/-- Constraint (i) on [-1, top]: (status, intervals). -/
+def Checked.statI (k : Checked) (fuel : Nat) : Nat × Nat :=
+  match k.p1 with
   | none => (3, 0)
-  | some ps => runStat ps HAGE 0 fuel [startBox]
+  | some ps => run1 ps 0 fuel [⟨⟨-1, 0⟩, ps.top⟩]
 
-/-- Diagnostic: the check on a given box, with a given width threshold for
-recomputing the Hessian bounds; box coordinates as numerators over 2^20. -/
-def verifyStatBox (fuel : Nat) (maxAge : Nat) (lo hi : List Int) : Nat × Nat :=
-  match thePolys with
+/-- Constraint (ii) on the ordered admissible domain in [-1, top]^3: (status, boxes). -/
+def Checked.statII (k : Checked) (fuel : Nat) : Nat × Nat :=
+  match k.p2 with
   | none => (3, 0)
   | some ps =>
-    let mk (l : List Int) : Array Dy := (l.map fun n => (⟨n, 20⟩ : Dy)).toArray
-    runStat ps maxAge 0 fuel [⟨mk lo, mk hi, none, 0⟩]
+    let m1 : Dy := ⟨-1, 0⟩
+    run2 ps HAGE 0 fuel [⟨#[m1, m1, m1], #[ps.top, ps.top, ps.top], none, 0⟩]
 
-
-/-- Number of monomials of the expanded P, for the record. -/
-def monomialCount : Nat := (buildP 8).length
+/-- 1, 2, 5 and the symmetry of P2: everything but the two branch and bounds. -/
+def Checked.exactOk (k : Checked) (c : Cert) : Bool :=
+  c.positivityOk && c.thresholdsOk && c.countOk k.F && k.F.symmetric

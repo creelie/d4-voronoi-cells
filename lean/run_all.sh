@@ -1,12 +1,13 @@
 #!/bin/sh
-# Check the seven standalone Lean files with the pinned toolchain and print
+# Check the nine standalone Lean files with the pinned toolchain and print
 # the axiom report of each.  Needs `lean` on the PATH (elan installs the
-# version named in lean-toolchain).  The two Lake projects are built
-# separately:  (cd cell600 && lake build)  and  (cd certificate && lake build).
+# version named in lean-toolchain).  The three Lake projects are built
+# separately:  (cd cell600 && lake build),  (cd certificate && lake build)  and
+# (cd cardinality && lake build).
 set -e
 cd "$(dirname "$0")"
-for f in D4Stress D4Meet D4Certificate D4InnerProducts D4RootLattices D4Closure D4SecondOrder; do
+for f in D4Stress D4Meet D4Certificate D4InnerProducts D4RootLattices D4Closure D4SecondOrder D4NearContact D4Rigidity; do
   echo "== $f.lean"
   lean "$f.lean"
 done
-echo "all seven files check"
+echo "all nine files check"
