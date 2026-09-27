@@ -104,8 +104,49 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   values of the certificate, and proves the certificate of Proposition 2.21
   (exact LDL^T, 30 zero pivots with zero rows), the push-out block and the
   identity of Proposition 2.20, the equality on the one-centre rays, and the
-  expansions of Lemma 2.23 (grind).  About thirty seconds; nine parts of the
-  paper are now checked in Lean.
+  expansions of Lemma 2.23 (grind).  About thirty seconds.
+- In Lean, five more parts, thirteen in all:
+  - lean/cardinality/, a new Lake project that checks the certificates of
+    Theorem 7.79 (degree 8 at s = 0.0065, degree 10 at s = 0.008) from their
+    entries alone in exact dyadic arithmetic: positivity by exact LDL^T, the
+    bound, the inequality at |C| = 25, and both branch and bounds (441 and
+    2 957 intervals; 181 869 boxes for degree 8, a run of several hours for
+    degree 10).
+  - lean/certificate/D4Labelled*.lean: the regions II_s and II_f of Theorem
+    2.17 (39 399 and 9 545 boxes), with the shares, the packing bounds and the
+    Gamma envelopes computed in Lean; only the omega tables, the slab constant
+    and the cell integrals come from interval arithmetic.
+  - lean/D4NearContact.lean: the exact arithmetic of epsilon_0 = 4e-26 in
+    Theorem 2.18: -q >= 2.62e-4 for the quotient of the two-point polynomial,
+    f >= 1.12e-8 off the windows, the constants of Lemma 7.77, the assembly of
+    E(24, kappa) and E(25, kappa) from the bounds B_3, B_4, and the facet
+    bracket; twelve theorems, twenty seconds.
+  - lean/D4Rigidity.lean: Lemma 7.50 from the integral roots, the polynomial
+    annihilating 4N, the ranks over Q (so the multiplicities 30, 29, 8, 21, 8),
+    the 11/16 diagonal of the projector onto the image, and the ratio
+    sqrt(96/11) of one displaced direction; the proof of the lemma said this
+    was done in Lean's kernel, where only its input, the 96 tight pairs, was.
+  - lean/D4Cap.lean: the extremal cap theorem: the 25 vertices of Q by exact
+    enumeration, vol(24-cell) = 8 and vol(Q) = 25/3 by exact triangulation
+    (the script had them in floating point), the cross-polytope enclosure,
+    the fourth derivative of g, the three ranges of the case |S| = 1, and the
+    303 boxes of the case |S| >= 2 with the same largest value 0.99755.
+  - lean/certificate/D4Omega*.lean: the tables of omega, A_* and the
+    constants of Theorem 2.17 computed inside Lean, in outward-rounded 256-bit
+    interval arithmetic, from simplified closed forms,
+    omega'(u) = (pi/16)(3u - 1)^2 / ((1 + u)^2 sqrt(1 - u^2)) and
+    omega(u) = 4 pi [(9/32) arctan((t* - tau)/(1 + t* tau)) - (4 tau^3 - 24 tau + 11 sqrt2)/96]
+    (new; multi_cap/omega_closed_form.py checks them symbolically and against
+    the old form).  A_* > 8 - 0.0928555703, s(D) > 8 - A_*, the slab constant
+    and the 256 cell integrals are confirmed, the covering bound exceeds 8
+    for every m <= 22 and (9/8) pi^2 - 22 S(2) > 8.046, and the branch and
+    bounds of regions II_s and II_f are rerun with the Lean tables (39 551 and
+    9 545 boxes): they now take nothing from outside Lean but the
+    certificate.  D4OmegaRegionI.lean states region I with them.
+  Closed definitions that run a check now live in the Main modules
+  (lean/certificate/D4CertMain.lean holds verifyDomain), since a precompiled
+  module evaluates its closed definitions when it is loaded; D4CertStat now
+  takes one run instead of two.
 
 ## What is measured, not proved
 

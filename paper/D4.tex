@@ -1479,7 +1479,8 @@ Take $R=\sqrt{3/2}$ in \cref{lem:no-triple} and drop the pair terms,
 which are nonnegative. $S$ decreases and vanishes for $d\ge\sqrt6$, so
 at most twenty-two centres within $\sqrt6$ give
 $\vol(V_c)\ge\tfrac98\pi^2-22S(2)=8.04610\ldots$, in ball arithmetic by
-\texttt{closure\_lemmas.py}.
+\texttt{closure\_lemmas.py} and in interval arithmetic in Lean
+(\texttt{lean/certificate/D4OmegaMain.lean}).
 \end{proof}
 
 $\Psi$ is a second distance criterion beside $\Phi$, with thresholds
@@ -1653,8 +1654,14 @@ It verifies $6\,482$ boxes and discards $1\,242$ outside the domain.
 So every $Q_{ijk}\ge0$, and Step 2 concludes. The constants of Steps 1
 and 3, the two branch and bounds and a rerun of the verification of
 \eqref{eq:C} are \texttt{labelled\_certificate\_check.py}; the identity
-for $a$ is also proved in Lean, in \texttt{D4Closure.lean}
-(\cref{sec:reproducibility-new}).
+for $a$ is also proved in Lean, in \texttt{D4Closure.lean}, and the two
+branch and bounds are repeated in Lean in exact dyadic arithmetic, over
+$39\,399$ and $9\,545$ boxes, with the shares, the packing bounds and the
+envelopes of the $\Gamma_i$ computed there and only the tables of $\omega$,
+the constant $c$ and the enclosures of the cell integrals taken from ball
+arithmetic, and then a second time with those computed in Lean as well,
+together with $s(D)>8-A_*$, $a_D/(1-\frac D2a_D)<2$ and $\mathrm{fr}(1,\frac12)<\frac1{22}$
+(\texttt{lean/certificate}, \cref{sec:reproducibility-new}).
 \end{proof}
 
 \begin{figure}[tb]
@@ -1918,7 +1925,8 @@ $\delta=S$ and $\Theta=e+\delta$. With these constants frozen, the losses are
 $\alpha\|\varepsilon\|^2+\beta'\|\varepsilon\|+\gamma'$ with $\alpha>\frac23$, so the
 largest $\|\varepsilon\|$ is the worst case; and every part of $\beta(S)$ other
 than $\frac23$ is increasing in $S$. \texttt{explicit\_eps0.py} evaluates
-$\beta$ in exact rational arithmetic and finds $\beta(4\cdot10^{-3})\ge0.1$:
+$\beta$ in exact rational arithmetic, and \texttt{lean/D4NearContact.lean}
+repeats the evaluation in Lean, and finds $\beta(4\cdot10^{-3})\ge0.1$:
 at that point the moment term costs $0.39\,S$, the volume term $0.04\,S$,
 the caps $2\cdot10^{-4}S$ and the hull $0.12\,S$ (and $\beta$ stays positive up to
 $S=4.5\cdot10^{-3}$). So $\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, so $\varepsilon=0$ by
@@ -2088,7 +2096,7 @@ replaced by the constraints at $8000$ sampled quadruples,
 quadruples violating its constraints by up to $0.23$, and one round of it
 needs most of the $15$ gigabytes of the machine used here; the certificate's
 own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
-\cite{LLM24} solved the programme in $256$-bit arithmetic.
+\cite{LLM24} solved the programme in $256$-bit arithmetic.\looseness=-1
 
 \begin{figure}[tb]
 \centering
@@ -3499,7 +3507,9 @@ $m$ & $r_m$ (degrees) & bound & $m$ & $r_m$ (degrees) & bound\\
 admissible range of $m$. It exceeds $8$ for every $m\le22$ and falls
 below $8$ at $m=23$. Each $r_m$ is the root of \eqref{eq:rm}, computed
 to the digits shown by bisection on an exactly evaluated monotone
-function.}
+function. That the bound exceeds $8$ for $5\le m\le22$ is also checked in
+Lean, in interval arithmetic: it says $2\rho-\sin2\rho<2\pi/m$ at
+$\rho=\arctan c$, $c^3=24/(\pi m)$ (\texttt{lean/certificate/D4OmegaMain.lean}).}
 \label{tab:covering-bound}
 \end{table}
 
@@ -5313,8 +5323,9 @@ $\tfrac{11}{16}$, and consequently
 \begin{proof}
 What has to be established is a finite exact statement about one
 integral matrix, and it is established by computation, carried out twice
-on independent code paths: in integer arithmetic in Python and again
-inside Lean's kernel. What follows sets out what is computed and why it
+on independent code paths: in integer arithmetic in Python and again in
+Lean, from the integral roots (\texttt{lean/D4Rigidity.lean}, by
+\texttt{native\_decide}, with the ranks computed over $\mathbb{Q}$). What follows sets out what is computed and why it
 determines the spectrum.
 
 Let $\Lambda'=\sqrt2\,\Lambda$, whose coefficients $\langle a_i,\cdot\rangle$
@@ -5358,7 +5369,7 @@ integer arithmetic, by \texttt{rigidity\_spectrum.py}: with
 $2K=\Lambda'(2P)\Lambda'^{\mathsf T}$, which is integral and annihilated by
 $x(x-4)(x-10)(x-12)(x-16)$, the projection onto $\ker K$ is
 $(2K-4I)(2K-10I)(2K-12I)(2K-16I)/7680$, and each of its diagonal entries is
-$\tfrac5{16}$.
+$\tfrac5{16}$; \texttt{D4Rigidity.lean} checks the same in Lean.
 \end{proof}
 
 The second statement is what makes the passage from $\|\Lambda\tau\|_1$, which the
@@ -5463,7 +5474,7 @@ argument really uses is the least value $\nu$ of $\|\Lambda\tau\|_1$ over
 unit vectors $\tau\in\mathcal{T}$ orthogonal to $\ker\Lambda$, for which
 \cref{lem:rigidity-spectrum} gives $\nu\ge4/\sqrt{11}=1.206$, and the radius is
 $(144/\nu^2+\tfrac14)^{-1/2}$. A displacement of a single direction, with its
-rotational part removed, has $\|\Lambda\tau\|_1/\|\tau\|_2=\sqrt{96/11}=2.954$ (\texttt{rigidity\_spectrum.py}), so
+rotational part removed, has $\|\Lambda\tau\|_1/\|\tau\|_2=\sqrt{96/11}=2.954$ (\texttt{rigidity\_spectrum.py}, and again in \texttt{D4Rigidity.lean}), so
 $\nu\le2.954$ and no sharpening of the constant can take this argument past
 $0.244$. No argument of this kind
 reaches a configuration that is nowhere near $\Rt$, which is the whole of
@@ -6573,6 +6584,22 @@ by interval evaluation of the second derivative on $3000$ subintervals.
 For $u\ge u_i$ the monotonicity gives $\omega(u)\ge\omega(\gamma_i)$, and
 the mean value theorem gives $|\omega'(u)-\omega'(\cos\gamma_i)|\le0.289712\,(u-\cos\gamma_i)$.
 
+\emph{A simpler form.} The bracket of the integrand vanishes at the lower
+limit $r=\gamma/2$, so differentiating under the integral sign leaves only
+the coefficients of $\sec^4r$ and $\tan^2r\sec^2r$, whose derivatives in
+$\gamma$ are rational in $u$; the result, and the closed form it integrates to, are
+\[
+  \omega'(u)=\frac{\pi}{16}\,\frac{(3u-1)^2}{(1+u)^2\sqrt{1-u^2}},\qquad
+  \omega(u)=4\pi\Bigl[\tfrac{9}{32}\arctan\frac{t_*-\tau}{1+t_*\tau}
+  -\tfrac{1}{96}\bigl(4\tau^3-24\tau+11\sqrt2\bigr)\Bigr],
+\]
+with $\tau=\tan\frac\gamma2=((1-u)/(1+u))^{1/2}$ and $t_*=\tan r_*=1/\sqrt2$,
+for $\tfrac13\le u<1$. The first shows at once that $\omega$ increases and
+vanishes to second order at $u=\tfrac13$; \texttt{omega\_closed\_form.py}
+checks symbolically that the second has the first as its derivative and
+vanishes at $\tfrac13$, and that both agree with the form above to
+$10^{-15}$. They are what the Lean check below evaluates.
+
 \emph{The inequality \eqref{eq:C}.} The polynomial
 $P(u,v,t)=f(u)+f(v)+f(t)+F(u,v,t)+(F(1,u,u)+F(1,v,v)+F(1,t,t))/21$ is
 expanded exactly, from the recurrences for $T_i$, $P_k$ and $G_k$, into
@@ -6612,7 +6639,14 @@ $\omega$, $\omega'$ and $\omega''$; it processes $421\,881$ boxes,
 fewer than the Python run because its nested evaluation of the
 polynomials encloses more tightly than a sum of monomials, subdivides
 down to the width $2^{-20}$ where it has to, and returns true, which
-Lean records as a theorem under \texttt{native\_decide}. Hence \eqref{eq:C} holds on the
+Lean records as a theorem under \texttt{native\_decide}. A third run removes
+the tables as well: \texttt{D4Omega.lean} evaluates the simpler forms above,
+and $A_*$, in outward-rounded $256$-bit interval arithmetic inside Lean, with
+arctan from its series and $\pi$ from Machin's formula, tabulates $\omega$ and
+$\omega'$ on the grid of step $2^{-16}$ with $|\omega''|\le0.2856$, and
+\texttt{D4OmegaMain.lean} checks that $A_*$ exceeds $8-0.0928555703$;
+\texttt{D4OmegaRegionI.lean} states the branch and bound with that table,
+so that nothing is taken from outside Lean but the certificate. Hence \eqref{eq:C} holds on the
 admissible domain,
 \cref{lem:certificate} gives \eqref{eq:strict-pairs} for every contact
 configuration of $23$ directions, and \cref{thm:strict-reduction}
@@ -6779,12 +6813,16 @@ $\sigma_2(u)\le E(24,\kappa)\le2.35\cdot10^{-12}$. By
 \cref{prop:verified}(iv), $\sigma_2$ is divisible by
 $f(u)=(u+1)(u+\tfrac12)^2u^2(\tfrac12-u)$, and the quotient is at least
 $2.62\cdot10^{-4}$ on $[-1,\tfrac12]$ (an exact division, and a mean value
-bound in ball arithmetic on $30\,000$ intervals). Between consecutive
+bound in ball arithmetic on $30\,000$ intervals; the division and the bound
+are repeated in Lean in exact rationals, with a second-order Taylor form on
+$135$ intervals, \texttt{lean/D4NearContact.lean}). Between consecutive
 zeros $f$ has a single critical point, by Rolle's theorem applied to its
 derivative of degree $5$, which vanishes at $-\tfrac12$ and $0$; so at
 distance at least $\delta=3\cdot10^{-4}$ from its zeros $f$ is at least its
 least value at the six points $-1+\delta$, $-\tfrac12\pm\delta$, $\pm\delta$,
-$\tfrac12-\delta$, and there $\sigma_2\ge2.94\cdot10^{-12}$. So $u$ lies
+$\tfrac12-\delta$, and there $\sigma_2\ge2.94\cdot10^{-12}$ (the Lean file
+checks $f\ge1.12\cdot10^{-8}$ on the three ranges directly, by the same branch
+and bound, and so $\sigma_2\ge2.93\cdot10^{-12}$, which suffices). So $u$ lies
 within $\delta$ of $\{-1,-\tfrac12,0,\tfrac12\}$, and an inner product above
 $\tfrac12$ lies within $\kappa<\delta$ of $\tfrac12$.
 \Cref{lem:root-lattice-robust} gives the rest.
@@ -6957,6 +6995,14 @@ $-1\le u\le v\le w\le t$, $1+2uvw-u^2-v^2-w^2\ge0$, which suffices because
 $F$ is symmetric, every box being decided by a second-order Taylor bound
 about its centre, $2.7$ million boxes in all. Both domains are run up to the
 least double at or above $t$. Then $24(1-e_1)-552e_2=23.961336>23.96$.
+The check is repeated in Lean, in exact dyadic arithmetic, from the
+certificate entries alone: the Lake project \texttt{lean/cardinality}
+expands $F$ and $f+3F(1,\cdot,\cdot)+1$ from the recurrences ($756$
+monomials, as in the Python expansion), and checks the positivity, the
+value of the bound, the inequality at $|C|=25$ and both branch and bounds;
+(i) takes $2\,957$ intervals, and the certificate of degree $8$ at
+$s_0=0.0065$ passes the whole check in seven minutes
+(\cref{sec:reproducibility-new}).
 
 For the second statement, let $y_i$ be centres at distances
 $d_i\le D=2/\sqrt{1-2s_0}$ from $c=0$. Two of them satisfy
@@ -8341,7 +8387,10 @@ the largest of the $303$ corner values is $0.99755\ldots$. The nodes at a corner
 are taken at rational points $t_k$ with $t_k^2$ at least the corner
 coordinate, and ties are broken upward, both of which only increase the
 bound. The computation is exact rational arithmetic throughout, and is
-reproduced by \texttt{cap\_inequality\_certificate.py} in the supplement.
+reproduced by \texttt{cap\_inequality\_certificate.py} in the supplement
+and again in Lean (\texttt{lean/D4Cap.lean}), which finds the same $303$
+boxes and the same largest value, and also checks the three polynomial
+identities and signs above.
 Since $\sup_R F=0.76583\ldots$, attained at $(\tfrac34,\tfrac14,0,0)$, the
 certificate has a margin of about a quarter and does not depend on the
 fineness of the grid beyond what is stated.
@@ -10088,12 +10137,15 @@ angle $\arccos(\tfrac12+\delta)$, and the computations of
 $\delta=0.009$ and then collapsing to $\tfrac12+O(\delta)$, with every
 configuration reached at $\delta=0$ a deletion. That is evidence, and
 \cref{rem:m23-uniqueness} explains why no bound on the size of a code
-can turn it into a proof. The third is formal. The verification of \cref{thm:certificate} runs in
-Lean as well as in Python, in exact dyadic arithmetic and with the
-closed forms of $\omega$ entering only through tables of bounds; but
-the statement Lean proves is that a program returns true, and the
-mathematics that makes the program a proof, Taylor's theorem on a box
-and the monotonicity of $\omega$, is argued in the paper and not
+can turn it into a proof. The third is formal. The verifications of
+\cref{thm:certificate,thm:m23-labelled,thm:kissing-stable} run in Lean as
+well as in Python, in exact dyadic arithmetic and with the closed forms of
+$\omega$ and of the cell integrals entering only through tables of bounds,
+and so does the arithmetic of the explicit $\varepsilon_0$ of
+\cref{thm:near-contact}; but the statements Lean proves are that programs
+return true, and the mathematics that makes the programs proofs, Taylor's
+theorem on a box, the monotonicity of $\omega$ and of the shares, the
+positivity of the three-point kernels, is argued in the paper and not
 formalised, as a formalisation of the lens integrals and their
 derivatives would need a library of real analysis that these files do
 not use.
@@ -10260,11 +10312,11 @@ cell.
 
 \subsection{A machine-checked kernel}
 
-Nine parts of the paper are verified by a proof assistant and not by a
-program whose output has to be trusted, and all nine are finite
+Thirteen parts of the paper are verified by a proof assistant and not by a
+program whose output has to be trusted, and all thirteen are finite
 arithmetic or polynomial identities. The supplement carries them as
-Lean~4 sources in a directory of their own: seven files that compile
-against a bare toolchain, and two small Lake projects.
+Lean~4 sources in a directory of their own: ten files that compile
+against a bare toolchain, and three small Lake projects.
 
 The first is \texttt{lean/D4Stress.lean}, on the equilibrium relation
 \eqref{eq:stress}, which is what carries \cref{prop:deletion-rigid} and
@@ -10366,7 +10418,27 @@ and settles it by \texttt{native\_decide}; the build compiles the
 arithmetic to native code first, as for the $600$-cell, and the run,
 which processes $421\,881$ boxes, takes about twenty minutes; a fourth
 module, \texttt{D4CertStat.lean}, repeats it with a counter and records
-that number.
+that number. The same project carries the regions II$_s$ and II$_f$ of
+the proof of \cref{thm:m23-labelled}, whose region I is \eqref{eq:C}:
+\texttt{D4LabelledDomain.lean} reruns the branch and bound with the
+tables of $\omega$ extended to $a_D$, with the linear term $c\,(t-\tfrac12)$
+on the slab ($39\,399$ boxes) and, beyond it, with the lower bound for
+$\Gamma_1+\Gamma_2+\Gamma_3$ ($9\,545$ boxes), whose shares $\mathrm{fr}$
+at $256\times1601$ points, from exact bounds for the square roots, packing
+bounds $a(d_i,d_j)$, envelopes and minimisation over the cells are all
+computed in Lean. It takes from \texttt{labelled\_certificate\_check.py}
+only the tables of $\omega$, the constant $c$ and the enclosures of the
+$256$ cell integrals of $A$, written as dyadic numbers by
+\texttt{gen\_labelled\_data.py}; \texttt{D4LabelledMain.lean} states the
+three theorems, and the two runs take about a minute. Finally
+\texttt{D4Omega.lean} computes those inputs in Lean too, in outward-rounded
+$256$-bit interval arithmetic from the closed forms of $\omega$, $\omega'$,
+$A_*$ and the cap $S(d)$, with arctan from its series and $\pi$ from Machin's
+formula; \texttt{D4OmegaMain.lean} proves that $A_*>8-0.0928555703$, that
+$s(D)>8-A_*$, that the constant $c$ and the $256$ cell integrals of the data
+are confirmed, and reruns II$_s$ and II$_f$ with the Lean tables ($39\,551$ and
+$9\,545$ boxes), which then take nothing from outside Lean but the
+certificate; \texttt{D4OmegaRegionI.lean} states region I in the same way.
 
 The sixth is \texttt{lean/D4InnerProducts.lean}, on the certificate
 behind \cref{thm:twentyfour-points}: the two-point polynomial
@@ -10436,6 +10508,74 @@ rays; and, by \texttt{grind} over every commutative ring, the expansions of
 is the Hessian of the volume and that the rows are the linearised packing
 constraints are \cref{lem:second-variation} and the text, checked numerically
 but not formalised.
+
+The tenth is \texttt{lean/D4NearContact.lean}, on the explicit constant
+$\varepsilon_0$ of \cref{thm:near-contact}, generated from the exact
+coefficients of $\sigma_2$ by \texttt{gen\_near\_contact\_lean.py}. It
+divides $\sigma_2$ exactly by $(u+1)(u+\tfrac12)^2u^2(u-\tfrac12)$; proves by
+a branch and bound in exact rationals, with a second-order Taylor form, that
+the quotient is at most $-2.62\cdot10^{-4}$ on $[-1,\tfrac12]$ ($135$
+intervals) and that $f$ is at least $1.12\cdot10^{-8}$ at distance at least
+$3\cdot10^{-4}$ from its zeros ($133$ intervals); checks the arithmetic of
+\cref{lem:root-lattice-robust}, with every square root replaced by a
+rational whose square is compared; bounds $|\sigma_2'|$ near $\tfrac12$ by
+$0.22573$ and checks $E(24,\kappa)<2.62\cdot10^{-4}\cdot1.12\cdot10^{-8}$,
+$E(25,\kappa)<1$ and $\tfrac12-2/(2+\varepsilon_0)^2\le\kappa$ at
+$\kappa=2\cdot10^{-26}$, taking the bounds $B_3\le8.75\cdot10^7$ and
+$B_4\le7.34\cdot10^9$ of the sums of squares as its only inputs; and
+evaluates the bracket $\beta$ of the proof of \cref{thm:near-contact} in
+exact rationals, positive at $S=24\varepsilon_0$, at least $0.1$ at
+$S=4\cdot10^{-3}$ and decreasing on a grid of step $10^{-5}$. Twelve
+theorems, settled by \texttt{native\_decide} in about twenty seconds; with
+the targets raised to $2.621\cdot10^{-4}$ and $1.125\cdot10^{-8}$, just
+above the true minima, the branch and bounds fail, as they should.
+
+The eleventh is the Lake project \texttt{lean/cardinality}, on
+\cref{thm:kissing-stable}. \texttt{gen\_data.py} writes the certificates of
+degree $8$ at $s_0=0.0065$ and of degree $10$ at $s_0=0.008$ into
+\texttt{KissData.lean} as dyadic numbers, with $t$ as the decimal of the
+paper, the least double at or above it, and $e_1$, $e_2$ as the largest
+doubles at or below their decimals. \texttt{KissDomain.lean} expands $F$ and
+$f+3F(1,\cdot,\cdot)+1$ from the Legendre, Chebyshev and Gegenbauer
+recurrences ($425$ and $756$ monomials, as in Python), scales them by the
+least odd integers that make their coefficients dyadic ($3$ and $21$, $3$ and
+$3465$), and checks that every $f_k$ is nonnegative, that every $F_k$ is
+symmetric and positive definite by an exact $LDL^{\mathsf T}$, that $F$ is
+symmetric, that $24(1-e_1)-552e_2$ exceeds $f(1)+F(1,1,1)$, and, by the
+branch and bound of \texttt{lean/certificate} without the $\omega$ terms, (i)
+on $[-1,t]$ and (ii) on the ordered admissible domain.
+\texttt{KissMain8.lean} and \texttt{KissMain10.lean} state three theorems
+each and settle them by \texttt{native\_decide}; degree $8$ takes $441$
+intervals, $181\,869$ boxes and seven minutes, and degree $10$ takes $2\,957$
+intervals for (i) and a run of several hours for (ii). Nothing enters but
+the certificate entries.
+
+The twelfth is \texttt{lean/D4Rigidity.lean}, on \cref{lem:rigidity-spectrum}.
+From the integral roots it builds the $96\times96$ integral matrices $\Lambda'$,
+$2P$, $4N$ and $2K$ of the proof, and checks that $4N$ is annihilated by
+$x(x-8)(x-20)(x-24)(x-32)$, that the ranks of $4N-cI$ over $\mathbb{Q}$ are
+$66,67,88,75,88$, so that the multiplicities are $30,29,8,21,8$, that $2K$ is
+annihilated by $x(x-4)(x-10)(x-12)(x-16)$ with every diagonal entry of
+$(2K-4I)(2K-10I)(2K-12I)(2K-16I)$ equal to $2400$, which is the diagonal
+$\tfrac{11}{16}$, and that one displaced direction has
+$\|\Lambda\tau\|_1^2/\|\tau\|_2^2=\tfrac{96}{11}$; and, for
+\cref{thm:local-uniqueness}, that the tight inner products of a tangent vector
+sum to zero and that $12^2\cdot\tfrac{11}{16}+\tfrac14=\tfrac{397}4$; by
+\texttt{native\_decide}, in about ten seconds.
+
+The thirteenth is \texttt{lean/D4Cap.lean}, on \cref{sec:cap-theorem}. From
+the integral roots it enumerates the vertices of $Q$ exactly over all
+$4$-subsets of the $23$ remaining roots, $25$ of them, with one beyond the
+facet of the deleted root; computes $\vol(\VCell)=8$ and $\vol(Q)=\tfrac{25}3$
+exactly, each octahedral facet split into four tetrahedra; checks
+\cref{lem:crosspolytope} with equality attained; checks the formula for
+$g''''$ of \cref{lem:monotone} by applying $\frac1{2t}\frac{d}{dt}$ four times
+to $t^2(2t-1)^4$, and that $g'''$ vanishes at $a=\tfrac14$; checks the three
+polynomial identities of the case $|S|=1$ of \cref{thm:cap-inequality}, the
+signs of their factors on rational intervals containing the three ranges,
+and the integer inequalities at the endpoints; and reruns the box
+certificate of the case $|S|\ge2$, finding the same $303$ boxes and the
+largest corner value $0.99755\ldots$. About ten seconds.
 
 That is a stronger form of checking than anything else in this paper,
 and it is available here only because these particular arguments are
@@ -11161,7 +11301,11 @@ isolation showing that each of the three polynomials of
 subdivision producing the $303$ boxes and their corner bounds, entirely
 in \texttt{fractions.Fraction}; and finally, as an independent check of
 the conclusion rather than a step in it, the direct computation of cell
-volumes at random tilts and deviation directions. The script prints a
+volumes at random tilts and deviation directions. Every step but the two
+floating-point cross-checks is repeated in Lean in \texttt{lean/D4Cap.lean},
+with $\vol(Q)=\tfrac{25}3$ and $\vol(\VCell)=8$ computed exactly by
+triangulating each octahedral facet, and the fourth derivative of $g$ checked
+by applying $\frac1{2t}\frac{d}{dt}$ four times to $t^2(2t-1)^4$. The script prints a
 pass or fail line for each of its twenty-one checks and exits nonzero if
 any fails.
 
@@ -11569,12 +11713,14 @@ exploration and the script says so in its output.
 
 \subsection*{The formalised part}
 
-Nine parts of the paper are also verified in Lean~4: the seven files
+Thirteen parts of the paper are also verified in Lean~4: the ten files
 \texttt{D4Stress.lean}, \texttt{D4Meet.lean}, \texttt{D4Certificate.lean},
 \texttt{D4InnerProducts.lean}, \texttt{D4RootLattices.lean},
-\texttt{D4Closure.lean} and \texttt{D4SecondOrder.lean} in the directory
-\texttt{lean}, and the Lake
-projects in \texttt{lean/cell600} and \texttt{lean/certificate}.
+\texttt{D4Closure.lean}, \texttt{D4SecondOrder.lean},
+\texttt{D4NearContact.lean}, \texttt{D4Rigidity.lean} and \texttt{D4Cap.lean}
+in the directory \texttt{lean}, and the Lake
+projects in \texttt{lean/cell600}, \texttt{lean/certificate} and
+\texttt{lean/cardinality}.
 All are independent of everything else
 in the supplement and of every Lean library: the first two use only
 integer arithmetic on the unnormalised roots and settle each statement
@@ -11615,7 +11761,13 @@ and bound of \cref{thm:certificate} in exact dyadic arithmetic, as
 the certificate and the tables, \texttt{D4CertDomain.lean} the
 polynomial arithmetic, the expansion of $P$, the dyadic intervals and
 the subdivision, and \texttt{D4CertMain.lean} the theorem, by
-\texttt{native\_decide}. The sixth, \texttt{lean/D4InnerProducts.lean},
+\texttt{native\_decide}; its modules \texttt{D4LabelledData.lean},
+\texttt{D4LabelledDomain.lean} and \texttt{D4LabelledMain.lean}, the first
+written by \texttt{gen\_labelled\_data.py}, do the same for the regions
+II$_s$ and II$_f$ of \cref{thm:m23-labelled}, and \texttt{D4Omega.lean},
+\texttt{D4OmegaMain.lean} and \texttt{D4OmegaRegionI.lean} compute the tables of
+$\omega$, $A_*$ and the constants of that theorem inside Lean and rerun the
+branch and bounds of II$_s$ and II$_f$ with them. The sixth, \texttt{lean/D4InnerProducts.lean},
 is the last step of the verification of the certificate: the two-point
 polynomial $\sigma_2$ of \cref{prop:verified}, computed exactly from the
 published data by \texttt{llm24\_certificate\_check.py} and written
@@ -11647,7 +11799,26 @@ the integral root system, the copositivity certificate of
 \cref{prop:cone-min} by an exact $LDL^{\mathsf T}$, the push-out block and
 \eqref{eq:eta-identity}, the equality on the one-centre rays, by
 \texttt{native\_decide}, and the expansions of \cref{lem:pure-push} by
-\texttt{grind}; it checks in about thirty seconds. The theorems in each file are listed in
+\texttt{grind}; it checks in about thirty seconds. The tenth,
+\texttt{lean/D4NearContact.lean}, generated by
+\texttt{gen\_near\_contact\_lean.py} from the coefficients of $\sigma_2$, is the
+exact arithmetic of the explicit $\varepsilon_0$: the quotient bound, the
+bound for $f$ off the windows, the constants of
+\cref{lem:root-lattice-robust}, the assembly of $E(24,\kappa)$ and
+$E(25,\kappa)$ from the bounds $B_3$, $B_4$, and the bracket of
+\cref{thm:near-contact}, in about twenty seconds. The eleventh, the Lake
+project \texttt{lean/cardinality}, is the whole check of the certificates
+of \cref{thm:kissing-stable}, from their entries alone, with
+\texttt{gen\_data.py} writing \texttt{KissData.lean}, \texttt{KissDomain.lean}
+the polynomials and the two branch and bounds, and \texttt{KissMain8.lean},
+\texttt{KissMain10.lean} the theorems. The twelfth,
+\texttt{lean/D4Rigidity.lean}, is the exact linear algebra of
+\cref{lem:rigidity-spectrum}: the annihilating polynomials, the ranks over
+$\mathbb{Q}$, the diagonal $\tfrac{11}{16}$ and the ratio $\sqrt{96/11}$. The
+thirteenth, \texttt{lean/D4Cap.lean}, is the exact content of
+\cref{sec:cap-theorem}: the vertices and the volume of $Q$, the
+cross-polytope enclosure, the fourth derivative of $g$, the three ranges of
+the case $|S|=1$ and the $303$ boxes of the case $|S|\ge2$. The theorems in each file are listed in
 \texttt{lean/README.md}, together with the axiom report that each file
 prints when it is checked. Nothing else in the paper is formalised.
 

@@ -228,7 +228,8 @@ def dsI (k : Nat) : RI := RI.sub (capS (RI.ofRat (tauK k))) (capS (RI.ofRat (tau
 
 /-- The constants: A_* against the bound of the certificate of Theorem 7.73 (at least
 92.8555703 in the units of the solver, D4Certificate.lean); step 2 of Theorem 2.17,
-s(D) > 8 - A_*, fr(1, 1/2) < 1/22, and the slab constant of the data at most
+s(D) > 8 - A_*, a_D / (1 - (D/2) a_D) < 2 (the share decreases in both heights),
+fr(1, 1/2) < 1/22, and the slab constant of the data at most
 4000 r kappa, r = 1/11 - 2 fr(1, 51/100), kappa = s(2.04) / 0.04; and the enclosures
 of the 256 cell integrals of the data containing those computed here. -/
 def labelledConstantsOk : Bool :=
@@ -238,6 +239,7 @@ def labelledConstantsOk : Bool :=
   let kappa := (smallS (204 / 100)).loRat / (4 / 100)
   aLo > 8 - 928555703 / 10000000000 &&
   sD + aLo > 8 &&
+  amaxR Dd Dd / (1 - Dd / 2 * amaxR Dd Dd) < 2 &&
   frHi 1 (1 / 2) < 1 / 22 &&
   r > 0 && cSlab.toRat ≤ 4000 * r * kappa &&
   (List.range KC).all fun k =>
