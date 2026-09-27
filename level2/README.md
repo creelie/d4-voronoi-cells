@@ -28,6 +28,7 @@ coefficient by coefficient.
 | `their_entries.jl` | runs the authors' `compute_PS` one signature at a time, in a clean folder |
 | `compare_entries.py` | compares the entries it writes with ours, in exact rationals |
 | `runs/` | the logs |
+| `EXTERNAL_RUN.md` | the runs at (12, 14) and (14, 16) that need a larger machine: estimated memory and time, the exact commands, and what their answers would and would not give |
 
 ## Running it
 

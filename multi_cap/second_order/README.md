@@ -1,6 +1,6 @@
 # The second order at the root system
 
-The scripts of Section 2.9 of the paper (Lemma 2.19 to Remark 2.25, Figure 11).
+The scripts of Section 2.9 of the paper (Lemma 2.19 to Proposition 2.24, Figure 11).
 Run them from this directory.
 
 | file | what it does |
@@ -14,6 +14,11 @@ Run them from this directory.
 | `exact_push.py` | the one-centre formula, Lemma 2.23 and Proposition 2.24 on examples |
 | `untilt.py` | tilting is not monotone: 103 of 237 tilted packings below their untilted versions, by up to 3.6e-5 |
 | `remainder_test.py` | 300 packings with tilts on the edges of the cone: vol - 8 - (2/3) S + (1/2) S^2 >= 0 on all; writes `runs/remainder_rows.dat` |
+| `tilt_block.py` | the 72 x 72 tilt block of H (the Hessian of the contact-cell volume in the directions alone) is positive semidefinite, by an exact LDL^T with 15 zero pivots; its kernel is the 6 rotations and 9 further directions, and the infinitesimal strains are not in it; writes `tilt_kernel.npy` |
+| `tilt_quartic.py` | the contact-cell volume as a function of the tilts, the rotation-free coordinates (the 9 flat directions and the 57 others) and the relaxed objective (vol - 8)/t^4 (floating point); used by `contact_valley.py` |
+| `hexagon_loop.py` | Proposition 2.26: turning one A2 hexagon of roots by theta in its plane and tilting the other 18 to sin psi = 4C/(4C^2+3), C = cos(pi/6 - theta), keeps the contact-cell volume exactly 8 on a closed curve through the root system; exact (sympy: the Gram matrix at theta = 0, the integrals J1, J2 in closed form, the perfect square, the slice conditions, the largest inner product), with qhull at 13 points (9e-15), 200 random points of the two-parameter family, and 50-digit volumes at 3 points (1e-49); the algebra again in `lean/D4HexagonLoop.lean` |
+| `contact_valley.py` | Remark 2.27: along straight lines in the 9 flat directions the volume grows at fourth order, but with the other tilts relaxed the minimiser follows a curve along which vol - 8 stays below 3e-10 up to tilt 0.45 and the Hessian has one zero eigenvalue beyond the rotations: the curve of Proposition 2.26; floating point, exploration |
+| `contact_cell_scan.py` | the least contact-cell volume over 24 unit directions with no packing constraint: 7.96553 < 8, at directions with inner products up to 0.579 (24 facets, 99 vertices; saved in `contact_cell_min.npy`), so a bound vol(Q_w) >= 8 can only hold near the root system or under the packing constraint; floating point, exploration |
 | `independent_check.py` | recomputes every volume by intersecting halfspaces: H against second differences (6e-8), the cone rows against exact distances (2e-9), the spectrum, the one-centre formula (1e-14), Lemma 2.23 on 400 push patterns |
 
 Logs are in `runs/`.  What is proved here is the second order (the certificate)
