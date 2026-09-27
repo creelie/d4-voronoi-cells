@@ -1,4 +1,4 @@
-$ lean D4Rigidity.lean   (Sun Sep 27 03:17:53 UTC 2026)
+$ lean D4Rigidity.lean   (Sun Sep 27 03:21:31 UTC 2026)
 Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)
 'D4Rigidity.sizes' depends on axioms: [propext, Quot.sound, D4Rigidity.sizes._native.native_decide.ax_1_1]
 'D4Rigidity.n4_annihilated' depends on axioms: [propext,
@@ -26,4 +26,11 @@ Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb
  Classical.choice,
  Quot.sound,
  D4Rigidity.one_direction._native.native_decide.ax_1_1]
-exit status 0, 8 s
+'D4Rigidity.stress_on_tangent' depends on axioms: [propext,
+ Quot.sound,
+ D4Rigidity.stress_on_tangent._native.native_decide.ax_1_1]
+'D4Rigidity.radius_arithmetic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ D4Rigidity.radius_arithmetic._native.native_decide.ax_1_1]
+exit status 0, 9 s
