@@ -18,8 +18,8 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "v1.8.0"
-date-released: "2026-09-26"
+version: "v1.9.0"
+date-released: "2026-09-27"
 keywords:
   - sphere packing
   - Voronoi cell
@@ -50,7 +50,11 @@ abstract: >-
   the file format of the code of de Laat, Leijenhorst and de Muinck Keizer, so
   that their second-level programme runs on an ordinary machine, and checks
   them against that code entry by entry; count_survey.py minimises the
-  truncated volume for every count of centres within sqrt 6. The
+  truncated volume for every count of centres within sqrt 6. Version v1.9.0
+  adds the second order of the cell volume at the root system, an exact closed
+  curve of contact cells of volume 8, a second twenty-four-point code far from
+  the root system, and the reduction of the conjecture to two explicit
+  statements; fifteen parts of the paper are checked in Lean 4. The
   re-verification and these
   programs were developed, and their computations run, with the assistance of
   Claude, an AI model made by Anthropic.
