@@ -65,143 +65,11 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   thirteen signatures run (|lambda| <= 10, lambda_2 <= 4).  Until now the
   zonal matrices had been checked only against independent facts.
 
-## The second order at the root system (Section 2.9)
-
-- Lemma 2.19: the second variation of the volume of a 4-polytope under
-  moving normals and support numbers, and that the volume is C^2 (C^3 in
-  fact) across changes of combinatorics.
-- Proposition 2.20: the Hessian H of the cell volume at the root system, in
-  closed form over the 96 triangles of the 24-cell; on the push-outs it is
-  2 sum_edges eta_i eta_j - 4 sum eta_i^2.
-- Proposition 2.21: on the first-order packing cone, H >= -(sum delta_i)^2,
-  with equality on the ray of one centre pushed out.  Proved by an exact
-  copositivity certificate H + cc^T = P + B^T N B, checked in exact
-  rationals in three seconds.  So the tilts cost nothing more at second
-  order than the pushes, where step (b) of Theorem 2.18 charges them
-  73 S^2 to 98 S^2, and the second-order model vol - 8 >= (2/3) S - (1/2) S^2
-  stays positive up to S = 4/3.
-- Lemma 2.23 and Proposition 2.24: pure push-outs integrated exactly, by
-  Brunn-Minkowski.
-- Remark 2.22: what is still missing for statement (ii): tilting is not
-  monotone (untilt.py), the third-order remainder is not bounded (on 300
-  tilted packings vol - 8 - (2/3) S + (1/2) S^2 >= 0 holds in every case,
-  remainder_test.py, floating point), and the part of V(Y) outside the
-  inversion hull needs a sharper bound than 13958 Theta^4 (it is below 1e-6
-  along both rays up to 0.197, multi_cap/hull_along_rays.py).
-- The list of what is left (end of Section 2.8), corrected, now has
-  four items: along the ray of one centre pushed out the slack reaches
-  delta/4 = 0.049, beyond any statement about the slack alone (25-point codes
-  exist at 0.0374), so twenty-three contacts with one near-contact need a
-  classification of their own.
-- Checked independently (multi_cap/second_order/independent_check.py, every
-  volume recomputed by intersecting halfspaces): H against second
-  differences (6e-8), the cone rows against exact distances (2e-9), the
-  spectrum, the one-centre formula (1e-14), Lemma 2.23 on 400 push patterns.
-  Two statements of the draft are corrected: the eigenvalue -6.194 has
-  multiplicity 8, and the push-out block is Adj - 4I.
-- In Lean: lean/D4SecondOrder.lean builds H, the cone and c from the
-  integral root system inside the proof assistant, reads only the 43 orbit
-  values of the certificate, and proves the certificate of Proposition 2.21
-  (exact LDL^T, 30 zero pivots with zero rows), the push-out block and the
-  identity of Proposition 2.20, the equality on the one-centre rays, and the
-  expansions of Lemma 2.23 (grind).  About thirty seconds.
-- Proposition 2.25 (the tilt block): the Hessian of the contact-cell volume in
-  the directions alone is positive semidefinite, by an exact LDL^T with 15
-  zero pivots (the 6 rotations and 9 further directions, none a strain);
-  least positive eigenvalue 1/12 (multi_cap/second_order/tilt_block.py, and
-  theorem tilt_block in lean/D4SecondOrder.lean).  With Proposition 2.24, a
-  bound vol(Q_w) >= 8 near the root system would carry the first inequality
-  of statement (ii) with no packing constraint.
-- Proposition 2.26 (a closed curve of contact cells of volume 8): turn one
-  A2 hexagon of roots by theta in its plane and tilt the other eighteen
-  towards the orthogonal plane, sin psi = 4C/(4C^2 + 3), C = cos(pi/6 -
-  theta).  The contact cell has volume exactly 8 for every theta in
-  [0, pi/3], and the curve closes up at the root system.  For 0 < theta <
-  pi/3 the directions are not a rotation of the root system: their largest
-  inner product is at least 4C^2/(4C^2 + 3) > 1/2 (4/7 at theta = pi/6).  The proof
-  integrates hexagonal slices over the turned hexagon and reduces vol - 8 to
-  a perfect square (multi_cap/second_order/hexagon_loop.py, sympy, with qhull
-  and 50-digit checks; lean/D4HexagonLoop.lean).  So vol(Q_w) >= 8, if true
-  near the root system, is attained along such curves, one through each of
-  the 16 hexagons, and no higher-order positivity can prove it.  Remark
-  2.27: the relaxed minimisation of contact_valley.py finds this curve, and
-  the Hessian along it is positive semidefinite with seven zero
-  eigenvalues (rotations and the curve).
-- Proposition 2.28 (a second 24-point code): 24 points of S^3 with rational
-  coordinates, inner products at most 1/2 + 849/50000 = 0.51698, at distance
-  d(W) >= 57/500 from the root system (multi_cap/second_order/code24_exact.py,
-  and lean/D4SecondCode.lean).  So statement (i) of "What is left" fails from
-  slack 0.01698 on, not only from 0.0374; the code is the best other 24-point
-  code the search finds (code24_second.py, 59 of 62 minimisations).
-- Remark 2.29: for 24 centres within sqrt6, statements (i) and (ii) are
-  replaced by one volume statement (G): vol(V(Y) ∩ K(Y)) >= 8 whenever the
-  pair-term bound T(Y) is at most 8.  It fails without that condition (4.750
-  at T = 10.82), and with it the search finds only the root system
-  (cell_hull_search.py).  The contact-cell bound vol(Q_w) >= 8 on codes of
-  slack s holds numerically at s = 0.005, 0.01 and 0.02 and fails at 0.03
-  (7.99802; contact_cell_constrained.py).
-- The bound can only be local: with no packing constraint, 24 unit directions
-  with inner products up to 0.579 have a contact cell of volume 7.96553 < 8
-  (multi_cap/second_order/contact_cell_scan.py, minimiser saved in
-  contact_cell_min.npy).
-- In Lean, seven more parts, fifteen in all:
-  - lean/cardinality/, a new Lake project that checks the certificates of
-    Theorem 7.79 (degree 8 at s = 0.0065, degree 10 at s = 0.008) from their
-    entries alone in exact dyadic arithmetic: positivity by exact LDL^T, the
-    bound, the inequality at |C| = 25, and both branch and bounds (441 and
-    2 957 intervals; 181 869 boxes and seven minutes for degree 8, four hours
-    and ten minutes for degree 10).
-  - lean/certificate/D4Labelled*.lean: the regions II_s and II_f of Theorem
-    2.17 (39 399 and 9 545 boxes), with the shares, the packing bounds and the
-    Gamma envelopes computed in Lean; only the omega tables, the slab constant
-    and the cell integrals come from interval arithmetic.
-  - lean/D4NearContact.lean: the exact arithmetic of epsilon_0 = 4e-26 in
-    Theorem 2.18: -q >= 2.62e-4 for the quotient of the two-point polynomial,
-    f >= 1.12e-8 off the windows, the constants of Lemma 7.77, the assembly of
-    E(24, kappa) and E(25, kappa) from the bounds B_3, B_4, and the facet
-    bracket; twelve theorems, twenty seconds.
-  - lean/D4Rigidity.lean: Lemma 7.50 from the integral roots, the polynomial
-    annihilating 4N, the ranks over Q (so the multiplicities 30, 29, 8, 21, 8),
-    the 11/16 diagonal of the projector onto the image, and the ratio
-    sqrt(96/11) of one displaced direction; the proof of the lemma said this
-    was done in Lean's kernel, where only its input, the 96 tight pairs, was.
-  - lean/D4Cap.lean: the extremal cap theorem: the 25 vertices of Q by exact
-    enumeration, vol(24-cell) = 8 and vol(Q) = 25/3 by exact triangulation
-    (the script had them in floating point), the cross-polytope enclosure,
-    the fourth derivative of g, the three ranges of the case |S| = 1, and the
-    303 boxes of the case |S| >= 2 with the same largest value 0.99755.
-  - lean/D4HexagonLoop.lean: the algebra of Proposition 2.26 in
-    Q(sqrt3)[c, s]/(c^2 + s^2 - 1): the integrals J1, J2 in closed form from
-    the sector triangles, 3 J1^2 - 4 sqrt3 J2 = 32, the six slice conditions,
-    the Gram matrix at theta = 0, and the perfect square (grind).
-  - lean/D4SecondCode.lean: Proposition 2.28, the 24 rational points of the
-    second code, their norms, the slack bound 849/50000 and the inner
-    product 57/250 away from -1, -1/2, 0, 1/2, 1.
-  - lean/certificate/D4Omega*.lean: the tables of omega, A_* and the
-    constants of Theorem 2.17 computed inside Lean, in outward-rounded 256-bit
-    interval arithmetic, from simplified closed forms,
-    omega'(u) = (pi/16)(3u - 1)^2 / ((1 + u)^2 sqrt(1 - u^2)) and
-    omega(u) = 4 pi [(9/32) arctan((t* - tau)/(1 + t* tau)) - (4 tau^3 - 24 tau + 11 sqrt2)/96]
-    (new; multi_cap/omega_closed_form.py checks them symbolically and against
-    the old form).  A_* > 8 - 0.0928555703, s(D) > 8 - A_*, the slab constant
-    and the 256 cell integrals are confirmed, the covering bound exceeds 8
-    for every m <= 22 and (9/8) pi^2 - 22 S(2) > 8.046, and the branch and
-    bounds of regions II_s and II_f are rerun with the Lean tables (39 551 and
-    9 545 boxes): they now take nothing from outside Lean but the
-    certificate.  Region I passes with them too (D4OmegaRegionI.lean, 954 s,
-    419 913 boxes),
-    so all three regions of Theorem 2.17 are checked with omega computed in
-    Lean.
-  Closed definitions that run a check now live in the Main modules
-  (lean/certificate/D4CertMain.lean holds verifyDomain), since a precompiled
-  module evaluates its closed definitions when it is loaded; D4CertStat now
-  takes one run instead of two.
-
 ## What is measured, not proved
 
 - The three-point bound on A(4, 1/2 + s) rises about 97 per unit of s from
   24.13 at s = 0.  So certificates of the kind behind Theorem 7.79 stop near
-  s = 0.009 (sampled programmes, Figure 29(a)).
+  s = 0.009 (sampled programmes, Figure 28(a)).
 - 25 points of S^3 with inner products at most 0.53743 exist, a minimal
   angle of 57.49 degrees (code25_search.py).
 - Letting the truncation radius of Lemma 2.15 grow with the distances moves
@@ -218,8 +86,7 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   (level2/, Figure 10):
   - degrees (4, 6): 32;
   - degrees (8, 10): 26.0000, in 42 minutes and 3.5 GB;
-  - degrees (10, 12): 24.9423, in 3.9 hours and 11.8 GB, the most that
-    fits in 16 GB;
+  - degrees (10, 12): about 220 s per iteration and 11.5 GB;
   - the certificate's degrees (14, 16), where the bound is 24, need a larger
     machine for the programme itself.
 - level2/las2_margin.jl is the programme with a margin in the two-point
@@ -246,31 +113,25 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   - rigidity_spectrum.py adds the exact 11/16 check and sqrt(96/11).
   - explicit_eps0.py uses the new constant of estimate (a) and the new
     step (b).
-- New: multi_cap/second_order/ (Section 2.9; README.md there), with logs in
-  its runs/.
 - New: level2/ (above) and multi_cap/count_survey.py, with logs in
   level2/runs and multi_cap/runs/count_survey*.log.
 - New: paper/figures_new/tikz_overlap_check.py, the collision test of the
-  TikZ figures, run on all six of them in two modes (log:
-  tikz_overlap_check.log).  No two nodes overlap, pgfplots tick labels
-  included, and no line, curve, marker or outline passes under any text;
-  a label may sit on a fill or a smooth shading.  Figures 4, 6, 8 and 28
-  had labels touching lines or balls; they are redrawn.
+  TikZ figures: no two named nodes overlap, and under each free label the
+  drawing without labels is blank or one flat fill.
 - New: independent_verification/rebuilt_from_text/d4_independent_check.py,
   a recomputation of the paper's numerical claims from the statements
   alone.
 - Paper:
-  - New: Theorem 7.79, Remark 7.78 and Figure 29
-    (figures_new/fig_cardinality.py); Section 2.9 with Figure 11; Figures 9
-    and 10 (figures_new/tikz_counts.tex, tikz_level2.tex and
-    tikz_secondorder.tex, TikZ, each passing
+  - New: Theorem 7.79, Remark 7.78 and Figure 28
+    (figures_new/fig_cardinality.py); Figures 9 and 10
+    (figures_new/tikz_counts.tex and tikz_level2.tex, TikZ, each passing
     figures_new/tikz_overlap_check.py).
   - The abstract is rewritten.
   - Revised: Lemma 7.50, Theorem 7.51, Theorem 2.18 (a new proof of its
     step (b)), "What is left", the
     abstract, the introduction, the code index and the data availability
     statement.
-  - Figure 19(d) and Figure 28 redrawn; later figures renumbered.
+  - Figure 18(d) and Figure 27 redrawn; later figures renumbered.
   - No theorem, lemma or proposition number that existed in v1.7.0
     changes.
 
@@ -278,20 +139,7 @@ Everything proved in v1.7.0 still stands.  New or sharper:
 
 The case left by v1.7.0: a centre with at least twenty-four other centres
 within sqrt 6, one of them at a distance between 2 + epsilon_0 and sqrt 6.
-"What is left" in Section 2.8 now lists four statements that would close it:
-
-1. the shape of 24 directions at slack of order 1e-2 (proved at 2e-26;
-   its cardinality half, Theorem 7.79, at 0.008);
-2. the volume for 24 centres near the root system between Sum delta_i = 4e-3
-   and 0.155: the inequality vol V(Y) - 8 >= (2/3) S - (1/2) S^2, certified
-   at second order in Section 2.9, proved for pure push-outs and true on
-   every packing tested, together with a bound for the part of V(Y) outside
-   the inversion hull.  Part (c) of Theorem 2.18 bounds that part by
-   13958 Theta^4; along both rays it is below 1e-6 up to 0.197
-   (hull_along_rays.py), so the bound, not the hull, is what is weak;
-3. twenty-three contacts with one near-contact, a classification of codes
-   of its own (the list of what is left in Section 2.8);
-4. certificates for 24 centres away from the root system and for each
-   count from 25, which need 1 and 3.
-
-Conjecture 1.6 is not proved, and Theorem 1.8 is unchanged.
+Theorem 7.79 supplies the cardinality half of a quantitative form of the
+twenty-four-point classification.  The shape half remains open: twenty-four
+directions with slack of order 1e-2 lie near a root system.  Remark 7.78
+shows it needs a new second-level kernel with a margin.

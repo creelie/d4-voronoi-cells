@@ -23,7 +23,74 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: DOI 10.5281/zenodo.22766562; cite it.  The release that
-corresponds to the paper is v1.8.0.
+corresponds to the paper is v1.9.0.
+
+## What is new in v1.9.0
+
+The paper is in journal form, and Conjecture 1.6 is reduced to two explicit
+statements (Proposition 2.30): (G), a lower bound of 8 for
+vol(V(Y) ∩ K(Y)) over sets Y of 24 centres within sqrt 6 whose pair-term
+bound T(Y) is at most 8, and (C), T(Y) > 8 for 25 or more centres within
+sqrt 6.  Neither is proved, and the conjecture remains open.  New results:
+
+- Section 2.9, the second order of the cell volume at the root system
+  (Lemma 2.19 to Proposition 2.24): the Hessian in closed form, its minimum
+  -1 on the first-order packing cone by an exact copositivity certificate,
+  and the push-outs integrated exactly.
+- Proposition 2.25: the Hessian of the contact-cell volume in the
+  directions alone is positive semidefinite, with 15 zero pivots.
+- Proposition 2.26: a closed curve of direction sets through the root
+  system along which the contact cell has volume exactly 8; vol - 8 reduces
+  to a perfect square.
+- Proposition 2.28: 24 rational points of S^3 with inner products at most
+  1/2 + 849/50000 and d(W) >= 57/500 from the root system, so a statement
+  placing 24 directions near the root system fails from slack 0.01698.
+- Eight new parts in Lean, fifteen in all (Table 4 of the paper).
+
+Numerically: the contact-cell volume drops to 7.96553 without the packing
+constraint; (G) fails without the condition T(Y) <= 8 (4.750 at
+T = 10.82) and the constrained search finds only the root system; the
+deepest hole of a 24-point code leaves room for a 25th centre only from
+slack about 0.025, against 0.008 proved.  RELEASE_NOTES_v1.9.0.md has the
+details.  The new code was developed, and its computations run, with the
+assistance of Claude, an AI model made by Anthropic.
+
+  paper/              The journal form: the abstract, the introduction,
+                        Section 2.8 and the conclusion rewritten around
+                        Proposition 2.30; Section 23 (Computer
+                        verification) and Appendix F (Methods of
+                        computation) replace the reproducibility sections,
+                        and the text no longer names files of this package;
+                        Section 2.9 and Propositions 2.25 to 2.30 are new,
+                        with Figures 11, 12 and 13
+                        (figures_new/tikz_secondorder.tex, tikz_hexloop.tex,
+                        tikz_codes.tex); later figures are renumbered.
+  multi_cap/second_order/
+                      Section 2.9 and Propositions 2.25 to 2.28, with the
+                        searches behind Remark 2.29 (cell_hull_search.py)
+                        and Figure 13 (contact_cell_constrained.py,
+                        hole24.py).  See multi_cap/second_order/README.md.
+  multi_cap/cap_probe.py
+                      A labelled three-point probe: can a certificate
+                        exclude a further centre within sqrt 6 beside 24
+                        centres within 2.0161?  Not at degree 7: the
+                        least value is 0 at slack 0.008 and inner product
+                        0.6141.  Log: runs/cap_probe_d7.log.
+  paper/figures_new/tikz_overlap_check.py
+                      The collision test of the TikZ figures, now also for
+                        tick labels and for anything drawn under text.  All
+                        nine TikZ figures pass it (tikz_overlap_check.log).
+  lean/               Eight new parts, fifteen in all: D4SecondOrder.lean
+                        (Section 2.9 and the tilt block), D4HexagonLoop.lean
+                        (Proposition 2.26), D4SecondCode.lean (Proposition
+                        2.28), D4NearContact.lean (the arithmetic of
+                        epsilon_0 in Theorem 2.18), D4Rigidity.lean (Lemma
+                        7.50), D4Cap.lean (the extremal cap theorem),
+                        certificate/D4Labelled*.lean and D4Omega*.lean
+                        (all three regions of Theorem 2.17, with omega
+                        computed in Lean), and cardinality/ (the
+                        certificates of Theorem 7.79 from their entries
+                        alone).  See lean/README.md.
 
 ## What is new in v1.8.0
 
@@ -77,13 +144,12 @@ Conjecture 1.6 stays open in the same shape.  The new code was developed,
 and its computations run, with the assistance of Claude, an AI model made
 by Anthropic.
 
-  paper/              Theorem 7.79, Remark 7.78 and Figure 29 are new
+  paper/              Theorem 7.79, Remark 7.78 and Figure 28 are new
                         (figures_new/fig_cardinality.py), and so are
-                        Section 2.9 with Figure 11 and Figures 9 and 10
-                        (figures_new/tikz_secondorder.tex, tikz_counts.tex,
+                        Figures 9 and 10 (figures_new/tikz_counts.tex,
                         tikz_level2.tex); Lemma 7.50, Theorem 7.51, Theorem
-                        2.18 and "What is left" are revised; Figures 19 and
-                        28 are redrawn; the abstract is rewritten; the
+                        2.18 and "What is left" are revised; Figures 18 and
+                        27 are redrawn; the abstract is rewritten; the
                         introduction, the code index and the data
                         availability statement are revised.  Later figures
                         are renumbered.
@@ -95,17 +161,6 @@ by Anthropic.
                         thirteen signatures; the bound on the enlarged
                         domain (las2_slack.jl) and with a margin
                         (las2_margin.jl).  See level2/README.md.
-  multi_cap/second_order/
-                      Section 2.9: the second variation of the cell volume
-                        at the root system, its minimum -1 on the packing
-                        cone by an exact copositivity certificate
-                        (verify_cone_certificate.py, three seconds), the
-                        push-outs integrated exactly, the tilt block, the
-                        closed curve of contact cells of volume 8
-                        (hexagon_loop.py, Proposition 2.26), the remainder
-                        and non-monotonicity experiments, and an
-                        independent check.  See
-                        multi_cap/second_order/README.md.
   multi_cap/count_survey.py
                       The right side of Lemma 2.15 for every count of
                         centres within sqrt 6: least value 8.264115 at
@@ -113,12 +168,7 @@ by Anthropic.
                         or more found.  Logs: runs/count_survey.log,
                         runs/count_survey_pack.log.
   paper/figures_new/tikz_overlap_check.py
-                      The collision test of the TikZ figures: no two nodes
-                        overlap, tick labels included, and nothing drawn
-                        passes under any text.  All seven TikZ figures pass it
-                        (tikz_overlap_check.log, one run each, and a second in
-                        the automatic mode for the two with named labels);
-                        Figures 4, 6, 8 and 28 are redrawn to do so.
+                      The collision test of the TikZ figures.
   multi_cap/certify_cardinality.py, multi_cap/cardinality_sdp.py,
   multi_cap/cardinality_certificates/
                       Theorem 7.79: the proof, the search, and three
@@ -132,19 +182,6 @@ by Anthropic.
                       Remark 7.78; the 25-point code.  Logs:
                         runs/robust_ceiling.log, runs/code25_search.log,
                         runs/code25_best.txt.
-  lean/               Eight new parts in Lean, fifteen in all: D4SecondOrder.lean
-                        (Section 2.9), D4HexagonLoop.lean (the algebra of
-                        Proposition 2.26), D4SecondCode.lean (the second
-                        24-point code, Proposition 2.28), D4NearContact.lean (the exact
-                        arithmetic of epsilon_0 in Theorem 2.18),
-                        D4Rigidity.lean (the spectrum and the 11/16 diagonal
-                        of Lemma 7.50), D4Cap.lean (the extremal cap
-                        theorem: Q, its exact volume, the three ranges and
-                        the 303 boxes),
-                        certificate/D4Labelled*.lean (the regions II_s and
-                        II_f of Theorem 2.17, 39 399 and 9 545 boxes), and
-                        cardinality/ (the certificates of Theorem 7.79 from
-                        their entries alone).  See lean/README.md.
   multi_cap/explicit_eps0.py, multi_cap/facet_bounds_probe.py
                       Theorem 2.18 with the facet-by-facet step (b): the
                         bracket is at least 0.1 for sum of delta_i <= 4e-3
@@ -979,6 +1016,16 @@ with the assistance of Claude, an AI model made by Anthropic.
                               centre with inner products up to tau (at degree
                               7: yes at tau = 1/2, no at tau = 0.612).  Log:
                               runs/three_point_probes.log.
+
+  cap_probe.py d tau kappa [rounds]
+                              Supports "What is left" after Theorem 2.18.
+                              Floating point, sampled constraints,
+                              exploration: the cap probe above with the 24
+                              directions at slack kappa, as Theorem 7.79
+                              allows for kappa = 0.008.  At degree 7, with
+                              kappa = 0.008 and tau = 0.6141 (a further centre
+                              within sqrt 6), the best certificate has value
+                              0: no exclusion.  Log: runs/cap_probe_d7.log.
 
   truncated_search.py M [starts] [seed]
   truncated_search.py rays
