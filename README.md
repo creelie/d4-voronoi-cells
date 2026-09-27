@@ -1075,6 +1075,16 @@ with the assistance of Claude, an AI model made by Anthropic.
                               two minutes.  Log:
                               runs/radial_count_check_31.log.
 
+  count_core_survey.py M K [starts] [seed]
+                              Remark 2.35.  Floating point, exploration: the
+                              least T over packings of M centres within
+                              sqrt 6 with K of them held within rho_M, the
+                              radius inside which at least 23 centres must
+                              lie when T <= 8 (2.2677 for M = 25, 2.3273 for
+                              M = 30).  With K = 23: 8.353, 8.472, 8.681,
+                              8.781, 8.771, 8.937 for M = 25..30.  Log:
+                              runs/count_core_survey.log.
+
   truncated_search.py M [starts] [seed]
   truncated_search.py rays
                               Supports "What is left" after Theorem 2.18.
