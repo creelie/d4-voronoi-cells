@@ -1017,6 +1017,16 @@ with the assistance of Claude, an AI model made by Anthropic.
                               7: yes at tau = 1/2, no at tau = 0.612).  Log:
                               runs/three_point_probes.log.
 
+  cap_probe.py d tau kappa [rounds]
+                              Supports "What is left" after Theorem 2.18.
+                              Floating point, sampled constraints,
+                              exploration: the cap probe above with the 24
+                              directions at slack kappa, as Theorem 7.79
+                              allows for kappa = 0.008.  At degree 7, with
+                              kappa = 0.008 and tau = 0.6141 (a further centre
+                              within sqrt 6), the best certificate has value
+                              0: no exclusion.  Log: runs/cap_probe_d7.log.
+
   truncated_search.py M [starts] [seed]
   truncated_search.py rays
                               Supports "What is left" after Theorem 2.18.
