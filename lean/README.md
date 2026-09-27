@@ -1,8 +1,8 @@
 # Lean 4 verification
 
-Ten files and three small Lake projects: machine checks of finite
+Eleven files and three small Lake projects: machine checks of finite
 arithmetic and of polynomial identities taken from the paper.
-`run_all.sh` checks the ten files with
+`run_all.sh` checks the eleven files with
 the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
 prints the axiom report of each; the three Lake projects are built with
 `lake build` in their directories.
@@ -24,7 +24,8 @@ one or two roots meets all three pairs at a vertex; and of the 2024 deleted
 triples exactly 96 do, each pairwise at 60 degrees with a common vertex.
 The identities depend on propext, Classical.choice and Quot.sound, the
 combinatorial theorems on propext at most; nothing uses `native_decide`.
-About two minutes.  The log of `run_all.sh` behind v1.8.0, all ten files, is
+About two minutes.  The log of `run_all.sh` behind v1.8.0, the ten files other than
+`D4HexagonLoop.lean` (which has its own log, below), is
 `runs/run_all_2026-09-27_v1.8.0.log` (behind v1.6.0,
 `runs/run_all_2026-09-25_v1.6.0.log`; behind v1.5.0,
 `runs/run_all_2026-09-25.log`).
@@ -52,6 +53,21 @@ of the volume and that B are the linearised packing constraints are Lemma
 2.19 and the paper, checked numerically by
 `multi_cap/second_order/independent_check.py`; they are not formalised.  Log:
 `runs/D4SecondOrder_2026-09-27.log`.
+
+`D4HexagonLoop.lean` (new in v1.8.0) covers the algebra of Proposition
+2.26, the closed curve of direction sets through the root system along which
+the contact cell has volume exactly 8.  In the ring
+Q(sqrt3)[c, s]/(c^2 + s^2 - 1), c = cos theta, s = sin theta, it computes the
+two integrals J1, J2 of the proof from the vertices of the two triangles of
+one sector and proves their closed forms, the identity
+3 J1^2 - 4 sqrt3 J2 - 32 = 0, and the six conditions for no slice to
+degenerate; it checks that at theta = 0 the 24 directions have the Gram
+matrix of the unit D4 roots under an explicit labelling, and, with `grind`
+over every commutative ring, the perfect square that makes the volume
+exactly 8.  The slice formula and the reduction to one sector are the
+paper's argument, checked with sympy and numerically by
+`multi_cap/second_order/hexagon_loop.py`.  About a second.  Log:
+`runs/D4HexagonLoop_2026-09-27.log`.
 
 `D4NearContact.lean` (new in v1.8.0) covers the exact arithmetic of the
 explicit constant epsilon_0 = 4e-26 of Theorem 2.18 (parts B to E of
@@ -254,7 +270,7 @@ three counts the enumeration returns and settles them by `native_decide`.
 ## What they need
 
 A Lean 4 toolchain, and nothing else. There is no Mathlib dependency. For
-the ten files there is no `lakefile`: install elan and run
+the eleven files there is no `lakefile`: install elan and run
 
     lean D4Stress.lean
     lean D4Meet.lean
@@ -263,14 +279,15 @@ the ten files there is no `lakefile`: install elan and run
     lean D4RootLattices.lean
     lean D4Closure.lean
     lean D4SecondOrder.lean
+    lean D4HexagonLoop.lean
     lean D4NearContact.lean
     lean D4Rigidity.lean
     lean D4Cap.lean
 
 or `sh run_all.sh`. The first two take a few seconds, the third about
 twenty, the fourth about forty, the fifth about six and the sixth about
-ninety, the seventh about thirty, the eighth about twenty, and the ninth
-and tenth about ten each. Silence means
+ninety, the seventh about thirty, the eighth about a second, the ninth
+about twenty, and the tenth and eleventh about ten each. Silence means
 every theorem in the file was accepted by the kernel; the axiom audit at the foot of each file then prints
 one line per theorem. For the projects,
 
@@ -300,7 +317,8 @@ modules, not in the modules that others import.  Likewise
     lake build
 
 compiles `KissDomain` and runs the checks of `KissMain8` (about seven
-minutes) and `KissMain10` (several hours).
+minutes) and `KissMain10` (four hours and ten minutes, 15 052 s, on one
+core).
 
 Toolchain used: `leanprover/lean4:v4.34.0-rc2` (see `lean-toolchain`).
 
@@ -469,7 +487,7 @@ two runs.
 | --- | --- |
 | `cert8_exact`, `cert10_exact` | f_k >= 0; every F_k symmetric positive definite (exact LDL^T); F symmetric in its three variables; top >= t; e1 <= 10^-6 and e2 at most its decimal (10^-5, 7 10^-5); 24 (1 - e1) - 552 e2 > f(1) + F(1,1,1) |
 | `cert8_i`, `cert10_i` | f(u) + 3 F(1,u,u) + 1 <= e1 on [-1, top] (441 and 2 957 intervals) |
-| `cert8_ii`, `cert10_ii` | F(u,v,w) <= e2 on -1 <= u <= v <= w <= top, 1 + 2uvw - u^2 - v^2 - w^2 >= 0 (181 869 boxes for degree 8) |
+| `cert8_ii`, `cert10_ii` | F(u,v,w) <= e2 on -1 <= u <= v <= w <= top, 1 + 2uvw - u^2 - v^2 - w^2 >= 0 (181 869 boxes and 423 s for degree 8; 15 052 s for degree 10) |
 
 The degree-8 certificate is at s = 0.0065 (t = 1013/2000), the degree-10 one,
 which Theorem 7.79 uses, at s = 0.008 (t = 127/250).  B = 24.974999950... and

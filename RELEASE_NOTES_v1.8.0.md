@@ -112,23 +112,32 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   theorem tilt_block in lean/D4SecondOrder.lean).  With Proposition 2.24, a
   bound vol(Q_w) >= 8 near the root system would carry the first inequality
   of statement (ii) with no packing constraint.
-- Remark 2.26: that bound is not strict.  Along straight lines in the flat
-  directions the volume grows at fourth order, but with the other tilts
-  relaxed there is a curve of direction sets that are not rotations of the
-  root system along which vol(Q_w) - 8 stays below 3e-10 up to tilt 0.45
-  (multi_cap/second_order/contact_valley.py).  So no fourth-order positivity
-  argument can prove it; the zero set has to be found.
+- Proposition 2.26 (a closed curve of contact cells of volume 8): turn one
+  A2 hexagon of roots by theta in its plane and tilt the other eighteen
+  towards the orthogonal plane, sin psi = 4C/(4C^2 + 3), C = cos(pi/6 -
+  theta).  The contact cell has volume exactly 8 for every theta in
+  [0, pi/3], and the curve closes up at the root system.  For 0 < theta <
+  pi/3 the directions are not a rotation of the root system: their largest
+  inner product is at least 4C^2/(4C^2 + 3) > 1/2 (4/7 at theta = pi/6).  The proof
+  integrates hexagonal slices over the turned hexagon and reduces vol - 8 to
+  a perfect square (multi_cap/second_order/hexagon_loop.py, sympy, with qhull
+  and 50-digit checks; lean/D4HexagonLoop.lean).  So vol(Q_w) >= 8, if true
+  near the root system, is attained along such curves, one through each of
+  the 16 hexagons, and no higher-order positivity can prove it.  Remark
+  2.27: the relaxed minimisation of contact_valley.py finds this curve, and
+  the Hessian along it is positive semidefinite with seven zero
+  eigenvalues (rotations and the curve).
 - The bound can only be local: with no packing constraint, 24 unit directions
   with inner products up to 0.579 have a contact cell of volume 7.96553 < 8
   (multi_cap/second_order/contact_cell_scan.py, minimiser saved in
   contact_cell_min.npy).
-- In Lean, five more parts, thirteen in all:
+- In Lean, six more parts, fourteen in all:
   - lean/cardinality/, a new Lake project that checks the certificates of
     Theorem 7.79 (degree 8 at s = 0.0065, degree 10 at s = 0.008) from their
     entries alone in exact dyadic arithmetic: positivity by exact LDL^T, the
     bound, the inequality at |C| = 25, and both branch and bounds (441 and
-    2 957 intervals; 181 869 boxes for degree 8, a run of several hours for
-    degree 10).
+    2 957 intervals; 181 869 boxes and seven minutes for degree 8, four hours
+    and ten minutes for degree 10).
   - lean/certificate/D4Labelled*.lean: the regions II_s and II_f of Theorem
     2.17 (39 399 and 9 545 boxes), with the shares, the packing bounds and the
     Gamma envelopes computed in Lean; only the omega tables, the slab constant
@@ -148,6 +157,10 @@ Everything proved in v1.7.0 still stands.  New or sharper:
     (the script had them in floating point), the cross-polytope enclosure,
     the fourth derivative of g, the three ranges of the case |S| = 1, and the
     303 boxes of the case |S| >= 2 with the same largest value 0.99755.
+  - lean/D4HexagonLoop.lean: the algebra of Proposition 2.26 in
+    Q(sqrt3)[c, s]/(c^2 + s^2 - 1): the integrals J1, J2 in closed form from
+    the sector triangles, 3 J1^2 - 4 sqrt3 J2 = 32, the six slice conditions,
+    the Gram matrix at theta = 0, and the perfect square (grind).
   - lean/certificate/D4Omega*.lean: the tables of omega, A_* and the
     constants of Theorem 2.17 computed inside Lean, in outward-rounded 256-bit
     interval arithmetic, from simplified closed forms,

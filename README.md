@@ -100,9 +100,12 @@ by Anthropic.
                         at the root system, its minimum -1 on the packing
                         cone by an exact copositivity certificate
                         (verify_cone_certificate.py, three seconds), the
-                        push-outs integrated exactly, the remainder and
-                        non-monotonicity experiments, and an independent
-                        check.  See multi_cap/second_order/README.md.
+                        push-outs integrated exactly, the tilt block, the
+                        closed curve of contact cells of volume 8
+                        (hexagon_loop.py, Proposition 2.26), the remainder
+                        and non-monotonicity experiments, and an
+                        independent check.  See
+                        multi_cap/second_order/README.md.
   multi_cap/count_survey.py
                       The right side of Lemma 2.15 for every count of
                         centres within sqrt 6: least value 8.264115 at
@@ -129,8 +132,9 @@ by Anthropic.
                       Remark 7.78; the 25-point code.  Logs:
                         runs/robust_ceiling.log, runs/code25_search.log,
                         runs/code25_best.txt.
-  lean/               Six new parts in Lean, thirteen in all: D4SecondOrder.lean
-                        (Section 2.9), D4NearContact.lean (the exact
+  lean/               Seven new parts in Lean, fourteen in all: D4SecondOrder.lean
+                        (Section 2.9), D4HexagonLoop.lean (the algebra of
+                        Proposition 2.26), D4NearContact.lean (the exact
                         arithmetic of epsilon_0 in Theorem 2.18),
                         D4Rigidity.lean (the spectrum and the 11/16 diagonal
                         of Lemma 7.50), D4Cap.lean (the extremal cap
@@ -436,6 +440,9 @@ with the assistance of Claude, an AI model made by Anthropic.
                         identities and root-pair combinatorics of Section
                         2.8.  D4SecondOrder.lean: the exact content of
                         Section 2.9 (gen_second_order_lean.py).
+                        D4HexagonLoop.lean: the algebra of Proposition
+                        2.26, the closed curve of contact cells of
+                        volume 8.
                         D4NearContact.lean: the exact arithmetic of the
                         explicit epsilon_0 of Theorem 2.18, the bound on
                         the quotient of the two-point polynomial, the
@@ -1904,6 +1911,7 @@ The Lean developments are checked with
   lean lean/D4RootLattices.lean
   lean lean/D4Closure.lean
   lean lean/D4SecondOrder.lean
+  lean lean/D4HexagonLoop.lean
   lean lean/D4NearContact.lean
   lean lean/D4Rigidity.lean
   lean lean/D4Cap.lean
