@@ -544,8 +544,11 @@ centre as a continuous label (\cref{thm:count31}), which leaves the counts
 from twenty-five to thirty. The second order of the first is computed
 exactly and certified in \cref{sec:second-order}, where it is also shown to
 be attained along closed curves of direction sets
-(\cref{prop:hexagon-loop}); numerical searches of both find nothing below
-$8$ (\cref{sec:noncontact,rem:what-g-needs}), and \cref{sec:G-and-C} sets out
+(\cref{prop:hexagon-loop}); the first is proved along the push-outs of the
+root system (\cref{thm:G-pushout}), so that the conjecture holds whenever the
+twenty-four centres within $\sqrt6$ lie on the rays of a root system;
+numerical searches of both find nothing below $8$
+(\cref{sec:noncontact,rem:what-g-needs}), and \cref{sec:G-and-C} sets out
 what each still needs.
 
 The case of $23$ contacts is not a deviation problem at all. By
@@ -2022,10 +2025,9 @@ it finds no packing at all: from $300$ random starts for each count up to
 $49$, the least squared violation of the constraints grows from $0.14$ at $44$
 to $6.5$ at $49$, while $42$ and $43$ centres fit with most of them on that
 sphere. If this is the whole truth, the pair terms fail
-only at twenty-four centres near the root system, and twenty-five or more
-can be settled by certificates that see the distances; at most $49$ centres
-fit within $\sqrt6$, and from $31$ on a single such certificate settles every
-count (\cref{thm:count31}).\footnote{The largest packing the survey
+only at twenty-four centres near the root system; from $31$ on a single
+certificate that sees the distances settles every count
+(\cref{thm:count31}), and at most $49$ centres fit within $\sqrt6$.\footnote{The largest packing the survey
   finds has $43$ centres, $29$ of them within $10^{-4}$ of the sphere of radius
   $\sqrt6$. Two centres on that sphere at least $2$ apart subtend an angle of at
   least $\arccos\frac23=48.19^\circ$ at $c$, so near the top of the range the
@@ -2689,8 +2691,9 @@ bounds.}
 
 This subsection proves (C) for every count from thirty-one on, shows that
 twenty-four centres close to a root system leave no room for another within
-$\sqrt6$, and then sets out what (G), and (C) for the counts from twenty-five
-to thirty, still require. Throughout, $Y$ is the set of centres $y$ with
+$\sqrt6$, proves (G) along the push-outs of the root system, and then sets
+out what (G), and (C) for the counts from twenty-five to thirty, still
+require. Throughout, $Y$ is the set of centres $y$ with
 $2\le|y|<\sqrt6$, $\hat y=y/|y|$, $R=\sqrt{3/2}$, and
 \[
   U(Y)=\sum_{y\in Y}S(|y|)-\sum_{\{y,y'\}\subset Y}
@@ -2945,11 +2948,107 @@ route for this case, count by count, and it has a room of at least $0.35$ in
 $T$ at every count.
 \end{remark}
 
+Statement (G) can be proved in full along one family: the root system with
+its centres pushed out along their own rays, by any amounts the region
+$T\le8$ allows. The gain is \cref{lem:pure-push}; what has to be controlled
+is the part of $V(Y)$ that the inversion hull cuts away, and it lies in
+small pyramids at the vertices of the $24$-cell.
+
+\begin{thm}[(G) along the push-outs]\label{thm:G-pushout}
+Let $u_1,\dots,u_{24}$ be the normalised roots of a copy of $\Rt$, let $Y$
+consist of the $24$ centres $(2+\delta_i)u_i$ with $\delta_i\ge0$, and
+suppose that $T(Y)\le8$. Then every $\delta_i$ is below $0.1971$, and
+\[
+  \vol\bigl(V(Y)\cap K(Y)\bigr)\ \ge\ 8+\tfrac15\sum_i\delta_i .
+\]
+In particular (G) holds for $Y$, with equality only when every $\delta_i=0$.
+\end{thm}
+
+\begin{proof}
+Put $\eta_i=\delta_i/2$ and $Q=\{x:\langle x,u_i\rangle\le1\ \forall i\}$, the
+$24$-cell, so that $V(Y)=\{x:\langle x,u_i\rangle\le1+\eta_i\ \forall i\}$
+and $K(Y)=\conv\{0,\,2u_i/(1+\eta_i)\}$.
+
+\emph{The size of the push-outs.} Moving a centre out along its ray shrinks
+its cap in $B(\sqrt{3/2})$, and with it the union of the caps, so $T$ does
+not decrease in any $\delta_i$. Hence $T(Y)$ is at least the value of $T$ on
+the root system with only the largest $\delta_i$ kept. On that ray
+\[
+  T(\delta)=\tfrac98\pi^2-23S(2)-S(2+\delta)+88\,\Pi(1,1,\tfrac12)
+  +8\,\Pi(1,1+\tfrac\delta2,\tfrac12),
+\]
+since caps whose normals meet at $90^\circ$ or more do not meet in
+$B(\sqrt{3/2})$, and in ball arithmetic, with \cref{lem:pair-closed},
+$T(0.1971)=8.0000152\ldots>8$. So every $\delta_i<0.1971$ and
+$\eta_i<0.09855$.
+
+\emph{The gain.} By \cref{lem:pure-push},
+$\vol V(Y)\ge8+\frac13\sum_i\bigl(1-(1-\eta_i)^4\bigr)$.
+
+\emph{The loss.} Let $\eta=\max_i\eta_i$ and $\lambda=(1+\eta)^2$, so
+$\lambda-1<0.207$. The hull $K_0=\conv\{2u_i\}$ is the $24$-cell
+$\{x:\langle x,\hat v\rangle\le\sqrt2\}$, $v$ running over the vertices of
+$Q$, and its facet in the direction of $v$ is the octahedron with vertices
+$2u$ for the six roots $u$ through $v$, centred at $v$. Since
+$V(Y)\subseteq(1+\eta)Q$ and $K(Y)\supseteq(1+\eta)^{-1}K_0$, a point $x$ of
+$V(Y)\setminus K(Y)$ has $(1+\eta)x\in\lambda Q$ and
+$\langle(1+\eta)x,\hat v\rangle>\sqrt2$ for some vertex $v$. In coordinates
+with $v=\sqrt2e_1$, the six facets of $Q$ through $v$ are
+$x_1\pm x_j\le\sqrt2$, $j=2,3,4$, so $|x_j|<(\lambda-1)x_1<\frac13x_1$.
+Let $\eta_v$ be the largest $\eta_u$ over the six roots $u$ through $v$. As
+$x\in V(Y)$, $x_1\pm x_j\le\sqrt2(1+\eta_v)$. As $x\notin K(Y)$, $x$ is not
+in the pyramid from $0$ over the octahedron with vertices $2u/(1+\eta_v)$,
+which $K(Y)$ contains because $2u/(1+\eta_u)$ lies farther out on the same
+ray; that octahedron lies in the hyperplane $x_1=\sqrt2/(1+\eta_v)$ and
+contains every point of it with $|x_j|$ below a third of $\sqrt2/(1+\eta_v)$,
+so the ray through $x$ meets it and $x_1>\sqrt2/(1+\eta_v)$. So $x$ lies in
+the truncated cone
+$\{\sqrt2/(1+\eta_v)<x_1,\ |x_j|\le\sqrt2(1+\eta_v)-x_1\}$, whose section at
+$x_1=\sqrt2(1+\eta_v)-s$ is a cube of side $2s$; its volume is
+$\int_0^{h_v}8s^3\,ds=2h_v^4$ with
+$h_v=\sqrt2\bigl((1+\eta_v)-(1+\eta_v)^{-1}\bigr)\le2\sqrt2\,\eta_v$. Each
+facet of $Q$ has six vertices, so
+\[
+  \vol\bigl(V(Y)\setminus K(Y)\bigr)\le\sum_v128\,\eta_v^4
+  \le128\sum_v\sum_{u\ni v}\eta_u^4=768\sum_i\eta_i^4 .
+\]
+
+\emph{Together.} $\vol(V(Y)\cap K(Y))\ge8+\sum_ig(\eta_i)$ with
+$g(\eta)=\frac13(1-(1-\eta)^4)-768\eta^4$. The derivative of
+$g(\eta)/\eta=\frac13(4-6\eta+4\eta^2-\eta^3)-768\eta^3$ is at most
+$-2+\frac83\eta<0$, and at $\eta=0.09855$ its value is $0.4137\ldots$; so
+$g(\eta_i)\ge\frac25\eta_i=\frac15\delta_i$ for every $i$.
+\end{proof}
+
+\begin{cor}[Centres on the rays of a root system]\label{cor:rays}
+If exactly $24$ centres other than $c$ lie within $\sqrt6$ of $c$, all on
+the rays from $c$ through the normalised roots of a copy of $\Rt$, then
+$\vol(V_c)\ge8$, with equality only when they are at distance $2$ and $V_c$
+is the $24$-cell.
+\end{cor}
+
+\begin{proof}
+If $T(Y)>8$, then $\vol(V_c)\ge T(Y)>8$ by \cref{lem:no-triple}. Otherwise
+$\vol(V_c)\ge\vol(V(Y)\cap K(Y))\ge8+\frac15\sum_i\delta_i$ by
+\cref{prop:inversion-hull,thm:G-pushout}, and equality forces every
+$\delta_i=0$, twenty-four contacts, and the $24$-cell by
+\cref{lem:24-no-shell}.
+\end{proof}
+
+The inequality is far from tight: along the ray of one centre the part of
+$V(Y)$ outside the hull stays below $10^{-6}$ up to $\delta=0.197$, against
+$768\eta^4\approx7\cdot10^{-2}$ there. What stops the argument at the
+push-outs is the gain: \cref{lem:pure-push} needs the normals to be the
+roots, and with the directions tilted the contact cell itself can fall to
+$8$ (\cref{prop:hexagon-loop}), so a proof off this family has to take the
+gain from the push-outs that the tilts force.
+
 \begin{remark}[What (G) needs]\label{rem:what-g-needs-2}
 Statement (G) is sharp at the root system and holds near it:
 \cref{thm:near-contact} proves it whenever $\sum_i\delta_i\le4\cdot10^{-3}$
-and $d(W)\le\frac1{48}$. The region $T(Y)\le8$ in which it is asked is
-larger, but not by much. Along the root system pushed out evenly the pair
+and $d(W)\le\frac1{48}$, and \cref{thm:G-pushout} proves it for every
+push-out of the root system in the region, whatever its size. The region
+$T(Y)\le8$ in which it is asked is larger than the first, but not by much. Along the root system pushed out evenly the pair
 terms reach $8$ at $\sum_i\delta_i=0.155$, and along the ray of one centre
 at $\delta=0.197$; every local minimum of $T$ found with $24$ centres is the
 root system itself; and configurations far from it, such as the packing with
@@ -10684,7 +10783,10 @@ root system (\cref{cor:no-room}), the second order of (G)
 (\cref{prop:cone-min,prop:tilt-block}) with the push-outs integrated
 exactly (\cref{prop:push-integrated}), the exact curves of contact cells of
 volume $8$ that any proof of (G) has to control (\cref{prop:hexagon-loop}),
-and the count for twenty-three (\cref{thm:m23-labelled}). The route
+(G) itself along the push-outs of the root system, so that the conjecture
+holds whenever the twenty-four centres within $\sqrt6$ lie on the rays of a
+root system (\cref{thm:G-pushout,cor:rays}), and the count for twenty-three
+(\cref{thm:m23-labelled}). The route
 through the shape of twenty-four directions stops at slack $0.01698$,
 where a second code appears (\cref{prop:second-code}). What (G) and the
 remaining counts of (C) need, and why neither three-point certificates nor
@@ -10866,7 +10968,8 @@ arithmetic with outward rounding \cite[Ch.~5]{MKC09}: the pivots of
 \cref{sec:stage-one}, the certificates of
 \cref{sec:stage-two,sec:arc1-cert,sec:arc2-cert,sec:cap-theorem}, the
 certificates of \cref{sec:certificate,sec:certificate-checked,sec:closure,sec:m24-robust},
-the certificates of \cref{prop:cone-min,thm:count31}, and the identities of
+the certificates of \cref{prop:cone-min,thm:count31}, the arithmetic of
+\cref{thm:G-pushout}, and the identities of
 \cref{prop:hexagon-loop,prop:second-code}. The second is a
 high-precision evaluation, at a stated working precision between $35$ and
 $400$ digits and cross-checked at a second one; this is where
