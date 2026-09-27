@@ -88,7 +88,7 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   remainder_test.py, floating point), and the part of V(Y) outside the
   inversion hull needs a sharper bound than 13958 Theta^4 (it is below 1e-6
   along both rays up to 0.197, multi_cap/hull_along_rays.py).
-- Remark 2.25: two corrections to the list of what is left, which now has
+- The list of what is left (end of Section 2.8), corrected, now has
   four items: along the ray of one centre pushed out the slack reaches
   delta/4 = 0.049, beyond any statement about the slack alone (25-point codes
   exist at 0.0374), so twenty-three contacts with one near-contact need a
@@ -241,7 +241,7 @@ within sqrt 6, one of them at a distance between 2 + epsilon_0 and sqrt 6.
    13958 Theta^4; along both rays it is below 1e-6 up to 0.197
    (hull_along_rays.py), so the bound, not the hull, is what is weak;
 3. twenty-three contacts with one near-contact, a classification of codes
-   of its own (Remark 2.25);
+   of its own (the list of what is left in Section 2.8);
 4. certificates for 24 centres away from the root system and for each
    count from 25, which need 1 and 3.
 

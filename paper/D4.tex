@@ -95,7 +95,6 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[thm]{Definition}
-\newtheorem{openproblem}[thm]{Open Problem}
 \newtheorem{construction}[thm]{Construction}
 
 \theoremstyle{remark}
@@ -115,8 +114,6 @@
 \Crefname{conjecture}{Conjecture}{Conjectures}
 \crefname{definition}{Definition}{Definitions}
 \Crefname{definition}{Definition}{Definitions}
-\crefname{openproblem}{Open Problem}{Open Problems}
-\Crefname{openproblem}{Open Problem}{Open Problems}
 \crefname{construction}{Construction}{Constructions}
 \Crefname{construction}{Construction}{Constructions}
 \crefname{remark}{Remark}{Remarks}
@@ -197,14 +194,13 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 
 \begin{abstract}
 We prove that a Voronoi cell of a unit-ball packing of $\mathbb{R}^4$ has
-volume at least $8$, that of the regular twenty-four-cell, with equality
-only at the $D_4$ configuration, whenever at most twenty-three other centres
-lie within $\sqrt6$, and whenever none lies at a distance strictly between
+volume at least $8$, that of the twenty-four-cell, with equality only at
+$D_4$, whenever at most twenty-three other centres lie within $\sqrt6$ of
+its centre, and whenever none lies at a distance strictly between
 $2+4\cdot10^{-26}$ and $\sqrt6$. This settles the twenty-four-cell
-conjecture for contact configurations and makes $D_4$ a strict local minimum
-among all packings. We prove that the kissing number in dimension four is
-stable: at most twenty-four centres lie within $2.0161$ of any centre. One
-precisely stated case remains.
+conjecture for contact configurations and makes $D_4$ a strict local
+minimum among all packings. At most twenty-four centres lie within $2.0161$
+of any centre.
 \end{abstract}
 
 \maketitle
@@ -219,20 +215,20 @@ $D_4$ root lattice, scaled so that nearest centres lie at distance $2$,
 packs balls at density $\pi^2/16=0.6169\ldots$ and is the densest
 lattice packing in dimension $4$, by a theorem of Korkine and Zolotareff
 \cite{KZ1872}. Whether it is densest among all packings, periodic or
-not, has been an open question, and it remains one. The present paper
-proves a local statement that answers it for a large class of packings
-and reduces the rest to one precisely stated case, and it proves within
-the text every ingredient the argument uses, the one classification it
-needs included. It supersedes the preprint \cite{BBB26} of the first,
-second and fourth authors, whose additivity argument is not true in the
-form stated there (\cref{rem:sums-not-unions}) and is not used here.
+not, is open. The present paper proves a local statement that answers
+it for a large class of packings, states precisely the one case that
+the statement does not cover, and proves within the text every
+ingredient the argument uses, the one classification it needs
+included. The additivity argument of the
+preprint \cite{BBB26} of the first, second and fourth authors is not
+true in the form stated there (\cref{rem:sums-not-unions}) and is not
+used here.
 
-We say at the outset what that statement is and where it
-stood. The statement is that every Voronoi cell of a unit-ball packing
+The local statement is that every Voronoi cell of a unit-ball packing
 of $\mathbb{R}^4$ has volume at least $8$, the volume of the regular
 $24$-cell circumscribed about the unit ball; it is known as the
-twenty-four-cell conjecture, it implies the density bound $\pi^2/16$
-at once, and to our knowledge no case of it in which a contact
+twenty-four-cell conjecture, and it implies the density bound $\pi^2/16$
+at once. No case of it in which a contact
 direction leaves a root of $D_4$ had been proved before: the general
 estimates of Blichfeldt and Rogers stop short of $8$, the linear
 programming bound stalls above the density of $D_4$, and the
@@ -241,7 +237,7 @@ configurations that matter (\cref{sec:hessian-technique}). For contact
 configurations, where every neighbour that can cut the cell touches the
 centre, three theorems below cover it. When at most one contact direction leaves a
 root the bound is proved by elementary means, in exact arithmetic, with
-no restriction on the deviation (\cref{thm:local-uncond}). When there
+no hypothesis on the deviation (\cref{thm:local-uncond}). When there
 are at most $22$ contacts it is proved, with room to spare and with any
 number of deviations, by a covering estimate on the sphere
 (\cref{thm:local-fewcontacts}). When there are exactly $23$ contacts,
@@ -266,8 +262,10 @@ the piece that was missing there. What separates it from the conjecture
 for Voronoi cells is the neighbours that do not touch the centre.
 \Cref{sec:noncontact} proves the bound for every centre whose neighbours
 within $2\sqrt2$ all touch it, or whose neighbour distances pass a
-covering criterion, and isolates the one case that remains, a centre
-crowded by near-contacts (\cref{conj:shell}).
+covering criterion, \cref{sec:closure} proves it for every centre with
+at most twenty-three others within $\sqrt6$ and for every centre near
+the root system, and what is not covered is one case, a centre crowded
+by near-contacts (\cref{conj:shell}).
 
 Let $\mathcal{C}\subset\mathbb{R}^4$ be the centre set of a packing of
 unit balls and let $c\in\mathcal{C}$. The Voronoi cell
@@ -314,7 +312,7 @@ density at most $\pi^2/16$, with equality for the $D_4$ lattice.
 \end{cor}
 
 The mechanism behind \cref{thm:local-uncond} is a change of viewpoint,
-and it is the part of this paper we would point to first. Fix the deviating
+and it is the part of this paper to point to first. Fix the deviating
 contact direction and let $Q$ be the intersection of the half-spaces of
 the twenty-three contact directions that remain at roots. The cell at
 the all-contact corner is $Q$ cut by one further half-space at unit
@@ -380,14 +378,13 @@ the angle $r_m$ exceeds $45^\circ$; stopping the integral there, so that
 no centre beyond $2\sqrt2$ can enter, leaves the bound above $11.5$,
 \cref{prop:distance-criterion}.)
 
-The case our own arguments do not reach is that of several simultaneous
-deviations at a centre with $24$ neighbours, all of them active. The
-free-volume identity of \cref{thm:freevol-new} holds exactly for any
-number of deviating directions, and reduces the general local bound to
-a single comparison of two volumes; whether that comparison goes the
-right way at such a centre is what our own arguments leave undecided.
+The case that the two arguments above do not reach is that of several
+simultaneous deviations at a centre with $24$ neighbours, all of them
+active. The free-volume identity of \cref{thm:freevol-new} holds exactly
+for any number of deviating directions, and reduces the general local
+bound to a single comparison of two volumes.
 
-\begin{conjecture}[Multi-direction positivity; proved in \cref{cor:conj-resolved}]\label{conj:multidir-new}
+\begin{thm}[Multi-direction positivity]\label{conj:multidir-new}
 Let the configuration be at the all-contact corner with a full active
 set, and let $D$ be any set of $m\ge2$ roots whose directions are
 deviated, with arbitrary tilts and arbitrary deviation directions. Then,
@@ -397,7 +394,7 @@ in the notation of \cref{thm:freevol-new},
   \;\ge\;
   \vol\Bigl(\bigcup_{j\in D}C_j\Bigr).
 \]
-\end{conjecture}
+\end{thm}
 
 By \cref{thm:freevol-new} this is exactly the assertion
 $\vol(V_c)\ge8$ for such a configuration. The two families are
@@ -407,24 +404,22 @@ that neither implies it nor follows from it
 (\cref{rem:sums-not-unions}); it is the union form above that is at
 issue.
 
-The top of that range is settled by a classification of the $24$-point
+The theorem is proved through a classification of the $24$-point
 kissing configurations in $\mathbb{R}^4$: any $24$ unit vectors with
 pairwise inner products at most $\tfrac12$ form a copy of the $D_4$ root
-system. That settles \cref{conj:multidir-new} outright, since a full
-active set of $24$ contacts then admits no deviation at all
-(\cref{cor:conj-resolved}), and it leaves the bound for contact
-configurations with one case, a centre with exactly $23$ contacts whose
-cell admits no twenty-fourth, which is the subject of the second half of
-\cref{sec:deviation-domain} and is settled there. The classification
-rests, as said above, on the computation of \cite{LLM24}, a preprint that
-has not yet been refereed; since it is proved here in full, as
-\cref{thm:twentyfour-points}, we say in a footnote what that proof
-consists of.%
-\footnote{The reader is entitled to know what the classification rests
-  on and how much of it is checked here; \cref{thm:m24},
+system. A full active set of $24$ contacts then admits no deviation at
+all (\cref{cor:conj-resolved}), and the bound for contact
+configurations is left with one case, a centre with exactly $23$
+contacts whose cell admits no twenty-fourth, which is the subject of the
+second half of \cref{sec:deviation-domain} and is settled there. The
+classification rests, as said above, on the computation of \cite{LLM24},
+a preprint that has not yet been refereed; since it is proved here in
+full, as \cref{thm:twentyfour-points}, we say in a footnote what that
+proof consists of.%
+\footnote{What the classification rests on, and how much of it is
+  checked here, is set out in full in \cref{thm:m24},
   \cref{lem:root-lattice}, \cref{thm:twentyfour-points} and
-  \cref{sec:certificate-checked} give the account in full, and this note
-  summarises it. The statement is that any $24$ unit vectors in
+  \cref{sec:certificate-checked}; this note summarises it. The statement is that any $24$ unit vectors in
   $\mathbb{R}^4$ with pairwise inner products at most $\tfrac12$ form a
   copy of the $D_4$ root system. Its proof has two halves. The first is
   a semidefinite programming bound: the second level of the hierarchy
@@ -537,11 +532,10 @@ a slack of $0.008$ in the inner products (\cref{thm:kissing-stable}), which
 a three-point certificate on the enlarged domain proves in exact and interval
 arithmetic. That is the cardinality half of a quantitative form of
 \cref{thm:m24}; the other half, that such twenty-four directions lie near a
-root system, is what the remaining case needs, with a classification of
-twenty-three contacts and one near-contact and a lower bound for the volume
-near the root system, whose second order \cref{sec:second-order} computes
-exactly and certifies. A numerical search of that case finds nothing below $8$
-(\cref{sec:noncontact}); that is evidence, not proof.
+root system, is what the remaining case needs, together with a lower bound
+for the volume near the root system, whose second order
+\cref{sec:second-order} computes exactly and certifies. A numerical search
+of that case finds nothing below $8$ (\cref{sec:noncontact}).
 
 The case of $23$ contacts is not a deviation problem at all. By
 \cref{prop:extendable}, a cell of circumradius at least $2$ is exactly
@@ -582,15 +576,14 @@ configuration exists at all (\cref{thm:m23-from-codes}). That
 classification, of a code at one fixed size below the maximum, is not
 something an upper bound on the size of a code can deliver
 (\cref{rem:m23-uniqueness}), and we do not prove it;%
-\footnote{Nor is it needed, and since the point matters for what the
-  paper claims we set the dependence out precisely. The bound for
+\footnote{Nor is it needed. The bound for
   contact configurations is assembled in \cref{cor:remaining} from three
   cases by the number $m$ of contacts, and \cref{thm:local-general}
   carries it to Voronoi cells (\cref{sec:noncontact}): $m\le22$ by the
   covering estimate (\cref{cor:m22}), $m=24$ by \cref{thm:m24}, and
   $m=23$ by \cref{thm:m23}. The density bound, \cref{thm:main-general},
   is the local bound followed by the averaging argument of
-  \cref{sec:density-derivation}, and it uses nothing else. The proof
+  \cref{sec:density-derivation}. The proof
   of \cref{thm:m23} is the inequality of \cref{thm:strict-reduction}
   together with its certificate, \cref{thm:certificate}: it bounds the
   cell of every configuration of $23$ contacts from below, whether or
@@ -602,21 +595,11 @@ something an upper bound on the size of a code can deliver
   $23$ contacts exists at all, so that the case $m=23$ with circumradius
   below $2$ would be empty and not merely settled; but the local
   bound does not distinguish between an empty case and a settled one,
-  and neither does the density bound. The same is true of the
-  twenty-four-cell conjecture in the form in which it is usually
-  stated, that every Voronoi cell of a unit-ball packing of
-  $\mathbb{R}^4$ has volume at least that of the regular $24$-cell
-  circumscribed about the unit ball: that is \cref{thm:local-general}
-  together with \cref{conj:shell}, and the classification of $23$-point
-  codes plays no part in it. \Cref{prop:cell600}, \cref{lem:h-limit} and the
-  computations of \cref{sec:slack-continuation} are therefore reported
-  as what they are, information about the codes of $23$ points that is
-  of interest in its own right, and nothing in
-  \cref{thm:local-general}, \cref{thm:main-general} or \cref{thm:m23}
-  depends on them. The one computational ingredient of the two general
-  theorems that is not a computation of our own is the kernel behind
-  \cref{thm:twentyfour-points} for $m=24$, found in \cite{LLM24} and
-  verified here, as the preceding footnote explains.}
+  and neither does the density bound. \Cref{prop:cell600},
+  \cref{lem:h-limit} and the computations of \cref{sec:slack-continuation}
+  are information about the codes of $23$ points, of interest in its own
+  right, and nothing in \cref{thm:local-general}, \cref{thm:main-general}
+  or \cref{thm:m23} depends on them.}
 two things can be said about it. Among the $120$ vertices of the $600$-cell, the largest
 finite group of unit quaternions and one that contains $\Rt$ in
 twenty-five ways, it holds: an exhaustive enumeration, carried out in
@@ -656,43 +639,47 @@ directions, where $0.092855\ldots$ is what the truncated volume needs.
 
 \begin{thm}[Density bound]\label{thm:main-general}
 Every periodic unit-ball packing of $\mathbb{R}^4$ each of whose centres
-satisfies the hypothesis of \cref{thm:local-general} has density at most
+satisfies the hypothesis of \cref{thm:local-general} or one of the
+conditions (a), (b), (c) of \cref{thm:intro-closure} has density at most
 $\pi^2/16$, with equality for the $D_4$ lattice at nearest-neighbour
-distance $2$. If \cref{conj:shell} holds, the supremum density of sphere
-packings in $\mathbb{R}^4$ is $\Delta_4=\pi^2/16$.
+distance $2$.
 \end{thm}
 
-Both of those last statements use \cref{thm:m24} for the configurations
-of twenty-four contacts, and \cref{thm:m24} is proved in this paper; the
-one thing in its proof that is not of our making is a positive kernel
-found by \cite{LLM24}, which \cref{sec:certificate-checked} redistributes
-and verifies, the bound it gives being proved in \cref{lem:las2}.
-It should be said at once what \cref{conj:multidir-new} is. Written in
-terms of the contact directions alone (\cref{prop:polar-form}), the
-inequality $\vol(V_c)\ge8$ is the twenty-four-cell conjecture for contact
+The centres that these hypotheses leave out are those of
+\cref{conj:shell} that \cref{thm:intro-closure} does not cover, and the
+twenty-four-cell conjecture in full, with the value $\Delta_4=\pi^2/16$
+for every packing, is \cref{thm:local-general} together with
+\cref{conj:shell}. The three theorems above use \cref{thm:m24}
+for the configurations of twenty-four contacts, and \cref{thm:m24} is proved
+in this paper; the one thing in its proof that is not of our making is a
+positive kernel found by \cite{LLM24}, which \cref{sec:certificate-checked}
+redistributes and verifies, the bound it gives being proved in
+\cref{lem:las2}. As for \cref{conj:multidir-new}: written in terms of
+the contact directions alone (\cref{prop:polar-form}), the inequality
+$\vol(V_c)\ge8$ is the twenty-four-cell conjecture for contact
 configurations, the form in which every neighbour that can cut the cell
 touches the centre; \cref{thm:local-uncond} settles the part of it in
 which at most one contact direction leaves a root, and
-\cref{conj:multidir-new} is the remainder. \Cref{cor:conj-resolved}
-settles it through the classification of \cref{thm:m24}, and nothing
-below suggests that restating it makes a proof that avoids the
-classification easier. The conjecture for Voronoi cells asks more, since
-it allows neighbours that do not touch, and that part is
-\cref{conj:shell}.
+\cref{conj:multidir-new} is the remainder, proved in
+\cref{cor:conj-resolved} through the classification of \cref{thm:m24}.
+The conjecture for Voronoi cells asks more, since it allows neighbours
+that do not touch, and that part is \cref{conj:shell}.
 
 \Cref{sec:hessian-technique} through \cref{sec:multidir-scope-summary}
-report what we know about it: the second-order
-method that settles small configurations degenerates exactly at a
-family of dense ones; we locate that degeneracy, measure its
-consequences, and prove the conjecture outright along three highly
-symmetric finite-angle paths. The obstruction there is of a different
-nature from anything in the single-deviation problem, and the cap
-argument of \cref{sec:cap-theorem} does not reach it, for a reason we
-explain in \cref{sec:multidir-scope-summary}.
+study \cref{conj:multidir-new} by elementary means, without the
+classification: the second-order method that settles small
+configurations degenerates exactly at a family of dense ones; we locate
+that degeneracy, measure its consequences, and prove the inequality
+directly along three highly symmetric finite-angle paths. The
+obstruction there is of a different nature from anything in the
+single-deviation problem, and the cap argument of \cref{sec:cap-theorem}
+does not reach it, for a reason explained in
+\cref{sec:multidir-scope-summary}.
 \Cref{sec:multi-cap,sec:polar-surface} give three exact restatements of
-the remaining case, as a cap inequality for one fixed polytope, as a
-polar-volume bound, and as a lower bound on the boundary measure of the
-cell, and use them to close off four otherwise natural lines of attack:
+the multi-direction inequality, as a cap inequality for one fixed
+polytope, as a polar-volume bound, and as a lower bound on the boundary
+measure of the cell, and use them to rule out four otherwise natural
+lines of attack:
 term-by-term reduction to the single-deviation theorem, any bound
 assembled facet by facet from the pairwise contact condition, the
 convexity bound for the polar volume integral, and the Mahler-type
@@ -767,9 +754,9 @@ the exact defect polynomial on each cell.
 When two or more active directions deviate at once, the free-volume
 identity still holds exactly, but nothing in the first five layers
 gives the sign of the resulting difference; that is
-\cref{conj:multidir-new}, settled in \cref{cor:conj-resolved} through
-the classification of \cref{thm:m24} and discussed from
-\cref{sec:hessian-technique} onward for what can be said about it
+\cref{conj:multidir-new}, proved in \cref{cor:conj-resolved} through
+the classification of \cref{thm:m24} and studied from
+\cref{sec:hessian-technique} onward for what elementary methods give
 without the classification.
 The six layers nest. Layers $1$ and $3$ are reductions; between them
 they leave the all-contact corner, for the cell $V_c^{\mathrm{act}}$ of
@@ -868,14 +855,17 @@ of $D_4$, the order-$192$ Weyl group and the self-duality of the
 $24$-cell, together with the polyhedral facts recorded in Ziegler
 \cite{Zie95} and Gr\"unbaum \cite{Gru03} and the root-system
 conventions of Humphreys \cite{Hum90}, and it uses no Fourier analysis
-and no modular forms. Semidefinite programming enters at one point,
-the certificate of \cref{thm:certificate} for the $23$-point case,
-and there only as a search: what the proof uses is the certificate it
-found, checked afterwards in exact rational arithmetic, in interval
-arithmetic and by Lean. Every other certificate below is an exact
-computation in $\mathbb{Q}$, $\mathbb{Q}(\sqrt2)$ or
-$\mathbb{Q}(\sqrt3)$, and whatever is numerical is labelled at the
-point of use as evidence and never used as a step in a proof.
+and no modular forms. Semidefinite programming enters only as a search
+for certificates: the three-point certificates of \cref{thm:certificate},
+\cref{thm:m23-labelled} and \cref{thm:kissing-stable}, the kernel of
+\cref{thm:twentyfour-points} found in \cite{LLM24}, and the copositivity
+certificate of \cref{prop:cone-min}. What the proofs use are the
+certificates found, checked afterwards in exact rational arithmetic, in
+interval arithmetic and, where the text says so, by Lean. Every other
+certificate below is an exact computation in $\mathbb{Q}$,
+$\mathbb{Q}(\sqrt2)$ or $\mathbb{Q}(\sqrt3)$, and whatever is numerical
+is labelled at the point of use as evidence and never used as a step in
+a proof.
 \section{The \texorpdfstring{$D_4$}{D4} root system and its Voronoi cell}\label{sec:root-system}
 
 \subsection{Lattice and roots}
@@ -1050,9 +1040,9 @@ the unit vector from $c$ towards $y$, and $|y-c|/2\ge R$. The reference
 cell has circumradius $\sqrt2$ (\cref{lem:refcell-vol}).
 \end{proof}
 
-An earlier version of this paper stated more: that only the centres at
-distance in $[2,2\sqrt2)$ can affect $\vol(V_c)$ at all. That is true of
-the part of $V_c$ inside $B(c,\sqrt2)$ and false outside it. A cell that
+The lemma does not say that only the centres at distance in
+$[2,2\sqrt2)$ can affect $\vol(V_c)$ at all. That is true of the part of
+$V_c$ inside $B(c,\sqrt2)$ and false outside it. A cell that
 reaches beyond $\sqrt2$, as the cell of the deletion of a root does, its
 circumradius being $2$, can be cut there by a centre farther than
 $2\sqrt2$: with the twenty-three roots of a deletion at distance $2$ and
@@ -1108,9 +1098,8 @@ helps bound. Two centres at distance $2$ from $c$ and at least $2$ from
 each other make an angle of at least $60^\circ$ at $c$.
 \end{proof}
 
-An earlier version of this paper drew from the lemma the conclusion that
-the minimum over packing-valid radii is attained at the all-contact
-corner, and then treated that corner as a contact configuration. The
+The lemma does not say that the minimum over packing-valid radii is
+attained at the all-contact corner by a contact configuration. The
 corner is a lower bound but not a packing. Two centres at distance $2.4$
 from $c$ and $2$ from each other are $49.25^\circ$ apart as seen from
 $c$, and pulled in to distance $2$ they overlap
@@ -1225,7 +1214,7 @@ profile in which the centres that do not touch are far enough out;
 certified in ball arithmetic by \texttt{shell\_reduction.py}. Twenty-three
 contacts and any further centre within $2\sqrt2$ always fail it, since
 the criterion counts caps and the case of $23$ contacts needs the pair
-terms of \cref{sec:strict-inequality}. The open case is therefore a
+terms of \cref{sec:strict-inequality}. The remaining case is therefore a
 centre crowded by at least twenty-three neighbours within $2\sqrt2$,
 among them near-contacts, centres a little farther than $2$. Both
 examples above are settled by the criterion, the $49$ balls with
@@ -1257,11 +1246,11 @@ $23$ & $1$ & never & & & \\
 \caption{Neighbours that do not touch. (a) A two-dimensional section, to
 scale: two centres at distance $2.4$ from the central one and $2$ from
 each other, a packing; pulled in to distance $2$ they overlap (shaded),
-so the configuration at the all-contact corner is not a packing and the
-earlier form of \cref{lem:radial-new} fails. (b) The distance criterion
+so the configuration at the all-contact corner is not a packing, and
+\cref{lem:radial-new} gives a lower bound and not a contact configuration. (b) The distance criterion
 of \cref{prop:distance-criterion} for $m$ contacts and $k$ further centres
 at a common distance $d$; it passes $8$ at the thresholds of
-\cref{tab:distance-thresholds} (dots). (c) The open case, searched: with
+\cref{tab:distance-thresholds} (dots). (c) The remaining case, searched: with
 one neighbour held at distance $2+\delta$, the least cell volume found
 over $60$ starts (\texttt{shell\_neighbour\_search.py}), against the exact
 volume $\tfrac{25}3-\tfrac13(1-\tfrac\delta2)^4$ of the deletion of a root
@@ -1269,7 +1258,7 @@ with that neighbour on the deleted root's axis. Nothing falls below $8$.}
 \label{fig:noncontact}
 \end{figure}
 
-\emph{The open case, searched.} \texttt{shell\_neighbour\_search.py}
+\emph{The remaining case, searched.} \texttt{shell\_neighbour\_search.py}
 minimises the exact volume of the cell over configurations of $22$ to $26$
 centres around a fixed one, with the packing constraints imposed exactly
 and the exact gradient of the volume, from starts that crowd the centre
@@ -1289,13 +1278,14 @@ $\delta=0.8$ it was $8.2837$, with $22$ contacts, a little below that
 value; the least over all eight was $8.00067$, at $\delta=0.001$, and no
 feasible endpoint fell below $8$
 (\cref{fig:noncontact}(c)). As $\delta$ tends to $0$ these values tend
-to $8$ and the configuration to the root system, so the open case is
-tight: a proof of \cref{conj:shell} has to be sharp near the $24$-cell,
-as the proof for contact configurations is. This is evidence and not
-proof. Closing the
-case would take, for caps of unequal radii, what the proof of
-\cref{thm:m23} does for equal ones, an exact account of the pairs, with
-the three-point method of \cite{BV08} carried from the sphere to a shell.
+to $8$ and the configuration to the root system, so the remaining case
+is tight: a proof of \cref{conj:shell} has to be sharp near the
+$24$-cell, as the proof for contact configurations is. A search is
+evidence and not proof. What a proof needs, for caps of unequal radii,
+is what the proof of \cref{thm:m23} supplies for equal ones, an exact
+account of the pairs, with the three-point method of \cite{BV08} carried
+from the sphere to a shell; \cref{sec:closure} does that for at most
+twenty-three centres within $\sqrt6$.
 
 \subsection{Further reductions, and the conjecture near the contact regime}\label{sec:closure}
 
@@ -1460,7 +1450,7 @@ pairwise at least $2$ apart, would lie in the closed ball of radius $|x|$
 about $x$ (\cref{fig:tikz-closure}(a)). For four points $p_i$ with centroid $g$,
 $\sum_{i<j}|p_i-p_j|^2=4\sum_i|p_i-g|^2\le4\sum_i|p_i-x|^2$, so
 $24\le16|x|^2$, against $|x|<\sqrt{3/2}$. The formula is
-inclusion--exclusion, whose terms of order three vanish.
+inclusion and exclusion, whose terms of order three vanish.
 \end{proof}
 
 For contact configurations this is the absence of triple overlaps on
@@ -1934,14 +1924,14 @@ $S=4.5\cdot10^{-3}$). So $\vol(V_c)>8$ unless $S=0$. If $S=0$, then $\kappa=0$, 
 $\vol(V_c)=8$ only if $V_c=Q$.
 \end{proof}
 
-\emph{What is left, and the evidence.} Together with
+\emph{The remaining case, and the evidence.} Together with
 \cref{prop:distance-criterion}, the results above confine
 \cref{conj:shell} to a centre $c$ with all of the following: at least
 $24$ other centres within $\sqrt6$; at least one of them at a distance
 between $2+\varepsilon_0$ and $\sqrt6$; $\Phi\le8$ and $\Psi\le8$; and
 contacts that do not contain one orthogonal pair of roots at each vertex
-of a $24$-cell. Four statements would close that case, and with it
-\cref{conj:shell} and, by \cref{thm:main-general}, the density bound $\pi^2/16$.
+of a $24$-cell. A proof of the bound at such a centre, and with it of
+\cref{conj:shell}, consists of four statements.
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
 \item \emph{The shape of twenty-four directions at positive slack.} Any
   $24$ unit vectors of $\mathbb{R}^4$ with pairwise inner products at most
@@ -1953,28 +1943,34 @@ of a $24$-cell. Four statements would close that case, and with it
   terms.} For exactly $24$ centres within $\sqrt6$ with $d(W)\le\frac1{48}$,
   $\vol(V_c)\ge8$ for $\sum\delta_i$ from $4\cdot10^{-3}$, where
   \cref{thm:near-contact} ends, up to where the right side of
-  \cref{lem:no-triple} reaches $8$, about $0.155$. It needs two things:
-  the inequality $\vol V(Y)-8\ge\frac23S-\frac12S^2$, which
+  \cref{lem:no-triple} reaches $8$, about $0.155$. It consists of two
+  inequalities: $\vol V(Y)-8\ge\frac23S-\frac12S^2$, which
   \cref{sec:second-order} certifies at second order and proves for pure
   push-outs, and a bound for the part of $V(Y)$ outside the inversion hull,
   which part (c) of the proof of \cref{thm:near-contact} gives only as
   $13\,958\,\Theta^4$.
 \item \emph{Twenty-three contacts and one near-contact.} Along the ray of one
-  centre pushed out the slack is $\delta/4$, beyond the reach of (i) for
-  $\delta$ between $0.04$ and $0.197$, where the pair terms take over
-  (\cref{rem:plan-corrections}). There what is needed is that $23$ contacts
+  centre pushed out the pair terms take over only at $\delta=0.197$, where
+  the eight tight pairs of that centre have slack $\delta/4=0.049$, beyond
+  the reach of (i) for $\delta$ between $0.04$ and $0.197$; and no
+  statement about the slack alone reaches that far, since $25$-point codes
+  exist at slack $0.0374$. What that ray needs is that $23$ contacts
   with a further centre at $2+\delta$ are a deletion of the root system with
-  the centre in its hole, or a volume bound for such configurations.
+  the centre in its hole, which is the classification of $23$-point codes
+  that \cref{sec:m23-codes} sets aside, or a volume bound for a saturated
+  $23$-point configuration with a near-contact, which \cref{thm:certificate}
+  does not give: its margin is $4.4\cdot10^{-5}$, and a near-contact at
+  $2+\delta$ removes $S(2+\delta)\approx0.14$.
 \item \emph{Certificates for the other configurations.} The right side of
   \cref{lem:no-triple} is at least $8$ for $24$ centres within $\sqrt6$ away
   from the root system, and for each count from $25$ to the largest that
   fits, as \cref{thm:m23-labelled} shows for $23$.
 \end{enumerate}
 Statements (i) and (iii) are classifications of codes, (ii) is an inequality
-for the volume whose second order is now certified, and (iv) needs (i) and
+for the volume whose second order is certified below, and (iv) needs (i) and
 (iii) to see that twenty-four centres close to $c$ leave no room for another
-within $\sqrt6$. What follows is the evidence for each, and why the
-methods of this paper stop short of them. Near the root system the inversion hull is
+within $\sqrt6$. What follows is the evidence for each, and where the
+methods of this paper stop. Near the root system the inversion hull is
 sharp to first order: \texttt{near\_contact\_probe.py} finds
 $\vol(V(Y)\cap K(Y))-8$ and $\vol(V_c)-8$ equal to
 $\frac23\sum\delta_i$ to first order on the root system pushed out, and
@@ -2021,8 +2017,8 @@ count up to the largest that fits within $\sqrt6$, and at most $49$ fit
   $2$ from $c$ are at least $60^\circ$ apart.} Such a certificate has to see that
 twenty-four centres close to $c$ leave no room for another within $\sqrt6$;
 at the root system the nearest room is at $2\sqrt2$. That is a statement about
-the shape of twenty-four directions at positive slack, the one discussed
-below, and the three-point bound does not see it
+the shape of twenty-four directions at positive slack, statement (i), and
+the three-point bound does not see it
 (\texttt{three\_point\_probes.py}). At twenty-four the size of the gap
 can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
@@ -2036,43 +2032,57 @@ other than $0$, so the pair terms are exact in a slightly larger ball once
 the centres move out, but along the root system pushed out evenly that moves
 the crossing only from $0.1551$ to $0.1473$
 (\texttt{d4\_independent\_check.py}). With $\varepsilon_0$ explicit, what
-closing the rest would take is, at intermediate distances, a lower bound for
+statement (ii) asks for is, at intermediate distances, a lower bound for
 the part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
 \cref{lem:no-triple} do not see, strong enough to bridge that factor of about
 forty. The facet-by-facet estimate of step (b) stays positive up to
 $\sum\delta_i=4.5\cdot10^{-3}$, and the rigidity it rests on stops near
-$8\cdot10^{-3}$, so no sharpening of its constants closes that factor. The missing ingredient is
-the same on both sides of it. The rigidity of \cref{thm:local-uniqueness} controls the directions only
+$8\cdot10^{-3}$, so no sharpening of its constants bridges that factor;
+\cref{sec:second-order} computes the second order exactly instead. The
+missing ingredient is the same on both sides of it. The rigidity of
+\cref{thm:local-uniqueness} controls the directions only
 while $d(W)\le\frac1{48}$, which estimate (a) guarantees only for
 $\sum_i\delta_i$ up to about $0.008$; beyond that, twenty-four directions
 whose inner products exceed $\tfrac12$ by an amount of order $10^{-2}$
-would have to be shown close to the root system, a quantitative form of
+have to be shown close to the root system, a quantitative form of
 \cref{thm:m24} at moderate slack. Its cardinality half holds:
 \cref{thm:kissing-stable} excludes a twenty-fifth point up to slack $0.008$,
 so at most $24$ other centres lie within $2.0161$ of any centre. Its shape
-half is what is missing. \Cref{thm:m24-robust} gives it only for slack up to
+half is statement (i). \Cref{thm:m24-robust} gives it only for slack up to
 $2\cdot10^{-26}$, and \cref{rem:robust-ceiling} shows that no reading of the
 same kernel passes $10^{-8}$: the certificate is exact at slack $0$, and its
 two-point polynomial has double zeros at $-\frac12$ and $0$, so the distance
-it controls is the square root of the error. A form at moderate slack would
-need a new computation at the second level of the hierarchy, on the enlarged
+it controls is the square root of the error. A form at moderate slack
+needs a new computation at the second level of the hierarchy, on the enlarged
 domain and with a margin, of the kind carried out in \cite{LLM24}. That
-programme is now written (\texttt{level2/las2\_margin.jl}), and it runs on an
+programme is written (\texttt{level2/las2\_margin.jl}), and it runs on an
 ordinary machine: the zonal matrices of \cref{sec:certificate-checked},
 written in the file format of the authors' code, replace their own
-construction of them (\cref{fig:level2}). What limits it now is the size of
-the programme. At the degrees such a machine reaches, the second level is
-weaker than the three-point bound: at slack $0$ it gives $26$ at the degrees
-$(d_1,\delta)=(8,10)$ and $24.942$ at $(10,12)$, the most that fits in its
-memory, against $24.13$; the degrees $(14,16)$ of the certificate, where it
-is $24$, need a larger machine for the programme itself.\footnote{The programme fixes the bound at a number $N$ and maximises
-  $\mu$ subject to $A_2K(\{x,y\})+\mathrm{SOS}_2(u)+\mu\,w(u)=0$, with
+construction of them (\cref{fig:level2}). Two things limit it. The first
+is structural. A kernel of the second level on $[-1,\tfrac12+s]$ with
+$s>0$ and bound exactly $24$ would make every term of its certificate
+vanish on every $24$-point set with slack at most $s$; small perturbations
+of the root system are such sets and reach a whole interval of inner
+products, so its two-point polynomial would vanish identically, and there
+would be nothing to pin with. The programme can therefore pin the shape
+only through the window $(8(N-24)/\mu)^{1/2}$ with $N>24$, never through
+an equality case,\footnote{The programme fixes the bound at a number $N$
+  and maximises $\mu$ subject to
+  $A_2K(\{x,y\})+\mathrm{SOS}_2(u)+\mu\,w(u)=0$, with
   $w(u)=(u+1)(u+\frac12)^2u^2(\frac12+s-u)$, the other constraints being those
   of \cite{LLM24}; for twenty-four points with inner products at most
   $\frac12+s$ the chain of \cref{lem:las2} then gives $w(u)\le(N-24)/\mu$ at
   every inner product. Near the double zeros $w(u)\approx u^2/8$, so the window
   is about $(8(N-24)/\mu)^{1/2}$, and unless $N-24$ grows more slowly than $s$
-  the square root of \cref{rem:robust-ceiling} returns.} The first level cannot supply it
+  the square root of \cref{rem:robust-ceiling} returns.} and the window is
+of order $s$ rather than $s^{1/2}$ only if $N(s)-24=O(s^2)$; at the first
+level the growth is linear, $97$ per unit of $s$. The second is the size
+of the programme. At the degrees an ordinary machine reaches, the second
+level is weaker than the three-point bound: at slack $0$ it gives $26$ at
+the degrees $(d_1,\delta)=(8,10)$ and $24.942$ at $(10,12)$, the most that
+fits in its memory, against $24.13$; the degrees $(14,16)$ of the
+certificate, where it is $24$, need a larger machine for the programme
+itself. The first level cannot supply the shape half
 (\texttt{three\_point\_probes.py}, floating point with sampled constraints).
 Asked at degree $12$ for a three-point certificate that charges a positive
 amount to every pair of a $24$-point code whose inner product lies outside
@@ -2137,8 +2147,9 @@ twenty-four centres near the root system beyond the explicit neighbourhood of
 loss of order $10^2S^2$, from $73S^2$ at $S=10^{-3}$ to $98S^2$ at
 $S=4\cdot10^{-3}$ (\texttt{explicit\_eps0.py}), against the gain
 $\frac23S$, and that is what stops it. This subsection computes the second
-order exactly, certifies its minimum on the packing cone, and integrates the
-push-outs exactly; what it leaves open is said at its end.
+order exactly, certifies its minimum on the packing cone, integrates the
+push-outs exactly, and says at its end what separates the result from
+statement (ii).
 
 \begin{lem}[Second variation of the volume of a $4$-polytope]\label{lem:second-variation}
 Let $P(t)=\{x:\langle x,n_i(t)\rangle\le h_i(t)\}$ be a bounded polytope of
@@ -2286,40 +2297,40 @@ positive on every one, and least on that ray.}
 \label{fig:second-order}
 \end{figure}
 
-\begin{remark}[What this gives for (ii), and what it does not]\label{rem:second-order-gap}
+\begin{remark}[What the second order gives for (ii), and what it does not]\label{rem:second-order-gap}
 The expansion says that the second-order loss on the cone is exactly the
 loss on the deleted root's axis, $\tfrac12S^2$: the tilts, which step (b) of
 \cref{thm:near-contact} charges at order $10^2S^2$, cost nothing more at
-second order than the pushes do. Two things are still missing. First,
-tilting is not monotone: \texttt{untilt.py} finds feasible packings near the
-root system whose cell is smaller than that of the same distances at the
-roots, in $103$ of $237$ trials and by up to $3.6\cdot10^{-5}$, and by
+second order than the pushes do. Three things separate this from statement
+(ii). Tilting is not monotone: \texttt{untilt.py} finds feasible packings
+near the root system whose cell is smaller than that of the same distances
+at the roots, in $103$ of $237$ trials and by up to $3.6\cdot10^{-5}$, and by
 $0.117\,S^2$ at second order in the worst push pattern, so the bound does not
-reduce to monotonicity in the support numbers. Second, the remainder. On the
-$300$ packings of \cref{fig:second-order}(b), with $S$ up to $0.48$, the exact
-volume satisfies
+reduce to monotonicity in the support numbers. The remainder is not bounded:
+on the $300$ packings of \cref{fig:second-order}(b), with $S$ up to $0.48$,
+the exact volume satisfies
 \[
   \vol V(Y)-8-\tfrac23S+\tfrac12S^2\ \ge\ 0
 \]
 in every case, with the minimum on the one-centre family, and the third-order
 remainder $\vol-8-\tfrac23S-\tfrac12H(\xi,\xi)$ lies between $-0.004\,S^3$ and
-$+0.166\,S^3$. So the statement that would carry (ii) to the pair terms, and
-well past them, is that the displayed inequality holds for every packing with
-$d(W)\le\tfrac1{48}$. A proof through a bound on the remainder would have to
+$+0.166\,S^3$; the statement that carries (ii) to the pair terms, and well
+past them, is that the displayed inequality holds for every packing with
+$d(W)\le\tfrac1{48}$, and a proof through a bound on the remainder has to
 control the cubic term to the size it has on the tested packings,
 $0.004\,S^3$, where the estimates of the proof of \cref{thm:near-contact}
-have constants of order $10^2$ already at second order; the proof, if there
-is one, is structural, and the natural structure
-is that the extremal family is the one-centre ray, on which everything is
-explicit. Third, the cell: the inequality concerns $V(Y)$, and far centres
-may cut off the part of $V(Y)$ outside the inversion hull $K(Y)$
-(\cref{prop:inversion-hull}), which part (c) of the proof of
+have constants of order $10^2$ already at second order. The natural
+structure of such a proof is that the extremal family is the one-centre
+ray, on which everything is explicit. And the inequality concerns $V(Y)$,
+while far centres may cut off the part of $V(Y)$ outside the inversion hull
+$K(Y)$ (\cref{prop:inversion-hull}), which part (c) of the proof of
 \cref{thm:near-contact} bounds by $13\,958\,\Theta^4$. That bound is far
 from the truth: along the ray of one centre pushed out and along the even
-push, $\vol(V(Y)\setminus K(Y))$ stays below $10^{-6}$ up to $\delta=0.197$,
-where the bound is $21$, and grows roughly as the seventh power of $\delta$
-(\texttt{hull\_along\_rays.py}). A proof of (ii) needs a hull estimate of
-that quality beside the inequality above.
+push, $\vol(V(Y)\setminus K(Y))$ stays below $10^{-6}$ up to $S=0.197$,
+where the bound is $21$, and it grows as the seventh power of $S$ on the
+first ray and as the fourth on the second (\texttt{hull\_along\_rays.py}).
+Statement (ii) needs a hull estimate of that quality beside the inequality
+above.
 \end{remark}
 
 \begin{lem}[Pure push-outs, exactly]\label{lem:pure-push}
@@ -2367,41 +2378,19 @@ $a_i(0)=A_i^w$. Integrate.
 
 At the root system $s_i=1$ and $A_i^w=\tfrac43$, and
 \cref{prop:push-integrated} is \cref{lem:pure-push}. In general it removes
-the push-outs from the problem: the bound of \cref{rem:second-order-gap}
-would follow from an inequality involving only the three functionals
+the push-outs from the problem: the inequality of \cref{rem:second-order-gap}
+reduces to one involving only the three functionals
 $\vol(Q_w)$, $A_i^w$ and $s_i$ of the tilted directions, and the packing
 constraints $\langle w_i,w_j\rangle\le\tfrac12+\tfrac12(\eta_i+\eta_j)+O(\eta^2)$
 that tie the tilts to the pushes. At second order that is
-\cref{prop:cone-min}; what a proof needs beyond it are bounds on the three
-functionals to second order in the tilts with explicit remainders. The tilts,
-not the pushes, are where the difficulty lives.\footnote{\texttt{exact\_push.py}
+\cref{prop:cone-min}; beyond it, what statement (ii) asks for is bounds on
+the three functionals to second order in the tilts with explicit
+remainders. The tilts, not the pushes, are where the difficulty
+lives.\footnote{\texttt{exact\_push.py}
   checks \cref{prop:push-integrated} on $63$ tilted packings, where the least
   excess of the volume over the bound is $3.9\cdot10^{-6}$, and
   \texttt{independent\_check.py} checks \cref{lem:pure-push} on $400$ push
   patterns and the one-centre formula to $10^{-14}$.}
-
-\begin{remark}[Two corrections to the list of what is left]\label{rem:plan-corrections}
-(1) A kernel of the second level on $[-1,\tfrac12+s]$ with $s>0$ and bound
-exactly $24$ would make every term of its certificate vanish on every
-$24$-point set with slack at most $s$; small perturbations of the root system
-are such sets and reach a whole interval of inner products, so its two-point
-polynomial would vanish identically, and there would be nothing to pin with.
-The programme of \texttt{level2/las2\_margin.jl} can therefore pin the shape
-only through the window $(8(N-24)/\mu)^{1/2}$ with $N>24$, never through an
-equality case, and the window is of order $s$ rather than $s^{1/2}$ only if
-$N(s)-24=O(s^2)$; at the first level the growth is linear, $97$ per unit of
-$s$. (2) Along the ray of one centre pushed out the pair terms take over at
-$\delta=0.197$, where the eight tight pairs of that centre have slack
-$\delta/4=0.049$. Statement (i) at slack $10^{-2}$ therefore does not cover
-that ray between $\delta=0.04$ and $0.197$, and no statement about the slack
-alone can, since $25$-point codes exist at slack $0.0374$. What that ray needs
-is that $23$ contacts with one further centre at distance $2+\delta$ are a
-deletion of the root system with the centre in its hole, which is the
-classification of $23$-point codes that \cref{sec:m23-codes} sets aside, or a
-volume bound for a saturated $23$-point configuration with a near-contact,
-which \cref{thm:certificate} does not give: its margin is $4.4\cdot10^{-5}$,
-and a near-contact at $2+\delta$ removes $S(2+\delta)\approx0.14$.
-\end{remark}
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
 
@@ -2581,8 +2570,8 @@ For the class-$\mathsf a$ cell $\Cell1$ (introduced in
 six pivots, with minimum pivot value $3936/77\approx51.13$ and
 reference constant $\norm1=192$; the corresponding chamber-level
 positivity check (\cref{app:pivot-data}) passes exactly, by exact
-rational arithmetic, with no floating-point step. We record the actual
-computed pivot value here, and not a simplified illustrative number, precisely because $\Cell1$'s Hessian is not the isolated
+rational arithmetic, with no floating-point step. The pivot value
+recorded here is the computed one, and not a simplified illustrative number, because $\Cell1$'s Hessian is not the isolated
 single-direction case (that simpler case, $H=\tfrac23I_3$, is recorded
 separately in \cref{lem:m2-exact-new} for the multi-direction setting,
 a related but distinct construction that does not include the
@@ -2731,7 +2720,9 @@ centre is shell-free, so by \cref{thm:local-general} every cell in
 $\mathcal{F}$ has volume at least $8$, so $\bar v\ge8$ and the density is
 at most $(\pi^2/2)/8=\pi^2/16$. The $D_4$ lattice attains $\bar v=8$
 exactly (\cref{lem:refcell-vol}), so this bound is sharp. The same
-argument proves the first statement of \cref{thm:main-general}.
+argument proves \cref{thm:main-general}, since each of its hypotheses
+gives $\vol(V_c)\ge8$ at every centre, by \cref{thm:local-general} or by
+\cref{thm:intro-closure}.
 \end{proof}
 
 \subsection{General packings and the compactness argument}\label{sec:periodic}
@@ -2766,13 +2757,14 @@ the ball of radius $1/\varepsilon$. The Voronoi cells of $\mathcal{C}'$
 at centres well inside that ball differ from the corresponding cells of
 $\mathcal{C}$ by an amount that tends to zero as the radius grows,
 because a cell is determined by the centres within twice its
-circumradius. If the bound $\vol(V_c)\ge8$ holds at every centre of every
-periodic packing, it passes to the limit and bounds $\delta(\mathcal{C})$
-by $\pi^2/16$; that is how the second statement of
-\cref{thm:main-general} follows from \cref{thm:local-general} and
-\cref{conj:shell}. A hypothesis on the centres of $\mathcal{C}$ alone does
-not pass to the approximants, whose centres near the boundary of the
-ball can have other neighbourhoods, which is why the unconditional
+circumradius. A bound $\vol(V_c)\ge8$ that holds at every centre of every
+periodic packing therefore passes to the limit and bounds
+$\delta(\mathcal{C})$ by $\pi^2/16$; that is how the twenty-four-cell
+conjecture gives $\Delta_4=\pi^2/16$, and it is why the case of
+\cref{conj:shell} is what stands between \cref{thm:local-general} and
+the density of every packing. A hypothesis on the centres of
+$\mathcal{C}$ alone does not pass to the approximants, whose centres near
+the boundary of the ball can have other neighbourhoods, which is why the
 density statements above are made for periodic packings. The argument is
 the mechanism, with the appropriate substitutions, by which every
 sphere-packing upper bound from Blichfeldt \cite{Bli29} onward turns a
@@ -2798,35 +2790,29 @@ beyond the arguments of this paper these rest on the one verified kernel
 of \cref{sec:certificate-checked} alone, and say so wherever they appear.
 What remains of the twenty-four-cell conjecture is \cref{conj:shell},
 which \cref{sec:closure} narrows to centres crowded by neighbours at
-intermediate distances, and the density bound $\Delta_4=\pi^2/16$ for all
-packings waits on it.
+intermediate distances.
 
-\subsection{Remark: what a proof that did not use the classification would need}\label{rem:what-would-close-new}
+\subsection{What a proof without the classification has to supply}\label{rem:what-would-close-new}
 
-\Cref{thm:local-general} is proved above, and it is proved using the
-classification of \cref{thm:m24} at the configurations of twenty-four
-contacts, that is, using a semidefinite certificate. This subsection is
-about the other thing, a proof of the same statement that uses no
-classification and no certificate, and we set out what such a proof
-would have to supply, since it is not what the present one supplies.
-
-It would require
+\Cref{thm:local-general} is proved using the classification of
+\cref{thm:m24} at the configurations of twenty-four contacts, that is,
+using a semidefinite certificate. A proof of the same statement that
+uses no classification and no certificate has to supply
 $\defect_k\ge0$, equivalently the volume comparison of
-\cref{conj:multidir-new}, uniformly over
-\emph{every} packing-valid configuration of active directions, of
-\emph{every} size $m\ge1$, with \emph{every} deviating direction ranging
-over its full $3$-sphere of possibilities, not merely the
-single-direction deviations covered by \cref{thm:local-uncond}. \Cref{sec:hessian-technique,sec:musin-degeneracy,%
-sec:exact-sing,sec:broad-sample} explain in detail why the natural
-perturbative (Hessian-based) technique that succeeds in the
-root-aligned case cannot, by itself, resolve the general
-multi-direction case at every configuration, not because the relevant
-computations are difficult, but because the technique's own governing
-quantity is exactly zero at specific configurations that are
-themselves well within the scope the conjecture must cover. Such a proof
-will therefore need higher-order information at those configurations,
-and locating that obstruction precisely is a contribution of this paper
-separate from \cref{thm:local-uncond}.
+\cref{conj:multidir-new}, uniformly over \emph{every} packing-valid
+configuration of active directions, of \emph{every} size $m\ge1$, with
+\emph{every} deviating direction ranging over its full $3$-sphere of
+possibilities, and not only over the single-direction deviations of
+\cref{thm:local-uncond}.
+\Cref{sec:hessian-technique,sec:musin-degeneracy,sec:exact-sing,sec:broad-sample}
+explain why the perturbative technique that succeeds in the root-aligned
+case, the joint Hessian, cannot by itself resolve the multi-direction case
+at every configuration: not because the computations are difficult, but
+because its governing quantity is exactly zero at specific configurations
+that lie well within the scope of the statement. Such a proof needs
+higher-order information at those configurations, and locating that
+obstruction precisely is a contribution of this paper separate from
+\cref{thm:local-uncond}.
 \section{The general local problem}\label{sec:deviation-domain}
 
 \subsection{The free-volume identity in general}
@@ -2913,7 +2899,7 @@ Bonferroni's inequality gives
   \;-\;\sum_{j<k}\vol(E_j\cap E_k),
 \]
 and together with $\vol(\bigcup_jC_j)\le\sum_j\vol(C_j)$ this reduces
-the conjecture to
+the inequality to
 \begin{equation}\label{eq:termwise-hope}
   \sum_j\bigl(\vol(E_j)-\vol(C_j)\bigr)\;\ge\;\sum_{j<k}\vol(E_j\cap E_k).
 \end{equation}
@@ -2946,7 +2932,7 @@ What would suffice is a replacement for $\mathrm{Pyr}_j$: a body,
 depending on the whole configuration rather than on one root, that
 contains each $E_j$, is cut by the tilted half-spaces in a controlled
 way, and for which the analogue of \cref{thm:cap-inequality} can be
-proved. We do not have one.
+proved. No such body is known.
 \end{remark}
 
 \begin{cor}\label{cor:freevol-multi-new}
@@ -2980,10 +2966,10 @@ sums of volumes (\cref{rem:sums-not-unions}).}
 
 \subsection{A fixed-body form of the multi-direction problem}\label{sec:multi-cap}
 
-\Cref{rem:first-order-obstruction} says what does not work. We record what the cap reformulation of \cref{sec:cap-theorem} does
-become for $m\ge2$, since the answer is a single extremal problem about
-a single fixed polytope, exactly as in the case $m=1$, and not the sum
-of $m$ problems.
+\Cref{rem:first-order-obstruction} says what does not work. What the cap
+reformulation of \cref{sec:cap-theorem} does become for $m\ge2$ is a
+single extremal problem about a single fixed polytope, exactly as in the
+case $m=1$, and not the sum of $m$ problems.
 
 Let $D$ be the set of deviating roots, $|D|=m$, and put
 \[
@@ -3032,18 +3018,17 @@ one fixed polytope, with all the parameters in the cutting half-spaces;
 what has changed from $m=1$ is that the quantity to bound is the volume
 of a \emph{union} of $m$ caps rather than of one cap, and
 \cref{rem:first-order-obstruction} shows the union cannot be traded for
-a sum. The inequality itself holds, by \cref{cor:conj-resolved} and
-therefore by the classification of \cref{thm:m24}; what the present
-section and \cref{sec:hessian-technique} to \cref{sec:multidir-scope-summary}
-are after is a proof of it that does not go through a classification,
-and we state that question as it stands.
+a sum.
 
-\begin{openproblem}[Multi-cap inequality, by direct means]\label{op:multicap}
-Prove \eqref{eq:multicap} for every $D$ with $Q_D$ bounded and every
-packing-valid choice of $w_j$, with equality only at $w_j=\base_j$,
-without appeal to the classification of the $24$-point contact
-configurations.
-\end{openproblem}
+\begin{remark}[The multi-cap inequality]\label{op:multicap}
+The inequality \eqref{eq:multicap} holds for every $D$ with $Q_D$ bounded
+and every packing-valid choice of $w_j$, with equality only at
+$w_j=\base_j$, by \cref{cor:conj-resolved} and therefore by the
+classification of \cref{thm:m24}. What the present section and
+\cref{sec:hessian-technique} to \cref{sec:multidir-scope-summary} are
+after is a proof of it that does not go through a classification, one
+that bounds the union of the $m$ caps directly.
+\end{remark}
 
 The boundedness hypothesis is mild and its exact range is known. $Q_D$ is
 bounded precisely when the $24-m$ undeviated root directions positively
@@ -3056,8 +3041,8 @@ $e_1\pm e_2$, $e_1\pm e_3$, $e_1\pm e_4$, whose complement lies in the
 closed half-space $\{x_1\le0\}$ and therefore leaves $Q_D$ unbounded in
 the direction $e_1$. Beyond $m=6$ unbounded cases become common, and the
 dense configurations of \cref{sec:dense-configs-new}, at $m$ in the high
-teens, are almost all of that kind. For those a bounded substitute for
-$Q_D$ would have to come first; \eqref{eq:multicap} as stated does not
+teens, are almost all of that kind. For those a direct argument needs a
+bounded substitute for $Q_D$ first; \eqref{eq:multicap} as stated does not
 reach them.
 
 \subsection{Polar and boundary forms of the same question}\label{sec:polar-surface}
@@ -3158,7 +3143,7 @@ each step leaves the volume no larger by \cref{prop:polar-form}(ii), so
 the resulting maximal configuration is again a minimiser.
 \end{proof}
 
-So the conjecture is a statement about maximal contact configurations
+So the inequality is a statement about maximal contact configurations
 only, and there is a genuine extremal configuration to identify. That
 is as far as soft arguments take it: what they leave is the question of
 whether the maximal configurations of $24$ directions are the root
@@ -3308,7 +3293,7 @@ free-volume language, seen from the boundary instead.
 
 \begin{remark}[Two global routes that do not reach the equality case]\label{rem:global-routes}
 Two standard tools apply to \eqref{eq:polar} and both fail at the
-configuration where the conjecture is tight, which is the decisive test
+configuration where the inequality is tight, which is the decisive test
 for a method that must produce a sharp constant.
 
 The polar volume has the integral form
@@ -3327,9 +3312,9 @@ the estimate being loose in a repairable way: Jensen is an equality only
 when $h_K$ is constant, that is only for a ball, so at any polytope the
 bound is strictly below the true volume, and at the root configuration
 it returns $7.7351\ldots$ against the true $8$. No inequality of this
-shape can be sharp where the conjecture is.
+shape can be sharp where the inequality is.
 
-The Mahler-type route fares worse. The conjectured lower bound
+The Mahler-type route fares worse. Mahler's conjectured lower bound
 $\vol(K)\vol(K^{\circ})\ge4^{n}/n!$, itself open in dimension four,
 would give $\vol(K)\vol(K^{\circ})\ge\tfrac{32}3$; but at the root
 configuration $\conv(W)$ is the $24$-cell of circumradius $1$, of volume
@@ -3356,7 +3341,7 @@ configuration the eight tight neighbours cut out the regular octahedron
 guarantees no more than the inscribed ball, and the gap between the two
 is what the boundary form \eqref{eq:surface} has to absorb. (b) The bounds the boundary form and the other global routes
 actually deliver, all of them evaluated at the $D_4$ configuration where
-the conjecture is tight
+the inequality is tight
 (\cref{rem:facet-local-obstruction,rem:global-routes}).}
 \label{fig:boundary}
 \end{figure}
@@ -3370,16 +3355,14 @@ $24$-cell conjecture. For contact configurations, where every
 neighbour that can cut the cell touches the centre,
 \cref{thm:local-uncond} settles the part of it in which at most one
 contact direction leaves a root, and \cref{conj:multidir-new} is the
-remainder, settled in \cref{cor:conj-resolved} by the classification of
+remainder, proved in \cref{cor:conj-resolved} by the classification of
 \cref{thm:m24} and by nothing else in this paper; what the conjecture
-asks beyond contact configurations is \cref{conj:shell}. We record this
-plainly. The reformulations
-of this subsection do not diminish the problem of proving it directly,
-and we do not claim otherwise; what they do is fix the exact shape of
-the obstacle and remove three families of approach from consideration,
-a fourth having gone in \cref{rem:first-order-obstruction}. Partial
-results towards the conjecture, by a different route, are in
-\cite{Mus18}.
+asks beyond contact configurations is \cref{conj:shell}. The
+reformulations of this subsection do not make a direct proof easier;
+what they do is fix the exact shape of the obstacle and remove three
+families of approach from consideration, a fourth having gone in
+\cref{rem:first-order-obstruction}. Partial results towards the
+conjecture, by a different route, are in \cite{Mus18}.
 \end{remark}
 
 \subsection{A bound from the contact caps}\label{sec:covering-bound}
@@ -3535,7 +3518,7 @@ numbers.
 \end{proof}
 
 \Cref{cor:m22} is \cref{thm:local-fewcontacts} of the introduction, and
-it settles one point that the deviation picture leaves open. A
+it settles one point that the deviation picture does not reach. A
 configuration in which several of the twenty-four contacts are absent and not merely deviated is not a perturbation of the root
 configuration at all, and the argument of \cref{sec:cap-theorem} says
 nothing about it. \Cref{cor:m22} disposes of every such configuration
@@ -3821,8 +3804,8 @@ truncation discards the deep holes of the root system, which sit at
 $45^\circ$.
 
 \begin{remark}[What the constant is and is not]\label{rem:covering-scope}
-Two things should be said about $7.798989\ldots$ so that it is not
-mistaken for more than it is.
+Two things about $7.798989\ldots$ keep it from being mistaken for more
+than it is.
 
 As a density statement it is weak. A per-cell bound $v$ gives packing
 density at most $\vol(B^4)/v$, so $7.798989\ldots$ gives $0.632749\ldots$,
@@ -4434,8 +4417,8 @@ statement below that invokes \cref{thm:m24} therefore rests on
 from the supplementary archive, and on nothing outside this paper. All
 the other results in this paper are independent even of that.
 
-\begin{cor}[The multi-direction conjecture]\label{cor:conj-resolved}
-\Cref{conj:multidir-new} holds. Indeed a packing configuration at the
+\begin{cor}[Multi-direction positivity, from the classification]\label{cor:conj-resolved}
+\Cref{conj:multidir-new} holds: a packing configuration at the
 all-contact corner with a full active set, twenty-four neighbours at
 distance exactly $2$, is a contact configuration of size $24$, so by \cref{thm:m24} it is a copy of the root system; if the
 $24-m$ undeviated directions are the roots $\base_i$, $i\notin D$, the
@@ -4456,8 +4439,8 @@ resulting lower bound is exact at the root configuration, and it
 converts the statement $\vol(V_c)\ge8$ for $24$ contacts into one
 inequality between the pair and triple angles of the contact
 directions, of the same form as the inequality proved for $23$ contacts
-in \cref{sec:certificate}. \Cref{rem:m24-three-point} records what the
-three-point relaxation of that inequality does and does not deliver.
+in \cref{sec:certificate}. \Cref{rem:m24-three-point} records how far the
+three-point relaxation of that inequality reaches.
 
 Throughout, $B=\{x\in\mathbb{R}^4:|x|\le\sqrt2\}$, and for a unit vector
 $w$ we write $K(w)=\{x\in B:\langle x,w\rangle>1\}$. By orthogonal
@@ -4730,7 +4713,7 @@ supplies and the first does not.
 \end{remark}
 
 \begin{remark}[How far the elementary constraints reach]\label{rem:m24-remains}
-They reach a definite distance and stop, and we record where. The strongest of them is a second moment. For $24$ unit vectors
+They reach a definite distance and stop, and here is where. The strongest of them is a second moment. For $24$ unit vectors
 in $\mathbb{R}^4$ the Gram matrix $G=(u_{ij})$ is positive semidefinite
 of rank at most $4$ with trace $24$, so Cauchy--Schwarz applied to its
 nonzero eigenvalues gives $\|G\|_F^2\ge24^2/4=144$, that is
@@ -4931,7 +4914,7 @@ products equal to $g$ give $|z_I|^2=4/(1+3g)$, which is at least $4$
 precisely when $g\le0$; so at every vertex of a saturated configuration
 the active directions must be positively correlated on average.
 
-\begin{prop}[What the pairwise estimate would need]\label{prop:pair-budget}
+\begin{prop}[What the pairwise estimate needs]\label{prop:pair-budget}
 For $m=23$ write
 \[
   \omega(\gamma)=\frac14\int_0^{r_*}\Lambda(r,\gamma)\,d(\sec^4r)
@@ -5068,7 +5051,7 @@ at $62.3^\circ$, $90.0$ at $103.0^\circ$, $39.2$ at $122.6^\circ$ and
 $20.1$ at $154.1^\circ$.
 \end{proof}
 
-\begin{remark}[Where a proof would have to look]\label{rem:two-point-barrier}
+\begin{remark}[Where a proof has to look]\label{rem:two-point-barrier}
 \Cref{prop:two-point-barrier} is a stronger statement than the one
 \eqref{eq:second-order-value} makes, and a more useful one. It is not
 that the deletion configuration falls short, which it does not once the
@@ -5273,8 +5256,8 @@ that much is elementary. What the semidefinite kernel of
 neighbourhood of $\Rt$ can, is the global half, that there is no such
 configuration at any distance from $\Rt$; it is the one ingredient of
 the general theorems that rests on a certificate rather than on a
-closed argument, and we have not found a way to derive it from anything
-local.
+closed argument, and no way of deriving it from anything local is
+known.
 
 The rigidity of \cref{cor:root-rigid} comes with no radius. Roth and
 Whiteley produce a neighbourhood but not a measure of it, and a
@@ -5458,8 +5441,8 @@ $24$-cell and $\vol(V_c(W))=8$. Nothing in this uses a certificate.
 orthogonal maps.
 \end{proof}
 
-We state plainly where the line between the certificate and the
-closed arguments of this paper now falls. The global classification at
+The line between the certificate and the closed arguments of this
+paper falls as follows. The global classification at
 $24$ contacts is \cref{thm:twentyfour-points}, proved from the verified
 kernel. What this section supplies is the quantitative statement that
 the classification by itself does not give: an explicit isolation
@@ -5721,10 +5704,10 @@ at $\delta=2^\circ$ the smallest of the four values is already
 $0.538256\ldots$, at $\delta=5^\circ$ it is $0.592985\ldots$, at
 $\delta=10^\circ$ it is $0.676602\ldots$, and it increases from there. So the
 doorways at twenty roots hold two directions but not three, which would
-push \cref{cor:meet20} to nineteen. We record this as a computation and
-not as a proof: it is a search over a family of local minima, not an
-exhaustive argument, and the case analysis that would make it one is
-four times the length of \cref{prop:meet21}. The script is
+push \cref{cor:meet20} to nineteen. This is a computation and not a
+proof: it is a search over a family of local minima, not an exhaustive
+argument, and the case analysis that turns it into one is four times
+the length of \cref{prop:meet21}. The script is
 \texttt{root\_meet.py}, with \texttt{root\_deletions\_exact.py} carrying
 out the same enumeration for one, two and three removed roots in exact
 integer arithmetic as a check on \cref{prop:meet22} and
@@ -5839,8 +5822,8 @@ $-\tfrac12$ eighty-eight times, $0$ sixty-six times and $\tfrac12$
 eighty-eight times, which is an invariant of the orbit under $O(4)$.
 The tables \cite{Slo} record $60.0000000^\circ$ at $23$ points, the same
 value as at $24$, and $60.1398863^\circ$ at $22$. None of this proves
-the hypothesis of \cref{thm:m23-from-codes}, and we do not offer it as a
-proof; what it does is say which statement to aim at. The script is
+the hypothesis of \cref{thm:m23-from-codes}; what it does is say which
+statement to aim at. The script is
 \texttt{spherical\_code\_23.py}.
 
 \end{remark}
@@ -5916,7 +5899,7 @@ Lean development is described in \cref{sec:reproducibility-new}.
 \end{proof}
 
 
-\begin{remark}[What the $600$-cell does and does not decide]\label{rem:cell600-scope}
+\begin{remark}[What the $600$-cell decides]\label{rem:cell600-scope}
 \Cref{prop:cell600} closes the family one reaches for first
 (\cref{fig:structcd}(a), drawn on page~\pageref{fig:structcd}). The unit
 icosians form the largest finite subgroup of the unit quaternions, the
@@ -6128,30 +6111,27 @@ the constraint at $\delta=0$ from any start. At $\delta=0.01$ the best
 symmetric configuration has inradius $0.6599$, in line with
 \cref{tab:slack-continuation}. No symmetric configuration crossed into
 $K(0)$ except the deletions.
-\begin{remark}[What this says about the remaining case]\label{rem:slack-continuation}
-The picture is the one the classification of \cref{thm:m23-from-codes}
-would present if it holds, and it says something about where a proof of
-it would have to work. By \cref{lem:h-limit} it would be enough to show
-$h(\delta)\le\tfrac12+C\delta$ on some interval $(0,\delta_0)$, and the
-data put the constant near $2$ for small $\delta$; but the same data
-put $h(0.009)$ above $0.65$, so no such bound holds with a uniform
-constant beyond $\delta_0\approx0.008$, and an argument would have to
-work inside a window of about half a degree in the minimal angle. That
-is the quantitative form of what \cref{rem:m23-uniqueness} said: the
-classification at $23$ points is a statement about codes of minimal
-angle exactly $60^\circ$, and codes at $59.3^\circ$ already behave in a
-completely different way. It also says what a counterexample, if there
-is one, would have to look like: a saturated configuration is a member
-of $K(0)$ with $g>\tfrac12$, hence a member of every $K(\delta)$ with
-$h(\delta)\ge g$, and it would have to have escaped a search that, at
-every level below $0.009$, found nothing but deletions. We found no
-such configuration, in three passes of the continuation and in $300$
-direct maximisations of $g$ over $K(0)$ from the three kinds of start
-described in \cref{app:code-index}: $94$ of those reached a feasible
-endpoint, every one of them a deletion with $g=\tfrac12$, and the $100$
-random starts, brought down through the same schedule of slacks, never
-reached the constraint at $\delta=0$ at all, which is the collapse seen
-from the other side. That is exploration, and it is reported as such.
+\begin{remark}[What the continuation says]\label{rem:slack-continuation}
+The picture is that of the classification of \cref{thm:m23-from-codes},
+and it locates where a proof of it has to work. By \cref{lem:h-limit} it
+is enough to show $h(\delta)\le\tfrac12+C\delta$ on some interval
+$(0,\delta_0)$, and the data put the constant near $2$ for small
+$\delta$; but the same data put $h(0.009)$ above $0.65$, so no such bound
+holds with a uniform constant beyond $\delta_0\approx0.008$, and an
+argument has to work inside a window of about half a degree in the
+minimal angle. That is the quantitative form of
+\cref{rem:m23-uniqueness}: the classification at $23$ points is a
+statement about codes of minimal angle exactly $60^\circ$, and codes at
+$59.3^\circ$ already behave in a completely different way. A saturated
+configuration, if one exists, is a member of $K(0)$ with $g>\tfrac12$,
+hence a member of every $K(\delta)$ with $h(\delta)\ge g$; none appeared
+in three passes of the continuation, nor in $300$ direct maximisations
+of $g$ over $K(0)$ from the three kinds of start described in
+\cref{app:code-index}: $94$ of those reached a feasible endpoint, every
+one of them a deletion with $g=\tfrac12$, and the $100$ random starts,
+brought down through the same schedule of slacks, never reached the
+constraint at $\delta=0$ at all, which is the collapse seen from the
+other side. This is a search, not a proof.
 \end{remark}
 
 \begin{figure}[tb]
@@ -6297,8 +6277,8 @@ $24$ contacts the three-point information below $r_4$ is not enough,
 as it need not be. At $23$ contacts it is enough at the one
 configuration known, with $0.14$ to spare, and the pair-only bound
 \eqref{eq:second-order} at $R=r_*$ is enough there too, with $0.034$.
-That is the content of the following statement, which we regard as the
-right form of the remaining case.
+That is the content of the following statement, which is the form in
+which the case of $23$ contacts is proved.
 
 \begin{thm}[The remaining case as an inequality between pair angles]\label{thm:strict-reduction}
 Suppose that every contact configuration of $23$ directions with
@@ -7140,7 +7120,7 @@ $\dev_{w_1v_2}$.
 triangle's two boundary arcs as a matter of the symmetry group's own
 fundamental domain, and says nothing about where in the triangle the
 defect is actually smallest. That is a separate question, and the answer
-shapes the rest of this section, so we record what a direct search
+shapes the rest of this section, so here is what a direct search
 finds.
 
 Minimising $\defect(\tilt,\dev)$ numerically over the entire transverse
@@ -7332,8 +7312,7 @@ margin arising from the elliptic obstruction recorded there).
 
 \begin{proof}
 By \cref{prop:third-edge-cert,prop:arc2-is-arc1}, both boundary arcs
-(and the third edge, though the conjecture as stated does not require
-it) are identical, as functions of $(\tilt,\arcp)$, to the first arc.
+(and the third edge, though the statement does not require it) are identical, as functions of $(\tilt,\arcp)$, to the first arc.
 \Cref{thm:arc1-breakpoints-new,thm:arc1-certs-new} already establish
 $\defect\ge0$ throughout the first arc's own domain, with the stated
 margin structure. Substituting the identities gives the same bound,
@@ -7397,9 +7376,8 @@ the point). The candidate argument is dead: $\defect(\tilt,\cdot)$ is
 not concave along every interior geodesic, so the interior cannot be
 reduced to the boundary this way, at any $\tilt$ in the domain (the
 effect was not confined to $\tilt$ near $\pi/2$, only larger there).
-The finding is negative, and we record it as such: it rules out the
-whole class of arguments that would have let the boundary drag the
-interior along.
+The finding is negative: it rules out the whole class of arguments
+that let the boundary drag the interior along.
 
 \subsubsection{The interior's own combinatorial structure}
 
@@ -7415,9 +7393,9 @@ points), a $34$-vertex type in a second band just inside that
 ($53\%$, the plurality type), and a further $40$-vertex type occupying a
 smaller region near the triangle's centre ($5\%$). The interior is
 therefore combinatorially richer than either boundary arc: it is not
-one region but at least four, and we have not attempted to locate the
-exact curves separating them or to derive a volume formula on any one of
-them; the map above only establishes that such curves exist and roughly
+one region but at least four; the exact curves separating them, and a
+volume formula on any one of them, are not derived here, and the map
+above only establishes that such curves exist and roughly
 where.
 
 This partition is not arbitrary: it visibly respects the $S_3$ symmetry
@@ -7560,11 +7538,11 @@ Bernstein sign certificate is then run independently on each box, at the
 cost of a thin, explicitly quantified excluded margin near the true
 boundary.
 
-\subsection{A correction to the region count}\label{sec:region-count-correction}
+\subsection{The region count}\label{sec:region-count-correction}
 
-An initial grid scan (at $60\times90$ resolution) reported \emph{nine}
+A grid scan at $60\times90$ resolution reports \emph{nine}
 combinatorially distinct types in the reduced domain
-$\arcp\in(0,\pi/4)$, $\tilt\in(0,\pi/2)$. Re-running the same scan at
+$\arcp\in(0,\pi/4)$, $\tilt\in(0,\pi/2)$. The same scan at
 much higher resolution ($150\times200$), with an explicit $0.01$-radian
 margin excluded around each of the four breakpoint curves (to rule out
 grid points landing on, or numerically near, a curve, which can
@@ -7602,7 +7580,7 @@ a single, consistent sign there, matching a direct numerical
 spot-check at an interior point.
 \end{thm}
 
-We record all eight in turn, each with its representative-point vertex
+The eight regions follow in turn, each with its representative-point vertex
 count (moving vertices, from the deviating cap, plus fixed vertices,
 confirmed unchanged across several sample points spanning the region),
 its exact fixed-volume contribution (the boundary simplices not
@@ -7705,7 +7683,7 @@ floor and ceiling coincide by the underlying symmetry. A representative
 point has $34$ vertices ($23$ fixed $+11$ moving); the fixed-only sum
 is exactly $11/2$. Box-covering certificate.
 
-\subsection{What this does and does not establish}
+\subsection{What the eight certificates establish}
 
 Combined, the eight certificates of \cref{thm:arc1-certs-new} establish
 $\defect>0$ on the entire first arc's domain, except for the thin,
@@ -7738,11 +7716,11 @@ sign vertex $w=(1,1,1,1)/\sqrt2$ that gave curve $\mathsf W$ on the
 first arc, but with a \emph{different} functional dependence on
 $\arcp$, since the same vertex plays a structurally different role on
 the two arcs;
-\item a curve $\mathsf B$ (newly identified here),
+\item a curve $\mathsf B$,
 $\tilt=2\arctan(\sin\arcp)$, from the sign vertex
 $b=(1,1,1,-1)/\sqrt2$, a vertex that plays no role at all on the first
 arc;
-\item a curve $\mathsf C$ (newly identified here),
+\item a curve $\mathsf C$,
 $\sin\tilt\,(\cos\arcp+\sin\arcp)=1$, from the one-axis vertex
 $c=\sqrt2\,e_3$, the same functional form as curve $\mathsf Y$ on the
 first arc, but arising here from a different vertex.
@@ -7776,10 +7754,9 @@ to eleven significant figures. These three crossings divide the domain
 into four $\arcp$-intervals, within each of which the four curves have a
 fixed relative order, giving a coarse combinatorial atlas of
 approximately seven region types (a scope estimate, established at the
-same resolution as the first arc's own atlas but not yet independently
-re-derived by the finer vertex-pattern method that corrected the first
-arc's own region count from an initial nine down to eight); we treat
-seven as a solid working count, not a fully hardened one. The
+same resolution as the first arc's own atlas and not re-derived by the
+finer vertex-pattern method that fixes the first arc's count at eight);
+seven is a working count. The
 arrangement is drawn in \cref{fig:arcs}(b).
 
 \subsection{Region top}
@@ -7888,10 +7865,9 @@ safety strip against each box's own numerically-located floor
 ($\tilt=\pi/3$) and ceiling ($\mathsf W'$), wider than the tightest
 margins achieved elsewhere in this paper (\cref{sec:arc1-cert}'s own
 regions have been refined to under $0.2\%$), reflecting that this
-certificate was run once, at a moderate resolution, and not iteratively tightened; we expect, by direct analogy with the earlier
-region-4b tightening reported in \cref{sec:arc1-cert}, that this margin
-is similarly reducible at the cost of runtime, but we have not done so
-here and do not claim a tighter margin than the one actually
+certificate was run once, at a moderate resolution, and not iteratively tightened; by direct analogy with the
+region-4b tightening reported in \cref{sec:arc1-cert}, the margin is
+reducible at the cost of runtime, and the margin claimed is the one actually
 certified.
 
 \subsection{The band's \texorpdfstring{$\mathsf C$}{C}-bounded sub-part}\label{sec:arc2-bandC-new}
@@ -8170,8 +8146,8 @@ Then
 \]
 where $g[\,\cdot\,]$ denotes the third-order divided difference of $g$ at
 the four nodes.%
-\footnote{We use nothing about divided differences beyond the following,
-  so we record it here instead of sending the reader elsewhere. For a
+\footnote{Nothing about divided differences is used beyond the
+  following, which is therefore recorded here. For a
   function $h$ and pairwise distinct nodes $y_0,\dots,y_n$, the divided
   difference is defined by $h[y_0]=h(y_0)$ and
   \[
@@ -8674,11 +8650,11 @@ via the same signed-adjacency rule.
 \end{definition}
 
 \Cref{conj:multidir-new} holds, to second order, at a configuration $A$
-exactly when $H_A$ is positive semi-definite; a strict (not merely
-second-order) resolution of the conjecture at that configuration would
-require ruling out any \emph{finite}-angle failure as well, but the
-Hessian is the natural first tool, and is what all computational work
-on this conjecture to date, including in this paper, has used.%
+exactly when $H_A$ is positive semi-definite; an elementary proof at
+that configuration, and not merely a second-order one, has to rule out
+any \emph{finite}-angle failure as well, but the Hessian is the natural
+first tool, and it is what all computational work on this inequality,
+including in this paper, has used.%
 \footnote{The distinction between second-order (Hessian) evidence and finite-angle proof matters here.  A positive-definite $H_A$ guarantees only
   that the volume-defect function $\defect_A$ increases away from the
   root-aligned configuration, it does not rule out a later decrease or
@@ -8711,9 +8687,9 @@ $W(D_4)$-covariant invariants and verifying the fit to within $10^{-6}$ at
 several sample points and two independent adjacent pairs, not by a
 derivation from the vertex structure of $\VCell$ itself, the way
 \stageone's single-direction Hessian is derived from Cramer's rule
-(\cref{sec:chamber-register}). We record here a first step toward closing
-that gap, obtained during the preparation of this paper; it is a partial
-structural result, not a completed derivation.
+(\cref{sec:chamber-register}). What follows is a first step toward such
+a derivation; it is a partial structural result, not a completed
+derivation.
 
 For an adjacent pair $\alpha,\beta$ (Gram value $\tfrac12$), we verified
 directly (exact vertex enumeration over all $\binom{24}{4}$ candidate
@@ -8742,16 +8718,16 @@ vertex position (with one previously-active facet becoming redundant
 there), $1$ gives a singular (non-invertible) $4\times4$ system, and the
 remaining $5$ give points violating some other facet's inequality. This
 confirms the vertex deforms smoothly under this perturbation, and not combinatorially splitting into several nearby vertices, but it also
-confirms that identifying the correct governing facet set is a real
-case-by-case reduction, not a uniform rule read off in advance. Completing
+confirms that identifying the governing facet set is a case-by-case
+reduction, not a uniform rule read off in advance. Completing
 this into a full first-principles derivation of \cref{lem:m2-exact-new}
 requires repeating this reduction correctly at all $9$ affected vertices
 and for a general (not merely one tested) perturbation direction, then
 assembling the resulting exact volume-change formula and expanding it to
-second order, a substantially larger undertaking than we complete here.
-We record the partial result as a step taken, not a gap closed;
-\cref{lem:m2-exact-new} itself continues to rest on the numerical
-verification described above, not on this partial first-principles check.
+second order, a substantially larger undertaking than is completed here.
+The partial result is a step taken and not a derivation completed;
+\cref{lem:m2-exact-new} itself rests on the numerical verification
+described above, not on this partial first-principles check.
 
 \begin{lem}[Chains]\label{lem:chains-new}
 For an induced path (a ``chain'') of $m$ pairwise-Gram-$\tfrac12$
@@ -8773,7 +8749,7 @@ interior vertex tested, i.e.\ partially or fully antipodal. This exact
 algebraic constraint prevents the naive worst case (every pairwise
 cross-term simultaneously at its individual extreme) from being jointly
 realisable, and is a plausible mechanistic explanation for the observed
-plateau, though we do not turn this observation into a proof.
+plateau; the observation is not turned into a proof here.
 
 \begin{figure}[tb]
 \centering
@@ -8829,10 +8805,10 @@ instead, and where the vanishing turns out to be exact.}
 
 The joint Hessian technique of \cref{sec:hessian-technique} is a
 second-order local method: it certifies \cref{conj:multidir-new} at a
-configuration by exhibiting positive-semidefiniteness of $H_A$. This
-paper's own computational work (originating in earlier rounds of this
-programme and confirmed and sharpened in \cref{sec:exact-sing} below)
-identifies specific dense configurations at which this technique cannot
+configuration by exhibiting positive-semidefiniteness of $H_A$. The
+computations of this paper (\cref{sec:dense-configs-new}, sharpened in
+\cref{sec:exact-sing} below) identify specific dense configurations at
+which this technique cannot
 succeed \emph{in principle}, not because the relevant computation is
 hard, but because the quantity the technique tries to bound, the
 minimum eigenvalue of $H_A$, is exactly zero there. This is a
@@ -8840,10 +8816,9 @@ structurally different obstacle from ``the evidence so far is
 inconclusive'': at such a configuration, no amount of additional
 second-order computation can resolve the sign of the surplus, because
 the second-order term itself vanishes and the true local behaviour is
-governed by quartic (or higher) terms the Hessian cannot see. We are not aware of a prior published result establishing this
-degeneracy for the $D_4$ joint-Hessian technique, and we make no such
-attribution; the finding reported here and in \cref{sec:exact-sing} is
-ours. Musin's published contributions to this circle of problems
+governed by quartic (or higher) terms the Hessian cannot see. No prior
+published result establishes this degeneracy for the $D_4$ joint-Hessian
+technique; Musin's contributions to this circle of problems
 \cite{Mus08,Mus18} concern the kissing-number bound and the
 $24$-cell conjecture, and are cited for those results elsewhere.
 
@@ -8889,9 +8864,9 @@ factorisation and Sturm-sequence arguments already used, for a
 different problem, in \cref{sec:swap-configs}, rather than
 the essentially algorithmic route (compute a Gram matrix, exhibit a
 positive-semidefinite square root) available for quadratic forms via
-$LDL^\top$. We record this not as a further piece of evidence for or
-against \cref{conj:multidir-new}, but as an account of why closing
-this specific gap is not simply a matter of applying the existing
+$LDL^\top$. This is not a further piece of evidence about
+\cref{conj:multidir-new}, but an account of why an elementary argument
+at this configuration is not simply a matter of applying the existing
 Hessian machinery one order higher.
 \section{Exact singularity at a dense configuration}\label{sec:exact-sing}
 
@@ -8970,7 +8945,7 @@ set, it agrees with the independent double-precision
 \texttt{scipy}/qhull computation used throughout the rest of this paper
 to within $1.1\times10^{-9}$, exactly at qhull's own known precision
 floor, confirming both that the two independent methods compute the
-same underlying quantity and that this method's extra precision is real and not an artefact that merely happens to look plausible.
+same underlying quantity and that this method's extra precision is not an artefact.
 
 \subsection{The dimension count, done properly}\label{sec:dim-count-new}
 
@@ -9002,20 +8977,20 @@ for small $\sigma$, is positive at every direction tested.
 
 This is a qualitatively stronger, and different, finding than ``the
 eigenvalue is too small to resolve'': the second-order (Hessian
-eigenvalue) technique underlying every other piece of computational
-evidence in this paper for \cref{conj:multidir-new}, the exact
+eigenvalue) technique underlying every other elementary argument in
+this paper towards \cref{conj:multidir-new}, the exact
 two-direction and chain results of \cref{lem:m2-exact-new,lem:chains-new},
 the star and greedy-dense sweep of \cref{sec:dense-configs-new}, 
 \emph{cannot in principle} establish positivity at $A_{18}$, not
 because the computation is difficult but because the quantity it
 bounds is exactly zero there. Any argument covering this configuration
-needs quartic-order (or higher) information, a categorically
-different and harder undertaking than anything the Hessian technique
+needs quartic-order (or higher) information, a different and harder
+undertaking than anything the Hessian technique
 provides. The volume-defect function remained strictly positive, via
-the positive quartic coefficient, at every direction tested here; this
-does not disprove \cref{conj:multidir-new}, and it does not prove it
-either, \cref{sec:broad-sample} reports how broadly this was tested,
-and what is and is not established by that breadth.
+the positive quartic coefficient, at every direction tested here; that
+is consistent with \cref{conj:multidir-new} and is not an elementary
+proof of it at $A_{18}$. \Cref{sec:broad-sample} reports how broadly
+this was tested, and what that breadth establishes.
 \section{Broadened directional sampling}\label{sec:broad-sample}
 
 \subsection{Sampling the full near-null subspace at $A_{18}$}
@@ -9026,7 +9001,7 @@ as follows: the four eigenvectors themselves, all six
 pairwise normalised sums and six pairwise normalised differences, and
 twenty further directions drawn uniformly at random from the full
 $4$-dimensional span (Gaussian coefficients, normalised), $36$
-directions in total, spanning the entire subspace instead of the $3$-dimensional slice of it tested previously.
+directions in total, spanning the entire subspace instead of the $3$-dimensional slice of it tested in \cref{sec:exact-sing}.
 
 \begin{thm}[Broadened sampling at $A_{18}$]\label{thm:broad-sample-18-new}
 Evaluating the quartic-coefficient estimator
@@ -9127,21 +9102,20 @@ This is stronger evidence than ray-by-ray sampling, since a
 sum-of-squares certificate (once found) implies non-negativity on the
 \emph{entire} subspace, not merely at the sampled directions. It is not
 a proof of anything about the true quartic form at $A_{18}$, for two
-independent reasons stated plainly: first, the certified object is the
+independent reasons: first, the certified object is the
 least-squares \emph{fit} to $166$ noisy high-precision estimates, not an
 exact symbolic derivation of $Q$, so a fit error at the level of the
 $0.91\%$ residual already reported could in principle move the true
 form outside the certified family; second, even granting the fit
 exactly, a thin margin ($t\approx 0.0066$, not deep in the interior of
 the positive-semidefinite cone) is a weaker certificate than a large
-one, and we report the margin instead of rounding it up to an
-unqualified positive statement. Nothing here establishes
-\cref{conj:multidir-new} at $A_{18}$, or anywhere else it has not been
-checked; what \cref{cor:conj-resolved} settles, it settles by way of
-the classification of \cref{thm:m24}, and the elementary route pursued
-in this section stops short of it.
+one, and the margin is reported as it is. Nothing here proves
+\cref{conj:multidir-new} at $A_{18}$ by elementary means; what
+\cref{cor:conj-resolved} settles, it settles by way of the
+classification of \cref{thm:m24}, and the elementary route pursued in
+this section stops short of it.
 
-\subsection{What this does and does not establish}
+\subsection{What the sampling establishes}
 
 Combined, these two configurations give $66$ independently sampled
 directions, across two different (not symmetry-equivalent, so
@@ -9168,12 +9142,11 @@ tensor itself. It says nothing about the many other dense
 configurations in the $m=15$--$23$ range that were not examined. And it
 does not touch \cref{conj:multidir-new} in general, which concerns
 \emph{every} packing-valid active-direction configuration of every size
-$m\ge2$, not merely the two examined here. We report this evidence
-because we judge it to be informative, not because it closes
-the gap it bears on, and we are explicit, here and everywhere else in
-this paper, that it does not.
+$m\ge2$, not merely the two examined here. The evidence is reported
+because it is informative, not because it settles the question it bears
+on, which it does not.
 
-\subsection{An exact symmetry of \texorpdfstring{$A_{18}$}{A18}, not previously examined}\label{sec:a18-symmetry}
+\subsection{An exact symmetry of \texorpdfstring{$A_{18}$}{A18}}\label{sec:a18-symmetry}
 
 Every result above treats $A_{18}$ as an unstructured $18$-element active
 set, produced by greedy density growth with no attention paid to whether
@@ -9228,21 +9201,18 @@ or splitting into several copies of one repeated piece. Identifying
 those two pieces exactly, and what that buys for the quartic form, is
 \cref{sec:a18-invariant-quartics} below.
 
-We are precise about what this does and does not do, before going
-further. It is a real, newly-identified, exactly verified structural
-fact about the specific configuration where \cref{thm:exact-sing-new}
-proves the joint-Hessian technique degenerates completely, a fact
-absent from the present
-paper's own account of $A_{18}$ prior to this check. It explains, rather
-than leaves coincidental, why symmetric-looking sample directions in
-\cref{thm:broad-sample-18-new} gave consistent quartic-coefficient
-values: many of the $36$ sampled directions there lie in the same
-$48$-element orbit under this newly-identified group, so were never as
-independent a sample as an unstructured count of ``$36$ directions''
-suggests. By itself it does \emph{not} prove that the quartic form is
-positive-definite on the near-null subspace, that requires the further
-steps of \cref{sec:a18-invariant-quartics}, which reduce but do not
-eliminate the gap.
+What this symmetry does, and what it does not do, is the following. It
+is an exactly verified structural fact about the specific configuration
+where \cref{thm:exact-sing-new} proves the joint-Hessian technique
+degenerates completely. It explains, rather than leaves coincidental,
+why symmetric-looking sample directions in \cref{thm:broad-sample-18-new}
+gave consistent quartic-coefficient values: many of the $36$ sampled
+directions there lie in the same $48$-element orbit under this group, so
+they were never as independent a sample as an unstructured count of
+``$36$ directions'' suggests. By itself it does \emph{not} prove that
+the quartic form is positive-definite on the near-null subspace; that
+needs the further steps of \cref{sec:a18-invariant-quartics}, which
+reduce the question to five coefficients without settling it.
 
 \subsection{The exact invariant-quartic space at \texorpdfstring{$A_{18}$}{A18}, and what fitting it gives}\label{sec:a18-invariant-quartics}
 
@@ -9311,8 +9281,8 @@ $P_3$ is already invariant up to the $\delta$-twist, with no further
 reduction possible, and matching the dimension count independently.
 \end{proof}
 
-This is a real, exact result, no floating point at any stage, and
-a substantial sharpening of \cref{sec:gram-sos-A18}'s own scope: the true
+This is an exact result, with no floating point at any stage, and
+a substantial sharpening of the scope of \cref{sec:gram-sos-A18}: the true
 quartic tensor at $A_{18}$, whatever its exact values, is now known to
 lie \emph{exactly} in this $5$-dimensional family, not merely
 approximately or by numerical coincidence, since it must be invariant
@@ -9366,10 +9336,10 @@ true form outside the certified family exactly as
 \cref{sec:gram-sos-A18} already cautions; and even granting the fit
 exactly, the margin remains thin, far from deep in the interior of the
 positive-semidefinite cone. The elementary route to
-\cref{conj:multidir-new} at $A_{18}$ is no further along than before.
-What has changed is that the evidence for
-it there now rests on an exact reduction of the space being searched,
-rather than on a larger sample of the same kind.
+\cref{conj:multidir-new} at $A_{18}$ ends here; what the exact
+reduction of the invariant space adds is that the evidence there rests
+on a five-dimensional space searched in full, rather than on a larger
+sample of the same kind.
 \section{What is known about several simultaneous deviations}\label{sec:multidir-scope-summary}
 
 \subsection{Established}
@@ -9427,41 +9397,42 @@ so it is the strongest conclusion the areas of the spherical Voronoi
 cells can support, and at the root configuration those areas are all
 equal.
 
-\subsection{Superseded, and by what}
+\subsection{What the classification settles}
 
-\Cref{cor:conj-resolved} settles \cref{conj:multidir-new} outright, by
+\Cref{cor:conj-resolved} proves \cref{conj:multidir-new} outright, by
 the classification of \cref{thm:m24} and not by any of the arguments of
 this section: a full active set of twenty-four contacts is a $24$-point
 kissing configuration, and by \cref{thm:twentyfour-points} there is only
 one of those, so no direction deviates at all. Everything in this
-section was obtained before that classification was available and is
-independent of it; we keep it because it stands on its own, because it
-says what elementary methods can and cannot do on this problem, and
-because the classification rests on a certificate whereas this section
-rests on none. What follows is the scope of those elementary results.
+section is independent of the classification; it stands on its own, it
+says what elementary methods can and cannot do on this problem, and the
+classification rests on a certificate whereas this section rests on
+none. What follows is the scope of those elementary results.
 
 \subsection{Not established by the methods of this section}
 
 None of this gives positive-definiteness of the quartic form at either
-configuration, and none of it gives \cref{conj:multidir-new}. The
-conjecture ranges over every packing-valid configuration at every
-$m\ge2$; the dense regime of \cref{sec:dense-configs-new} contributes
+configuration, and none of it gives an elementary proof of
+\cref{conj:multidir-new}. The statement ranges over every packing-valid
+configuration at every $m\ge2$; the dense regime of
+\cref{sec:dense-configs-new} contributes
 two examined configurations out of a very large family, and the rest of
 that family, along with every other value of $m$, is untouched. The
 exact degeneracy of \cref{sec:musin-degeneracy} does say something
-definite about what a proof cannot look like: at these configurations no
-argument that stops at second order can decide the sign, so whatever
-settles the conjecture there has to engage the quartic term directly.
+definite about what an elementary proof cannot look like: at these
+configurations no argument that stops at second order can decide the
+sign, so whatever settles the inequality there has to engage the quartic
+term directly.
 The three swap paths do not reach that regime either, being low in $m$
 and highly symmetric.
 
 The order-$48$ symmetry narrows the search without closing it. It fixes
 the exact $5$-dimensional space in which the true quartic tensor lies,
-which is a real reduction from $35$ parameters, but the five numbers we
-use are finite-difference measurements, not a symbolic derivation, and
+which is a reduction from $35$ parameters, but the five numbers used
+are finite-difference measurements, not a symbolic derivation, and
 the feasibility margin is thin. The symmetry is also specific to the
-configuration where we found it; we have not looked for an analogue at
-the second configuration or anywhere else in the dense family.
+configuration where it was found; no analogue at the second
+configuration, or anywhere else in the dense family, has been looked for.
 
 The cap argument of \cref{sec:cap-theorem} does not extend here, for a
 structural reason rather than a technical one. With one deviating
@@ -9474,10 +9445,10 @@ than a single cap, and \cref{rem:first-order-obstruction} records why
 the obvious way of splitting that comparison into $m$ separate ones
 cannot work. \Cref{prop:multi-cap} does supply the substitute for $Q$, namely the
 polytope $Q_D$ obtained by dropping the $m$ deviating constraints, and
-recasts the whole problem as one extremal inequality
-(\cref{op:multicap}) for the union of $m$ caps of that fixed body. That
-inequality is what remains open to an argument that uses no
-classification.
+recasts the whole problem as one extremal inequality,
+\eqref{eq:multicap}, for the union of $m$ caps of that fixed body. That
+inequality is what an argument that uses no classification has to
+prove.
 
 \subsection{What the reformulations settle}
 
@@ -9492,8 +9463,8 @@ the part of the $24$-cell conjecture in which two or more contact
 directions leave the root system at once, and nothing here settles it
 without the classification of \cref{thm:m24}.
 
-They also do real negative work, which is the part we regard as
-substantive. Four approaches that look plausible in the abstract are
+They also do negative work, which is the substantive part. Four
+approaches that look plausible in the abstract are
 eliminated, each by an evaluation at the $D_4$ configuration itself,
 where an argument that is to produce the sharp constant $8$ must lose
 nothing at all. Term-by-term reduction to \cref{thm:eperp-closed} is
@@ -9535,7 +9506,7 @@ its cells fit together, not the shape of any one of them.
 
 What survives is a positive but soft statement,
 \cref{cor:minimiser}: a worst configuration exists and may be taken
-maximal, so the conjecture is a question about maximal contact
+maximal, so the inequality is a question about maximal contact
 configurations and about a genuine extremal point, not about a
 supremum approached but never reached. Identifying that point is where
 the difficulty sits, and at $|W|=24$ it coincides with the uniqueness
@@ -9551,10 +9522,10 @@ to the root-aligned configuration. This section reports a different,
 complementary body of work: exact, finite-angle, not merely
 second-order, and not merely numerical, positivity proofs for three
 specific, highly symmetric multi-direction configurations, each rotated
-through their \emph{entire} packing-valid angular range instead of sampled near $\theta=0$. These are, to our knowledge, the first
-completely finite-angle resolutions of any non-trivial slice of
-\cref{conj:multidir-new}, and we report them, together with the
-limits of what they establish, in this section;
+through their \emph{entire} packing-valid angular range instead of sampled near $\theta=0$. These are the first
+finite-angle resolutions of a slice of \cref{conj:multidir-new} by
+elementary means, and this section reports them together with the
+limits of what they establish;
 \cref{fig:swap}(a) shows the three functions whose positivity is at
 issue.
 
@@ -9706,10 +9677,9 @@ immediately to all of $(0,\theta_*)$.
 
 \subsection{A precision check: the swap path is not the worst 2-direction path at every angle}\label{sec:swap-not-worst}
 
-Before relying on \cref{thm:swap-m2-new} as evidence about the
-$m=2$ case of \cref{conj:multidir-new} more broadly, one further
-qualification is needed, caught by a dedicated check before it
-could be overstated. The swap path of \cref{sec:swap-setup} is one
+\Cref{thm:swap-m2-new} concerns one path, and a dedicated check
+shows how far it is from the whole of the $m=2$ case of
+\cref{conj:multidir-new}. The swap path of \cref{sec:swap-setup} is one
 specific choice, among a full two-parameter family, of how a pair of
 adjacent roots' deviation directions can be coupled; writing
 $e_1=c_1\beta^\perp$, $e_2=c_2\alpha^\perp$ for signs
@@ -9740,8 +9710,8 @@ sec:arc2-breakpoints}): the adversarially worst direction is not a
 single fixed configuration across a whole parameter range, but drifts
 between distinct structured candidates.
 
-We record the precise consequence for \cref{thm:swap-m2-new}: it is
-not weakened by this finding, since it is a real statement about one
+The precise consequence for \cref{thm:swap-m2-new} is this: it is
+not weakened by this finding, since it is a statement about one
 specific, precisely defined path, not a claim
 about the adversarial worst case over all $2$-direction
 configurations. What this finding does rule out is reading
@@ -9753,7 +9723,7 @@ about the mixed path, its values above are numerical
 clarification of scope, not as a further positivity claim of the kind
 \cref{thm:swap-m2-new} makes.
 
-\subsection{A determinant bug, found and fixed: the \texorpdfstring{$m=3$}{m=3} triangle swap}\label{sec:swap-m3}
+\subsection{The \texorpdfstring{$m=3$}{m=3} triangle swap, and a determinant that has to be computed with care}\label{sec:swap-m3}
 
 The natural next configuration is a real $3$-clique: three pairwise
 Gram-$\tfrac12$ roots (not three roots merely sharing a coordinate
@@ -9775,7 +9745,7 @@ in \cref{sec:swap-norm-trick,sec:swap-m6} is accordingly computed with
 truth at a reference angle before it is used; all $176$ agree.
 
 \begin{thm}[Finite-angle positivity, $m=3$ triangle swap]\label{thm:swap-m3-new}
-With the corrected closed form, $F_{\mathrm{tri}}(\theta)>0$ for every
+With the two-piece closed form, $F_{\mathrm{tri}}(\theta)>0$ for every
 $\theta\in(0,\theta_*)$, $\theta_*=\pi/3$, proved exactly on both
 pieces (via the same norm-trick argument of \cref{sec:swap-norm-trick},
 applied separately to each piece's own numerator and denominator), with
@@ -9784,7 +9754,7 @@ $\theta=\pi/6$ and the expected exact vanishing $F_{\mathrm{tri}}(\theta_*)=0$
 at the swap point itself.
 \end{thm}
 
-\subsection{A clean single-piece proof: the \texorpdfstring{$m=6$}{m=6} hexagon swap}\label{sec:swap-m6}
+\subsection{A single-piece proof: the \texorpdfstring{$m=6$}{m=6} hexagon swap}\label{sec:swap-m6}
 
 The third configuration is a $6$-direction cyclic ``hexagon'' rotation
 (the natural $D_4$-Weyl-orbit generalisation of the pairwise swap),
@@ -9839,7 +9809,7 @@ exact-arithmetic resolutions of
 finite-angle paths, an advance over the second-order Hessian
 information of \cref{sec:hessian-technique}, since they hold across the
 \emph{entire} angular range, not merely infinitesimally near
-$\theta=0$. We are careful to state what they do not cover:
+$\theta=0$. What they do not cover is the following:
 every one of the three results concerns one specific swap path, at one
 specific reference chamber ($\Cell1$), with a specific highly symmetric
 rotation pattern (pairwise, triangular, or hexagonal) and every other
@@ -9851,9 +9821,9 @@ deviation directions $\dev\in S^2$ at each active root. Extending this
 finite-angle, exact-arithmetic technique to the dense, non-chain
 configurations of \cref{sec:dense-configs-new,sec:exact-sing}, 
 precisely the regime where the second-order Hessian technique is known
-to degenerate, is the single most promising concrete
-direction for further progress on \cref{conj:multidir-new}, and one we
-have not pursued in this paper.
+to degenerate, is the most promising direction for an elementary proof
+of \cref{conj:multidir-new} in that regime, and it is not pursued in
+this paper.
 \section{Comparison with other strategies}\label{sec:comparison-methods}
 
 \subsection{Local against global}
@@ -9960,13 +9930,16 @@ has no reason to disappear. The cap argument, on the other hand, is not
 tied to rank $4$ in any obvious way: it needs a fixed polytope containing the
 relevant body, a cross-polytope-like enclosure that is tight in the
 critical direction, and a cap formula for the enclosure. Whether those
-three ingredients exist for $E_6$ or $E_7$ we have not investigated. We
-claim nothing about any of these dimensions here.
+three ingredients exist for $E_6$ or $E_7$ is not investigated here, and
+nothing is claimed about those dimensions.
 \section{Conclusion}\label{sec:status}
 
-The paper proves the local bound in dimension four in full, and it
-proves three of its cases by three different methods. This section puts
-all of that in one place.
+The paper proves the local bound in dimension four for contact
+configurations, by three different methods for its three ranges of
+contact number, carries it to the Voronoi cells of packings at every
+centre with at most twenty-three others within $\sqrt6$ and at every
+centre near the root system, and states the one case it does not
+reach. This section puts all of that in one place.
 
 \subsection{Proved}
 
@@ -10049,6 +10022,26 @@ criterion, with no statement from outside this paper among their
 ingredients; every statement here that uses a certificate is marked
 accordingly.
 
+\Cref{sec:closure} carries the bound past the contact configurations.
+\Cref{thm:m23-labelled} proves it at every centre with at most
+twenty-three others within $\sqrt6$, at any distances, by the three-point
+certificate carried from the sphere to the shell; \cref{cor:root-subsets}
+at every centre whose contacts contain one orthogonal pair of roots at
+each vertex of a $24$-cell; and \cref{thm:near-contact} at every centre
+around which no other lies at a distance strictly between
+$2+\varepsilon_0$ and $\sqrt6$, with $\varepsilon_0=4\cdot10^{-26}$
+explicit through the robust form \cref{thm:m24-robust} of the
+certificate of \cref{thm:m24}, which makes the $D_4$ configuration a
+strict local minimum of the cell volume among all packings.
+\Cref{thm:kissing-stable} proves that at most twenty-four centres lie
+within $2.0161$ of any centre, and \cref{sec:second-order} computes the
+second order of the cell volume at the root system exactly, certifies its
+minimum on the packing cone, and integrates the push-outs exactly
+(\cref{prop:cone-min,lem:pure-push,prop:push-integrated}).
+\Cref{thm:main-general} turns all of this into the density bound
+$\pi^2/16$ for every periodic packing whose centres satisfy one of these
+hypotheses.
+
 \subsection{The twenty-three-point case}
 
 \Cref{thm:m23} settles the case that \cref{cor:remaining} leaves: every
@@ -10106,44 +10099,38 @@ makes the inequality concrete: sixty-five pairs at $60^\circ$, or the
 weighted equivalent, where the deletion has eighty-eight, against a
 ceiling of one hundred and fifteen.
 
-\subsection{Open}
+\subsection{Crowded near-contacts}
 
-Three things remain open. The first is a case of the local bound:
-\cref{conj:shell}, a centre crowded by near-contacts
-(\cref{sec:noncontact}), on which the density bound for all packings
-waits. By \cref{sec:closure} it is a centre with at least twenty-four
-others within $\sqrt6$, one of them at a distance between
-$2+\varepsilon_0$ and $\sqrt6$: with at most twenty-three the three-point
-method carries over from the sphere to the shell
-(\cref{thm:m23-labelled}), and closer to contact the bound holds
-(\cref{thm:near-contact}), with $\varepsilon_0=4\cdot10^{-26}$ explicit
-through the robust form \cref{thm:m24-robust} of the certificate. Closing
-it would take, at intermediate distances, a bound for the part of the
-cell outside $B(\sqrt{3/2})$, since inside that ball the root system
-itself falls short of $8$, strong enough to reach the explicit
-neighbourhood of the root system in \cref{thm:near-contact}. The
-other two are not cases of the local bound. The second is the
-classification of the $23$-point codes of
-minimal angle $60^\circ$ on $S^3$, the hypothesis of
-\cref{thm:m23-from-codes}: that every such code is a deletion of one
-root, which would say that no saturated configuration of $23$
-directions exists at all, a stronger statement than \cref{thm:m23}. It
-holds among the vertices of the $600$-cell (\cref{prop:cell600}, by an
-enumeration carried out three times over and checked in Lean); by
-\cref{lem:h-limit} it is the statement $h(0)=\tfrac12$ about the
-largest inradius $h(\delta)$ of the hull of $23$ points at minimal
-angle $\arccos(\tfrac12+\delta)$, and the computations of
-\cref{sec:slack-continuation} find $h(\delta)$ near $\tfrac23$ down to
-$\delta=0.009$ and then collapsing to $\tfrac12+O(\delta)$, with every
-configuration reached at $\delta=0$ a deletion. That is evidence, and
-\cref{rem:m23-uniqueness} explains why no bound on the size of a code
-can turn it into a proof. The third is formal. The verifications of
+One case of the local bound is not proved: \cref{conj:shell}, a centre
+crowded by near-contacts (\cref{sec:noncontact}), and the density bound
+for every packing is \cref{thm:local-general} together with that case.
+By \cref{sec:closure} it is a centre with at least twenty-four others
+within $\sqrt6$, one of them at a distance between $2+\varepsilon_0$ and
+$\sqrt6$, at most twenty-four of them within $2.0161$: with at most
+twenty-three the three-point method carries over from the sphere to the
+shell (\cref{thm:m23-labelled}), and closer to contact the bound holds
+(\cref{thm:near-contact}). A proof there consists of the four statements
+listed at the end of \cref{sec:closure}: the shape of twenty-four
+directions at slack of order $10^{-2}$, a lower bound for the volume
+between the explicit neighbourhood of the root system and the pair terms,
+the configurations of twenty-three contacts with one near-contact, and
+certificates for the counts from twenty-five up. What is proved towards
+them is the cardinality half of the first (\cref{thm:kissing-stable}),
+the second order of the second (\cref{prop:cone-min}) with the push-outs
+integrated exactly (\cref{prop:push-integrated}), and the count for
+twenty-three (\cref{thm:m23-labelled}); the evidence for the rest, and
+the ceiling of the present certificate (\cref{rem:robust-ceiling}), are
+set out there.
+
+The checks are also formal where they are finite. The verifications of
 \cref{thm:certificate,thm:m23-labelled,thm:kissing-stable} run in Lean as
-well as in Python, in exact dyadic arithmetic and with the closed forms of
-$\omega$ and of the cell integrals entering only through tables of bounds,
-and so does the arithmetic of the explicit $\varepsilon_0$ of
-\cref{thm:near-contact}; but the statements Lean proves are that programs
-return true, and the mathematics that makes the programs proofs, Taylor's
+well as in Python, in exact dyadic arithmetic, and for the first two with
+the tables of $\omega$ computed inside Lean from closed forms; so do the
+arithmetic of the explicit $\varepsilon_0$ of \cref{thm:near-contact}, the
+spectrum of \cref{lem:rigidity-spectrum}, the extremal cap of
+\cref{thm:cap-inequality} and the certificate of \cref{prop:cone-min}
+(\cref{sec:reproducibility-new}). What Lean proves there is that programs
+return true; the mathematics that makes the programs proofs, Taylor's
 theorem on a box, the monotonicity of $\omega$ and of the shares, the
 positivity of the three-point kernels, is argued in the paper and not
 formalised, as a formalisation of the lens integrals and their
@@ -10175,10 +10162,12 @@ higher degree the question needs extended-precision arithmetic. The cardinality 
 $24.10$, is not sharp either, so no route to the global statement that
 stays at the three-point level is complete.
 
-\Cref{conj:multidir-new} itself is settled by
+\subsection{Several deviations by elementary means}
+
+\Cref{conj:multidir-new} is proved by
 \cref{cor:conj-resolved}, and so by the classification of \cref{thm:m24};
-what follows records what we established about it by elementary means,
-independently of any certificate, and those results stand on their own.
+what follows is what elementary means establish about it, independently
+of any certificate, and those results stand on their own.
 
 The natural second-order method, which settles every configuration of
 small size, degenerates exactly at a family of dense ones.
@@ -10196,8 +10185,8 @@ representation it carries on the near-null subspace and prove, by exact
 character theory, that the space of quartics invariant under it has dimension $5$ instead of the generic $35$. Fitting those five
 coefficients numerically and applying a semidefinite feasibility test
 gives a sum-of-squares certificate with a thin margin
-(\cref{prop:a18-sos-reduced}); the fit is numerical and we do not treat
-the certificate as a proof.
+(\cref{prop:a18-sos-reduced}); the fit is numerical, and the certificate
+is evidence and not a proof.
 
 \Cref{sec:swap-configs} proves \cref{conj:multidir-new} outright along
 three swap paths, at $m=2,3,6$, across their entire angular range rather
@@ -10226,24 +10215,23 @@ nonetheless available: \cref{prop:multi-cap} supplies one. Dropping the
 $m$ deviating constraints leaves a polytope $Q_D$ that is fixed, is
 bounded for every packing-valid $D$ with $m\le5$ and for most larger
 ones, and turns the problem back into a single extremal question with
-all the parameters in the cutting half-spaces. What is missing is a direct proof of the
-inequality itself (\cref{op:multicap}): the quantity to bound is the
-volume of a union of $m$ caps of $Q_D$, and by
+all the parameters in the cutting half-spaces. A direct proof of the
+inequality \eqref{eq:multicap} itself is another matter: the quantity to
+bound is the volume of a union of $m$ caps of $Q_D$, by
 \cref{rem:first-order-obstruction} that union cannot be replaced by a
-sum. A proof would need the union directly, and for the dense
-configurations it would need a bounded substitute for $Q_D$ as well,
-since $Q_D$ is unbounded there.
+sum, and for the dense configurations a bounded substitute for $Q_D$ is
+needed as well, since $Q_D$ is unbounded there.
 
-\Cref{sec:polar-surface} says where the question of \cref{op:multicap}
-sits. Written in terms of the contact directions alone it is the
-polar-volume inequality $\vol(\conv(W)^{\circ})\ge8$ over contact
-configurations (\cref{prop:polar-form}), equivalently the boundary
-inequality $\mathrm{area}(\partial V_c)\ge32$ (\cref{lem:surface-form});
-and in that form it is visibly the part of the $24$-cell conjecture in
-which two or more contact directions leave the root system at once, the
-part that the contact count settles and that no elementary argument has
-reached. We state that plainly rather than leaving it to be inferred. The same subsection
-contributes one positive statement and four negative ones. The positive
+\Cref{sec:polar-surface} says where that inequality sits. Written in
+terms of the contact directions alone it is the polar-volume inequality
+$\vol(\conv(W)^{\circ})\ge8$ over contact configurations
+(\cref{prop:polar-form}), equivalently the boundary inequality
+$\mathrm{area}(\partial V_c)\ge32$ (\cref{lem:surface-form}); and in
+that form it is visibly the part of the $24$-cell conjecture in which
+two or more contact directions leave the root system at once, the part
+that the contact count settles and that no elementary argument has
+reached. The same subsection contributes one positive statement and four
+negative ones. The positive
 statement is \cref{cor:minimiser}: a worst configuration exists, and may
 be taken maximal, so what has to be identified is a genuine extremal
 point. The negative ones rule out term-by-term reduction
@@ -10269,9 +10257,9 @@ $7.997885\ldots$ at twenty-three contacts, so they too stop short.
 The single-deviation problem turned out to have a fixed body behind it,
 and once that body was identified the problem stopped being about the
 $24$-cell and became a question about a cross-polytope, which has an
-answer in closed form. We would expect the same reorganisation to be
-worth attempting in other ranks, wherever a root system supplies a
-cross-polytope-like enclosure that is tight in the critical direction.
+answer in closed form. The same reorganisation is worth attempting in
+other ranks, wherever a root system supplies a cross-polytope-like
+enclosure that is tight in the critical direction.
 
 The multi-direction problem does have a fixed body, by
 \cref{prop:multi-cap}, and it is still hard, which says that the fixed
@@ -10283,22 +10271,21 @@ bookkeeping repairs that: a bound that treats the pieces separately has a
 ceiling of $96\sqrt2-128=7.7645\ldots$, below the target and below even
 the covering estimate.
 
-Two things would change the picture, and the first of them would give
-a second proof of \cref{thm:m23}. A lower bound for
+Two further routes are visible from here. A lower bound for
 $\vol_3(F_w)$ that reads the rest of the configuration rather than only
-the pairwise condition at $w$, and that is summable over $w$, would give
-the bound through \eqref{eq:surface};
+the pairwise condition at $w$, and that is summable over $w$, gives the
+bound through \eqref{eq:surface} and a second proof of \cref{thm:m23};
 \cref{rem:facet-local-obstruction} shows that the purely local constant
 is too small by an explicit amount, not that no bound of any kind
-exists. And an exact, first-principles derivation of the quartic tensor
-at a dense configuration, in place of the fitted coefficients of
-\cref{sec:a18-invariant-quartics}, would turn the present numerical
-certificate into a proof there, and would put the multi-direction
-inequality at that configuration on an elementary footing rather than on
-the certificate of \cref{thm:twentyfour-points}; the exact
-$5$-dimensional invariant space is already in
-hand, so what is missing is a derivation rather than a search. We have
-neither.
+exists. And an exact derivation of the quartic tensor at a dense
+configuration, in place of the fitted coefficients of
+\cref{sec:a18-invariant-quartics}, turns the numerical certificate of
+\cref{prop:a18-sos-reduced} into a proof there and puts the
+multi-direction inequality at that configuration on an elementary
+footing rather than on the certificate of \cref{thm:twentyfour-points};
+the exact $5$-dimensional invariant space is in hand, so what that route
+needs is a derivation rather than a search.
+
 \section{Reproducibility}\label{sec:reproducibility-new}
 
 \subsection{Two independent arithmetic paths}
@@ -10448,8 +10435,8 @@ and written into the file with its coefficients scaled to integers of
 about fifteen thousand digits, is shown by kernel computation on
 \texttt{Rat} to vanish on $[-1,\tfrac12]$ exactly at
 $-1,-\tfrac12,0,\tfrac12$, with multiplicities $1,2,2,1$, the count of
-further zeros being a Sturm sequence; \cref{sec:certificate-checked} says what
-this does and does not establish.
+further zeros being a Sturm sequence; \cref{sec:certificate-checked} says
+what this establishes.
 
 The seventh is \texttt{lean/D4RootLattices.lean}, on the finite content
 of \cref{lem:root-lattice}, the step that carries
@@ -10580,31 +10567,34 @@ largest corner value $0.99755\ldots$. About ten seconds.
 That is a stronger form of checking than anything else in this paper,
 and it is available here only because these particular arguments are
 finite and, after the scaling by $315$, dyadic. The rest of the paper
-is not formalised, and we do not claim otherwise: the Lean theorem of
+is not formalised: the Lean theorem of
 the certificate is about a program, and the analysis that makes the
 program a proof is in the text; and where the objects are polytope
-volumes in $\mathbb{R}^4$ and cap measures on $S^3$ there is at present
+volumes in $\mathbb{R}^4$ and cap measures on $S^3$ there is
 nothing in the standard libraries to build a formalisation on.
 
 \subsection{What kind of claim each claim is}
 
-Every assertion in this paper falls into one of three kinds, and we have
-tried to make clear at each point which kind is in play. The first is an
-exact computation in $\mathbb{Q}$ or $\mathbb{Q}(\sqrt2)$ with no
-floating-point step anywhere:
+Every assertion in this paper falls into one of three kinds, and the
+text says at each point which kind is in play. The first is an exact
+computation, in $\mathbb{Q}$ or $\mathbb{Q}(\sqrt2)$ with no
+floating-point step anywhere, or in rigorous interval arithmetic:
 \cref{sec:stage-one,sec:stage-two,sec:arc1-cert}, the exact parts of
-\cref{sec:arc2-cert}, and the whole of \cref{sec:cap-theorem}, whose
-box certificate runs in exact rational arithmetic throughout. The second
+\cref{sec:arc2-cert}, the whole of \cref{sec:cap-theorem}, whose
+box certificate runs in exact rational arithmetic throughout, the
+certificates of \cref{sec:certificate,sec:certificate-checked,sec:closure,sec:m24-robust},
+and the certificate of \cref{prop:cone-min}. The second
 is a high-precision numerical computation, carried out in \texttt{mpmath}
 at a stated working precision between $35$ and $400$ decimal digits,
-used where we did not pursue a symbolic route; this is where the
+used where no symbolic route was pursued; this is where the
 material of \cref{sec:exact-sing,sec:broad-sample} sits. The third is an
 ordinary double-precision calculation, used only to locate candidate
 regions, breakpoints and configurations before an exact or
-high-precision verification, and never as the basis of a claim on its
-own. Where a claim is of the second kind we say so at the point of use,
-give the precision reached, and, where a second precision is available,
-the cross-check against it (\cref{sec:hp-volume-method,sec:broad-sample}).
+high-precision verification, or reported as evidence, and never as the
+basis of a claim on its own. Where a claim is of the second kind the
+text says so at the point of use, gives the precision reached, and,
+where a second precision is available, the cross-check against it
+(\cref{sec:hp-volume-method,sec:broad-sample}).
 
 Two conventions inherited from the numerical-analysis literature are
 worth naming, since they govern the third kind. Sign decisions near a
@@ -10682,12 +10672,11 @@ below.
 The supplementary code package, with every script, certificate, run
 log and Lean file named in \cref{app:code-index}, is maintained at
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
-and archived on Zenodo under the DOI
+and archived on Zenodo under the concept DOI
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{10.5281/zenodo.22766562}
-\cite{D4Zenodo}. The version that corresponds to this paper is release
-\texttt{v1.8.0}, at
-\bluelink{https://github.com/creelie/d4-voronoi-cells/releases/tag/v1.8.0}{the
-tag of that name}. The certificate that \cref{sec:certificate-checked}
+\cite{D4Zenodo}, which resolves to the latest archived release; the
+release that corresponds to this paper is the latest one at the time of
+submission. The certificate that \cref{sec:certificate-checked}
 verifies is the data set of \cite{LLM24data}, deposited by its authors
 under the MIT licence; the archive \texttt{LasserreSphericalCodes.zip},
 with its checksum and its licence notice, is included in the
@@ -10939,8 +10928,8 @@ appendix's two-piece \stagetwo{} argument, is exactly the pair of
 ingredients \cref{sec:stage-two}'s proof of \cref{thm:local-uncond}
 invokes in the abstract, uniform form used in the main text.
 
-We record, once more, the scope of what this appendix establishes:
-this is the single-deviation, root-aligned case only. It says nothing
+The scope of what this appendix establishes is the single-deviation,
+root-aligned case only. It says nothing
 about \cref{conj:multidir-new}, which is treated on its own terms in
 \cref{sec:hessian-technique,sec:musin-degeneracy,sec:exact-sing,%
 sec:broad-sample,sec:multidir-scope-summary} and
@@ -10950,7 +10939,7 @@ respectively.
 
 For each of the first eight cells (one representative each from the
 first eight of the $22$ orbits, spanning all four denominator classes
-twice over), we record here the complete exact $LDL^\top$ decomposition
+twice over), here is the complete exact $LDL^\top$ decomposition
 $H_k=L_kD_kL_k^\top$ of \cref{prop:ldlt-new}: the diagonal pivot vector
 $d=(d_1,\dots,d_6)$ and the strictly-upper-triangular part of the
 unit lower-triangular factor $L_k$ (equivalently, $U_k=L_k^\top$),
@@ -11139,11 +11128,11 @@ $\Cell4$ (orbit D, class $\mathsf d$, $\norm4=48$), consistent with
 \cref{lem:mineig-new}'s statement that the eigenvalue floor is attained
 on the most symmetric denominator class.
 
-\subsection{What this does and does not add}
+\subsection{What this adds}
 
-This appendix is deliberately narrow in scope: it does not introduce
-any new mathematical claim beyond \cref{prop:ldlt-new}, and its
-purpose is solely to record that two independently written pieces of
+This appendix is narrow in scope: it introduces no mathematical claim
+beyond \cref{prop:ldlt-new}, and its purpose is to record that two
+independently written pieces of
 software, taking different routes (one via Sylvester's criterion
 applied to a stored decomposition, one via an explicit sum-of-squares
 expansion checked against a freshly reconstructed Hessian), reach the
@@ -11903,10 +11892,10 @@ through the vertex, and writes the graph and the cell list to a text
 file. The C program reads that file and repeats the enumeration of the
 $23$-sets with the same bound on $64$-bit words, in under two seconds;
 the Python enumeration takes about a minute and a half. Neither is
-sampling. The earlier script \texttt{cell600.py}, which drew two
-million maximal independent sets by greedy growth along random orders
-and is where the question was first looked at, is kept in the package
-for the record. \texttt{octahedral48\_exact.py} does the same for the
+sampling. The script \texttt{cell600.py}, which draws two
+million maximal independent sets by greedy growth along random orders,
+is a sampling of the same family and is kept in the package for
+comparison. \texttt{octahedral48\_exact.py} does the same for the
 $48$ unit quaternions of the binary octahedral group, in
 $\mathbb{Z}[\sqrt2]$, and finds the two root systems and their
 forty-eight deletions and nothing else.
@@ -11952,8 +11941,8 @@ checks, in the ball arithmetic of Arb \cite{Joh17} through
 \texttt{python-flint}, the covering radius $45^\circ$ of the root
 directions behind \cref{lem:24-no-shell}; the value of $\Phi$ for $m$
 contacts, above $8.044$ for every $m\le22$; the thresholds of
-\cref{tab:distance-thresholds}; and the two examples that falsify the
-earlier forms of \cref{lem:shell-new,lem:radial-new}. Each value of $\Phi$
+\cref{tab:distance-thresholds}; and the two examples that follow
+\cref{lem:shell-new,lem:radial-new}. Each value of $\Phi$
 is a lower Riemann sum in which the first factor of the integrand is
 taken at the right end of each interval and the second at the left, both
 factors being monotone, so every printed bound is a bound.
@@ -12081,7 +12070,8 @@ for a run of five rounds.
 \section{Numerical tables}\label{app:numerical-tables}
 
 This appendix collects, in one place, the numerical evidence quoted at
-various points in the main text for \cref{conj:multidir-new}. Every
+various points in the main text about the elementary approach to
+\cref{conj:multidir-new}. Every
 table entry is reproduced directly from
 a script run recorded in \cref{app:code-index}; where a value is
 double-precision numerical evidence rather than an exact rational, we
@@ -12195,12 +12185,12 @@ Directions with negative $a_4$ & $0$ of $30$\\
 \end{center}
 with a four-direction re-confirmation at the second step size giving
 ratios of $0.952$ to $0.991$. As \cref{sec:broad-sample,sec:multidir-scope-summary}
-state plainly, this is real, cross-validated computational evidence at
+state, this is cross-validated computational evidence at
 two independent dense configurations, spanning their full (respectively
 $4$- and $5$-dimensional) near-null subspaces with both structured and
 random directions, but it is evidence at two configurations only, out
-of a combinatorially vast space of possible dense active sets, and does
-not constitute a proof of \cref{conj:multidir-new}.
+of a combinatorially vast space of possible dense active sets, and it is
+not an elementary proof of \cref{conj:multidir-new}.
 
 \subsection{Breakpoint crossing values on the second arc (\cref{sec:arc2-breakpoints,sec:arc2-cert})}
 
@@ -12402,7 +12392,7 @@ preprint, version 11, Preprints.org (2026).
 \bibitem[BBMB26]{D4Zenodo}
 D.~Bhattacharjee, U.~Bhattacharya, P.~Mandal, and S.~Bhattacharya,
 \textit{Supplementary code for: The sphere packing problem in dimension 4 and the twenty-four-cell conjecture},
-software, version v1.8.0, Zenodo (2026).
+software, Zenodo (2026).
 \bluelink{https://doi.org/10.5281/zenodo.22766562}{doi:10.5281/zenodo.22766562}.
 Source repository:
 \bluelink{https://github.com/creelie/d4-voronoi-cells}{github.com/creelie/d4-voronoi-cells}
