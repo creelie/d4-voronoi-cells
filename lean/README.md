@@ -1,8 +1,8 @@
 # Lean 4 verification
 
-Eleven files and three small Lake projects: machine checks of finite
+Twelve files and three small Lake projects: machine checks of finite
 arithmetic and of polynomial identities taken from the paper.
-`run_all.sh` checks the eleven files with
+`run_all.sh` checks the twelve files with
 the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
 prints the axiom report of each; the three Lake projects are built with
 `lake build` in their directories.
@@ -68,6 +68,15 @@ exactly 8.  The slice formula and the reduction to one sector are the
 paper's argument, checked with sympy and numerically by
 `multi_cap/second_order/hexagon_loop.py`.  About a second.  Log:
 `runs/D4HexagonLoop_2026-09-27.log`.
+
+`D4SecondCode.lean` (new in v1.8.0) covers Proposition 2.28, a second
+24-point code: 24 points of S^3 with rational coordinates (written by
+`multi_cap/second_order/code24_exact.py` into `code24_exact.txt`), each of
+norm 1, every two with inner product at most 1/2 + 849/50000, and one inner
+product at distance at least 57/250 from -1, -1/2, 0, 1/2, 1, so that the set
+is at distance d(W) >= 57/500 from the root system (the last step is the
+paper's).  Statement (i) of "What is left" therefore fails from slack
+0.01698 on.  About a second.  Log: `runs/D4SecondCode_2026-09-27.log`.
 
 `D4NearContact.lean` (new in v1.8.0) covers the exact arithmetic of the
 explicit constant epsilon_0 = 4e-26 of Theorem 2.18 (parts B to E of
@@ -203,7 +212,8 @@ the 256 cell integrals of `D4LabelledData` are confirmed by the values
 computed here, and it reruns II_s (39 551 boxes) and II_f (9 545) with the Lean
 tables, which then take nothing from outside Lean but the certificate;
 `D4OmegaRegionI.lean` reruns region I, the check of `D4CertMain`, with the Lean
-table, and passes in 954 s.  Build log `runs/D4Omega_build_2026-09-27.log`.
+table, and passes in 954 s on 419 913 boxes (421 881 with the tables of
+`D4CertData`).  Build log `runs/D4Omega_build_2026-09-27.log`.
 
 `cardinality/` (new in v1.8.0) covers the certificate of Theorem 7.79,
 the kissing number is stable: every set of points of S^3 with pairwise
@@ -270,7 +280,7 @@ three counts the enumeration returns and settles them by `native_decide`.
 ## What they need
 
 A Lean 4 toolchain, and nothing else. There is no Mathlib dependency. For
-the eleven files there is no `lakefile`: install elan and run
+the twelve files there is no `lakefile`: install elan and run
 
     lean D4Stress.lean
     lean D4Meet.lean
@@ -280,14 +290,15 @@ the eleven files there is no `lakefile`: install elan and run
     lean D4Closure.lean
     lean D4SecondOrder.lean
     lean D4HexagonLoop.lean
+    lean D4SecondCode.lean
     lean D4NearContact.lean
     lean D4Rigidity.lean
     lean D4Cap.lean
 
 or `sh run_all.sh`. The first two take a few seconds, the third about
 twenty, the fourth about forty, the fifth about six and the sixth about
-ninety, the seventh about thirty, the eighth about a second, the ninth
-about twenty, and the tenth and eleventh about ten each. Silence means
+ninety, the seventh about thirty, the eighth and ninth about a second
+each, the tenth about twenty, and the eleventh and twelfth about ten each. Silence means
 every theorem in the file was accepted by the kernel; the axiom audit at the foot of each file then prints
 one line per theorem. For the projects,
 

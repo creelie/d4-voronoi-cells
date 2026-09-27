@@ -132,9 +132,10 @@ by Anthropic.
                       Remark 7.78; the 25-point code.  Logs:
                         runs/robust_ceiling.log, runs/code25_search.log,
                         runs/code25_best.txt.
-  lean/               Seven new parts in Lean, fourteen in all: D4SecondOrder.lean
+  lean/               Eight new parts in Lean, fifteen in all: D4SecondOrder.lean
                         (Section 2.9), D4HexagonLoop.lean (the algebra of
-                        Proposition 2.26), D4NearContact.lean (the exact
+                        Proposition 2.26), D4SecondCode.lean (the second
+                        24-point code, Proposition 2.28), D4NearContact.lean (the exact
                         arithmetic of epsilon_0 in Theorem 2.18),
                         D4Rigidity.lean (the spectrum and the 11/16 diagonal
                         of Lemma 7.50), D4Cap.lean (the extremal cap
@@ -1913,6 +1914,7 @@ The Lean developments are checked with
   lean lean/D4Closure.lean
   lean lean/D4SecondOrder.lean
   lean lean/D4HexagonLoop.lean
+  lean lean/D4SecondCode.lean
   lean lean/D4NearContact.lean
   lean lean/D4Rigidity.lean
   lean lean/D4Cap.lean
