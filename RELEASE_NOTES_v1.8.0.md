@@ -99,6 +99,13 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   spectrum, the one-centre formula (1e-14), Lemma 2.23 on 400 push patterns.
   Two statements of the draft are corrected: the eigenvalue -6.194 has
   multiplicity 8, and the push-out block is Adj - 4I.
+- In Lean: lean/D4SecondOrder.lean builds H, the cone and c from the
+  integral root system inside the proof assistant, reads only the 43 orbit
+  values of the certificate, and proves the certificate of Proposition 2.21
+  (exact LDL^T, 30 zero pivots with zero rows), the push-out block and the
+  identity of Proposition 2.20, the equality on the one-centre rays, and the
+  expansions of Lemma 2.23 (grind).  About thirty seconds; nine parts of the
+  paper are now checked in Lean.
 
 ## What is measured, not proved
 

@@ -1,8 +1,8 @@
 # Lean 4 verification
 
-Six files and two small Lake projects: machine checks of finite
+Seven files and two small Lake projects: machine checks of finite
 arithmetic and of polynomial identities taken from the paper.
-`run_all.sh` checks the six files with
+`run_all.sh` checks the seven files with
 the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
 prints the axiom report of each; the two Lake projects are built with
 `lake build` in their directories.
@@ -27,6 +27,27 @@ combinatorial theorems on propext at most; nothing uses `native_decide`.
 About two minutes.  The log of the run behind v1.6.0 is
 `runs/run_all_2026-09-25_v1.6.0.log` (behind v1.5.0,
 `runs/run_all_2026-09-25.log`).
+
+`D4SecondOrder.lean` (new in v1.8.0) covers the exact content of Section
+2.9, the second order of the cell volume at the root system.  It computes
+everything from the integral root system: the 24 roots, the 24 vertices of
+the scaled 24-cell, a rational basis of each tangent space, the 96 tight
+pairs and their triangles, the form H of Proposition 2.20 by the midpoint rule,
+the 120 rows of the first-order packing cone and c.  The only data are the
+certificate of Proposition 2.21, 43 orbit values of N written by
+`gen_second_order_lean.py` from `multi_cap/second_order/exact_certificate.pkl`.
+It proves that N is nonnegative and covers every pair of cone rows exactly
+once, that P = H + c c^T - B^T N B is symmetric and positive semidefinite by
+an exact LDL^T with 30 zero pivots, each with a zero row (so H(xi,xi) >=
+-(sum delta_i)^2 on the cone), that H is Adj - 4I on the push-outs and H + c c^T
+is Adj + 4(J - I) there (the identity of Proposition 2.20), that equality holds
+on the 24 one-centre rays, and, with `grind` over every commutative ring, the
+expansions of Lemma 2.23 and of the one-centre formula.  The finite checks
+are settled by `native_decide`, about thirty seconds.  That H is the Hessian
+of the volume and that B are the linearised packing constraints are Lemma
+2.19 and the paper, checked numerically by
+`multi_cap/second_order/independent_check.py`; they are not formalised.  Log:
+`runs/D4SecondOrder_2026-09-27.log`.
 
 `D4Stress.lean` covers Proposition 7.48 and the corollary that follows it:
 the equilibrium stress on the eighty-eight tight pairs of a deletion
@@ -114,10 +135,11 @@ the six files there is no `lakefile`: install elan and run
     lean D4InnerProducts.lean
     lean D4RootLattices.lean
     lean D4Closure.lean
+    lean D4SecondOrder.lean
 
 or `sh run_all.sh`. The first two take a few seconds, the third about
 twenty, the fourth about forty, the fifth about six and the sixth about
-ninety. Silence means
+ninety, and the seventh about thirty. Silence means
 every theorem in the file was accepted by the kernel; the axiom audit at the foot of each file then prints
 one line per theorem. For the projects,
 
