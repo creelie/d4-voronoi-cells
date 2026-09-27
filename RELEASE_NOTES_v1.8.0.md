@@ -83,9 +83,11 @@ Everything proved in v1.7.0 still stands.  New or sharper:
 - Lemma 2.23 and Proposition 2.24: pure push-outs integrated exactly, by
   Brunn-Minkowski.
 - Remark 2.22: what is still missing for statement (ii): tilting is not
-  monotone (untilt.py), and the third-order remainder is not bounded; on 300
-  tilted packings vol - 8 - (2/3) S + (1/2) S^2 >= 0 holds in every case
-  (remainder_test.py; floating point).
+  monotone (untilt.py), the third-order remainder is not bounded (on 300
+  tilted packings vol - 8 - (2/3) S + (1/2) S^2 >= 0 holds in every case,
+  remainder_test.py, floating point), and the part of V(Y) outside the
+  inversion hull needs a sharper bound than 13958 Theta^4 (it is below 1e-6
+  along both rays up to 0.197, multi_cap/hull_along_rays.py).
 - Remark 2.25: two corrections to the list of what is left, which now has
   four items: along the ray of one centre pushed out the slack reaches
   delta/4 = 0.049, beyond any statement about the slack alone (25-point codes
@@ -184,9 +186,12 @@ within sqrt 6, one of them at a distance between 2 + epsilon_0 and sqrt 6.
 1. the shape of 24 directions at slack of order 1e-2 (proved at 2e-26;
    its cardinality half, Theorem 7.79, at 0.008);
 2. the volume for 24 centres near the root system between Sum delta_i = 4e-3
-   and 0.155, reduced in Section 2.9 to vol - 8 >= (2/3) S - (1/2) S^2,
-   certified at second order, proved for pure push-outs, and true on every
-   packing tested;
+   and 0.155: the inequality vol V(Y) - 8 >= (2/3) S - (1/2) S^2, certified
+   at second order in Section 2.9, proved for pure push-outs and true on
+   every packing tested, together with a bound for the part of V(Y) outside
+   the inversion hull.  Part (c) of Theorem 2.18 bounds that part by
+   13958 Theta^4; along both rays it is below 1e-6 up to 0.197
+   (hull_along_rays.py), so the bound, not the hull, is what is weak;
 3. twenty-three contacts with one near-contact, a classification of codes
    of its own (Remark 2.25);
 4. certificates for 24 centres away from the root system and for each

@@ -1945,9 +1945,12 @@ of a $24$-cell. Four statements would close that case, and with it
   terms.} For exactly $24$ centres within $\sqrt6$ with $d(W)\le\frac1{48}$,
   $\vol(V_c)\ge8$ for $\sum\delta_i$ from $4\cdot10^{-3}$, where
   \cref{thm:near-contact} ends, up to where the right side of
-  \cref{lem:no-triple} reaches $8$, about $0.155$. \Cref{sec:second-order}
-  reduces it to the inequality $\vol V(Y)-8\ge\frac23S-\frac12S^2$, certifies
-  that inequality at second order, and proves it for pure push-outs.
+  \cref{lem:no-triple} reaches $8$, about $0.155$. It needs two things:
+  the inequality $\vol V(Y)-8\ge\frac23S-\frac12S^2$, which
+  \cref{sec:second-order} certifies at second order and proves for pure
+  push-outs, and a bound for the part of $V(Y)$ outside the inversion hull,
+  which part (c) of the proof of \cref{thm:near-contact} gives only as
+  $13\,958\,\Theta^4$.
 \item \emph{Twenty-three contacts and one near-contact.} Along the ray of one
   centre pushed out the slack is $\delta/4$, beyond the reach of (i) for
   $\delta$ between $0.04$ and $0.197$, where the pair terms take over
@@ -2298,7 +2301,15 @@ $0.004\,S^3$, where the estimates of the proof of \cref{thm:near-contact}
 have constants of order $10^2$ already at second order; the proof, if there
 is one, is structural, and the natural structure
 is that the extremal family is the one-centre ray, on which everything is
-explicit.
+explicit. Third, the cell: the inequality concerns $V(Y)$, and far centres
+may cut off the part of $V(Y)$ outside the inversion hull $K(Y)$
+(\cref{prop:inversion-hull}), which part (c) of the proof of
+\cref{thm:near-contact} bounds by $13\,958\,\Theta^4$. That bound is far
+from the truth: along the ray of one centre pushed out and along the even
+push, $\vol(V(Y)\setminus K(Y))$ stays below $10^{-6}$ up to $\delta=0.197$,
+where the bound is $21$, and grows roughly as the seventh power of $\delta$
+(\texttt{hull\_along\_rays.py}). A proof of (ii) needs a hull estimate of
+that quality beside the inequality above.
 \end{remark}
 
 \begin{lem}[Pure push-outs, exactly]\label{lem:pure-push}
@@ -10534,7 +10545,8 @@ and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{explicit\_eps0.py}, \texttt{three\_point\_probes.py},
 \texttt{cardinality\_sdp.py}, \texttt{certify\_cardinality.py},
 \texttt{robust\_ceiling.py}, \texttt{code25\_search.py},
-\texttt{facet\_bounds\_probe.py} and \texttt{count\_survey.py}), the
+\texttt{facet\_bounds\_probe.py}, \texttt{count\_survey.py} and
+\texttt{hull\_along\_rays.py}), the
 scripts \texttt{level2\_numeric.py}, \texttt{level2\_sampled.py} and
 \texttt{d4\_independent\_check.py}, those of the directory
 \texttt{level2} and \texttt{multi\_cap/second\_order}, the collision test
@@ -11821,7 +11833,9 @@ in three seconds; \texttt{cone\_min.py}, \texttt{certify\_m.py} and
 form in floating point and its spectrum, \texttt{exact\_push.py} the push-out
 statements, and \texttt{untilt.py} and \texttt{remainder\_test.py} the
 experiments of \cref{rem:second-order-gap}, the second writing the data of
-\cref{fig:second-order}(b). \texttt{independent\_check.py} recomputes every
+\cref{fig:second-order}(b). \texttt{hull\_along\_rays.py}, in \texttt{multi\_cap}, measures the part of
+$V(Y)$ outside the inversion hull along the two rays of
+\cref{rem:second-order-gap}. \texttt{independent\_check.py} recomputes every
 volume it needs by intersecting halfspaces, and checks $H$ against second
 differences, the cone rows against the exact distances, the spectrum, the
 one-centre formula and \cref{lem:pure-push}.
