@@ -5,10 +5,12 @@ Twenty-Four-Cell Conjecture*.  This release goes with the journal form of
 the paper.  It adds the second order of the cell volume at the root system
 (Section 2.9), an exact closed curve of contact cells of volume 8, a second
 twenty-four-point code far from the root system, and the reduction of
-Conjecture 1.6 to two explicit statements, (G) and (C) (Proposition 2.30).
-Fifteen parts of the paper are now checked in Lean 4, eight of them new.
-Conjecture 1.6 remains open, and the paper says so: (G) and (C) are stated
-as the precise open statements.  The new code was developed, and its
+Conjecture 1.6 to two explicit statements, (G) and (C) (Proposition 2.30),
+and it proves (C) for every count of at least 31 centres within sqrt6
+(Theorem 2.32).  Fifteen parts of the paper are now checked in Lean 4, eight
+of them new.  Conjecture 1.6 remains open, and the paper says so: (G), and
+(C) for 25 to 30 centres, are stated as the precise open statements, with
+what a proof of each needs (Section 2.10).  The new code was developed, and its
 computations run, with the assistance of Claude, an AI model made by
 Anthropic.
 
@@ -73,10 +75,41 @@ Everything proved in v1.8.0 still stands.  New:
   2.15, the inversion hull (Proposition 2.13), Theorem 2.17 and Lemma 2.11.
   Remark 2.29 explains why the condition T(Y) <= 8 in (G) cannot be
   dropped.
+- **Theorem 2.32 ((C) from thirty-one centres on).**  If at least 31 centres
+  lie within sqrt6 of c, the union of the caps of Lemma 2.15 has volume
+  below 3.0854, so vol(V_c) >= T(Y) > 8.0179.
+  - The proof is a two-point kernel certificate in the style of Delsarte,
+    with the distance from c as a continuous label: Chebyshev polynomials of
+    the distance (degree 4) times the zonal polynomials U_k of S^3 (degree
+    12).  If the kernel lies below the pair term on every pair the packing
+    allows, the union is at most |Y| m + t/2 with m = -0.0728 < 0, so one
+    certificate settles every count from 31 on.
+  - Lemma 2.31 gives the pair term in closed form and proves that it
+    decreases in the distances and increases in the inner product, so that
+    its value at one corner bounds it on a box.
+  - The certificate is proved in exact and ball arithmetic: exact LDL^T
+    for positivity, the Schur complement made exact, the pair inequality by
+    a Bernstein branch and bound (191 740 boxes, 54 248 values of the pair
+    term in Arb), the per-point bracket on 356 intervals, and
+    31 m + t/2 = 3.08537 < 9 pi^2/8 - 8 = 3.10330; under two minutes
+    (multi_cap/radial_count_check.py).
+- **Corollary 2.34 (no room beside a near root system).**  If 24 centres
+  lie within rho of c and their directions are each within
+  1/sqrt2 - a(sqrt6, rho) of a copy of the normalised roots (0.0930 for
+  rho = 2.0161), no other centre lies within sqrt6; with Theorem 7.76, 24
+  centres within 2/sqrt(1 - 4e-26) leave no room for another within sqrt6.
+- **Section 2.10, what (G) and (C) still need** (Remarks 2.33, 2.35 and
+  2.36): why kernels on pairs stop at 31 (the same method bounds the kissing
+  number of R^4 only by 25), a table of the best two-point bound against the
+  largest union found for every count (Table 2), the two cases of (C) from
+  25 to 30 (24 centres close to c, which needs the shape half of Theorem
+  7.79 with a tolerance of 0.093 per direction; 23 centres close to c, which
+  needs a certificate spent on triples), and the localisation and the volume
+  bound that (G) needs, with the numbers of the gap.
 
 ## In Lean 4
 
-Eight new parts, fifteen in all (Table 4 of the paper):
+Eight new parts, fifteen in all (Table 5 of the paper):
 
 - lean/D4SecondOrder.lean: H, the cone and c built from the integral root
   system; the certificate of Proposition 2.21 by exact LDL^T; the push-out
@@ -109,12 +142,13 @@ No proof uses `sorry`.
 
 ## The paper in journal form
 
-- The abstract (91 words) states only what is proved.
+- The abstract (94 words) states only what is proved; it now includes the
+  count from thirty-one on.
 - The introduction, Section 2.8 and the conclusion are rewritten around
   Proposition 2.30.
 - The reproducibility sections are replaced by one section, "Computer
   verification" (Section 23), which says what kind of computation each
-  claim rests on and lists the formal part (Table 4), and by an appendix,
+  claim rests on and lists the formal part (Table 5), and by an appendix,
   "Methods of computation" (Appendix F).  File names of the package no
   longer appear in the text; the data and code availability statement
   points to the archive.
@@ -122,19 +156,25 @@ No proof uses `sorry`.
   the plane of the turned hexagon, a slice, the slices in three dimensions,
   and the tilt and largest inner product along the curve) and Figure 13
   (the spectra of the two codes, the deepest hole and the least contact
-  cell against the slack, and the cases of Proposition 2.30).
+  cell against the slack, and the cases of Proposition 2.30), Figure 14
+  (Theorem 2.32: the two-point bound against the count, the kernel of the
+  certificate against the pair term, and what settles each count), and
+  Table 2.
 - The collision test of the TikZ figures is stricter: no two nodes overlap,
   pgfplots tick labels included, and no line, curve, marker or outline
-  passes under any text.  All nine TikZ figures pass it
-  (paper/figures_new/tikz_overlap_check.log); Figures 4, 6, 8 and 30 are
+  passes under any text.  All ten TikZ figures pass it
+  (paper/figures_new/tikz_overlap_check.log); Figures 4, 6, 8 and 31 are
   redrawn to do so.
 - "What is left" (end of Section 2.8) lists four statements, now with the
   reason each is needed; along the ray of one centre pushed out the slack
   reaches delta/4 = 0.049, beyond any statement about the slack alone.
 - New reference: Hales and McLaughlin, The dodecahedral conjecture,
   J. Amer. Math. Soc. 23 (2010), 299-344, doi:10.1090/S0894-0347-09-00647-X,
-  for why the three-dimensional analogue of the local statement fails.
-- 170 pages; no overfull boxes and no undefined references.
+  for why the three-dimensional analogue of the local statement fails; and
+  Odlyzko and Sloane, J. Combin. Theory Ser. A 26 (1979), 210-214,
+  doi:10.1016/0097-3165(79)90074-8, for the two-point bound on the kissing
+  number.
+- 175 pages; no overfull boxes and no undefined references.
 - Section 20 and 28 other section, subsection and appendix headings are
   retitled; the sections and their numbers are unchanged, and no theorem,
   lemma or proposition number that existed in v1.8.0 changes.
@@ -167,6 +207,12 @@ No proof uses `sorry`.
   value 0 (multi_cap/cap_probe.py, sampled constraints,
   runs/cap_probe_d7.log).  The paper records this beside the earlier probe
   with 24 contacts.
+- The best two-point bound on the union of the caps for each count
+  (multi_cap/radial_count_sdp.py scan, runs/radial_count_scan.log): 3.330,
+  3.360, 3.307, 3.253, 3.199, 3.144 for 25 to 30 centres, all above 3.10330;
+  3.080 at 31, falling to 0.174 at 49.  So kernels on pairs stop at 31.
+- The deepest hole of the second code of Proposition 2.28 is at inner
+  product 0.659, above 0.6141 (floating point, 3000 local minimisations).
 
 ## New and changed files
 
@@ -176,14 +222,22 @@ No proof uses `sorry`.
   cell_hull_search.py, hole24.py, with logs in runs/; see the README there.
 - multi_cap/cap_probe.py (log runs/cap_probe_d7.log): the labelled
   three-point probe with an inner slack.
+- multi_cap/radial_count_sdp.py (finds the certificate of Theorem 2.32, and
+  with "scan" the bounds of Table 2), multi_cap/radial_count_check.py (the
+  proof), multi_cap/radial_certificates/radial_31.json, and logs
+  runs/radial_count_sdp_31.log, runs/radial_count_check_31.log,
+  runs/radial_count_scan.log.
 - lean/: the eight new parts above, with logs in lean/runs/.
-- paper/figures_new/tikz_hexloop.tex and tikz_codes.tex (Figures 12 and 13).
+- paper/figures_new/tikz_hexloop.tex, tikz_codes.tex and tikz_count31.tex
+  (Figures 12, 13 and 14), with count31_data.py and its two data files.
 - CITATION.cff and .zenodo.json: v1.9.0.
 
 ## What is left
 
-Conjecture 1.6 follows from (G) and (C) of Proposition 2.30.  Neither is
-proved.  (G) is a lower bound for the volume of a polytope over sets of 24
-centres near the root system; the numerical searches find nothing below 8.
-(C) needs a certificate for each count from 25 to 49; the least value of T
-found for such counts is 8.264115, at 25.  Theorem 1.8 is unchanged.
+Conjecture 1.6 follows from (G) and from (C) for 25 to 30 centres; neither
+is proved.  (G) is a lower bound for the volume of a polytope over sets of
+24 centres near the root system; the numerical searches find nothing below
+8.  (C) from 25 to 30 needs a certificate that sees more than pairs; the
+least value of T found for those counts is 8.264115, at 25.  Section 2.10
+says what each needs and why the methods of the paper stop short of it.
+Theorem 1.8 is unchanged.

@@ -1,0 +1,103 @@
+% tikz_count31.tex -- Theorem 2.32 and Remark 2.33: statement (C) from thirty-one centres on.
+%   (a) The best two-point bound on the union of the caps for M centres within sqrt6 (floating point,
+%       radial_count_sdp.py scan), the largest union found by the search of Figure 9, and the level
+%       9 pi^2/8 - 8 that (C) requires.
+%   (b) The kernel K of the certificate of Theorem 2.32 and the pair term Pi at d = d' = 2, times 10^3,
+%       against the inner product u.  (c) The same near u = 1/2, where Pi is positive.
+%   (d) The counts of centres within sqrt6 and what settles each.
+% Data: python3 count31_data.py (writes count31_bounds.dat and count31_kernel.dat).
+% Build:  pdflatex tikz_count31.tex && pdftoppm -r 500 -png -singlefile tikz_count31.pdf ../figures/fig_tikz_count31
+% Test:   python3 tikz_overlap_check.py --auto tikz_count31.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cviolet}{HTML}{7A5AC8}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\autocheck
+\begin{document}
+\begin{tikzpicture}[font=\small]
+%% (a) the bound against the count
+\begin{axis}[name=A, width=7.6cm, height=5.6cm, xmin=22.6, xmax=49.5, ymin=0, ymax=3.75,
+    xtick={24,28,31,36,40,44,49}, ytick={0,1,2,3},
+    xlabel={centres within $\sqrt6$}, ylabel={union of the caps},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    legend cell align=left, legend columns=2, legend style={font=\footnotesize, at={(0.5,1.04)}, anchor=south, draw=cink3, fill=white, /tikz/every even column/.append style={column sep=6pt}},
+    unbounded coords=discard, clip=false]
+  \fill[caqua!10] (axis cs:30.5,0) rectangle (axis cs:49.5,3.75);
+  \addplot[cblue, line width=0.9pt, mark=*, mark size=1.3pt] table[x=M, y=bound] {count31_bounds.dat};
+  \addlegendentry{two-point bound}
+  \addplot[only marks, corange, mark=o, mark size=1.7pt, line width=0.6pt] table[x=M, y=found] {count31_bounds.dat};
+  \addlegendentry{largest union found}
+  \addplot[cink2, densely dashed, line width=0.7pt, domain=22.6:49.5] {3.10330};
+  \coordinate (Alev) at (axis cs:49.3,3.10330);
+  \coordinate (Athm) at (axis cs:41,3.0);
+\end{axis}
+\node[font=\footnotesize, text=cink2, anchor=south east] at ($(Alev)+(0,0.06)$) {$\tfrac98\pi^2-8$};
+\node[font=\footnotesize, text=caqua!70!black, anchor=north] at (Athm) {Theorem~2.32};
+\node[font=\bfseries] at ($(A.north west)+(-1.05cm,0.3cm)$) {(a)};
+%% (b) the kernel against the pair term at d = d' = 2
+\begin{axis}[name=B, at={($(A.east)+(1.9cm,0)$)}, anchor=west, width=7.6cm, height=5.6cm,
+    xmin=-1.04, xmax=0.54, ymin=-15.5, ymax=3.2,
+    xtick={-1,-0.5,0,0.5}, xticklabels={$-1$,$-\tfrac12$,$0$,$\tfrac12$}, ytick={-15,-10,-5,0},
+    xlabel={inner product $u$ at $d=d'=2$}, ylabel={$10^3K$, $10^3\Pi$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    legend cell align=left, legend style={font=\footnotesize, at={(0.5,0.02)}, anchor=south, draw=cink3, fill=white},
+    clip=false]
+  \addplot[cink3, densely dotted, line width=0.5pt, domain=-1.04:0.54, forget plot] {0};
+  \addplot[cblue, line width=0.9pt] table[x=u, y=K] {count31_kernel.dat};
+  \addlegendentry{kernel $K$}
+  \addplot[corange, line width=0.9pt] table[x=u, y=Pi] {count31_kernel.dat};
+  \addlegendentry{pair term $\Pi$}
+  \draw[cink3, densely dotted, line width=0.5pt] (axis cs:0.3,-9.2) rectangle (axis cs:0.5,1.9);
+  \coordinate (Bbox) at (axis cs:0.4,-9.2);
+\end{axis}
+\node[font=\footnotesize, text=cink2, anchor=north] at ($(Bbox)+(0,-0.08)$) {see (c)};
+\node[font=\bfseries] at ($(B.north west)+(-1.05cm,0.3cm)$) {(b)};
+%% (c) near u = 1/2
+\begin{axis}[name=Cc, at={($(A.south)+(0,-2.25cm)$)}, anchor=north, width=7.6cm, height=5.0cm,
+    xmin=0.3, xmax=0.505, ymin=-9.2, ymax=1.9,
+    xtick={0.3,0.3333,0.4,0.5}, xticklabels={$0.3$,$\tfrac13$,$0.4$,$\tfrac12$}, ytick={-8,-6,-4,-2,0},
+    xlabel={inner product $u$ at $d=d'=2$}, ylabel={$10^3K$, $10^3\Pi$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    clip=false]
+  \addplot[cink3, densely dotted, line width=0.5pt, domain=0.3:0.505] {0};
+  \addplot[cblue, line width=0.9pt, restrict x to domain=0.3:0.505] table[x=u, y=K] {count31_kernel.dat};
+  \addplot[corange, line width=0.9pt, restrict x to domain=0.3:0.505] table[x=u, y=Pi] {count31_kernel.dat};
+  \addplot[only marks, cink2, mark=*, mark size=1.3pt] coordinates {(0.5,1.4454)};
+  \coordinate (Cpt) at (axis cs:0.5,1.4454);
+  \coordinate (Czero) at (axis cs:0.3333,0);
+\end{axis}
+\node[font=\footnotesize, text=cink2, anchor=south east] (Clab) at ($(Cpt)+(-0.25,0.45)$) {$\Pi(1,1,\tfrac12)=\omega(\tfrac12)$};
+\draw[cink3, line width=0.4pt] (Clab.south east) -- ($(Cpt)+(-0.04,0.05)$);
+\node[font=\footnotesize, text=corange, anchor=north west, align=left] at ($(Czero)+(0.05,-0.12)$) {$\Pi>0$ from $u=\tfrac13$};
+\node[font=\bfseries] at ($(Cc.north west)+(-1.05cm,0.3cm)$) {(c)};
+%% (d) the counts and what settles each: count n at (n - 16) u
+\begin{scope}[shift={($(B.south)+(-3.2cm,-3.3cm)$)}, font=\footnotesize]
+  \def\u{0.22}
+  \fill[caqua!45] (0,0.05) rectangle ({7.5*\u},0.55);
+  \fill[corange!60] ({7.5*\u},0.05) rectangle ({8.5*\u},0.55);
+  \fill[corange!28] ({8.5*\u},0.05) rectangle ({14.5*\u},0.55);
+  \fill[caqua!45] ({14.5*\u},0.05) rectangle ({33.5*\u},0.55);
+  \draw[cink2, line width=0.4pt] (0,0) -- ({33.5*\u},0);
+  \foreach \k in {0,...,33} { \draw[cink3, line width=0.3pt] ({\k*\u},0) -- ({\k*\u},-0.07); }
+  \node[anchor=north, text=corange!85!black] at ({8*\u},-0.1) {$24$: (G)};
+  \node[anchor=north, text=cink2] at ({15*\u},-0.1) {$31$};
+  \node[anchor=north, text=cink2] at ({33*\u},-0.1) {$49$};
+  \node[anchor=south, align=center, text=caqua!55!black] at ({3.75*\u},0.62) {at most $23$:\\ Theorem~2.17};
+  \node[anchor=south, align=center, text=corange!85!black] at ({11.5*\u},0.62) {$25$ to $30$:\\ (C) open};
+  \node[anchor=south, align=center, text=caqua!55!black] at ({24*\u},0.62) {from $31$ on:\\ Theorem~2.32};
+\end{scope}
+\node[font=\bfseries] at ($(B.south west)+(-1.05cm,-1.95cm)$) {(d)};
+\checkfigure
+\end{tikzpicture}
+\end{document}

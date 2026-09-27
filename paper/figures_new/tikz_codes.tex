@@ -32,11 +32,11 @@
     ytick={0,25,50,75,100},
     xlabel={inner product}, ylabel={number of pairs},
     axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
-    legend cell align=left, legend columns=2, legend style={font=\footnotesize, at={(0.5,0.99)}, anchor=north, draw=cink3, fill=white},
+    legend cell align=left, legend columns=2, legend style={font=\footnotesize, at={(0.5,0.99)}, anchor=north, draw=cink3, fill=white, /tikz/every even column/.append style={column sep=8pt}},
     clip=false]
-  \addplot[ycomb, cblue, line width=2.2pt] coordinates {(-1,12) (-0.5,96) (0,72) (0.5,96)};
+  \addplot[ycomb, cblue, line width=2.2pt, legend image code/.code={\draw[cblue, line width=2.2pt] (0.15cm,-0.12cm) -- (0.15cm,0.12cm);}] coordinates {(-1,12) (-0.5,96) (0,72) (0.5,96)};
   \addlegendentry{root system}
-  \addplot[ycomb, corange, line width=1.2pt, mark=*, mark size=1.1pt] coordinates {
+  \addplot[ycomb, corange, line width=1.2pt, mark=*, mark size=1.1pt, legend image code/.code={\draw[corange, line width=1.2pt] (0.15cm,-0.12cm) -- (0.15cm,0.08cm); \fill[corange] (0.15cm,0.08cm) circle (1.1pt);}] coordinates {
     (0.5170,84) (0.4583,4) (0.3524,12) (0.0628,12) (0.0498,12) (0.0340,3)
     (-0.1605,36) (-0.2740,24) (-0.2953,12) (-0.3327,24) (-0.5924,24) (-0.7282,4)
     (-0.8157,12) (-0.8380,6) (-0.9004,3) (-0.9429,4)};
@@ -89,18 +89,20 @@
     open/.style={box, fill=corange!12, draw=corange!80!black},
     arr/.style={-{Stealth[length=4pt]}, cink2, line width=0.5pt}]
   \node[box] (Y) at (0,0) {$Y$: the centres within $\sqrt6$};
-  \node[ok] (m23) at (-2.55,-1.35) {$|Y|\le23$\\ Theorem 2.17};
-  \node[box] (m24) at (0,-1.35) {$|Y|=24$};
-  \node[open] (m25) at (2.55,-1.35) {$|Y|\ge25$\\ statement (C)};
-  \node[ok] (T8) at (-1.2,-2.75) {$T(Y)>8$\\ Lemma 2.15};
-  \node[open] (G) at (1.35,-2.75) {$T(Y)\le8$\\ statement (G)};
+  \node[ok] (m23) at (-3.0,-1.35) {$|Y|\le23$\\ Theorem 2.17};
+  \node[box] (m24) at (-1.0,-1.35) {$|Y|=24$};
+  \node[open] (m25) at (1.15,-1.35) {$25\le|Y|\le30$\\ statement (C)};
+  \node[ok] (m31) at (3.35,-1.35) {$|Y|\ge31$\\ Theorem 2.32};
+  \node[ok] (T8) at (-2.1,-2.75) {$T(Y)>8$\\ Lemma 2.15};
+  \node[open] (G) at (0.1,-2.75) {$T(Y)\le8$\\ statement (G)};
   \draw[arr] (Y) -- (m23);
   \draw[arr] (Y) -- (m24);
   \draw[arr] (Y) -- (m25);
+  \draw[arr] (Y) -- (m31);
   \draw[arr] (m24) -- (T8);
   \draw[arr] (m24) -- (G);
 \end{scope}
-\node[font=\bfseries] at ($(B.south west)+(-1.05cm,-1.55cm)$) {(d)};
+\node[font=\bfseries] at ($(B.south west)+(-1.25cm,-1.55cm)$) {(d)};
 \checkfigure
 \end{tikzpicture}
 \end{document}
