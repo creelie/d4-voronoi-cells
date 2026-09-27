@@ -1930,7 +1930,28 @@ $\vol(V_c)=8$ only if $V_c=Q$.
 $24$ other centres within $\sqrt6$; at least one of them at a distance
 between $2+\varepsilon_0$ and $\sqrt6$; $\Phi\le8$ and $\Psi\le8$; and
 contacts that do not contain one orthogonal pair of roots at each vertex
-of a $24$-cell. Near the root system the inversion hull is
+of a $24$-cell. Three statements would close that case, and with it
+\cref{conj:shell} and, by \cref{thm:main-general}, the density bound $\pi^2/16$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item \emph{The shape of twenty-four directions at positive slack.} Any
+  $24$ unit vectors of $\mathbb{R}^4$ with pairwise inner products at most
+  $\tfrac12+s$, for $s$ of order $10^{-2}$, satisfy $d(W)\le\frac1{48}$. It is
+  proved for $s\le2\cdot10^{-26}$ (\cref{thm:m24-robust}), and its cardinality
+  half for $s\le0.008$ (\cref{thm:kissing-stable}).
+\item \emph{The volume between the explicit neighbourhood and the pair
+  terms.} For exactly $24$ centres within $\sqrt6$ that satisfy (i)'s
+  conclusion, $\vol(V_c)\ge8$ for $\sum\delta_i$ from $4\cdot10^{-3}$, where
+  \cref{thm:near-contact} ends, up to where the right side of
+  \cref{lem:no-triple} reaches $8$, about $0.155$.
+\item \emph{Certificates for the other configurations.} The right side of
+  \cref{lem:no-triple} is at least $8$ for $24$ centres within $\sqrt6$ away
+  from the root system, and for each count from $25$ to the largest that
+  fits, as \cref{thm:m23-labelled} shows for $23$.
+\end{enumerate}
+Statement (i) is the core: (ii) needs it to place the directions, and (iii)
+needs it to see that twenty-four centres close to $c$ leave no room for
+another within $\sqrt6$. What follows is the evidence for each, and why the
+methods of this paper stop short of them. Near the root system the inversion hull is
 sharp to first order: \texttt{near\_contact\_probe.py} finds
 $\vol(V(Y)\cap K(Y))-8$ and $\vol(V_c)-8$ equal to
 $\frac23\sum\delta_i$ to first order on the root system pushed out, and
