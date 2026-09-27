@@ -98,8 +98,16 @@ Everything proved in v1.8.0 still stands.  New:
   1/sqrt2 - a(sqrt6, rho) of a copy of the normalised roots (0.0930 for
   rho = 2.0161), no other centre lies within sqrt6; with Theorem 7.76, 24
   centres within 2/sqrt(1 - 4e-26) leave no room for another within sqrt6.
+- **Theorem 2.36 ((G) along the push-outs).**  If the 24 centres lie on the
+  rays of the normalised roots at distances 2 + delta_i and T(Y) <= 8, then
+  every delta_i < 0.1971 (T on the one-centre ray exceeds 8 there, in ball
+  arithmetic) and vol(V(Y) cap K(Y)) >= 8 + sum(delta_i)/5: the gain of
+  Lemma 2.23 against a loss of at most 768 sum eta_i^4, the part of V(Y)
+  outside the inversion hull lying in 24 vertex pyramids of volume 2 h_v^4.
+  Corollary 2.37: the conjecture holds whenever the 24 centres within sqrt6
+  lie on the rays of a root system (multi_cap/pushout_check.py).
 - **Section 2.10, what (G) and (C) still need** (Remarks 2.33, 2.35 and
-  2.36): why kernels on pairs stop at 31 (the same method bounds the kissing
+  2.38): why kernels on pairs stop at 31 (the same method bounds the kissing
   number of R^4 only by 25), a table of the best two-point bound against the
   largest union found for every count (Table 2), the two cases of (C) from
   25 to 30 (24 centres close to c, which needs the shape half of Theorem
@@ -174,7 +182,7 @@ No proof uses `sorry`.
   Odlyzko and Sloane, J. Combin. Theory Ser. A 26 (1979), 210-214,
   doi:10.1016/0097-3165(79)90074-8, for the two-point bound on the kissing
   number.
-- 175 pages; no overfull boxes and no undefined references.
+- 177 pages; no overfull boxes and no undefined references.
 - Section 20 and 28 other section, subsection and appendix headings are
   retitled; the sections and their numbers are unchanged, and no theorem,
   lemma or proposition number that existed in v1.8.0 changes.
@@ -220,6 +228,8 @@ No proof uses `sorry`.
   contact_valley.py, contact_cell_scan.py, contact_cell_constrained.py,
   code24_second.py, code24_exact.py (with code24_exact.txt),
   cell_hull_search.py, hole24.py, with logs in runs/; see the README there.
+- multi_cap/pushout_check.py (Theorem 2.36, log runs/pushout_check.log) and
+  multi_cap/count_core_survey.py (Remark 2.35, log runs/count_core_survey.log).
 - multi_cap/cap_probe.py (log runs/cap_probe_d7.log): the labelled
   three-point probe with an inner slack.
 - multi_cap/radial_count_sdp.py (finds the certificate of Theorem 2.32, and
@@ -235,7 +245,8 @@ No proof uses `sorry`.
 ## What is left
 
 Conjecture 1.6 follows from (G) and from (C) for 25 to 30 centres; neither
-is proved.  (G) is a lower bound for the volume of a polytope over sets of
+is proved in general, and (G) is proved along the push-outs of the root
+system (Theorem 2.36).  (G) is a lower bound for the volume of a polytope over sets of
 24 centres near the root system; the numerical searches find nothing below
 8.  (C) from 25 to 30 needs a certificate that sees more than pairs; the
 least value of T found for those counts is 8.264115, at 25.  Section 2.10

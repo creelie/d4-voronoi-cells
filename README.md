@@ -54,6 +54,12 @@ sqrt 6.  (C) is proved for every count from 31 on (Theorem 2.32); (G), and
 - Corollary 2.34: 24 centres whose directions are each within
   1/sqrt2 - a(sqrt 6, rho) of a root system (0.093 for rho = 2.0161) leave
   no room for another within sqrt 6.
+- Theorem 2.36: (G) along the push-outs of the root system.  If the 24
+  centres lie on the rays of the normalised roots, at distances 2 + delta_i,
+  and T(Y) <= 8, then every delta_i < 0.1971 and vol(V(Y) cap K(Y)) >=
+  8 + sum(delta_i)/5.  Corollary 2.37: the conjecture holds whenever the 24
+  centres within sqrt 6 lie on the rays of a root system.  Arithmetic in Arb
+  and exact rationals: multi_cap/pushout_check.py.
 - Section 2.10: what (G), and (C) from 25 to 30, still need, and why kernels
   on pairs and three-point certificates stop short (Table 2, Figure 14).
 - Eight new parts in Lean, fifteen in all (Table 5 of the paper).
@@ -73,7 +79,7 @@ assistance of Claude, an AI model made by Anthropic.
                         computation) replace the reproducibility sections,
                         and the text no longer names files of this package;
                         Section 2.9, Propositions 2.25 to 2.30 and Section
-                        2.10 (Lemma 2.31 to Remark 2.36) are new, with
+                        2.10 (Lemma 2.31 to Remark 2.38) are new, with
                         Figures 11 to 14 (figures_new/tikz_secondorder.tex,
                         tikz_hexloop.tex, tikz_codes.tex, tikz_count31.tex
                         with count31_data.py) and Table 2; later figures
@@ -1074,6 +1080,15 @@ with the assistance of Claude, an AI model made by Anthropic.
                               31 m + t/2 = 3.08537 < 9 pi^2/8 - 8.  Under
                               two minutes.  Log:
                               runs/radial_count_check_31.log.
+
+  pushout_check.py
+                              Theorem 2.36: T on the one-centre ray at
+                              delta = 0.1971 exceeds 8 (Arb), the pyramid
+                              condition (1 + eta)^2 - 1 < 1/3, and
+                              g(eta)/eta >= 2/5 on [0, 0.09855] (exact); and a
+                              floating-point comparison of the bound
+                              8 + sum(delta)/5 with qhull volumes of random
+                              push-outs.  Log: runs/pushout_check.log.
 
   count_core_survey.py M K [starts] [seed]
                               Remark 2.35.  Floating point, exploration: the
