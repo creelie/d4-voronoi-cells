@@ -202,8 +202,8 @@ a_D / (1 - (D/2) a_D) < 2 and fr(1, 1/2) < 1/22, that the slab constant and
 the 256 cell integrals of `D4LabelledData` are confirmed by the values
 computed here, and it reruns II_s (39 551 boxes) and II_f (9 545) with the Lean
 tables, which then take nothing from outside Lean but the certificate;
-`D4OmegaRegionI.lean` states region I, the check of `D4CertMain`, with the Lean
-table (a run of about twenty minutes).
+`D4OmegaRegionI.lean` reruns region I, the check of `D4CertMain`, with the Lean
+table, and passes in 954 s.  Build log `runs/D4Omega_build_2026-09-27.log`.
 
 `cardinality/` (new in v1.8.0) covers the certificate of Theorem 7.79,
 the kissing number is stable: every set of points of S^3 with pairwise

@@ -6758,8 +6758,9 @@ and $A_*$, in outward-rounded $256$-bit interval arithmetic inside Lean, with
 arctan from its series and $\pi$ from Machin's formula, tabulates $\omega$ and
 $\omega'$ on the grid of step $2^{-16}$ with $|\omega''|\le0.2856$, and
 \texttt{D4OmegaMain.lean} checks that $A_*$ exceeds $8-0.0928555703$;
-\texttt{D4OmegaRegionI.lean} states the branch and bound with that table,
-so that nothing is taken from outside Lean but the certificate. Hence \eqref{eq:C} holds on the
+\texttt{D4OmegaRegionI.lean} reruns the branch and bound with that table,
+and it passes in sixteen minutes, so that nothing is taken from outside
+Lean but the certificate. Hence \eqref{eq:C} holds on the
 admissible domain,
 \cref{lem:certificate} gives \eqref{eq:strict-pairs} for every contact
 configuration of $23$ directions, and \cref{thm:strict-reduction}
@@ -10558,7 +10559,8 @@ formula; \texttt{D4OmegaMain.lean} proves that $A_*>8-0.0928555703$, that
 $s(D)>8-A_*$, that the constant $c$ and the $256$ cell integrals of the data
 are confirmed, and reruns II$_s$ and II$_f$ with the Lean tables ($39\,551$ and
 $9\,545$ boxes), which then take nothing from outside Lean but the
-certificate; \texttt{D4OmegaRegionI.lean} states region I in the same way.
+certificate; \texttt{D4OmegaRegionI.lean} reruns region I with them as well,
+in sixteen minutes.
 
 The sixth is \texttt{lean/D4InnerProducts.lean}, on the certificate
 behind \cref{thm:twentyfour-points}: the two-point polynomial
@@ -11900,7 +11902,7 @@ written by \texttt{gen\_labelled\_data.py}, do the same for the regions
 II$_s$ and II$_f$ of \cref{thm:m23-labelled}, and \texttt{D4Omega.lean},
 \texttt{D4OmegaMain.lean} and \texttt{D4OmegaRegionI.lean} compute the tables of
 $\omega$, $A_*$ and the constants of that theorem inside Lean and rerun the
-branch and bounds of II$_s$ and II$_f$ with them. The sixth, \texttt{lean/D4InnerProducts.lean},
+branch and bounds of region I, II$_s$ and II$_f$ with them. The sixth, \texttt{lean/D4InnerProducts.lean},
 is the last step of the verification of the certificate: the two-point
 polynomial $\sigma_2$ of \cref{prop:verified}, computed exactly from the
 published data by \texttt{llm24\_certificate\_check.py} and written

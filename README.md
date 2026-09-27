@@ -460,9 +460,10 @@ with the assistance of Claude, an AI model made by Anthropic.
                         (D4LabelledMain.lean), with the tables of omega,
                         the slab constant and the cell integrals from
                         interval arithmetic (gen_data.py,
-                        gen_labelled_data.py), and II_s and II_f again with
-                        those computed inside Lean (D4Omega.lean,
-                        D4OmegaMain.lean; region I in D4OmegaRegionI.lean).  cardinality/: the whole
+                        gen_labelled_data.py), and region I, II_s and II_f
+                        again with those computed inside Lean (D4Omega.lean,
+                        D4OmegaMain.lean, D4OmegaRegionI.lean).
+                        cardinality/: the whole
                         check of the certificates of Theorem 7.79 from
                         their entries, positivity, the bound and both
                         branch and bounds (KissMain8.lean, KissMain10.lean;

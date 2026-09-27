@@ -172,7 +172,9 @@ Everything proved in v1.7.0 still stands.  New or sharper:
     for every m <= 22 and (9/8) pi^2 - 22 S(2) > 8.046, and the branch and
     bounds of regions II_s and II_f are rerun with the Lean tables (39 551 and
     9 545 boxes): they now take nothing from outside Lean but the
-    certificate.  D4OmegaRegionI.lean states region I with them.
+    certificate.  Region I passes with them too (D4OmegaRegionI.lean, 954 s),
+    so all three regions of Theorem 2.17 are checked with omega computed in
+    Lean.
   Closed definitions that run a check now live in the Main modules
   (lean/certificate/D4CertMain.lean holds verifyDomain), since a precompiled
   module evaluates its closed definitions when it is loaded; D4CertStat now
