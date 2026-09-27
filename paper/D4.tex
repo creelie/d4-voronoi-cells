@@ -1948,7 +1948,10 @@ of a $24$-cell. A proof of the bound at such a centre, and with it of
   \cref{sec:second-order} certifies at second order and proves for pure
   push-outs, and a bound for the part of $V(Y)$ outside the inversion hull,
   which part (c) of the proof of \cref{thm:near-contact} gives only as
-  $13\,958\,\Theta^4$.
+  $13\,958\,\Theta^4$. With \cref{prop:push-integrated} the first can be
+  replaced by $\vol(Q_w)\ge8$ near the root system, whose second order is
+  \cref{prop:tilt-block}; \cref{rem:contact-valley} shows why that is not a
+  question of higher-order positivity alone.
 \item \emph{Twenty-three contacts and one near-contact.} Along the ray of one
   centre pushed out the pair terms take over only at $\delta=0.197$, where
   the eight tight pairs of that centre have slack $\delta/4=0.049$, beyond
@@ -2391,6 +2394,59 @@ lives.\footnote{\texttt{exact\_push.py}
   excess of the volume over the bound is $3.9\cdot10^{-6}$, and
   \texttt{independent\_check.py} checks \cref{lem:pure-push} on $400$ push
   patterns and the one-centre formula to $10^{-14}$.}
+
+Setting the push-outs to zero isolates the tilts. The block of $H$ on the
+$72$ tangent coordinates is the Hessian of $\vol(Q_w)$, the volume of the
+contact cell, as a function of the directions alone, with no packing
+constraint.
+
+\begin{prop}[The tilt block]\label{prop:tilt-block}
+The restriction of the form $H$ of \cref{prop:hessian-d4} to pure tilts,
+$\eta=0$, is positive semidefinite. Its kernel has dimension $15$: the six
+infinitesimal rotations and nine further directions, none of them an
+infinitesimal strain $\tau_i=Su_i-\langle u_i,Su_i\rangle u_i$ with $S$
+symmetric. Its least positive eigenvalue is $\tfrac1{12}$.
+\end{prop}
+
+\begin{proof}
+An exact $LDL^{\mathsf T}$ factorisation of the $72\times72$ block over $\mathbb{Q}$
+has $57$ positive pivots, the least $\tfrac5{66}$, and $15$ zero pivots, each
+with the rest of its row zero; the kernel is computed exactly, contains the
+six rotation fields, and meets the nine strain fields only in $0$
+(\texttt{tilt\_block.py}; again in Lean, \texttt{D4SecondOrder.lean}).
+\end{proof}
+
+So the root system is a critical point of $\vol(Q_w)$ at which no tilt
+lowers the volume at second order. By \cref{prop:push-integrated}, a lower
+bound $\vol(Q_w)\ge8$ on an explicit neighbourhood of the root system would
+give the first inequality of statement (ii) for every $Y$ whose directions
+lie in it, with no packing constraint and no rigidity estimate, leaving the
+hull bound and statement (i) to place the directions there.
+
+\begin{remark}[The contact-cell volume is flat along a curve]\label{rem:contact-valley}
+The nine flat directions are not directions of growth once the other tilts
+may move. Along a straight line $tk$, $k$ a unit vector in them, the volume
+grows at fourth order, $(\vol Q_w-8)/t^4$ between $0.05$ and $0.23$ for random
+$k$, which suggests a strict local minimum up to rotations. But when the
+$57$ other tilt coordinates are chosen to make the volume as small as
+possible, there is a curve of direction sets, starting at the root system in
+a special direction of the nine, along which $\vol Q_w-8$ stays below
+$3\cdot10^{-10}$ up to tilt $0.45$ (\texttt{contact\_valley.py}). Its points
+are not rotations of the root system, relabelled or not: the sorted rows of
+their Gram matrices differ from those of the root system by $0.017$ at tilt
+$0.05$ and $0.15$ at $0.45$. Their contact cells have $96$ vertices and facet
+volumes between $1.3256$ and $1.3566$ where the $24$-cell has $24$ and
+$\tfrac43$. Antipodal directions stay antipodal, and the Hessian at a point of the curve has a
+single zero eigenvalue beyond the rotations. So, numerically, the root
+system minimises $\vol(Q_w)$ locally, since no direction set found near it
+has a smaller contact cell, but not strictly: a proof of $\vol(Q_w)\ge8$ near
+the root system has to find this zero set and control the volume near it,
+and no positivity of a fourth-order form can do that. We have not
+identified the curve in closed form. Its direction sets have inner products
+up to $0.5156$ at tilt $0.1$ and $0.5541$ at $0.45$. So they are not contact
+configurations, and in a packing they need push-outs, which
+\cref{prop:push-integrated} turns into volume above $8$.
+\end{remark}
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
 
@@ -4291,7 +4347,7 @@ value of the bound, is exactly $24$; and the two-point polynomial
 $p_2$, computed exactly from the data, has degree $16$ and vanishes on
 $[-1,\tfrac12]$ at $-1,-\tfrac12,0,\tfrac12$ and nowhere else, with
 multiplicities $1,2,2,1$, by a Sturm sequence over the rationals, the
-last step being checked by Lean's kernel as well.
+last step being checked by Lean's kernel as well.\looseness=-1
 
 The two steps that the memory had put out of reach are done here as well.
 Step 3 is the construction of the zonal matrices $Z_\lambda$, the polynomials
