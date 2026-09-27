@@ -65,11 +65,44 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   thirteen signatures run (|lambda| <= 10, lambda_2 <= 4).  Until now the
   zonal matrices had been checked only against independent facts.
 
+## The second order at the root system (Section 2.9)
+
+- Lemma 2.19: the second variation of the volume of a 4-polytope under
+  moving normals and support numbers, and that the volume is C^2 (C^3 in
+  fact) across changes of combinatorics.
+- Proposition 2.20: the Hessian H of the cell volume at the root system, in
+  closed form over the 96 triangles of the 24-cell; on the push-outs it is
+  2 sum_edges eta_i eta_j - 4 sum eta_i^2.
+- Proposition 2.21: on the first-order packing cone, H >= -(sum delta_i)^2,
+  with equality on the ray of one centre pushed out.  Proved by an exact
+  copositivity certificate H + cc^T = P + B^T N B, checked in exact
+  rationals in three seconds.  So the tilts cost nothing more at second
+  order than the pushes, where step (b) of Theorem 2.18 charges them
+  73 S^2 to 98 S^2, and the second-order model vol - 8 >= (2/3) S - (1/2) S^2
+  stays positive up to S = 4/3.
+- Lemma 2.23 and Proposition 2.24: pure push-outs integrated exactly, by
+  Brunn-Minkowski.
+- Remark 2.22: what is still missing for statement (ii): tilting is not
+  monotone (untilt.py), and the third-order remainder is not bounded; on 300
+  tilted packings vol - 8 - (2/3) S + (1/2) S^2 >= 0 holds in every case
+  (remainder_test.py; floating point).
+- Remark 2.25: two corrections to the list of what is left, which now has
+  four items: along the ray of one centre pushed out the slack reaches
+  delta/4 = 0.049, beyond any statement about the slack alone (25-point codes
+  exist at 0.0374), so twenty-three contacts with one near-contact need a
+  classification of their own.
+- Checked independently (multi_cap/second_order/independent_check.py, every
+  volume recomputed by intersecting halfspaces): H against second
+  differences (6e-8), the cone rows against exact distances (2e-9), the
+  spectrum, the one-centre formula (1e-14), Lemma 2.23 on 400 push patterns.
+  Two statements of the draft are corrected: the eigenvalue -6.194 has
+  multiplicity 8, and the push-out block is Adj - 4I.
+
 ## What is measured, not proved
 
 - The three-point bound on A(4, 1/2 + s) rises about 97 per unit of s from
   24.13 at s = 0.  So certificates of the kind behind Theorem 7.79 stop near
-  s = 0.009 (sampled programmes, Figure 28(a)).
+  s = 0.009 (sampled programmes, Figure 29(a)).
 - 25 points of S^3 with inner products at most 0.53743 exist, a minimal
   angle of 57.49 degrees (code25_search.py).
 - Letting the truncation radius of Lemma 2.15 grow with the distances moves
@@ -114,28 +147,31 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   - rigidity_spectrum.py adds the exact 11/16 check and sqrt(96/11).
   - explicit_eps0.py uses the new constant of estimate (a) and the new
     step (b).
+- New: multi_cap/second_order/ (Section 2.9; README.md there), with logs in
+  its runs/.
 - New: level2/ (above) and multi_cap/count_survey.py, with logs in
   level2/runs and multi_cap/runs/count_survey*.log.
 - New: paper/figures_new/tikz_overlap_check.py, the collision test of the
   TikZ figures, run on all six of them in two modes (log:
   tikz_overlap_check.log).  No two nodes overlap, pgfplots tick labels
   included, and no line, curve, marker or outline passes under any text;
-  a label may sit on a fill or a smooth shading.  Figures 4, 6, 8 and 27
+  a label may sit on a fill or a smooth shading.  Figures 4, 6, 8 and 28
   had labels touching lines or balls; they are redrawn.
 - New: independent_verification/rebuilt_from_text/d4_independent_check.py,
   a recomputation of the paper's numerical claims from the statements
   alone.
 - Paper:
-  - New: Theorem 7.79, Remark 7.78 and Figure 28
-    (figures_new/fig_cardinality.py); Figures 9 and 10
-    (figures_new/tikz_counts.tex and tikz_level2.tex, TikZ, each passing
+  - New: Theorem 7.79, Remark 7.78 and Figure 29
+    (figures_new/fig_cardinality.py); Section 2.9 with Figure 11; Figures 9
+    and 10 (figures_new/tikz_counts.tex, tikz_level2.tex and
+    tikz_secondorder.tex, TikZ, each passing
     figures_new/tikz_overlap_check.py).
   - The abstract is rewritten.
   - Revised: Lemma 7.50, Theorem 7.51, Theorem 2.18 (a new proof of its
     step (b)), "What is left", the
     abstract, the introduction, the code index and the data availability
     statement.
-  - Figure 18(d) and Figure 27 redrawn; later figures renumbered.
+  - Figure 19(d) and Figure 28 redrawn; later figures renumbered.
   - No theorem, lemma or proposition number that existed in v1.7.0
     changes.
 
@@ -143,7 +179,17 @@ Everything proved in v1.7.0 still stands.  New or sharper:
 
 The case left by v1.7.0: a centre with at least twenty-four other centres
 within sqrt 6, one of them at a distance between 2 + epsilon_0 and sqrt 6.
-Theorem 7.79 supplies the cardinality half of a quantitative form of the
-twenty-four-point classification.  The shape half remains open: twenty-four
-directions with slack of order 1e-2 lie near a root system.  Remark 7.78
-shows it needs a new second-level kernel with a margin.
+"What is left" in Section 2.8 now lists four statements that would close it:
+
+1. the shape of 24 directions at slack of order 1e-2 (proved at 2e-26;
+   its cardinality half, Theorem 7.79, at 0.008);
+2. the volume for 24 centres near the root system between Sum delta_i = 4e-3
+   and 0.155, reduced in Section 2.9 to vol - 8 >= (2/3) S - (1/2) S^2,
+   certified at second order, proved for pure push-outs, and true on every
+   packing tested;
+3. twenty-three contacts with one near-contact, a classification of codes
+   of its own (Remark 2.25);
+4. certificates for 24 centres away from the root system and for each
+   count from 25, which need 1 and 3.
+
+Conjecture 1.6 is not proved, and Theorem 1.8 is unchanged.

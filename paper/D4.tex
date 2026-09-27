@@ -537,9 +537,11 @@ a slack of $0.008$ in the inner products (\cref{thm:kissing-stable}), which
 a three-point certificate on the enlarged domain proves in exact and interval
 arithmetic. That is the cardinality half of a quantitative form of
 \cref{thm:m24}; the other half, that such twenty-four directions lie near a
-root system, is what the remaining case needs. A numerical search of that case
-finds nothing below $8$ (\cref{sec:noncontact}); that is evidence, not
-proof.
+root system, is what the remaining case needs, with a classification of
+twenty-three contacts and one near-contact and a lower bound for the volume
+near the root system, whose second order \cref{sec:second-order} computes
+exactly and certifies. A numerical search of that case finds nothing below $8$
+(\cref{sec:noncontact}); that is evidence, not proof.
 
 The case of $23$ contacts is not a deviation problem at all. By
 \cref{prop:extendable}, a cell of circumradius at least $2$ is exactly
@@ -1930,27 +1932,37 @@ $\vol(V_c)=8$ only if $V_c=Q$.
 $24$ other centres within $\sqrt6$; at least one of them at a distance
 between $2+\varepsilon_0$ and $\sqrt6$; $\Phi\le8$ and $\Psi\le8$; and
 contacts that do not contain one orthogonal pair of roots at each vertex
-of a $24$-cell. Three statements would close that case, and with it
+of a $24$-cell. Four statements would close that case, and with it
 \cref{conj:shell} and, by \cref{thm:main-general}, the density bound $\pi^2/16$.
 \begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
 \item \emph{The shape of twenty-four directions at positive slack.} Any
   $24$ unit vectors of $\mathbb{R}^4$ with pairwise inner products at most
   $\tfrac12+s$, for $s$ of order $10^{-2}$, satisfy $d(W)\le\frac1{48}$. It is
   proved for $s\le2\cdot10^{-26}$ (\cref{thm:m24-robust}), and its cardinality
-  half for $s\le0.008$ (\cref{thm:kissing-stable}).
+  half for $s\le0.008$ (\cref{thm:kissing-stable}). It is false from
+  $s=0.0374$ on, where $25$-point codes exist.
 \item \emph{The volume between the explicit neighbourhood and the pair
-  terms.} For exactly $24$ centres within $\sqrt6$ that satisfy (i)'s
-  conclusion, $\vol(V_c)\ge8$ for $\sum\delta_i$ from $4\cdot10^{-3}$, where
+  terms.} For exactly $24$ centres within $\sqrt6$ with $d(W)\le\frac1{48}$,
+  $\vol(V_c)\ge8$ for $\sum\delta_i$ from $4\cdot10^{-3}$, where
   \cref{thm:near-contact} ends, up to where the right side of
-  \cref{lem:no-triple} reaches $8$, about $0.155$.
+  \cref{lem:no-triple} reaches $8$, about $0.155$. \Cref{sec:second-order}
+  reduces it to the inequality $\vol V(Y)-8\ge\frac23S-\frac12S^2$, certifies
+  that inequality at second order, and proves it for pure push-outs.
+\item \emph{Twenty-three contacts and one near-contact.} Along the ray of one
+  centre pushed out the slack is $\delta/4$, beyond the reach of (i) for
+  $\delta$ between $0.04$ and $0.197$, where the pair terms take over
+  (\cref{rem:plan-corrections}). There what is needed is that $23$ contacts
+  with a further centre at $2+\delta$ are a deletion of the root system with
+  the centre in its hole, or a volume bound for such configurations.
 \item \emph{Certificates for the other configurations.} The right side of
   \cref{lem:no-triple} is at least $8$ for $24$ centres within $\sqrt6$ away
   from the root system, and for each count from $25$ to the largest that
   fits, as \cref{thm:m23-labelled} shows for $23$.
 \end{enumerate}
-Statement (i) is the core: (ii) needs it to place the directions, and (iii)
-needs it to see that twenty-four centres close to $c$ leave no room for
-another within $\sqrt6$. What follows is the evidence for each, and why the
+Statements (i) and (iii) are classifications of codes, (ii) is an inequality
+for the volume whose second order is now certified, and (iv) needs (i) and
+(iii) to see that twenty-four centres close to $c$ leave no room for another
+within $\sqrt6$. What follows is the evidence for each, and why the
 methods of this paper stop short of them. Near the root system the inversion hull is
 sharp to first order: \texttt{near\_contact\_probe.py} finds
 $\vol(V(Y)\cap K(Y))-8$ and $\vol(V_c)-8$ equal to
@@ -2105,6 +2117,270 @@ points has to beat.}
 \label{fig:level2}
 \end{figure}
 
+
+\subsection{The second order at the root system}\label{sec:second-order}
+
+Statement (ii) of the list above asks for the volume of the cell of
+twenty-four centres near the root system beyond the explicit neighbourhood of
+\cref{thm:near-contact}. Its step (b) charges the tilts of the directions a
+loss of order $10^2S^2$, from $73S^2$ at $S=10^{-3}$ to $98S^2$ at
+$S=4\cdot10^{-3}$ (\texttt{explicit\_eps0.py}), against the gain
+$\frac23S$, and that is what stops it. This subsection computes the second
+order exactly, certifies its minimum on the packing cone, and integrates the
+push-outs exactly; what it leaves open is said at its end.
+
+\begin{lem}[Second variation of the volume of a $4$-polytope]\label{lem:second-variation}
+Let $P(t)=\{x:\langle x,n_i(t)\rangle\le h_i(t)\}$ be a bounded polytope of
+$\mathbb R^4$ with unit normals $n_i(t)$ moving along geodesics of $S^3$,
+$\dot n_i(0)=\tau_i\perp n_i(0)$, and $h_i(t)=h_i+t\eta_i$. Write
+$v_i(x)=\eta_i-\langle x,\tau_i\rangle$ for the normal velocity of facet $i$
+at $t=0$, $F_i$ for the facets, $F_{ij}=F_i\cap F_j$ for the $2$-faces, and
+$\theta_{ij}$ for the angle between $n_i$ and $n_j$ on a $2$-face. Then
+$t\mapsto\vol P(t)$ is twice continuously differentiable, with
+\begin{align*}
+  \frac{d}{dt}\vol P\Big|_{0}&=\sum_i\int_{F_i}v_i\,dA,\\
+  \frac{d^2}{dt^2}\vol P\Big|_{0}&=\sum_i h_i|\tau_i|^2\,\vol_3F_i
+  +\sum_{i<j}\frac1{\sin\theta_{ij}}\int_{F_{ij}}
+  \bigl(2v_iv_j-\cos\theta_{ij}\,(v_i^2+v_j^2)\bigr)\,dA_2 .
+\end{align*}
+\end{lem}
+
+\begin{proof}
+The first formula is the transport theorem. For the second, follow each
+facet by the purely normal motion $\dot x=v_in_i$, which keeps $x$ on the
+moving hyperplane and, that hyperplane being flat, preserves the area
+element to first order; along it $Dv_i/Dt=\ddot h_i-\langle x,\ddot n_i\rangle
+=|\tau_i|^2\langle x,n_i\rangle=|\tau_i|^2h_i$ on $F_i$, since $\ddot n_i=-|\tau_i|^2n_i$
+on a geodesic. The $2$-face $F_{ij}$ moves, relative to the material of
+facet $i$ and along the conormal $\nu_i$ of $F_i$ at that face, at speed
+$(v_j-v_i\cos\theta_{ij})/\sin\theta_{ij}$, because $n_j=\cos\theta_{ij}\,n_i+\sin\theta_{ij}\,\nu_i$
+there; the transport theorem on the moving facet then gives
+$\frac{d}{dt}\int_{F_i}v_i=\int_{F_i}|\tau_i|^2h_i+\sum_{j}\int_{F_{ij}}v_i(v_j-v_i\cos\theta_{ij})/\sin\theta_{ij}$,
+and adding the two contributions of each $2$-face gives the formula. A
+$2$-face that appears or disappears under the motion does so with area
+tending to $0$, so both formulas are continuous across combinatorial changes;
+the second derivative is therefore continuous, and $\vol P$ is $C^2$.\footnote{In
+  dimension $n$ the $k$-th variation is an integral over the $(n-k)$-faces and
+  the first jumps sit at the vertices, in the $n$-th derivative: the area of a
+  polygon is only $C^1$ in its edge data, and the volume of a polytope of
+  $\mathbb R^4$ is $C^3$.}
+\end{proof}
+
+\begin{prop}[The Hessian at the root system]\label{prop:hessian-d4}
+At $Q=\{x:\langle x,u_i\rangle\le1\}$, in the coordinates
+$\xi=(\tau,\eta)\in\mathbb R^{72}\times\mathbb R^{24}$, $\tau_i\perp u_i$, with
+$\delta_i=2\eta_i$ the push-out of the $i$-th centre, the volume of $V(Y)$ has
+the expansion
+\[
+  \vol V(Y)\;=\;8+\tfrac23\sum_i\delta_i+\tfrac12\,H(\xi,\xi)+O(|\xi|^3),
+\]
+where $H$ is the form of \cref{lem:second-variation} with $\vol_3F_i=\tfrac43$,
+$\theta_{ij}=60^\circ$ and $F_{ij}$ the $96$ equilateral triangles of side
+$\sqrt2$; by the midpoint rule, exact for quadratics,
+\[
+  H(\xi,\xi)=\tfrac43\sum_i|\tau_i|^2
+  +\sum_{\{i,j\}\in T}\ \frac{1}{3}\sum_{m}
+  \bigl(2v_i(m)v_j(m)-\tfrac12(v_i(m)^2+v_j(m)^2)\bigr),
+\]
+$m$ running over the midpoints of the edges of $F_{ij}$. In orthonormal
+coordinates its spectrum is $-8$ (twice), $-6.194\ldots$ (eight times),
+$\ldots$, $0$ (fifteen times: the six rotations and nine further flat
+directions), $\ldots$, $4$ (once). On the push-outs alone ($\tau=0$) it is
+$H(\eta,\eta)=2\sum_{T}\eta_i\eta_j-4\sum_i\eta_i^2$, with matrix
+$\mathrm{Adj}-4I$ for the edge graph of the $24$-cell, and
+\begin{equation}\label{eq:eta-identity}
+  H(\eta,\eta)+\Bigl(\sum_i\delta_i\Bigr)^2=2\sum_{T}\eta_i\eta_j+8\sum_{i<j}\eta_i\eta_j\ \ge\ 0
+  \qquad(\eta\ge0),
+\end{equation}
+with equality exactly when at most one $\eta_i$ is nonzero.
+\end{prop}
+
+\begin{proof}
+The expansion is Taylor's formula for the $C^2$ function of
+\cref{lem:second-variation}; the first derivative is $\frac43\sum_i\eta_i$
+because the centroid of each facet lies on its normal. The data are those of
+the regular $24$-cell. With $\tau=0$ each triangle contributes
+$2\eta_i\eta_j-\frac12(\eta_i^2+\eta_j^2)$, and each vertex of the edge graph
+lies on eight edges, which gives $H(\eta,\eta)$; adding
+$(\sum_i\delta_i)^2=4\sum_i\eta_i^2+8\sum_{i<j}\eta_i\eta_j$ gives
+\eqref{eq:eta-identity}. The spectrum is computed in floating point
+(\texttt{hessian.py}), and the form is checked against second differences of
+the exact volume of the polytope, computed afresh by intersecting halfspaces,
+to $6\cdot10^{-8}$ (\texttt{independent\_check.py}).
+\end{proof}
+
+\begin{prop}[The worst second-order loss on the packing cone]\label{prop:cone-min}
+Let $\mathcal C$ be the first-order feasible cone of the packing constraints,
+$(\Lambda\tau)_{ij}\le\tfrac12(\eta_i+\eta_j)$ on the $96$ tight pairs and
+$\eta_i\ge0$. Then
+\[
+  m\;:=\;\min\bigl\{H(\xi,\xi):\ \xi\in\mathcal C,\ \textstyle\sum_i\delta_i=1\bigr\}\;=\;-1 ,
+\]
+attained on the ray of a single centre pushed out, where
+$\vol=\tfrac{25}3-\tfrac13(1-\tfrac\delta2)^4=8+\tfrac23\delta-\tfrac12\delta^2+\tfrac16\delta^3-\tfrac1{48}\delta^4$
+exactly. Consequently, for packings whose tilts are of order $S$, as estimate
+(a) of the proof of \cref{thm:near-contact} makes them when $d(W)\le\frac1{48}$,
+the second-order model of the volume is
+\[
+  \vol V(Y)-8\ \ge\ \tfrac23S-\tfrac12S^2+O(S^3),\qquad S=\sum_i\delta_i ,
+\]
+positive up to $S=\tfrac43$, against the $0.155$ at which the pair terms of
+\cref{lem:no-triple} take over.
+\end{prop}
+
+\begin{proof}
+$m\le-1$ is the ray. For $m\ge-1$ it suffices that $H+cc^{\mathsf T}$,
+$c=2\mathbf 1_\eta$, be copositive on $\mathcal C=\{\xi:B\xi\ge0\}$, $B$ the
+$120$ rows of the cone, since $c\cdot\xi=\sum_i\delta_i$; and a certificate is
+\[
+  H+cc^{\mathsf T}\;=\;P+B^{\mathsf T}NB,\qquad P\succeq0,\quad N\ge0\ \text{entrywise},
+\]
+since then $\xi^{\mathsf T}(H+cc^{\mathsf T})\xi=\xi^{\mathsf T}P\xi+(B\xi)^{\mathsf T}N(B\xi)\ge0$
+on $\mathcal C$. Such a pair is in \texttt{exact\_certificate.pkl} and is
+verified by \texttt{verify\_cone\_certificate.py} with no floating point:
+in the scaled integral model of $Q$ (roots $(\pm1,\pm1,0,0)$, vertices
+$(\pm2,0,0,0)$ and $(\pm1,\pm1,\pm1,\pm1)$, rational bases of the tangent
+spaces, $t_i=\sqrt2\,\tau_i$) the form $H$, the rows $B$ and $c$ are
+rational; $N$ is symmetric, constant on the $43$ orbits of the
+signed-permutation group on unordered pairs of constraints, with
+nonnegative rational values, $35$ of them positive; and $P$ is assembled
+exactly and is positive semidefinite by an exact $LDL^{\mathsf T}$, whose $30$
+zero pivots are the push-outs and the rotations. The certificate was found as
+the dual of the Shor relaxation with the products of the cone constraints,
+whose value is $-1$ (\texttt{cone\_min.py}), averaged over the group and made
+exact. That the rows $B$ are the first-order packing constraints, the
+derivative of $|y_i-y_j|^2$ being $8(B\xi)_{ij}$ on the tight pairs, is checked
+against the exact distances to $2\cdot10^{-9}$ (\texttt{independent\_check.py}).
+The verification takes three seconds.
+\end{proof}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_secondorder}
+\caption{The second order at the root system (\texttt{multi\_cap/second\_order}).
+(a) $\vol V(Y)-8$ against $S=\sum_i\delta_i$: the second-order model
+$\frac23S-\frac12S^2$, which is the worst case on the packing cone
+(\cref{prop:cone-min}), the exact value with one centre pushed out, on which
+it is sharp to second order, and the exact value with all twenty-four pushed
+out evenly; the dotted line is where the pair terms of \cref{lem:no-triple}
+reach $8$ along the even push. Step (b) of the proof of
+\cref{thm:near-contact} ends at $S=4.5\cdot10^{-3}$. (b) What is left over,
+$\vol V(Y)-8-\frac23S+\frac12S^2$, on $300$ packings near the root system with
+tilts along the edges of the cone of up to $5.8\,S$
+(\texttt{remainder\_test.py}; floating point, evidence and not a bound), and
+exactly on the one-centre ray, $\frac16\delta^3-\frac1{48}\delta^4$: it is
+positive on every one, and least on that ray.}
+\label{fig:second-order}
+\end{figure}
+
+\begin{remark}[What this gives for (ii), and what it does not]\label{rem:second-order-gap}
+The expansion says that the second-order loss on the cone is exactly the
+loss on the deleted root's axis, $\tfrac12S^2$: the tilts, which step (b) of
+\cref{thm:near-contact} charges at order $10^2S^2$, cost nothing more at
+second order than the pushes do. Two things are still missing. First,
+tilting is not monotone: \texttt{untilt.py} finds feasible packings near the
+root system whose cell is smaller than that of the same distances at the
+roots, in $103$ of $237$ trials and by up to $3.6\cdot10^{-5}$, and by
+$0.117\,S^2$ at second order in the worst push pattern, so the bound does not
+reduce to monotonicity in the support numbers. Second, the remainder. On the
+$300$ packings of \cref{fig:second-order}(b), with $S$ up to $0.48$, the exact
+volume satisfies
+\[
+  \vol V(Y)-8-\tfrac23S+\tfrac12S^2\ \ge\ 0
+\]
+in every case, with the minimum on the one-centre family, and the third-order
+remainder $\vol-8-\tfrac23S-\tfrac12H(\xi,\xi)$ lies between $-0.004\,S^3$ and
+$+0.166\,S^3$. So the statement that would carry (ii) to the pair terms, and
+well past them, is that the displayed inequality holds for every packing with
+$d(W)\le\tfrac1{48}$. A proof through a bound on the remainder would have to
+control the cubic term to the size it has on the tested packings,
+$0.004\,S^3$, where the estimates of the proof of \cref{thm:near-contact}
+have constants of order $10^2$ already at second order; the proof, if there
+is one, is structural, and the natural structure
+is that the extremal family is the one-centre ray, on which everything is
+explicit.
+\end{remark}
+
+\begin{lem}[Pure push-outs, exactly]\label{lem:pure-push}
+For $0\le\eta_i\le1$,
+\[
+  \vol\{x:\langle x,u_i\rangle\le1+\eta_i\ \forall i\}\ \ge\ 8+\frac13\sum_i\bigl(1-(1-\eta_i)^4\bigr),
+\]
+with equality whenever at most one $\eta_i$ is nonzero. In particular, with
+$S=2\sum_i\eta_i$, the right side is at least $8+\tfrac23S-\tfrac12S^2$.
+\end{lem}
+
+\begin{proof}
+Along $h(t)=\mathbf 1+t\eta$ the volume has derivative $\sum_i\eta_iA_i(t)$,
+$A_i(t)$ the $3$-volume of the $i$-th facet. That facet is
+$\{x:\langle x,u_i\rangle=1+t\eta_i,\ \langle x,u_j\rangle\le1+t\eta_j\ (j\ne i)\}$,
+which contains the facet with the other support numbers lowered to $1$, so
+$A_i(t)\ge\tfrac43(1-t\eta_i)^3$ by the one-centre formula
+$\vol=\tfrac{25}3-\tfrac13(1-s)^4$ at $h=\mathbf 1+se_i$. Integrating,
+$\vol-8\ge\sum_i\eta_i\int_0^1\tfrac43(1-t\eta_i)^3dt=\tfrac13\sum_i(1-(1-\eta_i)^4)$.
+For the last claim, $1-(1-\eta)^4=4\eta-6\eta^2+\eta^3(4-\eta)$ and
+$\sum\eta_i^2\le(\sum\eta_i)^2$.
+\end{proof}
+
+\begin{prop}[The push-outs integrated out]\label{prop:push-integrated}
+Let $w_1,\dots,w_{24}$ be unit vectors, $Q_w=\{x:\langle x,w_j\rangle\le1\ \forall j\}$
+their contact cell, $A_i^w$ the $3$-volume of its $i$-th facet, and
+$s_i=\max\{\langle x,w_i\rangle:\langle x,w_j\rangle\le1\ \forall j\ne i\}-1$ the
+height of the apex of the $i$-th deletion above that facet. Then for
+$0\le\eta_i\le s_i$,
+\[
+  \vol\{x:\langle x,w_i\rangle\le1+\eta_i\ \forall i\}\ \ge\
+  \vol(Q_w)+\sum_i A_i^w\,\frac{s_i}{4}\Bigl(1-\bigl(1-\tfrac{\eta_i}{s_i}\bigr)^4\Bigr).
+\]
+\end{prop}
+
+\begin{proof}
+As in \cref{lem:pure-push}, the derivative along $\mathbf 1+t\eta$ is
+$\sum_i\eta_iA_i(t)$ and $A_i(t)\ge a_i(t\eta_i)$, where $a_i(s)$ is the
+$3$-volume of the section of the deletion $\{\langle x,w_j\rangle\le1,\ j\ne i\}$
+by the hyperplane $\langle x,w_i\rangle=1+s$. The deletion is convex, so by
+the Brunn--Minkowski inequality $a_i(s)^{1/3}$ is concave on $[0,s_i]$, and
+it is nonnegative at $s_i$; hence $a_i(s)\ge(1-s/s_i)^3a_i(0)$ with
+$a_i(0)=A_i^w$. Integrate.
+\end{proof}
+
+At the root system $s_i=1$ and $A_i^w=\tfrac43$, and
+\cref{prop:push-integrated} is \cref{lem:pure-push}. In general it removes
+the push-outs from the problem: the bound of \cref{rem:second-order-gap}
+would follow from an inequality involving only the three functionals
+$\vol(Q_w)$, $A_i^w$ and $s_i$ of the tilted directions, and the packing
+constraints $\langle w_i,w_j\rangle\le\tfrac12+\tfrac12(\eta_i+\eta_j)+O(\eta^2)$
+that tie the tilts to the pushes. At second order that is
+\cref{prop:cone-min}; what a proof needs beyond it are bounds on the three
+functionals to second order in the tilts with explicit remainders. The tilts,
+not the pushes, are where the difficulty lives.\footnote{\texttt{exact\_push.py}
+  checks \cref{prop:push-integrated} on $63$ tilted packings, where the least
+  excess of the volume over the bound is $3.9\cdot10^{-6}$, and
+  \texttt{independent\_check.py} checks \cref{lem:pure-push} on $400$ push
+  patterns and the one-centre formula to $10^{-14}$.}
+
+\begin{remark}[Two corrections to the list of what is left]\label{rem:plan-corrections}
+(1) A kernel of the second level on $[-1,\tfrac12+s]$ with $s>0$ and bound
+exactly $24$ would make every term of its certificate vanish on every
+$24$-point set with slack at most $s$; small perturbations of the root system
+are such sets and reach a whole interval of inner products, so its two-point
+polynomial would vanish identically, and there would be nothing to pin with.
+The programme of \texttt{level2/las2\_margin.jl} can therefore pin the shape
+only through the window $(8(N-24)/\mu)^{1/2}$ with $N>24$, never through an
+equality case, and the window is of order $s$ rather than $s^{1/2}$ only if
+$N(s)-24=O(s^2)$; at the first level the growth is linear, $97$ per unit of
+$s$. (2) Along the ray of one centre pushed out the pair terms take over at
+$\delta=0.197$, where the eight tight pairs of that centre have slack
+$\delta/4=0.049$. Statement (i) at slack $10^{-2}$ therefore does not cover
+that ray between $\delta=0.04$ and $0.197$, and no statement about the slack
+alone can, since $25$-point codes exist at slack $0.0374$. What that ray needs
+is that $23$ contacts with one further centre at distance $2+\delta$ are a
+deletion of the root system with the centre in its hole, which is the
+classification of $23$-point codes that \cref{sec:m23-codes} sets aside, or a
+volume bound for a saturated $23$-point configuration with a near-contact,
+which \cref{thm:certificate} does not give: its margin is $4.4\cdot10^{-5}$,
+and a near-contact at $2+\delta$ removes $S(2+\delta)\approx0.14$.
+\end{remark}
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
 
@@ -10261,7 +10537,8 @@ and \cref{sec:m24-robust} (\texttt{closure\_lemmas.py},
 \texttt{facet\_bounds\_probe.py} and \texttt{count\_survey.py}), the
 scripts \texttt{level2\_numeric.py}, \texttt{level2\_sampled.py} and
 \texttt{d4\_independent\_check.py}, those of the directory
-\texttt{level2}, the collision test \texttt{tikz\_overlap\_check.py}, the
+\texttt{level2} and \texttt{multi\_cap/second\_order}, the collision test
+\texttt{tikz\_overlap\_check.py}, the
 Lean file \texttt{D4Closure.lean} and the scripts of the figures of
 \cref{sec:closure,sec:m24-robust} were developed with the
 assistance of Claude, an AI model made by Anthropic, and their
@@ -11533,6 +11810,21 @@ only for packings of a given count (\cref{fig:counts}). So are the probes quoted
 \cite{LLM24} in floating point and checks it against the certificate
 first, and \texttt{level2\_sampled.py}, the sampled second-level
 programme.
+
+The directory \texttt{multi\_cap/second\_order} carries
+\cref{sec:second-order}. \texttt{rational\_model.py} builds the form $H$, the
+rows of the packing cone and the vector $c$ in exact rationals from the
+integral root system, and \texttt{verify\_cone\_certificate.py} checks the
+certificate of \cref{prop:cone-min} against them with an exact $LDL^{\mathsf T}$,
+in three seconds; \texttt{cone\_min.py}, \texttt{certify\_m.py} and
+\texttt{exact\_cert*.py} are how it was found. \texttt{hessian.py} gives the
+form in floating point and its spectrum, \texttt{exact\_push.py} the push-out
+statements, and \texttt{untilt.py} and \texttt{remainder\_test.py} the
+experiments of \cref{rem:second-order-gap}, the second writing the data of
+\cref{fig:second-order}(b). \texttt{independent\_check.py} recomputes every
+volume it needs by intersecting halfspaces, and checks $H$ against second
+differences, the cone rows against the exact distances, the spectrum, the
+one-centre formula and \cref{lem:pure-push}.
 
 \subsection*{The independent re-verification}
 
