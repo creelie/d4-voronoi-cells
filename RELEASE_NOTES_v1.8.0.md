@@ -52,16 +52,46 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   - A form of the classification at slack 1e-2 needs a kernel computed on
     the enlarged domain.
 
+## Checked against the authors' own code
+
+- level2/ writes the 490 zonal matrices of zonal/ in the file format of the
+  code of de Laat, Leijenhorst and de Muinck Keizer, so that their
+  second-level programme runs without their own construction of them (three
+  days and 128 GB by their README).
+- Their evaluate_zonal_matrix, reading these files, agrees exactly with
+  zonal/zonal.py on eight entries up to |lambda| = 14.
+- Their compute_PS, run from scratch one signature at a time, writes entries
+  identical to ours, coefficient by coefficient: all 88 entries of the
+  thirteen signatures run (|lambda| <= 10, lambda_2 <= 4).  Until now the
+  zonal matrices had been checked only against independent facts.
+
 ## What is measured, not proved
 
 - The three-point bound on A(4, 1/2 + s) rises about 97 per unit of s from
   24.13 at s = 0.  So certificates of the kind behind Theorem 7.79 stop near
-  s = 0.009 (sampled programmes, Figure 26(a)).
+  s = 0.009 (sampled programmes, Figure 28(a)).
 - 25 points of S^3 with inner products at most 0.53743 exist, a minimal
   angle of 57.49 degrees (code25_search.py).
 - Letting the truncation radius of Lemma 2.15 grow with the distances moves
   the pair-term crossing along the root system pushed out evenly only from
   0.1551 to 0.1473 (d4_independent_check.py).
+- The right side of Lemma 2.15 for every count M of centres within sqrt 6
+  (count_survey.py, Figure 9):
+  - the least value found is 8.264115 at M = 25, rising to 10.895 at M = 43;
+  - all 196 local minima found for M >= 25 lie at or above 8.264;
+  - every one of them has centres on the sphere of radius sqrt 6, whose caps
+    are empty;
+  - no packing of 44 to 49 centres was found in 300 random starts each.
+- The second level at slack 0 on a machine with four cores and 16 GB
+  (level2/, Figure 10):
+  - degrees (4, 6): 32;
+  - degrees (8, 10): 26.0000, in 42 minutes and 3.5 GB;
+  - degrees (10, 12): about 220 s per iteration and 11.5 GB;
+  - the certificate's degrees (14, 16), where the bound is 24, need a larger
+    machine for the programme itself.
+- level2/las2_margin.jl is the programme with a margin in the two-point
+  constraint that a classification of 24 points at positive slack needs;
+  tested at degrees (4, 6).
 
 ## Corrections
 
@@ -83,17 +113,28 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   - rigidity_spectrum.py adds the exact 11/16 check and sqrt(96/11).
   - explicit_eps0.py uses the new constant of estimate (a) and the new
     step (b).
+- New: level2/ (above) and multi_cap/count_survey.py, with logs in
+  level2/runs and multi_cap/runs/count_survey*.log.
+- New: paper/figures_new/tikz_overlap_check.py, the collision test of the
+  TikZ figures, run on all six of them in two modes (log:
+  tikz_overlap_check.log).  No two nodes overlap, pgfplots tick labels
+  included, and no line, curve, marker or outline passes under any text;
+  a label may sit on a fill or a smooth shading.  Figures 4, 6, 8 and 27
+  had labels touching lines or balls; they are redrawn.
 - New: independent_verification/rebuilt_from_text/d4_independent_check.py,
   a recomputation of the paper's numerical claims from the statements
   alone.
 - Paper:
-  - New: Theorem 7.79, Remark 7.78 and Figure 26
-    (figures_new/fig_cardinality.py).
+  - New: Theorem 7.79, Remark 7.78 and Figure 28
+    (figures_new/fig_cardinality.py); Figures 9 and 10
+    (figures_new/tikz_counts.tex and tikz_level2.tex, TikZ, each passing
+    figures_new/tikz_overlap_check.py).
+  - The abstract is rewritten.
   - Revised: Lemma 7.50, Theorem 7.51, Theorem 2.18 (a new proof of its
     step (b)), "What is left", the
     abstract, the introduction, the code index and the data availability
     statement.
-  - Figure 16(d) and Figure 25 redrawn; later figures renumbered by one.
+  - Figure 18(d) and Figure 27 redrawn; later figures renumbered.
   - No theorem, lemma or proposition number that existed in v1.7.0
     changes.
 

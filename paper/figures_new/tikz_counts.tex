@@ -1,0 +1,57 @@
+% tikz_counts.tex -- the right side T of Lemma 2.15 for every count of centres within sqrt 6
+% (multi_cap/count_survey.py; floating point and local optimisation, evidence and not a bound).
+%   (a) The least T found for M centres within sqrt 6, M = 24, ..., against the level 8; at
+%       M = 24 the root system, 7.906940.
+%   (b) How the configuration of (a) meets the count: the centres strictly inside the sphere of
+%       radius sqrt 6 and those on it, which contribute nothing to T.
+% Data: counts_data.dat, written by counts_data.py from multi_cap/runs/count_survey.log.
+% Build:  pdflatex tikz_counts.tex && pdftoppm -r 500 -png -singlefile tikz_counts.pdf ../figures/fig_tikz_counts
+% Test:   python3 tikz_overlap_check.py tikz_counts.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\begin{document}
+\begin{tikzpicture}[font=\small]
+\begin{axis}[name=A, width=8.2cm, height=6.4cm, xmin=23, xmax=50, ymin=7.3, ymax=11.6,
+    xtick={24,28,32,36,40,44,48}, ytick={8,9,10,11},
+    xlabel={$M$, centres within $\sqrt6$}, ylabel={least $T$ found},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize}, clip=false]
+  \fill[cink3!12] (axis cs:43.5,7.3) rectangle (axis cs:49.5,11.6);
+  \addplot[corange, line width=0.7pt, domain=23:50, samples=2] {8};
+  \addplot[cblue, mark=*, mark size=1.6pt, line width=0.5pt] table[x=M, y=T] {counts_data.dat};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=north west, text=corange!90!black] (l8) at (axis cs:36,7.95) {$\operatorname{vol}(V_c)=8$};
+  \node[lbl, inner sep=1pt, font=\footnotesize, anchor=north west, text=cblue!80!black, align=left] (lD) at (axis cs:25.2,7.82) {$D_4$: $7.9069$};
+  \node[lbl, inner sep=1pt, font=\footnotesize, text=cink2, rotate=90, anchor=center] (lnA) at (axis cs:46.5,9.9) {no packing found};
+\end{axis}
+\begin{axis}[name=B, at={($(A.east)+(1.6cm,0)$)}, anchor=west, width=8.2cm, height=6.4cm,
+    xmin=23, xmax=50, ymin=0, ymax=52, xtick={24,28,32,36,40,44,48}, ytick={0,12,24,36,48},
+    xlabel={$M$, centres within $\sqrt6$}, ylabel={centres},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    ybar stacked, bar width=4.2pt, clip=false]
+  \fill[cink3!12] (axis cs:43.5,0) rectangle (axis cs:49.5,52);
+  \addplot[fill=cblue!70, draw=cblue!80!black] table[x=M, y=inside] {counts_data.dat};
+  \addplot[fill=cink3!45, draw=cink3] table[x=M, y=on] {counts_data.dat};
+  \coordinate (B-legend-anchor) at (axis cs:23.6,51);
+  \coordinate (B-band) at (axis cs:46.5,24);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, text=cink2, rotate=90, anchor=center] (lnB) at (B-band) {no packing found};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=north west, text=cblue!80!black] (li) at (B-legend-anchor) {\rule{6pt}{6pt}\ strictly inside $\sqrt6$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=north west, text=cink2] (lo) at ($(li.south west)+(0,-0.12cm)$) {\textcolor{cink3!70}{\rule{6pt}{6pt}}\ on the sphere of radius $\sqrt6$};
+\node[font=\bfseries] (pa) at ($(A.north west)+(-1.2cm,0.35cm)$) {(a)};
+\node[font=\bfseries] (pb) at ($(B.north west)+(-1.0cm,0.35cm)$) {(b)};
+\def\figboxes{pa,pb}
+\def\figlabels{l8,lD,li,lo,lnA,lnB}
+\checkfigure
+\end{tikzpicture}
+\end{document}

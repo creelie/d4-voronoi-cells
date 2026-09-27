@@ -6,6 +6,7 @@
 %       fr = (1 - q)^2 (2 + q)/4 of the section.  Orthographic, q = 0.35.
 %   (b) The three ranges of the largest inner product t of three directions in the
 %       proof, with what settles each; not to scale.
+% Test:   python3 tikz_overlap_check.py tikz_labelled.tex
 % Build:  pdflatex tikz_labelled.tex && pdftoppm -r 500 -png -singlefile tikz_labelled.pdf ../figures/fig_tikz_labelled
 \documentclass[border=4pt]{standalone}
 \usepackage{tikz}
@@ -21,6 +22,8 @@
 \definecolor{cink2}{HTML}{52514E}
 \definecolor{cink3}{HTML}{8B8A85}
 \definecolor{cpanel}{HTML}{F4F3EF}
+\input{tikzcheck}
+\autocheck
 \begin{document}
 \begin{tikzpicture}[font=\small]
 %% ------------------------------------------------------------------ (a)
@@ -51,15 +54,15 @@
   \draw[cink2, line width=0.45pt] (-1,0) arc[start angle=180, end angle=360, x radius=1, y radius={sin(\e)}];
   % centre, radius rho, distance q rho, and the normal of the second hyperplane
   \fill[cink] (0,0) circle (0.022);
-  \draw[cink, line width=0.5pt] (0,0) -- (-0.94,-0.342) node[pos=0.55, below=-1pt] {$\rho$};
+  \draw[cink, line width=0.5pt] (0,0) -- (-0.94,-0.342) node[pos=1, left=3pt] {$\rho$};
   \draw[cink, line width=0.6pt, |-|, >=Bar] (0.02,0) -- (0.02,\yc);
-  \node[right=0pt, cink] at (0.02,\yc/2) {$q\rho$};
+  \draw[cink3, line width=0.35pt] (0.05,\yc/2) -- (1.12,-0.14);
+  \node[anchor=west, inner sep=1.5pt, cink] at (1.12,-0.14) {$q\rho$};
   \draw[-{Stealth[length=4pt]}, cink2, line width=0.6pt] (1.05,\yc+0.02) -- (1.05,\yc+0.62);
   \node[right=1pt, cink2, align=left, font=\footnotesize] at (1.05,\yc+0.5) {towards the\\second centre};
   \node[corange!85!black] at (0,0.78) {$\mathrm{fr}$};
   \node[cink2, font=\footnotesize, align=center] at (0,-1.28) {section of $B(\sqrt{3/2})$ at height $\tau$,\\ a ball of radius $\rho=(\tfrac32-\tau^2)^{1/2}$};
-  \node[caqua!60!black, font=\footnotesize, anchor=east] at (-1.47,\yc-0.2) {hyperplane of the};
-  \node[caqua!60!black, font=\footnotesize, anchor=east] at (-1.47,\yc-0.43) {second centre};
+  \node[caqua!60!black, font=\footnotesize, anchor=north east, align=right] at (-1.47,\yc-0.08) {hyperplane of the\\second centre};
 \end{scope}
 \node[font=\bfseries] at (-3.85,3.25) {(a)};
 \node[font=\footnotesize, cink] at (0,2.05) {$\mathrm{fr}=\tfrac14(1-q)^2(2+q)$};
@@ -95,5 +98,6 @@
   \node[cink2, font=\footnotesize, anchor=west] at (0,-1.05) {not to scale};
 \end{scope}
 \node[font=\bfseries] at (4.0,3.25) {(b)};
+\checkfigure
 \end{tikzpicture}
 \end{document}

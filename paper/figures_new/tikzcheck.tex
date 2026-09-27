@@ -1,0 +1,40 @@
+% tikzcheck.tex -- the hooks of tikz_overlap_check.py, input by the TikZ figures.
+% Two ways to name what is checked.
+%  - Explicit: \figboxes and \figlabels list named nodes; with \nolabels defined,
+%    nodes in the style lbl are drawn invisibly.
+%  - Automatic: \autocheck in the preamble gives every node of the picture,
+%    pgfplots tick labels included, an alias chk<n>; with \nolabels defined, the
+%    text of every node is drawn invisibly and its shape is kept.
+% \checkfigure, at the end of the picture, writes the four corners of each
+% checked node (so that rotated nodes are measured by their true extent) and
+% those of the picture to the log when \checkbboxes is defined.
+\tikzset{lbl/.style={}}
+\ifdefined\nolabels\tikzset{lbl/.append style={opacity=0}}\fi
+\newcount\chknodes
+\newcommand\autocheck{%
+  \def\chkauto{}%
+  \tikzset{every node/.append style={/utils/exec={\global\advance\chknodes by 1\relax},
+                                      alias=chk\the\chknodes}}%
+  \ifdefined\nolabels\tikzset{every node/.append style={text opacity=0}}\fi}
+\makeatletter
+% a node counted but never kept (pgfplots typesets some nodes once to measure them)
+% has no shape, and is skipped
+\newcommand\chkifnode[2]{\pgfutil@ifundefined{pgf@sh@ns@#1}{}{#2}}
+\makeatother
+\newcommand\chkout[2]{% kind, node
+  \path let \p1=(#2.south west), \p2=(#2.north east), \p3=(#2.north west), \p4=(#2.south east)
+    in \pgfextra{\typeout{BBOX #1 #2\space\x1\space\y1\space\x2\space\y2\space\x3\space\y3\space\x4\space\y4}};}
+\newcommand\checkfigure{%
+  \ifdefined\checkbboxes
+    \path let \p1=(current bounding box.south west), \p2=(current bounding box.north east)
+      in \pgfextra{\typeout{PICBB \x1\space\y1\space\x2\space\y2}};
+    \typeout{BORDER 4.0pt}%
+    \ifdefined\chkauto
+      \edef\chklast{\the\chknodes}%
+      \foreach \nm in {1,...,\chklast} {\chkifnode{chk\nm}{\chkout{auto}{chk\nm}}}%
+    \else
+      \foreach \nm in \figboxes {\chkout{box}{\nm}}%
+      \foreach \nm in \figlabels {\chkout{label}{\nm}}%
+    \fi
+  \fi}
+\ifdefined\forceauto\autocheck\fi

@@ -1,0 +1,24 @@
+tikz_closure: 13 nodes checked automatically (0 frames and 7 points or empty nodes left out)
+  PASS
+tikz_closure: 0 nodes checked automatically (26 frames and 14 points or empty nodes left out)
+  PASS
+tikz_counts: 2 boxes, 6 labels checked
+  PASS
+tikz_counts: 35 nodes checked automatically (0 frames and 2 points or empty nodes left out)
+  PASS
+tikz_eps0: 32 nodes checked automatically (0 frames and 0 points or empty nodes left out)
+  PASS
+tikz_eps0: 0 nodes checked automatically (64 frames and 0 points or empty nodes left out)
+  PASS
+tikz_labelled: 23 nodes checked automatically (0 frames and 0 points or empty nodes left out)
+  PASS
+tikz_labelled: 0 nodes checked automatically (46 frames and 0 points or empty nodes left out)
+  PASS
+tikz_level2: 9 boxes, 5 labels checked
+  PASS
+tikz_level2: 26 nodes checked automatically (0 frames and 0 points or empty nodes left out)
+  PASS
+tikz_stop: 16 nodes checked automatically (0 frames and 0 points or empty nodes left out)
+  PASS
+tikz_stop: 0 nodes checked automatically (32 frames and 0 points or empty nodes left out)
+  PASS

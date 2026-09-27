@@ -7,6 +7,7 @@
 %       E(24, kappa) = 2.35e-12 that the sign-changing sum-of-squares terms can reach; the bound
 %       clears the level at |u| = delta = 3e-4 (2.94e-12 there), so every inner product lies within
 %       delta of a zero.  The other double zero, -1/2, gives the same picture.
+% Test:   python3 tikz_overlap_check.py tikz_eps0.tex
 % Build:  pdflatex tikz_eps0.tex && pdftoppm -r 500 -png -singlefile tikz_eps0.pdf ../figures/fig_tikz_eps0
 \documentclass[border=4pt]{standalone}
 \usepackage{tikz}
@@ -23,6 +24,8 @@
 \definecolor{cink}{HTML}{0B0B0B}
 \definecolor{cink2}{HTML}{52514E}
 \definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\autocheck
 \begin{document}
 \begin{tikzpicture}[font=\small,
   state/.style={draw=cblue!70!black, fill=cblue!7, rounded corners=2pt, line width=0.6pt,
@@ -50,7 +53,7 @@
   xlabel={distance $|u|$ from the double zero $u=0$}, ylabel={lower bound of $\sigma_2$},
   label style={font=\small}, tick label style={font=\footnotesize},
   axis line style={cink2}, tick style={cink2}, grid=major, grid style={cink3!25},
-  legend cell align=left, legend style={font=\footnotesize, at={(0.03,0.97)}, anchor=north west, draw=cink3, fill=white, fill opacity=0.92, text opacity=1}]
+  legend cell align=left, legend style={font=\footnotesize, at={(0.03,0.97)}, anchor=north west, draw=cink3, fill=white}]
 \addplot[domain=1e-6:1e-1, samples=160, line width=1.0pt, cblue]
   {2.62e-4*(1+x)*(0.5+x)^2*x^2*(0.5-x)};
 \addlegendentry{$2.62\cdot10^{-4}\,f(u)$, $u>0$}
@@ -61,9 +64,10 @@
 \addlegendentry{$E(24,\kappa)=2.35\cdot10^{-12}$}
 \draw[cink, line width=0.6pt, dash pattern=on 2pt off 1.5pt] (axis cs:3e-4,1e-18) -- (axis cs:3e-4,1e-5);
 \fill[caqua!70!black] (axis cs:3e-4,2.94e-12) circle (1.8pt);
-\node[font=\footnotesize, anchor=north west, align=left, inner sep=1.5pt]
+\node[font=\footnotesize, anchor=north west, align=left, inner sep=2pt, fill=white] (dnote)
   at (axis cs:5e-4,2e-14) {at $|u|=\delta$:\\ $2.94\cdot10^{-12}>E$};
-\draw[caqua!70!black, line width=0.35pt] (axis cs:6e-4,2.2e-14) -- (axis cs:3.2e-4,2.3e-12);
+\draw[caqua!70!black, line width=0.35pt] (dnote.north west) -- (axis cs:3.2e-4,2.3e-12);
 \end{axis}
+\checkfigure
 \end{tikzpicture}
 \end{document}
