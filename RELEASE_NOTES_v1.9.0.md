@@ -162,8 +162,11 @@ No proof uses `sorry`.
   numerically there is room for it only from about s = 0.025 on, while
   Theorem 7.79 gives s <= 0.008 (hole24.py).
 - A labelled three-point certificate that would exclude that further centre
-  does not exist at degree 7 (multi_cap/cap_probe.py and
-  three_point_probes.py, sampled constraints).
+  does not exist at degree 7: with the 24 directions at slack 0.008 and the
+  further one at inner product at most 0.6141, the best certificate has
+  value 0 (multi_cap/cap_probe.py, sampled constraints,
+  runs/cap_probe_d7.log).  The paper records this beside the earlier probe
+  with 24 contacts.
 
 ## New and changed files
 
@@ -171,8 +174,8 @@ No proof uses `sorry`.
   contact_valley.py, contact_cell_scan.py, contact_cell_constrained.py,
   code24_second.py, code24_exact.py (with code24_exact.txt),
   cell_hull_search.py, hole24.py, with logs in runs/; see the README there.
-- multi_cap/cap_probe.py: the labelled three-point probe with an inner
-  slack.
+- multi_cap/cap_probe.py (log runs/cap_probe_d7.log): the labelled
+  three-point probe with an inner slack.
 - lean/: the eight new parts above, with logs in lean/runs/.
 - paper/figures_new/tikz_hexloop.tex and tikz_codes.tex (Figures 12 and 13).
 - CITATION.cff and .zenodo.json: v1.9.0.

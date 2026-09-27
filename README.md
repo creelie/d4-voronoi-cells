@@ -73,8 +73,9 @@ assistance of Claude, an AI model made by Anthropic.
   multi_cap/cap_probe.py
                       A labelled three-point probe: can a certificate
                         exclude a further centre within sqrt 6 beside 24
-                        centres within 2.0161?  Not at degree 7.
-                        Log: runs/cap_probe.log.
+                        centres within 2.0161?  Not at degree 7: the
+                        least value is 0 at slack 0.008 and inner product
+                        0.6141.  Log: runs/cap_probe_d7.log.
   paper/figures_new/tikz_overlap_check.py
                       The collision test of the TikZ figures, now also for
                         tick labels and for anything drawn under text.  All
