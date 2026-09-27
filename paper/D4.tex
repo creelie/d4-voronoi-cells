@@ -532,7 +532,9 @@ a slack of $0.008$ in the inner products (\cref{thm:kissing-stable}), which
 a three-point certificate on the enlarged domain proves in exact and interval
 arithmetic. That is the cardinality half of a quantitative form of
 \cref{thm:m24}; the other half, that such twenty-four directions lie near a
-root system, is what the remaining case needs, together with a lower bound
+root system, holds at best for a slack below $0.01698$, where a second
+twenty-four-point code appears (\cref{prop:second-code}), and it is what
+the remaining case needs, together with a lower bound
 for the volume near the root system, whose second order
 \cref{sec:second-order} computes exactly and certifies. A numerical search
 of that case finds nothing below $8$ (\cref{sec:noncontact}).
@@ -1938,7 +1940,8 @@ of a $24$-cell. A proof of the bound at such a centre, and with it of
   $\tfrac12+s$, for $s$ of order $10^{-2}$, satisfy $d(W)\le\frac1{48}$. It is
   proved for $s\le2\cdot10^{-26}$ (\cref{thm:m24-robust}), and its cardinality
   half for $s\le0.008$ (\cref{thm:kissing-stable}). It is false from
-  $s=0.0374$ on, where $25$-point codes exist.
+  $s=0.01698$ on (\cref{prop:second-code}), well before $s=0.0374$, where
+  $25$-point codes exist.
 \item \emph{The volume between the explicit neighbourhood and the pair
   terms.} For exactly $24$ centres within $\sqrt6$ with $d(W)\le\frac1{48}$,
   $\vol(V_c)\ge8$ for $\sum\delta_i$ from $4\cdot10^{-3}$, where
@@ -1971,6 +1974,10 @@ of a $24$-cell. A proof of the bound at such a centre, and with it of
   from the root system, and for each count from $25$ to the largest that
   fits, as \cref{thm:m23-labelled} shows for $23$.
 \end{enumerate}
+By \cref{prop:second-code}, statement (i) cannot hold at slack $0.017$ or
+more, so for twenty-four centres (i) and (ii) cannot be proved one after the
+other over the whole range; what that case needs is the single volume
+statement (G) of \cref{rem:what-g-needs}.
 Statements (i) and (iii) are classifications of codes, (ii) is an inequality
 for the volume whose second order is certified below, and (iv) needs (i) and
 (iii) to see that twenty-four centres close to $c$ leave no room for another
@@ -2524,6 +2531,85 @@ volume above $8$. A proof of $\vol(Q_w)\ge8$ near the root system therefore
 has to control the volume near these curves, or use the packing constraint
 there.
 \end{remark}
+
+Away from the root system the bound $\vol(Q_w)\ge8$ can hold only for a
+small slack. \texttt{contact\_cell\_constrained.py} minimises $\vol(Q_w)$
+over $24$ unit directions with inner products at most $\tfrac12+s$, from
+$48$ random starts spread into codes of that slack and eight perturbations
+of the root system, with the exact gradient $-A_i^wc_i$ ($c_i$ the centroid
+of the $i$-th facet). For $s=0.005$ and $0.01$ every start that reaches a
+code ends at the root system or on a curve of \cref{prop:hexagon-loop},
+with volume $8$. For $s=0.02$ the codes it finds away from the root system
+have larger cells, the least $8.0679$. For $s=0.03$ and $0.035$ they have
+cells of volume $7.99802$ and $7.99288$. Codes of that slack are the
+directions of packings only with push-outs, and these pay for the
+difference many times over, so the bound needed is on the whole cell, not on
+$Q_w$ (\cref{rem:what-g-needs}).
+
+Statement (i) of \cref{sec:closure} fails well before the slack at
+which $25$-point codes appear.
+
+\begin{prop}[A second twenty-four-point code]\label{prop:second-code}
+There are $24$ points of $S^3$ with rational coordinates whose pairwise inner
+products are at most $\tfrac12+\tfrac{849}{50000}=0.51698$, and whose set $W$
+has $d(W)\ge\tfrac{57}{500}$, with $d$ as in \cref{thm:local-uniqueness}.
+\end{prop}
+
+\begin{proof}
+The points are listed in \texttt{code24\_exact.txt}; each is the inverse
+stereographic image of a rational point of $\mathbb{R}^3$, so its norm is
+exactly $1$. In exact arithmetic
+(\texttt{code24\_exact.py}, and in Lean, \texttt{D4SecondCode.lean}) every
+two of them have inner product at most $\tfrac12+\tfrac{849}{50000}$, and
+the inner product $-0.72817\ldots$ of the ninth and eleventh is at distance
+at least $\tfrac{57}{250}$ from each of $-1,-\tfrac12,0,\tfrac12,1$. If an
+orthogonal map and a relabelling moved the points by $e_i$ onto the
+normalised roots, with $\sum e_i^2=d(W)^2$, every inner product would lie
+within $e_i+e_j\le2d(W)$ of one of those five values; so
+$d(W)\ge\tfrac{57}{500}$.
+\end{proof}
+
+The code is not an accident of rounding.
+\texttt{code24\_second.py} spreads $64$ random configurations into codes of
+slack $0.03$ and then minimises their largest inner product. Three return to
+the root system, and the other $59$ all stop at the same value
+$0.516978$, a code with no antipodal pair, $84$ pairs at that inner product
+and five kinds of point. Its contact cell has volume $8.0948$; realised as
+the directions of a packing with all centres at one distance, it needs that
+distance to be at least $2.0349$, which leaves a cell of volume at least
+$8.674$. So it does not threaten
+\cref{conj:shell}, but it limits how the conjecture can be proved:
+twenty-four directions of slack $0.017$ or more need not lie near the root
+system, and any argument that first places them there stops at that slack.
+
+\begin{remark}[What the twenty-four-centre case needs]\label{rem:what-g-needs}
+Let $Y$ be the centres within $\sqrt6$ of $c$ and $T(Y)$ the right side of
+\cref{lem:no-triple}. Whatever the rest of the packing does,
+$\vol(V_c)\ge T(Y)$ by that lemma and $\vol(V_c)\ge\vol(V(Y)\cap K(Y))$ by
+\cref{prop:inversion-hull}. So the case of \cref{conj:shell} with exactly
+twenty-four centres within $\sqrt6$ follows from
+\begin{quote}
+(G)\quad $\vol\bigl(V(Y)\cap K(Y)\bigr)\ge8$ for every packing set $Y$ of $24$
+centres with $2\le|y|<\sqrt6$ and $T(Y)\le8$, with equality only at the root
+system,
+\end{quote}
+a statement about $24$ points in which statements (i) and (ii) of
+\cref{sec:closure} enter together, and which \cref{prop:second-code} does
+not touch. The condition $T(Y)\le8$ cannot be dropped. When centres move
+out towards $\sqrt6$ the inversion hull shrinks, and
+\texttt{cell\_hull\_search.py} finds a packing with
+$\vol(V(Y)\cap K(Y))=4.750$; there $T(Y)=10.82$. With the condition, the
+same script (SLSQP under the packing constraints and $T(Y)\le8$) finds
+nothing below $8$. None of $40$ random configurations can be brought into
+the region $T(Y)\le8$, in line with the survey of \cref{sec:closure}, where
+every local minimum of $T$ with $24$ centres is the root system. Of $64$
+starts made inside it, with tilts up to $0.3$ and up to four centres pushed
+out, one as far as $2.19$, the $20$ that stay in the region all end at the
+root system with volume $8$. What would prove (G) is not known: it is
+the part of \cref{conj:shell} that the pair terms and the inversion hull
+leave between them.
+\end{remark}
+
 
 \section{The combinatorial cell register}\label{sec:chamber-register}
 
@@ -10433,10 +10519,10 @@ cell.
 
 \subsection{A machine-checked kernel}
 
-Fourteen parts of the paper are verified by a proof assistant and not by a
-program whose output has to be trusted, and all fourteen are finite
+Fifteen parts of the paper are verified by a proof assistant and not by a
+program whose output has to be trusted, and all fifteen are finite
 arithmetic or polynomial identities. The supplement carries them as
-Lean~4 sources in a directory of their own: eleven files that compile
+Lean~4 sources in a directory of their own: twelve files that compile
 against a bare toolchain, and three small Lake projects.
 
 The first is \texttt{lean/D4Stress.lean}, on the equilibrium relation
@@ -10708,6 +10794,12 @@ $3J_1^2-4\sqrt3\,J_2=32$ and the six conditions for no slice to be a
 triangle; it checks the Gram matrix at $\theta=0$ against the unit roots,
 and proves the perfect square over every commutative ring with
 \texttt{grind}. About a second.
+
+The fifteenth is \texttt{lean/D4SecondCode.lean}, on
+\cref{prop:second-code}: the $24$ rational points, each of norm $1$, every
+two with inner product at most $\tfrac12+\tfrac{849}{50000}$, and one inner
+product at distance at least $\tfrac{57}{250}$ from $-1,-\tfrac12,0,\tfrac12,1$.
+About a second.
 
 That is a stronger form of checking than anything else in this paper,
 and it is available here only because these particular arguments are
@@ -11847,11 +11939,12 @@ exploration and the script says so in its output.
 
 \subsection*{The formalised part}
 
-Fourteen parts of the paper are also verified in Lean~4: the eleven files
+Fifteen parts of the paper are also verified in Lean~4: the twelve files
 \texttt{D4Stress.lean}, \texttt{D4Meet.lean}, \texttt{D4Certificate.lean},
 \texttt{D4InnerProducts.lean}, \texttt{D4RootLattices.lean},
 \texttt{D4Closure.lean}, \texttt{D4SecondOrder.lean},
-\texttt{D4HexagonLoop.lean}, \texttt{D4NearContact.lean},
+\texttt{D4HexagonLoop.lean}, \texttt{D4SecondCode.lean},
+\texttt{D4NearContact.lean},
 \texttt{D4Rigidity.lean} and \texttt{D4Cap.lean}
 in the directory \texttt{lean}, and the Lake
 projects in \texttt{lean/cell600}, \texttt{lean/certificate} and
@@ -11957,7 +12050,8 @@ the case $|S|=1$ and the $303$ boxes of the case $|S|\ge2$. The
 fourteenth, \texttt{lean/D4HexagonLoop.lean}, is the algebra of
 \cref{prop:hexagon-loop}: the two integrals in closed form, the identity
 between them, the conditions on the slices and the Gram matrix at
-$\theta=0$. The theorems in each file are listed in
+$\theta=0$. The fifteenth, \texttt{lean/D4SecondCode.lean}, is the exact
+content of \cref{prop:second-code}. The theorems in each file are listed in
 \texttt{lean/README.md}, together with the axiom report that each file
 prints when it is checked. Nothing else in the paper is formalised.
 

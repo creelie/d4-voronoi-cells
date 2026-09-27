@@ -127,11 +127,24 @@ Everything proved in v1.7.0 still stands.  New or sharper:
   2.27: the relaxed minimisation of contact_valley.py finds this curve, and
   the Hessian along it is positive semidefinite with seven zero
   eigenvalues (rotations and the curve).
+- Proposition 2.28 (a second 24-point code): 24 points of S^3 with rational
+  coordinates, inner products at most 1/2 + 849/50000 = 0.51698, at distance
+  d(W) >= 57/500 from the root system (multi_cap/second_order/code24_exact.py,
+  and lean/D4SecondCode.lean).  So statement (i) of "What is left" fails from
+  slack 0.01698 on, not only from 0.0374; the code is the best other 24-point
+  code the search finds (code24_second.py, 59 of 62 minimisations).
+- Remark 2.29: for 24 centres within sqrt6, statements (i) and (ii) are
+  replaced by one volume statement (G): vol(V(Y) ∩ K(Y)) >= 8 whenever the
+  pair-term bound T(Y) is at most 8.  It fails without that condition (4.750
+  at T = 10.82), and with it the search finds only the root system
+  (cell_hull_search.py).  The contact-cell bound vol(Q_w) >= 8 on codes of
+  slack s holds numerically at s = 0.005, 0.01 and 0.02 and fails at 0.03
+  (7.99802; contact_cell_constrained.py).
 - The bound can only be local: with no packing constraint, 24 unit directions
   with inner products up to 0.579 have a contact cell of volume 7.96553 < 8
   (multi_cap/second_order/contact_cell_scan.py, minimiser saved in
   contact_cell_min.npy).
-- In Lean, six more parts, fourteen in all:
+- In Lean, seven more parts, fifteen in all:
   - lean/cardinality/, a new Lake project that checks the certificates of
     Theorem 7.79 (degree 8 at s = 0.0065, degree 10 at s = 0.008) from their
     entries alone in exact dyadic arithmetic: positivity by exact LDL^T, the
@@ -161,6 +174,9 @@ Everything proved in v1.7.0 still stands.  New or sharper:
     Q(sqrt3)[c, s]/(c^2 + s^2 - 1): the integrals J1, J2 in closed form from
     the sector triangles, 3 J1^2 - 4 sqrt3 J2 = 32, the six slice conditions,
     the Gram matrix at theta = 0, and the perfect square (grind).
+  - lean/D4SecondCode.lean: Proposition 2.28, the 24 rational points of the
+    second code, their norms, the slack bound 849/50000 and the inner
+    product 57/250 away from -1, -1/2, 0, 1/2, 1.
   - lean/certificate/D4Omega*.lean: the tables of omega, A_* and the
     constants of Theorem 2.17 computed inside Lean, in outward-rounded 256-bit
     interval arithmetic, from simplified closed forms,
