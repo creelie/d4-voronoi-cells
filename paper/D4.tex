@@ -6759,8 +6759,8 @@ arctan from its series and $\pi$ from Machin's formula, tabulates $\omega$ and
 $\omega'$ on the grid of step $2^{-16}$ with $|\omega''|\le0.2856$, and
 \texttt{D4OmegaMain.lean} checks that $A_*$ exceeds $8-0.0928555703$;
 \texttt{D4OmegaRegionI.lean} reruns the branch and bound with that table,
-and it passes in sixteen minutes, so that nothing is taken from outside
-Lean but the certificate. Hence \eqref{eq:C} holds on the
+and it passes in sixteen minutes, on $419\,913$ boxes, so that nothing is
+taken from outside Lean but the certificate. Hence \eqref{eq:C} holds on the
 admissible domain,
 \cref{lem:certificate} gives \eqref{eq:strict-pairs} for every contact
 configuration of $23$ directions, and \cref{thm:strict-reduction}

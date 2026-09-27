@@ -203,7 +203,8 @@ the 256 cell integrals of `D4LabelledData` are confirmed by the values
 computed here, and it reruns II_s (39 551 boxes) and II_f (9 545) with the Lean
 tables, which then take nothing from outside Lean but the certificate;
 `D4OmegaRegionI.lean` reruns region I, the check of `D4CertMain`, with the Lean
-table, and passes in 954 s.  Build log `runs/D4Omega_build_2026-09-27.log`.
+table, and passes in 954 s on 419 913 boxes (421 881 with the tables of
+`D4CertData`).  Build log `runs/D4Omega_build_2026-09-27.log`.
 
 `cardinality/` (new in v1.8.0) covers the certificate of Theorem 7.79,
 the kissing number is stable: every set of points of S^3 with pairwise
