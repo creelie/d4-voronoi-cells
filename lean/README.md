@@ -41,7 +41,10 @@ It proves that N is nonnegative and covers every pair of cone rows exactly
 once, that P = H + c c^T - B^T N B is symmetric and positive semidefinite by
 an exact LDL^T with 30 zero pivots, each with a zero row (so H(xi,xi) >=
 -(sum delta_i)^2 on the cone), that H is Adj - 4I on the push-outs and H + c c^T
-is Adj + 4(J - I) there (the identity of Proposition 2.20), that equality holds
+is Adj + 4(J - I) there (the identity of Proposition 2.20), that the 72 x 72
+tilt block of H (the Hessian of the contact-cell volume in the directions
+alone) is positive semidefinite with 15 zero pivots, the six rotations null
+for it and the nine infinitesimal strains not, that equality holds
 on the 24 one-centre rays, and, with `grind` over every commutative ring, the
 expansions of Lemma 2.23 and of the one-centre formula.  The finite checks
 are settled by `native_decide`, about thirty seconds.  That H is the Hessian

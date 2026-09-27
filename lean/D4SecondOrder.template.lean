@@ -259,6 +259,42 @@ theorem copositive_certificate : (symmetric matP dim && ldlPSD matP dim == (true
 theorem one_centre_rays : ((List.range 24).all (fun i => quad formM (etaRay i) dim == 0)) = true := by
   native_decide
 
+/-! ## The tilt block: the contact-cell volume under pure tilts -/
+
+/-- The tangent field `t_i = M a_i - (<a_i, M a_i>/2) a_i` of a 4 x 4 matrix `M` (a rotation
+    when `M` is antisymmetric, a strain when symmetric), in the coordinates `c_ik`. -/
+def fieldVec (M : List (List Rat)) : Array Rat :=
+  (Array.range dim).map fun idx =>
+    if idx ≥ 72 then 0 else
+    let i := idx / 3
+    let k := idx % 3
+    let a := root i
+    let Ma := M.map fun row => dot row a
+    let lam := dot a Ma / 2
+    let t := List.zipWith (fun x y => x - lam * y) Ma a
+    dot t (bas i k) / dot (bas i k) (bas i k)
+
+def elemM (p q : Nat) (x y : Rat) : List (List Rat) :=
+  (List.range 4).map fun r => (List.range 4).map fun s =>
+    if r == p && s == q then x else if r == q && s == p then y else 0
+
+def rotations : List (Array Rat) :=
+  [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)].map fun (p, q) => fieldVec (elemM p q 1 (-1))
+
+def strains : List (Array Rat) :=
+  ([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)].map fun (p, q) => fieldVec (elemM p q 1 1)) ++
+  ([0, 1, 2].map fun p => fieldVec ((List.range 4).map fun r => (List.range 4).map fun s =>
+    if r == s && r == p then (1 : Rat) else if r == s && r == p + 1 then -1 else 0))
+
+/-- The 72 x 72 tilt block of `H` (the Hessian of the contact-cell volume in the directions
+    alone) is positive semidefinite, with 15 zero pivots in an exact `LDL^T`; the six
+    rotations are null for it and the nine strains are not. -/
+theorem tilt_block :
+    (ldlPSD formH 72 == (true, 15) &&
+     rotations.all (fun v => quad formH v dim == 0) &&
+     strains.all (fun v => quad formH v dim > 0)) = true := by
+  native_decide
+
 end D4SecondOrder
 
 #print axioms D4SecondOrder.pure_push_expansion
@@ -270,3 +306,4 @@ end D4SecondOrder
 #print axioms D4SecondOrder.certificate_data
 #print axioms D4SecondOrder.copositive_certificate
 #print axioms D4SecondOrder.one_centre_rays
+#print axioms D4SecondOrder.tilt_block

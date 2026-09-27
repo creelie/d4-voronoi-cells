@@ -14,6 +14,8 @@ Run them from this directory.
 | `exact_push.py` | the one-centre formula, Lemma 2.23 and Proposition 2.24 on examples |
 | `untilt.py` | tilting is not monotone: 103 of 237 tilted packings below their untilted versions, by up to 3.6e-5 |
 | `remainder_test.py` | 300 packings with tilts on the edges of the cone: vol - 8 - (2/3) S + (1/2) S^2 >= 0 on all; writes `runs/remainder_rows.dat` |
+| `tilt_block.py` | the 72 x 72 tilt block of H (the Hessian of the contact-cell volume in the directions alone) is positive semidefinite, by an exact LDL^T with 15 zero pivots; its kernel is the 6 rotations and 9 further directions, and the infinitesimal strains are not in it; writes `tilt_kernel.npy` |
+| `tilt_quartic.py` | the fourth order along those 9 directions, with the other 57 tilts free to relax: the least value of (vol - 8)/t^4 found (floating point, exploration) |
 | `independent_check.py` | recomputes every volume by intersecting halfspaces: H against second differences (6e-8), the cone rows against exact distances (2e-9), the spectrum, the one-centre formula (1e-14), Lemma 2.23 on 400 push patterns |
 
 Logs are in `runs/`.  What is proved here is the second order (the certificate)
