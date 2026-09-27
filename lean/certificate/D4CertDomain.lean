@@ -301,16 +301,32 @@ def d1hiT : Array Dy := d1hiRaw.map mkDy
 def duT : Dy := mkDy duRaw
 def m2T : Dy := mkDy m2Raw
 
+/-- A table of omega: at the points us[i] (increasing), olow[i] <= omega and
+d1lo[i] <= omega' <= d1hi[i], with omega increasing; du bounds the distance from a
+point to the table point below it, and m2 bounds |omega''| where the table is used. -/
+structure OTab where
+  us : Array Dy
+  olow : Array Dy
+  d1lo : Array Dy
+  d1hi : Array Dy
+  du : Dy
+  m2 : Dy
+
+/-- The tables of D4CertData, from certificate_check.py. -/
+def dataTab : OTab := ⟨usT, olowT, d1loT, d1hiT, duT, m2T⟩
+
 /-- The largest index i with us[i] <= x, or none if x < us[0]. -/
-def lookup (x : Dy) : Option Nat :=
-  if Dy.lt x (usT[0]!) then none else
+def lookupIn (us : Array Dy) (x : Dy) : Option Nat :=
+  if Dy.lt x (us[0]!) then none else
   let rec go (lo hi : Nat) : Nat → Nat
     | 0 => lo
     | fuel + 1 =>
       if hi - lo ≤ 1 then lo else
       let mid := (lo + hi) / 2
-      if Dy.le (usT[mid]!) x then go mid hi fuel else go lo mid fuel
-  some (go 0 usT.size 64)
+      if Dy.le (us[mid]!) x then go mid hi fuel else go lo mid fuel
+  some (go 0 us.size 64)
+
+def lookup (x : Dy) : Option Nat := lookupIn usT x
 
 /-! ## The branch and bound -/
 
@@ -346,7 +362,7 @@ def hIndex (v w : Nat) : Nat :=
 
 def detPoly : DPoly := #[⟨0, 0, 0, Dy.one⟩, ⟨1, 1, 1, ⟨2, 0⟩⟩, ⟨2, 0, 0, ⟨-1, 0⟩⟩, ⟨0, 2, 0, ⟨-1, 0⟩⟩, ⟨0, 0, 2, ⟨-1, 0⟩⟩]
 
-def process (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := Id.run do
+def processWith (tab : OTab) (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := Id.run do
   let lo := b.lo; let hi := b.hi
   -- the ordered region u <= v <= t
   if Dy.lt (hi[1]!) (lo[0]!) || Dy.lt (hi[2]!) (lo[1]!) then return .verified
@@ -374,16 +390,16 @@ def process (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := Id.run do
   let mut glo : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
   let mut ghi : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
   let mut m2v : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
-  let dM := m2T.mul duT
+  let dM := tab.m2.mul tab.du
   for v in [0, 1, 2] do
     if Dy.le THIRD (lo[v]!) then
-      match lookup (c[v]!) with
+      match lookupIn tab.us (c[v]!) with
       | none => pure ()
       | some idx =>
-        q0 := q0.add ((olowT[idx]!).mulInt SC)
-        glo := glo.set! v (((d1loT[idx]!).sub dM).mulInt SC)
-        ghi := ghi.set! v (((d1hiT[idx]!).add dM).mulInt SC)
-        m2v := m2v.set! v (m2T.mulInt SC)
+        q0 := q0.add ((tab.olow[idx]!).mulInt SC)
+        glo := glo.set! v (((tab.d1lo[idx]!).sub dM).mulInt SC)
+        ghi := ghi.set! v (((tab.d1hi[idx]!).add dM).mulInt SC)
+        m2v := m2v.set! v (tab.m2.mulInt SC)
   -- P and its gradient at the centre
   let cp := c.map fun x => dyPowers x ps.deg
   let pc := ps.P.evalPt (cp[0]!) (cp[1]!) (cp[2]!)
@@ -425,6 +441,18 @@ def process (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := Id.run do
   let b2 : Box := ⟨lo.set! axis mid, hi, some hess, age + 1⟩
   return .split b1 b2
 
+def process (ps : Polys) (maxAge : Nat) (b : Box) : Outcome := processWith dataTab ps maxAge b
+
+/-- The branch and bound with a given table of omega: (status, boxes). -/
+def runStatWith (tab : OTab) (ps : Polys) (hw : Nat) (done : Nat) : Nat → List Box → Nat × Nat
+  | 0, _ => (2, done)
+  | _, [] => (0, done)
+  | fuel + 1, b :: rest =>
+    match processWith tab ps hw b with
+    | .verified => runStatWith tab ps hw (done + 1) fuel rest
+    | .failed => (1, done)
+    | .split b1 b2 => runStatWith tab ps hw (done + 1) fuel (b1 :: b2 :: rest)
+
 def run (ps : Polys) (hw : Nat) : Nat → List Box → Bool
   | 0, _ => false
   | _, [] => true
@@ -463,6 +491,12 @@ def verifyWithFuel (fuel : Nat) : Bool :=
   match thePolys with
   | none => false
   | some ps => run ps HAGE fuel [startBox]
+
+/-- The whole check with a given table of omega: (status, boxes). -/
+def verifyStatWith (tab : OTab) (fuel : Nat) : Nat × Nat :=
+  match thePolys with
+  | none => (3, 0)
+  | some ps => runStatWith tab ps HAGE 0 fuel [startBox]
 
 def verifyStat (fuel : Nat) : Nat × Nat :=
   match thePolys with

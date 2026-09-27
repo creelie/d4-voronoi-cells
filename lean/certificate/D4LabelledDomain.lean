@@ -43,15 +43,8 @@ def t1 : Dy := mkDy t1Raw
 def dsLo : Array Dy := dsLoRaw.map mkDy
 def dsHi : Array Dy := dsHiRaw.map mkDy
 
-def lookupL (x : Dy) : Option Nat :=
-  if Dy.lt x (usLT[0]!) then none else
-  let rec go (lo hi : Nat) : Nat → Nat
-    | 0 => lo
-    | fuel + 1 =>
-      if hi - lo ≤ 1 then lo else
-      let mid := (lo + hi) / 2
-      if Dy.le (usLT[mid]!) x then go mid hi fuel else go lo mid fuel
-  some (go 0 usLT.size 64)
+/-- The tables of D4LabelledData, from labelled_certificate_check.py. -/
+def labTab : OTab := ⟨usLT, olowLT, d1loLT, d1hiLT, duLT, m2LT⟩
 
 /-! ## Exact rational helpers -/
 
@@ -193,7 +186,7 @@ inductive Extra where
   | slab (c : Dy)
   | gamma
 
-def processL (ps : Polys) (maxAge : Nat) (extra : Extra) (b : Box) : Outcome := Id.run do
+def processL (tab : OTab) (ps : Polys) (maxAge : Nat) (extra : Extra) (b : Box) : Outcome := Id.run do
   let lo := b.lo; let hi := b.hi
   if Dy.lt (hi[1]!) (lo[0]!) || Dy.lt (hi[2]!) (lo[1]!) then return .verified
   let ivs : Array Iv := #[⟨lo[0]!, hi[0]!⟩, ⟨lo[1]!, hi[1]!⟩, ⟨lo[2]!, hi[2]!⟩]
@@ -217,16 +210,16 @@ def processL (ps : Polys) (maxAge : Nat) (extra : Extra) (b : Box) : Outcome := 
   let mut glo : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
   let mut ghi : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
   let mut m2v : Array Dy := #[Dy.zero, Dy.zero, Dy.zero]
-  let dM := m2LT.mul duLT
+  let dM := tab.m2.mul tab.du
   for v in [0, 1, 2] do
     if Dy.le THIRD (lo[v]!) then
-      match lookupL (c[v]!) with
+      match lookupIn tab.us (c[v]!) with
       | none => pure ()
       | some idx =>
-        q0 := q0.add ((olowLT[idx]!).mulInt SC)
-        glo := glo.set! v (((d1loLT[idx]!).sub dM).mulInt SC)
-        ghi := ghi.set! v (((d1hiLT[idx]!).add dM).mulInt SC)
-        m2v := m2v.set! v (m2LT.mulInt SC)
+        q0 := q0.add ((tab.olow[idx]!).mulInt SC)
+        glo := glo.set! v (((tab.d1lo[idx]!).sub dM).mulInt SC)
+        ghi := ghi.set! v (((tab.d1hi[idx]!).add dM).mulInt SC)
+        m2v := m2v.set! v (tab.m2.mulInt SC)
   -- the linear term of the slab, scaled by 315 like everything else
   match extra with
   | .slab cc =>
@@ -278,28 +271,31 @@ def processL (ps : Polys) (maxAge : Nat) (extra : Extra) (b : Box) : Outcome := 
   let mid := c[axis]!
   return .split ⟨lo, hi.set! axis mid, some hess, age + 1⟩ ⟨lo.set! axis mid, hi, some hess, age + 1⟩
 
-def runL (ps : Polys) (hw : Nat) (extra : Extra) (done : Nat) : Nat → List Box → Nat × Nat
+def runL (tab : OTab) (ps : Polys) (hw : Nat) (extra : Extra) (done : Nat) : Nat → List Box → Nat × Nat
   | 0, _ => (2, done)
   | _, [] => (0, done)
   | fuel + 1, b :: rest =>
-    match processL ps hw extra b with
-    | .verified => runL ps hw extra (done + 1) fuel rest
+    match processL tab ps hw extra b with
+    | .verified => runL tab ps hw extra (done + 1) fuel rest
     | .failed => (1, done)
-    | .split b1 b2 => runL ps hw extra (done + 1) fuel (b1 :: b2 :: rest)
+    | .split b1 b2 => runL tab ps hw extra (done + 1) fuel (b1 :: b2 :: rest)
 
 def mOne : Dy := ⟨-1, 0⟩
 
-/-- II_s: the box [-1, t1] x [-1, t1] x [1/2, t1]; (status, boxes). -/
-def statSlab (fuel : Nat) : Nat × Nat :=
+/-- II_s with a given table of omega: the box [-1, t1] x [-1, t1] x [1/2, t1]; (status, boxes). -/
+def statSlabWith (tab : OTab) (fuel : Nat) : Nat × Nat :=
   match thePolys with
   | none => (3, 0)
-  | some ps => runL ps HAGE (.slab cSlab) 0 fuel [⟨#[mOne, mOne, ⟨1, 1⟩], #[t1, t1, t1], none, 0⟩]
+  | some ps => runL tab ps HAGE (.slab cSlab) 0 fuel [⟨#[mOne, mOne, ⟨1, 1⟩], #[t1, t1, t1], none, 0⟩]
 
-/-- II_f: the box [-1, a_D] x [-1, a_D] x [t1, a_D]; (status, boxes). -/
-def statGamma (fuel : Nat) : Nat × Nat :=
+/-- II_f with a given table of omega: the box [-1, a_D] x [-1, a_D] x [t1, a_D]; (status, boxes). -/
+def statGammaWith (tab : OTab) (fuel : Nat) : Nat × Nat :=
   match thePolys with
   | none => (3, 0)
-  | some ps => runL ps HAGE .gamma 0 fuel [⟨#[mOne, mOne, t1], #[aDtop, aDtop, aDtop], none, 0⟩]
+  | some ps => runL tab ps HAGE .gamma 0 fuel [⟨#[mOne, mOne, t1], #[aDtop, aDtop, aDtop], none, 0⟩]
+
+def statSlab (fuel : Nat) : Nat × Nat := statSlabWith labTab fuel
+def statGamma (fuel : Nat) : Nat × Nat := statGammaWith labTab fuel
 
 /-- The table of cosines increases, and its steps are at most duLT. -/
 def usSorted : Bool :=
