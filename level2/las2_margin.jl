@@ -7,6 +7,10 @@
 #     mu * sum over pairs of w(u_ij) <= N - 24,
 # so every inner product has w(u) <= (N - 24)/mu: it lies near -1, -1/2, 0 or
 # 1/2 + [0, s].  Floating point, exploration.
+# NOTE: the normalised roots of D4 are such a code, with w = 3s/8 on each of
+# their 96 pairs at 1/2, so (N - 24)/mu >= 36 s always.  Since max w < 0.019779
+# at s = 0.008 (and max w < 36 s for every s > 5.2e-4), the bound excludes no
+# inner product there at any degree.  See margin_floor_check.py.
 #   julia --project=. -t 4 las2_margin.jl D1 DELTA PREC s N OUT
 using LasserreSphericalCodes, ClusteredLowRankSolver, Nemo
 d1 = parse(Int, ARGS[1]); dl = parse(Int, ARGS[2]); prec = parse(Int, ARGS[3])

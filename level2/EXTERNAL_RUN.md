@@ -1,5 +1,14 @@
 # The second-level runs this machine cannot do
 
+**Step 4 below (the margin) cannot give anything at slack 0.008, on any
+machine.**  The root system spends the margin: its 96 pairs at inner product
+1/2 force (N - 24)/mu >= 36 s = 0.288, while the weight never exceeds 0.019779
+(`margin_floor_check.py`; the paper's proposition "The root system spends the
+margin").  Steps 1 to 3 still reproduce the certificate and bound the size of
+codes at small slack, which the paper already has up to s = 0.008 from the
+three-point bound.  None of these runs is needed for the paper, and none
+closes (C) or (G).
+
 What was run here (`README.md`): the second-level programme of de Laat,
 Leijenhorst and de Muinck Keizer with our zonal matrices, at degrees up to
 (d1, delta) = (10, 12), 24.9423 at slack 0 in 3.9 hours and 11.8 GB.  What
@@ -48,8 +57,8 @@ On a machine with at least 64 GB for (12, 14), or 192 GB for (14, 16):
 
        julia --project=. -t 8 /path/to/level2/las2_slack.jl 14 16 128 B.txt 1//500 1//200 1//100
 
-4. The margin, which is what statement (i) of "What is left" needs: with N a
-   little above the bound B(s) of step 3,
+4. The margin (vacuous at s = 0.008, see the note at the top; kept for the
+   record): with N a little above the bound B(s) of step 3,
 
        julia --project=. -t 8 /path/to/level2/las2_margin.jl 14 16 128 1//200 N margin.txt
 
@@ -59,6 +68,9 @@ On a machine with at least 64 GB for (12, 14), or 192 GB for (14, 16):
    about (8 (N - 24)/mu)^(1/2) of -1/2 or 0, and near -1 or in [1/2, 1/2 + s].
 
 ## What the answer can and cannot give
+
+(Written before the floor 36 s was found; at s = 0.008 the window below is
+the whole interval.)
 
 If (N - 24)/mu is small enough that the window is below about 0.01, the
 inner products of every 24-point code at slack s lie within 0.01 of the root

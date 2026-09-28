@@ -100,5 +100,18 @@ unless the bound grows more slowly than s.
 Here it runs at (4, 6) with s = 0 and N = 33, where it finds mu = 2.2134
 (`runs/las2_margin_4_6_s0_N33.log`); at that degree the bound itself is 32,
 (N - 24)/mu = 4.07 exceeds the largest value of w on the interval, and nothing
-is pinned.  It is meant for (14, 16).
+is pinned.
+
+**It pins nothing at any degree once s > 5.2e-4.**  The normalised roots of
+D4 are themselves a 24-point code with inner products in [-1, 1/2 + s], and w
+equals 3s/8 on each of their 96 pairs at 1/2, so every feasible (N, mu) has
+(N - 24)/mu >= 36 s.  At s = 0.008 that is 0.288, while w never exceeds
+0.019779 on the interval: the inequality w(u) <= (N - 24)/mu excludes no inner
+product, whatever the degree and whatever the machine.  `margin_floor_check.py`
+checks this (exactly, and in ball arithmetic); the paper states it as the
+proposition "The root system spends the margin".  A weight that also vanishes
+at 1/2 escapes this floor, but no pointwise reading can beat the codes that
+exist, and at s = 0.008 there are 24-point codes with an inner product of
+0.1231, far from every root value.  So the (14, 16) margin run is not worth
+doing.
 

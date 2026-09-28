@@ -1,0 +1,82 @@
+% tikz_margin.tex -- the margin programme of the second level is spent by the root system
+% (Proposition "The root system spends the margin").
+%   (a) The weight w(u) = (u+1)(u+1/2)^2 u^2 (1/2+s-u) at s = 0.008, logarithmic scale, against
+%       the floor 36 s = 0.288 that the 96 neighbouring pairs of the root system impose on
+%       (N-24)/mu.  Every inner product lies below the floor: nothing is pinned.
+%   (b) max w against 36 s as functions of s; the margin can pin anything only to the left of
+%       their crossing, near s = 5.2e-4, far below the slack 0.008 of the stable kissing number.
+% Data: margin_w.dat and margin_floor.dat, written by margin_data.py.
+% Build:  pdflatex tikz_margin.tex && pdftoppm -r 500 -png -singlefile tikz_margin.pdf ../figures/fig_tikz_margin
+% Test:   python3 tikz_overlap_check.py tikz_margin.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cviolet}{HTML}{4A3AA7}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\begin{document}
+\begin{tikzpicture}[font=\small]
+\begin{axis}[name=A, width=8.2cm, height=6.4cm, xmin=-1.05, xmax=0.56, ymode=log,
+    ymin=1e-5, ymax=2, xtick={-1,-0.5,0,0.5}, xticklabels={$-1$,$-\tfrac12$,$0$,$\tfrac12$},
+    ytick={1e-4,1e-3,1e-2,1e-1,1},
+    xlabel={inner product $u$}, ylabel={$w(u)$, $s=0.008$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    unbounded coords=jump, clip=true]
+  \fill[corange!10] (axis cs:-1.05,0.288) rectangle (axis cs:0.56,2);
+  \addplot[corange, line width=0.8pt, dashed, domain=-1.05:0.56, samples=2] {0.288};
+  \addplot[cblue, line width=0.9pt] table[x=u, y=w] {margin_w.dat};
+  \addplot[cviolet, only marks, mark=*, mark size=1.5pt] coordinates {(0.3855,0.019778)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(-1,1e-5) (-1,2e-2)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(-0.5,1e-5) (-0.5,2e-2)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(0,1e-5) (0,2e-2)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(0.5,1e-5) (0.5,2e-2)};
+  \coordinate (A-floor) at (axis cs:-0.98,0.62);
+  \coordinate (A-max) at (axis cs:0.20,0.075);
+  \coordinate (A-maxpt) at (axis cs:0.3855,0.0215);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=corange!85!black] (lfl) at (A-floor)
+  {floor $36s=0.288$ from the $96$ pairs of $D_4$ at $\tfrac12$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=east, text=cviolet] (lmx) at (A-max) {$\max w=0.01978$};
+\draw[cviolet, line width=0.4pt, -{Stealth[length=3pt]}] (lmx.east) -- (A-maxpt);
+\begin{axis}[name=B, at={($(A.east)+(1.7cm,0)$)}, anchor=west, width=8.2cm, height=6.4cm,
+    xmode=log, ymode=log, xmin=1e-5, xmax=0.05, ymin=2e-4, ymax=3,
+    xtick={1e-5,1e-4,1e-3,1e-2}, ytick={1e-3,1e-2,1e-1,1},
+    xlabel={slack $s$}, ylabel={value},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize}, clip=false]
+  \fill[corange!10] (axis cs:5.17e-4,2e-4) rectangle (axis cs:0.05,3);
+  \addplot[cblue, line width=0.9pt] table[x=s, y=maxw] {margin_floor.dat};
+  \addplot[corange, line width=0.9pt, dashed] table[x=s, y=floor] {margin_floor.dat};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(0.008,2e-4) (0.008,0.6)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(0.01698,2e-4) (0.01698,0.6)};
+  \addplot[caqua, only marks, mark=*, mark size=1.5pt] coordinates {(5.17e-4,0.0186)};
+  \coordinate (B-maxw) at (axis cs:1.3e-5,0.028);
+  \coordinate (B-floor) at (axis cs:1.3e-5,1.3e-3);
+  \coordinate (B-cross) at (axis cs:4.0e-4,0.1);
+  \coordinate (B-crosspt) at (axis cs:5.17e-4,0.0205);
+  \coordinate (B-s8) at (axis cs:0.008,0.75);
+  \coordinate (B-s17) at (axis cs:0.01698,1.45);
+  \coordinate (B-band) at (axis cs:0.0021,4.5e-4);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south west, text=cblue!85!black] (lbm) at (B-maxw) {$\max_u w(u)$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south west, text=corange!85!black] (lbf) at (B-floor) {$36s$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=east, text=caqua!80!black] (lbc) at (B-cross) {$s\approx5.2\cdot10^{-4}$};
+\draw[caqua!80!black, line width=0.4pt, -{Stealth[length=3pt]}] (lbc.east) -- (B-crosspt);
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, text=cink2] (lb8) at (B-s8) {$0.008$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, text=cink2] (lb17) at (B-s17) {$0.017$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=center, text=corange!85!black] (lbb) at (B-band) {nothing pinned};
+\node[font=\bfseries] (pa) at ($(A.north west)+(-1.2cm,0.35cm)$) {(a)};
+\node[font=\bfseries] (pb) at ($(B.north west)+(-1.0cm,0.35cm)$) {(b)};
+\def\figboxes{pa,pb}
+\def\figlabels{lfl,lmx,lbm,lbf,lbc,lb8,lb17,lbb}
+\checkfigure
+\end{tikzpicture}
+\end{document}

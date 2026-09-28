@@ -194,14 +194,11 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 
 \begin{abstract}
 We prove that a Voronoi cell of a unit-ball packing of $\mathbb{R}^4$ has
-volume at least $8$, that of the twenty-four-cell, with equality only at
-$D_4$, whenever at most twenty-three or at least thirty-one other centres
-lie within $\sqrt6$ of its centre, and whenever none lies at a distance
-strictly between $2+4\cdot10^{-26}$ and $\sqrt6$. This settles the
-twenty-four-cell conjecture for contact configurations and makes $D_4$ a
-strict local minimum among all packings. We also prove that at most
-twenty-four centres lie within $2.0161$ of any centre, and reduce the rest
-to two explicit inequalities.
+volume at least $8$, with equality only for the twenty-four-cell of $D_4$,
+whenever at most twenty-three or at least thirty-one centres lie within
+$\sqrt6$ of its centre, or none lies strictly between $2+4\cdot10^{-26}$
+and $\sqrt6$. This settles contact configurations; the remaining ones
+reduce to two explicit inequalities.
 \end{abstract}
 
 \maketitle
@@ -232,7 +229,9 @@ twenty-four-cell conjecture, and it implies the density bound $\pi^2/16$
 at once. No case of it in which a contact
 direction leaves a root of $D_4$ had been proved before: the general
 estimates of Blichfeldt and Rogers stop short of $8$, the linear
-programming bound stalls above the density of $D_4$, and the
+programming bound stalls above the density of $D_4$, and so does the
+three-point bound of Cohn, de Laat and Salmon \cite{CdLS22}, the best upper
+bound known in dimension four, and the
 second-order analysis of the cell degenerates exactly at the dense
 configurations that matter (\cref{sec:hessian-technique}). For contact
 configurations, where every neighbour that can cut the cell touches the
@@ -432,7 +431,9 @@ proof consists of.%
   value exactly $24$, with truncation degrees $14$ and $16$, reduced by
   the symmetry of the sphere, solved to forty digits in $256$-bit
   arithmetic over about two weeks on eight cores with $128$ gigabytes
-  of memory, and then rounded to an exact rational point; that point is
+  of memory, and then rounded to an exact rational point by the procedure
+  of \cite{CdLL24}, which is much faster than the earlier one of
+  \cite{DdLM21} at this size; that point is
   public \cite{LLM24data}, under a licence that permits redistribution,
   and it travels with this paper. Because the bound is exactly $24$ and
   a code of size $24$ exists, the equality case of the bound forces
@@ -469,8 +470,11 @@ proof consists of.%
   solutions of $x^{\mathsf T}Gx=2$, with $24$ only at determinant $4$
   and the neighbour counts of $D_4$, the next value being $20$ at
   determinant $5$, which is $A_4$. The published antecedents are the
-  bound $24.10$ of Bachoc and Vallentin \cite{BV08} at the first level
-  of the same hierarchy and Musin's proof \cite{Mus08} that the kissing
+  three-point bound of Bachoc and Vallentin \cite{BV08}, the first level
+  of the same hierarchy, whose value in dimension four, $24.5797$ in
+  \cite{BV08}, computations in high precision have lowered to $24.0569$ at
+  degree $16$ \cite{MV10,MO18} and to $24.0472$ at degree $20$
+  \cite{Lei25}, and Musin's proof \cite{Mus08} that the kissing
   number in dimension four is $24$, which bounds the size of the code
   but does not identify it. What has not been repeated is the search
   for the kernel, which is the semidefinite computation itself; but a
@@ -2072,37 +2076,27 @@ half is statement (i). \Cref{thm:m24-robust} gives it only for slack up to
 $2\cdot10^{-26}$, and \cref{rem:robust-ceiling} shows that no reading of the
 same kernel passes $10^{-8}$: the certificate is exact at slack $0$, and its
 two-point polynomial has double zeros at $-\frac12$ and $0$, so the distance
-it controls is the square root of the error. A form at moderate slack
-needs a new computation at the second level of the hierarchy, on the enlarged
-domain and with a margin, of the kind carried out in \cite{LLM24}. That
-programme can be written down and run on an
+it controls is the square root of the error. A form at moderate slack cannot come from a better reading of that kernel,
+and it does not come from the natural modification of it either, a kernel
+of the second level computed afresh on the enlarged domain
+$[-1,\tfrac12+s]$. That programme can be written down and run on an
 ordinary machine: the zonal matrices of \cref{sec:certificate-checked},
 written in the file format of the authors' code, replace their own
-construction of them (\cref{fig:level2}). Two things limit it. The first
-is structural. A kernel of the second level on $[-1,\tfrac12+s]$ with
-$s>0$ and bound exactly $24$ would make every term of its certificate
-vanish on every $24$-point set with slack at most $s$; small perturbations
-of the root system are such sets and reach a whole interval of inner
-products, so its two-point polynomial would vanish identically, and there
-would be nothing to pin with. The programme can therefore pin the shape
-only through the window $(8(N-24)/\mu)^{1/2}$ with $N>24$, never through
-an equality case,\footnote{The programme fixes the bound at a number $N$
-  and maximises $\mu$ subject to
-  $A_2K(\{x,y\})+\mathrm{SOS}_2(u)+\mu\,w(u)=0$, with
-  $w(u)=(u+1)(u+\frac12)^2u^2(\frac12+s-u)$, the other constraints being those
-  of \cite{LLM24}; for twenty-four points with inner products at most
-  $\frac12+s$ the chain of \cref{lem:las2} then gives $w(u)\le(N-24)/\mu$ at
-  every inner product. Near the double zeros $w(u)\approx u^2/8$, so the window
-  is about $(8(N-24)/\mu)^{1/2}$, and unless $N-24$ grows more slowly than $s$
-  the square root of \cref{rem:robust-ceiling} returns.} and the window is
-of order $s$ rather than $s^{1/2}$ only if $N(s)-24=O(s^2)$; at the first
-level the growth is linear, $97$ per unit of $s$. The second is the size
-of the programme. At the degrees an ordinary machine reaches, the second
-level is weaker than the three-point bound: at slack $0$ it gives $26$ at
-the degrees $(d_1,\delta)=(8,10)$ and $24.942$ at $(10,12)$, the most that
-fits in its memory, against $24.13$; the degrees $(14,16)$ of the
-certificate, where it is $24$, need a larger machine for the programme
-itself. The first level cannot supply the shape half.
+construction of them (\cref{fig:level2}). A kernel with bound exactly $24$
+on the enlarged domain would make every term of its certificate vanish on
+every $24$-point set of slack at most $s$; small perturbations of the root
+system are such sets and fill whole intervals of inner products, so its
+two-point polynomial would vanish identically and there would be nothing
+to pin with. The shape can then be pinned only through a margin in the
+two-point constraint, and the root system itself spends that margin
+(\cref{prop:margin-floor}): at slack $0.008$ the inequality it yields
+excludes no inner product at all, whatever the degree, and so whatever the
+machine. The degree matters only for the size of the bound: at slack $0$
+the second level gives $26$ at the degrees $(d_1,\delta)=(8,10)$ and
+$24.942$ at $(10,12)$, against $24.13$ for the three-point bound at degree
+$10$, and
+reaches $24$ only at the degrees $(14,16)$ of the certificate.
+The first level cannot supply the shape half.
 Asked at degree $12$ for a three-point certificate that charges a positive
 amount to every pair of a $24$-point code whose inner product lies outside
 windows of half-width $0.1$, or even $0.2$, about $-1$, $-\frac12$, $0$ and
@@ -2130,6 +2124,73 @@ needs most of the $15$ gigabytes of the machine used here; the certificate's
 own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
 \cite{LLM24} solved the programme in $256$-bit arithmetic.\looseness=-1
 
+\begin{prop}[The root system spends the margin]\label{prop:margin-floor}
+Let $s>0$ and $w(u)=(u+1)(u+\tfrac12)^2u^2(\tfrac12+s-u)$, which is
+nonnegative on $[-1,\tfrac12+s]$, and let $N$ and $\mu>0$ be such that
+every set $C$ of $24$ points of $S^3$ with inner products at most
+$\tfrac12+s$ satisfies
+\[
+  \mu\sum_{\{x,y\}\subset C}w(\langle x,y\rangle)\ \le\ N-24 ,
+\]
+which is what the chain of \cref{lem:las2} gives for a kernel of the
+second level with the margin $\mu w$ in its two-point constraint. Then
+$N-24\ge36\mu s$. Consequently the bound $w(u)\le(N-24)/\mu$ that the
+inequality yields for a single inner product holds at every
+$u\in[-1,\tfrac12+s]$ as soon as $36s\ge\max w$; at $s=0.008$ one has
+$36s=0.288$ and $\max w<0.0198$.
+\end{prop}
+
+\begin{proof}
+The normalised roots of $\Rt$ form such a set $C$, their inner products
+being $-1$, $-\tfrac12$, $0$ and $\tfrac12$. The weight vanishes at the
+first three and equals $\tfrac32\cdot1\cdot\tfrac14\cdot s=\tfrac38s$ at
+$\tfrac12$, and each root has eight neighbours at $60^\circ$, so $96$ of
+the $276$ pairs have inner product $\tfrac12$ and the sum of the weights
+is $96\cdot\tfrac38s=36s$. The bound $\max w\le0.019779$ at
+$s=0.008$ is an evaluation of $w$ in ball arithmetic on $2\cdot10^5$
+subintervals of $[-1,0.508]$; \cref{fig:margin} shows both quantities.
+\end{proof}
+
+Near the double zero at $0$ one has $w(u)=\tfrac18(1+2s)u^2+O(u^3)$, so
+even for small $s$ the window that the margin leaves about $0$ has
+half-width of order $(288s)^{1/2}$, the square root of
+\cref{rem:robust-ceiling} once more. A weight that also vanishes at
+$\tfrac12$ is not spent by the root system, but no pointwise reading of it
+can be sharper than the codes that actually occur allow, and those are the
+subject of the next remark.
+
+\begin{remark}[Twenty-four points at slack $0.008$]\label{rem:slack-codes}
+Local maximisation from the normalised roots, under the constraint that
+every inner product be at most $0.508$, finds $24$-point codes in which
+one inner product is $0.1231$, at distance at least $0.123$ from each of $-1$,
+$-\tfrac12$, $0$ and $\tfrac12$, and others at $-0.0876$ and $-0.5394$;
+the root-sum-square distance of these codes from the nearest rotated
+copy of the normalised roots is between $0.134$ and $0.151$, and the
+largest distance of a single direction from its root is $0.064$. So at
+slack $0.008$ no statement that pins every inner product near the four
+values of the root system is true. The weak localisation
+that \cref{cor:no-room} asks for, each direction within $0.093$ of a root,
+is consistent with these codes, but it has to be proved direction by
+direction. (Floating point; evidence and not a bound.) An earlier
+numerical exploration of kissing configurations in four dimensions, through
+the Hopf map, is in \cite{AP13}.
+\end{remark}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_margin}
+\caption{The margin of the second level against the root system
+(\cref{prop:margin-floor}). (a) The weight $w$ at $s=0.008$ on a logarithmic
+scale, with its zeros at $-1$, $-\tfrac12$ and $0$ and at $\tfrac12+s$; the
+largest value is $0.01978$, near $u=0.3855$, and the $96$ pairs of the root
+system at $\tfrac12$ force $(N-24)/\mu\ge36s=0.288$ (shaded). No inner product
+is excluded. (b) The largest value of $w$ and the floor $36s$ as functions of
+the slack. They cross near $s=5.2\cdot10^{-4}$; to the right of the crossing,
+which contains the slacks $0.008$ of \cref{thm:kissing-stable} and $0.017$ of
+\cref{prop:second-code}, the margin excludes nothing.}
+\label{fig:margin}
+\end{figure}
+
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_counts}
@@ -2155,7 +2216,7 @@ without its own construction of them, and the two checks against that code.
 kernel, with $\delta=d_1+2$: $32$ at $(4,6)$; $26$ at $(8,10)$, in $42$ minutes
 and $3.5$ gigabytes; $24.942$ at $(10,12)$, in $3.9$ hours on four cores and
 $11.8$ gigabytes; and the certificate's $24$ at $(14,16)$; beside the
-three-point bound $24.13$ and the level $25$ that a bound on the number of
+three-point bound at degree $10$, $24.13$, and the level $25$ that a bound on the number of
 points has to beat.}
 \label{fig:level2}
 \end{figure}
@@ -2838,30 +2899,33 @@ stays within $10^{-5}$ of zero on half of the sampled triples.
 
 \begin{table}[tb]
 \centering
-\caption{The best two-point bound on the union of the caps for $|Y|$
-centres within $\sqrt6$ (floating point, sampled constraints), the largest
-union found by the search of \cref{fig:counts}, and the least $T$ found; (C)
-requires the union to stay below $\frac98\pi^2-8=3.10330$. At $31$ the
-certificate of \cref{thm:count31}, solved with a margin, proves $3.0854$.}
+\caption{Every count of centres within $\sqrt6$ from $25$ to $49$: the best
+two-point bound on the union of the caps (floating point, sampled
+constraints, degree $14$ in the angle and $5$ in the distance), the largest
+union found by the search of \cref{fig:counts}, and the least $T$ found; a
+dash means that the search found no packing with that count. (C) requires the
+union to stay below $\frac98\pi^2-8=3.10330$, which the bound gives from $31$
+on; at $31$ the certificate of \cref{thm:count31}, solved with a margin,
+proves $3.0854$.}
 \label{tab:kernel-limit}
-\begin{tabular}{@{}rccc@{}}
+\small
+\begin{tabular}{@{}rccc@{\hspace{1.6em}}c@{\hspace{1.6em}}rccc@{}}
 \toprule
-$|Y|$ & two-point bound & largest union found & $T$ found\\
+$|Y|$ & bound & union & $T$ && $|Y|$ & bound & union & $T$\\
 \midrule
-$25$ & $3.330$ & $2.839$ & $8.264$\\
-$26$ & $3.360$ & $2.711$ & $8.393$\\
-$27$ & $3.307$ & $2.586$ & $8.517$\\
-$28$ & $3.253$ & $2.512$ & $8.592$\\
-$29$ & $3.199$ & $2.327$ & $8.776$\\
-$30$ & $3.144$ & $2.186$ & $8.917$\\
-$31$ & $3.080$ & $2.055$ & $9.048$\\
-$32$ & $3.003$ & $2.049$ & $9.054$\\
-$34$ & $2.828$ & $1.648$ & $9.455$\\
-$37$ & $2.506$ & $1.243$ & $9.860$\\
-$40$ & $2.125$ & $0.703$ & $10.400$\\
-$43$ & $1.647$ & $0.208$ & $10.895$\\
-$46$ & $1.001$ & none found & none found\\
-$49$ & $0.174$ & none found & none found\\
+$25$ & $3.330$ & $2.839$ & $8.264$ && $38$ & $2.386$ & $0.973$ & $10.131$\\
+$26$ & $3.360$ & $2.711$ & $8.393$ && $39$ & $2.261$ & $0.853$ & $10.250$\\
+$27$ & $3.307$ & $2.586$ & $8.517$ && $40$ & $2.125$ & $0.703$ & $10.400$\\
+$28$ & $3.253$ & $2.512$ & $8.592$ && $41$ & $1.979$ & $0.490$ & $10.614$\\
+$29$ & $3.199$ & $2.327$ & $8.776$ && $42$ & $1.821$ & $0.326$ & $10.777$\\
+$30$ & $3.144$ & $2.186$ & $8.917$ && $43$ & $1.647$ & $0.208$ & $10.895$\\
+$31$ & $3.080$ & $2.055$ & $9.048$ && $44$ & $1.456$ & --- & ---\\
+$32$ & $3.003$ & $2.049$ & $9.054$ && $45$ & $1.244$ & --- & ---\\
+$33$ & $2.920$ & $1.790$ & $9.313$ && $46$ & $1.001$ & --- & ---\\
+$34$ & $2.828$ & $1.648$ & $9.455$ && $47$ & $0.735$ & --- & ---\\
+$35$ & $2.727$ & $1.502$ & $9.602$ && $48$ & $0.459$ & --- & ---\\
+$36$ & $2.619$ & $1.240$ & $9.863$ && $49$ & $0.174$ & --- & ---\\
+$37$ & $2.506$ & $1.243$ & $9.860$ && & & &\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -2942,9 +3006,12 @@ point, over $3000$ local minimisations). The three-point bound does not
 see holes: at degree $7$ no labelled certificate excludes $24$ directions of
 slack $0.008$ with a further one at inner product at most $0.6141$ with each,
 and the kernel of \cref{thm:count31}, which sees pairs only, is weaker still.
-The natural tool is the second level of the Lasserre hierarchy, which sees
-twenty-four points exactly \cite{LLM24}, in the form with a margin of
-\cref{fig:level2}.
+The second level of the Lasserre hierarchy sees twenty-four points exactly
+\cite{LLM24}, but not in the form with a margin on pairs, which the root
+system itself spends (\cref{prop:margin-floor}); at this slack the
+statement has to be proved direction by direction, since the inner
+products themselves need not lie near those of a root system
+(\cref{rem:slack-codes}).
 
 With $23$ centres close to $c$, the case is \cref{thm:m23-labelled} with two
 or more further centres, and \cref{thm:certificate} has a margin of only
@@ -2956,11 +3023,66 @@ within $\rho$, in the part of the range settled above; minimised again with
 at least $23$ centres held within $\rho$, which is the part that remains, $T$
 does not come below $8.353$, $8.472$, $8.681$, $8.781$, $8.771$ and $8.937$
 for $M=25,\dots,30$, and each minimiser presses its extra centres against
-the bound $\rho$. A proof along the lines of \cref{thm:m23-labelled}, with a
-three-point certificate for $M$ points spent on the triples, is the natural
-route for this case, count by count, and it has a room of at least $0.35$ in
-$T$ at every count.
+the bound $\rho$. That room lies in the configurations and not in the
+relaxations. The root system with one centre pushed out along its ray to a
+distance between $2.0161$ and $2.197$, together with a fictitious centre
+near $\sqrt6$ in one of its holes, has a union of caps at least
+$\frac98\pi^2-8$; its fictitious centre needs inner products only up to
+$0.612$ with the others, and neither the kernel of \cref{thm:count31} nor a
+three-point kernel that reads the directions alone tells such a
+configuration from a packing (floating point). What the pair terms do give
+is \cref{lem:twentyfour-close}: when $T\le8$, twenty-four of the centres lie
+within $2.444$, so that the case of twenty-three close centres is again a
+question about the twenty-four closest.
 \end{remark}
+
+\begin{lem}[Twenty-four centres within $2.444$]\label{lem:twentyfour-close}
+Let $Y$ be a packing set of $M$ centres with $2\le|y|<\sqrt6$, where
+$25\le M\le33$, and suppose that $T(Y)\le8$. Then at least $24$ centres of
+$Y$ lie within $2.444$ of $c$. If $Z$ consists of the $24$ centres of $Y$
+closest to $c$ and $d_{25}$ is the distance of the next, then
+$T(Z)\le8+(M-24)\,S(d_{25})$.
+\end{lem}
+
+\begin{proof}
+For $X\subseteq Y$ the union of the caps of $Y$ is at most that of $X$
+together with the caps of the centres of $Y\setminus X$, so
+\begin{equation}\label{eq:subset-T}
+  T(X)\ \le\ T(Y)+\sum_{y\in Y\setminus X}S(|y|).
+\end{equation}
+If at most $22$ centres lie within $2.444$, then, $S$ being decreasing,
+$U(Y)\le\sum_yS(|y|)\le22S(2)+11S(2.444)=3.05722\ldots<\frac98\pi^2-8$,
+and $T(Y)>8$. Suppose that exactly $23$ lie within $2.444$, and let $X$ be
+these. The proof of \cref{thm:m23-labelled} bounds $T(X)$ from below for
+any $23$ centres at distances in $[2,\sqrt6)$: if one of them is at
+distance $D=2.1648$ or more, Step~1 gives $T(X)\ge A_*+s(D)$, and otherwise
+Step~2 gives $T(X)\ge A_*+B$. As $s(D)=0.0928820\ldots<B$, in either case
+$T(X)\ge A_*+s(D)=8+2.6491\ldots\cdot10^{-5}$. The other $M-23\le10$
+centres lie beyond $2.444$, where $S(2.444)=2.5324\ldots\cdot10^{-6}$, and
+\eqref{eq:subset-T} gives
+$T(Y)\ge T(X)-10\,S(2.444)\ge8+1.1\cdot10^{-6}>8$. So at least $24$
+centres lie within $2.444$. The last statement is \eqref{eq:subset-T} with
+$X=Z$, the $M-24$ other centres being at distance at least $d_{25}$. The
+constants are computed in ball arithmetic at $200$ bits;
+\cref{fig:twentyfour-close} shows them.
+\end{proof}
+
+With $34$ centres the same argument would need $11\,S(2.444)$, which
+exceeds the room $2.6491\cdot10^{-5}$ of \cref{thm:m23-labelled}; that
+count is settled by \cref{thm:count31} in any case.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_lemma}
+\caption{The constants of \cref{lem:twentyfour-close}. (a) The volume $S(d)$
+of the cap of a centre at distance $d$, which vanishes at $\sqrt6$, with the
+radii of the argument: $2.0161$ of \cref{thm:kissing-stable}, $D$ of Step~1 of
+\cref{thm:m23-labelled}, $2.4$ of \cref{thm:count30} and $2.444$. (b) The caps
+of the $M-23$ centres beyond $2.444$ against the room that
+\cref{thm:m23-labelled} leaves above $8$ for the twenty-three closest: they
+fit under it for $25\le M\le33$ and not from $M=34$.}
+\label{fig:twentyfour-close}
+\end{figure}
 
 The kernel of \cref{thm:count31} can be sharpened by splitting into cases
 according to how many centres lie within given distances of $c$. At thirty
@@ -3018,9 +3140,11 @@ takes $66$ minutes on four cores.
 
 \begin{remark}[What is left at thirty]\label{rem:thirty-left}
 In the case that \cref{thm:count30} leaves, between six and eight centres lie
-beyond $2.4$, with caps of volume at most $S(2.4)=0.00061$ each, so the at
-most $24$ centres within $2.4$ carry a union of at least $3.0984$ by
-themselves: their own $T$ is at most $8.005$. And each far centre sits in a
+beyond $2.4$, with caps of volume at most $S(2.4)=0.00061$ each, and by
+\cref{lem:twentyfour-close} the twenty-four closest lie within $2.444$ and
+the other six at $2.4$ or beyond, so that the twenty-four closest carry by
+themselves a union of at least $3.0996$ and their own $T$ is at most
+$8+6S(2.4)=8.00368$. And each far centre sits in a
 hole of the $22$ to $24$ directions within $2.1$, at inner product at most
 $a(2.1,\sqrt6)=0.6231$ with every one of them, while two far centres are at
 least $48.2^\circ$ apart. With $24$ directions there, the argument of
@@ -3031,7 +3155,7 @@ root lie within $16^\circ$ of a removed root, or within $31^\circ$ when the
 two removed roots are neighbours, and they hold at most two points
 $48.2^\circ$ apart (floating point, four and six million samples). So (C) at
 thirty centres follows from a localisation of the kind (G) asks for
-(\cref{rem:what-g-needs-2}), at $T\le8.005$ in place of $8$ and with a
+(\cref{rem:what-g-needs-2}), at $T\le8.00368$ in place of $8$ and with a
 tolerance small enough to keep this count of holes. The residual case is
 where the two-point kernel stops. It contains the case $22\le N(2.1)\le23$,
 $N(2.2)=N(2.4)=24$, whose bound is $3.1112$, and no single further split at
@@ -3138,6 +3262,61 @@ roots, and with the directions tilted the contact cell itself can fall to
 $8$ (\cref{prop:hexagon-loop}), so a proof off this family has to take the
 gain from the push-outs that the tilts force.
 
+Off the push-outs, the pair terms still say how far out the centres of (G)
+can be. The counts below are what the case certificates of the proof of
+\cref{thm:count30} give when they are run with twenty-four centres in place
+of thirty.
+
+\begin{prop}[Where the twenty-four centres lie]\label{prop:G-radial}
+Let $Y$ be a packing set of exactly $24$ centres with $2\le|y|<\sqrt6$ and
+$T(Y)\le8$. Then at most two centres of $Y$ lie beyond $2.1$, and at most one
+lies beyond $2.15$.
+\end{prop}
+
+\begin{proof}
+For a radius $\rho$ and a count $c$, take the tree of the proof of
+\cref{thm:count30} with $M=24$ and the single split $N(\rho)\le c-1$ against
+$N(\rho)\ge c$. For $(\rho,c)=(2.1,22)$ and $(2.15,23)$ the first case
+carries a certificate of degree $12$ in the angle and $4$ in the distance,
+and the largest value it gives over the count vectors of that case is at most
+$3.07883$ and $3.09251$ respectively, below $\frac98\pi^2-8=3.10330$. So
+$T(Y)>8$ in the first case, and $N(\rho)\ge c$ whenever $T(Y)\le8$. Each
+certificate is checked as there: positivity by an exact $LDL^{\mathsf T}$
+factorisation, the inequality $K\le\Pi$ on the admissible pairs by a branch
+and bound in ball arithmetic,\footnote{At the antipodal pairs, $u=-1$, the caps are disjoint and $\Pi$
+vanishes, so the kernel must be nonpositive there. A kernel computed from too
+few samples along $u=-1$ can be slightly positive at such pairs and then fails
+the branch and bound, which is why the programme refines its samples along
+that edge as well.} the bounds on the bins, and the largest value over
+the count vectors by exact dynamic programming.
+\end{proof}
+
+The caps alone give much less. Since $\sum_yS(|y|)\ge U(Y)\ge\frac98\pi^2-8$
+when $T(Y)\le8$, and $S$ decreases, $k$ centres can lie beyond $\rho$ only if
+$(24-k)S(2)+kS(\rho)\ge\frac98\pi^2-8$. That allows three centres beyond
+$2.1$ and two beyond $2.15$, and one beyond every radius below $\sqrt6$
+(\cref{fig:G-radial}); the pair terms remove one in each case. They cannot
+remove more at this degree. With the next count, $23$ at $2.1$ or $24$ at
+$2.2$ or $2.25$, the optimum of the same programme already lies above the
+level, at $3.1248$, $3.1422$ and $3.1306$ in floating point, so these
+certificates cannot exclude a single centre far out. That is still far from the
+neighbourhood of \cref{thm:near-contact}, where $\sum_i\delta_i\le4\cdot10^{-3}$,
+and it says nothing about the directions.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_radial}
+\caption{\Cref{prop:G-radial}. (a) For twenty-four centres with $T(Y)\le8$,
+the number that can lie beyond a radius $\rho$: the cap budget alone (step
+curve, open marks) against the counts that the case certificates prove
+(filled marks), $2$ beyond $2.1$ and $1$ beyond $2.15$. (b) For the split
+$N(\rho)\le c-1$ against $N(\rho)\ge c$, the bound on the union of the caps
+in the first case: proved by a certificate (filled marks) and, for the next
+count, the floating-point optimum of the programme of the same degree (open
+marks), against the level $\frac98\pi^2-8$ that $T(Y)>8$ needs.}
+\label{fig:G-radial}
+\end{figure}
+
 \begin{remark}[What (G) needs]\label{rem:what-g-needs-2}
 Statement (G) is sharp at the root system and holds near it:
 \cref{thm:near-contact} proves it whenever $\sum_i\delta_i\le4\cdot10^{-3}$
@@ -3167,7 +3346,9 @@ of $\sqrt2\,\Rt$. For contacts this is the uniqueness theorem of
 \cite{LLM24}; its robust form is proved only at slack $2\cdot10^{-26}$
 (\cref{thm:m24-robust}), and \cref{prop:second-code} shows that no form of it
 that looks at the directions alone can pass slack $0.017$, so the
-localisation has to use the distances, through $T$ itself. The second is the
+localisation has to use the distances, through $T$ itself.
+\Cref{prop:G-radial} is the part of it that the pair terms give: it bounds
+how many centres lie far from $c$, but not where their directions point. The second is the
 volume bound in that neighbourhood, which needs the third-order remainder
 and the part of $V(Y)$ outside the inversion hull under control
 (\cref{rem:second-order-gap}); \cref{thm:near-contact} provides it up to
@@ -4778,7 +4959,7 @@ equals $0$.%
   $|C|=K(\emptyset,\emptyset)$, it does not use that the kernel is
   optimal, and it does not use the structure of $K$ beyond positivity
   and the two families of inequalities. What it needs, and what a
-  bound of $24.10$ can never give, is that the number
+  bound such as the three-point value $24.047$ can never give, is that the number
   $K(\emptyset,\emptyset)$ is attained by a code; that is why the
   certificate has to have objective value exactly $24$ and not merely
   below $25$, and why its rounding to an exact rational point with
@@ -5001,8 +5182,9 @@ orthogonal map.}
 The first assertion is Musin's theorem \cite{Mus08} that the kissing
 number in four dimensions is $24$, obtained here a second time from a
 different certificate. It is the second assertion that the present paper
-needs, and it is what the earlier bound $24.10$ of Bachoc and Vallentin
-\cite{BV08}, at the first level of the same hierarchy, and Musin's
+needs, and it is what the three-point bound of Bachoc and Vallentin
+\cite{BV08}, at the first level of the same hierarchy and at best $24.047$
+\cite{Lei25}, and Musin's
 argument, which does not identify the configuration, do not give: it is
 the equality case, and the equality case is available only because the
 bound is exactly $24$ and not merely below $25$.
@@ -5087,7 +5269,7 @@ for each signature $\lambda$ and each admissible pair of indices $k_1,k_2$, is
   \rho_{0,k_2}(\omega\gamma S)\,d\gamma,
 \]
 and the integral is taken monomial by monomial in the sixteen entries of
-$\gamma$. Their code expands the product of the two representation
+$\gamma$ (on such integrals over the classical groups see \cite{GL08}). Their code expands the product of the two representation
 polynomials first and holds the expansion in a table indexed by the exponent
 matrix of $\gamma$, with a polynomial in $S$ against each index; that table is
 the $128$ gigabytes. It need never be formed. The answer is homogeneous of
@@ -7500,7 +7682,12 @@ products exceed $\tfrac12$ by a little. \Cref{thm:near-contact} needs that
 case, with a quantitative conclusion, and the certificate gives it,
 because the only terms of the identities of \cref{prop:verified}(iii)
 that can change sign outside $\mathcal I_4$ are those whose weight carries
-a factor $(u+1)(\tfrac12-u)$ with $u>\tfrac12$.
+a factor $(u+1)(\tfrac12-u)$ with $u>\tfrac12$. Statements of this kind, in
+which a code that is nearly optimal is forced near the optimal one, are
+proved by B\"or\"oczky and Glazyrin \cite{BG23} for codes whose optimality
+follows from the linear programming bound, among them the minimal vectors of
+$E_8$ and of the Leech lattice. For $D_4$ that bound is not sharp, and the
+argument has to start from the second level of the hierarchy.
 
 \begin{thm}[Twenty-four points, approximately]\label{thm:m24-robust}
 Let $0\le\kappa\le2\cdot10^{-26}$, and let $C\subset S^3$ be a set whose
@@ -7684,9 +7871,10 @@ $9.2\cdot10^{-9}$ (\cref{fig:positive-slack}(b)). The
 square root comes from the double zeros of $\sigma_2$ at $-\tfrac12$ and $0$,
 and every kernel whose bound is exactly $24$ has them, since $\sigma_2\ge0$
 vanishes at those inner products of the root system. A form of
-\cref{thm:m24} at slack of order $10^{-2}$ therefore needs a kernel computed
-on the enlarged domain $[-1,\tfrac12+s]$, with a margin, and not a better
-reading of this one.
+\cref{thm:m24} at slack of order $10^{-2}$ therefore cannot come from this
+kernel, and \cref{prop:margin-floor} shows that a kernel computed afresh on
+the enlarged domain $[-1,\tfrac12+s]$ with a margin on pairs cannot supply
+it either.
 \end{remark}
 
 What the three-point bound of \cref{sec:certificate} can do on the enlarged
@@ -7761,8 +7949,8 @@ by an explicit amount. Two certificates of degree $8$, at $s_0=0.005$ and
 $s_0=0.0065$, pass the same check in about eighty seconds each, the one of
 degree $10$ in under an hour; \cref{fig:positive-slack}(a) shows why the
 method stops soon after:
-the three-point bound on the enlarged domain rises by about $97$ per unit of
-$s$ from about $24.13$ at $s=0$, so no certificate of this kind reaches much
+the three-point bound at degree $10$ on the enlarged domain rises by about $97$
+per unit of $s$ from about $24.13$ at $s=0$, so no certificate of this kind reaches much
 beyond $s=0.009$, while a numerical search finds $25$ points of $S^3$ with
 pairwise inner products at most $0.53743$, a minimal angle of $57.49^\circ$, so
 the true threshold lies below $s=0.0375$. The theorem says nothing about the
@@ -10873,8 +11061,10 @@ every count from thirty-one on (\cref{thm:count31}), by a two-point kernel
 that carries the distance from the centre as a continuous label, so that
 what remains of it is the counts from twenty-five to thirty; at thirty only
 the configuration of \cref{thm:count30} remains, twenty-two or more
-centres within $2.1$ and six beyond $2.4$, which a localisation of the kind
-(G) needs would exclude (\cref{rem:thirty-left}). What is proved
+centres within $2.1$ and six beyond $2.4$, the twenty-four closest within
+$2.444$ with $T\le8.00368$ (\cref{lem:twentyfour-close}), which a
+localisation of the kind (G) needs would exclude (\cref{rem:thirty-left}).
+What is proved
 towards the rest is the cardinality bound of \cref{thm:kissing-stable},
 the absence of room for a twenty-fifth centre beside twenty-four near a
 root system (\cref{cor:no-room}), the second order of (G)
@@ -10883,13 +11073,18 @@ exactly (\cref{prop:push-integrated}), the exact curves of contact cells of
 volume $8$ that any proof of (G) has to control (\cref{prop:hexagon-loop}),
 (G) itself along the push-outs of the root system, so that the conjecture
 holds whenever the twenty-four centres within $\sqrt6$ lie on the rays of a
-root system (\cref{thm:G-pushout,cor:rays}), and the count for twenty-three
-(\cref{thm:m23-labelled}). The route
+root system (\cref{thm:G-pushout,cor:rays}), the bound that at most
+two of the twenty-four centres lie beyond $2.1$, and at most one beyond
+$2.15$, wherever $T\le8$ (\cref{prop:G-radial}), and the count for
+twenty-three (\cref{thm:m23-labelled}). The route
 through the shape of twenty-four directions stops at slack $0.01698$,
-where a second code appears (\cref{prop:second-code}). What (G) and the
-remaining counts of (C) need, and why neither three-point certificates nor
-kernels on pairs reach them, is set out in \cref{sec:G-and-C}; the
-ceiling of the present certificate is \cref{rem:robust-ceiling}.
+where a second code appears (\cref{prop:second-code}), and a margin on
+pairs at the second level gives out long before, from slack about
+$5\cdot10^{-4}$, because the root system itself spends the margin
+(\cref{prop:margin-floor}). What (G) and the remaining
+counts of (C) need, and why neither three-point certificates nor kernels on
+pairs reach them, is set out in \cref{sec:G-and-C}; the ceiling of the
+present certificate is \cref{rem:robust-ceiling}.
 
 The checks are also formal where they are finite. The verifications of
 \cref{thm:certificate,thm:m23-labelled,thm:kissing-stable} run in Lean as
@@ -10928,7 +11123,7 @@ ball of radius $\sqrt2$ that is exact at the root configuration
 sharp; its three-point relaxation is, by the floating-point
 computation of \cref{rem:m24-three-point}, not sharp at degree $6$, and at
 higher degree the question needs extended-precision arithmetic. The cardinality bound of \cite{BV08}, at
-$24.10$, is not sharp either, so no route to the global statement that
+$24.047$ even at degree $20$ \cite{Lei25}, is not sharp either, so no route to the global statement that
 stays at the three-point level is complete.
 
 \subsection{Several deviations by elementary means}
@@ -11089,7 +11284,11 @@ from the deposited data \cite{LLM24data} in code that shares nothing with
 its authors', with the exact rational arithmetic of FLINT and the ball
 arithmetic of Arb \cite{Joh17}. The box certificates are regenerated by
 the rule stated in \cref{app:box-cover-algo}, so that a quoted box count
-is exact and reproducible.
+is exact and reproducible. The semidefinite programs of the paper, those
+behind \cref{thm:count31,thm:count30} and those reported as evidence, are
+posed in CVXPY \cite{DB16} and solved by Clarabel \cite{GC26}; a solver's
+output is only a candidate, and what enters a proof is its rounding to
+rationals, checked as above.
 
 \subsection{The formal part}\label{sec:formal-part}
 
@@ -12164,6 +12363,12 @@ enters the corresponding computations at full scale in
 \begin{thebibliography}{CKMRV17}
 \setlength{\itemsep}{-1.3pt}
 
+\bibitem[AP13]{AP13}
+E.~L.~Altschuler and A.~P\'erez-Garrido,
+\textit{Delimiting maximal kissing configurations in four dimensions},
+preprint, arXiv:1301.4884 (2013).
+\bluelink{https://doi.org/10.48550/arXiv.1301.4884}{doi:10.48550/arXiv.1301.4884}
+
 \bibitem[BBB26]{BBB26}
 D.~Bhattacharjee, U.~Bhattacharya, and S.~Bhattacharya,
 \textit{The sphere packing problem in dimension 4},
@@ -12183,6 +12388,12 @@ C.~B.~Barber, D.~P.~Dobkin, and H.~Huhdanpaa,
 \textit{The Quickhull algorithm for convex hulls},
 ACM Trans.\ Math.\ Software \textbf{22} (1996), no.~4, 469--483.
 \bluelink{https://doi.org/10.1145/235815.235821}{doi:10.1145/235815.235821}
+
+\bibitem[BG23]{BG23}
+K.~J.~B\"or\"oczky and A.~Glazyrin,
+\textit{Stability of optimal spherical codes},
+preprint, arXiv:1711.06012, version~2 (2023).
+\bluelink{https://doi.org/10.48550/arXiv.1711.06012}{doi:10.48550/arXiv.1711.06012}
 
 \bibitem[BV08]{BV08}
 C.~Bachoc and F.~Vallentin,
@@ -12233,6 +12444,12 @@ bounds},
 preprint, arXiv:2403.16874 (2024).
 \bluelink{https://doi.org/10.48550/arXiv.2403.16874}{doi:10.48550/arXiv.2403.16874}
 
+\bibitem[CdLS22]{CdLS22}
+H.~Cohn, D.~de~Laat, and A.~Salmon,
+\textit{Three-point bounds for sphere packing},
+preprint, arXiv:2206.15373 (2022).
+\bluelink{https://doi.org/10.48550/arXiv.2206.15373}{doi:10.48550/arXiv.2206.15373}
+
 \bibitem[CKMRV17]{CKM17}
 H.~Cohn, A.~Kumar, S.~D.~Miller, D.~Radchenko, and M.~S.~Viazovska,
 \textit{The sphere packing problem in dimension $24$},
@@ -12274,6 +12491,12 @@ P.~Delsarte, J.~M.~Goethals, and J.~J.~Seidel,
 \textit{Spherical codes and designs},
 Geom.\ Dedicata \textbf{6} (1977), no.~3, 363--388.
 \bluelink{https://doi.org/10.1007/BF03187604}{doi:10.1007/BF03187604}
+
+\bibitem[DdLM21]{DdLM21}
+M.~Dostert, D.~de~Laat, and P.~Moustrou,
+\textit{Exact semidefinite programming bounds for packing problems},
+SIAM J.\ Optim.\ \textbf{31} (2021), no.~2, 1433--1458.
+\bluelink{https://doi.org/10.1137/20M1351692}{doi:10.1137/20M1351692}
 
 \bibitem[Far12]{Far12}
 R.~T.~Farouki,
@@ -12399,6 +12622,13 @@ polynomial optimization},
 Math.\ Program.\ Comput.\ \textbf{16} (2024), no.~3, 503--534.
 \bluelink{https://doi.org/10.1007/s12532-024-00264-w}{doi:10.1007/s12532-024-00264-w}
 
+\bibitem[Lei25]{Lei25}
+N.~M.~Leijenhorst,
+\textit{On the computation of three and four-point bounds in discrete
+geometry and analytic number theory},
+Ph.D.\ thesis, Delft University of Technology, 2025.
+\bluelink{https://doi.org/10.4233/uuid:91af805a-376c-4ef8-aec5-e6ce08ae20a7}{doi:10.4233/uuid:91af805a-376c-4ef8-aec5-e6ce08ae20a7}
+
 \bibitem[Li25]{Li25}
 R.~Li,
 \textit{Dual linear programming bounds for sphere packing via discrete
@@ -12411,6 +12641,13 @@ J.~B.~Lasserre,
 \textit{Global optimization with polynomials and the problem of moments},
 SIAM J.\ Optim.\ \textbf{11} (2001), no.~3, 796--817.
 \bluelink{https://doi.org/10.1137/S1052623400366802}{doi:10.1137/S1052623400366802}
+
+\bibitem[MO18]{MO18}
+F.~C.~Machado and F.~M.~de~Oliveira~Filho,
+\textit{Improving the semidefinite programming bound for the kissing number
+by exploiting polynomial symmetry},
+Experiment.\ Math.\ \textbf{27} (2018), no.~3, 362--369.
+\bluelink{https://doi.org/10.1080/10586458.2017.1286273}{doi:10.1080/10586458.2017.1286273}
 
 \bibitem[MOA11]{MOA11}
 A.~W.~Marshall, I.~Olkin, and B.~C.~Arnold,
@@ -12435,6 +12672,12 @@ I.~Fernando, S.~Kulal, R.~Cimrman, and A.~Scopatz,
 \textit{{S}ym{P}y: symbolic computing in {P}ython},
 PeerJ Comput.\ Sci.\ \textbf{3} (2017), e103.
 \bluelink{https://doi.org/10.7717/peerj-cs.103}{doi:10.7717/peerj-cs.103}
+
+\bibitem[MV10]{MV10}
+H.~D.~Mittelmann and F.~Vallentin,
+\textit{High-accuracy semidefinite programming bounds for kissing numbers},
+Experiment.\ Math.\ \textbf{19} (2010), no.~2, 175--179.
+\bluelink{https://doi.org/10.1080/10586458.2010.10129070}{doi:10.1080/10586458.2010.10129070}
 
 \bibitem[MKC09]{MKC09}
 R.~E.~Moore, R.~B.~Kearfott, and M.~J.~Cloud,

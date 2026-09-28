@@ -1,0 +1,87 @@
+% tikz_lemma.tex -- the lemma "Twenty-four centres within 2.444".
+%   (a) The cap volume S(d) of a centre at distance d, on a logarithmic scale, with the radii
+%       that enter the proof: 2.0161 (stable kissing number), D = 2.1648 (Step 1 of the
+%       twenty-three-centre theorem), 2.4 (thirty centres) and 2.444.
+%   (b) (M-23) S(2.444) for M = 25..35 against the room s(D) - (8 - A*) = 2.6492e-5 of the
+%       twenty-three-centre theorem: below it for M <= 33, above it from M = 34.
+% Data: lemma_S.dat and lemma_bars.dat, written by lemma_data.py (ball arithmetic, 200 bits).
+% Build:  pdflatex tikz_lemma.tex && pdftoppm -r 500 -png -singlefile tikz_lemma.pdf ../figures/fig_tikz_lemma
+% Test:   python3 tikz_overlap_check.py tikz_lemma.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cviolet}{HTML}{4A3AA7}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\begin{document}
+\begin{tikzpicture}[font=\small]
+\begin{axis}[name=A, width=8.2cm, height=6.4cm, xmin=2, xmax=2.4495, ymode=log,
+    ymin=1e-7, ymax=1, xtick={2,2.1,2.2,2.3,2.4}, 
+    xticklabels={$2$,$2.1$,$2.2$,$2.3$,$2.4$},
+    ytick={1e-6,1e-4,1e-2,1},
+    xlabel={distance $d$ of the centre}, ylabel={cap volume $S(d)$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize}, clip=true]
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(2.0161,1e-7) (2.0161,0.127)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(2.1648,1e-7) (2.1648,0.0461)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(2.4,1e-7) (2.4,6.12e-4)};
+  \addplot[cink3, line width=0.4pt, densely dotted] coordinates {(2.444,1e-7) (2.444,2.53e-6)};
+  \addplot[cblue, line width=0.9pt] table[x=d, y=S] {lemma_S.dat};
+  \addplot[cviolet, only marks, mark=*, mark size=1.4pt] coordinates
+    {(2.0161,0.12733) (2.1648,0.046081) (2.4,6.1201e-4) (2.444,2.5325e-6)};
+  \coordinate (A-k) at (axis cs:2.024,0.2);
+  \coordinate (A-D) at (axis cs:2.172,3e-3);
+  \coordinate (A-24) at (axis cs:2.19,1.2e-4);
+  \coordinate (A-24pt) at (axis cs:2.397,5.0e-4);
+  \coordinate (A-2444) at (axis cs:2.19,1.5e-6);
+  \coordinate (A-2444pt) at (axis cs:2.4425,2.5e-6);
+  \coordinate (A-sq) at (axis cs:2.4495,1e-7);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south west, text=cink2] (lk) at (A-k)
+  {$2.0161$: at most $24$ centres within};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=north west, text=cink2] (lD) at (A-D)
+  {$D=2.1648$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=cink2] (l24) at (A-24)
+  {$S(2.4)=6.12\cdot10^{-4}$};
+\draw[cink2, line width=0.4pt, -{Stealth[length=3pt]}] (l24.east) -- (A-24pt);
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=cink2] (l2444) at (A-2444)
+  {$S(2.444)=2.53\cdot10^{-6}$};
+\draw[cink2, line width=0.4pt, -{Stealth[length=3pt]}] (l2444.east) -- (A-2444pt);
+\begin{axis}[name=B, at={($(A.east)+(1.7cm,0)$)}, anchor=west, width=8.2cm, height=6.4cm,
+    ybar, bar width=9pt, bar shift=0pt, xmin=24.3, xmax=35.7, ymin=0, ymax=3.6e-5,
+    xtick={25,...,35}, ytick={0,1e-5,2e-5,3e-5},
+    yticklabels={$0$,$1$,$2$,$3$},
+    xlabel={number $M$ of centres within $\sqrt6$},
+    ylabel={$10^{5}\,(M-23)\,S(2.444)$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    scaled y ticks=false, clip=false]
+  \addplot[fill=cblue!70, draw=cblue!90!black, line width=0.3pt]
+    table[x=M, y=v, restrict x to domain=25:33] {lemma_bars.dat};
+  \addplot[fill=corange!70, draw=corange!90!black, line width=0.3pt]
+    table[x=M, y=v, restrict x to domain=34:35] {lemma_bars.dat};
+  \draw[caqua!80!black, line width=0.8pt, dashed] (axis cs:24.3,2.6492e-5) -- (axis cs:35.7,2.6492e-5);
+  \coordinate (B-room) at (axis cs:24.5,2.95e-5);
+  \coordinate (B-ok) at (axis cs:26.5,1.9e-5);
+  \coordinate (B-no) at (axis cs:34.5,3.25e-5);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=caqua!70!black] (lr) at (B-room)
+  {room $T(X)-8\ge2.6492\cdot10^{-5}$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=center, text=cblue!85!black, align=center] (lok) at (B-ok)
+  {$25\le M\le33$:\\ closed};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, text=corange!85!black] (lno) at (B-no)
+  {$M\ge34$};
+\node[font=\bfseries] (pa) at ($(A.north west)+(-1.2cm,0.35cm)$) {(a)};
+\node[font=\bfseries] (pb) at ($(B.north west)+(-1.2cm,0.35cm)$) {(b)};
+\def\figboxes{pa,pb}
+\def\figlabels{lk,lD,l24,l2444,lr,lok,lno}
+\checkfigure
+\end{tikzpicture}
+\end{document}

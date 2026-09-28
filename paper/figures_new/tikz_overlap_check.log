@@ -22,3 +22,15 @@ tikz_count31: 53 nodes checked automatically (0 frames and 5 points or empty nod
   PASS
 tikz_codes: 51 nodes checked automatically (0 frames and 3 points or empty nodes left out)
   PASS
+tikz_margin: 2 boxes, 8 labels checked
+  PASS
+tikz_margin: 31 nodes checked automatically (0 frames and 10 points or empty nodes left out)
+  PASS
+tikz_lemma: 2 boxes, 7 labels checked
+  PASS
+tikz_lemma: 37 nodes checked automatically (0 frames and 10 points or empty nodes left out)
+  PASS
+tikz_radial: 2 boxes, 10 labels checked
+  PASS
+tikz_radial: 37 nodes checked automatically (0 frames and 14 points or empty nodes left out)
+  PASS

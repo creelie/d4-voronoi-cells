@@ -1,5 +1,5 @@
 /-
-D4SecondCode.lean: Proposition 2.28 of the paper.  Statement (i) of "What is left"
+D4SecondCode.lean: Proposition 2.30 of the paper.  Statement (i) of "What is left"
 (Section 2.8) fails at slack 849/50000 = 0.01698.
 
 The 24 points below have rational coordinates (from multi_cap/second_order/

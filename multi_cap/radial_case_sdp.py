@@ -8,7 +8,7 @@ For a packing set Y of M centres in the shell 2 <= |y| < sqrt6, let N(r) be the
 number of centres within r.  A case is a set of bounds lo_j <= N(r_j) <= hi_j
 at rational radii r_j; every case also carries N(2.0161) <= 24, which holds for
 every packing (the kissing number is stable).  Cutting the shell at the r_j
-into bins, with n_b centres in bin b, the kernel inequality of Theorem 2.32
+into bins, with n_b centres in bin b, the kernel inequality of Theorem 2.34
 gives, for any certificate (A_k, z, t) with K <= Pi on admissible pairs,
 
     U(Y) <= sum_y f(|y|) + t/2 <= sum_b n_b m_b + t/2,
@@ -32,7 +32,9 @@ N(r) >= c, that best separate it, over the candidate radii below.
     python3 radial_case_sdp.py M --spec radial_certificates/case_M_spec.json
 
 writes radial_certificates/case_M.json: the tree given by the spec (a leaf
-marked residual carries no certificate) and one certificate per other leaf;
+marked residual carries no certificate) and one certificate per other leaf; a
+spec with "antipodal": true also searches the pairs at u = -1, where the caps
+are disjoint, between the samples;
     python3 radial_case_sdp.py M --redo SPEC k
 recomputes leaf k alone, identically; and
 
@@ -214,15 +216,29 @@ def leaves(tree):
     return [tree]
 
 
-def certify(M, case, rng, eps=EPS):
-    """the certificate of a leaf, with margins and refined pair samples, in exact dyadic form."""
+def violation_antipodal(A, rng):
+    """violation, together with 400000 pairs at u = -1 and just above it, where the caps
+    are disjoint (Pi = 0) and the random pairs of violation are sparse."""
+    viol, p_, q_, u_ = violation(A, D, R, rng)
+    Av = np.array([a.value for a in A])
+    n = 400000
+    p = 2 + (R6 - 2) * rng.random(n); q = 2 + (R6 - 2) * rng.random(n)
+    u = -1 + 2e-2 * rng.random(n) ** 2
+    u[: n // 2] = -1.0
+    v = np.einsum('nk,na,kab,nb->n', ubasis(u, D), pbasis(p, R), Av, pbasis(q, R)) - pair(p / 2, q / 2, u)
+    return np.r_[viol, v], np.r_[p_, p], np.r_[q_, q], np.r_[u_, u]
+
+
+def certify(M, case, rng, eps=EPS, antipodal=False):
+    """the certificate of a leaf, with margins and refined pair samples, in exact dyadic form;
+    antipodal adds the pairs of violation_antipodal to the search between the samples."""
     P, Q, W = samples(19, 40)
     converged = False
     for rnd in range(16):
         sol = solve(M, case, P, Q, W, eps)
         if sol is None:
             return None
-        viol, p_, q_, u_ = violation(sol['A'], D, R, rng)
+        viol, p_, q_, u_ = violation_antipodal(sol['A'], rng) if antipodal else violation(sol['A'], D, R, rng)
         slack = viol + margins(pair(p_ / 2, q_ / 2, u_), eps) / 2
         if np.isscalar(eps):
             print('    round %d: bound %.5f, largest K - Pi between the samples %.2e' % (rnd, sol['value'], viol.max()), flush=True)
@@ -285,13 +301,13 @@ def from_spec(M, spec, case=None):
             'children': [from_spec(M, spec['children'][0], c1), from_spec(M, spec['children'][1], c2)]}
 
 
-def certify_leaf(M, case, k):
+def certify_leaf(M, case, k, antipodal=False):
     """the certificate of leaf k (1-based): margins 2e-5, 5e-6, 2e-6, 1e-6 in turn, until the
     refinement converges with the bound 2e-4 below the target; the seed depends on k only.
     (certify also takes a pair of margins, larger where the caps overlap; not used here.)"""
     rng = np.random.default_rng(11 + k)
     for eps in (2e-5, 5e-6, 2e-6, 1e-6):
-        cert = certify(M, case, rng, eps)
+        cert = certify(M, case, rng, eps, antipodal)
         if cert is not None and cert['float_bound'] < TARGET - 2e-4:
             return cert
         print('    margin %.0e: %s' % (eps, 'not converged' if cert is None else 'bound %.5f' % cert['float_bound']), flush=True)
@@ -300,7 +316,8 @@ def certify_leaf(M, case, k):
 
 def main_spec(M, spec_file):
     t0 = time.time()
-    tree = from_spec(M, json.load(open(spec_file)))
+    spec = json.load(open(spec_file))
+    tree = from_spec(M, spec)
     certs = []
     for k, x in enumerate(leaves(tree), 1):
         print('leaf %d [%s]%s' % (k, describe(x['case']), ' (residual, not certified)' if x['residual'] else ''), flush=True)
@@ -311,7 +328,7 @@ def main_spec(M, spec_file):
         if not feasible(M, x['case']):
             certs.append({'case': ncase, 'excluded': True})
             continue
-        cert = certify_leaf(M, x['case'], k)
+        cert = certify_leaf(M, x['case'], k, bool(spec.get('antipodal')))
         if cert is None:
             print('no certificate for this leaf'); return
         certs.append(cert)
@@ -323,11 +340,11 @@ def main_spec(M, spec_file):
 
 def redo_leaf(M, spec_file, k):
     """recompute the certificate of leaf k (1-based) of radial_certificates/case_M.json, as main_spec does."""
-    tree = from_spec(M, json.load(open(spec_file)))
-    x = leaves(tree)[k - 1]
+    spec = json.load(open(spec_file))
+    x = leaves(from_spec(M, spec))[k - 1]
     data = json.load(open('radial_certificates/case_%d.json' % M))
     print('leaf %d [%s]' % (k, describe(x['case'])), flush=True)
-    cert = certify_leaf(M, x['case'], k)
+    cert = certify_leaf(M, x['case'], k, bool(spec.get('antipodal')))
     if cert is None:
         print('no certificate for this leaf'); return
     data['leaves'][k - 1] = cert

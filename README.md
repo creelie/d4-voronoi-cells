@@ -23,7 +23,37 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: DOI 10.5281/zenodo.22766562; cite it.  The release that
-corresponds to the paper is v1.9.0.
+corresponds to the paper is v1.10.0.
+
+## What is new in v1.10.0
+
+Three new results on the two statements to which the paper reduces
+Conjecture 1.6, and one negative result that settles what a large machine
+could do.  (G), and (C) from 25 to 30 centres, remain open; the conjecture
+remains open.
+
+- Proposition 2.19: the second level with a margin mu w(u) on pairs
+  cannot localise anything at slack 0.008, at any degree.  The root system
+  is a 24-point code on which the margin costs 36 s = 0.288, while w never
+  exceeds 0.019779 (level2/margin_floor_check.py, exact and Arb).  The
+  (14, 16) run planned for a 192 GB machine is withdrawn.
+- Lemma 2.38: with 25 to 33 centres within sqrt 6 and T(Y) <= 8, at
+  least 24 lie within 2.444; at thirty centres the 24 closest have
+  T <= 8.00368 (multi_cap/twentyfour_close_check.py, Arb at 200 bits).
+- Proposition 2.43: with exactly 24 centres within sqrt 6 and T(Y) <= 8, at
+  most two lie beyond 2.1 and at most one beyond 2.15 (two-point case
+  certificates at M = 24, multi_cap/radial_certificates/case_24_r*.json,
+  proved by radial_case_check.py).
+- Table 2 now lists the best two-point bound for every count from 25
+  to 49 (runs/radial_count_scan.log), and Figure 15 is redrawn with it.
+- Corrections: the three-point kissing bound in dimension four is 24.5797
+  in Bachoc and Vallentin (not 24.10), and 24.047 at degree 20; the "room"
+  of Remark 2.37 holds only over real configurations.
+- Seven new references, a 60-word abstract, three new figures, and
+  paper/tools/verify_dois.py, which checks every DOI of the bibliography
+  against Crossref and DataCite.
+
+RELEASE_NOTES_v1.10.0.md has the details.
 
 ## What is new in v1.9.0
 
@@ -207,6 +237,14 @@ by Anthropic.
                         runs/count_survey_pack.log.
   paper/figures_new/tikz_overlap_check.py
                       The collision test of the TikZ figures.
+  paper/tools/verify_dois.py
+                      Resolves every DOI of the bibliography through
+                        Crossref or DataCite and compares the registered
+                        title with the cited one (needs network access).
+  level2/margin_floor_check.py
+                      Proposition 2.19: the 96 pairs of the root system
+                        at 1/2 give sum w = 36 s exactly, and max w <
+                        0.019779 at s = 0.008 in Arb.
   multi_cap/certify_cardinality.py, multi_cap/cardinality_sdp.py,
   multi_cap/cardinality_certificates/
                       Theorem 7.79: the proof, the search, and three
@@ -1067,7 +1105,7 @@ with the assistance of Claude, an AI model made by Anthropic.
 
   radial_count_sdp.py M D r [eps [nd nu]]
   radial_count_sdp.py scan D r M1 M2 ...
-                              Theorem 2.32 and Table 2.  Floating point,
+                              Theorem 2.34 and Table 2.  Floating point,
                               sampled constraints: finds a two-point kernel,
                               polynomial of degree r in the distance and
                               of degree D in the inner product, whose
@@ -1081,11 +1119,11 @@ with the assistance of Claude, an AI model made by Anthropic.
                               80), runs/radial_count_scan.log.
 
   radial_count_check.py radial_certificates/radial_31.json
-                              Proves Theorem 2.32 from the certificate
+                              Proves Theorem 2.34 from the certificate
                               alone: exact LDL^T for the positivity and the
                               Schur complement, a Bernstein branch and
                               bound of the pair inequality with the pair
-                              term (Lemma 2.31) in Arb ball arithmetic at
+                              term (Lemma 2.33) in Arb ball arithmetic at
                               the corners of 191 740 boxes, the per-point
                               bracket on 356 intervals, and
                               31 m + t/2 = 3.08537 < 9 pi^2/8 - 8.  Under
@@ -1093,7 +1131,7 @@ with the assistance of Claude, an AI model made by Anthropic.
                               runs/radial_count_check_31.log.
 
   radial_case_sdp.py M --spec radial_certificates/case_M_spec.json
-                              Theorem 2.36: two-point certificates for (C)
+                              Theorem 2.39: two-point certificates for (C)
                               at one count M, one for each case of a tree
                               of bounds on the numbers N(r) of centres
                               within r (the tree for M = 30 is
@@ -1101,10 +1139,13 @@ with the assistance of Claude, an AI model made by Anthropic.
                               carries no certificate).  Floating point;
                               writes radial_certificates/case_M.json.
                               Without --spec it grows a tree by trying
-                              splits.  Log: runs/radial_case_sdp_30.log.
+                              splits.  A spec with "antipodal": true also
+                              refines the samples along u = -1, where the
+                              caps are disjoint.  Log:
+                              runs/radial_case_sdp_30.log.
 
   radial_case_check.py radial_certificates/case_M.json
-                              Proves Theorem 2.36 from the tree and the
+                              Proves Theorem 2.39 from the tree and the
                               certificates: the splits cover every packing,
                               exact LDL^T, the pair branch and bound of
                               radial_count_check.py, the bin bounds, and
@@ -1116,13 +1157,26 @@ with the assistance of Claude, an AI model made by Anthropic.
                               66 minutes on four cores.  Log:
                               runs/radial_case_check_30.log.
 
+  radial_certificates/case_24_r2.1.json, case_24_r2.15.json
+                              Proposition 2.43: the same certificates at
+                              M = 24, one split each: N(2.1) <= 21 against
+                              N(2.1) >= 22, and N(2.15) <= 22 against
+                              N(2.15) >= 23 (case_24_r2.1_spec.json,
+                              case_24_r2.15_spec.json).  radial_case_check.py
+                              proves 3.07883 and 3.09251 < 9 pi^2/8 - 8, a
+                              few seconds each.  Logs:
+                              runs/radial_case_sdp_24_r2.1.log,
+                              runs/radial_case_check_24_r2.1.log,
+                              runs/radial_case_sdp_24_r2.15.log,
+                              runs/radial_case_check_24_r2.15.log.
+
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
                               same boxes, tests and counts, four times
                               faster; used by radial_case_check.py.
 
   pushout_check.py
-                              Theorem 2.38: T on the one-centre ray at
+                              Theorem 2.41: T on the one-centre ray at
                               delta = 0.1971 exceeds 8 (Arb), the pyramid
                               condition (1 + eta)^2 - 1 < 1/3, and
                               g(eta)/eta >= 2/5 on [0, 0.09855] (exact); and a
@@ -1130,8 +1184,15 @@ with the assistance of Claude, an AI model made by Anthropic.
                               8 + sum(delta)/5 with qhull volumes of random
                               push-outs.  Log: runs/pushout_check.log.
 
+  twentyfour_close_check.py
+                              Lemma 2.38: 22 S(2) + 11 S(2.444) < 9 pi^2/8 - 8,
+                              s(D) < B, the room 2.6492e-5 of Theorem
+                              2.17 against (M - 23) S(2.444) for
+                              M = 25..33, and 6 S(2.4) < 0.00368.  Arb at
+                              200 bits, under a second.
+
   count_core_survey.py M K [starts] [seed]
-                              Remark 2.35.  Floating point, exploration: the
+                              Remark 2.37.  Floating point, exploration: the
                               least T over packings of M centres within
                               sqrt 6 with K of them held within rho_M, the
                               radius inside which at least 23 centres must
