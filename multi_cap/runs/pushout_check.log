@@ -1,5 +1,4 @@
-$ python3 pushout_check.py
-Theorem 2.37: (G) along the push-outs of the root system
+Theorem 2.38: (G) along the push-outs of the root system
   [PASS] T on the one-centre ray at delta = 0.1971 exceeds 8: T = [8.000015233 +/- 3.04e-10]
   [PASS] T at the root system is 7.906940...: [7.906940156 +/- 2.18e-10]
   [PASS] (1 + eta_B)^2 - 1 < 1/3 (the vertex pyramids stay inside the octahedral facets): 0.20681

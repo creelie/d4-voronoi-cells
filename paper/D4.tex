@@ -541,7 +541,10 @@ terms fall below $8$, and a bound on the pair terms for twenty-five or more
 centres within $\sqrt6$. The second of these we prove for every count from
 thirty-one on, with a two-point kernel that carries the distances from the
 centre as a continuous label (\cref{thm:count31}), which leaves the counts
-from twenty-five to thirty. The second order of the first is computed
+from twenty-five to thirty; at thirty, splitting into cases by how many
+centres lie within given distances leaves only configurations with
+twenty-two or more centres within $2.1$ and six more beyond $2.4$
+(\cref{thm:count30}). The second order of the first is computed
 exactly and certified in \cref{sec:second-order}, where it is also shown to
 be attained along closed curves of direction sets
 (\cref{prop:hexagon-loop}); the first is proved along the push-outs of the
@@ -2689,7 +2692,8 @@ bounds.}
 
 \subsection{The statements (G) and (C)}\label{sec:G-and-C}
 
-This subsection proves (C) for every count from thirty-one on, shows that
+This subsection proves (C) for every count from thirty-one on, reduces it
+at thirty to a single configuration, shows that
 twenty-four centres close to a root system leave no room for another within
 $\sqrt6$, proves (G) along the push-outs of the root system, and then sets
 out what (G), and (C) for the counts from twenty-five to thirty, still
@@ -2820,6 +2824,16 @@ reach the value $3.19636\ldots$ of the root system, which has only
 twenty-four centres. Adding to the programme the bound of
 \cref{thm:kissing-stable}, at most $24$ centres within $2.0161$, leaves these
 values unchanged.
+A kernel on triples in the manner of \cite{BV08}, with the distances as
+labels and each anchor weighted by a nonnegative polynomial in its own
+distance, does better at thirty centres, but not well enough. At angular
+degree $6$, three rounds of cutting planes raise the value of its programme
+to $3.10344$, already above $3.10330$, and further rounds can only raise it.
+A proof along that line would also need more than the value: each inequality
+on distinct triples enters the bound once for each of the
+$30\cdot29\cdot28=24\,360$ ordered triples, so it would have to be verified to
+within about $10^{-8}$ on a six-dimensional domain on which the optimal kernel
+stays within $10^{-5}$ of zero on half of the sampled triples.
 \end{remark}
 
 \begin{table}[tb]
@@ -2946,6 +2960,87 @@ the bound $\rho$. A proof along the lines of \cref{thm:m23-labelled}, with a
 three-point certificate for $M$ points spent on the triples, is the natural
 route for this case, count by count, and it has a room of at least $0.35$ in
 $T$ at every count.
+\end{remark}
+
+The kernel of \cref{thm:count31} can be sharpened by splitting into cases
+according to how many centres lie within given distances of $c$. At thirty
+centres this leaves only configurations of the kind that the first part of
+\cref{rem:what-c-needs} describes, near-contacts with further centres in
+their holes.
+
+\begin{thm}[Thirty centres]\label{thm:count30}
+Suppose that exactly $30$ centres other than $c$ lie within $\sqrt6$ of $c$
+and that $T(Y)\le8$. Then at least $22$ of them lie within $2.1$ of $c$, and
+at least six lie at distances between $2.4$ and $\sqrt6$.
+\end{thm}
+
+\begin{proof}
+Let $N(\rho)$ be the number of centres within $\rho$ of $c$; by
+\cref{thm:kissing-stable}, $N(2.0161)\le24$. Call a \emph{case} a set of
+bounds $\ell_j\le N(\rho_j)\le h_j$ at finitely many rational radii
+$2<\rho_1<\dots<\rho_J<\sqrt6$, always including $N(2.0161)\le24$. The radii cut
+$[2,d_{\max}]$ into bins; let $n_b$ be the number of centres in bin $b$ and
+$e_b$ its lower end. Take a certificate with properties (a) and (b) of the
+proof of \cref{thm:count31} and, in place of (c), bounds
+\[
+  f(d)=S(d)+\tfrac12\textstyle\sum_kp(d)^{\mathsf T}A_kp(d)-z\cdot p(d)\le m_b
+  \qquad\text{on each bin } b ,
+\]
+with no condition on the signs of the $m_b$. The chain of inequalities in that
+proof gives $U(Y)\le\sum_bn_bm_b+\frac t2$. If $U(Y)\ge\frac98\pi^2-8$, then
+also $\sum_bn_bS(e_b)\ge\sum_yS(|y|)\ge U(Y)\ge\frac98\pi^2-8$, because $S$
+decreases and the pair terms are nonnegative; so for every $s\ge0$
+\[
+  U(Y)\le\sum_bn_b\bigl(m_b+sS(e_b)\bigr)-s\bigl(\tfrac98\pi^2-8\bigr)+\tfrac t2 ,
+\]
+and $T(Y)>8$ follows once the largest value of the right side over the
+integer vectors $(n_b)$ that the case allows, with $\sum_bn_b=30$, is below
+$\frac98\pi^2-8$. That largest value is found exactly by dynamic programming
+over the bins.
+
+Split first at $N(2.1)\le21$ against $N(2.1)\ge22$, then the second case
+at $N(2.4)\le24$ against $N(2.4)\ge25$, then $N(2.1)\ge22$, $N(2.4)\ge25$ at
+$N(2.1)\le23$ against $N(2.1)\ge24$, and $22\le N(2.1)\le23$, $N(2.4)\ge25$
+at $N(2.2)\le23$ against $N(2.2)\ge24$. The five cases so obtained cover every
+packing, and four of them carry certificates, with $D=12$ and $r=4$: the
+case $N(2.1)\le21$ with bound $3.0617$, the two cases with $22\le N(2.1)\le23$
+and $N(2.4)\ge25$ with $3.0992$ and $3.0968$, and the case $N(2.1)\ge24$,
+$N(2.4)\ge25$ with $3.0845$. The fifth, $N(2.1)\ge22$ and $N(2.4)\le24$, is
+the one in the statement. Each certificate is checked as in \cref{thm:count31}: exact
+positivity, the branch and bound of (a) over the whole admissible domain with
+$\Pi$ in ball arithmetic, the bin bounds by Bernstein coefficients (an
+interval that meets two bins held to the smaller bound), and the dynamic
+programme and the final inequality in ball arithmetic. The four branch
+and bounds close $185$ million boxes with $29.6$ million values of $\Pi$ in
+ball arithmetic, the tightest case alone $134$ million, and the whole check
+takes $66$ minutes on four cores.
+\end{proof}
+
+\begin{remark}[What is left at thirty]\label{rem:thirty-left}
+In the case that \cref{thm:count30} leaves, between six and eight centres lie
+beyond $2.4$, with caps of volume at most $S(2.4)=0.00061$ each, so the at
+most $24$ centres within $2.4$ carry a union of at least $3.0984$ by
+themselves: their own $T$ is at most $8.005$. And each far centre sits in a
+hole of the $22$ to $24$ directions within $2.1$, at inner product at most
+$a(2.1,\sqrt6)=0.6231$ with every one of them, while two far centres are at
+least $48.2^\circ$ apart. With $24$ directions there, the argument of
+\cref{cor:no-room} leaves no room at all once each is within
+$1/\sqrt2-0.6231=0.084$ of a root system. At the roots of $\Rt$ with one or
+two roots removed, the points at inner product at most $0.6231$ with every remaining
+root lie within $16^\circ$ of a removed root, or within $31^\circ$ when the
+two removed roots are neighbours, and they hold at most two points
+$48.2^\circ$ apart (floating point, four and six million samples). So (C) at
+thirty centres follows from a localisation of the kind (G) asks for
+(\cref{rem:what-g-needs-2}), at $T\le8.005$ in place of $8$ and with a
+tolerance small enough to keep this count of holes. The residual case is
+where the two-point kernel stops. It contains the case $22\le N(2.1)\le23$,
+$N(2.2)=N(2.4)=24$, whose bound is $3.1112$, and no single further split at
+the radii $2.0161$, $2.05$, $2.15$, $2.2$, $2.25$, $2.3$ or $2.35$ brings both
+parts of it below $3.1097$; the case $N(2.2)\le23$, which the residual
+case meets, has bound $3.1019$, and degrees up to $16$ in the angle and $6$
+in the distance lower it only to $3.1012$, too close to $3.10330$ for a
+certificate with a usable margin; and
+at $29$ centres the same splits leave cases with bounds up to $3.19$.
 \end{remark}
 
 Statement (G) can be proved in full along one family: the root system with
@@ -10776,7 +10871,10 @@ within $\sqrt6$ wherever the pair terms fall below $8$, and the bound (C)
 on the pair terms for twenty-five or more. Statement (C) is proved for
 every count from thirty-one on (\cref{thm:count31}), by a two-point kernel
 that carries the distance from the centre as a continuous label, so that
-what remains of it is the counts from twenty-five to thirty. What is proved
+what remains of it is the counts from twenty-five to thirty; at thirty only
+the configuration of \cref{thm:count30} remains, twenty-two or more
+centres within $2.1$ and six beyond $2.4$, which a localisation of the kind
+(G) needs would exclude (\cref{rem:thirty-left}). What is proved
 towards the rest is the cardinality bound of \cref{thm:kissing-stable},
 the absence of room for a twenty-fifth centre beside twenty-four near a
 root system (\cref{cor:no-room}), the second order of (G)
@@ -10968,7 +11066,7 @@ arithmetic with outward rounding \cite[Ch.~5]{MKC09}: the pivots of
 \cref{sec:stage-one}, the certificates of
 \cref{sec:stage-two,sec:arc1-cert,sec:arc2-cert,sec:cap-theorem}, the
 certificates of \cref{sec:certificate,sec:certificate-checked,sec:closure,sec:m24-robust},
-the certificates of \cref{prop:cone-min,thm:count31}, the arithmetic of
+the certificates of \cref{prop:cone-min,thm:count31,thm:count30}, the arithmetic of
 \cref{thm:G-pushout}, and the identities of
 \cref{prop:hexagon-loop,prop:second-code}. The second is a
 high-precision evaluation, at a stated working precision between $35$ and
@@ -11732,6 +11830,17 @@ so it adds at most one unit in the last place of the largest coefficient),
 and the pair term at the corners of the boxes in ball arithmetic. The
 algorithm is the one above, with the bound $b$ the largest Bernstein
 coefficient of the kernel less the corner value of $\Pi$.
+
+\emph{The count at thirty.} The certificates of \cref{thm:count30} are
+found and checked in the same way, one for each case of the tree, with a
+margin in the pair inequality that is tried at $2\cdot10^{-5}$ and lowered
+until the bound of the case stays below $\frac98\pi^2-8$ by $2\cdot10^{-4}$.
+The tree itself is checked from its splits alone: each child adds one bound
+on one $N(\rho)$, and its other bound on $N(\rho)$ is at least as wide as what
+the parent's bounds, $N(2.0161)\le24$ and $N(d_{\max})=30$ imply. The
+largest value of $\sum_bn_b(m_b+sS(e_b))$ over the count vectors of a case is
+found by dynamic programming over the bins in exact rational arithmetic,
+with the values $S(e_b)$ rounded up from ball arithmetic.
 
 \subsection*{Software}
 

@@ -31,8 +31,9 @@ The paper is in journal form, and Conjecture 1.6 is reduced to two explicit
 statements (Proposition 2.30): (G), a lower bound of 8 for
 vol(V(Y) ∩ K(Y)) over sets Y of 24 centres within sqrt 6 whose pair-term
 bound T(Y) is at most 8, and (C), T(Y) > 8 for 25 or more centres within
-sqrt 6.  (C) is proved for every count from 31 on (Theorem 2.32); (G), and
-(C) from 25 to 30, are not, and the conjecture remains open.  New results:
+sqrt 6.  (C) is proved for every count from 31 on (Theorem 2.32) and reduced
+at 30 to a single configuration (Theorem 2.36); (G), and (C) from 25 to 30,
+are not proved, and the conjecture remains open.  New results:
 
 - Section 2.9, the second order of the cell volume at the root system
   (Lemma 2.19 to Proposition 2.24): the Hessian in closed form, its minimum
@@ -54,10 +55,20 @@ sqrt 6.  (C) is proved for every count from 31 on (Theorem 2.32); (G), and
 - Corollary 2.34: 24 centres whose directions are each within
   1/sqrt2 - a(sqrt 6, rho) of a root system (0.093 for rho = 2.0161) leave
   no room for another within sqrt 6.
-- Theorem 2.36: (G) along the push-outs of the root system.  If the 24
+- Theorem 2.36: at exactly 30 centres within sqrt 6, T(Y) <= 8 forces at
+  least 22 centres within 2.1 and at least six between 2.4 and sqrt 6.  The
+  kernel of Theorem 2.32 is split into cases by the numbers N(r) of centres
+  within r; four of the five cases carry certificates, proved by
+  multi_cap/radial_case_check.py (exact positivity, the pair branch and
+  bound in Arb, bin bounds, and an exact dynamic programme over the count
+  vectors).  Remark 2.37: the remaining case is the hole problem; a root
+  system leaves no room for the far centres, and one with one or two roots
+  removed room for at most two, so (C) at 30 follows from a localisation of
+  the kind (G) needs.
+- Theorem 2.38: (G) along the push-outs of the root system.  If the 24
   centres lie on the rays of the normalised roots, at distances 2 + delta_i,
   and T(Y) <= 8, then every delta_i < 0.1971 and vol(V(Y) cap K(Y)) >=
-  8 + sum(delta_i)/5.  Corollary 2.37: the conjecture holds whenever the 24
+  8 + sum(delta_i)/5.  Corollary 2.39: the conjecture holds whenever the 24
   centres within sqrt 6 lie on the rays of a root system.  Arithmetic in Arb
   and exact rationals: multi_cap/pushout_check.py.
 - Section 2.10: what (G), and (C) from 25 to 30, still need, and why kernels
@@ -79,7 +90,7 @@ assistance of Claude, an AI model made by Anthropic.
                         computation) replace the reproducibility sections,
                         and the text no longer names files of this package;
                         Section 2.9, Propositions 2.25 to 2.30 and Section
-                        2.10 (Lemma 2.31 to Remark 2.38) are new, with
+                        2.10 (Lemma 2.31 to Remark 2.40) are new, with
                         Figures 11 to 14 (figures_new/tikz_secondorder.tex,
                         tikz_hexloop.tex, tikz_codes.tex, tikz_count31.tex
                         with count31_data.py) and Table 2; later figures
@@ -1081,8 +1092,37 @@ with the assistance of Claude, an AI model made by Anthropic.
                               two minutes.  Log:
                               runs/radial_count_check_31.log.
 
+  radial_case_sdp.py M --spec radial_certificates/case_M_spec.json
+                              Theorem 2.36: two-point certificates for (C)
+                              at one count M, one for each case of a tree
+                              of bounds on the numbers N(r) of centres
+                              within r (the tree for M = 30 is
+                              case_30_spec.json; a leaf marked residual
+                              carries no certificate).  Floating point;
+                              writes radial_certificates/case_M.json.
+                              Without --spec it grows a tree by trying
+                              splits.  Log: runs/radial_case_sdp_30.log.
+
+  radial_case_check.py radial_certificates/case_M.json
+                              Proves Theorem 2.36 from the tree and the
+                              certificates: the splits cover every packing,
+                              exact LDL^T, the pair branch and bound of
+                              radial_count_check.py, the bin bounds, and
+                              the largest bound over the integer count
+                              vectors of each case by exact dynamic
+                              programming, against 9 pi^2/8 - 8 in Arb:
+                              3.0617, 3.0992, 3.0968, 3.0845 for the four
+                              certified cases at M = 30; 185 million boxes,
+                              66 minutes on four cores.  Log:
+                              runs/radial_case_check_30.log.
+
+  pair_bb_fast.py             The branch and bound of radial_count_check.py
+                              for K <= Pi, processed in numpy batches: the
+                              same boxes, tests and counts, four times
+                              faster; used by radial_case_check.py.
+
   pushout_check.py
-                              Theorem 2.36: T on the one-centre ray at
+                              Theorem 2.38: T on the one-centre ray at
                               delta = 0.1971 exceeds 8 (Arb), the pyramid
                               condition (1 + eta)^2 - 1 < 1/3, and
                               g(eta)/eta >= 2/5 on [0, 0.09855] (exact); and a
