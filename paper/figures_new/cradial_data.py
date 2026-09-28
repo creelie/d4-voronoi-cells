@@ -6,7 +6,8 @@ number of centres within a radius rho,
     larger radius;
   - given by the caps alone: the least n such that n S(2) + (M - n) S(rho) >= tau fails for every
     smaller count, tau = 9 pi^2/8 - 8 (ball arithmetic).
-Writes cradial_counts.dat (one row per M; nan where no certificate) and prints the table."""
+Writes cradial_counts.dat (one row per M; nan where no count above the caps is proved) and prints
+the rows of the table and the value of each single-split certificate."""
 import glob, math, re
 from flint import arb, ctx
 ctx.prec = 200
@@ -43,7 +44,7 @@ for f in glob.glob('../../multi_cap/runs/radial_case_check_*.log'):
         if int(lo) > 0 and r != '2.0161':
             proved[(M, r)] = max(proved.get((M, r), 0), int(lo))
     m = re.search(r'below the target: \[([\d.]+)', txt)
-    if m and M != 30:
+    if m and re.search(r'_r([\d.]+)\.log$', f):          # single splits only, not the tree at thirty
         rr = re.search(r'_r([\d.]+)\.log$', f).group(1)
         values[(M, rr)] = float(m.group(1))
 
@@ -71,4 +72,4 @@ print('\n'.join(tex))
 print('certificate values:')
 for k in sorted(values):
     print('  M=%d rho=%s: %.7f' % (k[0], k[1], values[k]))
-print('largest (25 <= M <= 29):', max(v for k, v in values.items() if 25 <= k[0] <= 29))
+print('largest (25 <= M <= 30):', max(v for k, v in values.items() if 25 <= k[0] <= 30))

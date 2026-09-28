@@ -1174,15 +1174,17 @@ with the assistance of Claude, an AI model made by Anthropic.
                               minute each.  Logs: runs/radial_case_sdp_24_r*.log
                               and runs/radial_case_check_24_r*.log.
 
-  radial_certificates/case_M_rRHO.json, M = 25..29
+  radial_certificates/case_M_rRHO.json, M = 25..30
                               Proposition 2.41: the same single splits at
-                              M = 25 to 29 centres, one file per radius
+                              M = 25 to 30 centres, one file per radius
                               rho and count M, with the specs
                               case_M_rRHO_spec.json.  Each proves that the
                               case N(rho) <= n - 1 has T(Y) > 8, so that
                               at least n of the M centres lie within rho
-                              (Table 3); case_29_r2.3.json proves that 24
-                              of 29 centres lie within 2.3.  The margins
+                              (Table 3); case_30_r2.25.json,
+                              case_29_r2.3.json and case_2{7,8}_r2.35.json
+                              prove that 24 of the M centres lie within
+                              2.25, 2.3 and 2.35.  The margins
                               are chosen per case, since the margin is
                               given up at each of the M(M - 1)/2 pairs.
                               Logs: runs/radial_case_sdp_M_r*.log and
