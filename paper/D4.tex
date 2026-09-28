@@ -3269,17 +3269,18 @@ of thirty.
 
 \begin{prop}[Where the twenty-four centres lie]\label{prop:G-radial}
 Let $Y$ be a packing set of exactly $24$ centres with $2\le|y|<\sqrt6$ and
-$T(Y)\le8$. Then at most two centres of $Y$ lie beyond $2.1$, and at most one
-lies beyond $2.15$.
+$T(Y)\le8$. Then at most $13$ centres of $Y$ lie beyond $2.0161$, at most
+four beyond $2.05$, at most two beyond $2.1$, and at most one beyond $2.15$.
 \end{prop}
 
 \begin{proof}
 For a radius $\rho$ and a count $c$, take the tree of the proof of
 \cref{thm:count30} with $M=24$ and the single split $N(\rho)\le c-1$ against
-$N(\rho)\ge c$. For $(\rho,c)=(2.1,22)$ and $(2.15,23)$ the first case
-carries a certificate of degree $12$ in the angle and $4$ in the distance,
-and the largest value it gives over the count vectors of that case is at most
-$3.07883$ and $3.09251$ respectively, below $\frac98\pi^2-8=3.10330$. So
+$N(\rho)\ge c$. For $(\rho,c)=(2.0161,11)$, $(2.05,20)$, $(2.1,22)$ and
+$(2.15,23)$ the first case carries a certificate of degree $12$ in the angle
+and $4$ in the distance, and the largest value it gives over the count
+vectors of that case is at most $3.10018$, $3.09836$, $3.07883$ and $3.09251$
+respectively, below $\frac98\pi^2-8=3.10330$. So
 $T(Y)>8$ in the first case, and $N(\rho)\ge c$ whenever $T(Y)\le8$. Each
 certificate is checked as there: positivity by an exact $LDL^{\mathsf T}$
 factorisation, the inequality $K\le\Pi$ on the admissible pairs by a branch
@@ -3287,18 +3288,21 @@ and bound in ball arithmetic,\footnote{At the antipodal pairs, $u=-1$, the caps 
 vanishes, so the kernel must be nonpositive there. A kernel computed from too
 few samples along $u=-1$ can be slightly positive at such pairs and then fails
 the branch and bound, which is why the programme refines its samples along
-that edge as well.} the bounds on the bins, and the largest value over
+that edge as well; for $2.0161$ and $2.05$ it also keeps a margin of
+$3\cdot10^{-5}$ and $5\cdot10^{-5}$, rather than $2\cdot10^{-5}$, wherever
+the caps are disjoint.} the bounds on the bins, and the largest value over
 the count vectors by exact dynamic programming.
 \end{proof}
 
 The caps alone give much less. Since $\sum_yS(|y|)\ge U(Y)\ge\frac98\pi^2-8$
 when $T(Y)\le8$, and $S$ decreases, $k$ centres can lie beyond $\rho$ only if
-$(24-k)S(2)+kS(\rho)\ge\frac98\pi^2-8$. That allows three centres beyond
-$2.1$ and two beyond $2.15$, and one beyond every radius below $\sqrt6$
-(\cref{fig:G-radial}); the pair terms remove one in each case. They cannot
-remove more at this degree. With the next count, $23$ at $2.1$ or $24$ at
-$2.2$ or $2.25$, the optimum of the same programme already lies above the
-level, at $3.1248$, $3.1422$ and $3.1306$ in floating point, so these
+$(24-k)S(2)+kS(\rho)\ge\frac98\pi^2-8$. That allows $19$ centres beyond
+$2.0161$, six beyond $2.05$, three beyond $2.1$ and two beyond $2.15$, and one
+beyond every radius below $\sqrt6$ (\cref{fig:G-radial}); the pair terms
+remove six, two, one and one. Beyond $2.05$ they cannot remove more at this
+degree: with the next count, $21$ at $2.05$, $23$ at $2.1$, or $24$ at $2.2$
+or $2.25$, the optimum of the same programme already lies above the level,
+at $3.1151$, $3.1248$, $3.1422$ and $3.1306$ in floating point, so these
 certificates cannot exclude a single centre far out. That is still far from the
 neighbourhood of \cref{thm:near-contact}, where $\sum_i\delta_i\le4\cdot10^{-3}$,
 and it says nothing about the directions.
@@ -3309,7 +3313,9 @@ and it says nothing about the directions.
 \caption{\Cref{prop:G-radial}. (a) For twenty-four centres with $T(Y)\le8$,
 the number that can lie beyond a radius $\rho$: the cap budget alone (step
 curve, open marks) against the counts that the case certificates prove
-(filled marks), $2$ beyond $2.1$ and $1$ beyond $2.15$. (b) For the split
+(filled marks), $13$ beyond $2.0161$, $4$ beyond $2.05$, $2$ beyond $2.1$ and
+$1$ beyond $2.15$.
+(b) For the split
 $N(\rho)\le c-1$ against $N(\rho)\ge c$, the bound on the union of the caps
 in the first case: proved by a certificate (filled marks) and, for the next
 count, the floating-point optimum of the programme of the same degree (open
@@ -11074,8 +11080,8 @@ volume $8$ that any proof of (G) has to control (\cref{prop:hexagon-loop}),
 (G) itself along the push-outs of the root system, so that the conjecture
 holds whenever the twenty-four centres within $\sqrt6$ lie on the rays of a
 root system (\cref{thm:G-pushout,cor:rays}), the bound that at most
-two of the twenty-four centres lie beyond $2.1$, and at most one beyond
-$2.15$, wherever $T\le8$ (\cref{prop:G-radial}), and the count for
+$13$ of the twenty-four centres lie beyond $2.0161$, four beyond $2.05$, two
+beyond $2.1$ and one beyond $2.15$, wherever $T\le8$ (\cref{prop:G-radial}), and the count for
 twenty-three (\cref{thm:m23-labelled}). The route
 through the shape of twenty-four directions stops at slack $0.01698$,
 where a second code appears (\cref{prop:second-code}), and a margin on

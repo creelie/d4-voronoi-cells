@@ -41,7 +41,8 @@ remains open.
   least 24 lie within 2.444; at thirty centres the 24 closest have
   T <= 8.00368 (multi_cap/twentyfour_close_check.py, Arb at 200 bits).
 - Proposition 2.43: with exactly 24 centres within sqrt 6 and T(Y) <= 8, at
-  most two lie beyond 2.1 and at most one beyond 2.15 (two-point case
+  most 13 lie beyond 2.0161, four beyond 2.05, two beyond 2.1 and one
+  beyond 2.15 (two-point case
   certificates at M = 24, multi_cap/radial_certificates/case_24_r*.json,
   proved by radial_case_check.py).
 - Table 2 now lists the best two-point bound for every count from 25
@@ -1141,7 +1142,9 @@ with the assistance of Claude, an AI model made by Anthropic.
                               Without --spec it grows a tree by trying
                               splits.  A spec with "antipodal": true also
                               refines the samples along u = -1, where the
-                              caps are disjoint.  Log:
+                              caps are disjoint, and "margins" sets the
+                              margins tried, each a number or a pair (near,
+                              far).  Log:
                               runs/radial_case_sdp_30.log.
 
   radial_case_check.py radial_certificates/case_M.json
@@ -1157,18 +1160,19 @@ with the assistance of Claude, an AI model made by Anthropic.
                               66 minutes on four cores.  Log:
                               runs/radial_case_check_30.log.
 
-  radial_certificates/case_24_r2.1.json, case_24_r2.15.json
+  radial_certificates/case_24_r2.0161.json, case_24_r2.05.json,
+  case_24_r2.1.json, case_24_r2.15.json
                               Proposition 2.43: the same certificates at
-                              M = 24, one split each: N(2.1) <= 21 against
-                              N(2.1) >= 22, and N(2.15) <= 22 against
-                              N(2.15) >= 23 (case_24_r2.1_spec.json,
-                              case_24_r2.15_spec.json).  radial_case_check.py
-                              proves 3.07883 and 3.09251 < 9 pi^2/8 - 8, a
-                              few seconds each.  Logs:
-                              runs/radial_case_sdp_24_r2.1.log,
-                              runs/radial_case_check_24_r2.1.log,
-                              runs/radial_case_sdp_24_r2.15.log,
-                              runs/radial_case_check_24_r2.15.log.
+                              M = 24, one split each: N(rho) <= c - 1
+                              against N(rho) >= c for (rho, c) =
+                              (2.0161, 11), (2.05, 20), (2.1, 22) and
+                              (2.15, 23), with the specs case_24_r*_spec.json
+                              (those for 2.0161 and 2.05 keep the margins
+                              3e-5 and 5e-5 where the caps are disjoint).
+                              radial_case_check.py proves 3.10018, 3.09836,
+                              3.07883 and 3.09251 < 9 pi^2/8 - 8, under a
+                              minute each.  Logs: runs/radial_case_sdp_24_r*.log
+                              and runs/radial_case_check_24_r*.log.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

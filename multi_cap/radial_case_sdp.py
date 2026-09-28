@@ -34,7 +34,8 @@ N(r) >= c, that best separate it, over the candidate radii below.
 writes radial_certificates/case_M.json: the tree given by the spec (a leaf
 marked residual carries no certificate) and one certificate per other leaf; a
 spec with "antipodal": true also searches the pairs at u = -1, where the caps
-are disjoint, between the samples;
+are disjoint, between the samples, and "margins" replaces the default list of
+margins;
     python3 radial_case_sdp.py M --redo SPEC k
 recomputes leaf k alone, identically; and
 
@@ -301,16 +302,18 @@ def from_spec(M, spec, case=None):
             'children': [from_spec(M, spec['children'][0], c1), from_spec(M, spec['children'][1], c2)]}
 
 
-def certify_leaf(M, case, k, antipodal=False):
+def certify_leaf(M, case, k, antipodal=False, eps_list=None):
     """the certificate of leaf k (1-based): margins 2e-5, 5e-6, 2e-6, 1e-6 in turn, until the
     refinement converges with the bound 2e-4 below the target; the seed depends on k only.
-    (certify also takes a pair of margins, larger where the caps overlap; not used here.)"""
+    A spec may give its own list of margins, each a number or a pair (near, far): near
+    where the caps overlap, far where they are disjoint and in the bin bounds."""
     rng = np.random.default_rng(11 + k)
-    for eps in (2e-5, 5e-6, 2e-6, 1e-6):
+    for eps in (eps_list or (2e-5, 5e-6, 2e-6, 1e-6)):
+        eps = eps if np.isscalar(eps) else tuple(eps)
         cert = certify(M, case, rng, eps, antipodal)
         if cert is not None and cert['float_bound'] < TARGET - 2e-4:
             return cert
-        print('    margin %.0e: %s' % (eps, 'not converged' if cert is None else 'bound %.5f' % cert['float_bound']), flush=True)
+        print('    margin %s: %s' % (eps, 'not converged' if cert is None else 'bound %.5f' % cert['float_bound']), flush=True)
     return None
 
 
@@ -328,7 +331,7 @@ def main_spec(M, spec_file):
         if not feasible(M, x['case']):
             certs.append({'case': ncase, 'excluded': True})
             continue
-        cert = certify_leaf(M, x['case'], k, bool(spec.get('antipodal')))
+        cert = certify_leaf(M, x['case'], k, bool(spec.get('antipodal')), spec.get('margins'))
         if cert is None:
             print('no certificate for this leaf'); return
         certs.append(cert)
@@ -344,7 +347,7 @@ def redo_leaf(M, spec_file, k):
     x = leaves(from_spec(M, spec))[k - 1]
     data = json.load(open('radial_certificates/case_%d.json' % M))
     print('leaf %d [%s]' % (k, describe(x['case'])), flush=True)
-    cert = certify_leaf(M, x['case'], k, bool(spec.get('antipodal')))
+    cert = certify_leaf(M, x['case'], k, bool(spec.get('antipodal')), spec.get('margins'))
     if cert is None:
         print('no certificate for this leaf'); return
     data['leaves'][k - 1] = cert

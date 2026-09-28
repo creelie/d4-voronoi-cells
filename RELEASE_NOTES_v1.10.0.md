@@ -5,8 +5,9 @@ Twenty-Four-Cell Conjecture*.  This release proves three new results on the
 two statements to which the paper reduces Conjecture 1.6: the second-level
 computation with a margin that earlier releases proposed for a large
 machine cannot help at any size; twenty-four of the centres lie within
-2.444 wherever (C) could fail from 25 to 33 centres; and in (G) at most two
-of the twenty-four centres lie beyond 2.1, and at most one beyond 2.15.  It
+2.444 wherever (C) could fail from 25 to 33 centres; and in (G) at most 13
+of the twenty-four centres lie beyond 2.0161, four beyond 2.05, two beyond
+2.1 and one beyond 2.15.  It
 also completes the table of two-point bounds for every count of centres,
 corrects the values quoted for the three-point bound on the kissing number,
 and adds seven references.
@@ -44,13 +45,14 @@ Everything proved in v1.9.0 still stands.  New:
   (multi_cap/twentyfour_close_check.py).  At thirty centres, Remark 2.40
   now reads T <= 8.00368 for the 24 closest, in place of 8.005.
 - **Proposition 2.43 (where the twenty-four centres lie).**  If exactly 24
-  centres lie within sqrt 6 and T(Y) <= 8, then at most two lie beyond 2.1
-  and at most one beyond 2.15.  These are the case certificates of Theorem
-  2.39 run at M = 24 with one split each; their exact values, 3.07883 and
-  3.09251, lie below 9 pi^2/8 - 8 = 3.10330.  The caps alone allow three and
-  two.  At the next counts (at most one beyond 2.1, none beyond 2.2 or 2.25)
-  the programme of the same degree already exceeds the level, at 3.1248,
-  3.1422 and 3.1306 in floating point.
+  centres lie within sqrt 6 and T(Y) <= 8, then at most 13 lie beyond
+  2.0161, four beyond 2.05, two beyond 2.1 and one beyond 2.15.  These are
+  the case certificates of Theorem 2.39 run at M = 24 with one split each;
+  their exact values, 3.10018, 3.09836, 3.07883 and 3.09251, lie below
+  9 pi^2/8 - 8 = 3.10330.  The caps alone allow 19, six, three and two.  At
+  the next counts (at most three beyond 2.05, one beyond 2.1, none beyond
+  2.2 or 2.25) the programme of the same degree already exceeds the level,
+  at 3.1151, 3.1248, 3.1422 and 3.1306 in floating point.
 - **Table 2 covers every count from 25 to 49.**  The best two-point
   bound on the union of the caps for each count (degree 14 in the angle and 5
   in the distance), the largest union found and the least T found; the
@@ -118,13 +120,15 @@ network access before submission.
 - level2/margin_floor_check.py: Proposition 2.19, exactly and in ball
   arithmetic.
 - multi_cap/twentyfour_close_check.py: the constants of Lemma 2.38.
-- multi_cap/radial_certificates/case_24_r2.1.json, case_24_r2.15.json and
-  their specs, with runs/radial_case_{sdp,check}_24_r2.1.log and
-  runs/radial_case_{sdp,check}_24_r2.15.log: Proposition 2.43.
+- multi_cap/radial_certificates/case_24_r{2.0161,2.05,2.1,2.15}.json and
+  their specs, with runs/radial_case_{sdp,check}_24_r*.log: Proposition
+  2.43.
 - multi_cap/radial_case_sdp.py: a spec key "antipodal" that refines the
-  sampled pairs along u = -1, where the caps are disjoint.  Without it the
-  programme can return a kernel slightly positive at some antipodal pairs,
-  which the exact branch and bound then refuses.
+  sampled pairs along u = -1, where the caps are disjoint, and a spec key
+  "margins" for the margins tried.  Without the first the programme can
+  return a kernel slightly positive at some antipodal pairs, which the
+  exact branch and bound then refuses; with too small a margin where the
+  caps are disjoint the branch and bound needs hours instead of seconds.
 - multi_cap/runs/radial_count_scan.log: the eleven new counts of Table 2.
 - paper/tools/verify_dois.py: the DOI check.
 - paper/figures_new/: tikz_margin.tex with margin_data.py, tikz_lemma.tex
@@ -148,7 +152,8 @@ missing, and that it is mathematics and not computation:
 - (C) with only 23 centres within 2.0161 needs a certificate that tells
   real configurations from the fictitious ones above.
 - (G) needs a localisation that uses the distances through T, and a volume
-  bound in the neighbourhood it gives.  The pair terms place all but two of the 24 centres
-  within 2.1 and all but one within 2.15 (Proposition 2.43), but at this
+  bound in the neighbourhood it gives.  The pair terms place all but 13 of
+  the 24 centres within 2.0161, all but four within 2.05, all but two within
+  2.1 and all but one within 2.15 (Proposition 2.43), but at this
   degree they cannot exclude one centre far out, and they say nothing about
   the directions.
