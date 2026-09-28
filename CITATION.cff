@@ -54,8 +54,10 @@ abstract: >-
   adds the second order of the cell volume at the root system, an exact closed
   curve of contact cells of volume 8, a second twenty-four-point code far from
   the root system, the reduction of the conjecture to two explicit
-  statements, and a proof of the second of them for thirty-one or more
-  centres; fifteen parts of the paper are checked in Lean 4. The
+  statements, a proof of the second of them for thirty-one or more centres
+  and its reduction at thirty to a single configuration, and a proof of the
+  first along the push-outs of the root system; fifteen parts of the paper
+  are checked in Lean 4. The
   re-verification and these
   programs were developed, and their computations run, with the assistance of
   Claude, an AI model made by Anthropic.

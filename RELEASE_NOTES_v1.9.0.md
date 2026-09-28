@@ -98,16 +98,31 @@ Everything proved in v1.8.0 still stands.  New:
   1/sqrt2 - a(sqrt6, rho) of a copy of the normalised roots (0.0930 for
   rho = 2.0161), no other centre lies within sqrt6; with Theorem 7.76, 24
   centres within 2/sqrt(1 - 4e-26) leave no room for another within sqrt6.
-- **Theorem 2.36 ((G) along the push-outs).**  If the 24 centres lie on the
+- **Theorem 2.36 ((C) at thirty centres, up to one configuration).**  If
+  exactly 30 centres lie within sqrt6 and T(Y) <= 8, then at least 22 of them
+  lie within 2.1 and at least six lie between 2.4 and sqrt6.  The kernel of
+  Theorem 2.32 is split into cases by the numbers N(r) of centres within r
+  (with N(2.0161) <= 24 from Theorem 7.79 and the necessary condition
+  sum_b n_b S(e_b) >= 9 pi^2/8 - 8); four of the five cases carry
+  certificates, and the check (multi_cap/radial_case_check.py) verifies the
+  tree, exact positivity, the pair branch and bound in Arb, the bin bounds and
+  an exact dynamic programme over the count vectors.  Remark 2.37: in the
+  remaining case the centres within 2.4 have T <= 8.005 by themselves and the
+  far ones sit in holes; a root system leaves no room for them, and one with
+  one or two roots removed room for at most two, so (C) at 30 follows from a
+  localisation of the kind (G) needs.  Three-point kernels do not help: at degree 6 they already exceed
+  3.10330 at 30 after three rounds of cutting planes, and their triple
+  inequality would have to be verified to 1e-8.
+- **Theorem 2.38 ((G) along the push-outs).**  If the 24 centres lie on the
   rays of the normalised roots at distances 2 + delta_i and T(Y) <= 8, then
   every delta_i < 0.1971 (T on the one-centre ray exceeds 8 there, in ball
   arithmetic) and vol(V(Y) cap K(Y)) >= 8 + sum(delta_i)/5: the gain of
   Lemma 2.23 against a loss of at most 768 sum eta_i^4, the part of V(Y)
   outside the inversion hull lying in 24 vertex pyramids of volume 2 h_v^4.
-  Corollary 2.37: the conjecture holds whenever the 24 centres within sqrt6
+  Corollary 2.39: the conjecture holds whenever the 24 centres within sqrt6
   lie on the rays of a root system (multi_cap/pushout_check.py).
-- **Section 2.10, what (G) and (C) still need** (Remarks 2.33, 2.35 and
-  2.38): why kernels on pairs stop at 31 (the same method bounds the kissing
+- **Section 2.10, what (G) and (C) still need** (Remarks 2.33, 2.35, 2.37
+  and 2.40): why kernels on pairs stop at 31 (the same method bounds the kissing
   number of R^4 only by 25), a table of the best two-point bound against the
   largest union found for every count (Table 2), the two cases of (C) from
   25 to 30 (24 centres close to c, which needs the shape half of Theorem
@@ -228,7 +243,13 @@ No proof uses `sorry`.
   contact_valley.py, contact_cell_scan.py, contact_cell_constrained.py,
   code24_second.py, code24_exact.py (with code24_exact.txt),
   cell_hull_search.py, hole24.py, with logs in runs/; see the README there.
-- multi_cap/pushout_check.py (Theorem 2.36, log runs/pushout_check.log) and
+- multi_cap/radial_case_sdp.py, multi_cap/radial_case_check.py and
+  multi_cap/pair_bb_fast.py (Theorem 2.36; the four certified cases have
+  bounds 3.0617, 3.0992, 3.0968 and 3.0845, and the check closes 185 million
+  boxes in 66 minutes on four cores), radial_certificates/case_30_spec.json
+  and case_30.json, logs
+  runs/radial_case_sdp_30.log and runs/radial_case_check_30.log.
+- multi_cap/pushout_check.py (Theorem 2.38, log runs/pushout_check.log) and
   multi_cap/count_core_survey.py (Remark 2.35, log runs/count_core_survey.log).
 - multi_cap/cap_probe.py (log runs/cap_probe_d7.log): the labelled
   three-point probe with an inner slack.
@@ -245,8 +266,9 @@ No proof uses `sorry`.
 ## What is left
 
 Conjecture 1.6 follows from (G) and from (C) for 25 to 30 centres; neither
-is proved in general, and (G) is proved along the push-outs of the root
-system (Theorem 2.36).  (G) is a lower bound for the volume of a polytope over sets of
+is proved in general.  (G) is proved along the push-outs of the root system
+(Theorem 2.38), and (C) at 30 is reduced to one kind of configuration, 22 or
+more centres within 2.1 with six more beyond 2.4 (Theorem 2.36).  (G) is a lower bound for the volume of a polytope over sets of
 24 centres near the root system; the numerical searches find nothing below
 8.  (C) from 25 to 30 needs a certificate that sees more than pairs; the
 least value of T found for those counts is 8.264115, at 25.  Section 2.10
