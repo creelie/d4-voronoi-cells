@@ -34,3 +34,7 @@ tikz_radial: 2 boxes, 17 labels checked
   PASS
 tikz_radial: 44 nodes checked automatically (0 frames and 23 points or empty nodes left out)
   PASS
+tikz_cradial: 1 boxes, 5 labels checked
+  PASS
+tikz_cradial: 56 nodes checked automatically (0 frames and 1 points or empty nodes left out)
+  PASS
