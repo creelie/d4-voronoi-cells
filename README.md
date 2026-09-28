@@ -23,7 +23,34 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: DOI 10.5281/zenodo.22766562; cite it.  The release that
-corresponds to the paper is v1.11.0.
+corresponds to the paper is v1.11.1.
+
+## What is new in v1.11.1
+
+Two more counts on statement (C), and a negative result on the case of 24
+close centres.  (G), and (C) from 25 to 30 centres, remain open, and so
+does the conjecture.
+
+- Proposition 2.41 gains two counts.  With T(Y) <= 8, at least 15 of 26
+  centres lie within 2.05 (Table 3 and Figure 17), and at least 8 of 29
+  lie within 2.0161.  Certificates in multi_cap/radial_certificates/
+  (case_26_r2.05.json, case_29_r2.0161.json), logs in multi_cap/runs.  The
+  count 17 of 28 within 2.05 is not proved: its floating-point certificate
+  stays below the level by only 2.3e-4, and the exact check did not finish
+  within an hour.
+- Remark 2.37: the labelled three-point programme does not exclude a
+  further centre within sqrt 6 beside 24 centres within 2.0161 at degree
+  10 or 12 either (floating point; multi_cap/hole_labelled_sdp.py, logs
+  multi_cap/runs/hole_labelled_*.log).  Without the further direction it
+  cannot exclude 24.9 directions of slack 0.008 at degree 10, or 24.7 at
+  degree 12; with it, it cannot exclude even 24.5.  Read as counts, the
+  further direction would have to be worth at least 0.7 of a point, and
+  these certificates value it at least half a point lower.  The values of
+  the certificates fall with the degree, but they fall as fast where the
+  root system with a direction in one of its deep holes is feasible, so
+  the fall says nothing about exclusion.
+
+RELEASE_NOTES_v1.11.1.md has the details.
 
 ## What is new in v1.11.0
 
@@ -168,6 +195,13 @@ assistance of Claude, an AI model made by Anthropic.
                         searches behind Remark 2.29 (cell_hull_search.py)
                         and Figure 13 (contact_cell_constrained.py,
                         hole24.py).  See multi_cap/second_order/README.md.
+  multi_cap/hole_labelled_sdp.py
+                      Remark 2.37: the labelled three-point programme for
+                        24 directions of slack 0.008 and a further one at
+                        inner product at most 0.6141 with each, at degrees
+                        10 and 12, and without the further one; floating
+                        point.  No exclusion.  Logs:
+                        runs/hole_labelled_*.log.
   multi_cap/cap_probe.py
                       A labelled three-point probe: can a certificate
                         exclude a further centre within sqrt 6 beside 24
@@ -1130,6 +1164,21 @@ with the assistance of Claude, an AI model made by Anthropic.
                               centre with inner products up to tau (at degree
                               7: yes at tau = 1/2, no at tau = 0.612).  Log:
                               runs/three_point_probes.log.
+
+  hole_labelled_sdp.py mode d kappa tau n [rounds]
+                              Supports Remark 2.37.  Floating point, sampled
+                              constraints refined in rounds, Clarabel.  mode
+                              "hole": n directions of slack kappa and one
+                              further direction at inner product at most tau
+                              with each; mode "plain": the n directions alone.
+                              Minimises the value Val(n) of a labelled
+                              three-point certificate with c_AA = -1; a
+                              positive value (nothing excluded) is robust to
+                              the sampling.  With kappa = 0.008 and tau =
+                              0.6141: Val > 0 at n = 24 (degrees 10, 12) and
+                              n = 24.5 (degrees 10, 12); plain: Val > 0 at
+                              n = 24.9 (degree 10) and n = 24.7 (degree 12).
+                              Logs: runs/hole_labelled_*.log.
 
   cap_probe.py d tau kappa [rounds]
                               Supports "What is left" after Theorem 2.18.

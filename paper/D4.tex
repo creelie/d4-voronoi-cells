@@ -3005,9 +3005,23 @@ per direction in place of the $\frac1{48}$ in root mean square of
 \cref{thm:near-contact}; \cref{prop:second-code} does not contradict it,
 since the deepest hole of its code is at inner product $0.659$ (floating
 point, over $3000$ local minimisations). The three-point bound does not
-see holes: at degree $7$ no labelled certificate excludes $24$ directions of
-slack $0.008$ with a further one at inner product at most $0.6141$ with each,
-and the kernel of \cref{thm:count31}, which sees pairs only, is weaker still.
+see holes. The value of a labelled certificate is a polynomial in the number
+$n$ of directions of slack $0.008$, and it excludes $n$ when it is negative.
+Without a further direction, no certificate of degree $10$ excludes
+$n=24.9$, and none of degree $12$ excludes $n=24.7$; with a further
+direction at inner product at most $0.6141$ with each, none of degree $7$,
+$10$ or $12$ excludes $n=24$, and none of degree $10$ or $12$ excludes even
+$n=24.5$ (floating point; the sampling only lowers the values, so a
+positive value is no artefact of it).\footnote{With the normalisation
+$c_{AA}=-1$ and total trace at most $1000$, the least values at $n=24$
+fall from $0.127$ at degree $10$ to $0.0096$ at degree $12$, but they fall as
+fast when the further direction may lie at inner product $0.71$, where the
+root system with a direction in one of its deep holes meets every
+constraint: from $0.144$ to $0.0116$. The fall therefore says nothing about
+exclusion.} Read as counts, the further direction would have to be worth
+at least $0.7$ of a point, and these certificates value it at least half a
+point lower. The kernel of \cref{thm:count31}, which sees pairs only, is weaker
+still.
 The second level of the Lasserre hierarchy sees twenty-four points exactly
 \cite{LLM24}, but not in the form with a margin on pairs, which the root
 system itself spends (\cref{prop:margin-floor}); at this slack the
@@ -3183,7 +3197,7 @@ $25\le M\le30$, and suppose that $T(Y)\le8$. Then for each radius $\rho$ at
 which \cref{tab:C-radial} has an entry in the row of $M$, at least that many
 centres of $Y$ lie within $\rho$ of $c$. At least $24$ centres of $Y$ lie
 within $2.25$ of $c$ if $M=30$, within $2.3$ if $M=29$, and within $2.35$
-if $M=27$ or $28$.
+if $M=27$ or $28$; and at least $8$ lie within $2.0161$ if $M=29$.
 \end{prop}
 
 \begin{proof}
@@ -3196,7 +3210,7 @@ largest of these values is $3.10276$, at $M=27$ and $\rho=2.35$. So $T(Y)>8$ in
 the first case, and $N(\rho)\ge n$ whenever $T(Y)\le8$. An entry that
 repeats the one to its left needs no certificate of its own. The last
 statement is the split $N(\rho)\le23$ against $N(\rho)\ge24$ at $\rho=2.25$,
-$2.3$ and $2.35$. Each
+$2.3$ and $2.35$, and $N(2.0161)\le7$ against $N(2.0161)\ge8$ at $M=29$. Each
 certificate is found and checked as those of \cref{thm:count30}, with the
 samples of the programme refined along the antipodal pairs, where the caps
 are disjoint and $\Pi$ vanishes.\footnote{The margin
@@ -3228,7 +3242,7 @@ $M$ & $2.05$ & $2.1$ & $2.15$ & $2.2$\\
 % BEGIN C-RADIAL ROWS (printed by figures_new/cradial_data.py)
 $24$ & $20$\,(18) & $22$\,(21) & $23$\,(22) & $23$\,(22)\\
 $25$ & $17$\,(15) & $21$\,(20) & $22$\,(21) & $23$\,(22)\\
-$26$ & --\,(12) & $20$\,(18) & $22$\,(21) & $23$\,(22)\\
+$26$ & $15$\,(12) & $20$\,(18) & $22$\,(21) & $23$\,(22)\\
 $27$ & $14$\,(9) & $20$\,(17) & $21$\,(20) & $22$\,(21)\\
 $28$ & --\,(6) & $21$\,(16) & $22$\,(19) & $23$\,(21)\\
 $29$ & $19$\,(2) & $22$\,(15) & $23$\,(19) & $23$\,(21)\\
@@ -3248,9 +3262,9 @@ twenty-two (\cref{fig:C-radial}).
 
 Three limits remain. At $2.0161$, where the case of twenty-three close
 centres of \cref{rem:what-c-needs} is decided, the single splits give
-little: in floating point the first case already exceeds the level when
-it asks for twelve centres within $2.0161$ at $M=29$, for three at $M=25$
-and $28$, and for one at $M=26$ and $27$. Twenty-four centres lie within
+little: they prove eight centres within $2.0161$ at $M=29$, but in floating
+point the first case already exceeds the level when it asks for twelve
+there, for three at $M=25$ and $28$, and for one at $M=26$ and $27$. Twenty-four centres lie within
 $2.444$ by \cref{lem:twentyfour-close}; a single split brings that radius
 down to $2.25$ at $M=30$, $2.3$ at $M=29$ and $2.35$ at $M=27$ and $28$,
 but not below $2.4$ for $M=25$ or $26$, where the
@@ -5427,7 +5441,7 @@ on the subsets of size at most two of any set of points, which nothing in the
 computation forces; on random four-point sets the least eigenvalue is at the
 precision of the arithmetic for every signature, including those with
 $\lambda_2>0$, which the comparison with the Gegenbauer polynomials does not
-reach. The entries can also be set beside the authors' own. Their
+reach.\enlargethispage{3pt} The entries can also be set beside the authors' own. Their
 construction needs its memory for all signatures at once, and run for one
 signature at a time it fits in a few gigabytes for the smaller ones: for the
 thirteen signatures with $|\lambda|\le10$ and $\lambda_2\le4$ on which it was
@@ -12157,6 +12171,16 @@ of \cref{prop:C-radial,prop:G-radial} are found and checked in the same way,
 with a margin chosen for each case from the room below the level that its
 floating-point optimum leaves, since the margin is given up at each of the
 $\binom M2$ pairs.
+
+\emph{Holes.} The labelled programmes of \cref{rem:what-c-needs} have two
+classes of directions, $n$ of slack $0.008$ and one further direction. They
+carry a Schoenberg kernel of each degree up to $d$ with a $2\times2$ matrix
+over the classes, and three-point kernels of Bachoc--Vallentin type with one
+matrix for each class of the pole. Their inequalities are imposed at sampled
+pairs and triples, refined at the worst of $20\,001$ further pairs and of
+several tens of thousands of further triples, and the programme is solved in
+floating point by Clarabel. Only values that stay positive are quoted, and sampling
+can only lower a value.
 
 \subsection*{Software}
 
