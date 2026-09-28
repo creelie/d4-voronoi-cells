@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-pushout_check.py -- the arithmetic of Theorem 2.38: statement (G) for the push-outs
+pushout_check.py -- the arithmetic of Theorem 2.41: statement (G) for the push-outs
 of the root system, 24 centres (2 + delta_i) u_i on the rays of the normalised roots.
 
 The proof in the paper bounds, with eta_i = delta_i / 2 and eta_v the largest eta
 over the six roots through a vertex v of the 24-cell Q,
-    vol V(Y) >= 8 + (1/3) sum_i (1 - (1 - eta_i)^4)                 (Lemma 2.23),
+    vol V(Y) >= 8 + (1/3) sum_i (1 - (1 - eta_i)^4)                 (Lemma 2.25),
     vol (V(Y) \\ K(Y)) <= sum_v 2 h_v^4 <= 768 sum_i eta_i^4,
     h_v = sqrt2 ((1 + eta_v) - 1/(1 + eta_v)),
 the second by 24 vertex pyramids, valid while (1 + eta_max)^2 - 1 < 1/3 (the
@@ -64,7 +64,7 @@ def G(h, x):
 
 
 def Pi(h1, h2, u):
-    """Lemma 2.31, as a ball; the branch decisions must be definite."""
+    """Lemma 2.33, as a ball; the branch decisions must be definite."""
     h1, h2, ua = A_(h1), A_(h2), A_(u)
     g = ua.acos()
     a1, a2 = (h1 / R).acos(), (h2 / R).acos()
@@ -77,7 +77,7 @@ def Pi(h1, h2, u):
 
 
 def main():
-    print('Theorem 2.38: (G) along the push-outs of the root system')
+    print('Theorem 2.41: (G) along the push-outs of the root system')
     VB = 9 * PI ** 2 / 8
     Tb = VB - 23 * S(2) - S(2 + DELTA_B) + 88 * Pi(1, 1, Fr(1, 2)) + 8 * Pi(1, 1 + DELTA_B / 2, Fr(1, 2))
     check('T on the one-centre ray at delta = %s exceeds 8' % float(DELTA_B), Tb > 8, 'T = %s' % Tb.str(10))

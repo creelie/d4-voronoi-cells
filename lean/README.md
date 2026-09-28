@@ -34,20 +34,20 @@ About two minutes.  The log of `run_all.sh` behind v1.9.0, all twelve files in
 2.9, the second order of the cell volume at the root system.  It computes
 everything from the integral root system: the 24 roots, the 24 vertices of
 the scaled 24-cell, a rational basis of each tangent space, the 96 tight
-pairs and their triangles, the form H of Proposition 2.20 by the midpoint rule,
+pairs and their triangles, the form H of Proposition 2.22 by the midpoint rule,
 the 120 rows of the first-order packing cone and c.  The only data are the
-certificate of Proposition 2.21, 43 orbit values of N written by
+certificate of Proposition 2.23, 43 orbit values of N written by
 `gen_second_order_lean.py` from `multi_cap/second_order/exact_certificate.pkl`.
 It proves that N is nonnegative and covers every pair of cone rows exactly
 once, that P = H + c c^T - B^T N B is symmetric and positive semidefinite by
 an exact LDL^T with 30 zero pivots, each with a zero row (so H(xi,xi) >=
 -(sum delta_i)^2 on the cone), that H is Adj - 4I on the push-outs and H + c c^T
-is Adj + 4(J - I) there (the identity of Proposition 2.20), that the 72 x 72
+is Adj + 4(J - I) there (the identity of Proposition 2.22), that the 72 x 72
 tilt block of H (the Hessian of the contact-cell volume in the directions
 alone) is positive semidefinite with 15 zero pivots, the six rotations null
 for it and the nine infinitesimal strains not, that equality holds
 on the 24 one-centre rays, and, with `grind` over every commutative ring, the
-expansions of Lemma 2.23 and of the one-centre formula.  The finite checks
+expansions of Lemma 2.25 and of the one-centre formula.  The finite checks
 are settled by `native_decide`, about thirty seconds.  That H is the Hessian
 of the volume and that B are the linearised packing constraints are Lemma
 2.19 and the paper, checked numerically by
@@ -69,7 +69,7 @@ paper's argument, checked with sympy and numerically by
 `multi_cap/second_order/hexagon_loop.py`.  About a second.  Log:
 `runs/D4HexagonLoop_2026-09-27.log`.
 
-`D4SecondCode.lean` (new in v1.9.0) covers Proposition 2.28, a second
+`D4SecondCode.lean` (new in v1.9.0) covers Proposition 2.30, a second
 24-point code: 24 points of S^3 with rational coordinates (written by
 `multi_cap/second_order/code24_exact.py` into `code24_exact.txt`), each of
 norm 1, every two with inner product at most 1/2 + 849/50000, and one inner

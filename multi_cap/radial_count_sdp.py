@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 radial_count_sdp.py -- a two-point radial certificate that the pair terms of
-Lemma 2.15 exceed 8 whenever at least M centres lie within sqrt6 (Theorem 2.32:
-statement (C) of Proposition 2.30 for every count from M = 31 on).  Finds the
+Lemma 2.15 exceed 8 whenever at least M centres lie within sqrt6 (Theorem 2.34:
+statement (C) of Proposition 2.32 for every count from M = 31 on).  Finds the
 certificate (floating point) and writes it in exact dyadic form;
 radial_count_check.py proves it.
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 gen_second_order_lean.py -- write D4SecondOrder.lean from the certificate of
-Proposition 2.21 (multi_cap/second_order/exact_certificate.pkl).
+Proposition 2.23 (multi_cap/second_order/exact_certificate.pkl).
 
 Only the certificate itself is data: the 43 orbits of pairs of cone rows and
 the nonnegative rational value of N on each.  Everything else -- the root
 system, the vertices of the 24-cell, the tangent bases, the tight pairs and
-their triangles, the form H of Proposition 2.20, the 120 rows of the cone and
+their triangles, the form H of Proposition 2.22, the 120 rows of the cone and
 the vector c -- is computed inside Lean from the definitions in the file.
 
 Usage: python3 gen_second_order_lean.py   (from this directory)

@@ -18,7 +18,7 @@ contact cell, the range of the facet 3-volumes (4/3 at the root system), the
 largest inner product, and how far antipodal roots are from staying antipodal.
 At the point found for t = 0.3 it also prints the smallest eigenvalues of the
 finite-difference Hessian in the 66 coordinates that are rotation-free at the
-root system.  The curve it finds is the one of Proposition 2.26: one A2
+root system.  The curve it finds is the one of Proposition 2.28: one A2
 hexagon of roots turns in its plane and the other eighteen tilt towards the
 orthogonal plane (hexagon_loop.py gives it in closed form).
 Usage: python3 contact_valley.py

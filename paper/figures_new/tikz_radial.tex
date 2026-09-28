@@ -1,0 +1,103 @@
+% tikz_radial.tex -- the proposition "Where the twenty-four centres lie": for |Y| = 24 and T(Y) <= 8,
+% the number of centres beyond a radius rho.
+%   (a) The cap budget alone, k(rho) = floor((24 S(2) - tau)/(S(2) - S(rho))), tau = 9 pi^2/8 - 8
+%       (step curve, ball arithmetic), against the counts proved by the certificates (filled marks):
+%       13 beyond 2.0161, 4 beyond 2.05, 2 beyond 2.1 and 1 beyond 2.15, where the budget allows
+%       19, 6, 3 and 2.
+%   (b) For each split N(rho) <= c - 1 against N(rho) >= c, the bound on the union of the caps in the
+%       first case: proved by the certificate (filled; c = 11 at 2.0161, 20 at 2.05, 22 at 2.1, 23 at 2.15;
+%       radial_bounds.dat,
+%       from radial_case_check.py), and the floating-point optimum of the programme of the same degree
+%       for the next count (open; c = 21 at 2.05, 23 at 2.1, 24 at 2.2 and 2.25; radial_next.dat), against the level
+%       9 pi^2/8 - 8 that T > 8 needs.
+% Data: radial_budget.dat (radial_data.py), radial_bounds.dat, radial_next.dat.
+% Build:  pdflatex tikz_radial.tex && pdftoppm -r 500 -png -singlefile tikz_radial.pdf ../figures/fig_tikz_radial
+% Test:   python3 tikz_overlap_check.py tikz_radial.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cviolet}{HTML}{4A3AA7}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\begin{document}
+\begin{tikzpicture}[font=\small]
+\begin{axis}[name=A, width=8.2cm, height=6.4cm, xmin=2, xmax=2.3, ymin=0, ymax=25,
+    xtick={2,2.05,2.1,2.15,2.2,2.25,2.3}, xticklabels={$2$,$2.05$,$2.1$,$2.15$,$2.2$,$2.25$,$2.3$},
+    ytick={4,8,12,16,20,24},
+    xlabel={radius $\rho$}, ylabel={centres beyond $\rho$, at most},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize}, clip=true,
+    legend style={at={(0.97,0.97)}, anchor=north east, font=\footnotesize, draw=cink3, row sep=1pt},
+    legend cell align=left]
+  \addplot[cink3, line width=0.9pt, const plot] table[x=rho, y=k] {radial_budget.dat};
+  \addlegendentry{cap budget alone}
+  \addplot[cink3, only marks, mark=o, mark size=1.8pt, line width=0.6pt, forget plot] coordinates
+    {(2.0161,19) (2.05,6) (2.1,3) (2.15,2)};
+  \addplot[cblue, only marks, mark=*, mark size=1.8pt] coordinates
+    {(2.0161,13) (2.05,4) (2.1,2) (2.15,1)};
+  \addlegendentry{certificates}
+  \coordinate (A-l19) at (axis cs:2.0192,19.2);
+  \coordinate (A-l13) at (axis cs:2.0161,11.9);
+  \coordinate (A-l6) at (axis cs:2.05,6.8);
+  \coordinate (A-l4) at (axis cs:2.05,3.2);
+  \coordinate (A-l3) at (axis cs:2.1,3.8);
+  \coordinate (A-l2) at (axis cs:2.1,1.2);
+  \coordinate (A-l2b) at (axis cs:2.15,2.8);
+  \coordinate (A-l1) at (axis cs:2.155,1.0);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cink2] (n19) at (A-l19) {$19$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=north, text=cblue!85!black] (n13) at (A-l13) {$13$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=south west, text=cink2] (n6) at (A-l6) {$6$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=north west, text=cblue!85!black] (n4) at (A-l4) {$4$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=south west, text=cink2] (n3) at (A-l3) {$3$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=north west, text=cblue!85!black] (n2) at (A-l2) {$2$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=south west, text=cink2] (n2b) at (A-l2b) {$2$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cblue!85!black] (n1) at (A-l1) {$1$};
+\begin{axis}[name=B, at={($(A.east)+(1.7cm,0)$)}, anchor=west, width=8.2cm, height=6.4cm,
+    xmin=1.99, xmax=2.28, ymin=3.07, ymax=3.15,
+    xtick={2,2.05,2.1,2.15,2.2,2.25}, xticklabels={$2$,$2.05$,$2.1$,$2.15$,$2.2$,$2.25$},
+    ytick={3.08,3.1,3.12,3.14}, yticklabels={$3.08$,$3.10$,$3.12$,$3.14$},
+    scaled y ticks=false,
+    xlabel={radius $\rho$ of the split}, ylabel={bound on the union of the caps},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize}, clip=false,
+    legend style={at={(0.03,0.97)}, anchor=north west, font=\footnotesize, draw=cink3, row sep=1pt},
+    legend cell align=left]
+  \addplot[corange, line width=0.8pt, dashed, domain=1.99:2.28, samples=2, forget plot] {3.10330};
+  \addplot[cblue, only marks, mark=*, mark size=1.8pt] table[x=rho, y=bound] {radial_bounds.dat};
+  \addlegendentry{certified}
+  \addplot[cviolet, only marks, mark=o, mark size=1.8pt, line width=0.6pt] table[x=rho, y=bound] {radial_next.dat};
+  \addlegendentry{next count, floating point}
+  \coordinate (B-tau) at (axis cs:2.278,3.1041);
+  \coordinate (B-c11) at (axis cs:2.0161,3.0990);
+  \coordinate (B-c20) at (axis cs:2.054,3.09836);
+  \coordinate (B-c21n) at (axis cs:2.054,3.11505);
+  \coordinate (B-c22) at (axis cs:2.104,3.07883);
+  \coordinate (B-c23) at (axis cs:2.154,3.09251);
+  \coordinate (B-c23n) at (axis cs:2.104,3.12483);
+  \coordinate (B-c24n) at (axis cs:2.204,3.14224);
+  \coordinate (B-c24m) at (axis cs:2.246,3.13061);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south east, text=corange!85!black] (ltau) at (B-tau) {$\tfrac98\pi^2-8=3.10330$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=north, text=cblue!85!black] (c11) at (B-c11) {$c=11$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cblue!85!black] (c20) at (B-c20) {$c=20$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cviolet] (c21n) at (B-c21n) {$c=21$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cblue!85!black] (c22) at (B-c22) {$c=22$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cblue!85!black] (c23) at (B-c23) {$c=23$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cviolet] (c23n) at (B-c23n) {$c=23$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=west, text=cviolet] (c24n) at (B-c24n) {$c=24$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=east, text=cviolet] (c24m) at (B-c24m) {$c=24$};
+\node[font=\bfseries] (pa) at ($(A.north west)+(-1.2cm,0.35cm)$) {(a)};
+\node[font=\bfseries] (pb) at ($(B.north west)+(-1.2cm,0.35cm)$) {(b)};
+\def\figboxes{pa,pb}
+\def\figlabels{n19,n13,n6,n4,n3,n2,n2b,n1,ltau,c11,c20,c21n,c22,c23,c23n,c24n,c24m}
+\checkfigure
+\end{tikzpicture}
+\end{document}

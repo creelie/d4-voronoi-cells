@@ -18,8 +18,8 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "v1.9.0"
-date-released: "2026-09-27"
+version: "v1.10.0"
+date-released: "2026-09-28"
 keywords:
   - sphere packing
   - Voronoi cell
@@ -57,7 +57,11 @@ abstract: >-
   statements, a proof of the second of them for thirty-one or more centres
   and its reduction at thirty to a single configuration, and a proof of the
   first along the push-outs of the root system; fifteen parts of the paper
-  are checked in Lean 4. The
+  are checked in Lean 4. Version v1.10.0 shows that the second level with a
+  margin on pairs cannot localise twenty-four points at slack 0.008 at any
+  degree, proves that with 25 to 33 centres and T <= 8 twenty-four lie within
+  2.444, bounds how many of the twenty-four centres of (G) can lie far out,
+  and gives the two-point bound for every count from 25 to 49. The
   re-verification and these
   programs were developed, and their computations run, with the assistance of
   Claude, an AI model made by Anthropic.

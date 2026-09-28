@@ -2,12 +2,12 @@
 """
 count_core_survey.py -- the right side T of Lemma 2.15 for M centres within
 sqrt 6 of which at least 23 lie within rho_M (floating point, exploration, not
-proof; Remark 2.35).
+proof; Remark 2.37).
 
 A packing set of M centres, 25 <= M <= 30, with T <= 8 has at least 23 centres
 within rho_M, the distance at which 22 S(2) + (M - 22) S(rho_M) equals
 9 pi^2/8 - 8 (rho_25 = 2.2677, rho_30 = 2.3273): otherwise the union of the
-caps is below that level (Remark 2.35).  The unrestricted minima of
+caps is below that level (Remark 2.37).  The unrestricted minima of
 count_survey.py do not satisfy this -- they keep only 22 centres that close --
 so they say nothing about the case a proof still has to treat.  This script
 minimises T over packings of M centres in the shell with the first K of them

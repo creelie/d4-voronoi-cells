@@ -4,11 +4,11 @@ contact_cell_constrained.py -- the least contact-cell volume
 vol{x : <x, w_i> <= 1} over 24 unit directions with pairwise inner products
 at most 1/2 + s (floating point, qhull; exploration).
 
-With Proposition 2.24, a bound vol(Q_w) >= 8 on this set would give the first
+With Proposition 2.26, a bound vol(Q_w) >= 8 on this set would give the first
 inequality of statement (ii) for every set of 24 centres whose directions
 have slack at most s, near the root system or not.  Without the constraint
 the volume drops to 7.96553 (contact_cell_scan.py); along the curves of
-Proposition 2.26 it is exactly 8 at slack 4C^2/(4C^2+3) - 1/2.  This script
+Proposition 2.28 it is exactly 8 at slack 4C^2/(4C^2+3) - 1/2.  This script
 minimises the volume on the constrained set from random starts, which are
 first spread into codes of slack s by a penalty, and from perturbations of
 the root system, with the exact gradient: moving the facet normal w_i by dw
