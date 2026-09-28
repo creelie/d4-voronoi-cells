@@ -23,7 +23,44 @@ and archived on Zenodo through that repository (CITATION.cff and
 from Deep Bhattacharjee <itsdeep@live.com>.
 
 Archive: DOI 10.5281/zenodo.22766562; cite it.  The release that
-corresponds to the paper is v1.10.0.
+corresponds to the paper is v1.11.0.
+
+## What is new in v1.11.0
+
+One new result on statement (C): where the centres of a counterexample
+must lie, from 25 to 30 centres.  (G), and (C) from 25 to 30 centres,
+remain open, and so does the conjecture.
+
+- Proposition 2.41: with M centres within sqrt 6, 25 <= M <= 30, and
+  T(Y) <= 8, at least the following numbers lie within 2.05, 2.1, 2.15 and
+  2.2 (Table 3; the caps alone force the numbers in parentheses, and a
+  dash means that no count above them is proved):
+
+      M     2.05      2.1       2.15      2.2
+      25    17 (15)   21 (20)   22 (21)   23 (22)
+      26    - (12)    20 (18)   22 (21)   23 (22)
+      27    14 (9)    20 (17)   21 (20)   22 (21)
+      28    - (6)     21 (16)   22 (19)   23 (21)
+      29    19 (2)    22 (15)   23 (19)   23 (21)
+      30    22 (0)    22 (14)   23 (18)   23 (20)
+
+  Twenty-four of the M centres lie within 2.25 at M = 30, within 2.3 at
+  M = 29 and within 2.35 at M = 27 and 28, against 2.444 in Lemma 2.38.
+  Each count is a single split of the case certificates of Theorem 2.39,
+  proved by radial_case_check.py (multi_cap/radial_certificates/
+  case_M_rRHO.json, logs in multi_cap/runs), with margins chosen per case
+  because the margin is given up at each of the M(M - 1)/2 pairs.
+- At thirty centres, with Theorem 2.39, the case left open is two shells:
+  24 centres within 2.25 and six beyond 2.4, none in between (Remark 2.40).
+- The counts give nothing at 2.0161, where the case of 23 close centres is
+  decided, and they say nothing about directions: 24 close centres need
+  each direction within 0.093 of a root system, and 23 need a certificate
+  that tells a packing from fictitious configurations (Remark 2.37).
+- Table 3 and Figure 17 are new (paper/figures_new/tikz_cradial.tex and
+  cradial_data.py, which reads the check logs); the later theorem, figure
+  and table numbers move by one, and the file map below follows them.
+
+RELEASE_NOTES_v1.11.0.md has the details.
 
 ## What is new in v1.10.0
 
@@ -1162,7 +1199,7 @@ with the assistance of Claude, an AI model made by Anthropic.
 
   radial_certificates/case_24_r2.0161.json, case_24_r2.05.json,
   case_24_r2.1.json, case_24_r2.15.json
-                              Proposition 2.43: the same certificates at
+                              Proposition 2.44: the same certificates at
                               M = 24, one split each: N(rho) <= c - 1
                               against N(rho) >= c for (rho, c) =
                               (2.0161, 11), (2.05, 20), (2.1, 22) and
@@ -1174,13 +1211,29 @@ with the assistance of Claude, an AI model made by Anthropic.
                               minute each.  Logs: runs/radial_case_sdp_24_r*.log
                               and runs/radial_case_check_24_r*.log.
 
+  radial_certificates/case_M_rRHO.json, M = 25..30
+                              Proposition 2.41: the same single splits at
+                              M = 25 to 30 centres, one file per radius
+                              rho and count M, with the specs
+                              case_M_rRHO_spec.json.  Each proves that the
+                              case N(rho) <= n - 1 has T(Y) > 8, so that
+                              at least n of the M centres lie within rho
+                              (Table 3); case_30_r2.25.json,
+                              case_29_r2.3.json and case_2{7,8}_r2.35.json
+                              prove that 24 of the M centres lie within
+                              2.25, 2.3 and 2.35.  The margins
+                              are chosen per case, since the margin is
+                              given up at each of the M(M - 1)/2 pairs.
+                              Logs: runs/radial_case_sdp_M_r*.log and
+                              runs/radial_case_check_M_r*.log.
+
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
                               same boxes, tests and counts, four times
                               faster; used by radial_case_check.py.
 
   pushout_check.py
-                              Theorem 2.41: T on the one-centre ray at
+                              Theorem 2.42: T on the one-centre ray at
                               delta = 0.1971 exceeds 8 (Arb), the pyramid
                               condition (1 + eta)^2 - 1 < 1/3, and
                               g(eta)/eta >= 2/5 on [0, 0.09855] (exact); and a

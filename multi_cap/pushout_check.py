@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-pushout_check.py -- the arithmetic of Theorem 2.41: statement (G) for the push-outs
+pushout_check.py -- the arithmetic of Theorem 2.42: statement (G) for the push-outs
 of the root system, 24 centres (2 + delta_i) u_i on the rays of the normalised roots.
 
 The proof in the paper bounds, with eta_i = delta_i / 2 and eta_v the largest eta
@@ -77,7 +77,7 @@ def Pi(h1, h2, u):
 
 
 def main():
-    print('Theorem 2.41: (G) along the push-outs of the root system')
+    print('Theorem 2.42: (G) along the push-outs of the root system')
     VB = 9 * PI ** 2 / 8
     Tb = VB - 23 * S(2) - S(2 + DELTA_B) + 88 * Pi(1, 1, Fr(1, 2)) + 8 * Pi(1, 1 + DELTA_B / 2, Fr(1, 2))
     check('T on the one-centre ray at delta = %s exceeds 8' % float(DELTA_B), Tb > 8, 'T = %s' % Tb.str(10))

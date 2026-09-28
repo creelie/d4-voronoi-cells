@@ -547,8 +547,10 @@ thirty-one on, with a two-point kernel that carries the distances from the
 centre as a continuous label (\cref{thm:count31}), which leaves the counts
 from twenty-five to thirty; at thirty, splitting into cases by how many
 centres lie within given distances leaves only configurations with
-twenty-two or more centres within $2.1$ and six more beyond $2.4$
-(\cref{thm:count30}). The second order of the first is computed
+twenty-four centres within $2.25$ and six beyond $2.4$
+(\cref{thm:count30,prop:C-radial}), and from twenty-five to twenty-nine
+single splits of the same kind bound how many centres lie beyond $2.05$,
+$2.1$, $2.15$ and $2.2$ (\cref{prop:C-radial}). The second order of the first is computed
 exactly and certified in \cref{sec:second-order}, where it is also shown to
 be attained along closed curves of direction sets
 (\cref{prop:hexagon-loop}); the first is proved along the push-outs of the
@@ -3139,12 +3141,14 @@ takes $66$ minutes on four cores.
 \end{proof}
 
 \begin{remark}[What is left at thirty]\label{rem:thirty-left}
-In the case that \cref{thm:count30} leaves, between six and eight centres lie
-beyond $2.4$, with caps of volume at most $S(2.4)=0.00061$ each, and by
-\cref{lem:twentyfour-close} the twenty-four closest lie within $2.444$ and
-the other six at $2.4$ or beyond, so that the twenty-four closest carry by
-themselves a union of at least $3.0996$ and their own $T$ is at most
-$8+6S(2.4)=8.00368$. And each far centre sits in a
+In the case that \cref{thm:count30} leaves, at most $24$ centres lie within
+$2.4$, and by \cref{prop:C-radial} below at least $24$ lie within $2.25$,
+$23$ of them within $2.15$ and $22$ within $2.05$. So the configuration
+splits into two shells: twenty-four centres within $2.25$ and six beyond
+$2.4$, with caps of volume at most $S(2.4)=0.00061$ each, and none in
+between. The twenty-four closest therefore carry by themselves a union of
+at least $3.0996$, and by \cref{lem:twentyfour-close} their own $T$ is at
+most $8+6S(2.4)=8.00368$. And each far centre sits in a
 hole of the $22$ to $24$ directions within $2.1$, at inner product at most
 $a(2.1,\sqrt6)=0.6231$ with every one of them, while two far centres are at
 least $48.2^\circ$ apart. With $24$ directions there, the argument of
@@ -3164,8 +3168,108 @@ parts of it below $3.1097$; the case $N(2.2)\le23$, which the residual
 case meets, has bound $3.1019$, and degrees up to $16$ in the angle and $6$
 in the distance lower it only to $3.1012$, too close to $3.10330$ for a
 certificate with a usable margin; and
-at $29$ centres the same splits leave cases with bounds up to $3.19$.
+at $29$ centres the same splits leave cases with bounds up to $3.19$, although single
+splits still close their first case (\cref{prop:C-radial}).
 \end{remark}
+
+Below thirty centres the tree of \cref{thm:count30} no longer closes its
+cases, but a single split still does, at several radii, and at thirty it
+adds to the theorem. The counts it gives say where the centres of a
+counterexample to (C) must lie.
+
+\begin{prop}[Where the centres lie from twenty-five to thirty]\label{prop:C-radial}
+Let $Y$ be a packing set of exactly $M$ centres with $2\le|y|<\sqrt6$, where
+$25\le M\le30$, and suppose that $T(Y)\le8$. Then for each radius $\rho$ at
+which \cref{tab:C-radial} has an entry in the row of $M$, at least that many
+centres of $Y$ lie within $\rho$ of $c$. At least $24$ centres of $Y$ lie
+within $2.25$ of $c$ if $M=30$, within $2.3$ if $M=29$, and within $2.35$
+if $M=27$ or $28$.
+\end{prop}
+
+\begin{proof}
+For an entry $n$ at the radius $\rho$, take in the proof of
+\cref{thm:count30} the tree with $M$ centres in place of thirty and the
+single split $N(\rho)\le n-1$ against $N(\rho)\ge n$. Its first case carries a certificate of degree $12$
+in the angle and $4$ in the distance, and the largest value the certificate
+gives over the count vectors of that case lies below $\frac98\pi^2-8$; the
+largest of these values is $3.10276$, at $M=27$ and $\rho=2.35$. So $T(Y)>8$ in
+the first case, and $N(\rho)\ge n$ whenever $T(Y)\le8$. An entry that
+repeats the one to its left needs no certificate of its own. The last
+statement is the split $N(\rho)\le23$ against $N(\rho)\ge24$ at $\rho=2.25$,
+$2.3$ and $2.35$. Each
+certificate is found and checked as those of \cref{thm:count30}, with the
+samples of the programme refined along the antipodal pairs, where the caps
+are disjoint and $\Pi$ vanishes.\footnote{The margin
+by which the kernel is held below $\Pi$ costs more here than with
+twenty-four centres. It is given up at each of the $\binom M2$ pairs, so
+that at $M=29$ a margin of $5\cdot10^{-5}$ raises the bound by about
+$0.02$. The margins are therefore chosen
+case by case, between $2.5\cdot10^{-6}$ and $5\cdot10^{-5}$, according to
+the room that the floating-point optimum of the case leaves below the
+level.}
+\end{proof}
+
+\begin{table}[tb]
+\centering
+\caption{\Cref{prop:C-radial}. For $M$ centres within $\sqrt6$ of $c$ with
+$T(Y)\le8$, the least number of centres within $\rho$ of $c$ that the case
+certificates prove, and in parentheses the least number that the caps alone
+force. A count within one radius holds within every larger one. The row
+$24$ restates \cref{prop:G-radial}, and at $2.1$ the row $30$ is
+\cref{thm:count30}; a dash means that no count
+above the one in parentheses is proved.}
+\label{tab:C-radial}
+\begin{tabular}{@{}c@{\qquad}cccc@{}}
+\toprule
+& \multicolumn{4}{c}{radius $\rho$}\\
+\cmidrule(l){2-5}
+$M$ & $2.05$ & $2.1$ & $2.15$ & $2.2$\\
+\midrule
+% BEGIN C-RADIAL ROWS (printed by figures_new/cradial_data.py)
+$24$ & $20$\,(18) & $22$\,(21) & $23$\,(22) & $23$\,(22)\\
+$25$ & $17$\,(15) & $21$\,(20) & $22$\,(21) & $23$\,(22)\\
+$26$ & --\,(12) & $20$\,(18) & $22$\,(21) & $23$\,(22)\\
+$27$ & $14$\,(9) & $20$\,(17) & $21$\,(20) & $22$\,(21)\\
+$28$ & --\,(6) & $21$\,(16) & $22$\,(19) & $23$\,(21)\\
+$29$ & $19$\,(2) & $22$\,(15) & $23$\,(19) & $23$\,(21)\\
+$30$ & $22$\,(0) & $22$\,(14) & $23$\,(18) & $23$\,(20)\\
+% END C-RADIAL ROWS
+\bottomrule
+\end{tabular}
+\end{table}
+
+The caps alone give the counts in parentheses. Since
+$\sum_yS(|y|)\ge U(Y)\ge\frac98\pi^2-8$ when $T(Y)\le8$, and $S$ decreases,
+at most $k$ centres can lie within $\rho$ only if
+$kS(2)+(M-k)S(\rho)\ge\frac98\pi^2-8$. The pair terms add most where the
+centres are most crowded. With twenty-nine centres the caps force only two
+within $2.05$ and fifteen within $2.1$, and the certificates nineteen and
+twenty-two (\cref{fig:C-radial}).
+
+Three limits remain. At $2.0161$, where the case of twenty-three close
+centres of \cref{rem:what-c-needs} is decided, the single splits give
+little: in floating point the first case already exceeds the level when
+it asks for twelve centres within $2.0161$ at $M=29$, for three at $M=25$
+and $28$, and for one at $M=26$ and $27$. Twenty-four centres lie within
+$2.444$ by \cref{lem:twentyfour-close}; a single split brings that radius
+down to $2.25$ at $M=30$, $2.3$ at $M=29$ and $2.35$ at $M=27$ and $28$,
+but not below $2.4$ for $M=25$ or $26$, where the
+first case stays at $3.1124$ and $3.1068$ in floating point. And, as for (G), the counts say
+nothing about the directions: the case of twenty-four close centres needs
+each of them within $0.093$ of a root system, and the case of twenty-three
+a certificate that tells a packing from the fictitious configurations of
+\cref{rem:what-c-needs}.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_cradial}
+\caption{\Cref{prop:C-radial}: for $M$ centres within $\sqrt6$ of $c$ with
+$T(Y)\le8$, the least number within $2.05$, $2.1$, $2.15$ and $2.2$ of $c$,
+as the case certificates prove it (filled marks) and as the caps alone force
+it (open marks). At $M=24$ the counts are those of \cref{prop:G-radial},
+and at $M=30$ and $\rho=2.1$ that of \cref{thm:count30}.}
+\label{fig:C-radial}
+\end{figure}
 
 Statement (G) can be proved in full along one family: the root system with
 its centres pushed out along their own rays, by any amounts the region
@@ -3265,7 +3369,7 @@ gain from the push-outs that the tilts force.
 Off the push-outs, the pair terms still say how far out the centres of (G)
 can be. The counts below are what the case certificates of the proof of
 \cref{thm:count30} give when they are run with twenty-four centres in place
-of thirty.
+of thirty, as \cref{prop:C-radial} does for twenty-five to thirty.
 
 \begin{prop}[Where the twenty-four centres lie]\label{prop:G-radial}
 Let $Y$ be a packing set of exactly $24$ centres with $2\le|y|<\sqrt6$ and
@@ -11066,9 +11170,10 @@ on the pair terms for twenty-five or more. Statement (C) is proved for
 every count from thirty-one on (\cref{thm:count31}), by a two-point kernel
 that carries the distance from the centre as a continuous label, so that
 what remains of it is the counts from twenty-five to thirty; at thirty only
-the configuration of \cref{thm:count30} remains, twenty-two or more
-centres within $2.1$ and six beyond $2.4$, the twenty-four closest within
-$2.444$ with $T\le8.00368$ (\cref{lem:twentyfour-close}), which a
+the configuration of \cref{thm:count30} remains, twenty-four centres
+within $2.25$, twenty-two of them within $2.05$, and six beyond $2.4$, the
+twenty-four with $T\le8.00368$ (\cref{prop:C-radial,lem:twentyfour-close}),
+which a
 localisation of the kind (G) needs would exclude (\cref{rem:thirty-left}).
 What is proved
 towards the rest is the cardinality bound of \cref{thm:kissing-stable},
@@ -11081,7 +11186,9 @@ volume $8$ that any proof of (G) has to control (\cref{prop:hexagon-loop}),
 holds whenever the twenty-four centres within $\sqrt6$ lie on the rays of a
 root system (\cref{thm:G-pushout,cor:rays}), the bound that at most
 $13$ of the twenty-four centres lie beyond $2.0161$, four beyond $2.05$, two
-beyond $2.1$ and one beyond $2.15$, wherever $T\le8$ (\cref{prop:G-radial}), and the count for
+beyond $2.1$ and one beyond $2.15$, wherever $T\le8$ (\cref{prop:G-radial}),
+the corresponding counts for twenty-five to thirty centres
+(\cref{prop:C-radial}), and the count for
 twenty-three (\cref{thm:m23-labelled}). The route
 through the shape of twenty-four directions stops at slack $0.01698$,
 where a second code appears (\cref{prop:second-code}), and a margin on
@@ -12045,7 +12152,11 @@ on one $N(\rho)$, and its other bound on $N(\rho)$ is at least as wide as what
 the parent's bounds, $N(2.0161)\le24$ and $N(d_{\max})=30$ imply. The
 largest value of $\sum_bn_b(m_b+sS(e_b))$ over the count vectors of a case is
 found by dynamic programming over the bins in exact rational arithmetic,
-with the values $S(e_b)$ rounded up from ball arithmetic.
+with the values $S(e_b)$ rounded up from ball arithmetic. The single splits
+of \cref{prop:C-radial,prop:G-radial} are found and checked in the same way,
+with a margin chosen for each case from the room below the level that its
+floating-point optimum leaves, since the margin is given up at each of the
+$\binom M2$ pairs.
 
 \subsection*{Software}
 
