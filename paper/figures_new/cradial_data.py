@@ -59,8 +59,9 @@ with open('cradial_counts.dat', 'w') as f:
     f.write('M ' + ' '.join('p%s' % r.replace('.', '') for r in RHOS) + ' '
             + ' '.join('c%s' % r.replace('.', '') for r in RHOS) + '\n')
     for M in MS:
-        p = [best(M, r) for r in RHOS]
         c = [caps(M, r) for r in RHOS]
+        p = [best(M, r) for r in RHOS]
+        p = [x if x is not None and x > y else None for x, y in zip(p, c)]   # only counts above the caps
         f.write('%d ' % M + ' '.join('nan' if x is None else str(x) for x in p) + ' '
                 + ' '.join(str(x) for x in c) + '\n')
         print('%d  ' % M + '  '.join('%s (%d)' % ('--' if x is None else x, y) for x, y in zip(p, c)))

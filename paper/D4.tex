@@ -3178,8 +3178,8 @@ gives say where the centres of a counterexample to (C) must lie.
 Let $Y$ be a packing set of exactly $M$ centres with $2\le|y|<\sqrt6$, where
 $25\le M\le29$, and suppose that $T(Y)\le8$. Then for each radius $\rho$ at
 which \cref{tab:C-radial} has an entry in the row of $M$, at least that many
-centres of $Y$ lie within $\rho$ of $c$. If $M=29$, at least $24$ centres of
-$Y$ lie within $2.3$ of $c$.
+centres of $Y$ lie within $\rho$ of $c$. At least $24$ centres of $Y$ lie
+within $2.3$ of $c$ if $M=29$, and within $2.35$ if $M=28$.
 \end{prop}
 
 \begin{proof}
@@ -3188,10 +3188,11 @@ For an entry $n$ at the radius $\rho$, take in the proof of
 single split $N(\rho)\le n-1$ against $N(\rho)\ge n$. Its first case carries a certificate of degree $12$
 in the angle and $4$ in the distance, and the largest value the certificate
 gives over the count vectors of that case lies below $\frac98\pi^2-8$; the
-largest of these values is $3.10154$, at $M=29$ and $\rho=2.1$. So $T(Y)>8$ in
+largest of these values is $3.10184$, at $M=27$ and $\rho=2.05$. So $T(Y)>8$ in
 the first case, and $N(\rho)\ge n$ whenever $T(Y)\le8$. An entry that
 repeats the one to its left needs no certificate of its own. The last
-statement is the split $N(2.3)\le23$ against $N(2.3)\ge24$. Each
+statement is the split $N(\rho)\le23$ against $N(\rho)\ge24$ at $\rho=2.3$ and
+$2.35$. Each
 certificate is found and checked as those of \cref{thm:count30}, with the
 samples of the programme refined along the antipodal pairs, where the caps
 are disjoint and $\Pi$ vanishes.\footnote{The margin
@@ -3222,8 +3223,8 @@ $M$ & $2.05$ & $2.1$ & $2.15$ & $2.2$\\
 % BEGIN C-RADIAL ROWS (printed by figures_new/cradial_data.py)
 $24$ & $20$\,(18) & $22$\,(21) & $23$\,(22) & $23$\,(22)\\
 $25$ & --\,(15) & --\,(20) & --\,(21) & --\,(22)\\
-$26$ & --\,(12) & --\,(18) & --\,(21) & --\,(22)\\
-$27$ & --\,(9) & --\,(17) & $21$\,(20) & $22$\,(21)\\
+$26$ & --\,(12) & --\,(18) & $22$\,(21) & --\,(22)\\
+$27$ & $14$\,(9) & --\,(17) & $21$\,(20) & $22$\,(21)\\
 $28$ & --\,(6) & $21$\,(16) & $22$\,(19) & $23$\,(21)\\
 $29$ & $19$\,(2) & $22$\,(15) & $23$\,(19) & $23$\,(21)\\
 $30$ & --\,(0) & $22$\,(14) & $22$\,(18) & $22$\,(20)\\
@@ -3246,7 +3247,7 @@ little: in floating point the first case already exceeds the level when
 it asks for twelve centres within $2.0161$ at $M=29$, for three at $M=25$
 and $28$, and for one at $M=26$ and $27$. Twenty-four centres lie within
 $2.444$ by \cref{lem:twentyfour-close}; a single split brings that radius
-down to $2.3$ at $M=29$, but not below $2.4$ for $M=25$ or $26$, where the
+down to $2.3$ at $M=29$ and to $2.35$ at $M=28$, but not below $2.4$ for $M=25$ or $26$, where the
 first case stays at $3.1124$ and $3.1068$ in floating point. And, as for (G), the counts say
 nothing about the directions, which both cases of \cref{rem:what-c-needs}
 need.
