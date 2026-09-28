@@ -1162,7 +1162,7 @@ with the assistance of Claude, an AI model made by Anthropic.
 
   radial_certificates/case_24_r2.0161.json, case_24_r2.05.json,
   case_24_r2.1.json, case_24_r2.15.json
-                              Proposition 2.43: the same certificates at
+                              Proposition 2.44: the same certificates at
                               M = 24, one split each: N(rho) <= c - 1
                               against N(rho) >= c for (rho, c) =
                               (2.0161, 11), (2.05, 20), (2.1, 22) and
@@ -1174,13 +1174,27 @@ with the assistance of Claude, an AI model made by Anthropic.
                               minute each.  Logs: runs/radial_case_sdp_24_r*.log
                               and runs/radial_case_check_24_r*.log.
 
+  radial_certificates/case_M_rRHO.json, M = 25..29
+                              Proposition 2.41: the same single splits at
+                              M = 25 to 29 centres, one file per radius
+                              rho and count M, with the specs
+                              case_M_rRHO_spec.json.  Each proves that the
+                              case N(rho) <= n - 1 has T(Y) > 8, so that
+                              at least n of the M centres lie within rho
+                              (Table 3); case_29_r2.3.json proves that 24
+                              of 29 centres lie within 2.3.  The margins
+                              are chosen per case, since the margin is
+                              given up at each of the M(M - 1)/2 pairs.
+                              Logs: runs/radial_case_sdp_M_r*.log and
+                              runs/radial_case_check_M_r*.log.
+
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
                               same boxes, tests and counts, four times
                               faster; used by radial_case_check.py.
 
   pushout_check.py
-                              Theorem 2.41: T on the one-centre ray at
+                              Theorem 2.42: T on the one-centre ray at
                               delta = 0.1971 exceeds 8 (Arb), the pyramid
                               condition (1 + eta)^2 - 1 < 1/3, and
                               g(eta)/eta >= 2/5 on [0, 0.09855] (exact); and a

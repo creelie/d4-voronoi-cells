@@ -1,0 +1,63 @@
+% tikz_cradial.tex -- the proposition "Where the centres lie from twenty-five to twenty-nine": for M
+% centres within sqrt 6 with T(Y) <= 8, the least number of centres within a radius rho, one panel
+% per radius 2.05, 2.1, 2.15, 2.2.  Filled marks: proved by the case certificates (M = 24 is the
+% proposition "Where the twenty-four centres lie", M = 30 the theorem "Thirty centres"; a count
+% within a smaller radius also counts within a larger one).  Open marks: the caps alone, the least n
+% with n S(2) + (M - n) S(rho) < tau impossible below it (ball arithmetic).
+% Data: cradial_counts.dat, written by cradial_data.py from the check logs.
+% Build:  pdflatex tikz_cradial.tex && pdftoppm -r 500 -png -singlefile tikz_cradial.pdf ../figures/fig_tikz_cradial
+% Test:   python3 tikz_overlap_check.py tikz_cradial.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cviolet}{HTML}{4A3AA7}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\input{tikzcheck}
+\pgfplotsset{cr/.style={width=7.6cm, height=5.0cm, xmin=23.6, xmax=30.4, xtick={24,...,30},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    unbounded coords=jump, clip=false}}
+\newcommand\crplots[1]{%
+  \addplot[cink3, line width=0.6pt, densely dashed, mark=o, mark size=1.7pt, mark options={solid}]
+    table[x=M, y=c#1] {cradial_counts.dat};
+  \addplot[cblue, line width=0.9pt, mark=*, mark size=1.7pt] table[x=M, y=p#1] {cradial_counts.dat};}
+\begin{document}
+\begin{tikzpicture}[font=\small]
+\begin{axis}[cr, name=A, ymin=0, ymax=24, ytick={0,6,12,18,24}, ylabel={centres within $\rho$, at least}]
+  \crplots{205}
+\end{axis}
+\begin{axis}[cr, name=B, at={($(A.east)+(1.5cm,0)$)}, anchor=west, ymin=12, ymax=24, ytick={12,16,20,24}]
+  \crplots{21}
+\end{axis}
+\begin{axis}[cr, name=C, at={($(A.south)+(0,-1.6cm)$)}, anchor=north, ymin=16, ymax=24, ytick={16,18,20,22,24},
+    ylabel={centres within $\rho$, at least}, xlabel={centres within $\sqrt6$}]
+  \crplots{215}
+\end{axis}
+\begin{axis}[cr, name=D, at={($(B.south)+(0,-1.6cm)$)}, anchor=north, ymin=18, ymax=24, ytick={18,20,22,24},
+    xlabel={centres within $\sqrt6$}]
+  \crplots{22}
+\end{axis}
+\node[lbl, font=\footnotesize, anchor=south, text=cink2] (ta) at ($(A.north)+(0,0.05cm)$) {$\rho=2.05$};
+\node[lbl, font=\footnotesize, anchor=south, text=cink2] (tb) at ($(B.north)+(0,0.05cm)$) {$\rho=2.1$};
+\node[lbl, font=\footnotesize, anchor=south, text=cink2] (tc) at ($(C.north)+(0,0.05cm)$) {$\rho=2.15$};
+\node[lbl, font=\footnotesize, anchor=south, text=cink2] (td) at ($(D.north)+(0,0.05cm)$) {$\rho=2.2$};
+\coordinate (leg) at ($(C.south east)!0.5!(D.south west)+(0,-1.25cm)$);
+\draw[cblue, line width=0.9pt] ($(leg)+(-4.6cm,0)$) -- ($(leg)+(-3.8cm,0)$);
+\fill[cblue] ($(leg)+(-4.2cm,0)$) circle (1.7pt);
+\node[lbl, font=\footnotesize, anchor=west, text=cink2] (la) at ($(leg)+(-3.7cm,0)$) {case certificates};
+\draw[cink3, line width=0.6pt, densely dashed] ($(leg)+(0.3cm,0)$) -- ($(leg)+(1.1cm,0)$);
+\draw[cink3, line width=0.6pt, fill=white] ($(leg)+(0.7cm,0)$) circle (1.7pt);
+\node[lbl, font=\footnotesize, anchor=west, text=cink2] (lb) at ($(leg)+(1.2cm,0)$) {caps alone};
+\def\figboxes{ta}
+\def\figlabels{tb,tc,td,la,lb}
+\checkfigure
+\end{tikzpicture}
+\end{document}
