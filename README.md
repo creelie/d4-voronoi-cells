@@ -67,7 +67,7 @@ Deep Bhattacharjee, itsdeep@live.com.
                           and de Muinck Keizer, set up from zonal/ and solved
                           on the enlarged domain [-1, 1/2 + s] (see
                           level2/README.md)
-    lean/               Lean 4 checks, no Mathlib: thirteen files checked
+    lean/               Lean 4 checks, no Mathlib: fourteen files checked
                           by run_all.sh and three Lake projects (see
                           lean/README.md and Table 6 of the paper)
     third_party/        the certificate data set of de Laat, Leijenhorst

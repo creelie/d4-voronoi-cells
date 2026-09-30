@@ -9279,7 +9279,16 @@ the programme returns $19.42$ in place of $24$, fresh
 quadruples violating its constraints by up to $0.23$, and one round of it
 needs most of the $15$ gigabytes of the machine used here; the certificate's
 own blocks have eigenvalues from $10^{-18}$ to $25$, which is why
-\cite{LLM24} solved the programme in $256$-bit arithmetic.\looseness=-1
+\cite{LLM24} solved the programme in $256$-bit arithmetic. With the exact
+sums of squares in place of the sampled quadruples, and the Schur complement
+formed in triple-double arithmetic on a $128$-bit working precision, the
+programme at the degrees $(14,16)$ and slack $0.008$ does run here: $86$
+interior-point iterations of about a quarter of an hour each, in
+$10.3$ gigabytes. It bounds the number of points of slack $0.008$ by
+$24.555$ (floating point, relative duality gap $1.3\cdot10^{-5}$), and its
+two-point polynomial is below $10^{-4}$ at inner products up to $0.3$ and
+below $0.004$ everywhere, against the $0.555$ of room, so its certificate
+charges almost nothing to any single pair.\looseness=-1
 
 \begin{prop}[The root system uses up the margin]\label{prop:margin-floor}
 Let $s>0$ and $w(u)=(u+1)(u+\tfrac12)^2u^2(\tfrac12+s-u)$, which is
@@ -10213,6 +10222,66 @@ normalised roots, and \textup{(i)} applies, as
 $0.0113<1/\sqrt2-a(\sqrt6,2.0001)$.
 \end{proof}
 
+Parts (ii) and (iii) compare the directions with the roots through a
+labelling. The next statement needs none: it asks only that the twenty-four
+directions be close to a spherical $5$-design, measured by the Gegenbauer
+sums
+\[
+  S_k=\sum_{i,j=1}^{24}G_k\bigl(\langle\hat y_i,\hat y_j\rangle\bigr),\qquad
+  k=1,\dots,5,
+\]
+where $G_k=U_k/(k+1)$, with $U_k$ the Chebyshev polynomial of the second kind,
+is the Gegenbauer polynomial of $S^3$ normalised by $G_k(1)=1$. Each $S_k$ is
+nonnegative, and all five vanish for the root system in every position,
+since it is a spherical $5$-design.
+
+\begin{prop}[No room from the design defects]\label{prop:design-budget}
+Let $24$ centres $y_1,\dots,y_{24}$ lie within $\rho=2/\sqrt{1-0.016}$ of
+$c$. If
+\[
+  \tfrac1{963}\bigl(103\,S_1+191\,S_2+280\,S_3+230\,S_4+159\,S_5\bigr)<0.2678,
+\]
+then no other centre lies within $\sqrt6$ of $c$.
+\end{prop}
+
+\begin{proof}
+Write $c_1,\dots,c_5$ for the weights $103/963,\dots,159/963$, and let
+$p=\sum_{k=0}^5p_kG_k$ with
+\[
+  (p_0,\dots,p_5)=\Bigl(\tfrac{39954677}{453230000000},\ \tfrac{41}{89653},\
+  \tfrac{29}{33806},\ \tfrac{17}{14206},\ \tfrac{95}{98183},\
+  \tfrac{52}{86257}\Bigr).
+\]
+Then $p(t)<0$ for $-1\le t\le0.614039$: on each of $29$ subintervals covering
+that range, a Taylor bound about the midpoint, computed in rational
+arithmetic, is negative. Moreover $0.614039>\tau=a(\sqrt6,\rho)$, since
+$\tau^2=(2+\rho^2)^2/(24\rho^2)=139129/369000$.
+
+Let $z$ be a further centre with $|z|<\sqrt6$. As in the proof of
+\cref{cor:no-room}, $\langle\hat z,\hat y_i\rangle\le\tau$ for every $i$,
+so $\sum_ip(\langle\hat z,\hat y_i\rangle)<0$. On the other hand, the
+addition formula $G_k(\langle x,y\rangle)=h_k^{-1}\sum_mY_{km}(x)Y_{km}(y)$,
+with $h_k=(k+1)^2$ and an orthonormal basis $Y_{km}$ of the harmonics of
+degree $k$, and the Cauchy--Schwarz inequality give
+\[
+  \Bigl|\sum_iG_k(\langle\hat z,\hat y_i\rangle)\Bigr|
+  =h_k^{-1}\Bigl|\sum_mY_{km}(\hat z)\sum_iY_{km}(\hat y_i)\Bigr|
+  \le\sqrt{S_k},
+\]
+because $\sum_mY_{km}(\hat z)^2=h_k$ and
+$\sum_m\bigl(\sum_iY_{km}(\hat y_i)\bigr)^2=h_kS_k$. Hence
+\[
+  \sum_ip(\langle\hat z,\hat y_i\rangle)
+  \ \ge\ 24p_0-\sum_{k=1}^5|p_k|\sqrt{S_k}
+  \ \ge\ 24p_0-\Bigl(\sum_k\frac{p_k^2}{c_k}\Bigr)^{1/2}
+          \Bigl(\sum_kc_kS_k\Bigr)^{1/2}.
+\]
+In exact arithmetic $(24p_0)^2>0.26785\sum_kp_k^2/c_k$, so under the
+hypothesis the right side is positive, a contradiction. The sign of $p$, the
+inequality $0.614039>\tau$, the bound $0.26785$ and the vanishing of
+$S_1,\dots,S_5$ for the root system are checked again in Lean.
+\end{proof}
+
 \begin{remark}[What (C) needs from twenty-five to thirty centres]\label{rem:what-c-needs}
 Let $Y$ be a packing set of $M$ centres, $25\le M\le30$, with
 $U(Y)\ge3.10330$. Since $U(Y)\le\sum_yS(|y|)$ and $S$ falls steeply,
@@ -10262,7 +10331,14 @@ system itself uses up (\cref{prop:margin-floor}); at this slack the
 statement cannot pin the inner products one by one, since they need not
 lie near those of a root system (\cref{rem:slack-codes}), but by
 \cref{cor:no-room}(iii) a bound on the sum of their squared deviations
-suffices.
+suffices. \Cref{prop:design-budget} asks for less still, a bound on five
+weighted design defects with no labelling, and the codes of slack $0.008$
+found by local search reach $0.0905$ against the $0.2678$ it allows
+(floating point, twelve starts). The second level does not give that bound
+from its value alone: at slack $0.008$ and the degrees $(14,16)$ its value is
+$24.555$ (\cref{sec:closure}), so it leaves more than half a point of room.
+A bound on the defects of exactly twenty-four points calls for the programme
+with the number of points fixed at $24$, a separate computation.
 
 With $23$ centres close to $c$, the case is \cref{thm:m23-labelled} with two
 or more further centres, and \cref{thm:certificate} has a margin of only
@@ -11252,11 +11328,17 @@ is exact and reproducible. The semidefinite programs of the paper, those
 behind \cref{thm:count31,thm:count30} and those reported as evidence, are
 posed in CVXPY \cite{DB16} and solved by Clarabel \cite{GC26}; a solver's
 output is only a candidate, and what enters a proof is its rounding to
-rationals, checked as above.
+rationals, checked as above. The second-level programmes of
+\cref{sec:closure} are built from the zonal matrices of
+\cref{sec:certificate-checked} in the file format of \cite{LLM24data} and
+solved by the solver of \cite{LdL24} at a working precision of $128$ bits,
+with the Schur complement accumulated in triple-double arithmetic. No
+certificate from them is rounded and checked, so their values, such as
+$24.555$ at slack $0.008$, are reported as evidence only.
 
 \subsection{The formal part}\label{sec:formal-part}
 
-Sixteen parts of the paper are also verified in the Lean~4 proof
+Seventeen parts of the paper are also verified in the Lean~4 proof
 assistant, with no external library; each is a finite computation or a
 polynomial identity, and \cref{tab:formal} lists them. Identities are
 proved over every commutative ring by Lean's ring normaliser, so that they
@@ -11341,6 +11423,10 @@ $1/\sqrt2$, its values at $\tau$ and at $1$, and the budget
 $3\beta+\frac32\gamma=6h^2$; the $5$-design identities of the roots and the
 deep hole; $\tau$, $h$ and $6h^2$ at $\rho=2/\sqrt{1-0.016}$, the signs for
 every $\rho\in[2,\sqrt6)$, and the $200$ intervals of part (iii). \\
+\cref{prop:design-budget} & The Gegenbauer coefficients of $p$, its sign on
+$[-1,0.614039]$ ($29$ intervals), $0.614039>\tau$, the bound
+$(24p_0)^2>0.26785\sum_kp_k^2/c_k$, and $S_1=\dots=S_5=0$ for the
+roots. \\
 \end{longtable}
 
 \subsection{Verifying from the text alone}
