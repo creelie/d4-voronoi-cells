@@ -76,6 +76,10 @@ settled by Corollary 7.31 through the classification of Theorem 7.25.
                               stabiliser of A_18 has order 48 (Proposition
                               18.5).
 
+    a18_other_starts.py       Exact: the configurations grown from roots 5
+                              and 12 are images of A_18 under orthogonal
+                              maps preserving the D4 roots (Section 18.2).
+
     a18_symmetry_representation_check.py
                               Checks numerically that the induced
                               54-dimensional representation of that group
