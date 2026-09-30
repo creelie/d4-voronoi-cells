@@ -56,7 +56,7 @@ abstract: >-
   the root system, the reduction of the conjecture to two explicit
   statements, a proof of the second of them for thirty-one or more centres
   and its reduction at thirty to a single configuration, and a proof of the
-  first along the push-outs of the root system; fifteen parts of the paper
+  first along the push-outs of the root system; sixteen parts of the paper
   are checked in Lean 4. Version v1.10.0 shows that the second level with a
   margin on pairs cannot localise twenty-four points at slack 0.008 at any
   degree, proves that with 25 to 33 centres and T <= 8 twenty-four lie within

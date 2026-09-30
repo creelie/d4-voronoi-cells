@@ -2170,10 +2170,13 @@ the root-sum-square distance of these codes from the nearest rotated
 copy of the normalised roots is between $0.134$ and $0.151$, and the
 largest distance of a single direction from its root is $0.064$. So at
 slack $0.008$ no statement that pins every inner product near the four
-values of the root system is true. The weak localisation
-that \cref{cor:no-room} asks for, each direction within $0.093$ of a root,
-is consistent with these codes, but it has to be proved direction by
-direction. (Floating point; evidence and not a bound.) An earlier
+values of the root system is true. What \cref{cor:no-room} asks for is weaker, and these codes meet each of
+its three forms: every direction within $0.093$ of a root, a
+root-sum-square distance below $0.228$, and a sum of squared deviations of
+the inner products from those of the labelled roots of at most $0.3059$.
+The code at distance $0.151$ has that sum equal to $0.1377$, and for it the
+bound in the proof of \cref{cor:no-room}(iii) gives $0.1516$ in place of
+$0.1512$. (Floating point; evidence and not a bound.) An earlier
 numerical exploration of kissing configurations in four dimensions, through
 the Hopf map, is in \cite{AP13}.
 \end{remark}
@@ -2954,30 +2957,105 @@ proved.}
 
 Twenty-four centres close to a root system leave no room for a
 twenty-fifth. The proof of \cref{lem:24-no-shell} shows that every unit
-vector makes an angle of at most $45^\circ$ with some normalised root; the
-following is the version with a margin.
+vector makes an angle of at most $45^\circ$ with some normalised root. The
+following versions keep a margin, measured direction by direction, in
+root-sum-square, and through the inner products alone.
 
 \begin{cor}[No room beside a near root system]\label{cor:no-room}
-Let $2\le\rho<\sqrt6$, and let $24$ centres $y_1,\dots,y_{24}$ lie within
-$\rho$ of $c$, with $|\hat y_i-\sigma(a_i)/\sqrt2|\le\eta$ for all $i$, some
-orthogonal map $\sigma$ and a labelling of the roots $a_i$, where
-$\eta<1/\sqrt2-a(\sqrt6,\rho)$. Then no other centre lies within $\sqrt6$ of
-$c$. For $\rho=2/\sqrt{1-0.016}=2.0161\ldots$ the condition reads
-$\eta<0.0930$. If $24$ centres lie within $2/\sqrt{1-4\cdot10^{-26}}$ of $c$,
-no other centre lies within $\sqrt6$ of $c$.
+Let $2\le\rho<\sqrt6$, put $\tau=a(\sqrt6,\rho)$ and $h=1/\sqrt2-\tau$, and
+let $24$ centres $y_1,\dots,y_{24}$ lie within $\rho$ of $c$. Suppose that,
+for a labelling of the roots $a_i$ and, in \textup{(i)} and \textup{(ii)},
+an orthogonal map $\sigma$, one of the following holds:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+\item $|\hat y_i-\sigma(a_i)/\sqrt2|<h$ for every $i$;
+\item $\sum_i|\hat y_i-\sigma(a_i)/\sqrt2|^2<6h^2$;
+\item $\rho=2/\sqrt{1-0.016}$ and
+  $\sum_{i<j}\bigl(\langle\hat y_i,\hat y_j\rangle-\tfrac12\langle a_i,a_j\rangle\bigr)^2\le0.3059$.
+\end{enumerate}
+Then no other centre lies within $\sqrt6$ of $c$. For
+$\rho=2/\sqrt{1-0.016}=2.0161\ldots$ one has $\tau=0.614038\ldots$ and
+$h=0.093068\ldots$, so \textup{(i)} asks for less than $0.0930$ in each
+direction and \textup{(ii)} for a root-sum-square distance below
+$\sqrt6\,h=0.22796\ldots$. If $24$ centres lie within
+$2/\sqrt{1-4\cdot10^{-26}}$ of $c$, no other centre lies within $\sqrt6$
+of $c$.
 \end{cor}
 
 \begin{proof}
 Let $z$ be a further centre with $|z|<\sqrt6$. By \eqref{eq:amax}, and since
 $a$ increases in each argument on $[2,\sqrt6]^2$,
-$\langle\hat z,\hat y_i\rangle\le a(|z|,|y_i|)\le a(\sqrt6,\rho)$ for every
-$i$. The covering radius of the normalised roots is $45^\circ$, so some $i$
+$\langle\hat z,\hat y_i\rangle\le a(|z|,|y_i|)\le\tau$ for every $i$.
+
+(i) The covering radius of the normalised roots is $45^\circ$, so some $i$
 has $\langle\hat z,\sigma(a_i)/\sqrt2\rangle\ge1/\sqrt2$, and then
-$\langle\hat z,\hat y_i\rangle\ge1/\sqrt2-\eta>a(\sqrt6,\rho)$, a
-contradiction. For the last statement, the directions of the $24$ centres
-have pairwise inner products at most $a(\rho,\rho)=\frac12+2\cdot10^{-26}$,
-so \cref{thm:m24-robust} places them within $0.0113$ of a copy of the
-normalised roots, and $0.0113<1/\sqrt2-a(\sqrt6,2.0001)$.
+$\langle\hat z,\hat y_i\rangle>1/\sqrt2-h=\tau$, a contradiction.
+
+(ii) Put $t_i=\langle\hat z,\sigma(a_i)/\sqrt2\rangle$. Since $\hat z$ is a
+unit vector, $|\hat y_i-\sigma(a_i)/\sqrt2|\ge
+t_i-\langle\hat z,\hat y_i\rangle\ge t_i-\tau$, so
+\begin{equation}\label{eq:hole-budget}
+  \sum_i|\hat y_i-\sigma(a_i)/\sqrt2|^2\ \ge\ \sum_i(t_i-\tau)_+^2 .
+\end{equation}
+The normalised roots are the vectors $(\pm e_j\pm e_k)/\sqrt2$, and
+expanding over them gives $\sum_it_i^2=6$ and $\sum_it_i^4=3$ for every unit
+vector: the root system is a spherical $5$-design. The roots come in pairs
+$\pm a$, and at most one member of a pair has $t_i>0$; so the right side of
+\eqref{eq:hole-budget} is $\sum_k(s_k-\tau)_+^2$ over twelve numbers
+$s_k\in[0,1]$, one for each pair, with $\sum_ks_k^2=3$ and
+$\sum_ks_k^4=\frac32$. Put $\gamma=2\sqrt2\,h-4h^2$, $\beta=\sqrt2\,h-\gamma$
+and $q(s)=(s-\tau)_+^2-\beta s^2-\gamma s^4$. On $[0,\tau]$,
+$q(s)\ge-s^2(\beta+\gamma\tau^2)$, and
+$\beta+\gamma\tau^2=-2h^2(1-3\sqrt2\,h+2h^2)<0$. On $[\tau,1]$, $q$ is a
+quartic with $q(1/\sqrt2)=q'(1/\sqrt2)=0$ by the choice of $\beta$ and
+$\gamma$, so $q(s)=(s-1/\sqrt2)^2r(s)$ with $r$ quadratic. Its leading
+coefficient is $-\gamma<0$, and it is positive at both ends, since
+$r(\tau)=-\tau^2(\beta+\gamma\tau^2)/h^2$ and
+$(1-1/\sqrt2)^2\,r(1)=(1-\tau)^2-\beta-\gamma
+=(h-\tfrac1{\sqrt2})(h-\tfrac{3\sqrt2-4}2)$. These signs hold for
+$0<h<\frac{3\sqrt2-4}2=0.1213\ldots$, and here
+$h\le1/\sqrt2-a(\sqrt6,2)=0.0947\ldots$; the identities and the signs are
+checked again in Lean. So $q\ge0$ on $[0,1]$, and
+\[
+  \sum_k(s_k-\tau)_+^2\ \ge\ \beta\sum_ks_k^2+\gamma\sum_ks_k^4
+  \ =\ 3\beta+\tfrac32\gamma\ =\ 6h^2,
+\]
+against \textup{(ii)}. The bound is attained: at a deep hole of the root
+system six of the $t_i$ equal $1/\sqrt2$ and the others are at most $0$.
+
+(iii) Let $X$ and $V$ be the $24\times4$ matrices with rows $\hat y_i$ and
+$a_i/\sqrt2$, so that $V^{\mathsf T}V=6I$ and $P=VV^{\mathsf T}/6$ is the
+orthogonal projection onto the column space of $V$. Put $A=X^{\mathsf T}X$,
+$E=X^{\mathsf T}(I-P)X$, $e=\operatorname{tr}E$ and $\alpha=\|A-6I\|$, all
+norms being Frobenius norms. Since $\operatorname{tr}A=24$ and
+$\|V^{\mathsf T}X\|^2=6\operatorname{tr}(X^{\mathsf T}PX)=144-6e$,
+\[
+  \|XX^{\mathsf T}-VV^{\mathsf T}\|^2=\|A\|^2+144-2\|V^{\mathsf T}X\|^2
+  =\alpha^2+12e ,
+\]
+and the left side is twice the sum in \textup{(iii)}, the diagonals being
+equal. For an orthogonal $Q$, $\|X-VQ\|^2=e+\|PX-VQ\|^2=e+6\|M/6-Q\|^2$ with
+$M=V^{\mathsf T}X$, and the least value over $Q$ is
+$e+\frac16\sum_k(\mu_k-6)^2$, where the $\mu_k$ are the singular values of
+$M$. As $M^{\mathsf T}M=6(A-E)$, $\mu_k=\sqrt{6\lambda_k}$ for the
+eigenvalues $\lambda_k$ of $A-E$, and these lie within
+$\|A-E-6I\|\le\alpha+e$ of $6$, because $\|E\|\le\operatorname{tr}E$ for
+$E\succeq0$. Hence
+\[
+  \min_Q\|X-VQ\|^2=e+\sum_k\bigl(\sqrt{\lambda_k}-\sqrt6\bigr)^2
+  \ \le\ e+\frac{(\alpha+e)^2}{\bigl(\sqrt{6-\alpha-e}+\sqrt6\bigr)^2}.
+\]
+The right side increases in $\alpha$ and in $e$. Splitting
+$[0,2\cdot0.3059/12]$ into $200$ intervals of $e$ and bounding the square
+roots by rationals, one checks in exact arithmetic, and again in Lean, that it stays below
+$0.0515$ whenever $\alpha^2+12e\le2\cdot0.3059$, while $6h^2>0.05197$ at
+$\rho=2/\sqrt{1-0.016}$. So \textup{(ii)} holds with
+$\sigma(x)=Q^{\mathsf T}x$ for the minimising $Q$.
+
+For the last statement, the directions of the $24$ centres have pairwise
+inner products at most $a(\rho,\rho)=\frac12+2\cdot10^{-26}$, so
+\cref{thm:m24-robust} places them within $0.0113$ of a copy of the
+normalised roots, and \textup{(i)} applies, as
+$0.0113<1/\sqrt2-a(\sqrt6,2.0001)$.
 \end{proof}
 
 \begin{remark}[What (C) needs from twenty-five to thirty centres]\label{rem:what-c-needs}
@@ -2994,15 +3072,16 @@ two cases differ in kind.
 
 With $24$ centres close to $c$, the others must find room beside them, and
 \cref{cor:no-room} says there is none as soon as the $24$ directions are
-within $0.093$ each of a root system. The search behind
+within $0.093$ each of a root system, or within $0.228$ of one in
+root-sum-square. The search behind
 \cref{fig:codes}(b) finds no $24$-point code of slack up to $0.02$ with a
 hole deeper than inner product $0.632$, while a centre within $\sqrt6$ beside
 centres within $2.0161$ needs one at $0.6141$ or deeper; at slack $0.008$,
 where \cref{thm:kissing-stable} applies, the deepest hole found is at
 $0.678$, well clear. The statement needed is therefore the shape
-half of \cref{thm:kissing-stable} in a weak form, with a tolerance of $0.093$
-per direction in place of the $\frac1{48}$ in root mean square of
-\cref{thm:near-contact}; \cref{prop:second-code} does not contradict it,
+half of \cref{thm:kissing-stable} in a weak form, with a tolerance of
+$0.228$ in root-sum-square, $0.0465$ in root mean square, in place of the
+$\frac1{48}$ in root mean square of \cref{thm:near-contact}; \cref{prop:second-code} does not contradict it,
 since the deepest hole of its code is at inner product $0.659$ (floating
 point, over $3000$ local minimisations). The three-point bound does not
 see holes. The value of a labelled certificate is a polynomial in the number
@@ -3025,9 +3104,10 @@ still.
 The second level of the Lasserre hierarchy sees twenty-four points exactly
 \cite{LLM24}, but not in the form with a margin on pairs, which the root
 system itself spends (\cref{prop:margin-floor}); at this slack the
-statement has to be proved direction by direction, since the inner
-products themselves need not lie near those of a root system
-(\cref{rem:slack-codes}).
+statement cannot pin the inner products one by one, since they need not
+lie near those of a root system (\cref{rem:slack-codes}), but by
+\cref{cor:no-room}(iii) a bound on the sum of their squared deviations
+suffices.
 
 With $23$ centres close to $c$, the case is \cref{thm:m23-labelled} with two
 or more further centres, and \cref{thm:certificate} has a margin of only
@@ -3046,7 +3126,16 @@ near $\sqrt6$ in one of its holes, has a union of caps at least
 $\frac98\pi^2-8$; its fictitious centre needs inner products only up to
 $0.612$ with the others, and neither the kernel of \cref{thm:count31} nor a
 three-point kernel that reads the directions alone tells such a
-configuration from a packing (floating point). What the pair terms do give
+configuration from a packing (floating point). Nor do the directions alone
+settle the case. The argument of \cref{cor:no-room}(ii), run with
+twenty-three directions and two further centres near $\sqrt6$, needs the
+directions within root-sum-square $0.132$ of a rotated root system with one
+root removed, the least budget being spent at two directions $24.1^\circ$ on
+either side of the removed root. Twenty-three-point codes of slack $0.008$
+lie up to $0.225$ from the nearest such system, and a second family of
+twenty-three-point codes, far from every subset of the root system, reaches
+slack $0.00811$, just above $0.008$ (floating point). A proof of this case
+has to use the distances, through $T$, as (G) does. What the pair terms do give
 is \cref{lem:twentyfour-close}: when $T\le8$, twenty-four of the centres lie
 within $2.444$, so that the case of twenty-three close centres is again a
 question about the twenty-four closest.
@@ -11389,7 +11478,7 @@ arithmetic with outward rounding \cite[Ch.~5]{MKC09}: the pivots of
 \cref{sec:stage-two,sec:arc1-cert,sec:arc2-cert,sec:cap-theorem}, the
 certificates of \cref{sec:certificate,sec:certificate-checked,sec:closure,sec:m24-robust},
 the certificates of \cref{prop:cone-min,thm:count31,thm:count30}, the arithmetic of
-\cref{thm:G-pushout}, and the identities of
+\cref{thm:G-pushout,cor:no-room}, and the identities of
 \cref{prop:hexagon-loop,prop:second-code}. The second is a
 high-precision evaluation, at a stated working precision between $35$ and
 $400$ digits and cross-checked at a second one; this is where
@@ -11419,7 +11508,7 @@ rationals, checked as above.
 
 \subsection{The formal part}\label{sec:formal-part}
 
-Fifteen parts of the paper are also verified in the Lean~4 proof
+Sixteen parts of the paper are also verified in the Lean~4 proof
 assistant, with no external library; each is a finite computation or a
 polynomial identity, and \cref{tab:formal} lists them. Identities are
 proved over every commutative ring by Lean's ring normaliser, so that they
@@ -11499,6 +11588,11 @@ $\theta=0$ and the perfect square. \\
 \cref{prop:second-code} & The $24$ rational points of $S^3$, their slack
 $\frac{849}{50000}$ and the inner product at distance $\frac{57}{250}$
 from $-1,-\frac12,0,\frac12,1$. \\
+\cref{cor:no-room} & The quartic of part (ii), its double zero at
+$1/\sqrt2$, its values at $\tau$ and at $1$, and the budget
+$3\beta+\frac32\gamma=6h^2$; the $5$-design identities of the roots and the
+deep hole; $\tau$, $h$ and $6h^2$ at $\rho=2/\sqrt{1-0.016}$, the signs for
+every $\rho\in[2,\sqrt6)$, and the $200$ intervals of part (iii). \\
 \end{longtable}
 
 \subsection{Verifying from the text alone}
