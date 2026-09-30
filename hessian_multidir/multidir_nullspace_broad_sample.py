@@ -1,57 +1,32 @@
 #!/usr/bin/env python3
 """
 multidir_nullspace_broad_sample.py
-=====================================
-Follow-up to multidir_exact_zero_hessian_hp.py. That script established,
-at the same dense m=18 active-root configuration studied here
-(active set [0,2,4,5,6,7,8,9,10,11,12,13,16,17,20,21,22,23]), that the
-joint Hessian is EXACTLY singular along a near-null subspace it described
-as "at least 3-dimensional, possibly higher" and tested only 4 directions
-within it (3 eigenvectors it called v0,v1,v2, plus 2 mixed combinations
-of those same 3 -- 4 directions total, all confined to a 3-dimensional
-span).
 
-STEP 0 (done here first, before any high-precision work): re-examine the
-double-precision Hessian spectrum at three step sizes h=0.02,0.01,0.005
-instead of one. Every one of the smallest FOUR eigenvalues (not three)
-shrinks by a clean factor of ~4 each time h is halved -- the same
-finite-difference signature used throughout this line of work to detect
-an exactly-zero true second derivative. The 5th eigenvalue does not shrink
-(it stays close to 0.075 at all three h). This sharpens the earlier "3-4
-dimensional" language to a data-supported finding: the near-null space is
-(at least) 4-dimensional, and the previous script's 4 test directions
-happened to span only 3 of those 4 dimensions -- the 4th eigenvector was
-never tested in any combination.
+Samples the near-null subspace of the joint Hessian at A_18 (Section 18
+of the paper, Numerical observations 17.2 and 18.1).
 
-STEP 1: build the actual 4-dimensional near-null basis (the 4 eigenvectors
-at h=0.01) and sample it much more broadly than before: the 4 basis
-vectors, all 6 pairwise normalized sums and 6 pairwise normalized
-differences (12 more), and 20 uniformly-random directions drawn from the
-full 4-dimensional span (Gaussian coefficients, normalized) -- 36 test
-directions total, covering the whole near-null space rather than an
-arbitrary 3-dimensional slice of it.
+Step 0: the double-precision Hessian spectrum at h = 0.02, 0.01 and 0.005.
+The four smallest eigenvalues each decrease by a factor of about 4 at
+every halving of h, as zero eigenvalues do; the fifth stays near 0.075.
+So the near-null subspace is four-dimensional to this accuracy, one
+dimension more than multidir_exact_zero_hessian_hp.py tested.
 
-STEP 2: for each direction, evaluate F(+s) and F(-s) with hp_volume.py at
-s=0.015, prec=35 digits, and estimate the quartic coefficient via
-a4_est = (F(s)+F(-s)) / (2 s^4) -- valid because the true 2nd derivative
-along every direction in this subspace is (to the precision already
-established) exactly zero, so this is the leading term. For 6 of the 36
-directions (a subsample spanning the range of a4_est found), also
-evaluate at s=0.0075 to re-confirm the ~16x shrink expected of a pure
-quartic term (F(s)+F(-s) ~ 2 a4 s^4), as an honesty check that the
-sign-estimate at a single step size is not an artifact of higher-order
-terms.
+Step 1: 36 directions in that subspace: the four basis eigenvectors (at
+h = 0.01), their six normalised pairwise sums and six normalised pairwise
+differences, and 20 random directions (Gaussian coefficients,
+normalised).
 
-REPORTED HONESTLY, WHATEVER IS FOUND: this is a broader (not exhaustive)
-sample of one specific 4-dimensional near-null subspace at one specific
-m=18 configuration. A clean positive result across all 36 directions
-would be modestly stronger evidence than before (4x more directions,
-including the previously-untested 4th eigenvector) but is NOT a proof
-that the quartic form is positive-definite on this subspace, let alone a
-proof of Conjecture (Multi-Direction Positivity). A single negative
-direction found here would be a genuine counterexample to F remaining
-positive at this configuration under small perturbation, which this
-script would report plainly and not explain away.
+Step 2: for each direction, F(+s) and F(-s) are evaluated with
+hp_volume.py at s = 0.015 and 35 digits, and the quartic coefficient is
+estimated as a4_est = (F(s) + F(-s)) / (2 s^4), which is the leading term
+when the second derivative vanishes. For six directions spanning the
+range of a4_est, the evaluation is repeated at s = 0.0075 to check the
+factor of 16 expected of a pure quartic term.
+
+A positive a4_est in every direction is evidence at this one
+configuration, not a proof that the quartic form is positive definite
+on the subspace. A negative direction would show that F takes negative
+values near A_18.
 """
 import sys
 import time

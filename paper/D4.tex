@@ -96,6 +96,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}[thm]{Definition}
 \newtheorem{construction}[thm]{Construction}
+\newtheorem{numobs}[thm]{Numerical observation}
 
 \theoremstyle{remark}
 \newtheorem{remark}[thm]{Remark}
@@ -116,6 +117,8 @@
 \Crefname{definition}{Definition}{Definitions}
 \crefname{construction}{Construction}{Constructions}
 \Crefname{construction}{Construction}{Constructions}
+\crefname{numobs}{Numerical observation}{Numerical observations}
+\Crefname{numobs}{Numerical observation}{Numerical observations}
 \crefname{remark}{Remark}{Remarks}
 \Crefname{remark}{Remark}{Remarks}
 \crefname{example}{Example}{Examples}
@@ -1323,14 +1326,13 @@ For the class-$\mathsf a$ cell $\Cell1$ (introduced in
 six pivots, with minimum pivot value $3936/77\approx51.13$ and
 reference constant $\norm1=192$; the corresponding chamber-level
 positivity check (\cref{app:pivot-data}) passes exactly, by exact
-rational arithmetic, with no floating-point step. The pivot value
-recorded here is the computed one, and not a simplified illustrative number, because $\Cell1$'s Hessian is not the isolated
-single-direction case (that simpler case, $H=\tfrac23I_3$, is recorded
-separately in \cref{lem:m2-exact-new} for the multi-direction setting,
-a related but distinct construction that does not include the
-cross-terms from a cell's other active, non-deviating roots). The exact
-computation for every other cell follows the identical procedure and
-is tabulated in full in \cref{app:pivot-data}.
+rational arithmetic, with no floating-point step. The Hessian of
+$\Cell1$ differs from the isolated single-direction matrix
+$\tfrac23I_3$ of \cref{lem:m2-exact-new}, a related construction for the
+multi-direction setting that omits the cross-terms from the other
+active, non-deviating roots of the cell. The computation for every other
+cell follows the same procedure and is tabulated in
+\cref{app:pivot-data}.
 \section{\stagetwo: the angular estimate}\label{sec:stage-two}
 
 \subsection{Setup and reduction to a single function}
@@ -1558,14 +1560,12 @@ configuration of active directions, of \emph{every} size $m\ge1$, with
 possibilities, and not only over the single-direction deviations of
 \cref{thm:local-uncond}.
 \Cref{sec:hessian-technique,sec:musin-degeneracy,sec:exact-sing,sec:broad-sample}
-explain why the perturbative technique that succeeds in the root-aligned
-case, the joint Hessian, cannot by itself resolve the multi-direction case
-at every configuration: not because the computations are difficult, but
-because its governing quantity is exactly zero at specific configurations
-that lie well within the scope of the statement. Such a proof needs
-higher-order information at those configurations, and locating that
-obstruction precisely is a contribution of this paper separate from
-\cref{thm:local-uncond}.
+record, numerically, why the joint Hessian, the perturbative technique
+that succeeds in the root-aligned case, cannot by itself resolve the
+multi-direction case: at specific dense configurations within the scope
+of the statement its governing quantity vanishes to the working
+precision, and a proof there needs information of higher order. The
+multi-direction case itself is settled by \cref{cor:conj-resolved}.
 \section{The general local problem}\label{sec:deviation-domain}
 
 \subsection{The free-volume identity in general}
@@ -7347,12 +7347,11 @@ should not.
 
 \Cref{conj:multidir-new} concerns configurations in which $m\ge2$ active
 directions $u_1,\dots,u_m$ deviate from their nearest roots
-simultaneously. Restricting each deviation to be infinitesimal (a
-second-order, local analogue of \stageone\ for the single-deviation
-case), the joint behaviour is governed by a $3m\times3m$ Hessian, one
-$3$-dimensional tangent block per deviating direction, with off-diagonal
-cross-blocks determined by the Gram value between each pair of active
-roots exactly as in \cref{def:hessian-new}.
+simultaneously. For infinitesimal deviations the joint behaviour is
+governed, to second order, by a $3m\times3m$ matrix with one
+$3$-dimensional tangent block for each deviating direction and
+cross-blocks determined by the Gram values between the active roots,
+as in \cref{def:hessian-new}.
 
 \begin{definition}[Joint Hessian]\label{def:joint-hessian-new}
 For an active set $A=\{k_1,\dots,k_m\}\subset\{1,\dots,24\}$ of pairwise
@@ -7363,724 +7362,516 @@ Gram value $\langle\alpha_{k_i},\alpha_{k_j}\rangle/2\in\{-\tfrac12,0,\tfrac12\}
 via the same signed-adjacency rule.
 \end{definition}
 
-\Cref{conj:multidir-new} holds, to second order, at a configuration $A$
-exactly when $H_A$ is positive semi-definite; an elementary proof at
-that configuration has to rule out
-any \emph{finite}-angle failure as well, but the Hessian is the natural
-first tool, and all computational work on this inequality,
-including this paper's, has used it.%
-\footnote{The distinction between second-order (Hessian) evidence and finite-angle proof matters here.  A positive-definite $H_A$ guarantees only
-  that the volume-defect function $\defect_A$ increases away from the
-  root-aligned configuration, it does not rule out a later decrease or
-  a zero at some finite angle.  For this reason the Hessian technique, even
-  when it succeeds completely (e.g., for chain active sets, \cref{lem:chains-new}),
-  is a second-order certificate only.  The swap-configuration results of
-  \cref{sec:swap-configs} are of a different character: they are exact,
-  finite-angle proofs that $\Delta_A>0$ \emph{throughout} the packing-valid
-  range, not just infinitesimally.}
+If $H_A$ is positive definite, the volume-defect function increases
+along every small deviation from the root-aligned configuration $A$.
+This is \cref{conj:multidir-new} to second order at $A$ only: it
+excludes neither a later decrease nor a zero at a finite angle. The
+results of \cref{sec:swap-configs} are of a different kind, exact
+statements that the defect is positive over the whole packing-valid
+range. None of \cref{sec:hessian-technique,sec:musin-degeneracy,sec:exact-sing,sec:broad-sample}
+is used in the proof of any theorem of this paper, since
+\cref{cor:conj-resolved} settles \cref{conj:multidir-new} through the
+classification of \cref{thm:m24}. These sections record what the
+second-order method gives and where it stops, and every result in them
+other than \cref{prop:a18-stabiliser,prop:a18-invariant-dim} is
+numerical.
 
-\subsection{Small configurations: exact results}
+\subsection{Two directions and chains}
 
-\begin{lem}[Two-direction case]\label{lem:m2-exact-new}
+\begin{numobs}[Two-direction case]\label{lem:m2-exact-new}
 For $m=2$ active directions with Gram value $\tfrac12$ (an adjacent
-pair), the joint Hessian's minimum eigenvalue is exactly $\tfrac13$. For
-the isolated $m=1$ case (a single deviating direction with no other
-active directions considered jointly with it), $H_A=\tfrac23I_3$
-exactly. This $m=1$ joint-Hessian construction is a different object
-from the cell Hessian $H_k$ of \cref{def:hessian-new}: $H_k$ additionally
-carries cross-terms from a cell's other active, non-deviating roots,
-so the two need not (and, as the worked example of \cref{sec:hessian-def-new}
-shows, generally do not) share the same numerical value.
-\end{lem}
+pair), the minimum eigenvalue of the joint Hessian is $\tfrac13$, and
+for a single deviating direction considered alone, $H_A=\tfrac23I_3$,
+in both cases to within $10^{-6}$ of finite-difference computations.
+The matrix $H_A$ for $m=1$ differs from the cell Hessian $H_k$ of
+\cref{def:hessian-new}, which also carries cross-terms from the other
+active roots of the cell, and the two take different values in the
+worked example of \cref{sec:hessian-def-new}.
+\end{numobs}
 
 \subsection{The case \texorpdfstring{$m=2$}{m=2} from first principles}\label{sec:m2-firstprinciples-new}
 
-The closed-form cross-term underlying \cref{lem:m2-exact-new} was obtained
-by fitting the numerically observed cross-Hessian to a small family of natural
-$W(D_4)$-covariant invariants and verifying the fit to within $10^{-6}$ at
-several sample points and two independent adjacent pairs, not by a
-derivation from the vertex structure of $\VCell$ itself, the way
-\stageone's single-direction Hessian is derived from Cramer's rule
-(\cref{sec:chamber-register}). What follows is a first step toward such
-a derivation; it is a partial structural result, not a completed
-derivation.
+The cross-term formula behind \cref{lem:m2-exact-new} was obtained by
+fitting the numerically computed cross-Hessian to a small family of
+$W(D_4)$-covariant invariants, and the fit was checked to within
+$10^{-6}$ at several sample points and at two adjacent pairs. It is not
+derived from the vertex structure of $\VCell$ in the way the
+single-direction Hessian is derived from Cramer's rule in
+\cref{sec:chamber-register}. A derivation would begin as follows.
 
-For an adjacent pair $\alpha,\beta$ (Gram value $\tfrac12$), we verified
-directly (exact vertex enumeration over all $\binom{24}{4}$ candidate
-facet-quadruples of $\VCell$) that their two corresponding facets, each an
-octahedron with exactly $6$ vertices, share exactly $3$ of those
-vertices, so the two facets meet along a triangular ridge. A simultaneous
-perturbation of both facet normals therefore moves $9$ vertices in total
-($6+6-3$), each of which the single-direction Cramer analysis of
-\cref{sec:chamber-register} can in principle be applied to individually,
-provided the correct governing set of active facets is identified at each
-one under the joint perturbation.
+For an adjacent pair $\alpha,\beta$ (Gram value $\tfrac12$), exact
+vertex enumeration over all $\binom{24}{4}$ facet quadruples of $\VCell$
+shows that the two corresponding facets, each an octahedron with $6$
+vertices, share $3$ vertices, so they meet along a triangular ridge. A
+simultaneous perturbation of both facet normals therefore moves $6+6-3=9$
+vertices, and the single-direction analysis of
+\cref{sec:chamber-register} applies to each of them once the governing
+set of active facets is known under the joint perturbation.
 
-That proviso is not automatic. Each of the $9$ affected vertices lies, in
-the unperturbed cell, on strictly more than the generic $4$ active facets
-of a $4$-dimensional vertex (specifically $6$, an artefact of the
-$24$-cell's exceptional symmetry), so perturbing only one or two of those
-facets can render one or more of the others redundant at the new vertex
-position rather than leaving the vertex's governing facet set unchanged.
-We checked this directly at the shared vertex $(\sqrt2,0,0,0)$ (active
-facets $\{\alpha,\beta_1,\beta_2,\beta_3,\beta_4,\beta_5\}$ in the
-unperturbed cell) under a perturbation of $\alpha$ alone, by testing every
-$\binom53=10$ way of completing the perturbed facet to a determining
-$4$-set using the vertex's other $5$ original active facets: exactly $4$
-of the $10$ remain simultaneously feasible and agree on a single new
-vertex position (with one previously-active facet becoming redundant
-there), $1$ gives a singular (non-invertible) $4\times4$ system, and the
-remaining $5$ give points violating some other facet's inequality. This
-confirms the vertex deforms smoothly under this perturbation, and not combinatorially splitting into several nearby vertices, but it also
-confirms that identifying the governing facet set is a case-by-case
-reduction, not a uniform rule read off in advance. Completing
-this into a full first-principles derivation of \cref{lem:m2-exact-new}
-requires repeating this reduction correctly at all $9$ affected vertices
-and for a general perturbation direction, then
-assembling the resulting exact volume-change formula and expanding it to
-second order, a substantially larger undertaking than is completed here.
-The partial result is a step taken and not a derivation completed;
-\cref{lem:m2-exact-new} itself rests on the numerical verification
-described above, not on this partial first-principles check.
+That set has to be determined vertex by vertex. Each of the $9$ vertices
+lies on $6$ facets in the unperturbed cell, more than the generic $4$,
+so perturbing one or two of those facets can make others redundant at
+the new position. At the shared vertex $(\sqrt2,0,0,0)$, with active
+facets $\{\alpha,\beta_1,\dots,\beta_5\}$, perturb $\alpha$ alone and
+complete the perturbed facet to a determining $4$-set in each of the
+$\binom53=10$ possible ways: $4$ completions are feasible and give the
+same new vertex (one previously active facet becomes redundant), $1$
+gives a singular $4\times4$ system, and $5$ give points that violate
+another facet. So the vertex moves smoothly and does not split, but its
+governing facet set is found by a case analysis and not by a uniform
+rule. A first-principles proof of \cref{lem:m2-exact-new} requires this
+analysis at all $9$ vertices for a general perturbation direction,
+followed by a second-order expansion of the resulting volume formula. It
+is not carried out here, and \cref{lem:m2-exact-new} rests on the
+numerical computation.
 
-\begin{lem}[Chains]\label{lem:chains-new}
-For an induced path (a ``chain'') of $m$ pairwise-Gram-$\tfrac12$
-directions with no other adjacency among them, the joint Hessian's
-minimum eigenvalue, computed by Richardson extrapolation over three
-step sizes for chain lengths $m=3,\dots,8$ (the true maximum induced
-path length in the $24$-vertex, $8$-regular Gram-$\tfrac12$ adjacency
-graph on $\Rt$, found by exhaustive search from every starting vertex),
-decreases from approximately $0.276$ at $m=3$ to a floor plateauing
-near $0.168$ for $m=6,7,8$, remaining strictly positive throughout.
-\end{lem}
+\begin{numobs}[Chains]\label{lem:chains-new}
+Let $A$ be an induced path (a \emph{chain}) of $m$ directions with
+consecutive Gram values $\tfrac12$ and no other adjacency. The
+Richardson-extrapolated minimum eigenvalue of $H_A$, computed from three
+step sizes, decreases from about $0.276$ at $m=3$ and levels off near
+$0.168$ for $m=6,7,8$; it is positive for every $m$ from $3$ to $8$.
+Exhaustive search from every starting vertex shows that $8$ is the
+largest length of an induced path in the $8$-regular Gram-$\tfrac12$
+adjacency graph on $\Rt$.
+\end{numobs}
 
 The plateau has a geometric source. At an interior chain vertex, the
 two tangent axes pointing toward its left and right neighbours (within
 its own $3$-dimensional orthogonal complement) are not independent:
-their inner product is exactly $-\tfrac13$ or $-1$ at every interior
-vertex tested, so they are partially or fully antipodal. This
-constraint keeps the pairwise cross-terms from reaching their
-individual extremes simultaneously. It explains the plateau
-qualitatively; no bound is derived from it.
+their inner product is $-\tfrac13$ or $-1$ at every interior vertex
+tested, so they are partially or fully antipodal. This constraint keeps
+the pairwise cross-terms from reaching their individual extremes
+simultaneously. It explains the plateau qualitatively; no bound is
+derived from it.
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.99\textwidth]{fig_chain_plateau}
 \caption{Richardson-extrapolated minimum eigenvalue of the joint
-Hessian $H_A$ for chain configurations of length $m=3,\dots,8$
+Hessian $H_A$ for chains of length $m=3,\dots,8$
 (\cref{lem:chains-new}; full values in \cref{app:numerical-tables}).
-The eigenvalue falls sharply from $m=3$ to $m=5$ and then plateaus near $0.1676$ instead of continuing to collapse, which is the
-antipodal-axis mechanism described below. It stays well clear of zero
-for every chain length up to $m=8$, the longest induced path in the
-contact graph of $\Rt$, so the second-order method certifies positivity
-on the whole chain family.}
+The value falls from $m=3$ to $m=5$ and then levels off near $0.1676$.
+It stays away from zero up to $m=8$, the longest induced path in the
+contact graph of $\Rt$, so numerically the second-order method gives
+positivity for every chain.}
 \label{fig:chain-plateau}
 \end{figure}
 
 \subsection{Dense configurations}\label{sec:dense-configs-new}
 
-Chains are not the worst topology. A \emph{star} configuration (one
-root together with all eight of its Gram-$\tfrac12$ neighbours, $m=9$)
-gives a minimum eigenvalue converging cleanly, under Richardson
-extrapolation, to almost exactly $\tfrac1{12}\approx0.0833$, already
-well below the chain plateau. Growing the active set greedily by local
-density (at each step adding whichever remaining root has the most
-neighbours already active) drives the minimum eigenvalue down further
-and monotonically as $m$ grows: about $0.083$ at $m=9$, about $0.073$ at
-$m=12$, about $0.045$ at $m=15$, and from $m=18$ onward a value at or
-indistinguishable from zero at double precision. This locates the
-interesting regime, dense, non-chain
-configurations with $m$ in the high teens to low twenties, where a
-central question becomes unanswerable at ordinary machine precision:
-is the true minimum eigenvalue a small positive floor, exactly zero, or
-slightly negative? \Cref{sec:musin-degeneracy,sec:exact-sing} resolve
-this question, for specific configurations, in arithmetic of higher
-precision than double. The growth is plotted in
-\cref{fig:dense-growth}.
+Chains are not the worst case. A \emph{star}, one root together with
+its eight Gram-$\tfrac12$ neighbours ($m=9$), gives a minimum eigenvalue
+whose Richardson extrapolation is $\tfrac1{12}\approx0.0833$ to the
+accuracy of the computation, below the chain plateau. Growing the active
+set greedily by local density, adding at each step a remaining root with
+the most active neighbours, lowers the minimum eigenvalue further: about
+$0.083$ at $m=9$, $0.073$ at $m=12$ and $0.045$ at $m=15$, and from
+$m=18$ on a value that double precision does not distinguish from zero
+(\cref{fig:dense-growth}). In this range a small positive value, zero
+and a small negative value cannot be told apart at machine precision.
+\Cref{sec:musin-degeneracy,sec:exact-sing} examine one such
+configuration at higher precision.
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.99\textwidth]{fig_dense_growth}
 \caption{Richardson-extrapolated minimum eigenvalue of $H_A$ under
-greedy dense growth, $m=9$ through $m=23$ (full values in
-\cref{app:numerical-tables}). The contrast with
-\cref{fig:chain-plateau} is plain: here there is no plateau above
-zero. From $m=18$ onward, shaded, the extrapolated value is smaller than
-double-precision finite differences can resolve, which is the regime
-\cref{sec:exact-sing} takes up with arbitrary-precision arithmetic
-instead, and where the vanishing is shown to be exact.}
+greedy dense growth, $m=9$ to $m=23$ (full values in
+\cref{app:numerical-tables}). Unlike the chains of
+\cref{fig:chain-plateau}, the values do not level off above zero. From
+$m=18$ on, shaded, the extrapolated value is below what double-precision
+finite differences resolve; \cref{sec:exact-sing} examines this range in
+arbitrary-precision arithmetic, where the second derivative vanishes to
+the working precision.}
 \label{fig:dense-growth}
 \end{figure}
-\section{An exact degeneracy of the Hessian technique, and its consequence}\label{sec:musin-degeneracy}
+\section{A degeneracy of the Hessian technique}\label{sec:musin-degeneracy}
 
-\subsection{Why the Hessian technique cannot, by itself, cover every configuration}
+\subsection{The limit of a second-order method}
 
-The joint Hessian technique of \cref{sec:hessian-technique} is a
-second-order local method: it certifies \cref{conj:multidir-new} at a
-configuration by exhibiting positive-semidefiniteness of $H_A$. The
-computations of this paper (\cref{sec:dense-configs-new}, sharpened in
-\cref{sec:exact-sing} below) identify specific dense configurations at
-which this technique cannot
-succeed \emph{in principle}, not because the relevant computation is
-hard, but because the quantity the technique tries to bound, the
-minimum eigenvalue of $H_A$, is exactly zero there. This is a
-structurally different obstacle from ``the evidence so far is
-inconclusive'': at such a configuration, no amount of additional
-second-order computation can resolve the sign of the surplus, because
-the second-order term itself vanishes and the true local behaviour is
-governed by quartic (or higher) terms the Hessian cannot see. No prior
-published result establishes this degeneracy for the $D_4$ joint-Hessian
-technique; Musin's contributions to this circle of problems
-\cite{Mus08,Mus18} concern the kissing-number bound and the
-$24$-cell conjecture, and are cited for those results elsewhere.
+The joint Hessian technique certifies \cref{conj:multidir-new} at a
+configuration $A$ by showing that $H_A$ is positive definite. Where
+$H_A$ has a nontrivial kernel, the sign of the defect along the kernel
+is decided by terms of order four or higher, and no second-order
+computation can decide it. \Cref{sec:dense-configs-new,sec:exact-sing}
+indicate that such configurations occur among the dense active sets. We
+know of no earlier study of this degeneracy for the joint Hessian of
+$D_4$; the work of Musin \cite{Mus08,Mus18} on this circle of problems
+concerns the kissing number and the $24$-cell conjecture.
 
-\subsection{Locating the exact degeneracy}
+\subsection{Precision}
 
-\Cref{sec:dense-configs-new} located, by ordinary double-precision
-computation, a regime ($m$ in the high teens to low twenties, dense
-non-chain active sets) where the minimum eigenvalue drops to or below
-the noise floor of standard floating-point volume computation
-(scipy/qhull's own absolute precision, of order $10^{-10}$, divided by
-$h^2$ in a finite-difference second derivative, which amplifies this
-noise once $h$ is made small enough to matter). Resolving whether the
-true eigenvalue at such a configuration is a small positive floor,
-exactly zero, or negative requires arithmetic of a fundamentally higher
-precision than double, not a finer step size; this is the
-subject of \cref{sec:exact-sing}.
+In double precision the volumes computed with \texttt{scipy} and qhull
+carry an absolute error of order $10^{-10}$, which a finite-difference
+second derivative with step $h$ divides by $h^2$. At the step sizes the
+dense configurations require, this error exceeds the eigenvalues in
+question. Deciding between a small positive value, zero and a negative
+value therefore requires a higher working precision, not a smaller
+step, and \cref{sec:exact-sing} uses one.
 
 \subsection{Quartic positivity}\label{sec:quartic-hardness-new}
 
-What matters is \emph{why} the transition from quadratic
-to quartic, at $A_{18}$, is a change of category rather than of
-difficulty, since the natural reaction to Sylvester's criterion working
-so cleanly at second order is to expect some analogous device at fourth.
-None is available in general. A classical theorem of Hilbert (1888)
-identifies exactly the cases in which every non-negative real form is
-automatically a sum of squares of forms of half the degree: forms in at
-most two variables (any degree), quadratic forms in any number of
-variables, and ternary quartics (three variables, degree four), and no
-others. In every other combination of variable count and even degree,
-including quartic forms in \emph{four} variables, which is exactly the
-case arising at $A_{18}$ (a $4$-dimensional near-null subspace, hence a
-single quartic form in four real variables once the second-order part is
-removed), there exist forms that are non-negative everywhere yet are
-provably not expressible as any sum of squares of polynomials. This is not
-a statement about the difficulty of finding a sum-of-squares
-certificate for a specific form; it is a statement that no such
-certificate need exist. Consequently, a form that is
-non-negative on the relevant subspace at $A_{18}$ need not have a
-sum-of-squares proof of that fact, and a proof may have to fall
-back on a case-specific device, along the lines of the exact
-factorisation and Sturm-sequence arguments already used, for a
-different problem, in \cref{sec:swap-configs}, rather than
-the essentially algorithmic route (compute a Gram matrix, exhibit a
-positive-semidefinite square root) available for quadratic forms via
-$LDL^\top$. This is not a further piece of evidence about
-\cref{conj:multidir-new}, but an account of why an elementary argument
-at this configuration is not simply a matter of applying the existing
-Hessian machinery one order higher.
-\section{Exact singularity at a dense configuration}\label{sec:exact-sing}
+Where the second-order term vanishes on a subspace, the next test is
+the sign of a quartic form on it, and at $A_{18}$ the subspace is
+$4$-dimensional (\cref{sec:exact-sing}). For quadratic forms,
+Sylvester's criterion and an $LDL^\top$ decomposition settle the sign
+algorithmically. For quartic forms no such device exists in general. A
+theorem of Hilbert (1888) identifies the cases in which every
+non-negative real form is a sum of squares of forms of half the degree:
+forms in two variables, quadratic forms, and ternary quartics. In every
+other case, quartic forms in four variables included, there are
+non-negative forms that are not sums of squares; the Choi--Lam form
+used in \cref{sec:gram-sos-A18} is one. A non-negative quartic form on
+the near-null subspace at $A_{18}$ therefore need not have a
+sum-of-squares certificate, and a proof there may require a
+case-specific argument, of the kind of the exact factorisations and
+Sturm sequences of \cref{sec:swap-configs}, in place of a Gram matrix
+with a positive-semidefinite square root.
+\section{A singular dense configuration}\label{sec:exact-sing}
 
-\subsection{Resolving the near-zero eigenvalue with higher precision}
+\subsection{The configuration \texorpdfstring{$A_{18}$}{A18}}
 
-The dense, greedy-growth active set reaching $m=18$ from root $0$,
+The active set reached by greedy dense growth from root $0$ at $m=18$ is
 \[
-  A_{18} = \{0,2,4,5,6,7,8,9,10,11,12,13,16,17,20,21,22,23\},
+  A_{18} = \{0,2,4,5,6,7,8,9,10,11,12,13,16,17,20,21,22,23\}.
 \]
-lies in the regime identified in \cref{sec:dense-configs-new}
-where double precision cannot resolve the sign of the joint Hessian's
-smallest eigenvalues. We resolve this using a from-scratch,
-arbitrary-precision (mpmath, up to $45$ decimal digits) polytope-volume
-computation, built independently of the double-precision
-scipy/qhull-based method used elsewhere, and validated against it (at a
-generic small perturbation of $A_{18}$, the two methods agree to within
-$1.1\times10^{-9}$, exactly at qhull's own precision floor) and against
-the exact reference value ($8$, reproduced to $49$ nines at $50$-digit
-precision at the unperturbed $D_4$ configuration).
+It lies in the range of \cref{sec:dense-configs-new} where double
+precision does not resolve the sign of the smallest eigenvalues of the
+joint Hessian. The computations of this section use an
+arbitrary-precision volume routine (\texttt{mpmath}, up to $45$ decimal
+digits; \cref{sec:hp-volume-method}), written independently of the
+double-precision pipeline.
 
-\begin{thm}[Exact quartic degeneracy at $A_{18}$]\label{thm:exact-sing-new}
-At the configuration $A_{18}$, the joint Hessian's near-null subspace is
-exactly $4$-dimensional: along every one of a broad,
-independently sampled set of directions within this subspace
-(\cref{sec:broad-sample}), the volume-defect function's second
-derivative is exactly (not approximately) zero, and its leading
-behaviour is quartic, $F(\sigma)=a_4\sigma^4+O(\sigma^6)$, with $a_4>0$
-in every direction tested.
-\end{thm}
+\begin{numobs}[Quartic degeneracy at $A_{18}$]\label{thm:exact-sing-new}
+At $A_{18}$ the near-null subspace of the joint Hessian is
+$4$-dimensional (\cref{prop:4d-nullspace-new}). Along every direction
+sampled in it (\cref{sec:broad-sample}), the central-difference
+estimate of the second derivative of the volume-defect function
+decreases by a factor close to $4$ at each of three successive halvings
+of the step, as it does when the second derivative is zero, and the
+leading behaviour is $F(\sigma)=a_4\sigma^4+O(\sigma^6)$ with $a_4>0$.
+\end{numobs}
 
-Two points in that statement need separating. The near-null subspace is
-exactly $4$-dimensional, and the
-quartic test runs across the whole of it: a test confined to the span
-of three of the eigenvectors leaves the fourth direction of the
-subspace untouched, and that is the direction in which the second
-derivative is smallest.
+The quartic test covers the whole near-null subspace. A test confined
+to the span of three of its eigenvectors would miss the fourth
+direction, which is the one with the smallest second derivative.
 
 \subsection{The high-precision volume method}\label{sec:hp-volume-method}
 
-Since the entire point of this section is to resolve a quantity below
-double precision's own noise floor, the high-precision volume routine
-itself has to be built independently of the double-precision \texttt{scipy}/qhull pipeline
-used everywhere else in this paper, otherwise a bug shared by both
-would masquerade as agreement. The method used is star triangulation
-from the origin, standard for any polytope known in advance to contain
-the origin in its interior (true here, since the origin is always an
-interior point of a Voronoi cell):
+The volume of a polytope containing the origin in its interior, as a
+Voronoi cell does, is computed by star triangulation from the origin:
 \begin{enumerate}[leftmargin=2em]
-\item Every vertex is found, at full working precision (mpmath, up to
-$45$ decimal digits), as the exact solution of the $4\times4$ linear
-system given by some size-$4$ subset of the active facet normals
-$\{\langle n_k,x\rangle=1\}$, retained only if it satisfies every one
-of the (typically several dozen) facet inequalities
-$\langle n_k,x\rangle\le1$ up to a small working tolerance.
-\item For each facet, its own vertex set (at least $4$ points, lying in
-a $3$-dimensional affine hyperplane) is triangulated into
-tetrahedra by a two-step process: a \emph{double-precision} projection
-into $3$ local coordinates is used only to determine which vertices are
-adjacent (i.e.\ only to fix the triangulation's own combinatorics, never
-to produce a volume number), and the resulting triangulation is then
-applied to the original high-precision vertex coordinates.
-\item Each tetrahedron, together with the origin, forms a $4$-simplex
-whose volume is $\tfrac1{4!}|\det M|$ for the $4\times4$ matrix $M$ of
-the tetrahedron's own high-precision vertex coordinates (the origin
-contributes an implicit zero row under the standard vertex-difference
-reduction, since it is itself one of the five simplex vertices);
-summing over every tetrahedron on every facet gives the total volume.
+\item Every vertex is computed at full working precision as the
+solution of the $4\times4$ linear system of some four active facet
+equations $\langle n_k,x\rangle=1$, and kept if it satisfies every
+facet inequality $\langle n_k,x\rangle\le1$ up to a small tolerance.
+\item The vertices of each facet, which lie in a $3$-dimensional affine
+hyperplane, are triangulated into tetrahedra. A double-precision
+projection to $3$ local coordinates is used only to decide which
+vertices are adjacent; the triangulation is then applied to the
+high-precision coordinates.
+\item Each tetrahedron and the origin span a $4$-simplex of volume
+$\tfrac1{4!}|\det M|$, where $M$ is the $4\times4$ matrix of the
+tetrahedron's vertices; the sum over all tetrahedra of all facets is the
+volume.
 \end{enumerate}
-This routine is validated two ways before being trusted on the actual
-$A_{18}$ computation: at the exact, unperturbed reference $D_4$
-configuration, it reproduces the known volume $8$ to $49$ nines at
-$50$-digit working precision (i.e.\ agrees with $8$ to within
-$10^{-49}$); and at a generic small perturbation of an $m=18$ active
-set, it agrees with the independent double-precision
-\texttt{scipy}/qhull computation used throughout the rest of this paper
-to within $1.1\times10^{-9}$, exactly at qhull's own known precision
-floor, confirming both that the two independent methods compute the
-same underlying quantity and that this method's extra precision is not an artefact.
+The routine reproduces the volume $8$ of the $24$-cell to within
+$10^{-49}$ at $50$ digits, and at a generic small perturbation of an
+$18$-element active set it agrees with the double-precision qhull
+computation to within $1.1\times10^{-9}$, the precision of qhull.
 
 \subsection{The dimension count}\label{sec:dim-count-new}
 
-\begin{prop}[Four-dimensional near-null space]\label{prop:4d-nullspace-new}
-At $A_{18}$, examining the double-precision joint Hessian's spectrum at
-three step sizes ($h=0.02,0.01,0.005$) instead of one, the smallest
-four eigenvalues each shrink by a clean factor close to $4$ with every
-halving of $h$, the finite-difference signature of a true eigenvalue
-that is exactly zero, while the fifth eigenvalue ($\approx0.075$)
-does not shrink across the same three step sizes. The near-null
-subspace is therefore $4$-dimensional, confirmed by this scaling
-argument rather than assumed from a single-$h$ eigenvalue gap.
-\end{prop}
+\begin{numobs}[Four-dimensional near-null space]\label{prop:4d-nullspace-new}
+At $A_{18}$, the four smallest eigenvalues of the double-precision
+finite-difference joint Hessian at the step sizes $h=0.02$, $0.01$ and
+$0.005$ each decrease by a factor close to $4$ at every halving of $h$,
+as a zero eigenvalue does, while the fifth, about $0.075$, stays
+constant. The near-null subspace is therefore $4$-dimensional to the
+accuracy of the computation.
+\end{numobs}
 
-\subsection{Confirming the quartic behaviour}
+\subsection{The quartic behaviour}
 
-For each tested direction $v$ in the near-null subspace, the leading
-behaviour is confirmed by evaluating $F(\pm\sigma\,v)$ at three
-independent step sizes ($\sigma=0.02,0.01,0.005$, at $35$--$45$ decimal
-digits of precision) and checking that the central-difference
-second-derivative estimate $(F(\sigma)+F(-\sigma))/\sigma^2$ shrinks by
-a factor close to $4$ at each halving of $\sigma$, across three
-independent halvings, the signature of a function
-whose true second derivative is exactly zero. The leading quartic
-coefficient, extracted as $a_4\approx(F(\sigma)+F(-\sigma))/(2\sigma^4)$
+For each tested direction $v$ in the near-null subspace, $F(\pm\sigma
+v)$ is evaluated at $\sigma=0.02$, $0.01$ and $0.005$, with $35$ to $45$
+decimal digits. The central-difference estimate
+$(F(\sigma)+F(-\sigma))/\sigma^2$ of the second derivative decreases by
+a factor close to $4$ at each halving of $\sigma$, and the quartic
+coefficient, estimated as $a_4\approx(F(\sigma)+F(-\sigma))/(2\sigma^4)$
 for small $\sigma$, is positive at every direction tested.
 
-\subsection{Interpretation}
+\subsection{Consequence}
 
-This is a qualitatively stronger, and different, finding than ``the
-eigenvalue is too small to resolve'': the second-order (Hessian
-eigenvalue) technique underlying every other elementary argument in
-this paper towards \cref{conj:multidir-new}, the exact
-two-direction and chain results of \cref{lem:m2-exact-new,lem:chains-new},
-the star and greedy-dense sweep of \cref{sec:dense-configs-new}, 
-\emph{cannot in principle} establish positivity at $A_{18}$, not
-because the computation is difficult but because the quantity it
-bounds is exactly zero there. Any argument covering this configuration
-needs quartic-order (or higher) information, a different and harder
-undertaking than anything the Hessian technique
-provides. The volume-defect function remained strictly positive, via
-the positive quartic coefficient, at every direction tested here; that
-is consistent with \cref{conj:multidir-new} and is not an elementary
-proof of it at $A_{18}$. \Cref{sec:broad-sample} reports how broadly
-this was tested, and what that breadth establishes.
+If the second derivative vanishes on a $4$-dimensional subspace at
+$A_{18}$, as these computations indicate, then no second-order
+argument, including the computations of
+\cref{lem:m2-exact-new,lem:chains-new} and the sweep of
+\cref{sec:dense-configs-new}, can establish \cref{conj:multidir-new} at
+$A_{18}$, and any argument there needs information of order four or
+higher. The volume-defect function is positive at every direction
+tested, through its positive quartic coefficient. This agrees with
+\cref{conj:multidir-new}, which \cref{cor:conj-resolved} proves by a
+different route. \Cref{sec:broad-sample} describes the sampling.
 \section{Broadened directional sampling}\label{sec:broad-sample}
 
-\subsection{Sampling the full near-null subspace at $A_{18}$}
+\subsection{Sampling the full near-null subspace at \texorpdfstring{$A_{18}$}{A18}}
 
-\Cref{prop:4d-nullspace-new} identifies the near-null subspace at
-$A_{18}$ as $4$-dimensional. We sample it far more broadly
-as follows: the four eigenvectors themselves, all six
-pairwise normalised sums and six pairwise normalised differences, and
-twenty further directions drawn uniformly at random from the full
-$4$-dimensional span (Gaussian coefficients, normalised), $36$
-directions in total, spanning the entire subspace instead of the $3$-dimensional slice of it tested in \cref{sec:exact-sing}.
+The near-null subspace at $A_{18}$ is sampled along $36$ directions: its
+four basis eigenvectors, the six normalised pairwise sums and the six
+normalised pairwise differences of these, and twenty directions drawn
+at random from the whole subspace (Gaussian coefficients, normalised).
+The sample spans all four dimensions of the subspace.
 
-\begin{thm}[Broadened sampling at $A_{18}$]\label{thm:broad-sample-18-new}
-Evaluating the quartic-coefficient estimator
-$a_4\approx(F(\sigma)+F(-\sigma))/(2\sigma^4)$ at $\sigma=0.015$,
-$35$-digit precision, along all $36$ sampled directions gives a
-strictly positive value at every one, ranging from approximately
-$0.0088$ to $0.314$; zero negative directions were found. A subsample
-of six directions, spanning this full range, is re-evaluated at
-$\sigma=0.0075$ (a second, independent step size, $40$-digit
-precision): the two step sizes agree to within $2$--$5\%$ for every one
-of the six, confirming quartic scaling and not a step-size artifact.
-\end{thm}
+\begin{numobs}[Sampling at $A_{18}$]\label{thm:broad-sample-18-new}
+The quartic coefficient estimate
+$a_4\approx(F(\sigma)+F(-\sigma))/(2\sigma^4)$ at $\sigma=0.015$, with
+$35$ digits, is positive along all $36$ directions, with values from
+about $0.0088$ to $0.314$. Six directions spanning this range,
+re-evaluated at $\sigma=0.0075$ with $40$ digits, agree with the first
+estimate to within $2$ to $5\%$, which confirms quartic scaling.
+\end{numobs}
 
-\subsection{A second, independent configuration: $m=20$}
+\subsection{A second configuration: \texorpdfstring{$m=20$}{m=20}}
 
-To test whether this pattern is peculiar to $A_{18}$ or holds more
-broadly, we examine a second, larger dense configuration obtained by
-continuing the same greedy-density growth two steps further,
+Two further steps of the same greedy growth give
 \[
   A_{20} = \{0,2,4,5,6,7,8,9,10,11,12,13,15,16,17,19,20,21,22,23\}
   \supset A_{18}.
 \]
-(Two further independently-grown $m=18$ configurations, started from
-roots $5$ and $12$ instead of root $0$, were also tried; both reproduce
-the identical double-precision eigenvalue spectrum found at $A_{18}$ to
-four decimal places, almost certainly reflecting the same geometric
-configuration up to the $D_4$ Weyl group's own large symmetry group
-rather than new information, and are not pursued further here.)
+Two other $18$-element configurations, grown from roots $5$ and $12$,
+reproduce the double-precision spectrum of $A_{18}$ to four decimal
+places; they are presumably images of $A_{18}$ under the Weyl group of
+$D_4$ and are not examined further.
 
-\begin{prop}[Five-dimensional near-null space at $A_{20}$]\label{prop:5d-nullspace-new}
-At $A_{20}$, the same three-step-size scaling argument
-(\cref{prop:4d-nullspace-new}) finds a $5$-dimensional near-null
-subspace: the smallest five eigenvalues each shrink by a factor of
-roughly $3$--$4$ per halving of $h$, while the sixth ($\approx0.035$,
-strictly smaller than $A_{18}$'s own non-shrinking floor of
-$\approx0.075$) does not shrink.
-\end{prop}
+\begin{numobs}[Five-dimensional near-null space at $A_{20}$]\label{prop:5d-nullspace-new}
+At $A_{20}$ the scaling test of \cref{prop:4d-nullspace-new} finds a
+$5$-dimensional near-null subspace: the five smallest eigenvalues
+decrease by a factor of $3$ to $4$ at each halving of $h$, while the
+sixth, about $0.035$, stays constant.
+\end{numobs}
 
-\begin{thm}[Broadened sampling at $A_{20}$]\label{thm:broad-sample-20-new}
-Sampling this $5$-dimensional subspace with $30$ directions (the five
-basis eigenvectors, all ten pairwise normalised sums, and fifteen
-further random directions spanning the full span), the same
-$\sigma=0.015$, $35$-digit estimator gives a strictly positive value at
-every one of the $30$ directions, ranging from approximately $0.0076$
-to $0.314$; zero negative directions found. Four directions spanning
-this range, re-checked at $\sigma=0.0075$, agree with the
-$\sigma=0.015$ estimate to within $1$--$5\%$ in every case.
-\end{thm}
+\begin{numobs}[Sampling at $A_{20}$]\label{thm:broad-sample-20-new}
+Along $30$ directions in this subspace (the five basis eigenvectors,
+their ten normalised pairwise sums, and fifteen random directions), the
+estimate at $\sigma=0.015$ with $35$ digits is positive in every case,
+with values from about $0.0076$ to $0.314$. Four directions spanning
+this range, re-evaluated at $\sigma=0.0075$, agree to within $1$ to
+$5\%$.
+\end{numobs}
 
-\subsection{A Gram-matrix sum-of-squares check on a fitted quartic at $A_{18}$}\label{sec:gram-sos-A18}
+\subsection{A sum-of-squares test of a fitted quartic at \texorpdfstring{$A_{18}$}{A18}}\label{sec:gram-sos-A18}
 
-The sampling above tests individual rays; it does not determine the
-quartic form's sign at points of the near-null subspace that were not
-sampled. As a stronger (though still not exhaustive) check, we
-gathered $166$ directional samples at $A_{18}$, the $16$ directions of
-\cref{thm:broad-sample-18-new} (the $4$ basis eigenvectors and $12$
-pairwise sums/differences) together with $150$ further directions drawn
-uniformly at random from the full $4$-dimensional near-null subspace,
-each evaluated by the same estimator $a_4\approx (F(\sigma)+F(-\sigma))/(2\sigma^4)$
-at $\sigma=0.015$, $35$-digit precision, and used them to fit, by
-ordinary least squares, the $35$ coefficients of the general quartic
-form $Q(x_0,x_1,x_2,x_3)$ on this subspace ($4.7\times$ overdetermined
-relative to the $35$ unknowns). The fit is well-conditioned (design
-matrix of full rank $35$, relative residual norm $0.91\%$, maximum
-pointwise residual $0.0022$ against values ranging from $0.0064$ to
-$0.314$).
+Sampling tests individual directions and leaves the sign of the
+quartic form between them open. For a test on the whole subspace, the
+$35$ coefficients of a general quartic form $Q(x_0,x_1,x_2,x_3)$ on the
+near-null subspace at $A_{18}$ were fitted by least squares to $166$
+estimates of $a_4$ (at $\sigma=0.015$, $35$ digits): the $16$ basis,
+sum and difference directions of \cref{thm:broad-sample-18-new} and
+$150$ further random directions. The design matrix has full rank $35$,
+the relative residual is $0.91\%$, and the largest pointwise residual is
+$0.0022$, against values from $0.0064$ to $0.314$.
 
-Given the fitted coefficients, we then tested whether $Q$ admits a
-sum-of-squares certificate via the standard Gram-matrix/semidefinite-programming
-method: writing $Q(x)=m(x)^\top M\, m(x)$ for the vector $m(x)$ of the
-$10$ degree-$2$ monomials in $4$ variables, the set of symmetric $M$
-representing a given $Q$ is an affine subspace (of dimension
-$55-35=20$), and $Q$ is a sum of squares if this affine subspace
-contains a positive-semidefinite matrix. We solve
-$\max t$ subject to $M-tI\succeq 0$ over this affine family by
-semidefinite programming (\texttt{cvxpy}, solver \texttt{CLARABEL}).
-Before trusting this code on the fitted data, we validated it against
-two textbook quartics in the same $4$ variables: it correctly certifies
-$(x_0^2+x_1^2+x_2^2+x_3^2)^2$ as a sum of squares ($t\approx 1$), and
-correctly reports no certificate for the Choi--Lam polynomial
-$x_0^2x_1^2+x_1^2x_2^2+x_2^2x_0^2+x_3^4-4x_0x_1x_2x_3$
-(non-negative by the inequality of arithmetic and geometric means, and
-without a sum-of-squares representation by the theorem of Choi and Lam,
-the phenomenon that Hilbert's theorem permits in this class of variables
-and degrees, \cref{sec:quartic-hardness-new}). The two test cases thus
-fall on the sides the classical results predict.
+Write $Q(x)=m(x)^\top M\,m(x)$, with $m(x)$ the vector of the $10$
+monomials of degree $2$ in $4$ variables. The symmetric matrices $M$
+that represent $Q$ form an affine space of dimension $55-35=20$, and $Q$
+is a sum of squares if this space contains a positive-semidefinite
+matrix. The semidefinite program $\max t$ subject to $M-tI\succeq0$ over
+this space is solved with \texttt{cvxpy} and the solver
+\texttt{CLARABEL}. On two test forms in the same variables it gives the
+expected answers: $t\approx1$ for $(x_0^2+x_1^2+x_2^2+x_3^2)^2$, and
+infeasibility for the Choi--Lam form
+$x_0^2x_1^2+x_1^2x_2^2+x_2^2x_0^2+x_3^4-4x_0x_1x_2x_3$, which is
+non-negative by the inequality of arithmetic and geometric means and is
+not a sum of squares by the theorem of Choi and Lam.
 
-\begin{prop}[SOS certificate for the fitted quartic at $A_{18}$]\label{prop:gram-sos-A18}
-Applied to the $35$ least-squares-fitted coefficients above, the same
-semidefinite program finds a feasible positive-semidefinite $M$, with
-optimal value $t\approx 0.0066$: a valid sum-of-squares certificate for
-the fitted quartic, though a thin-margin one (compare $t\approx 1$ for
-the perfect-square validation case above).
-\end{prop}
+\begin{numobs}[Sum of squares for the fitted quartic at $A_{18}$]\label{prop:gram-sos-A18}
+For the $35$ fitted coefficients, the semidefinite program is feasible
+with optimal value $t\approx0.0066$, so the fitted quartic is a sum of
+squares with a small margin.
+\end{numobs}
 
-This is stronger evidence than ray-by-ray sampling, since a
-sum-of-squares certificate (once found) implies non-negativity on the
-\emph{entire} subspace, beyond the sampled directions. It is not
-a proof of anything about the true quartic form at $A_{18}$, for two
-independent reasons: first, the certified object is the
-least-squares \emph{fit} to $166$ noisy high-precision estimates, not an
-exact symbolic derivation of $Q$, so a fit error at the level of the
-$0.91\%$ residual already reported could in principle move the true
-form outside the certified family; second, even granting the fit
-exactly, a thin margin ($t\approx 0.0066$, not deep in the interior of
-the positive-semidefinite cone) is a weaker certificate than a large
-one, and the margin is reported as it is. Nothing here proves
-\cref{conj:multidir-new} at $A_{18}$ by elementary means; what
-\cref{cor:conj-resolved} settles, it settles by way of the
-classification of \cref{thm:m24}, and the elementary route pursued in
-this section stops short of it.
+A sum-of-squares representation of the fitted form proves that the
+fitted form is non-negative on the whole subspace. It does not prove
+this for the true quartic form at $A_{18}$: the fitted form comes from
+numerical estimates with a relative residual of $0.91\%$, and the
+margin $t\approx0.0066$ is of the same order as the fitting error.
 
 \subsection{What the sampling establishes}
 
-Combined, these two configurations give $66$ independently sampled
-directions, across two different (not symmetry-equivalent, so
-far as we have checked) dense active-root configurations, each with its
-own confirmed near-null subspace of dimension $4$ or $5$, and every
-single sampled direction gives a strictly positive quartic coefficient.
-The sample covers the full dimension of each near-null subspace, not a
-lower-dimensional slice of it, so the positive sign is uniform across all
-$66$ directions and not an artefact of a thin sample.
-
-It is not a proof that the quartic form governing $F$'s local behaviour
-is positive-definite on either near-null subspace: that would require
-either an exhaustive argument over the entire unit sphere in $4$ or $5$
-dimensions, or an explicit closed-form computation of the quartic
-tensor itself and a check of its definiteness, neither of which is
-attempted here. And even if that closed-form computation were carried
-out, \cref{sec:quartic-hardness-new} explains why a check of its
-definiteness could not, in general, take the convenient form the
-quadratic case enjoys: a $4$-variable quartic form has no guarantee, by
-Hilbert's classification of when non-negative forms are sums of squares,
-of admitting a sum-of-squares certificate, so ``compute the
-tensor and check it'' is not a finite algorithmic step even granting the
-tensor itself. It does not cover the many other dense
-configurations in the $m=15$--$23$ range that were not examined. And it
-does not touch \cref{conj:multidir-new} in general, which concerns
-\emph{every} packing-valid active-direction configuration of every size
-$m\ge2$, beyond the two examined here. The evidence is reported
-because it is informative, not because it settles the question it bears
-on, which it does not.
+The two configurations give $66$ sampled directions, in near-null
+subspaces of dimensions $4$ and $5$, and the quartic coefficient is
+positive along every one; no symmetry relating $A_{18}$ to $A_{20}$ was
+found. A proof that the quartic form is positive definite on either
+subspace would need the exact quartic tensor and a proof of its
+definiteness, and by \cref{sec:quartic-hardness-new} the latter need
+not take the form of a sum-of-squares certificate. The many other dense
+configurations with $m$ from $15$ to $23$ were not examined, and
+\cref{conj:multidir-new} concerns every packing-valid configuration of
+every size $m\ge2$. The sampling is evidence at two configurations and
+proves nothing beyond them.
 
 \subsection{An exact symmetry of \texorpdfstring{$A_{18}$}{A18}}\label{sec:a18-symmetry}
 
-Every result above treats $A_{18}$ as an unstructured $18$-element active
-set, produced by greedy density growth with no attention paid to whether
-it has any symmetry of its own. It does.
+$A_{18}$ was produced by greedy growth without regard to symmetry, but
+it has a large symmetry group.
 
-\begin{prop}[$A_{18}$'s exact stabiliser]\label{prop:a18-stabiliser}
-Within the full group of signed coordinate permutations of $\mathbb{R}^4$
-that map the $24$-root set $\Rt$ bijectively to itself (order $2^4\cdot
-4!=384$), the subgroup fixing $A_{18}$ setwise has order exactly $48$: it
-consists of every signed permutation that leaves one specific coordinate
-axis's identity and sign untouched and acts as an arbitrary signed
-permutation (order $2^3\cdot3!=48$) on the remaining three coordinates.
+\begin{prop}[The stabiliser of $A_{18}$]\label{prop:a18-stabiliser}
+Within the group of signed coordinate permutations of $\mathbb{R}^4$
+that map $\Rt$ to itself, of order $2^4\cdot4!=384$, the subgroup fixing
+$A_{18}$ setwise has order $48$. It consists of the signed permutations
+that fix one specific coordinate axis together with its sign and act as
+an arbitrary signed permutation, a group of order $2^3\cdot3!=48$, on
+the other three coordinates.
 \end{prop}
 
-This was checked exactly, in integer arithmetic (every element of the
-$384$-element group is a $0,\pm1$ monomial matrix, so both ``is this an
-automorphism of $\Rt$'' and ``does this fix $A_{18}$ as a set of
-indices'' are finite exact checks, not numerical ones): all $48$
-elements of the described subgroup fix $A_{18}$ setwise, and none of the
-remaining $336$ elements of the ambient $384$-element group do.
+\begin{proof}
+Every element of the group of order $384$ is a monomial matrix with
+entries $0,\pm1$, so whether it maps $\Rt$ to itself and whether it
+fixes the index set $A_{18}$ are finite integer checks. All $48$
+elements of the described subgroup fix $A_{18}$, and none of the other
+$336$ elements does.
+\end{proof}
 
-Since every element of this order-$48$ group is an isometry of
-$\mathbb{R}^4$ mapping $\Rt$ to itself and $A_{18}$ to itself, it acts on
-the $54$-dimensional joint tangent space of \cref{def:joint-hessian-new}
-by permuting the $18$ active blocks (each carrying its own induced
-$3\times3$ orthogonal action) exactly as it permutes the $18$ active
-roots. This induced representation was checked to commute with the actual finite-difference joint Hessian at $A_{18}$:
-for a sample of stabiliser elements, $\mathrm{Rep}(g)^\top H_{A_{18}}\,
-\mathrm{Rep}(g)$ agrees with $H_{A_{18}}$ to within
-$4\times10^{-6}$, consistent with the finite-difference step size used ($h=0.02$) and not a real discrepancy. As a second, independent
-check, the quartic coefficient estimator itself
-(\cref{thm:broad-sample-18-new}) was evaluated at a random direction $v$
-in the confirmed $4$-dimensional near-null subspace of
-\cref{prop:4d-nullspace-new} and at its images $\mathrm{Rep}(g)v$ under
-six sampled non-identity stabiliser elements: all seven values agree to
-within $8\times10^{-5}$ of one another, which is the accuracy the step
-size allows. Hence $a_4$ is, to that accuracy, a class function of this
-symmetry, as the isometry argument requires.
+Each element of this group is an isometry of $\mathbb{R}^4$ that maps
+$\Rt$ and $A_{18}$ to themselves, so it acts on the $54$-dimensional
+joint tangent space of \cref{def:joint-hessian-new} by permuting the
+$18$ active blocks, each with its induced $3\times3$ orthogonal action,
+as it permutes the active roots. For a sample of group elements $g$,
+$\mathrm{Rep}(g)^\top H_{A_{18}}\mathrm{Rep}(g)$ agrees with the
+finite-difference Hessian $H_{A_{18}}$ to within $4\times10^{-6}$,
+which is the accuracy the step $h=0.02$ allows. The quartic coefficient
+estimate at a random direction $v$ of the near-null subspace and at its
+images $\mathrm{Rep}(g)v$ under six non-identity elements agree to
+within $8\times10^{-5}$, again the accuracy of the step. The symmetry
+also accounts for the agreement among the symmetric sample directions of
+\cref{thm:broad-sample-18-new}: many of the $36$ directions lie in one
+orbit of the group, so they are not independent samples.
 
-Restricting the induced representation to this $4$-dimensional near-null
-subspace and computing its character across all $48$ group elements
-gives trace values $4$ (twice, including the identity), $1$ (sixteen
-elements), $0$ (eighteen elements), and $-2$ (twelve elements); the
-associated commutant dimension (the space of $4\times4$ real matrices
-commuting with every one of the $48$ restricted images, computed as the
-nullspace of the resulting linear system) is exactly $2$. By standard
-representation theory this means the near-null subspace splits, under
-this group, into exactly two non-isomorphic irreducible pieces (each
-with multiplicity one) rather than remaining a single irreducible block
-or splitting into several copies of one repeated piece. Identifying
-those two pieces exactly, and what that gives for the quartic form, is
-\cref{sec:a18-invariant-quartics} below.
-
-What this symmetry does, and what it does not do, is the following. It
-is an exactly verified structural fact about the specific configuration
-where \cref{thm:exact-sing-new} proves the joint-Hessian technique
-degenerates completely. It explains, rather than leaves coincidental,
-why symmetric-looking sample directions in \cref{thm:broad-sample-18-new}
-gave consistent quartic-coefficient values: many of the $36$ sampled
-directions there lie in the same $48$-element orbit under this group, so
-the $36$ directions are far from an independent sample. By itself it does \emph{not} prove that
-the quartic form is positive-definite on the near-null subspace; that
-needs the further steps of \cref{sec:a18-invariant-quartics}, which
-reduce the question to five coefficients without settling it.
+Restricted to the numerically computed near-null subspace, the
+representation has trace $4$ at two elements (the identity among them),
+$1$ at sixteen, $0$ at eighteen and $-2$ at twelve, and the space of
+$4\times4$ matrices commuting with all $48$ restricted images has
+dimension $2$. To the accuracy of the computation, the near-null
+subspace is therefore the sum of two non-isomorphic irreducible
+representations of the group.
 
 \subsection{The invariant quartics at \texorpdfstring{$A_{18}$}{A18}}\label{sec:a18-invariant-quartics}
 
-Completing the exact character-table computation of
-\cref{prop:a18-stabiliser} (all $10$ conjugacy classes of the order-$48$
-group, verified via a complete, mutually orthogonal set of $10$
-irreducible characters constructed directly from the group's natural
-representations, orthogonality being the usual first orthogonality
-relation, as in \cite[\S2.3]{Ser77}) and matching it, class by class,
-against the numerically observed near-null character above identifies the
-two pieces exactly.
+The character table of the stabiliser, with its $10$ conjugacy classes,
+is computed exactly from $10$ irreducible characters built from the
+natural representations of the group and checked by the first
+orthogonality relation \cite[\S2.3]{Ser77}.
 
-\begin{prop}[The near-null representation, identified exactly]\label{prop:a18-nullspace-irrep}
-The $4$-dimensional near-null subspace at $A_{18}$ realises the
-representation $\varepsilon\oplus(\mathrm{std}\otimes\delta)$ of the
-order-$48$ stabiliser group, where $\varepsilon$ is the $1$-dimensional
-character given by the sign of the permutation part alone, $\mathrm{std}$
-is the group's defining $3$-dimensional representation, and $\delta$ is
-the full determinant character. The match holds at each of the $10$
-conjugacy classes: of the two candidate class functions with the same
-aggregate trace distribution, the numerical values class by class select
-$\varepsilon\oplus(\mathrm{std}\otimes\delta)$, with no discrepancy
-across the $48$ elements.
-\end{prop}
+\begin{numobs}[The near-null representation]\label{prop:a18-nullspace-irrep}
+The traces of the near-null representation at $A_{18}$ agree, at each
+of the $10$ conjugacy classes, with the character of
+$\varepsilon\oplus(\mathrm{std}\otimes\delta)$, where $\varepsilon$ is
+the $1$-dimensional character given by the sign of the permutation part,
+$\mathrm{std}$ is the defining $3$-dimensional representation of the
+group, and $\delta$ is the determinant character. Of the two candidate
+characters with the same distribution of trace values, only this one
+matches class by class.
+\end{numobs}
 
 Write $x_0$ for a coordinate on the $\varepsilon$-line and
 $y=(y_0,y_1,y_2)$ for coordinates on the $\mathrm{std}\otimes\delta$
-piece (transforming as $y\mapsto\delta(g)\,g(y)$ under the plain defining
-action). A quartic $Q(x_0,y)$ invariant under the whole group splits by
-degree in $x_0$ into five pieces; since $\varepsilon,\delta$ are both
-order-$2$ characters, invariance at each even degree in $y$ reduces to
-plain invariance under $\mathrm{std}$ and at each odd degree to a
-\emph{relative} invariant transforming by $\delta$, a classical
-question for the reflection group $\mathrm{std}$ realises (the
-hyperoctahedral group of rank $3$), resolved here by the power-sum
-(Newton's identity) formula for $\chi_{\mathrm{Sym}^b(\mathrm{std}\otimes\delta)}$,
-exact integer/rational arithmetic throughout.
+summand, so that $y\mapsto\delta(g)\,g(y)$. A quartic $Q(x_0,y)$
+invariant under the group splits by its degree in $x_0$ into five parts.
+Since $\varepsilon$ and $\delta$ have order $2$, invariance at even
+degree in $y$ is invariance under $\mathrm{std}$, and at odd degree it
+is relative invariance with character $\delta$ under the hyperoctahedral
+group of rank $3$.
 
-\begin{prop}[The invariant-quartic space is exactly $5$-dimensional]\label{prop:a18-invariant-dim}
-The space of quartics $Q(x_0,y)$ invariant under the full order-$48$
-group has dimension exactly $5$, with explicit basis
+\begin{prop}[The invariant quartics]\label{prop:a18-invariant-dim}
+For the representation $\varepsilon\oplus(\mathrm{std}\otimes\delta)$
+of the stabiliser of $A_{18}$, the space of invariant quartics
+$Q(x_0,y)$ has dimension $5$, with basis
 \[
   x_0^4,\qquad x_0^2\,S_2(y),\qquad x_0\,P_3(y),\qquad S_4(y),\qquad S_{22}(y),
 \]
 where $S_2=y_0^2+y_1^2+y_2^2$, $S_4=y_0^4+y_1^4+y_2^4$,
-$S_{22}=y_0^2y_1^2+y_1^2y_2^2+y_2^2y_0^2$, and $P_3=y_0y_1y_2$, the
-last being the unique (up to scale) relative invariant of degree $3$.
+$S_{22}=y_0^2y_1^2+y_1^2y_2^2+y_2^2y_0^2$ and $P_3=y_0y_1y_2$, the last
+being the unique relative invariant of degree $3$ up to scale.
 \end{prop}
 
 \begin{proof}
 The multiplicity of the required character ($\mathrm{triv}$ at even
 degree, $\varepsilon$ at odd degree) in $\mathrm{Sym}^b(\mathrm{std}\otimes\delta)$
-for $b=0,1,2,3,4$ is computed exactly via the power-sum formula from
-$p_k=\mathrm{tr}(M^k)$, $M=\delta(g)\cdot g$, at each of the $10$ class
-representatives, giving multiplicities $1,0,1,1,2$ respectively (summing
-to $5$). Explicit generators are then obtained, independently of the
-character computation, by Reynolds-operator projection (exact rational
-arithmetic, averaging over all $48$ group elements) of the monomials $y_0^2$, $y_0^4$, $y_0^2y_1^2$, and
-$y_0^3,y_0^2y_1,y_0y_1y_2$ at the appropriate character: the even-degree
-projections reproduce $S_2$ and $\{S_4,S_{22}\}$ exactly (up to the
-stated overall scale), and the odd-degree projection sends the first two
-monomials to zero and the third to $P_3$ itself, unchanged, confirming
-$P_3$ is already invariant up to the $\delta$-twist, with no further
-reduction possible, and matching the dimension count independently.
+for $b=0,1,2,3,4$ follows from the power-sum formula applied to
+$p_k=\mathrm{tr}(M^k)$, $M=\delta(g)\,g$, at the $10$ class
+representatives, in exact rational arithmetic. The multiplicities are
+$1,0,1,1,2$, with sum $5$. Independently, the Reynolds operator
+(the exact average over the $48$ group elements) applied to $y_0^2$,
+$y_0^4$ and $y_0^2y_1^2$ gives $S_2$, $S_4$ and $S_{22}$ up to scale,
+and applied with the character $\delta$ to $y_0^3$, $y_0^2y_1$ and
+$y_0y_1y_2$ it gives $0$, $0$ and $P_3$. This matches the count.
 \end{proof}
 
-This is an exact result, with no floating point at any stage, and
-a substantial sharpening of the scope of \cref{sec:gram-sos-A18}: the true
-quartic tensor at $A_{18}$, whatever its exact values, is now known to
-lie in this $5$-dimensional family, since it must be invariant
-under an exact symmetry of the underlying volume function
-(\cref{prop:a18-stabiliser}). The only thing left unknown exactly is the
-five real numbers $c_1,\dots,c_5$ (the coefficients of the basis above)
-themselves.
-
-Fitting those five numbers, from seven directions chosen to isolate
-them (the pure $x_0$-direction and six combinations mixing $x_0$ and $y$
-in ways that separate $S_2$, $S_4$, $S_{22}$, and $P_3$'s contributions),
-each evaluated with the project's own high-precision (\texttt{mpmath},
-$40$ decimal digits) volume routine instead of plain double precision, gives, at step size $\sigma=0.02$,
+Since the quartic form at $A_{18}$ is invariant under the exact
+symmetry of \cref{prop:a18-stabiliser}, \cref{prop:a18-nullspace-irrep}
+places it in the $5$-dimensional span of \cref{prop:a18-invariant-dim},
+and only its five coefficients $c_1,\dots,c_5$ are unknown. They were
+fitted from seven directions chosen to separate them (the pure
+$x_0$-direction and six combinations of $x_0$ and $y$ that separate the
+contributions of $S_2$, $S_4$, $S_{22}$ and $P_3$), each evaluated with
+$40$ digits. At $\sigma=0.02$ the fit is
 \[
   (c_1,\dots,c_5)\approx(0.3119,-0.0516,0.2307,0.0273,0.0492),
 \]
-with a residual under $1.5\times10^{-4}$ against all seven fitted values.
-An independent refit at a second step size ($\sigma=0.01$) gives
-$(0.3157,-0.0495,0.2302,0.0308,0.0563)$, and a combined $14$-point fit
-using both step sizes together gives $(0.3138,-0.0505,0.2304,0.0290,%
-0.0527)$, all three agreeing to within a few percent on every
-coefficient, as the step sizes lead one to expect. In double precision
-the fits disagree by $100$ to $700\%$ between the two step sizes on this
-configuration, which is the precision floor described in
-\cref{sec:musin-degeneracy}; those fits are not used.
+with residual below $1.5\times10^{-4}$ at all seven directions. The fit
+at $\sigma=0.01$ and the combined $14$-point fit at both step sizes give
+\[
+  (0.3157,-0.0495,0.2302,0.0308,0.0563)
+  \quad\text{and}\quad
+  (0.3138,-0.0505,0.2304,0.0290,0.0527).
+\]
+The three agree to within a few percent on every coefficient. In double
+precision the fits at the two step sizes differ by $100$ to $700\%$, the
+precision limit of \cref{sec:musin-degeneracy}; those fits are not used.
 
-\begin{prop}[An SOS certificate for the fitted quartic, on the reduced family]\label{prop:a18-sos-reduced}
-Applying the same Gram-matrix/semidefinite-programming method as
-\cref{prop:gram-sos-A18} (validated against the same two textbook
-quartics beforehand) to each of the three fits above finds a feasible
-positive-semidefinite Gram matrix in every case, with optimal margin
-$t\approx0.0085$, $0.0131$, and $0.0108$ respectively, a valid
-sum-of-squares certificate for the fitted quartic, at a margin
-comparable to, and larger and more stable across independent
-fits than, \cref{prop:gram-sos-A18}'s own $t\approx0.0066$ on the
-unconstrained $35$-coefficient fit.
-\end{prop}
+\begin{numobs}[Sums of squares on the reduced family]\label{prop:a18-sos-reduced}
+The semidefinite program of \cref{sec:gram-sos-A18} is feasible for
+each of the three fits, with optimal margins $t\approx0.0085$,
+$0.0131$ and $0.0108$, so each fitted quartic is a sum of squares.
+\end{numobs}
 
-This is stronger evidence than \cref{prop:gram-sos-A18} in one specific,
-precise sense: it uses a family the true quartic is exactly known to lie
-in (\cref{prop:a18-invariant-dim}), fit from far fewer numbers ($5$, not
-$35$) determined by far fewer, more targeted measurements, each
-cross-checked across two independent step sizes instead of one, with
-consistent results. It is not stronger in the two senses that actually
-matter for a proof: the fitted coefficients are still finite-difference
-numerical estimates, not an exact symbolic derivation of the quartic
-tensor from first principles, so a fit error could in principle move the
-true form outside the certified family exactly as
-\cref{sec:gram-sos-A18} already cautions; and even granting the fit
-exactly, the margin remains thin, far from deep in the interior of the
-positive-semidefinite cone. The elementary route to
-\cref{conj:multidir-new} at $A_{18}$ ends here; what the exact
-reduction of the invariant space adds is that the evidence there rests
-on a five-dimensional space searched in full, rather than on a larger
-sample of the same kind.
+The reduced fit determines five coefficients from targeted directions
+at two step sizes, with consistent results and larger, more stable
+margins than the $35$-coefficient fit of \cref{prop:gram-sos-A18}. The
+coefficients are still finite-difference estimates and the margins are
+still small, so this is evidence and not a proof. The elementary route
+to \cref{conj:multidir-new} at $A_{18}$ stops here.
 \section{What is known about several simultaneous deviations}\label{sec:multidir-scope-summary}
 
-\subsection{Established}
+\subsection{Proved and observed}
 
-For configurations of small size, and for chain-structured ones up to
-the contact graph's true maximum induced-path length,
-\cref{lem:m2-exact-new,lem:chains-new} give the required positivity,
-either exactly or by Richardson extrapolation.
-\Cref{sec:dense-configs-new} shows that chains are not the worst
-topology and locates the regime where the second-order method loses its
-grip: a family of dense, non-chain configurations at which the
-governing quantity of that method vanishes.
+The second-order computations are numerical. For two adjacent
+directions and for chains up to the largest induced-path length of the
+contact graph, \cref{lem:m2-exact-new,lem:chains-new} find the joint
+Hessian positive definite. \Cref{sec:dense-configs-new} shows that
+chains are not the worst case: along dense configurations the minimum
+eigenvalue falls to the resolution of double precision.
 \Cref{thm:exact-sing-new,prop:4d-nullspace-new,prop:5d-nullspace-new}
-pin the vanishing down at two configurations, with enough working
-precision to distinguish exact degeneracy from a small nonzero value,
-and exhibit near-null subspaces of dimension $4$ and $5$.
-\Cref{thm:broad-sample-18-new,thm:broad-sample-20-new} sample those
-subspaces in $66$ directions between them, covering each subspace rather
-than a lower-dimensional slice of it, and find the quartic coefficient
-strictly positive at every direction tested.
+examine two such configurations in high precision and find near-null
+subspaces of dimensions $4$ and $5$ on which the second derivative
+vanishes to the working precision, and
+\cref{thm:broad-sample-18-new,thm:broad-sample-20-new} find the quartic
+coefficient positive along $66$ directions spanning these subspaces.
 
-The first of the two configurations has a large symmetry group. \Cref{prop:a18-stabiliser} exhibits an order-$48$
-group stabilising it, verified in integer arithmetic to act by
-automorphisms of $\Rt$, and verified numerically to commute with the
-joint Hessian and to leave the quartic coefficient constant on its
-orbits. Under this group the $4$-dimensional near-null subspace splits
-into two irreducible pieces, identified in
-\cref{prop:a18-nullspace-irrep} as
-$\varepsilon\oplus(\mathrm{std}\otimes\delta)$, and an exact character
-computation (\cref{prop:a18-invariant-dim}) shows that the space of
-invariant quartics on that subspace has dimension $5$ instead of the generic $35$, with an explicit basis. Fitting those five coefficients
-from high-precision finite differences, cross-validated at two step
-sizes, and running the Gram-matrix feasibility test on the reduced
-family gives a certificate with margin $t\approx0.009$ to $0.013$ across
-three independent fits (\cref{prop:a18-sos-reduced}), an improvement on
-the unconstrained $35$-coefficient fit but not a proof, since the
-coefficients are measured rather than derived.
+Two statements about the first configuration are exact.
+\Cref{prop:a18-stabiliser} gives a group of order $48$ that stabilises
+it, and \cref{prop:a18-invariant-dim} shows that for the representation
+identified numerically in \cref{prop:a18-nullspace-irrep} the invariant
+quartics form a space of dimension $5$, not the generic $35$. Fitting the
+five coefficients from high-precision finite differences at two step
+sizes and testing the fitted forms for a sum-of-squares representation
+gives margins $t\approx0.009$ to $0.013$ across three fits
+(\cref{prop:a18-sos-reduced}). The coefficients are measured, not
+derived, so this is not a proof.
 
-By a different method, finite-angle and exact rather than local,
+By a different method, exact and at finite angle,
 \cref{sec:swap-configs} settles \cref{conj:multidir-new} along
 three swap paths at $m=2,3,6$, across their whole angular range.
 
@@ -8104,39 +7895,36 @@ equal.
 the classification of \cref{thm:m24} and not by any of the arguments of
 this section: a full active set of twenty-four contacts is a $24$-point
 kissing configuration, and by \cref{thm:twentyfour-points} there is only
-one of those, so no direction deviates. Everything in this
-section is independent of the classification; it stands on its own, it
-says what elementary methods can and cannot do on this problem, and the
-classification rests on a certificate whereas this section rests on
-none. What follows is the scope of those elementary results.
+one of those, so no direction deviates. The results of this section do
+not use the classification. They show what elementary methods give on
+this problem, and they rest on no external certificate, whereas the
+classification does. The next subsection states their limits.
 
 \subsection{Not established by the methods of this section}
 
-None of this gives positive-definiteness of the quartic form at either
-configuration, and none of it gives an elementary proof of
-\cref{conj:multidir-new}. The statement ranges over every packing-valid
-configuration at every $m\ge2$; the dense regime of
-\cref{sec:dense-configs-new} contributes
-two examined configurations out of a very large family, and the rest of
-that family, along with every other value of $m$, is untouched. The
-exact degeneracy of \cref{sec:musin-degeneracy} does say something
-definite about what an elementary proof cannot look like: at these
-configurations no argument that stops at second order can decide the
-sign, so whatever settles the inequality there has to engage the quartic
-term directly.
-The three swap paths do not reach that regime either, being low in $m$
-and highly symmetric.
+None of this proves that the quartic form is positive definite at
+either configuration, and none of it gives an elementary proof of
+\cref{conj:multidir-new}. The conjecture ranges over every
+packing-valid configuration at every $m\ge2$; the dense range of
+\cref{sec:dense-configs-new} contributes two examined configurations
+out of a very large family, and the rest of that family, with every
+other value of $m$, is not examined. The degeneracy of
+\cref{sec:musin-degeneracy} restricts what an elementary proof can look
+like: if the second derivative vanishes on the near-null subspaces, as
+the computations indicate, no argument that stops at second order can
+decide the sign there, and a proof has to use the quartic term. The
+three swap paths do not reach that range either, being low in $m$ and
+highly symmetric.
 
-The order-$48$ symmetry narrows the search without closing it. It fixes
-the exact $5$-dimensional space in which the true quartic tensor lies,
-which is a reduction from $35$ parameters, but the five numbers used
-are finite-difference measurements, not a symbolic derivation, and
-the feasibility margin is thin. The symmetry is also specific to the
-configuration where it was found; no analogue at the second
-configuration, or anywhere else in the dense family, has been looked for.
+The symmetry of order $48$ narrows the search without closing it.
+Together with \cref{prop:a18-nullspace-irrep} it confines the quartic
+tensor to a $5$-dimensional space instead of a $35$-dimensional one, but
+the five numbers used are finite-difference measurements, not a
+symbolic derivation, and the feasibility margin is small. No analogous
+symmetry of the second configuration, or of any other dense
+configuration, has been sought.
 
-The cap argument of \cref{sec:cap-theorem} does not extend here, for a
-structural reason rather than a technical one. With one deviating
+The cap argument of \cref{sec:cap-theorem} does not extend here. With one deviating
 direction the other twenty-three half-spaces are fixed, so there is a
 fixed body $Q$ and every parameter of the problem sits in the cutting
 half-space. With $m$ deviating directions the body moves with the
@@ -8156,14 +7944,13 @@ that uses no classification has to prove that inequality.
 form $\vol(\conv(W)^{\circ})\ge8$ over contact configurations
 (\cref{prop:polar-form}) and the boundary form
 $\mathrm{area}(\partial V_c)\ge32$ (\cref{lem:surface-form}). Neither
-proves anything by itself. What they do is fix the position of the
-multi-direction case exactly: by \cref{prop:polar-form} the case these sections treat is
+proves anything by itself. They locate the multi-direction case
+precisely: by \cref{prop:polar-form} the case these sections treat is
 the part of the $24$-cell conjecture in which two or more contact
 directions leave the root system at once, and nothing here settles it
 without the classification of \cref{thm:m24}.
 
-They also do negative work, which is the substantive part. Four
-natural approaches are
+They also rule out approaches. Four natural approaches are
 eliminated, each by an evaluation at the $D_4$ configuration itself,
 where an argument that is to produce the sharp constant $8$ must lose
 nothing. Term-by-term reduction to \cref{thm:eperp-closed} is
@@ -8181,7 +7968,7 @@ product bound is eliminated because it carries a factor $\tfrac32$ of
 slack there. The last two are \cref{rem:global-routes}.
 
 \looseness=-1
-A fifth approach goes the same way. \Cref{prop:area-optimal} shows
+A fifth approach fails as well. \Cref{prop:area-optimal} shows
 that no argument resting on the areas of the spherical Voronoi cells can
 do better than $7.7989\ldots$, since the covering bound already
 saturates that information and the root configuration has cells of equal
@@ -8193,7 +7980,7 @@ the sharpest version of the same accounting: putting every pairwise cap
 overlap back exactly, which below $r_m$ is not an estimate but an
 identity, gives $7.997885\ldots$ at $m=23$, so even that stops short.
 
-A sixth goes with it. That shape deficit cannot be collected one cell at
+A sixth fails with it. That shape deficit cannot be collected one cell at
 a time, in either decomposition the configuration provides
 (\cref{rem:no-local-cell}): the per-cell inequality \eqref{eq:local-cell}
 is sharp at every cell of the root configuration and fails at a
@@ -8216,8 +8003,8 @@ half of the kissing problem in dimension four, which the kernel of
 Every result of \cref{sec:hessian-technique,sec:musin-degeneracy,%
 sec:exact-sing,sec:broad-sample} is second-order: a statement about the
 joint Hessian $H_A$, which controls $\defect$ only infinitesimally close
-to the root-aligned configuration. This section reports a different,
-complementary body of work: exact positivity proofs at finite angle for three
+to the root-aligned configuration. This section gives exact positivity
+proofs at finite angle for three
 specific, highly symmetric multi-direction configurations, each rotated
 through their \emph{entire} packing-valid angular range instead of sampled near $\theta=0$. These are the first
 finite-angle resolutions of a slice of \cref{conj:multidir-new} by
@@ -11321,26 +11108,26 @@ stays at the three-point level is complete.
 \Cref{conj:multidir-new} is proved by
 \cref{cor:conj-resolved}, and so by the classification of \cref{thm:m24};
 what follows is what elementary means establish about it, independently
-of any certificate, and those results stand on their own.
+of any certificate.
 
-The natural second-order method, which settles every configuration of
-small size, degenerates exactly at a family of dense ones.
+The second-order method, which numerically gives positivity at every
+small configuration examined, degenerates at dense ones.
 \Cref{thm:exact-sing-new,prop:4d-nullspace-new,prop:5d-nullspace-new}
-locate that degeneracy: at two specific configurations the joint Hessian
-has a near-null subspace of dimension $4$ and $5$ respectively, and
-higher-precision arithmetic confirms the vanishing is exact rather than
-merely small. \Cref{thm:broad-sample-18-new,thm:broad-sample-20-new}
-sample those subspaces in $66$ directions and find the governing quartic
-coefficient strictly positive everywhere tested.
-\Cref{prop:a18-stabiliser} exhibits an exact order-$48$ symmetry of the
-first configuration, and
-\cref{prop:a18-nullspace-irrep,prop:a18-invariant-dim} identify the
-representation it carries on the near-null subspace and prove, by exact
-character theory, that the space of quartics invariant under it has dimension $5$ instead of the generic $35$. Fitting those five
-coefficients numerically and applying a semidefinite feasibility test
-gives a sum-of-squares certificate with a thin margin
-(\cref{prop:a18-sos-reduced}); the fit is numerical, and the certificate
-is evidence and not a proof.
+find, at two specific configurations, near-null subspaces of the joint
+Hessian of dimensions $4$ and $5$ on which the second derivative
+vanishes to a working precision of up to $45$ digits.
+\Cref{thm:broad-sample-18-new,thm:broad-sample-20-new} sample those
+subspaces in $66$ directions and find the quartic coefficient positive
+at every one. \Cref{prop:a18-stabiliser} gives an exact symmetry of
+order $48$ of the first configuration, \cref{prop:a18-nullspace-irrep}
+identifies numerically the representation it carries on the near-null
+subspace, and \cref{prop:a18-invariant-dim} proves by exact character
+theory that the quartics invariant under that representation form a
+space of dimension $5$ instead of $35$. Fitting those five coefficients
+and applying a semidefinite feasibility test gives a sum-of-squares
+representation of the fitted form with a small margin
+(\cref{prop:a18-sos-reduced}); the fit is numerical, so this is
+evidence and not a proof.
 
 \Cref{sec:swap-configs} proves \cref{conj:multidir-new} along
 three swap paths, at $m=2,3,6$, across their entire angular range rather
@@ -12315,18 +12102,17 @@ remaining root has the most neighbours already active) drives the
 minimum eigenvalue down monotonically and strictly through $m=15$; from
 $m=18$ onward the extrapolated value is smaller in magnitude than
 double-precision finite-difference noise can resolve (an $O(10^{-10})$
-absolute volume precision divided by $h^2$), which is exactly why
-\cref{sec:exact-sing,sec:broad-sample} turn to arbitrary-precision
-arithmetic instead of attempting further double-precision refinement.
+absolute volume precision divided by $h^2$), which is why
+\cref{sec:exact-sing,sec:broad-sample} use arbitrary-precision
+arithmetic instead of further double-precision refinement.
 
-\subsection{Broadened sampling at the exact singularity (\cref{sec:broad-sample})}
+\subsection{Broadened sampling at the singular configuration (\cref{sec:broad-sample})}
 
 At the $m=18$ configuration above, the near-null space of $H_A$ is
-rigorously confirmed $4$-dimensional (basis vectors $w_0,w_1,w_2,w_3$,
-via three-step-size eigenvalue scaling: eigenvalues $0$--$3$ shrink by
-a factor of $\approx4$ per halving of the step size, matching a
-true zero to that order, while eigenvalue $4\approx0.075$ does not
-shrink and is a real positive eigenvalue). Sampling the quartic
+$4$-dimensional to the accuracy of the computation (basis vectors
+$w_0,w_1,w_2,w_3$; by the three-step-size scaling test, eigenvalues
+$0$ to $3$ decrease by a factor of about $4$ per halving of the step, as
+zero eigenvalues do, while eigenvalue $4\approx0.075$ does not change). Sampling the quartic
 coefficient $a_4$ of $\defect$ restricted to each of $36$ directions
 spanning this near-null space (the $4$ basis vectors, all $\binom42=6$
 normalised pairwise sums/differences among them, and $20$ uniformly

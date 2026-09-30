@@ -1,65 +1,37 @@
 #!/usr/bin/env python3
 """
 multidir_exact_zero_hessian_hp.py
-=====================================
-Resolves, for one specific dense (non-chain) m=18 configuration flagged by
-multidir_dense_topology_search.py, whether the double-precision-observed
-near-zero joint-Hessian eigenvalues are a small positive floor, exactly
-zero, or negative -- using genuinely higher-precision arithmetic
-(hp_volume.py, up to 45 decimal digits) rather than finer double-precision
-step sizes, which cannot resolve this (double precision's own O(1e-10)
-absolute volume error, divided by h^2 in a finite difference, swamps
-anything this small once h is small enough to matter).
 
-SETUP. Active set (18 of the 24 D4 roots, found by the greedy-density
-growth of multidir_dense_topology_search.py starting from root 0):
+Examines the joint Hessian at the dense configuration A_18 of Section 17
+of the paper in high-precision arithmetic (hp_volume.py, up to 45
+decimal digits). Double precision cannot decide whether its smallest
+eigenvalues are small and positive, zero or negative: its absolute
+volume error of order 1e-10, divided by h^2 in a finite difference,
+exceeds them once h is small.
+
+Active set (18 of the 24 D4 roots, from greedy dense growth starting at
+root 0):
     [0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 20, 21, 22, 23]
-At double precision (h=0.01), the 54x54 joint Hessian's four smallest
-eigenvalues are all of order 1e-5 to 1e-4 (compare: the 5th-smallest is
-already 0.075), clearly separated from the rest of the spectrum -- a
-genuine near-null space of dimension (at least) 3-4, not an isolated
-eigenvalue.
+At h = 0.01 the four smallest eigenvalues of the 54x54 joint Hessian are
+of order 1e-5 to 1e-4, and the fifth is 0.075.
 
-METHOD. For the corresponding eigenvector(s) v (and two further vectors
-mixing pairs of them, to probe more than a single ray in the near-null
-space), evaluate F(s*v) = vol(P(s*v)) - 8 with hp_volume.py at 35-45
-decimal digits of precision, at several step sizes s down to 0.005, far
-smaller than double precision could resolve meaningfully.
+Method: along eigenvectors of the smallest eigenvalues and two mixtures
+of them, F(s v) = vol(P(s v)) - 8 is evaluated at 35 to 45 digits for
+s = 0.02, 0.01 and 0.005.
 
-FINDING. Along every one of the four directions tested (the single
-smallest-eigenvalue eigenvector, and two mixed combinations of the three
-smallest), the central-difference second-derivative ESTIMATE
-(F(s)-2F(0)+F(-s))/s^2 shrinks by a clean factor of very close to 4 each
-time s is halved (checked at s=0.02, 0.01, 0.005), across three
-independent step-size halvings -- the exact signature of a function whose
-true second derivative is ZERO and whose leading behaviour is quartic:
-F(s) = a_4 s^4 + O(s^6) with a_4 found (consistently across all four
-directions and all tested s) to be POSITIVE, approximately 0.026.
+Output: along every direction tested, the central-difference estimate
+(F(s) - 2F(0) + F(-s))/s^2 of the second derivative decreases by a
+factor close to 4 at each halving of s, which is the behaviour of a
+function with zero second derivative and leading term a_4 s^4; the
+estimated a_4 is positive, about 0.026. This is numerical evidence that
+the joint Hessian is singular at A_18, in which case no second-order
+argument can decide the sign there. The directions tested span only
+three dimensions of the near-null subspace; multidir_nullspace_broad_sample.py
+samples all four (Numerical observations 17.1, 17.2 and 18.1 of the
+paper).
 
-INTERPRETATION. The joint Hessian is not merely small but EXACTLY singular
-along at least this 3-4 dimensional subspace at this configuration -- a
-qualitatively different, and stronger, finding than "the eigenvalue is
-too small to resolve". This means the second-order (Hessian-eigenvalue)
-technique underlying every other piece of evidence in this section
-(cliques, chains up to length 8, the star at m=9, the greedy-dense
-sweep) CANNOT in principle establish positivity at this configuration --
-not because the computation is hard, but because the quantity it is
-trying to bound (the minimum eigenvalue) is exactly zero here. Any
-argument covering this configuration needs quartic-order (or higher)
-information, a categorically different and harder kind of analysis.
-
-F itself remained strictly positive (via the positive quartic
-coefficient) at every point tested here -- this finding does NOT
-disprove Conjecture (Multi-Direction Positivity), and does not prove it
-either: only 4 directions within the (at least 3-dimensional, possibly
-higher) near-null space were tested, not the whole subspace, so a
-negative quartic direction elsewhere in that subspace is not excluded
-by this script. It is reported precisely for what it is: an exact,
-cross-validated discovery of a real limitation of the existing
-second-order method, not a step toward or away from a proof.
-
-Runtime: several minutes (each hp_volume evaluation at m=18, ~45 digits,
-takes on the order of 10-20 seconds; roughly 20 evaluations total).
+Runtime: several minutes (about 20 high-precision volume evaluations of
+10 to 20 seconds each).
 """
 import sys
 import time
@@ -134,13 +106,12 @@ def main():
             s1, d1 = second_derivs[k]
             ratio = float(d0) / float(d1) if d1 != 0 else float('inf')
             print(f"  ratio 2nd-deriv(s={s0})/2nd-deriv(s={s1}) = {ratio:.3f}  "
-                  f"(expect ~4 if true 2nd derivative is exactly 0)")
+                  f"(about 4 if the second derivative is 0)")
         print()
 
     print("CONCLUSION: in every direction tested, the second-derivative estimate")
-    print("shrinks by a clean factor of ~4 per halving of s -- the Hessian is")
-    print("EXACTLY (not approximately) singular here, with a positive quartic")
-    print("term governing F's true local behaviour.")
+    print("decreases by a factor of about 4 per halving of s, consistent with a")
+    print("singular Hessian here and a positive quartic leading term.")
     return 0
 
 

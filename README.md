@@ -49,7 +49,7 @@ Deep Bhattacharjee, itsdeep@live.com.
     arc1_v1w1/          first-arc certificates (Sections 9 and 10)
     arc2_w1v2/          second-arc certificates and the symmetry of the
                           fundamental triangle (Sections 8, 11 and 12)
-    hessian_multidir/   joint-Hessian computations (Sections 15 to 19)
+    hessian_multidir/   joint-Hessian computations (Sections 15 to 18)
     swap_configs/       swap configurations at finite angle (Section 20)
     multi_cap/          the contact cases of Section 7 and the non-contact
                           cases of Section 21: covering bound, twenty-three
