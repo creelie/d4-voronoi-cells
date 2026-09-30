@@ -7718,7 +7718,7 @@ Every element of the group of order $384$ is a monomial matrix with
 entries $0,\pm1$, so whether it maps $\Rt$ to itself and whether it
 fixes the index set $A_{18}$ are finite integer checks. All $48$
 elements of the described subgroup fix $A_{18}$, and none of the other
-$336$ elements does.
+$336$ elements does. Both checks are repeated in Lean.
 \end{proof}
 
 Each element of this group is an isometry of $\mathbb{R}^4$ that maps
@@ -10337,8 +10337,16 @@ found by local search reach $0.0905$ against the $0.2678$ it allows
 (floating point, twelve starts). The second level does not give that bound
 from its value alone: at slack $0.008$ and the degrees $(14,16)$ its value is
 $24.555$ (\cref{sec:closure}), so it leaves more than half a point of room.
-A bound on the defects of exactly twenty-four points calls for the programme
-with the number of points fixed at $24$, a separate computation.
+Nor does the programme with the number of points fixed at $24$, at most
+$\binom{24}2+\frac1{100}$ pairs, and the weighted defect as its objective.
+At the degrees $(14,16)$ its moment side reads $1.44$ at a relative
+infeasibility of $4\cdot10^{-4}$, unchanged over its last two iterations,
+with $S_1,\dots,S_5$ near $0.24$, $0.24$, $0.46$, $0.73$ and $6.4$ (floating
+point; the run was stopped before convergence). For these moments no
+polynomial of degree at most $11$ in place of $p$ in the proof of
+\cref{prop:design-budget} excludes a further centre, so at this slack the
+relaxation does not confine twenty-four points closely enough to a root
+system for the defects to settle the case.
 
 With $23$ centres close to $c$, the case is \cref{thm:m23-labelled} with two
 or more further centres, and \cref{thm:certificate} has a margin of only
@@ -11334,11 +11342,12 @@ rationals, checked as above. The second-level programmes of
 solved by the solver of \cite{LdL24} at a working precision of $128$ bits,
 with the Schur complement accumulated in triple-double arithmetic. No
 certificate from them is rounded and checked, so their values, such as
-$24.555$ at slack $0.008$, are reported as evidence only.
+$24.555$ at slack $0.008$ and the $1.44$ of the programme with exactly $24$
+points, are reported as evidence only.
 
 \subsection{The formal part}\label{sec:formal-part}
 
-Seventeen parts of the paper are also verified in the Lean~4 proof
+Eighteen parts of the paper are also verified in the Lean~4 proof
 assistant, with no external library; each is a finite computation or a
 polynomial identity, and \cref{tab:formal} lists them. Identities are
 proved over every commutative ring by Lean's ring normaliser, so that they
@@ -11427,6 +11436,11 @@ every $\rho\in[2,\sqrt6)$, and the $200$ intervals of part (iii). \\
 $[-1,0.614039]$ ($29$ intervals), $0.614039>\tau$, the bound
 $(24p_0)^2>0.26785\sum_kp_k^2/c_k$, and $S_1=\dots=S_5=0$ for the
 roots. \\
+\cref{prop:a18-stabiliser} & The $384$ signed coordinate permutations, all
+distinct and each mapping the roots onto themselves; exactly $48$ of them
+fix $A_{18}$, those fixing one coordinate with its sign; and two orthogonal
+maps carrying the roots onto themselves and $A_{18}$ onto the
+configurations grown from roots $5$ and $12$. \\
 \end{longtable}
 
 \subsection{Verifying from the text alone}

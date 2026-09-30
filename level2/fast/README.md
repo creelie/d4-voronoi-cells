@@ -16,6 +16,7 @@ precision.
 | number of points, s = 1/125 | 24.5555 (gap 1.3e-5) | 86 | about 15 min on 4 cores | 10.3 GB |
 | (6, 8), same programme, check | 26.7286 | 51 | 18 s on 1 core | 1.8 GB |
 | (6, 8), exactly 24 points, weighted defect | 4.37987 | 54 from scratch, 27 warm | 16 s on 1 core | 1.9 GB |
+| (14, 16), exactly 24 points, weighted defect | at least about 1.44 (stopped) | 5, warm | about 14 min on 4 cores | 11 GB |
 
 The value 24.5555 bounds the number of points of slack 1/125 in the
 relaxation; it is evidence, not a theorem, since no certificate is rounded
@@ -34,6 +35,20 @@ and the solver's dual diverges (`runs/fc_6_8_eq_diverged.log`); the
 programme therefore fixes the number of points and bounds the number of
 pairs by binomial(24, 2) + FC_EPS.
 
+At (14, 16), with FC_EPS = 1/100, the programme gives nothing either.  It was
+started warm from iteration 64 of the plain run (the log's "iteration 51"
+counts from that run's resumption at iteration 13); the machine restarted
+twice and the run resumed from its checkpoints (`runs/fc_1416_part1_it1-3.log`,
+`runs/fc_1416_part2_it4-5.log`, rows renumbered from 1 at each resumption).
+Its moment side read 1.439 after iterations 4 and 5 while the relative
+infeasibility fell from 3.1e-3 to 3.6e-4, and the run was stopped there.
+`diag_fc_primal.jl` reads the pair side of that moment solution: 276.57 pairs
+and S_1, ..., S_5 = 0.24, 0.24, 0.46, 0.73, 6.41
+(`runs/fc_1416_it5_moments.txt`).  For these moments no test polynomial of
+degree up to 11 excludes a further centre (`hole_test.py`,
+`runs/hole_test_fc_1416.txt`), while real codes of slack 1/125 found by local
+search reach only 0.09 in the weighted defect.
+
 ## The files
 
 | file | what it does |
@@ -46,6 +61,8 @@ pairs by binomial(24, 2) + FC_EPS.
 | `patched_solver.jl` | the solver of ClusteredLowRankSolver 1.0.3 with checkpoints and warm starts (its licence: `LICENSE.ClusteredLowRankSolver`) |
 | `tiled_S.jl`, `fast_S.jl` | the Schur complement, tiled and in split double-precision products |
 | `analyze_cert.jl` | reads the bound and the multiplier P2 off a checkpoint, and checks P2 against the constraint matrices |
+| `diag_fc_primal.jl` | reads the pair side (pair count and S_k) of the moment solution of the programme with exactly 24 points |
+| `hole_test.py` | tests whether any polynomial of degree up to 11 excludes a further centre, given S_1, S_2, ... |
 | `counts_check.jl` | sums the moments by subset size (the number of points, pairs, triples, quadruples) |
 | `runs/` | the logs |
 

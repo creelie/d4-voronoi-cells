@@ -2,8 +2,9 @@
 
 **The programmes at the degrees (14, 16) now run on this machine** (four
 cores, 16 GB): the bound on the number of points of slack 1/125, 24.5555,
-and the programme with exactly 24 points, both in `fast/` (see
-`fast/README.md`).  The estimate made earlier from (8, 10) and (10, 12), about
+and the programme with exactly 24 points, whose value is at least about
+1.44, far above the 0.26785 the design defects would need, both in `fast/`
+(see `fast/README.md`).  The estimate made earlier from (8, 10) and (10, 12), about
 135 GB and twelve days for (14, 16) with the authors' own solver, no longer
 applies to them.
 

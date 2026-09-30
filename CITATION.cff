@@ -18,8 +18,8 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "v1.11.1"
-date-released: "2026-09-28"
+version: "v1.12.0"
+date-released: "2026-09-30"
 keywords:
   - sphere packing
   - Voronoi cell

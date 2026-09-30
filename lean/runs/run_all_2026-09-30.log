@@ -1,4 +1,3 @@
-== run_all.sh  2026-09-30 21:27 UTC  Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)
 == D4Stress.lean
 'D4Stress.card_roots' does not depend on any axioms
 'D4Stress.roots_nodup' does not depend on any axioms
@@ -270,8 +269,8 @@
 'D4DesignBudget.p_negative_below_th' depends on axioms: [propext, Classical.choice, Quot.sound]
 'D4DesignBudget.threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
 'D4DesignBudget.roots_design' depends on axioms: [propext, Classical.choice, Quot.sound]
-all fourteen files check
-
-real	4m26.959s
-user	3m56.456s
-sys	0m40.793s
+== D4A18.lean
+'D4A18.stab_count' depends on axioms: [propext]
+'D4A18.congruent_from5' depends on axioms: [propext]
+'D4A18.congruent_from12' depends on axioms: [propext]
+all fifteen files check
