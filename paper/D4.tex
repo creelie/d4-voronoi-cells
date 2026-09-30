@@ -3404,7 +3404,7 @@ $N=24.24$ at degree $8$: the relaxation does not know that $24$ is the
 largest number of contacts available. Since $E(W)\ge\tau$ holds with
 equality at the root configuration and, by \cref{thm:m24}, only there,
 a certificate for it is a certificate of uniqueness, and a relaxation
-that does not see maximality does not see uniqueness. Second, the
+that does not detect maximality does not detect uniqueness. Second, the
 minimising $p$ is not a perturbation of the root configuration: it
 carries about a third of its pair mass at $u=\tfrac12$ and spreads the
 rest continuously over $(-1,0)$, where the root configuration has atoms
@@ -3747,8 +3747,8 @@ Cauchy--Schwarz gives $\int N^2\ge(\int N)^2/2\pi^2$, and rearranging is
 \end{proof}
 
 The second fact is negative, and it is the sharpest thing we can say
-about the route. Everything the estimate of \cref{prop:second-order} sees
-of a configuration is the multiset of its pair angles. One can ask how
+about the route. The estimate of \cref{prop:second-order} depends on a
+configuration only through the multiset of its pair angles. One can ask how
 far that multiset alone can carry it, by relaxing the multiset to an
 arbitrary measure subject to every inequality of the same character that
 a configuration satisfies.
@@ -3796,15 +3796,15 @@ integration is carried to $r_*$: it is that nothing which reads only
 the pair angles gets past four fifths of the way, whatever constraints
 of that type are imposed and however they are combined. The minimising
 measure is instructive. It gives every direction nine neighbours at
-$62.3^\circ$ and nearly eight at $103^\circ$, which is a perfectly good
-local picture at any one direction, and the two constraints available
-to a pair-angle relaxation, Bonferroni and positive definiteness, cannot
-see that the twenty-three such pictures do not fit together on one
-sphere. Saturation itself is invisible at that level too, since the
-covering radius is not a function of the pair angles, which is why
-\cref{prop:cov-mult} does not help either. A proof of the bound at
-twenty-three contacts has to read more of the configuration than its
-pair angles record; the classification of \cref{thm:m23-from-codes} is
+$62.3^\circ$ and nearly eight at $103^\circ$, which is consistent at
+any one direction, and the two constraints available to a pair-angle
+relaxation, Bonferroni and positive definiteness, cannot detect that
+twenty-three such neighbourhoods do not fit together on one sphere.
+Saturation is not expressible at that level either, since the covering
+radius is not a function of the pair angles, which is why
+\cref{prop:cov-mult} does not help. A proof of the bound at
+twenty-three contacts has to use more of the configuration than its
+pair angles; the classification of \cref{thm:m23-from-codes} is
 one such thing, and the three-point form of
 \cref{sec:strict-inequality} is another.
 \end{remark}
@@ -4540,8 +4540,8 @@ $0.5000071\ldots$ at $m=24$, where the true value is $\tfrac12$;
 $0.4980170\ldots$ at $m=22$, a minimal angle of $60.1311\ldots^\circ$,
 against the $60.1398863^\circ$ of the published tables \cite{Slo}; and,
 over $60$ starts, $0.5374065\ldots$ at $m=25$, where no contact
-configuration exists. Therefore the procedure locates the root system, sees
-the slack at $22$ and sees the obstruction at $25$, and one can read how
+configuration exists. Therefore the procedure locates the root system,
+detects the slack at $22$ and the obstruction at $25$, and one can read how
 close to $\tfrac12$ it gets when $\tfrac12$ is the answer. At $m=23$,
 over $1500$ random starts, the smallest largest inner product it reached
 was $0.5000078\ldots$, which is nearer to $\tfrac12$ than the calibration
@@ -5046,7 +5046,7 @@ First, it is strict where the classification is not. The classification
 asks for a property of codes of minimal angle exactly $60^\circ$, and
 the deletion of a root sits on the boundary of that property, with
 $g=\tfrac12$; \cref{rem:m23-uniqueness} explains why no relaxation can
-see a boundary. Inequality \eqref{eq:strict-pairs} holds at the
+detect a boundary case. Inequality \eqref{eq:strict-pairs} holds at the
 deletion with $0.034$ to spare, and at every configuration reached in
 \cref{sec:slack-continuation} with more: the least value of
 $\vol(V_c\cap B(\sqrt{3/2}))$ found over the configurations of
@@ -6143,7 +6143,7 @@ natural structural reduction is false, and the
 combinatorial structure of the interior is strictly richer than that of
 the boundary, so a region-by-region derivation would need at least four
 new volume formulas before any certificate. \Cref{sec:cap-theorem}
-therefore uses an argument that does not see the triangle.
+therefore uses an argument that does not use the triangle.
 
 \section{Breakpoint classification on the first arc}\label{sec:arc1-breakpoints}
 
@@ -9154,7 +9154,7 @@ other over the whole range, and the case has to be treated through the
 single volume statement (G) of \cref{prop:reduction-G}.
 Statements (i) and (iii) are classifications of codes, (ii) is an inequality
 for the volume whose second order is certified below, and (iv) needs (i) and
-(iii) to see that twenty-four centres close to $c$ leave no room for another
+(iii) to show that twenty-four centres close to $c$ leave no room for another
 within $\sqrt6$. What follows is the evidence for each, and where the
 methods of this paper stop. Near the root system the inversion hull is
 sharp to first order: numerically,
@@ -9190,7 +9190,7 @@ $49$, the least squared violation of the constraints grows from $0.14$ at $44$
 to $6.5$ at $49$, while $42$ and $43$ centres fit with most of them on that
 sphere. If the survey has found every local minimum, the pair terms fail
 only at twenty-four centres near the root system; from $31$ on a single
-certificate that sees the distances settles every count
+certificate that uses the distances settles every count
 (\cref{thm:count31}), and at most $49$ centres fit within $\sqrt6$.\footnote{The largest packing the survey
   finds has $43$ centres, $29$ of them within $10^{-4}$ of the sphere of radius
   $\sqrt6$. Two centres on that sphere at least $2$ apart subtend an angle of at
@@ -9198,11 +9198,11 @@ certificate that sees the distances settles every count
   question is one about spherical codes of that angle in $S^3$. For such codes
   the three-point bound is no better than the bound $49.58$ used here: at
   degree $8$ it gives $49.5$.} From $25$ to $30$ a certificate
-has to see that twenty-four centres close to $c$ leave no room for another
+has to detect that twenty-four centres close to $c$ leave no room for another
 within $\sqrt6$; at the root system the nearest room is at $2\sqrt2$. That is
 a statement about the shape of twenty-four directions at positive slack,
 statement (i), which neither the three-point bound nor a kernel on pairs
-sees (\cref{rem:what-c-needs}). At twenty-four the size of the gap
+detects (\cref{rem:what-c-needs}). At twenty-four the size of the gap
 can be read off. The pair terms reach $8$ only at
 $\sum\delta_i=0.155$ along the root system pushed out evenly, and at
 $\delta=0.197$ with one centre pushed out and the others in contact, while the explicit neighbourhood of
@@ -9215,7 +9215,7 @@ the centres move out, but along the root system pushed out evenly that moves
 the crossing only from $0.1551$ to $0.1473$. With $\varepsilon_0$ explicit, what
 statement (ii) asks for is, at intermediate distances, a lower bound for
 the part of the cell outside $B(\sqrt{3/2})$, which the pair terms of
-\cref{lem:no-triple} do not see, strong enough to bridge that factor of about
+\cref{lem:no-triple} omit, strong enough to bridge that factor of about
 forty. The facet-by-facet estimate of step (b) stays positive up to
 $\sum\delta_i=4.5\cdot10^{-3}$, and the rigidity it rests on stops near
 $8\cdot10^{-3}$, so no sharpening of its constants bridges that factor;
@@ -9267,7 +9267,7 @@ does one exclude twenty-four directions of slack $0.008$, as
 most $0.6141$ with each. The
 second obstacle is the first in another guise: it is the uniqueness of the
 root system, whose covering radius leaves no room for a twenty-fifth centre
-within $\sqrt6$, that the first level does not see. The second level can at
+within $\sqrt6$, that the first level does not detect. The second level can at
 least be evaluated on an ordinary machine: $A_2K$ for the kernel of
 \cite{LLM24}, computed in floating point from the zonal matrices of
 \cref{sec:certificate-checked}, reproduces
@@ -10035,7 +10035,7 @@ With at most $23$ centres within $\sqrt6$ the bound holds by
 \begin{remark}[Where the kernel stops]\label{rem:kernel-limit}
 The argument is Delsarte's linear programming method \cite{DGS77}, with the
 distance from $c$ carried along as a continuous label, and it is blind in
-the same way: a kernel that sees only pairs bounds the kissing number of
+the same way: a kernel on pairs alone bounds the kissing number of
 $\mathbb{R}^4$ by $25$ and not $24$ \cite{OS79}. \Cref{tab:kernel-limit}
 gives, for each count, the least value of $|Y|m+\frac t2$ that such a
 certificate reaches, against the largest union the search of
@@ -10239,7 +10239,7 @@ $0.228$ in root-sum-square, $0.0465$ in root mean square, in place of the
 $\frac1{48}$ in root mean square of \cref{thm:near-contact}; \cref{prop:second-code} does not contradict it,
 since the deepest hole of its code is at inner product $0.659$ (floating
 point, over $3000$ local minimisations). The three-point bound does not
-see holes. The value of a labelled certificate is a polynomial in the number
+detect holes. The value of a labelled certificate is a polynomial in the number
 $n$ of directions of slack $0.008$, and it excludes $n$ when it is negative.
 Without a further direction, no certificate of degree $10$ excludes
 $n=24.9$, and none of degree $12$ excludes $n=24.7$; with a further
@@ -10254,9 +10254,9 @@ root system with a direction in one of its deep holes meets every
 constraint: from $0.144$ to $0.0116$. The fall therefore does not bear on
 exclusion.} Read as counts, the further direction would have to be worth
 at least $0.7$ of a point, and these certificates value it at least half a
-point lower. The kernel of \cref{thm:count31}, which sees pairs only, is weaker
+point lower. The kernel of \cref{thm:count31}, which uses pairs only, is weaker
 still.
-The second level of the Lasserre hierarchy sees twenty-four points exactly
+The second level of the Lasserre hierarchy determines twenty-four points exactly
 \cite{LLM24}, but not in the form with a margin on pairs, which the root
 system itself spends (\cref{prop:margin-floor}); at this slack the
 statement cannot pin the inner products one by one, since they need not
@@ -10980,7 +10980,7 @@ matrices that carry the argument (\cref{rem:certificate-found}). What
 made this possible where a classification of the codes could not be
 had is set out in \cref{rem:strict-kind}: the inequality is strict at
 the deletion, so a relaxation had room, whereas the deletion sits on
-the boundary of the classification and no relaxation sees a boundary
+the boundary of the classification and no relaxation detects a boundary case
 (\cref{rem:m23-uniqueness}).
 
 The sections before that proof describe the configuration that the
