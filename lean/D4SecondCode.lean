@@ -1,6 +1,6 @@
 /-
-D4SecondCode.lean: Proposition 2.30 of the paper.  Statement (i) of "What is left"
-(Section 2.8) fails at slack 849/50000 = 0.01698.
+D4SecondCode.lean: Proposition 21.21 of the paper.  Statement (i) of "What is left"
+(Section 21.1) fails at slack 849/50000 = 0.01698.
 
 The 24 points below have rational coordinates (from multi_cap/second_order/
 code24_exact.py, which rounds the best code found by code24_second.py to

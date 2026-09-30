@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 explicit_eps0.py -- an explicit value for the constant epsilon_0 of the
-near-contact theorem (Section 2.8 of the paper, v1.8.0), in exact and ball
+near-contact theorem (Section 21.1 of the paper), in exact and ball
 arithmetic.
 
 The theorem says: if no centre of a unit-ball packing of R^4 lies at a distance
@@ -33,7 +33,7 @@ argument.  Here every step is quantitative.
     normalised roots: d(W) <= 2 D / sqrt(6 - D) + sqrt(24) D / 6, D = 23 delta.
  D. The local volume bound near the root system, with explicit constants: the
     derivative of the volume along the linear path, facet by facet, each facet
-    compared with the regular octahedron face by face (Theorem 2.18, step (b)).
+    compared with the regular octahedron face by face (Theorem 21.9, step (b)).
  E. Assembly: kappa*, epsilon_0 = 2 kappa*.
 
 Usage: python3 explicit_eps0.py /path/to/LasserreSphericalCodes/proofs/4_24

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 shell_reduction.py -- the reduction from the Voronoi cell of a packing to the
-cell of its contacts, done correctly (Section 2 of the paper, Lemmas 2.7 and
-2.9 as corrected in v1.4.0, and Theorem 1.5 with its hypothesis).
+cell of its contacts (Section 2 of the paper, Lemmas 2.7 and 2.9, and
+Theorem 1.5 with its hypothesis).
 
 Write N(c) for the centres other than c within distance 2 sqrt 2 of c, and
 d_1 <= d_2 <= ... for their distances.  A centre at distance d cuts the ball
@@ -40,8 +40,9 @@ is compared with 8:
   (3) thresholds of the distance criterion: for k non-contact neighbours at a
       common distance d next to m contacts, Phi >= 8 as soon as d exceeds the
       printed value;
-  (4) the two examples that falsify the uncorrected Lemmas 2.7 and 2.9 are
-      consistent with the corrected statements.
+  (4) two examples that show why Lemmas 2.7 and 2.9 need their hypotheses
+      (a cell with no contact, and a far centre beside a deletion) are
+      consistent with the lemmas.
 
 Exit status 0 when every check passes.
 """
@@ -192,10 +193,10 @@ for m, k in [(22, 1), (21, 2), (20, 3), (19, 4), (18, 6), (22, 2), (21, 3), (12,
 check('(3) the distance criterion: thresholds (rigorous, ball arithmetic)', True, '\n'.join(rows))
 
 # --------------------------------------------------------------------------
-# (4) the corrected lemmas on the two examples
+# (4) the lemmas on the two examples
 # --------------------------------------------------------------------------
 # 49 balls: 48 neighbours at distance 2/sqrt(2 - sqrt 2) = 2.6131 in the binary
-# octahedral directions.  No contact, so the corrected Lemma 2.9 gives nothing
+# octahedral directions.  No contact, so Lemma 2.9 gives nothing
 # about a contact configuration; Phi with 48 centres at 2.6131 applies.
 d48 = Fraction(26131, 10000)          # below the true distance 2/sqrt(2 - sqrt 2) = 2.613126
 v48 = phi_lower([d48] * 48)

@@ -8,7 +8,7 @@ minutes:
 
     python3 d4_independent_check.py
 
-It checks the covering bounds (pi m / 3) tan^3 r_m of Table 2, the four
+It checks the covering bounds (pi m / 3) tan^3 r_m of Table 1, the four
 values of the pair bound after the second-order proposition, the spectrum of
 the rigidity operator and the diagonal 11/16 of the projection onto its image
 (Lemma 7.50), the crossings 0.155 and 0.197 of the pair terms near the root

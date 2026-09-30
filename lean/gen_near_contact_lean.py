@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 gen_near_contact_lean.py -- writes D4NearContact.lean, the exact arithmetic of
-the explicit constant epsilon_0 of Theorem 2.18 (multi_cap/explicit_eps0.py,
+the explicit constant epsilon_0 of Theorem 21.9 (multi_cap/explicit_eps0.py,
 parts B, C, D and the assembly E), from multi_cap/llm24_out/llm24_p2.txt, the
 exact coefficients of the two-point polynomial p_2 of the certificate of de
 Laat, Leijenhorst and de Muinck Keizer.  The only numbers the Lean file takes

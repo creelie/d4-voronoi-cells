@@ -8,7 +8,7 @@ Bernstein coefficients of K on the root box are computed exactly and rounded
 once, subdivided at midpoints in floating point with the rounding error bounded
 a priori, and on a box the largest coefficient plus that allowance bounds K.
 A box is closed when that bound is at most 0, or at most a rigorous lower bound
-of Pi at the corner (d_hi, d'_hi, u_lo) computed in Arb (Lemma 2.33: Pi
+of Pi at the corner (d_hi, d'_hi, u_lo) computed in Arb (Lemma 21.24: Pi
 decreases in d and d' and increases in u).  It is dropped when it lies in
 d > d' (exact integer test) or wholly beyond u = a(d, d') (an exact rational
 test, made only when a floating-point test is not decisive).  Boxes are handled

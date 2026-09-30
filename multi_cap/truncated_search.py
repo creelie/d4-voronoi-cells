@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-truncated_search.py -- how low can the right side of Lemma 2.15 go with M
-centres within sqrt 6?  (Section 2.8 of the paper, v1.6.0; floating point,
+truncated_search.py -- how low can the right side of Lemma 21.6 go with M
+centres within sqrt 6?  (Section 21.1 of the paper; floating point,
 exploration, not proof.)
 
-For a finite set Y of centres (|y| >= 2, pairwise at least 2 apart), Lemma 2.15
+For a finite set Y of centres (|y| >= 2, pairwise at least 2 apart), Lemma 21.6
 gives vol(V_c) >= T(Y) = 9 pi^2/8 - sum S(|y|) + sum_{pairs} Pair, with S the cap
-of B(sqrt(3/2)) beyond |y|/2 and Pair the overlap of two such caps.  Theorem 2.17
+of B(sqrt(3/2)) beyond |y|/2 and Pair the overlap of two such caps.  Theorem 21.8
 proves T > 8 whenever at most 23 centres lie within sqrt 6.  At the root system,
 24 centres at distance 2, T = 7.906940..., so the pair terms cannot settle 24
 centres.  This script minimises T over configurations of exactly M centres within
@@ -117,7 +117,7 @@ def rays():
         return T(Y) - 8
     d2 = brentq(one, 1e-3, 0.4, xtol=1e-12)
     print('one centre at distance 2 + delta, 23 at 2: T = 8 at delta = %.4f' % d2)
-    print('(floating point: where the pair terms of Lemma 2.15 reach 8, not a bound)')
+    print('(floating point: where the pair terms of Lemma 21.6 reach 8, not a bound)')
 
 
 def main():

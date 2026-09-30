@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-count31_data.py -- data of the figure for Theorem 2.34 (tikz_count31.tex).
+count31_data.py -- data of the figure for Theorem 21.25 (tikz_count31.tex).
 
 Writes count31_bounds.dat: for each count M, the best two-point bound on the
 union of the caps (multi_cap/runs/radial_count_scan.log) and the largest union
-found by the search of Figure 10 (9 pi^2/8 minus the least T of
+found by the search of Figure 36 (9 pi^2/8 minus the least T of
 multi_cap/runs/count_survey.log); and count31_kernel.dat: the kernel K of the
-certificate of Theorem 2.34 (multi_cap/radial_certificates/radial_31.json) and
+certificate of Theorem 21.25 (multi_cap/radial_certificates/radial_31.json) and
 the pair term Pi at d = d' = 2, both times 10^3, against the inner product u.
 Run from this directory.
 """

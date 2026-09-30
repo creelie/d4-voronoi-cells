@@ -1,6 +1,6 @@
 /-
 D4OmegaRegionI.lean: the branch and bound of Theorem 7.73 (region I of
-Theorem 2.17) again, with the table of omega computed in Lean (D4Omega) in place
+Theorem 21.8) again, with the table of omega computed in Lean (D4Omega) in place
 of the tables of D4CertData.  Settled by native_decide.
 -/
 import D4Omega

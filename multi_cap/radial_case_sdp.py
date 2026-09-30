@@ -8,7 +8,7 @@ For a packing set Y of M centres in the shell 2 <= |y| < sqrt6, let N(r) be the
 number of centres within r.  A case is a set of bounds lo_j <= N(r_j) <= hi_j
 at rational radii r_j; every case also carries N(2.0161) <= 24, which holds for
 every packing (the kissing number is stable).  Cutting the shell at the r_j
-into bins, with n_b centres in bin b, the kernel inequality of Theorem 2.34
+into bins, with n_b centres in bin b, the kernel inequality of Theorem 21.25
 gives, for any certificate (A_k, z, t) with K <= Pi on admissible pairs,
 
     U(Y) <= sum_y f(|y|) + t/2 <= sum_b n_b m_b + t/2,

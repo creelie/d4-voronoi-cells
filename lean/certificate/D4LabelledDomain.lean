@@ -1,6 +1,6 @@
 /-
 D4LabelledDomain.lean: the regions II_s and II_f of the labelled certificate
-(Theorem 2.17 of the paper; multi_cap/labelled_certificate_check.py, steps 4
+(Theorem 21.8 of the paper; multi_cap/labelled_certificate_check.py, steps 4
 and 5), in exact dyadic arithmetic.  Region I is the inequality (C) of
 Theorem 7.73, which D4CertMain checks.
 
