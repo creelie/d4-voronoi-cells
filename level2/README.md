@@ -109,7 +109,7 @@ equals 3s/8 on each of their 96 pairs at 1/2, so every feasible (N, mu) has
 0.019779 on the interval: the inequality w(u) <= (N - 24)/mu excludes no inner
 product, whatever the degree and whatever the machine.  `margin_floor_check.py`
 checks this (exactly, and in ball arithmetic); the paper states it as the
-proposition "The root system spends the margin".  A weight that also vanishes
+proposition "The root system uses up the margin".  A weight that also vanishes
 at 1/2 escapes this floor, but no pointwise reading can beat the codes that
 exist, and at s = 0.008 there are 24-point codes with an inner product of
 0.1231, far from every root value.  So the (14, 16) margin run is not worth
