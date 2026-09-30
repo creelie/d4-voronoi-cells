@@ -6126,8 +6126,8 @@ map is invariant under the reflection fixing $v_1$ and exchanging
 $w_1,v_2$, the symmetry $S$ of \cref{lem:third-edge-symmetry}; since $S$
 is an isometry of the whole configuration, it maps each combinatorial
 type onto the type of the congruent point. By the same argument, the
-full $6$-element group of \cref{lem:s3-symmetry} acts on the interior,
-not only on the boundary it was originally used for: every one of its
+full $6$-element group of \cref{lem:s3-symmetry} acts on the interior as
+well as on the boundary: every one of its
 elements is an automorphism of $\Rt$ fixing $u_0$, hence carries any
 interior deviation direction to a congruent configuration at the image
 direction, with identical defect and identical combinatorial type. Hence it
@@ -6259,44 +6259,37 @@ boundary.
 
 \subsection{The region count}\label{sec:region-count-correction}
 
-A grid scan at $60\times90$ resolution reports \emph{nine}
-combinatorially distinct types in the reduced domain
-$\arcp\in(0,\pi/4)$, $\tilt\in(0,\pi/2)$. The same scan at
-much higher resolution ($150\times200$), with an explicit $0.01$-radian
-margin excluded around each of the four breakpoint curves (to rule out
-grid points landing on, or numerically near, a curve, which can
-spuriously register as an extra type owing to floating-point
-near-degeneracy in the underlying half-space-intersection routine),
-finds only \emph{eight} distinct types. Tracing the exact pairwise
-intersections of the four breakpoint curves within $\arcp\in(0,\pi/4)$
-confirms exactly three crossings, the $\mathsf Y$-curve (a relabelling
-of one of the curves counted among $\mathsf W,\mathsf A,\mathsf Y$ in
+A grid scan of the reduced domain $\arcp\in(0,\pi/4)$,
+$\tilt\in(0,\pi/2)$ at $150\times200$ resolution, with a band of
+$0.01$ radians excluded around each of the four breakpoint curves,
+finds \emph{eight} combinatorially distinct types. The band is needed
+because grid points on or numerically near a curve can register a
+spurious extra type through floating-point near-degeneracy in the
+half-space intersection; a coarser scan at $60\times90$ without it
+reports nine. The four breakpoint curves cross exactly three times in
+$\arcp\in(0,\pi/4)$: the $\mathsf Y$-curve (a relabelling of one of
+the curves $\mathsf W,\mathsf A,\mathsf Y$ of
 \cref{thm:arc1-breakpoints-new}) meets the universal line at
 $\arcp_1=0.169918$, the $\mathsf W$-curve meets $\mathsf Y$ at
 $\arcp_2=\arctan(\tfrac12)$, and $\mathsf W$ meets the universal line
-at $\arcp_3=\arcsin(1/\sqrt3)$, and one region initially split by this
-crossover (``region $4$'', bounded above first by $\mathsf W$ then by
-$\mathsf Y$) is confirmed, by an independent direct convex-hull volume
-computation at representative points on each side of the crossover
-agreeing with a single symbolic volume formula to twelve decimal
-places, to be \emph{one} combinatorial region throughout, not two, 
-accounting for the discrepancy. It is nonetheless certified in two
-computational pieces (\cref{sec:region-4}), since only one piece's own
-boundary happens to be rational.
+at $\arcp_3=\arcsin(1/\sqrt3)$. Region $4$, bounded above first by
+$\mathsf W$ and then by $\mathsf Y$, is a single combinatorial region:
+direct convex-hull volumes at representative points on both sides of
+the crossover agree with one symbolic volume formula to twelve decimal
+places. It is certified in two pieces (\cref{sec:region-4}) because
+only one of them has a rational boundary.
 
 \subsection{The eight regions, one by one}
 
 \begin{thm}[Certificates, first arc]\label{thm:arc1-certs-new}
-Every one of the eight regions of \cref{sec:region-count-correction}
-carries a positivity certificate for $\defect$: two regions (region
-top and region $4$'s first piece) carry an exact, zero-margin Bernstein
-certificate; the remaining regions carry a box-covering certificate
-with an excluded margin tightened, across successive refinements, to
-well under one percent of the region's own area. In every case the
-certificate's numerator and denominator Bernstein coefficients are of a
-single, consistent sign throughout the region, so $\defect$ itself has
-a single, consistent sign there, matching a direct numerical
-spot-check at an interior point.
+Each of the eight regions of \cref{sec:region-count-correction}
+carries a positivity certificate for $\defect$. On region top and on
+the first piece of region $4$ it is an exact Bernstein certificate on
+the whole region; on the other regions it is a box-covering certificate
+that excludes a margin of less than one percent of the area of the
+region. In each certificate the Bernstein coefficients of the numerator
+and of the denominator have one sign throughout, so $\defect$ has one
+sign on the certified part.
 \end{thm}
 
 The eight regions follow in turn, each with its representative-point vertex
@@ -6555,10 +6548,9 @@ certificate of the type used in \cref{sec:arc2-regiontop-new} is not
 attempted, because the lower boundary here is the constant curve
 $\tilt=\pi/3$: mapping between it and the curved upper boundary
 $\mathsf W'$ would introduce $\sqrt3$ into the arithmetic on top of the
-$\sqrt2$ already present, a complication this paper's exact-sign
-machinery (built for $\mathbb{Q}(\sqrt2)$) does not handle. We instead
-attempt the same box-covering fallback already used for the harder
-regions of the first arc.
+$\sqrt2$ already present, which the exact-sign routines of this paper,
+written for $\mathbb{Q}(\sqrt2)$, do not handle. The box covering used
+for the harder regions of the first arc is used instead.
 
 \begin{thm}[Certificate, second arc, band below region top]\label{thm:arc2-band-new}
 On the middle sub-part described above, the volume-defect numerator and
@@ -6568,26 +6560,20 @@ coefficients throughout, each mapping step verified against a
 $200$-digit numerical evaluation of the original trigonometric
 expression), are certified on all $40$ boxes covering the sub-interval:
 every one of the $169$ Bernstein coefficients of $N$, and every one of
-the $169$ Bernstein coefficients of $D$, on every box, is non-negative
-(in fact, on this run, strictly positive with none exactly zero). By
-the same same-sign argument used throughout this paper, this proves
-$\defect>0$ on the entire covered region, modulo the excluded margin
-recorded below.
+the $169$ Bernstein coefficients of $D$, on every box, is strictly
+positive. Hence $\defect>0$ on the covered region, which is the
+sub-part minus the excluded margin described below.
 \end{thm}
 
-This is a second region-by-region result on the second arc, on
-top of region top (\cref{thm:arc2-regiontop-new}): the excluded margin
-is a strip of about $1.7\%$ of the sub-interval's own $\arcp$-range at
-its two ends (from the safety factor used when choosing box corners
-near $\arcp_1$ and $\arcp_3$), together with a fixed $0.1$--$0.2\%$
-safety strip against each box's own numerically-located floor
-($\tilt=\pi/3$) and ceiling ($\mathsf W'$), wider than the tightest
-margins achieved elsewhere in this paper (\cref{sec:arc1-cert}'s own
-regions have been refined to under $0.2\%$), reflecting that this
-certificate was run once, at a moderate resolution, and not iteratively tightened; by direct analogy with the
-region-4b tightening reported in \cref{sec:arc1-cert}, the margin is
-reducible at the cost of runtime, and the margin claimed is the one actually
-certified.
+The excluded margin consists of a strip of about $1.7\%$ of the
+$\arcp$-range of the sub-interval at each end, from the safety factor
+used in placing box corners near $\arcp_1$ and $\arcp_3$, and a strip
+of $0.1$ to $0.2\%$ along the numerically located floor ($\tilt=\pi/3$)
+and ceiling ($\mathsf W'$) of each box. It is wider than the margins of
+the first arc, which are below $0.2\%$, because the covering was run at
+a single moderate resolution; a finer covering would reduce it at the
+cost of running time. Positivity on the whole domain, margins
+included, is \cref{thm:eperp-closed}.
 
 \subsection{The band's \texorpdfstring{$\mathsf C$}{C}-bounded sub-part}\label{sec:arc2-bandC-new}
 
@@ -6614,20 +6600,17 @@ each mapping step verified against a $200$-digit numerical evaluation
 of the original trigonometric expression). All $40$ boxes covering the
 sub-interval are certified: every one of the $169$ Bernstein
 coefficients of $N$, and every one of the $169$ Bernstein coefficients
-of $D$, on every box, is strictly positive, with none exactly zero.
-$\defect>0$ on the entire covered sub-part, modulo the excluded margin
-recorded below.
+of $D$, on every box, is strictly positive. Hence $\defect>0$ on the
+covered region, which is the sub-part minus the excluded margin
+described below.
 \end{thm}
 
-The excluded margin here is wider than \cref{thm:arc2-band-new}'s own:
-approximately $4\%$ of the sub-interval's own $\arcp$-range at its two
-ends (a wider safety factor was used near $\arcp=0$ and near
-$\arcp_1$, where curve $\mathsf C$'s numerical evaluation is closer to
-degenerate), together with the same $0.1$--$0.2\%$ safety strip against
-each box's own floor and ceiling. As with \cref{thm:arc2-band-new}, we
-expect this margin is reducible with a finer grid but have not pursued
-that here, and report the certificate exactly at the resolution
-actually run.
+The excluded margin is wider than that of \cref{thm:arc2-band-new}:
+about $4\%$ of the $\arcp$-range of the sub-interval at each end, since
+a wider safety factor was used near $\arcp=0$ and near $\arcp_1$, where
+the numerical evaluation of curve $\mathsf C$ is closer to degenerate,
+and the same strip of $0.1$ to $0.2\%$ along the floor and ceiling of
+each box. A finer covering would reduce it.
 
 \subsection{The band's \texorpdfstring{$\mathsf B$}{B}-bounded sub-part}\label{sec:arc2-bandB-new}
 
@@ -6637,13 +6620,13 @@ same method. Its combinatorial data behave exactly as elsewhere: the
 representative point has $34$ vertices, $11$ moving and $23$ fixed, and
 the pattern is identical at eight sample points spanning the
 sub-interval, with fixed volume contribution $6$. The moving-volume
-step is where it stops. One of the $74$ moving boundary simplices has a
-symbolic determinant whose exact simplification over the relevant
-algebraic extension grows without settling, and we did not obtain a
-closed form for the volume there. The certificate for this sub-part
-therefore does not come from the direct computation.
+step fails: one of the $74$ moving boundary simplices has a symbolic
+determinant whose exact simplification over the relevant algebraic
+extension does not terminate, so no closed form for the volume is
+available there, and the direct computation gives no certificate for
+this sub-part.
 
-It does not need to. \Cref{sec:full-triangle-symmetry} shows that the
+None is needed. \Cref{sec:full-triangle-symmetry} shows that the
 second arc, this sub-part included, is the first arc's own defect
 function in disguise, so the certificates of \cref{sec:arc1-cert}
 already cover it. The three direct certificates recorded above remain
