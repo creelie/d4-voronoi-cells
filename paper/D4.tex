@@ -233,9 +233,9 @@ direction leaves a root of $D_4$ had been proved before: the general
 estimates of Blichfeldt and Rogers stop short of $8$, the linear
 programming bound stalls above the density of $D_4$, and so does the
 three-point bound of Cohn, de Laat and Salmon \cite{CdLS22}, the best upper
-bound known in dimension four, and the
-second-order analysis of the cell degenerates exactly at the dense
-configurations that matter (\cref{sec:hessian-technique}). For contact
+bound known in dimension four, and, numerically, the
+second-order analysis of the cell degenerates at dense
+configurations (\cref{sec:hessian-technique}). For contact
 configurations, where every neighbour that can cut the cell touches the
 centre, three theorems below cover it. When at most one contact direction leaves a
 root the bound is proved by elementary means, in exact arithmetic, with
@@ -282,8 +282,9 @@ volume in most dimensions, and in dimension $4$ it has resisted proof
 because the $24$-cell is rigid in some directions and very soft in
 others. A single facet hyperplane can be tilted a long way without the
 cell losing any volume, and when several tilt at once the
-first-order and second-order changes can cancel exactly, leaving the
-sign of the total to be decided at fourth order.
+first-order and second-order changes can cancel; at some dense
+configurations the computations of \cref{sec:exact-sing} indicate that
+the sign is decided at fourth order.
 
 We first treat the case in which the local configuration departs from
 the lattice in a single direction. Call the centres within distance
@@ -327,7 +328,7 @@ one fixed polytope.
 
 That problem is solved by enclosing $Q$ in a cross-polytope. The sixteen
 roots making an angle of $60^\circ$ or $120^\circ$ with the deviating
-root turn out to cut out exactly
+root cut out exactly
 \[
   B=\bigl\{x : |x_0|+|x_1|+|x_2|+|x_3|\le2\bigr\}
 \]
@@ -409,8 +410,8 @@ issue.
 The theorem is proved through a classification of the $24$-point
 kissing configurations in $\mathbb{R}^4$: any $24$ unit vectors with
 pairwise inner products at most $\tfrac12$ form a copy of the $D_4$ root
-system. A full active set of $24$ contacts then admits no deviation at
-all (\cref{cor:conj-resolved}), and the bound for contact
+system. A full active set of $24$ contacts then admits no deviation
+(\cref{cor:conj-resolved}), and the bound for contact
 configurations is left with one case, a centre with exactly $23$
 contacts whose cell admits no twenty-fourth, which is the subject of the
 second half of \cref{sec:deviation-domain} and is settled there. The
@@ -2569,7 +2570,7 @@ The estimate itself is crude, and deliberately so: the only fact about
 the configuration it uses is that $m$ caps cannot cover more than $m$
 times a cap's worth of the sphere. \Cref{prop:second-order} says how
 much of that crudeness is repairable from pair data alone, and the
-answer is almost all of it at $m=23$ and rather little at $m=24$. What
+answer is almost all of it at $m=23$ and little of it at $m=24$. What
 neither version reaches is the tail: both stop at $r_m$, while the
 survival function stays positive out to the covering radius, $45^\circ$
 at the root configuration. Going further means a lower bound on the
@@ -4180,7 +4181,7 @@ kernel. What this section supplies is the quantitative statement that
 the classification by itself does not give: an explicit isolation
 radius about the normalised root system, $2/\sqrt{397}$ in the
 root-sum-of-squares displacement and about $0.02$ per direction,
-within which \cref{thm:m24} is proved by hand and the kernel is not
+within which \cref{thm:m24} is proved directly and the kernel is not
 used. Beyond that radius the kernel is doing the work, and it is
 doing it on the whole of the rest of a
 $66$-dimensional quotient, $(S^3)^{24}$ modulo $O(4)$, which is by far
@@ -8126,8 +8127,8 @@ midpoint $\theta=\pi/6$, proved exactly, with no floating-point step
 and no unproven sub-interval.
 \end{thm}
 
-Both $N(t)$ and $D(t)$ turn out to be even polynomials in $t$ (verified
-by direct inspection, not assumed), reducing the root-isolation problem
+Both $N(t)$ and $D(t)$ are even polynomials in $t$, as their
+coefficients show, which reduces the root-isolation problem
 to a degree-$471$ polynomial in $u=t^2$ instead of degree $942$ in $t$. Exact Sturm-sequence root-counting (\texttt{sympy}'s
 \texttt{Poly.count\_roots}, rational arithmetic throughout) finds a
 root at $u=0$ of multiplicity exactly $2$ in $N$'s associated
@@ -10844,7 +10845,7 @@ configurations, by three different methods for its three ranges of
 contact number, carries it to the Voronoi cells of packings at every
 centre with at most twenty-three others within $\sqrt6$ and at every
 centre near the root system, and states the one case it does not
-reach. This section puts all of that in one place.
+reach. This section collects these results.
 
 \subsection{What is proved}
 
@@ -10866,7 +10867,7 @@ with the deviation confined to a root-aligned arc.
 confinement: the defect is rewritten as the deficiency of a cap cut
 from a single $25$-vertex polytope $Q$
 (\cref{prop:cap-reformulation}), $Q$ is enclosed in a cross-polytope
-that the sixteen roots at $60^\circ$ and $120^\circ$ cut out on the nose
+that the sixteen roots at $60^\circ$ and $120^\circ$ cut out exactly
 (\cref{lem:crosspolytope}), and the extremal unit-distance cap of a
 cross-polytope is determined
 (\cref{thm:cap-inequality}). The one step there that is not closed-form
