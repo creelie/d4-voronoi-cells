@@ -35,9 +35,10 @@ method stops.
 
 ## Citation
 
-The package is archived on Zenodo under the concept DOI
-10.5281/zenodo.22766562, which resolves to the latest release;
-`CITATION.cff` and `.zenodo.json` carry the metadata. It is maintained at
+Version v1.12.0, the one the paper cites, is archived on Zenodo as
+10.5281/zenodo.23076993; the concept DOI 10.5281/zenodo.22766562 resolves
+to the latest release. `CITATION.cff` and `.zenodo.json` carry the
+metadata. The package is maintained at
 https://github.com/creelie/d4-voronoi-cells and can also be obtained from
 Deep Bhattacharjee, itsdeep@live.com.
 
