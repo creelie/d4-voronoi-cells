@@ -13,7 +13,7 @@ Run:  python3 d4_independent_check.py          (needs mpmath, numpy, scipy)
 
 What it checks, and what it found
 ---------------------------------
-  1. Table 2, the covering bound  (pi m /3) tan^3 r_m            AGREES to 6 dp
+  1. Table 1, the covering bound  (pi m /3) tan^3 r_m            AGREES to 6 dp
   2. Table 3, the thresholds of the distance criterion Phi       AGREES to 0.5%
                                                                  (the paper's are
                                                                   ball-arithmetic
@@ -116,7 +116,7 @@ def cell_bound(dists, R, pairs):
 
 
 # ------------------------------------------------------- 1. covering bound
-print("1. Table 2, covering bound (pi m/3) tan^3 r_m")
+print("1. Table 1, covering bound (pi m/3) tan^3 r_m")
 for m, paper in ((22, '8.046376'), (23, '7.916728'), (24, '7.798989')):
     v = pi*m/3*tan(r_m(m))**3
     print(f"   m={m}:  {mp.nstr(v, 8):>10}   paper {paper}")

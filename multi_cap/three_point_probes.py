@@ -2,7 +2,7 @@
 """
 three_point_probes.py -- two probes of what three-point certificates can see
 about twenty-four points of S^3 (floating point, sampled constraints; exploration,
-not proof).  They support the paragraph "What is left" of Section 2.8.
+not proof).  They support the paragraph "What is left" of Section 21.1.
 
 Both use the kernels of Bachoc and Vallentin with labels: for a fixed point e of a
 finite set C, (x, y) -> phi_k(<e,x>, <e,y>, <x,y>) a(x) a(y)^T is a positive

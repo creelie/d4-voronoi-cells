@@ -1,6 +1,6 @@
 /-
 D4LabelledMain.lean: the regions II_s and II_f of the labelled certificate
-(Theorem 2.17), with region I in D4CertMain.  Each theorem says that a check
+(Theorem 21.8), with region I in D4CertMain.  Each theorem says that a check
 of D4LabelledDomain returns true; they are settled by native_decide, which
 compiles and runs the check, and so trusts the Lean compiler as well as the
 kernel.

@@ -1,5 +1,5 @@
 """
-fig_labelled.py -- the labelled certificate of Theorem 2.17 (Section 2.8).
+fig_labelled.py -- the labelled certificate of Theorem 21.8 (Section 21.1).
 
 (a) A plane section through c = 0 and two centres y_i, y_j at the packing
     boundary |y_i - y_j| = 2, with d_i = 2.10 and d_j = 2, so that the

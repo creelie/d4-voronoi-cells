@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 closure_lemmas.py -- the further reductions of the case left open by the
-distance criterion (Section 2.8 of the paper, v1.6.0), checked in exact
+distance criterion (Section 21.1 of the paper), checked in exact
 arithmetic (sympy, integers) and in ball arithmetic (python-flint's arb).
 
 Throughout, c = 0 is a centre of a unit-ball packing of R^4, the other
@@ -52,7 +52,7 @@ the centres at distance exactly 2, written 2w with w a unit vector.
   (F) 23 contacts: if their covering radius is at most arccos(sqrt 6 / 4),
       52.2388 degrees, every other centre is at distance >= sqrt 6 by (A), and
       the certificate of Theorem 7.73 bounds vol(V_c cap B(sqrt(3/2))) above 8
-      (the case quoted after Theorem 2.17, which labelled_certificate_check.py
+      (the case quoted after Theorem 21.8, which labelled_certificate_check.py
       proves for any 23 centres within sqrt 6, whatever their distances).
 
 Exit status 0 when every check passes.
@@ -93,7 +93,7 @@ W2 = (w.T * w)[0]
 okA = sp.expand(((z - 2 * w).T * (z - 2 * w))[0] - 4 - (Z2 - 4 * (z.T * w)[0] + 4 * W2 - 4)) == 0
 check('(A) hole lemma: |z - 2w|^2 - 4 = |z|^2 - 4<z,w> for unit w (symbolic)', okA,
       'so <z/|z|, w> <= |z|/4 for every centre z and contact direction w;\n'
-      'for the root system g = 1/sqrt 2 and 4g = 2 sqrt 2 (Lemma 2.11)')
+      'for the root system g = 1/sqrt 2 and 4g = 2 sqrt 2 (Lemma 21.2)')
 check('(B) inversion hull: |z|^2/2 - <4y/|y|^2, z> = [(|z|^2-4)(|y|^2-4) + 4(|y-z|^2-4)]/(2|y|^2)'
       ' (symbolic)', okB,
       'both brackets are >= 0 for centres y, z (|y|, |z| >= 2, |y - z| >= 2)')

@@ -2,9 +2,9 @@
 """
 radial_count_check.py -- proves the certificate written by radial_count_sdp.py:
 for every packing with at least M centres y, 2 <= |y| < sqrt6, the union of
-the caps of Lemma 2.15 has volume below 9 pi^2/8 - 8, so T(Y) > 8
-(statement (C) of Proposition 2.32 for every count from M on; with M = 31 this
-is Theorem 2.34).
+the caps of Lemma 21.6 has volume below 9 pi^2/8 - 8, so T(Y) > 8
+(statement (C) of Proposition 21.23 for every count from M on; with M = 31 this
+is Theorem 21.25).
 
 Exact rational arithmetic, Bernstein bounds and Arb ball arithmetic; no step
 rests on floating point alone.
@@ -20,7 +20,7 @@ rests on floating point alone.
    (every midpoint step is an average, so the error grows by at most one unit
    in the last place of the largest coefficient per step).  On a box the
    largest coefficient bounds K.  Pi is decreasing in d and d' and increasing
-   in u (Lemma 2.33), so on a box Pi >= Pi(d_hi/2, d'_hi/2, u_lo),
+   in u (Lemma 21.24), so on a box Pi >= Pi(d_hi/2, d'_hi/2, u_lo),
    evaluated from its closed form in Arb.  A box is closed when the bound
    for K is at most 0 or at most that value of Pi, dropped when it lies in
    d > d' or wholly beyond u = a(d, d') (exact rational tests), and halved

@@ -2,7 +2,7 @@
 D4Meet.lean
 
 A machine check of the combinatorics behind Propositions 7.55 and 7.56 of
-"The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture": how much of a root
+"Voronoi Cells of Four-Dimensional Unit-Ball Packings": how much of a root
 system a contact configuration can hold.
 
 The analytic half of those proofs is three inequalities in the coordinates

@@ -3,11 +3,11 @@
 labelled_certificate_check.py -- the three-point certificate of Theorem 7.73
 carried from contacts to centres at any distances: a centre of a unit-ball
 packing of R^4 with at most 23 other centres within sqrt 6 has a Voronoi cell
-of volume greater than 8 (Theorem 2.17 of the paper, v1.6.0).
+of volume greater than 8 (Theorem 21.8 of the paper).
 
 Setting.  c = 0; y_1, ..., y_23 are the centres with |y_i| < sqrt 6, at
 distances d_i = |y_i| >= 2, pairwise at least 2 apart; w_i = y_i / d_i,
-h_i = d_i / 2, u_ij = <w_i, w_j>.  R^2 = 3/2.  By Lemma 2.15 (no triple
+h_i = d_i / 2, u_ij = <w_i, w_j>.  R^2 = 3/2.  By Lemma 21.6 (no triple
 overlaps in B(R)),
 
     vol(V_c) >= T = 9 pi^2/8 - sum_i S(d_i) + sum_{i<j} Pair(h_i, h_j, u_ij)

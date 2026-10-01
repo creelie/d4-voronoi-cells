@@ -28,7 +28,8 @@ coefficient by coefficient.
 | `their_entries.jl` | runs the authors' `compute_PS` one signature at a time, in a clean folder |
 | `compare_entries.py` | compares the entries it writes with ours, in exact rationals |
 | `runs/` | the logs |
-| `EXTERNAL_RUN.md` | the runs at (12, 14) and (14, 16) that need a larger machine: estimated memory and time, the exact commands, and what their answers would and would not give |
+| `fast/` | the programme at (14, 16) on this machine: chunked build, Schur complement in triple-double arithmetic, and the programme with exactly 24 points (see `fast/README.md`) |
+| `EXTERNAL_RUN.md` | what a larger machine would still add |
 
 ## Running it
 
@@ -73,8 +74,12 @@ At slack 0, on a machine with four cores and 16 GB:
 | (8, 10) | 26.0000 | 68 | 42 min on one core | 3.5 GB |
 | (10, 12) | 24.9423 | 62 | 3.9 h on four cores | 11.8 GB |
 
-(10, 12) is the most that fits in 16 GB: from (8, 10) the time of an
-iteration grows about eightfold and the memory more than threefold.  The
+(10, 12) is the most that fits in 16 GB with the authors' solver as it is:
+from (8, 10) the time of an iteration grows about eightfold and the memory
+more than threefold.  With the chunked build and the faster Schur complement
+of `fast/`, (14, 16) runs in 10.3 GB, at about a quarter of an hour per
+iteration on four cores; at slack 1/125 it bounds the number of points by
+24.5555 (floating point).  The
 certificate of the authors uses (14, 16), where the bound is 24.  At slack 0
 every degree reached here is weaker than the three-point bound, 24.13.  The
 logs are in `runs/`.
@@ -109,7 +114,7 @@ equals 3s/8 on each of their 96 pairs at 1/2, so every feasible (N, mu) has
 0.019779 on the interval: the inequality w(u) <= (N - 24)/mu excludes no inner
 product, whatever the degree and whatever the machine.  `margin_floor_check.py`
 checks this (exactly, and in ball arithmetic); the paper states it as the
-proposition "The root system spends the margin".  A weight that also vanishes
+proposition "The root system uses up the margin".  A weight that also vanishes
 at 1/2 escapes this floor, but no pointwise reading can beat the codes that
 exist, and at s = 0.008 there are 24-point codes with an inner product of
 0.1231, far from every root value.  So the (14, 16) margin run is not worth

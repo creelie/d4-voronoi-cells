@@ -2,7 +2,7 @@
 D4NearContact.lean
 
 The exact arithmetic behind the explicit constant epsilon_0 = 4e-26 of the
-near-contact theorem (Theorem 2.18 of the paper; multi_cap/explicit_eps0.py).
+near-contact theorem (Theorem 21.9 of the paper; multi_cap/explicit_eps0.py).
 
   B.  The two-point polynomial p_2 of the certificate of de Laat, Leijenhorst and
       de Muinck Keizer, exact from their data (llm24_p2.txt), is

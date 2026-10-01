@@ -1,61 +1,58 @@
 # Lean 4 verification
 
-Twelve files and three small Lake projects: machine checks of finite
+Fifteen files and three small Lake projects: machine checks of finite
 arithmetic and of polynomial identities taken from the paper.
-`run_all.sh` checks the twelve files with
+`run_all.sh` checks the fifteen files with
 the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
 prints the axiom report of each; the three Lake projects are built with
 `lake build` in their directories.
 
-`D4Closure.lean` (new in v1.5.0, extended in v1.6.0) covers the exact
-content of Section 2.8.  The identities behind Lemma 2.12 (holes),
-Proposition 2.13 (the inversion hull, its denominator 2|y|^2 cleared),
-Lemma 2.15 (four points pairwise at least 2 apart need a ball of radius
+`D4Closure.lean` covers the exact
+content of Section 21.1.  The identities behind Lemma 21.3 (holes),
+Proposition 21.4 (the inversion hull, its denominator 2|y|^2 cleared),
+Lemma 21.6 (four points pairwise at least 2 apart need a ball of radius
 sqrt(3/2): the sum of the squared distances and the minimality of the
-centroid) and Theorem 2.17 (the packing bound a(d1, d2) lies below its
+centroid) and Theorem 21.8 (the packing bound a(d1, d2) lies below its
 tangent plane at (2, 2): `d1 d2 (d1 + d2 - 2) - 2 d1^2 - 2 d2^2 + 8 =
 (d1 - 2)(d2 - 2)(d1 + d2 + 2)`) are proved over every commutative ring with
 the ring normaliser of `grind`, so they hold verbatim over the reals.  The
-counts of Theorem 2.17 (each pair of 23 centres in 21 triples, each centre
-in 231 = 21 * 11) and the finite content of Corollary 2.14 are proved by
+counts of Theorem 21.8 (each pair of 23 centres in 21 triples, each centre
+in 231 = 21 * 11) and the finite content of Corollary 21.5 are proved by
 `decide`: the 24 vertices of the 24-cell, each on six facets; each the sum
 of exactly three orthogonal root pairs, 72 pairs in all; no deleted set of
 one or two roots meets all three pairs at a vertex; and of the 2024 deleted
 triples exactly 96 do, each pairwise at 60 degrees with a common vertex.
 The identities depend on propext, Classical.choice and Quot.sound, the
 combinatorial theorems on propext at most; nothing uses `native_decide`.
-About two minutes.  The log of `run_all.sh` behind v1.9.0, all twelve files in
-191 seconds, is `runs/run_all_2026-09-27_v1.9.0.log` (an earlier run of ten files,
-`runs/run_all_2026-09-27_v1.8.0.log`; behind v1.6.0,
-`runs/run_all_2026-09-25_v1.6.0.log`; behind v1.5.0,
-`runs/run_all_2026-09-25.log`).
+About two minutes.  The log of `run_all.sh` over all fifteen files is
+`runs/run_all_2026-09-30.log`.
 
-`D4SecondOrder.lean` (new in v1.9.0) covers the exact content of Section
-2.9, the second order of the cell volume at the root system.  It computes
+`D4SecondOrder.lean` covers the exact content of Section
+21.2, the second order of the cell volume at the root system.  It computes
 everything from the integral root system: the 24 roots, the 24 vertices of
 the scaled 24-cell, a rational basis of each tangent space, the 96 tight
-pairs and their triangles, the form H of Proposition 2.22 by the midpoint rule,
+pairs and their triangles, the form H of Proposition 21.13 by the midpoint rule,
 the 120 rows of the first-order packing cone and c.  The only data are the
-certificate of Proposition 2.23, 43 orbit values of N written by
+certificate of Proposition 21.14, 43 orbit values of N written by
 `gen_second_order_lean.py` from `multi_cap/second_order/exact_certificate.pkl`.
 It proves that N is nonnegative and covers every pair of cone rows exactly
 once, that P = H + c c^T - B^T N B is symmetric and positive semidefinite by
 an exact LDL^T with 30 zero pivots, each with a zero row (so H(xi,xi) >=
 -(sum delta_i)^2 on the cone), that H is Adj - 4I on the push-outs and H + c c^T
-is Adj + 4(J - I) there (the identity of Proposition 2.22), that the 72 x 72
+is Adj + 4(J - I) there (the identity of Proposition 21.13), that the 72 x 72
 tilt block of H (the Hessian of the contact-cell volume in the directions
 alone) is positive semidefinite with 15 zero pivots, the six rotations null
 for it and the nine infinitesimal strains not, that equality holds
 on the 24 one-centre rays, and, with `grind` over every commutative ring, the
-expansions of Lemma 2.25 and of the one-centre formula.  The finite checks
+expansions of Lemma 21.16 and of the one-centre formula.  The finite checks
 are settled by `native_decide`, about thirty seconds.  That H is the Hessian
 of the volume and that B are the linearised packing constraints are Lemma
-2.19 and the paper, checked numerically by
+21.12 and the paper, checked numerically by
 `multi_cap/second_order/independent_check.py`; they are not formalised.  Log:
 `runs/D4SecondOrder_2026-09-27.log`.
 
-`D4HexagonLoop.lean` (new in v1.9.0) covers the algebra of Proposition
-2.26, the closed curve of direction sets through the root system along which
+`D4HexagonLoop.lean` covers the algebra of Proposition
+21.19, the closed curve of direction sets through the root system along which
 the contact cell has volume exactly 8.  In the ring
 Q(sqrt3)[c, s]/(c^2 + s^2 - 1), c = cos theta, s = sin theta, it computes the
 two integrals J1, J2 of the proof from the vertices of the two triangles of
@@ -69,17 +66,17 @@ paper's argument, checked with sympy and numerically by
 `multi_cap/second_order/hexagon_loop.py`.  About a second.  Log:
 `runs/D4HexagonLoop_2026-09-27.log`.
 
-`D4SecondCode.lean` (new in v1.9.0) covers Proposition 2.30, a second
+`D4SecondCode.lean` covers Proposition 21.21, a second
 24-point code: 24 points of S^3 with rational coordinates (written by
 `multi_cap/second_order/code24_exact.py` into `code24_exact.txt`), each of
 norm 1, every two with inner product at most 1/2 + 849/50000, and one inner
 product at distance at least 57/250 from -1, -1/2, 0, 1/2, 1, so that the set
 is at distance d(W) >= 57/500 from the root system (the last step is the
-paper's).  Statement (i) of "What is left" therefore fails from slack
+paper's).  Statement (i) of Section 21.1 therefore fails from slack
 0.01698 on.  About a second.  Log: `runs/D4SecondCode_2026-09-27.log`.
 
-`D4NearContact.lean` (new in v1.9.0) covers the exact arithmetic of the
-explicit constant epsilon_0 = 4e-26 of Theorem 2.18 (parts B to E of
+`D4NearContact.lean` covers the exact arithmetic of the
+explicit constant epsilon_0 = 4e-26 of Theorem 21.9 (parts B to E of
 `multi_cap/explicit_eps0.py`).  Generated by `gen_near_contact_lean.py` from
 `multi_cap/llm24_out/llm24_p2.txt`, it divides the two-point polynomial p_2
 of the certificate of de Laat, Leijenhorst and de Muinck Keizer exactly by
@@ -104,7 +101,7 @@ branch and bounds fail, as they should.  Sturm's theorem for q is in
 `D4InnerProducts.lean`; the sums of squares of part A, Hadamard's inequality
 behind part C and the geometry behind part D are in the paper.
 
-`D4Rigidity.lean` (new in v1.9.0) covers the finite content of Lemma 7.50,
+`D4Rigidity.lean` covers the finite content of Lemma 7.50,
 the spectrum of the rigidity operator.  From the integral roots it builds
 the 96 x 96 integral matrices Lambda', 2P, 4N = 2P Lambda'^T Lambda' 2P and
 2K = Lambda' 2P Lambda'^T of the proof, and checks that 4N is annihilated by
@@ -123,7 +120,7 @@ integers by `multi_cap/rigidity_spectrum.py` (with ranks modulo a prime
 there); the eigenvalue bookkeeping that turns them into singular values is
 the paper's.
 
-`D4Cap.lean` (new in v1.9.0) covers the exact content of the extremal cap
+`D4Cap.lean` covers the exact content of the extremal cap
 theorem (the section "Positivity for every deviation direction";
 `cap_certificate/cap_inequality_certificate.py`).  From the integral roots
 it enumerates the vertices of Q exactly over all 4-subsets of the 23
@@ -141,6 +138,53 @@ as the script does, 303 boxes, the largest corner value 0.99755050.  Nine
 theorems, `native_decide`, about ten seconds; log `runs/D4Cap_2026-09-27.log`.
 The cap formula and the monotonicity of the divided difference are the
 paper's.
+
+`D4HoleBudget.lean` covers the exact content of parts (ii) and (iii) of the
+corollary "No room beside a near root system", generated by
+`gen_hole_budget_lean.py`.  With u = 1/sqrt2 (2u^2 = 1) and tau = u - h, it
+proves over every commutative ring, with `grind`, that the quartic
+q(s) = (s - tau)^2 - beta s^2 - gamma s^4 of the proof touches zero doubly at
+u and factors as (s - u)^2 r(s), the values beta + gamma tau^2 =
+-2h^2 (1 - 6uh + 2h^2), h^2 r(tau) = -tau^2 (beta + gamma tau^2) and
+q(1) = (h - u)(h - (3u - 2)), the budget 3 beta + (3/2) gamma = 6h^2, and the
+5-design identities sum <w,a>^2 = 12|w|^2 and sum <w,a>^4 = 12|w|^4 over the
+24 integral roots.  By kernel computation on `Rat` (`decide +kernel`) it
+checks the finite facts about the roots (closed under negation, norm 2,
+sum a a^T = 12I, six roots at the deep hole e_1); rho^2 = 500/123 and
+tau^2 = 139129/369000 at slack 0.008; rational bounds on u and tau, checked
+by squaring, that give 0.093068 < h < 0.093069, 6h^2 > 0.05197 and
+0.22796 < sqrt6 h < 0.22797; the signs h < u, h < 3u - 2 and 1 - 6uh > 0 for
+every rho in [2, sqrt6); and the 200-row table of part (iii), on which
+e + (alpha + e)^2/(sqrt(6 - alpha - e) + sqrt6)^2 stays below 0.0515 whenever
+alpha^2 + 12e <= 2 * 0.3059.  About ten seconds; log
+`runs/D4HoleBudget_2026-09-30.log`.  The step from these signs to
+(s - tau)_+^2 >= beta s^2 + gamma s^4 on [0, 1], the matrix identities of
+part (iii) and the monotonicity of its bound are the paper's.
+
+`D4DesignBudget.lean` covers the exact content of the proposition "No room
+from the design defects", generated by `gen_design_budget_lean.py`.  With
+G_k = U_k/(k+1) (U_k the Chebyshev polynomials of the second kind) and
+p = sum_(k=0..5) p_k G_k for the six rationals of the proof, it checks by
+kernel computation on `Rat`: the monomial coefficients of p from the U_k;
+p(t) < 0 on [-1, 0.614039], by a Taylor bound about the midpoint of each of
+29 subintervals that cover that range without gaps; 0.614039^2 >
+139129/369000 = tau^2; (24 p_0)^2 > 0.26785 * sum_k p_k^2/c_k for the
+weights c_k = (103, 191, 280, 230, 159)/963; and, over the 24 integral roots,
+sum_(a,b) G_k(<a,b>/2) = 0 for k = 1, ..., 5.  About fifteen seconds; log
+`runs/run_all_2026-09-30.log`.  The addition formula and the Cauchy-Schwarz
+step are the paper's.
+
+`D4A18.lean` covers the exact statements about the configuration A_18 of
+Section 18, generated by `gen_a18_lean.py` from
+`../hessian_multidir/a18_other_starts.py`.  It checks by kernel computation
+that the 24 permutations and 16 sign vectors give 384 distinct signed
+coordinate permutations, each mapping the 24 roots onto themselves; that
+exactly 48 of them map A_18 onto itself, namely those that fix the coordinate
+of index 1 (counting from 0) with its sign (Proposition 18.5); and that two orthogonal maps,
+given as 2M with 2M (2M)^T = 4I, map the roots onto the roots and A_18 onto
+the configurations grown from roots 5 and 12.  The theorems depend on
+propext only; about three minutes and up to about 8 GB, most of it for the two theorems
+over all 384 maps, which run without the default heartbeat limit.
 
 `D4Stress.lean` covers Proposition 7.48 and the corollary that follows it:
 the equilibrium stress on the eighty-eight tight pairs of a deletion
@@ -180,7 +224,7 @@ omega' and omega'' that `multi_cap/certificate_check.py` evaluates from the
 closed forms in interval arithmetic, the one input not computed in Lean;
 `D4CertMain.lean` states that the check returns true and settles it by
 `native_decide`.  The same project carries the regions II_s and II_f of the
-labelled certificate of Theorem 2.17 (its region I is the inequality (C)
+labelled certificate of Theorem 21.8 (its region I is the inequality (C)
 that `D4CertMain` checks): `D4LabelledDomain.lean` reruns the branch and
 bound with the omega tables extended to a_D = amax(2.1648, 2.1648), with the
 linear term c (t - 1/2) of the slab 1/2 <= t <= 0.51 (39 399 boxes), and,
@@ -215,7 +259,7 @@ tables, which then take nothing from outside Lean but the certificate;
 table, and passes in 954 s on 419 913 boxes (421 881 with the tables of
 `D4CertData`).  Build log `runs/D4Omega_build_2026-09-27.log`.
 
-`cardinality/` (new in v1.9.0) covers the certificate of Theorem 7.79,
+`cardinality/` covers the certificate of Theorem 7.79,
 the kissing number is stable: every set of points of S^3 with pairwise
 inner products at most 1/2 + s_0 has at most 24 elements, for s_0 = 0.008
 (degree 10, the certificate the theorem uses) and s_0 = 0.0065 (degree 8).
@@ -280,7 +324,7 @@ three counts the enumeration returns and settles them by `native_decide`.
 ## What they need
 
 A Lean 4 toolchain, and nothing else. There is no Mathlib dependency. For
-the twelve files there is no `lakefile`: install elan and run
+the fifteen files there is no `lakefile`: install elan and run
 
     lean D4Stress.lean
     lean D4Meet.lean
@@ -294,11 +338,14 @@ the twelve files there is no `lakefile`: install elan and run
     lean D4NearContact.lean
     lean D4Rigidity.lean
     lean D4Cap.lean
+    lean D4HoleBudget.lean
+    lean D4DesignBudget.lean
+    lean D4A18.lean
 
 or `sh run_all.sh`. The first two take a few seconds, the third about
 twenty, the fourth about forty, the fifth about six and the sixth about
 ninety, the seventh about thirty, the eighth and ninth about a second
-each, the tenth about twenty, and the eleventh and twelfth about ten each. Silence means
+each, the tenth about twenty, the eleventh, twelfth and thirteenth about ten each, the fourteenth about fifteen, and the fifteenth about three minutes. Silence means
 every theorem in the file was accepted by the kernel; the axiom audit at the foot of each file then prints
 one line per theorem. For the projects,
 
