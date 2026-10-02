@@ -1,4 +1,4 @@
-%% Voronoi cells of four-dimensional unit-ball packings.
+%% Volume bounds for Voronoi cells of four-dimensional unit-ball packings.
 %% Single-column AMS setting.  The figures/ directory beside this
 %% file is required and is found through \graphicspath.
 %% Build with:  latexmk -pdf D4.tex
@@ -8,8 +8,9 @@
 %% compiles with graphicx alone and needs no second pass over the drawings.
 %% The matplotlib scripts of the data figures, each with a label collision
 %% test that it has to pass before writing, are in figures_new/ (the directory
-%% paper/figures_new of the supplementary repository); the ray-traced
-%% three-dimensional panels are pre-rendered and reused by those scripts.
+%% paper/figures_new of the supplementary repository); the three-dimensional
+%% panels are ray-traced, either by render3d.py there or earlier, in which case
+%% the scripts reuse the rendered panels unchanged.
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -156,8 +157,8 @@
 
 \begin{document}
 
-\title[Voronoi cells of four-dimensional unit-ball packings]{Voronoi Cells
-of Four-Dimensional Unit-Ball Packings}
+\title[Voronoi cell volumes in dimension four]{Volume Bounds for Voronoi
+Cells of Four-Dimensional Unit-Ball Packings}
 
 \author[D. Bhattacharjee]{Deep Bhattacharjee$^{\dag}$}
 \address{Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL),
@@ -189,19 +190,20 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 \keywords{Sphere packing; Voronoi cell; semidefinite programming}
 
 \hypersetup{
-  pdftitle={Voronoi Cells of Four-Dimensional Unit-Ball Packings},
+  pdftitle={Volume Bounds for Voronoi Cells of Four-Dimensional Unit-Ball Packings},
   pdfauthor={Deep Bhattacharjee, Ushashi Bhattacharya, Priyabrata Mandal, Shounak Bhattacharya},
   pdfsubject={Sphere packing in dimension four},
   pdfkeywords={sphere packing, Voronoi cell, semidefinite programming}
 }
 
 \begin{abstract}
-We prove that a Voronoi cell of a unit-ball packing of $\mathbb{R}^4$ has
-volume at least $8$, with equality only for the twenty-four-cell of $D_4$,
-when at most twenty-three or at least thirty-one centres lie within
-$\sqrt6$ of its centre, or none lies strictly between $2+4\cdot10^{-26}$
-and $\sqrt6$. The other cells reduce to two explicit inequalities, which
-together imply that $D_4$ is the densest packing in $\mathbb{R}^4$.
+We prove that a Voronoi cell of a unit-ball packing in four dimensions is
+at least as large as the regular twenty-four-cell when at most twenty-three
+or at least thirty-one other centres lie close to its centre, or when every
+nearby centre almost touches it, and that only the twenty-four-cell itself
+attains the bound. The remaining cells reduce to two explicit inequalities,
+which together imply that the checkerboard lattice is the densest packing in
+four dimensions.
 \end{abstract}
 
 \maketitle
@@ -212,7 +214,8 @@ together imply that $D_4$ is the densest packing in $\mathbb{R}^4$.
 
 The four-dimensional sphere packing problem asks for the supremum
 density $\Delta_4$ of a packing of unit balls in $\mathbb{R}^4$. The
-$D_4$ root lattice, scaled so that nearest centres lie at distance $2$,
+$D_4$ root lattice, or checkerboard lattice, scaled so that nearest centres
+lie at distance $2$,
 packs balls at density $\pi^2/16=0.6169\ldots$ and is the densest
 lattice packing in dimension $4$, by a theorem of Korkine and Zolotareff
 \cite{KZ1872}. Whether it is densest among all packings, periodic or
@@ -1000,14 +1003,14 @@ The polytope itself is drawn four times over, each time from the coordinates and
 orthogonal projection to $\mathbb{R}^3$, in which the axis family and
 the sign family are told apart by colour, \cref{fig:cell24}(b) is the
 Schlegel diagram from one octahedral facet, \cref{fig:cell24}(c) is the
-decomposition into the three $16$-cells that triality permutes, and
-\cref{fig:cell24}(d) is the three-dimensional form of the cap inequality
-of \cref{sec:cap-theorem}.
+three-dimensional form of the cap inequality of \cref{sec:cap-theorem}, and
+\cref{fig:cell24}(d) is the decomposition into the three $16$-cells that
+triality permutes.
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.78\textwidth]{fig_c_cell24}
-\caption{(a) The reference cell, the regular $24$-cell $\VCell$, in an orthogonal projection to three dimensions: the $8$ vertices of the axis family (teal), the $16$ of the sign family (blue), the $32$ edges inside the sign family and the $64$ joining the two families (grey). (b) The Schlegel diagram of the same cell from one octahedral facet (clay): the remaining $18$ vertices and $84$ edges fill the interior of that facet with the other $23$ octahedra. (c) The same $24$ vertices read as three $16$-cells, which triality permutes, each drawn with its own $24$ edges and its own body: the axis family (teal) and the sign family split by the parity of the number of minus signs (ochre, violet). (d) The cap inequality one dimension down. The octahedron of inradius $1$ carries its inscribed ball; the half-space at unit distance normal to a vertex cuts off the clay pyramid, drawn displaced along its normal, and the one normal to a facet touches that facet (teal) and cuts off nothing.}
+\includegraphics[width=\textwidth]{fig_c_cell24}
+\caption{(a) The reference cell, the regular $24$-cell $\VCell$, in an orthogonal projection to three dimensions: the $8$ vertices of the axis family (teal), the $16$ of the sign family (blue), the $32$ edges inside the sign family and the $64$ joining the two families (grey). (b) The Schlegel diagram of the same cell from one octahedral facet (clay): the remaining $18$ vertices and $84$ edges fill the interior of that facet with the other $23$ octahedra. (c) The cap inequality one dimension down. The octahedron of inradius $1$ carries its inscribed ball; the half-space at unit distance normal to a vertex cuts off the clay pyramid, drawn displaced along its normal, and the one normal to a facet touches that facet (teal) and cuts off nothing. (d) The same $24$ vertices read as three $16$-cells, which triality permutes, drawn side by side in one orthogonal projection, each with its own $24$ edges and the hull of its image: the axis family (teal) and the sign family split by the parity of the number of minus signs (ochre, violet).}
 \label{fig:cell24}
 \end{figure}
 
@@ -4646,7 +4649,7 @@ growth along random orders of the vertices, had already found sizes
 $10$ to $22$ and $24$ and never $23$; the enumeration replaces that
 observation by a statement. The same enumeration on the $48$ unit
 quaternions of the binary octahedral group, the vertices of two
-$24$-cells in dual position (\cref{fig:structab}(b)), in
+$24$-cells in dual position (\cref{fig:structab}), in
 which two directions are closer than $60^\circ$ exactly when they lie
 in different copies and are $45^\circ$ apart, returns the two copies of
 $\Rt$ and their forty-eight deletions
@@ -4687,7 +4690,7 @@ interval $(0,\delta_0)$, for any constants $C$ and $\kappa>0$.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.86\textwidth]{fig_c_structab}
-\caption{(a) The $24$ contact directions of $D_4$ seen from a deep hole, radius proportional to angle: an octahedron at $45^\circ$ (clay), a cuboctahedron at $90^\circ$ (teal), an octahedron at $135^\circ$ (blue), and the $96$ pairs at $60^\circ$ as edges. (b) The same, with the dual $24$-cell added (ochre): the $48$ directions of the binary octahedral group, a cube, an octahedron and a cube about the hole, which is now itself a direction.}
+\caption{(a) The $24$ contact directions of $D_4$ seen from a deep hole (dark), radius proportional to angle: an octahedron at $45^\circ$ (clay), a cuboctahedron at $90^\circ$ (teal), an octahedron at $135^\circ$ (blue), and the $96$ pairs at $60^\circ$ as edges, grey between shells. (b) The dual $24$-cell seen from the same hole and on the same scale. The hole is now itself a direction (dark), and the others form a cube at $60^\circ$ (clay), an octahedron at $90^\circ$ (teal) and a cube at $120^\circ$ (blue); the edges are the $88$ pairs at $60^\circ$ that avoid the antipode of the hole, which lies at $180^\circ$ and is not drawn. The two panels together carry the $48$ directions of the binary octahedral group.}
 \label{fig:structab}
 \end{figure}
 
@@ -4865,7 +4868,7 @@ other side. This is a search, not a proof.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.86\textwidth]{fig_c_structcd}
-\caption{(a) The $600$-cell seen from one vertex, its $119$ other vertices in shells at $36^\circ$ to $144^\circ$ with $708$ of the $720$ edges at $36^\circ$; the dark points are an inscribed $24$-cell whose far vertex is the one at infinity, that is, a deletion. (b) The cap lemma on a great $2$-sphere: three contact directions $60^\circ$ apart carry caps of radius $r_*=35.26^\circ$ that meet in exactly one point, the circumcentre of their triangle (ringed); any smaller radius separates them.}
+\caption{(a) The $600$-cell seen from one vertex, radius proportional to angle: its vertices in shells at $36^\circ$ to $144^\circ$ (grey) and, darker and joined by their $88$ edges, the $23$ vertices of an inscribed $24$-cell, the centre among them, whose twenty-fourth vertex is the antipode at $180^\circ$ and is not drawn; they form a deletion. (b) The cap lemma on a great $2$-sphere: three contact directions $60^\circ$ apart carry caps of radius $r_*=35.26^\circ$ that meet in exactly one point, the circumcentre of their triangle (ringed); any smaller radius separates them.}
 \label{fig:structcd}
 \end{figure}
 
@@ -6118,9 +6121,9 @@ points), a $34$-vertex type in a second band just inside that
 smaller region near the triangle's centre ($5\%$). The interior is
 therefore combinatorially richer than either boundary arc: it is not
 one region but at least four; the exact curves separating them, and a
-volume formula on any one of them, are not derived here, and the map
-above only establishes that such curves exist and roughly
-where.
+volume formula on any one of them, are not derived here; the map above
+establishes that such curves exist and locates them to the resolution of
+its grid.
 
 The partition respects the $S_3$ symmetry of \cref{lem:s3-symmetry}. The
 map is invariant under the reflection fixing $v_1$ and exchanging
@@ -10789,7 +10792,7 @@ and along the closed curves of \cref{prop:hexagon-loop} they leave it at
 exactly $8$; but those curves break the packing constraint at first order,
 the largest inner product rising to $4C^2/(4C^2+3)>\frac12$, so a packing can
 follow them only by moving centres out, which the first-order term rewards
-at the rate $\frac23$. This is the mechanism by which (G) should hold, and
+at the rate $\frac23$. A proof of (G) has to capture this mechanism, and
 the numerical searches of \cref{rem:what-g-needs} find nothing below $8$.
 
 A proof needs two quantitative statements. The first is a localisation: if
@@ -11567,13 +11570,10 @@ rational number, its decimal approximation, and whether the corresponding
 chamber-level positivity check (implemented independently of the pivot
 computation itself) passes. Every one of the $22$ rows passes.
 
-This table is generated directly from the project's chamber-register
-data file (a JSON record of all $22$ pivot-type representatives, each
-carrying its exact $LDL^\top$ pivots as rationals), with no manual
-transcription of numbers: the table rows below are produced by a short
-script that reads the register and formats each field, so any error in
-the underlying computation would appear here unchanged rather than be
-silently corrected by hand.
+This table is generated from the chamber-register data file, a JSON
+record of all $22$ pivot-type representatives, each carrying its exact
+$LDL^\top$ pivots as rationals; a short script reads the register and
+formats each field, so every number below is the computed one.
 
 \begin{table}[t]
 \centering
