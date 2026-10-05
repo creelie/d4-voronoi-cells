@@ -298,7 +298,7 @@ def verify(P, tables, lo0, hi0, wmin, extra, label, batch=100000):
             L, Hh = L[:, alive], Hh[:, alive]
             if L.shape[1] == 0:
                 continue
-            c = (L + Hh) / 2; r = up((Hh - L) / 2)
+            c = (L + Hh) / 2; r = np.maximum(up(Hh - c), up(c - L))      # covers [L, Hh] although c is rounded
             q0 = np.zeros(c.shape[1]); grad_lo = np.zeros_like(c); grad_hi = np.zeros_like(c); m2 = np.zeros_like(c)
             for v in range(3):
                 inside = L[v] >= CC.THIRD

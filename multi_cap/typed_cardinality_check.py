@@ -74,7 +74,7 @@ def verify_3d(P2, tops, ordered, e2, wmin=1e-5, batch=150000):
             _, dhi = det.eval((L, Hh))
             alive &= dhi >= 0
             n_out += int(np.sum(~alive))
-            c = (L + Hh) / 2; r = up((Hh - L) / 2)
+            c = (L + Hh) / 2; r = np.maximum(up(Hh - c), up(c - L))      # covers [L, Hh] although c is rounded
             _, p_c = Pp.eval((c, c))
             dclo, _ = det.eval((c, c))
             inside = alive & (dclo >= 0) & (c[0] <= c[1])

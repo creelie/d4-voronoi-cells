@@ -73,7 +73,7 @@ def verify_1d(P1, t, e1, wmin=1e-7):
     worst = -np.inf; n_ok = 0; t0 = time.time()
     while lo.size:
         L = np.stack([lo, np.zeros_like(lo), np.zeros_like(lo)]); Hh = np.stack([hi, np.zeros_like(hi), np.zeros_like(hi)])
-        c = (L + Hh) / 2; r = up((Hh - L) / 2)
+        c = (L + Hh) / 2; r = np.maximum(up(Hh - c), up(c - L))      # covers [L, Hh] although c is rounded
         _, p_c = Pp.eval((c, c))
         glo, ghi = D.eval((c, c)); g = np.maximum(np.abs(glo), np.abs(ghi))
         hlo, hhi = H.eval((L, Hh)); h = np.maximum(np.abs(hlo), np.abs(hhi))
@@ -108,7 +108,7 @@ def verify_3d(P2, t, e2, wmin=1e-5, batch=150000):
             _, dhi = det.eval((L, Hh))
             alive &= dhi >= 0
             n_out += int(np.sum(~alive))
-            c = (L + Hh) / 2; r = up((Hh - L) / 2)
+            c = (L + Hh) / 2; r = np.maximum(up(Hh - c), up(c - L))      # covers [L, Hh] although c is rounded
             _, p_c = Pp.eval((c, c))
             dclo, _ = det.eval((c, c))
             inside = alive & (dclo >= 0) & (c[0] <= c[1]) & (c[1] <= c[2])

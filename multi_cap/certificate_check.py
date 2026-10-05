@@ -315,7 +315,7 @@ def verify_domain(P, tables, wmin, batch=150000, start=None):
             dlo, dhi = det.eval((L, Hh))
             alive &= dhi >= 0
             n_out += int(np.sum(~alive))
-            c = (L + Hh) / 2; r = up((Hh - L) / 2)
+            c = (L + Hh) / 2; r = np.maximum(up(Hh - c), up(c - L))      # covers [L, Hh] although c is rounded
             # the omega terms at the centre, and their first derivatives
             q0 = np.zeros(c.shape[1]); q0hi = np.zeros(c.shape[1]); grad_lo = np.zeros_like(c); grad_hi = np.zeros_like(c); m2 = np.zeros_like(c)
             for v in range(3):

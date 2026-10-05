@@ -336,7 +336,7 @@ def pair_box_check(A, Pu, c2, box, symmetric, depth_max=70, batch=20000):
 
 # ---------------------------------------------------------------- (d) the triples
 
-def triple_box_check(P, tops, sym, cmax, wmin=1e-6, batch=150000):
+def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000):
     """P <= cmax on {-1 <= x_i <= tops[i], Gram det >= 0} with x0 <= x1 if sym >= 1 and
     x1 <= x2 if sym == 2, by second-order Taylor forms (typed_cardinality_check.verify_3d)."""
     Pp = Poly(P); Dv = [Poly(derivative(P, v)) for v in range(3)]
@@ -356,7 +356,7 @@ def triple_box_check(P, tops, sym, cmax, wmin=1e-6, batch=150000):
             _, dhi = det.eval((L, Hh))
             alive &= dhi >= 0
             n_out += int(np.sum(~alive))
-            c = (L + Hh) / 2; r = up((Hh - L) / 2)
+            c = (L + Hh) / 2; r = np.maximum(up(Hh - c), up(c - L))      # covers [L, Hh] although c is rounded
             _, p_c = Pp.eval((c, c))
             dclo, _ = det.eval((c, c))
             inside = alive & (dclo >= 0)
@@ -401,7 +401,7 @@ def triple_box_check(P, tops, sym, cmax, wmin=1e-6, batch=150000):
         lo = np.concatenate(keep_lo, axis=1) if keep_lo else np.zeros((3, 0))
         hi = np.concatenate(keep_hi, axis=1) if keep_hi else np.zeros((3, 0))
         if level % 10 == 0:
-            print('      level %d: %d boxes verified, %d to bisect [%.0f s]' % (level, n_done, lo.shape[1], time.time() - t0), flush=True)
+            print('      %s level %d: %d boxes verified, %d to bisect [%.0f s]' % (label, level, n_done, lo.shape[1], time.time() - t0), flush=True)
     return True, '%d boxes, largest centre value %.4e' % (n_done, worst), n_done
 
 
@@ -431,6 +431,65 @@ def random_gram(T12, T13, T23, n, rng):
         ok = (g[:, 0] <= T12) & (g[:, 1] <= T13) & (g[:, 2] <= T23)
         outs.append(g[ok][:n])
     return np.concatenate(outs)
+
+
+# ---------------------------------------------------------------- local maxima, to set the thresholds
+
+def kfloat(Af, d, e, u):
+    x = (2 * d - float(C1)) / float(C2); y = (2 * e - float(C1)) / float(C2)
+    Tx = [1.0, x]; Ty = [1.0, y]
+    for _ in range(2, R2 + 1):
+        Tx.append(2 * x * Tx[-1] - Tx[-2]); Ty.append(2 * y * Ty[-1] - Ty[-2])
+    Uu = [1.0, 2 * u]
+    for _ in range(2, D2 + 1):
+        Uu.append(2 * u * Uu[-1] - Uu[-2])
+    return sum(Uu[k] / (k + 1) * np.array(Tx) @ Af[k] @ np.array(Ty) for k in range(D2 + 1))
+
+
+def refine_pair(A, Pu, starts, box):
+    """the largest value of K + PAIR3 - Pi found by local ascent from the given starts."""
+    from scipy.optimize import minimize
+    Af = [np.array([[float(v) for v in row] for row in a]) for a in A]
+    pc = [float(c) for c in Pu[::-1]]
+    (a0, a1), (b0, b1) = [(float(x), float(y)) for x, y in box]
+
+    def f(x):
+        d, e, u = x
+        return -(kfloat(Af, d, e, u) + np.polyval(pc, u) - float(pair_float(d / 2, e / 2, u)))
+    best = -np.inf
+    for x0 in starts:
+        cons = [{'type': 'ineq', 'fun': lambda x: (x[0] ** 2 + x[1] ** 2 - 4) / (2 * x[0] * x[1]) - x[2]}]
+        try:
+            r = minimize(f, x0, method='SLSQP', bounds=[(a0, a1), (b0, b1), (-1, 1)], constraints=cons,
+                         options={'maxiter': 200, 'ftol': 1e-14})
+            x = np.clip(r.x, [a0, b0, -1], [a1, b1, 1])
+            x[2] = min(x[2], (x[0] ** 2 + x[1] ** 2 - 4) / (2 * x[0] * x[1]))
+            best = max(best, -f(x))
+        except Exception:
+            pass
+    return best
+
+
+def refine_triple(P, starts, tops):
+    """the largest value of P found by local ascent on the admissible triples."""
+    from scipy.optimize import minimize
+    items = [(np.array(e), float(c)) for e, c in P.items()]
+    E = np.array([e for e, _ in items]); Cf = np.array([c for _, c in items])
+
+    def f(x):
+        return -float(np.sum(Cf * np.prod(np.asarray(x)[None, :] ** E, axis=1)))
+    det = {'type': 'ineq', 'fun': lambda x: 1 + 2 * x[0] * x[1] * x[2] - x[0] ** 2 - x[1] ** 2 - x[2] ** 2}
+    best = -np.inf
+    for x0 in starts:
+        try:
+            r = minimize(f, x0, method='SLSQP', bounds=[(-1, tops[0]), (-1, tops[1]), (-1, tops[2])], constraints=[det],
+                         options={'maxiter': 200, 'ftol': 1e-15})
+            x = np.clip(r.x, -1, tops)
+            if 1 + 2 * x[0] * x[1] * x[2] - x[0] ** 2 - x[1] ** 2 - x[2] ** 2 >= -1e-12:
+                best = max(best, -f(x))
+        except Exception:
+            pass
+    return best
 
 
 # ---------------------------------------------------------------- main
@@ -487,6 +546,14 @@ def main():
         top = (p * p + q * q - 4) / (2 * p * q)
         u = -1 + (top + 1) * rng.random(n) ** 0.5
         u[4 * k6:5 * k6] = top[4 * k6:5 * k6] - 3e-3 * rng.random(k6)
+        gd, ge = np.meshgrid(np.linspace(float(a0), float(a1), 25), np.linspace(float(b0), float(b1), 25), indexing='ij')
+        gd, ge = gd.ravel(), ge.ravel()
+        gt = (gd * gd + ge * ge - 4) / (2 * gd * ge)
+        sv = np.r_[0.0, np.linspace(0, 1, 80) ** 2, 1.0]
+        gp = np.repeat(gd, len(sv)); gq = np.repeat(ge, len(sv))
+        gu = -1 + (np.repeat(gt, len(sv)) + 1) * np.tile(1 - sv[::-1], len(gd))
+        p, q, u = np.r_[p, gp], np.r_[q, gq], np.r_[u, gu]
+        n = len(u)
         x = (2 * p - float(C1)) / float(C2); y = (2 * q - float(C1)) / float(C2)
         Tx = [np.ones_like(x), x]; Ty = [np.ones_like(y), y]
         for _ in range(2, R2 + 1):
@@ -500,7 +567,9 @@ def main():
             Kv += Uu[k] / (k + 1) * np.einsum('na,ab,nb->n', np.stack(Tx, 1), Ak, np.stack(Ty, 1))
         P3 = np.polyval([float(c) for c in Pu[::-1]], u)
         v = Kv + P3 - pair_float(p / 2, q / 2, u)
-        c2[(s, tt)] = above(float(v.max()) + mg2)
+        w = np.argsort(v)[-40:]
+        best = refine_pair(A, Pu, np.stack([p[w], q[w], u[w]], 1), (TRANGE[s], TRANGE[tt]))
+        c2[(s, tt)] = above(max(float(v.max()), best) + mg2)
         print('  pair %s%s: float largest K + PAIR3 - Pi %.6e (file c2 %.6e); threshold %.6e'
               % (s, tt, v.max(), float(Z['c2'][len(c2) - 1]), float(c2[(s, tt)])), flush=True)
     jobs = [(A, pair3_poly(Bk, d3, TYPES.index(s), TYPES.index(tt)), c2[(s, tt)], (TRANGE[s], TRANGE[tt]), s == tt)
@@ -517,14 +586,20 @@ def main():
     check('f <= m_b on every bin', okb, msg)
     # (d) triples
     c3 = {}
+    tjobs = []
     for combo in itertools.combinations_with_replacement(TYPES, 3):
         if all(Ntriple(tcounts(nb), list(combo)) == 0 for nb in COUNTS):
             continue
         P = triple3_poly(Bk, d3, combo)
         T12, T13, T23 = tmax(combo[0], combo[1]), tmax(combo[0], combo[2]), tmax(combo[1], combo[2])
         g = random_gram(float(T12), float(T13), float(T23), 200000, rng)
+        ax = [np.r_[-1.0, np.linspace(-1, float(T), 40), float(T)] for T in (T12, T13, T23)]
+        G = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
+        G = G[1 + 2 * G[:, 0] * G[:, 1] * G[:, 2] - (G ** 2).sum(1) >= 0]
+        g = np.r_[g, G]
         vals = peval(P, g[:, 0], g[:, 1], g[:, 2])
-        c3[combo] = above(float(vals.max()) + mg3)
+        best = refine_triple(P, g[np.argsort(vals)[-40:]], (float(T12), float(T13), float(T23)))
+        c3[combo] = above(max(float(vals.max()), best) + mg3)
         perm, sym = triple_layout(combo)
         tops = [None] * 3
         for src, val in enumerate((T12, T13, T23)):
@@ -537,7 +612,11 @@ def main():
             Pr[tuple(ee)] = Pr.get(tuple(ee), 0) + co
         print('  triple %s: float largest %.6e on %d samples; threshold %.6e; %d monomials, symmetry %d'
               % (''.join(combo), vals.max(), len(g), float(c3[combo]), len(P), sym), flush=True)
-        ok, msg, _ = triple_box_check(Pr, tops, sym, float(c3[combo]))
+        tjobs.append((combo, (Pr, tops, sym, float(c3[combo]), ''.join(combo))))
+    from multiprocessing import Pool
+    with Pool(int(os.environ.get('TRIPLE_PROCS', '3'))) as pool:
+        res = pool.starmap(triple_box_check, [a for _, a in tjobs])
+    for (combo, _), (ok, msg, _) in zip(tjobs, res):
         check('TRIPLE3_%s <= c3 on the admissible triples' % ''.join(combo), ok, msg)
     # the bound
     worst = None

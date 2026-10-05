@@ -194,6 +194,31 @@ def tbound(s, t):
     return amax(TRANGE[s][1], TRANGE[t][1])
 
 
+KEEP_P, KEEP_T = int(os.environ.get('KEEP_P', '5000')), int(os.environ.get('KEEP_T', '2500'))
+
+
+def prune(psamp, tsamp, x3v, Av, c2v, c3v, L):
+    """keep the KEEP_P pair samples and KEEP_T triple samples of each kind that come
+    closest to violating their constraint at the solution (x3v, Av, c2v, c3v)."""
+    ti = {s: i for i, s in enumerate(TYPES)}
+    for st in psamp:
+        p, q, u = psamp[st]
+        if len(u) <= KEEP_P:
+            continue
+        Kv = np.einsum('nk,na,kab,nb->n', ubasis(u, D2), pbasis(p, R2), Av, pbasis(q, R2))
+        B = T3.Builder(L); T3.add_pair(B, np.arange(len(u)), ti[st[0]], ti[st[1]], u)
+        v = Kv - pair(p / 2, q / 2, u) + B.matrix(len(u)) @ x3v - c2v[st]
+        w = np.argsort(v)[-KEEP_P:]
+        psamp[st] = (p[w], q[w], u[w])
+    for cb in tsamp:
+        g = tsamp[cb]
+        if len(g) <= KEEP_T or cb not in c3v:
+            continue
+        B = T3.Builder(L); T3.add_triple(B, np.arange(len(g)), tuple(ti[x] for x in cb), g[:, 0], g[:, 1], g[:, 2])
+        v = B.matrix(len(g)) @ x3v - c3v[cb]
+        tsamp[cb] = g[np.argsort(v)[-KEEP_T:]]
+
+
 def main():
     d3 = int(sys.argv[1]) if len(sys.argv) > 1 else 6
     rounds = int(sys.argv[2]) if len(sys.argv) > 2 else 3
@@ -209,6 +234,12 @@ def main():
         for cb in tsamp:
             if 't_' + ''.join(cb) in sv:
                 tsamp[cb] = sv['t_' + ''.join(cb)]
+        L0 = T3.Layout(len(TYPES), d3)
+        c2keys = list(itertools.combinations_with_replacement(TYPES, 2))
+        c3keys = [cb for cb in itertools.combinations_with_replacement(TYPES, 3)
+                  if not all(Ntriple(tcounts(nb), list(cb)) == 0 for nb in COUNTS)]
+        prune(psamp, tsamp, sv['x3'], sv['A'], dict(zip(c2keys, sv['c2'])), dict(zip(c3keys, sv['c3'])), L0)
+        print('resumed from %s, pruned to %d pair and %d triple samples per kind' % (os.environ['RESUME'], KEEP_P, KEEP_T), flush=True)
     for rnd in range(rounds):
         t0 = time.time()
         prob, L, X3, A, z, t, m, c2, c3, pvec = build_and_solve(d3, rounds, psamp, tsamp)
@@ -223,8 +254,11 @@ def main():
         for st in c2:
             p, q, u = rand_pairs(*st, 300000)
             Kv = np.einsum('nk,na,kab,nb->n', ubasis(u, D2), pbasis(p, R2), Av, pbasis(q, R2))
-            B = T3.Builder(L); T3.add_pair(B, np.arange(len(u)), ti[st[0]], ti[st[1]], u)
-            v = Kv - pair(p / 2, q / 2, u) + B.matrix(len(u)) @ x3v - c2[st].value
+            x3part = []
+            for i in range(0, len(u), 20000):
+                B = T3.Builder(L); T3.add_pair(B, np.arange(len(u[i:i + 20000])), ti[st[0]], ti[st[1]], u[i:i + 20000])
+                x3part.append(B.matrix(len(u[i:i + 20000])) @ x3v)
+            v = Kv - pair(p / 2, q / 2, u) + np.concatenate(x3part) - c2[st].value
             report.append('%s%s %.1e' % (st[0], st[1], v.max()))
             for k in TCK:
                 corr[k] += Npair(dict(zip(TYPES, k)), *st) * max(v.max(), 0)
@@ -247,6 +281,7 @@ def main():
             d3, rnd + 1, prob.status, prob.value, TARGET, prob.value + max(corr.values()), time.time() - t0, ', '.join(report)), flush=True)
         print('   c2: %s' % {''.join(k): round(float(v.value), 6) for k, v in c2.items()}, flush=True)
         print('   c3: %s' % {''.join(k): round(float(v.value), 7) for k, v in c3.items()}, flush=True)
+        prune(psamp, tsamp, x3v, Av, {k: v.value for k, v in c2.items()}, {k: v.value for k, v in c3.items()}, L)
         for st in newp:
             psamp[st] = tuple(np.r_[a, b] for a, b in zip(psamp[st], newp[st]))
         for cb in newt:

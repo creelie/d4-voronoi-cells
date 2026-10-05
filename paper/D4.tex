@@ -1482,10 +1482,11 @@ form:
 \[
   \vol_3(F_w)=16\sqrt2-\frac{64}{3}=1.2940836\ldots\;<\;\frac43 .
 \]
-Feeding $\beta^{*}$ into \eqref{eq:surface} together with $|W|\le24$,
+Fed into \eqref{eq:surface} together with $|W|\le24$, the constant
+$\beta^{*}$ gives $\vol(V_c(W))\ge\frac{|W|}{4}\beta^{*}$, and this lower
+bound is at most
 \[
-  \vol(V_c(W))\;\ge\;\frac{|W|}{4}\beta^{*}
-  \;\le\;6\beta^{*}\;\le\;96\sqrt2-128\;=\;7.764502\ldots
+  6\beta^{*}\;\le\;96\sqrt2-128\;=\;7.764502\ldots
 \]
 Hence no bound of this class can reach $8$, whatever it is, and its
 ceiling is below even the crude covering estimate of
@@ -1923,20 +1924,16 @@ contact directions at once.
 \end{lem}
 
 \begin{proof}
-Let $G$ be the Gram matrix of the three directions, with unit diagonal
-and off-diagonal entries at most $\tfrac12$, and let $z$ be the point
-of their span equidistant from all three, at angular distance $R$.
-Writing $z=\sum a_iw_i$, the conditions $\langle z,w_i\rangle=\cos R$
-and $|z|=1$ give $Ga=(\cos R)\mathbf1$ and
-$1=a^{\top}Ga=(\cos R)^2\,\mathbf1^{\top}G^{-1}\mathbf1$. Now
-$\mathbf1^{\top}G^{-1}\mathbf1=\max_{x\ne0}(\mathbf1^{\top}x)^2/(x^{\top}Gx)$,
-and $x=\mathbf1$ already gives
+Let $w_1,w_2,w_3$ be the three directions, and let $p\in S^3$ satisfy
+$\langle p,w_i\rangle\ge\cos R$ for each $i$, for some $R\le\frac\pi2$; the
+point of their span equidistant from all three, at angular distance $R$, is
+one such point, and so is any point within $R$ of all three. Since
+$\langle w_i,w_j\rangle\le\tfrac12$ for $i\ne j$,
+$|w_1+w_2+w_3|^2\le3+3=6$, and the Cauchy--Schwarz inequality gives
 \[
-  \mathbf1^{\top}G^{-1}\mathbf1\;\ge\;
-  \frac{9}{3+2\sum_{i<j}g_{ij}}\;\ge\;\frac{9}{3+3}\;=\;\frac32 ,
+  3\cos R\;\le\;\langle p,w_1+w_2+w_3\rangle\;\le\;\sqrt6 ,
 \]
-so $\cos^2R\le\tfrac23$. A point within $r$ of all three would give a
-triple of circumradius at most $r$.
+so $\cos R\le\sqrt{2/3}$. This proves both statements.
 \end{proof}
 
 \begin{prop}[Putting the overlaps back]\label{prop:second-order}
@@ -2319,7 +2316,7 @@ determine $A_2K$ on all of $\mathcal I_4$.%
 \footnote{Four points of $\mathbb R^4$ with a given Gram matrix $G$ are
   the columns of a $4\times4$ matrix $P$ with $P^{\mathsf T}P=G$, and any
   two such matrices differ by an orthogonal factor on the left, since
-  $P_2=P_1U$ with $U$ orthogonal whenever $P_1^{\mathsf T}P_1=P_2^{\mathsf
+  $P_2=UP_1$ with $U$ orthogonal whenever $P_1^{\mathsf T}P_1=P_2^{\mathsf
   T}P_2$; for fewer than four points the same holds after adding zero
   columns. This is why the constraints of the second level are
   polynomial identities in one, three and six inner products and why
@@ -3799,13 +3796,14 @@ $\{1,2\},\{1,3\},\{2,3\}$, and write
 $\rho_1=(ae_1+be_2)/\sqrt2$, $\rho_2=(ce_1+de_3)/\sqrt2$,
 $\rho_3=(fe_2+ge_3)/\sqrt2$ with signs $a,\dots,g$. The supports
 $\{1,4\},\{2,4\},\{3,4\}$ are filled, so $|x_m|\le t$ for $m=1,2,3$.
-Adding the three inequalities \eqref{eq:inside-sixty} gives
+In coordinates \eqref{eq:inside-sixty} reads
 \[
-  (a+c)\,x_1+(b+f)\,x_2+(d+g)\,x_3>3t ,
+  ax_1+bx_2>t,\qquad cx_1+dx_3>t,\qquad fx_2+gx_3>t .
 \]
-and the left side is at most $2tk$, where $k$ counts the nonzero terms
-among $a+c$, $b+f$, $d+g$. Hence $k=3$, that is $a=c$, $b=f$ and $d=g$,
-and $\rho_1,\rho_2,\rho_3$ are again pairwise at $60^\circ$. Changing the
+If $c=-a$, the sum of the first two is $bx_2+dx_3>2t$, which
+$|x_2|,|x_3|\le t$ forbid; in the same way the first and third exclude
+$f=-b$, and the second and third exclude $g=-d$. Hence $a=c$, $b=f$ and
+$d=g$, and $\rho_1,\rho_2,\rho_3$ are again pairwise at $60^\circ$. Changing the
 signs of the coordinates $1,2,3$ as needed makes the triple
 $\{(e_1+e_2),(e_1+e_3),(e_2+e_3)\}/\sqrt2$, and the orthogonal map with
 matrix $\tfrac12\bigl(\begin{smallmatrix}1&1&1&1\\1&1&-1&-1\\
@@ -7096,7 +7094,7 @@ $a_4\approx(F(\sigma)+F(-\sigma))/(2\sigma^4)$ at $\sigma=0.015$, with
 $35$ digits, is positive along all $36$ directions, with values from
 about $0.0088$ to $0.314$. Six directions spanning this range,
 re-evaluated at $\sigma=0.0075$ with $40$ digits, agree with the first
-estimate to within $2$ to $5\%$, which confirms quartic scaling.
+estimate to within $1$ to $5\%$, which confirms quartic scaling.
 \end{numobs}
 
 \subsection{A second configuration: \texorpdfstring{$m=20$}{m=20}}
@@ -10658,7 +10656,7 @@ programmes in \cref{sec:remains,sec:G-and-C}; these are marked where they
 occur, and no proof uses them. The numerical study of the dense
 configurations in \cref{sec:exact-sing,sec:broad-sample} is of a third
 kind, a high-precision evaluation at a stated working precision between
-$35$ and $400$ digits, cross-checked at a second precision; it too is
+$35$ and $45$ digits, cross-checked at a second precision; it too is
 reported as evidence and enters no proof.
 
 \subsection{Independent arithmetic}
