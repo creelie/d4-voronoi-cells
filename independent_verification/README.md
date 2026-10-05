@@ -1,7 +1,9 @@
 # independent_verification/
 
 A re-verification of this package and of the manuscript, run on
-24 September 2026 from a fresh clone.  Start with `REPORT.md`.
+24 September 2026 from a fresh clone of v1.3.0 to v1.6.0, and kept as a
+record of that check: section and statement numbers here are those of the
+version checked, not of the current paper.  Start with `REPORT.md`.
 
 | path | what it is |
 | --- | --- |

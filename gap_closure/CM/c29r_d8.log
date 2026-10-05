@@ -1,0 +1,8 @@
+resumed from c29allx_d8_r2.npz, pruned to 5000 pair and 2500 triple samples per kind
+   direct: 5088 variables, 56860 inequalities, 4299 psd rows in 48 cones, 26293885 nonzeros [7 s to build]
+   51 type-count vectors
+d3=8 round 1: optimal_inaccurate  bound 3.06090 (target 3.10330), corrected <= 4.81028  [1168 s]
+   viol: AA 7.3e-06, AB 1.8e-07, AF 4.6e-05, BB 3.5e-02, BF 6.3e-08, FF 7.1e-09, AAA 1.1e-05, AAB 8.5e-06, AAF 2.6e-05, ABB 1.2e-04, ABF 1.6e-04, AFF 6.6e-05, BBB 3.6e-04, BBF 8.1e-06, BFF 4.0e-05, FFF 3.5e-05
+   c2: {'AA': -0.001456, 'AB': 0.002957, 'AF': 0.017144, 'BB': 0.007879, 'BF': 0.018552, 'FF': 0.036587}
+   c3: {'AAA': 0.0012529, 'AAB': 0.0011816, 'AAF': 0.0006634, 'ABB': 0.0010447, 'ABF': 0.0005871, 'AFF': -0.0009147, 'BBB': 0.0009632, 'BBF': 0.0006578, 'BFF': -0.0005492, 'FFF': 0.0093773}
+   direct: 5088 variables, 80780 inequalities, 4299 psd rows in 48 cones, 38361227 nonzeros [11 s to build]

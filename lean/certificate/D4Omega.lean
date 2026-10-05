@@ -18,7 +18,7 @@ roots from Nat.sqrt and arctan from its alternating series:
 
 for 1/3 <= u < 1, tau = ((1 - u)/(1 + u))^(1/2), t* = tan r_* = 1/sqrt2, h = d/2,
 R^2 = 3/2.  They are the closed forms of the paper (the lens integral of
-lem:pair and its derivatives, and the cap of B(sqrt(3/2))), simplified;
+lem:pair-closed and its derivatives, and the cap of B(sqrt(3/2))), simplified;
 multi_cap/certificate_check.py evaluates the unsimplified forms, and the two
 agree to 1e-14 (checked with mpmath; the derivative identity symbolically).
 The tables are on the dyadic grid of step 2^-16 from the first grid point above

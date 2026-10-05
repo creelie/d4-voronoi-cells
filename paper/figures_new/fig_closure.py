@@ -1,5 +1,5 @@
 """
-fig_closure.py -- fig:hull, the inversion hull and the bound near the root system.
+fig_closure.py -- fig:closure, the inversion hull and the bound near the root system.
 
 (a) A vertex of the 24-cell and its three orthogonal root pairs, in the linear
     projection of R^4 that keeps the vertex direction e_1 vertical and sends

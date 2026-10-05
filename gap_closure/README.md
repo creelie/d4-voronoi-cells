@@ -89,8 +89,10 @@ antipode. At 30 centres the bound stays at 3.1441 for every threshold from
 
 Both open statements reduce to one statement (L): 24 centres with
 T(Y) <= 8 + eta have directions within an explicit root-sum-square distance
-rho(eta) of a root system. The residual case at thirty needs rho < 0.206 at
-eta = 0.00368 (`rem:thirty-left`, `cor:no-room`).
+rho(eta) of a root system. Through `cor:no-room`, the residual case at thirty
+would have needed rho < 0.206 at eta = 0.00368; the kernel on typed triples
+settled that case instead (`thm:count30`), and (L) remains the route for
+twenty-five to twenty-nine centres and for (G).
 
 `budget_far.py` maximises the distance to the nearest root system under
 T(Y) <= 8 + eta and the packing conditions, from root systems pushed out at

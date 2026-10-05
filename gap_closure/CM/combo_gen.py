@@ -5,7 +5,7 @@ at M centres: a two-point kernel with the distance as a
 continuous label (as in radial_case_sdp.py) PLUS a typed three-point kernel on
 the directions (typed3pt.py), whose types are distance ranges.
 
-Residual case (thm:count30, prop:radial): 30 centres within sqrt6, of which
+Fifth case of thm:count30 (with prop:C-radial): 30 centres within sqrt6, of which
   >= 22 within 2.05, >= 23 within 2.15, 24 within 2.25, and 6 in [2.4, sqrt6).
 Types: A = [2, 2.05], B = (2.05, 2.25], F = [2.4, sqrt6).  Two-point bins:
   A, B1 = (2.05, 2.15], B2 = (2.15, 2.25], F.

@@ -1,5 +1,5 @@
 """
-fig_labelled.py -- fig:labelled-b, the proof of thm:m23 (centres at any distance).
+fig_labelled.py -- fig:labelled, the proof of thm:m23 (centres at any distance).
 
 (a) A plane section through c = 0 and two centres y_i, y_j at the packing
     boundary |y_i - y_j| = 2, with d_i = 2.10 and d_j = 2, so that the

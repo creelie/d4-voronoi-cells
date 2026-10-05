@@ -1,5 +1,5 @@
 """
-fig_cardinality.py -- fig:cardinality, twenty-four points at positive slack.
+fig_cardinality.py -- fig:positive-slack, twenty-four points at positive slack.
 
 (a) The three-point bound on A(4, 1/2 + s), the number of points of S^3 with inner
     products at most 1/2 + s, from the sampled programmes of degree 8 and 10

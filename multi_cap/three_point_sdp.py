@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 three_point_sdp.py -- the three-point (Bachoc-Vallentin) relaxation of the
-pair inequality of cor:m23-contacts, and the certificate of thm:certificate.
+pair inequality of thm:strict-reduction, and the certificate of thm:certificate.
 
 The question.  For twenty-three contact directions w_1, ..., w_23 (pairwise
 inner products at most 1/2) write u_ij = <w_i, w_j> and
