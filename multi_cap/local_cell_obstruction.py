@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Why the shape deficit of Proposition 7.18 cannot be harvested cell by
-cell.  Supports Remark 7.19.
+Why the shape deficit of prop:area-optimal cannot be harvested cell by
+cell.  Supports rem:no-local-cell.
 
-The radial identity of Lemma 7.15 is 4 vol(V_c(W)) = int_{S^3} sec^4
+The radial identity of lem:radial-form is 4 vol(V_c(W)) = int_{S^3} sec^4
 delta, and the target is 32.  Two decompositions of S^3 come with the
 configuration, and neither supports a local inequality.
 
@@ -322,7 +322,7 @@ def main():
     n = sum(1 for _, o in RESULTS if o)
     print("%d of %d checks passed" % (n, len(RESULTS)))
     if n == len(RESULTS):
-        print("The shape deficit of Proposition 7.18 is not additive over")
+        print("The shape deficit of prop:area-optimal is not additive over")
         print("cells: no inequality applied one cell at a time, in either")
         print("decomposition, can reach the bound.")
     return 0 if n == len(RESULTS) else 1

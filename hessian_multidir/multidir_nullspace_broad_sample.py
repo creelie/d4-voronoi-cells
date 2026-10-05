@@ -2,7 +2,7 @@
 """
 multidir_nullspace_broad_sample.py
 
-Samples the near-null subspace of the joint Hessian at A_18 (Section 18
+Samples the near-null subspace of the joint Hessian at A_18 (sec:broad-sample
 of the paper, Numerical observations 17.2 and 18.1).
 
 Step 0: the double-precision Hessian spectrum at h = 0.02, 0.01 and 0.005.

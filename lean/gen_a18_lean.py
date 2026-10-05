@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 gen_a18_lean.py: writes D4A18.lean, the Lean check of the two exact
-statements about the configuration A_18 of Section 18 of the paper.
+statements about the configuration A_18 of sec:broad-sample of the paper.
 
-  1. Proposition 18.5: among the 384 signed coordinate permutations, which
+  1. prop:a18-stabiliser: among the 384 signed coordinate permutations, which
      all map the D4 roots to themselves, exactly 48 fix A_18 as a set, and
      they are the ones that fix the coordinate x_1 together with its sign.
-  2. Section 18.2: the configurations grown from roots 5 and 12 are the
+  2. sec:broad-sample: the configurations grown from roots 5 and 12 are the
      images of A_18 under two explicit orthogonal maps that preserve the
      roots (hessian_multidir/a18_other_starts.py finds them).
 
@@ -56,15 +56,15 @@ def main():
     L = []
     L.append("""/-
 D4A18.lean: the exact statements about the dense configuration A_18 of
-Section 18 of the paper.
+sec:broad-sample of the paper.
 
   * stab_count: of the 384 signed coordinate permutations (24 permutations
     times 16 sign vectors, all distinct), each maps the 24 roots +-e_i +-e_j
     onto themselves, and exactly 48 map A_18 onto itself; these 48 are the
-    ones that fix the coordinate x_1 with its sign (Proposition 18.5).
+    ones that fix the coordinate x_1 with its sign (prop:a18-stabiliser).
   * congruent_from5, congruent_from12: the orthogonal maps M5 and M12 (given
     as 2M, with 2M (2M)^T = 4I) map the roots onto the roots and A_18 onto
-    the configurations grown from roots 5 and 12 (Section 18.2).
+    the configurations grown from roots 5 and 12 (sec:broad-sample).
 
 Written by gen_a18_lean.py.  No `sorry`, no Mathlib, no native_decide.
 -/

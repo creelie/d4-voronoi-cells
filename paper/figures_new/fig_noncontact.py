@@ -1,12 +1,12 @@
 """
-fig_noncontact.py -- neighbours that do not touch the centre (Section 21).
+fig_noncontact.py -- neighbours that do not touch the centre (sec:noncontact).
 
 (a) Why the radial reduction needs every active neighbour to touch: two
     neighbours at distance 2.4, exactly 2 apart (a packing), at 49.25 degrees;
     pulled in to distance 2 they overlap, so the configuration at the
     all-contact corner is not a packing and not a contact configuration.
     A two-dimensional section, to scale.
-(b) The distance criterion (Proposition 21.1): Phi for m contacts and k further
+(b) The distance criterion (prop:distance-criterion): Phi for m contacts and k further
     neighbours at a common distance d, against d; it passes 8 at the
     thresholds that multi_cap/shell_reduction.py certifies in ball arithmetic.
 (c) The numerical search of the open case (multi_cap/runs/

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 facet_bounds_probe.py -- a numerical check of step (b) of the near-contact theorem
-(Theorem 21.9), facet by facet.  Floating point, exploration; the proof is the text,
+(thm:near-contact), facet by facet.  Floating point, exploration; the proof is the text,
 and its constants are evaluated in exact arithmetic by explicit_eps0.py.
 
 For random and adversarial perturbations of the root system (directions w_i = u_i +

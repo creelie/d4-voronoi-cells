@@ -13,8 +13,7 @@ rational arithmetic:
   * the inner product of points 8 and 10 is at distance at least 57/250 from
     each of -1, -1/2, 0, 1/2, 1.
 
-If the set were within d of the normalised root system (d(W) of Theorem
-7.51: after an orthogonal map and a relabelling the points move by e_i with
+If the set were within d of the normalised root system (d(W) of thm:local-uniqueness: after an orthogonal map and a relabelling the points move by e_i with
 sum e_i^2 = d^2), every inner product would be within e_i + e_j <= 2d of one
 of those five values.  So d(W) >= 57/500 > 1/48: the set has slack below
 0.017 and is far from the root system.  That step is the paper's.

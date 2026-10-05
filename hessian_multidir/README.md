@@ -1,10 +1,10 @@
 # hessian_multidir/
 
-The joint-Hessian computations of Sections 15 to 18 of the paper. Apart
+The joint-Hessian computations of sec:hessian-technique to sec:broad-sample of the paper. Apart
 from the two exact group computations marked below, every result here
 is numerical and the paper labels it as a numerical observation. None of
 it is used in the proof of any theorem: the multi-direction case is
-settled by Corollary 7.31 through the classification of Theorem 7.25.
+settled by cor:conj-resolved through the classification of thm:m24.
 
     extend_hessian.py, c2_constant_test.py, c2_hessian_relation_check2.py,
     triality_search.py, triality_search2.py, triality_exact.py,
@@ -17,10 +17,10 @@ settled by Corollary 7.31 through the classification of Theorem 7.25.
                               adjacent directions, obtained by fitting
                               finite differences (to about 1e-6), and its
                               minimum eigenvalue 1/3 (Numerical
-                              observation 15.2, Section 15.3).
+                              observation, sec:dense-configs-new).
 
     vertex_degeneracy_check.py
-                              Exact vertex enumeration for Section 15.3: two
+                              Exact vertex enumeration for sec:dense-configs-new: two
                               adjacent facets of the 24-cell share 3 of
                               their 6 vertices, and after one facet is
                               perturbed, 4 of the 10 completions to a
@@ -32,7 +32,7 @@ settled by Corollary 7.31 through the classification of Theorem 7.25.
                               along near-null directions decrease by a
                               factor of about 4 per halving of the step,
                               and the quartic coefficient is positive
-                              (Section 17, Numerical observation 17.1).
+                              (sec:exact-sing).
 
     multidir_nullspace_broad_sample.py, nullspace_broad_sample_A18.log
                               The scaling test that finds a 4-dimensional
@@ -51,7 +51,7 @@ settled by Corollary 7.31 through the classification of Theorem 7.25.
     quartic_dense_A18_run.log
                               166 estimates of the quartic coefficient at
                               A_18, the data of the least-squares fit of
-                              Section 18.3. The script skips directions
+                              sec:broad-sample. The script skips directions
                               already present in its output file.
 
     gram_sos_lib.py           The Gram-matrix semidefinite test for a sum-
@@ -67,18 +67,17 @@ settled by Corollary 7.31 through the classification of Theorem 7.25.
 
     multidir_chain_hessian_extended.py, hp_volume.py
                               Root system, tangent bases and the
-                              high-precision volume routine of Section 17.2,
+                              high-precision volume routine of sec:hp-volume-method,
                               used by the scripts above (copied from core/
                               so that this directory runs on its own).
 
     a18_stabilizer_group.py   Exact: within the 384 signed coordinate
                               permutations preserving the D4 roots, the
-                              stabiliser of A_18 has order 48 (Proposition
-                              18.5).
+                              stabiliser of A_18 has order 48 (prop:a18-stabiliser).
 
     a18_other_starts.py       Exact: the configurations grown from roots 5
                               and 12 are images of A_18 under orthogonal
-                              maps preserving the D4 roots (Section 18.2).
+                              maps preserving the D4 roots (sec:broad-sample).
 
     a18_symmetry_representation_check.py
                               Checks numerically that the induced
@@ -111,7 +110,7 @@ settled by Corollary 7.31 through the classification of Theorem 7.25.
                               by power-sum character formulas, with the
                               basis {x0^4, x0^2 S2, x0 P3, S4, S22} found
                               independently by Reynolds projection
-                              (Proposition 18.7).
+                              (prop:a18-invariant-dim).
 
     a18_fit_and_sos_check.py  Fits the five invariant coefficients from
                               seven directions at two step sizes (40-digit

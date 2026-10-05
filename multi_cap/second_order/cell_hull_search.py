@@ -3,9 +3,9 @@
 cell_hull_search.py -- the least value of vol(V(Y) ∩ K(Y)) over sets Y of 24
 centres within sqrt6 of c = 0 (floating point, qhull; exploration).
 
-By Proposition 21.4 (the inversion hull), V_c contains V(Y) ∩ K(Y) for every
+By prop:inversion-hull (the inversion hull), V_c contains V(Y) ∩ K(Y) for every
 set Y of centres, whatever the rest of the packing does; with Y the centres
-within sqrt6, the case of Conjecture 1.6 with exactly 24 of them follows from
+within sqrt6, the case of conj:shell with exactly 24 of them follows from
 
     (G)  vol(V(Y) ∩ K(Y)) >= 8 for every packing set Y of 24 centres with
          2 <= |y| <= sqrt6, with equality only at the root system.
@@ -13,7 +13,7 @@ within sqrt6, the case of Conjecture 1.6 with exactly 24 of them follows from
 Globally (G) is false: with centres pushed out towards sqrt6 the inversion
 hull shrinks, and the unrestricted minimisation reaches 4.75 on a packing
 (runs/cell_hull_search_unrestricted.log; the configuration is saved in
-cell_hull_free_example.npy).  There the pair terms of Lemma 21.6
+cell_hull_free_example.npy).  There the pair terms of lem:no-triple
 settle the case, since their bound T(Y) (truncated_search.py) exceeds 8.  The
 statement the case needs is (G) on the gap {T(Y) <= 8}, and with "gap" as the
 third argument the script adds that constraint: it pulls each start into the

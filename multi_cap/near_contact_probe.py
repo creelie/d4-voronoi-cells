@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 near_contact_probe.py -- exploration, not proof: the numbers behind the
-remarks of Section 21.1 about the inversion hull and about the conjecture near
+remarks of sec:closure and sec:remains about the inversion hull and about the conjecture near
 the root system.  Floating point throughout (scipy's polytope routines and
 SLSQP); nothing here is used in a proof.
 
-  (1) the inversion-hull bound F(Y) = vol(V(Y) cap K(Y)) of Proposition 21.4,
+  (1) the inversion-hull bound F(Y) = vol(V(Y) cap K(Y)) of prop:inversion-hull,
       K(Y) the convex hull of 0 and the points 4y/|y|^2, beside the true
       volume vol(V(Y)), on the root system, on the root system pushed out to
       distance 2 + delta, and on the deletion with one centre held at 2 + delta
@@ -17,7 +17,7 @@ SLSQP); nothing here is used in a proof.
         - ||eps|| / K, where eps is the displacement of the directions from
           the best-matching rotated root system and K the sum over the 96
           tight pairs of the slack kappa_ij that the distances allow; the
-          proof of Theorem 21.9 shows ||eps|| <= 2.71 K once ||eps|| <= 1/48;
+          proof of thm:near-contact shows ||eps|| <= 2.71 K once ||eps|| <= 1/48;
         - (vol - 8 - (2/3) sum delta) / (||eps||^2 + |delta|^2), which the
           proof bounds below by a constant; the on-axis family gives -1/2.
 
@@ -108,7 +108,7 @@ def main():
         worst_rem = min(worst_rem, rem)
         n_used += 1
     print('    feasible endpoints: %d' % n_used)
-    print('    largest ||eps|| / K:  %.6f   (the proof of Theorem 21.9 allows 2.71)' % worst_rig)
+    print('    largest ||eps|| / K:  %.6f   (the proof of thm:near-contact allows 2.71)' % worst_rig)
     print('    least (vol - 8 - (2/3) sum delta) / (||eps||^2 + |delta|^2):  %.4f' % worst_rem)
     print('RESULT: exploration, not proof')
 

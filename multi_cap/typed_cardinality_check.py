@@ -29,7 +29,13 @@ inequality Z >= 0 for every such code).  The thresholds t1, t2 are the
 decimals recorded in the file, taken exactly; the boxes run to the least
 doubles at or above them.
 
-Usage: python3 typed_cardinality_check.py cert.npz [margin]
+Usage: python3 typed_cardinality_check.py cert.npz [margin] [margin_111 margin_112]
+
+The margin is added to the floating-point maxima to give the thresholds; the
+two further margins, when given, replace it for F on the triples of type 111
+and 112, whose thresholds enter Z with the factors n(n-1)(n-2) and 3n(n-1).
+A larger margin leaves less of Z below 0 but lets the branch and bound close
+with larger boxes.
 """
 import os
 import sys
@@ -125,6 +131,8 @@ def verify_3d(P2, tops, ordered, e2, wmin=1e-5, batch=150000):
 def main():
     path = sys.argv[1]
     margin = float(sys.argv[2]) if len(sys.argv) > 2 else 2e-6
+    m111 = float(sys.argv[3]) if len(sys.argv) > 3 else margin
+    m112 = float(sys.argv[4]) if len(sys.argv) > 4 else margin
     Z_ = np.load(path)
     d = int(Z_['d']); n = int(Z_['n'])
     t1 = Fr(repr(float(Z_['t1']))); t2 = Fr(repr(float(Z_['t2'])))
@@ -157,8 +165,8 @@ def main():
     Zf, Af, out = T.evaluate(R, fv, Fv, float(t1), float(t2), n)
     e1 = above(out['g1'][0] + 1 + margin)             # P1 <= e1 on [-1, t1]:  g <= e1 - 1
     e1b = above(out['g2'][0] + 1 + margin)            # P1 <= e1b on [-1, t2]: g <= e1b - 1 = a2
-    b1 = above(out['F1'][0] + margin)
-    b2 = above(out['F2'][0] + margin)
+    b1 = above(out['F1'][0] + m111)
+    b2 = above(out['F2'][0] + m112)
     print(f"   floating point: Z = {Zf:.6f}; thresholds g <= {e1 - 1:.6e} on [-1,t1], g <= {e1b - 1:.6e} on [-1,t2], "
           f"F <= {b1:.6e} (111), F <= {b2:.6e} (112)", flush=True)
     Zx = (n + 1) * A + n * (n - 1) * (Fr(e1) - 1) + 2 * n * (Fr(e1b) - 1) \

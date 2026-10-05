@@ -1,8 +1,8 @@
 /-
 D4Stress.lean
 
-A machine check of the integer arithmetic behind Proposition 7.48 of
-"Voronoi Cells of Four-Dimensional Unit-Ball Packings": the equilibrium
+A machine check of the integer arithmetic behind prop:deletion-rigid of
+"The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture": the equilibrium
 stress on the eighty-eight tight pairs of a deletion configuration.
 
 Everything here is finite arithmetic over the integers, so every statement
@@ -10,7 +10,7 @@ is settled by `decide` and the kernel checks it. There is no `sorry` and no
 dependence on Mathlib: this file compiles against a bare Lean 4 toolchain.
 
 The roots are taken unnormalised, with squared length 2, exactly as in the
-proof of Proposition 7.48, so that every quantity below is an integer. In
+proof of prop:deletion-rigid, so that every quantity below is an integer. In
 that scaling the contact condition reads `dot a b <= 1` and a pair is tight
 when `dot a b = 1`.
 -/
@@ -136,29 +136,29 @@ def residual (a : Vec) : Vec :=
 
 /-- **The equilibrium relation.** For every direction of the deletion
     configuration, the weighted sum of its tight neighbours cancels against
-    its own multiple of itself. This is equation (7.33) of the paper, and it
+    its own multiple of itself. This is equation eq:stress of the paper, and it
     is what makes every first-order motion hold all eighty-eight pairs at
     equality. -/
 theorem equilibrium : (W.all fun a => residual a == vzero) = true := by decide
 
-/-! ## The pair count of Proposition 7.41 -/
+/-! ## The pair count of prop:pair-budget -/
 
 /-- A graph on twenty-three vertices of maximum degree ten has at most
     one hundred and fifteen edges, which is the ceiling quoted in
-    Proposition 7.41. -/
+    prop:pair-budget. -/
 theorem pair_ceiling : (23 * 10) / 2 = 115 := by decide
 
 /-- With the integration stopped at r_23, the deletion configuration is
     three pairs short of the ninety-one that the pairwise estimate would
-    need (Remark 7.42). -/
+    need (rem:pair-budget). -/
 theorem deletion_shortfall : 91 - tightPairs.length = 3 := by decide
 
 /-- Carried to r_*, the estimate needs sixty-five pairs at sixty degrees
-    (Proposition 7.41), and the deletion configuration has twenty-three
+    (prop:pair-budget), and the deletion configuration has twenty-three
     more than that. -/
 theorem deletion_surplus : tightPairs.length - 65 = 23 := by decide
 
-/-! ## The root system itself (the corollary after Proposition 7.48)
+/-! ## The root system itself (the corollary after prop:deletion-rigid)
 
 With nothing deleted the tight pairs are the ninety-six edges of the
 24-cell, and the constant stress, weight 1 on every tight pair and -4 on

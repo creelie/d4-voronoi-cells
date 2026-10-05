@@ -3,7 +3,7 @@
 tilt_block.py -- the second variation of the contact-cell volume under pure
 tilts (no push-outs), at the root system, in exact rationals.
 
-The tilt block of the form H of Proposition 21.13 (its 72 x 72 block on the
+The tilt block of the form H of prop:hessian-d4 (its 72 x 72 block on the
 tangent coordinates c, eta = 0) is the Hessian of vol{x : <x, w_i> <= 1} as a
 function of the 24 directions alone.  The script proves, by an exact LDL^T
 over Q (a zero pivot accepted only with a zero row), that it is positive

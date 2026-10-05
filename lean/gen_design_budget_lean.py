@@ -102,7 +102,7 @@ def main():
     L = []
     L.append(f"""/-
 D4DesignBudget.lean: the exact content of the proposition "No room from the
-design defects" (Section 21.1 of the paper).
+design defects" (sec:closure of the paper).
 
 With G_k = U_k/(k+1) (U_k the Chebyshev polynomials of the second kind, so
 G_k(1) = 1) and p = sum_(k=0..5) p_k G_k for the rationals p_k below:

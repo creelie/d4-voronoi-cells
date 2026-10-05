@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 shell_reduction.py -- the reduction from the Voronoi cell of a packing to the
-cell of its contacts (Section 2 of the paper, Lemmas 2.7 and 2.9, and
-Theorem 1.5 with its hypothesis).
+cell of its contacts (Section 2 of the paper, lem:shell-new and lem:radial-new, and
+thm:local-general with its hypothesis).
 
 Write N(c) for the centres other than c within distance 2 sqrt 2 of c, and
 d_1 <= d_2 <= ... for their distances.  A centre at distance d cuts the ball
@@ -20,7 +20,7 @@ arccos((d/2) cos r) <= r about u.  Hence, for every packing and every R in
 
 C the cap measure on S^3 and U(r) the measure of the directions farther than
 r from every cap.  Phi depends on the distances alone, not on the directions,
-and is nondecreasing in each d_i.  It is the covering bound of Theorem 7.16
+and is nondecreasing in each d_i.  It is the covering bound of thm:covering-bound
 with every neighbour, not only the contacts, counted, each by the cap it
 actually cuts.
 
@@ -29,18 +29,18 @@ is compared with 8:
 
   (1) the covering radius of the 24 root directions of D_4 is 45 degrees,
       exactly: max_r <theta, r/|r|> >= 1/sqrt 2 for every unit theta.  Hence a
-      centre with 24 contacts (a copy of the root system, by Theorem 7.25) has
+      centre with 24 contacts (a copy of the root system, by thm:m24) has
       no other centre closer than 2 sqrt 2, and its cell is the 24-cell;
   (2) Phi for m contacts and nothing else within 2 sqrt 2 is above 8.044
       for every m <= 22 (its exact value at m = 22 is 8.0464, that of the
-      covering bound of Theorem 7.16; the truncation at sqrt 2 is what makes
+      covering bound of thm:covering-bound; the truncation at sqrt 2 is what makes
       far centres irrelevant, and it changes the covering bound only for
       m <= 11, where the angle r_m exceeds 45 degrees and the truncated value
       stays above 11.5);
   (3) thresholds of the distance criterion: for k non-contact neighbours at a
       common distance d next to m contacts, Phi >= 8 as soon as d exceeds the
       printed value;
-  (4) two examples that show why Lemmas 2.7 and 2.9 need their hypotheses
+  (4) two examples that show why lem:shell-new and lem:radial-new need their hypotheses
       (a cell with no contact, and a far centre beside a deletion) are
       consistent with the lemmas.
 
@@ -167,7 +167,7 @@ detail = '\n'.join('m = %2d contacts, nothing else within 2 sqrt2:  Phi >= %s'
                    % (m, v.mid().str(10, radius=False)) for m, v in vals.items())
 check('(2) Phi(m contacts) > 8 for every m <= 22 (Phi decreases in m; m = 22 gives 8.0464, certified above 8.044)',
       all(lower(vals[m]) > 8 for m in vals if m <= 22), detail +
-      '\n(m = 23 and 24 fall below 8: those need Theorems 7.40 and 7.25, see the paper)')
+      '\n(m = 23 and 24 fall below 8: those need thm:m23 and thm:m24, see the paper)')
 
 # --------------------------------------------------------------------------
 # (3) thresholds of the distance criterion
@@ -196,7 +196,7 @@ check('(3) the distance criterion: thresholds (rigorous, ball arithmetic)', True
 # (4) the lemmas on the two examples
 # --------------------------------------------------------------------------
 # 49 balls: 48 neighbours at distance 2/sqrt(2 - sqrt 2) = 2.6131 in the binary
-# octahedral directions.  No contact, so Lemma 2.9 gives nothing
+# octahedral directions.  No contact, so lem:radial-new gives nothing
 # about a contact configuration; Phi with 48 centres at 2.6131 applies.
 d48 = Fraction(26131, 10000)          # below the true distance 2/sqrt(2 - sqrt 2) = 2.613126
 v48 = phi_lower([d48] * 48)

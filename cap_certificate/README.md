@@ -1,11 +1,11 @@
 # cap_certificate/
 
-The cap inequality of Section 13, end to end.
+The cap inequality of sec:cap-theorem, end to end.
 
 ## The cap inequality in one script
 
   cap_inequality_certificate.py
-                              Reproduces the whole of Section 13 end to
+                              Reproduces the whole of sec:cap-theorem end to
                               end, in the order the section proves it:
 
                                 (A) exact rational vertex enumeration of

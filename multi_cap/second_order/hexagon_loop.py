@@ -2,7 +2,7 @@
 """
 hexagon_loop.py -- a closed curve of direction sets through the root system,
 not rotations of it, along which the contact cell {x : <x, w_i> <= 1} has
-volume exactly 8 (Proposition 21.19).  Exact (sympy) with numerical
+volume exactly 8 (prop:hexagon-loop).  Exact (sympy) with numerical
 cross-checks (qhull, and 50-digit volumes).
 
 Coordinates: R^4 = P + P', P the plane of an A2 hexagon of unit roots, e(a) =

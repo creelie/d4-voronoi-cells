@@ -183,15 +183,13 @@ system; semidefinite programming}
 }
 
 \begin{abstract}
-We prove that a Voronoi cell of a unit-ball packing in $\mathbb{R}^4$ has at
-least the volume of the regular twenty-four-cell, with equality only for the
-$D_4$ configuration, unless between $24$ and $30$ other centres lie within
-$\sqrt6$ of its centre, not all at distance $2$. In particular the
-twenty-four-cell conjecture holds for every contact configuration, $D_4$ is a
-strict local minimum of the cell volume, and no periodic packing whose cells
-all avoid this exception is denser than $D_4$. For the remaining cells the
-conjecture, and with it the optimality of $D_4$ among all packings, follows
-from two explicit inequalities about at most thirty centres.
+We prove that every Voronoi cell of a unit-ball packing in $\mathbb{R}^4$ has
+at least the volume of the regular twenty-four-cell, with equality only for
+$D_4$, unless $24$ to $30$ other centres lie within $\sqrt6$ of its centre,
+not all at distance $2$. Hence the twenty-four-cell conjecture holds for every
+contact configuration, $D_4$ is a strict local minimum of the cell volume, and
+no periodic packing avoiding the exception is denser than $D_4$; the remaining
+cells reduce to two explicit inequalities about at most thirty centres.
 \end{abstract}
 
 \maketitle
@@ -421,7 +419,7 @@ Every packing of unit balls in $\mathbb{R}^4$ has density at most
 $0.63668$.
 \end{thm}
 
-This lies between the linear programming bound $0.64775$ of Cohn and Elkies
+This lies between the linear programming bound $0.64774$ of Cohn and Elkies
 \cite{CE03} and the three-point bound $0.63611$ of Cohn, de Laat and Salmon
 \cite{CdLS22}, and it uses nothing but the volume of each cell inside the
 ball of radius $\sqrt{3/2}$ about its centre.
@@ -3040,7 +3038,7 @@ records what settles each part of it.
 \caption{(a) The covering bound \eqref{eq:covering-bound} at every
 admissible contact count $m$, against the target $8$. It clears the
 target for all $m\le22$ and falls below at $m=23$. (b) How each part of the range of contact counts is settled: the
-estimate below $22$ (\cref{cor:m22}), extension followed by monotonicity
+estimate up to $22$ (\cref{cor:m22}), extension followed by monotonicity
 at $23$ when the circumradius reaches $2$ (\cref{prop:extendable}), and
 the classification at $24$ (\cref{thm:m24}). The third row is settled by
 the pair inequality of \cref{thm:strict-reduction} and its certificate,
@@ -3127,7 +3125,7 @@ That $\omega$ is decreasing and eventually zero is immediate from
 vanishes for $r\le\gamma/2$. Inequality \eqref{eq:pair-budget} is
 \eqref{eq:second-order} at $R=r_*$ with the value $7.907144430\ldots$ of
 the bracket subtracted from $8$. Numerically
-$7.907144430+65\times0.001445409=8.001096\ldots$, while $64$ pairs
+$7.907144430+65\times0.001445408=8.001096\ldots$, while $64$ pairs
 give $7.999651\ldots$, which is the sense in which $65$ suffice and
 $64$ do not; the crossing is at $64.24$ pairs.
 
@@ -3326,8 +3324,8 @@ content is the following. A saturated configuration, if one exists,
 has no symmetry acting transitively on its directions: it is not a single
 orbit of anything. That removes every construction of the kind one reaches
 for first, and it is consistent with the rest of what is known about the
-case, since the configurations that do exist at $23$ directions are the
-deletions, whose symmetry group is the stabiliser of a root in the Weyl
+case, since the only contact configurations of $23$ directions known
+to us are the deletions, whose symmetry group is the stabiliser of a root in the Weyl
 group and has four orbits on the remaining directions, of sizes
 $1,8,6,8$. A search looked for the rest: it minimised $\max_I|z_I|$
 directly, from perturbed deletions, from random starts and from partially
@@ -4304,6 +4302,7 @@ the constraint at $\delta=0$ from any start. At $\delta=0.01$ the best
 symmetric configuration has inradius $0.6599$, in line with
 \cref{tab:slack-continuation}. No symmetric configuration crossed into
 $K(0)$ except the deletions.
+
 \begin{remark}[What the continuation says]\label{rem:slack-continuation}
 The picture is the one that the hypothesis of \cref{thm:m23-from-codes}
 describes, and it locates where a proof of that hypothesis has to work. By \cref{lem:h-limit} it
@@ -4317,7 +4316,7 @@ minimal angle. That is the quantitative form of
 statement about codes of minimal angle exactly $60^\circ$, and codes at
 $59.3^\circ$ already behave in a completely different way. A saturated
 configuration, if one exists, is a member of $K(0)$ with $g>\tfrac12$,
-hence a member of every $K(\delta)$ with $h(\delta)\ge g$; none appeared
+hence of every $K(\delta)$, and forces $h(\delta)\ge g$ for all $\delta$; none appeared
 in three passes of the continuation, nor in $300$ direct maximisations
 of $g$ over $K(0)$ by sequential quadratic programming.\footnote{The
 starts were of three kinds, taken in rotation: random points pushed
@@ -5193,7 +5192,7 @@ three-point bound on the number of points of $S^3$ with inner products at
 most $\tfrac12+s$, from sampled programmes of degree $8$ and $10$
 (each sampled value is slightly optimistic), with the three certified values: degree $8$ at $s=0.005$ and
 $0.0065$, degree $10$ at $s=0.008$, the one \cref{thm:kissing-stable} uses. It
-crosses $25$ near $s=0.009$; a $25$-point code exists from $s=0.0374$ on. (b) How far the proof of
+crosses $25$ near $s=0.009$; a $25$-point code exists from $s=0.03743$ on. (b) How far the proof of
 \cref{thm:m24-robust} could be pushed if the triple and quadruple terms
 cost nothing ($B_3=B_4=0$): the largest slack $\kappa$ it reaches, against
 the tolerance $\delta$ that a rounding lemma would allow
@@ -5268,8 +5267,8 @@ $W(D_4)$, the group of permutations and even sign changes of the
 coordinates, has order $192$ and acts transitively on the $24$ roots, so
 the stabiliser of a root has order $8$. The transposition of the first
 two coordinates negates $v_1$; the transposition of the last two negates
-$v_2$; their product with the sign change of the last two coordinates
-negates $w_1$. Each fixes $u_0$ and the other two basis vectors, so they
+$v_2$; and the product of that transposition with the sign change of the
+last two coordinates negates $w_1$. Each fixes $u_0$ and the other two basis vectors, so they
 generate the whole stabiliser, and its images of the triangle are the
 eight octants, which tile the sphere. The statements about $S$ and $H$
 are direct evaluations. $S$ changes one sign and $H$ is not a signed
@@ -5438,9 +5437,8 @@ The group generated by $S=\diag(1,1,1,-1)$ and the Hadamard matrix
 $H=\tfrac12\left(\begin{smallmatrix}1&1&1&1\\1&1&-1&-1\\1&-1&1&-1\\1&-1&-1&1\end{smallmatrix}\right)$
 has order exactly $6$, every element fixes $u_0$, and every element is
 an automorphism of $\Rt$. The induced action on $\{v_1,w_1,v_2\}$
-realises \emph{all six} permutations of this three-element set: the
-group is (isomorphic to) the symmetric group $S_3$, acting on
-$\{v_1,w_1,v_2\}$ exactly as its full permutation group.
+realises all six permutations of this three-element set, so the group
+is isomorphic to the symmetric group $S_3$.
 \end{lem}
 
 \begin{proof}
@@ -5549,8 +5547,8 @@ chords, sampled at $25$ values of $\tilt$ each, finds small positive
 discrete second differences (apparent local convexity, not concavity)
 at several points, concentrated toward $\tilt$ near $\pi/2$. These are not
 grid artifacts. Fixing one
-such point and shrinking the step size geometrically across eight orders
-of magnitude ($h=0.08$ down to $h\approx3\times10^{-4}$) gives
+such point and halving the step size eight times ($h=0.08$ down to
+$h\approx3\times10^{-4}$) gives
 $d^2(h)/h^2$ converging to $+0.3056$, constant to four
 significant figures over the last five halvings, the signature of a
 nonzero positive second derivative at that point, not
@@ -5686,6 +5684,7 @@ immediately below region top splits into three sub-parts at the
 crossings $\arcp_1,\arcp_2,\arcp_3$.}
 \label{fig:arcs}
 \end{figure}
+
 \section{Certificates on the first arc}\label{sec:arc1-cert}
 
 \subsection{Exact remapping and box covering}\label{sec:method-overview-new}
@@ -5850,6 +5849,7 @@ $\defect>0$ on the first arc outside the excluded margins recorded
 above, none more than a few tenths of one percent of its region's area
 and none on the two exact regions. The margins, and the rest of the
 sphere of directions, are settled by \cref{thm:eperp-closed}.
+
 \section{Breakpoint classification on the second arc}\label{sec:arc2-breakpoints}
 
 \subsection{Setup}
@@ -5949,6 +5949,7 @@ sub-part, the widest of the three by $\arcp$-range. The two remaining
 sub-parts are handled not by a direct computation but by the
 identification of \cref{prop:arc2-is-arc1}, which carries the first
 arc's certificates onto the whole of this one.
+
 \section{Certificates on the second arc}\label{sec:arc2-cert}
 
 \subsection{Region top: an exact, zero-margin certificate}\label{sec:arc2-regiontop-new}
@@ -6076,11 +6077,12 @@ domain, computed by a route that shares nothing with it.
 
 \Cref{fig:fundamental-domain}(b) shows the certificate carried by each
 region of the first arc. Read directly, the region-by-region computations of this section settle
-three of the second arc's units and leave the rest open. Read through
+three of the second arc's regions and do not reach the others. Read through
 \cref{prop:arc2-is-arc1}, they are not needed: the second arc and
 the third edge both carry the first arc's certificates, at the first
-arc's margins. The interior of the octant is a separate matter, settled
+arc's margins. The interior of the triangle is a separate matter, settled
 by a different argument in \cref{sec:cap-theorem}.
+
 \section{Positivity for every deviation direction}\label{sec:cap-theorem}
 
 The certificates of \cref{sec:arc1-cert,sec:arc2-cert} are exact, but
@@ -6138,7 +6140,7 @@ vertices of $\VCell$ lying on the facet at $\base_0$; since a facet of the
 $24$-cell is a regular octahedron with six vertices, these are all of
 them. A regular octahedron with vertices $\pm v_j$ in an orthonormal frame
 is $\{y:\sum_j|\langle y,v_j\rangle|\le1\}$ and has volume
-$\tfrac{2^3}{3!}\cdot 2=\tfrac43$.
+$\tfrac{2^3}{3!}=\tfrac43$.
 
 For $i\in N$ set $m_i=\base_i-\tfrac12\base_0$, so $m_i\perp\base_0$ and
 $|m_i|=\tfrac{\sqrt3}{2}$. Writing $x=p\base_0+y$ with $y\perp\base_0$,
@@ -6590,7 +6592,7 @@ enclosing body, would not have this property.
 \subsection{A quantitative form near the base direction}\label{sec:quantitative-cone}
 
 \Cref{thm:eperp-closed} gives a sign and no more. For small and moderate
-tilts one can say how large the defect is, by replacing $Q$ with a cone in place of a cross-polytope. The eight roots at $60^\circ$ alone
+tilts one can say how large the defect is, by enclosing $Q$ in a cone instead of a cross-polytope. The eight roots at $60^\circ$ alone
 cut out
 \[
   K \;=\; \bigl\{x : x_0+|x_1|+|x_2|+|x_3|\le2\bigr\},
@@ -6710,8 +6712,8 @@ negative, which is exactly where the cross-polytope argument is needed.
     deviating half-space starts or stops cutting a vertex of $Q$. The
     curves are computed from directly enumerated cell volumes, by a
     route independent of the proof. (b) The same four curves at small tilt, against the second-order
-    rate $\varphi^2/3$ of \cref{cor:second-order}. The four are
-    indistinguishable there, and from each other, at plotting accuracy.}
+    rate $\varphi^2/3$ of \cref{cor:second-order}. At plotting accuracy the
+    four are indistinguishable from that rate and from each other.}
 \label{fig:defect}
 \end{figure}
 
@@ -6768,6 +6770,7 @@ $\tilt=0$, on the range $\tilt<42.17598\ldots^\circ$, and gives no
 bound above it. For the theorem alone, \cref{sec:deviation-domain} and
 \cref{sec:cap-theorem} suffice; the shape of the defect function is in
 the sections between.
+
 \section{The joint Hessian technique}\label{sec:hessian-technique}
 
 \subsection{Simultaneous deviations}
@@ -6918,6 +6921,7 @@ arbitrary-precision arithmetic, where the second derivative vanishes to
 the working precision.}
 \label{fig:dense-growth}
 \end{figure}
+
 \section{A degeneracy of the Hessian technique}\label{sec:musin-degeneracy}
 
 \subsection{The limit of a second-order method}
@@ -6961,6 +6965,7 @@ sum-of-squares certificate, and a proof there may require a
 case-specific argument, of the kind of the exact factorisations and
 Sturm sequences of \cref{sec:swap-configs}, in place of a Gram matrix
 with a positive-semidefinite square root.
+
 \section{A singular dense configuration}\label{sec:exact-sing}
 
 \subsection{The configuration \texorpdfstring{$A_{18}$}{A18}}
@@ -7048,6 +7053,7 @@ higher. The volume-defect function is positive at every direction
 tested, through its positive quartic coefficient. This agrees with
 \cref{conj:multidir-new}, which \cref{cor:conj-resolved} proves by a
 different route. \Cref{sec:broad-sample} describes the sampling.
+
 \section{Broadened directional sampling}\label{sec:broad-sample}
 
 \subsection{Sampling the full near-null subspace at \texorpdfstring{$A_{18}$}{A18}}
@@ -7219,8 +7225,8 @@ summand, so that $y\mapsto\delta(g)\,g(y)$. A quartic $Q(x_0,y)$
 invariant under the group splits by its degree in $x_0$ into five parts.
 Since $\varepsilon$ and $\delta$ have order $2$, invariance at even
 degree in $y$ is invariance under $\mathrm{std}$, and at odd degree it
-is relative invariance with character $\delta$ under the hyperoctahedral
-group of rank $3$.
+is relative invariance under $\mathrm{std}$ with the character
+$\varepsilon\delta$, the product of the signs of a signed permutation.
 
 \begin{prop}[The invariant quartics]\label{prop:a18-invariant-dim}
 For the representation $\varepsilon\oplus(\mathrm{std}\otimes\delta)$
@@ -7243,7 +7249,7 @@ representatives, in exact rational arithmetic. The multiplicities are
 $1,0,1,1,2$, with sum $5$. Independently, the Reynolds operator
 (the exact average over the $48$ group elements) applied to $y_0^2$,
 $y_0^4$ and $y_0^2y_1^2$ gives $S_2$, $S_4$ and $S_{22}$ up to scale,
-and applied with the character $\delta$ to $y_0^3$, $y_0^2y_1$ and
+and applied with the character $\varepsilon\delta$ to $y_0^3$, $y_0^2y_1$ and
 $y_0y_1y_2$ it gives $0$, $0$ and $P_3$. This matches the count.
 \end{proof}
 
@@ -7281,6 +7287,7 @@ margins than the $35$-coefficient fit of \cref{prop:gram-sos-A18}. The
 coefficients are still finite-difference estimates and the margins are
 still small, so this is evidence and not a proof. The elementary route
 to \cref{conj:multidir-new} at $A_{18}$ stops here.
+
 \section{What is known about several simultaneous deviations}\label{sec:multidir-scope-summary}
 
 \subsection{Proved and observed}
@@ -7437,6 +7444,7 @@ supremum approached but never reached. The difficulty lies in identifying
 that point, and at $|W|=24$ it coincides with the uniqueness
 half of the kissing problem in dimension four, which the kernel of
 \cref{thm:twentyfour-points} supplies and \cref{thm:m24} records.
+
 \section{Swap configurations at finite angle}\label{sec:swap-configs}
 
 Every result of \cref{sec:hessian-technique,sec:musin-degeneracy,%
@@ -7502,8 +7510,9 @@ again.
 $u_2(\theta) = u_1(\theta_*-\theta)$ identically. Consequently
 $\theta\mapsto\theta_*-\theta$ is an involution of $(0,\theta_*)$
 exchanging the roles of $u_1,u_2$ while leaving the (unlabelled)
-geometric configuration unchanged, and $\defect(\theta)=\defect(\theta_*-\theta)$
-for the resulting volume-defect function $F_{\mathrm{swap}}$.
+geometric configuration unchanged, and
+$F_{\mathrm{swap}}(\theta)=F_{\mathrm{swap}}(\theta_*-\theta)$ for the
+resulting volume-defect function $F_{\mathrm{swap}}$.
 \end{lem}
 
 The involution has the single fixed point $\theta=\pi/6$, where the two
@@ -7587,34 +7596,21 @@ negative. Hence $F_{\mathrm{swap}}=\mathrm{num}/\mathrm{den}>0$ there.
 \subsection{The swap path is not the worst path at every angle}\label{sec:swap-not-worst}
 
 \Cref{thm:swap-m2-new} concerns one path, and a direct check shows how
-far it is from the whole two-direction case. The swap path of \cref{sec:swap-setup} is one
-specific choice, among a full two-parameter family, of how a pair of
-adjacent roots' deviation directions can be coupled; writing
-$e_1=c_1\beta^\perp$, $e_2=c_2\alpha^\perp$ for signs
-$c_1,c_2\in\{\pm1\}$, the swap path itself is $c_1=c_2=+1$. Scanning
-the full sign freedom directly at small $\theta$ (e.g.\
-$\theta=0.05$) finds that the \emph{true} adversarial (most negative
-tendency) configuration among all four sign choices is instead
-$c_1=-1,c_2=+1$ (the ``mixed'' path), giving a substantially smaller
-volume-defect value than the swap path at the same angle
-($0.000834$ against $0.002474$), even though both configurations
-share exactly the same second-order (joint-Hessian) worst-case
-eigenvalue, since the Hessian's relevant off-diagonal entry has the
-same magnitude ($\tfrac13$) regardless of the relative sign, and a
-$2\times2$ symmetric matrix's eigenvalues depend only on that
-magnitude. Second-order theory alone therefore cannot
-distinguish the swap path from the mixed path; only
-finite-angle behaviour does, and at small $\theta$ it favours the
-mixed path as the more adversarial one. A direct scan of both named
-paths across $\theta\in(0.05,1.5)$ finds a clean crossover at
-$\theta=0.6492$ (\cref{fig:swap}(b)): the mixed path is more adversarial below the
-crossover, and the swap path is more adversarial above it, all the way
-through $\theta_*=\pi/3$ itself and beyond, so the swap path is the
-relevant worst-case direction only asymptotically as
-$\theta\to\theta_*^-$, not throughout the whole interval. The same drift appeared for a single deviation in
-\cref{sec:why-boundary-arcs}: the worst direction is not one fixed
-configuration over the whole range but passes between distinct
-structured candidates.
+far it is from the whole two-direction case. Write the deviations of the
+pair as $e_1=c_1\beta^\perp$ and $e_2=c_2\alpha^\perp$ with signs
+$c_1,c_2\in\{\pm1\}$; the swap path is $c_1=c_2=1$. At $\theta=0.05$ the
+smallest defect among the four sign choices is not on the swap path but on
+the \emph{mixed} path $c_1=-1$, $c_2=1$, with $0.000834$ against
+$0.002474$. The two paths have the same smallest eigenvalue of the joint
+Hessian: the entry that couples the two directions along the path has
+absolute value $\tfrac13$ in both, and the eigenvalues of the
+$2\times2$ block it sits in do not depend on its sign. No second-order
+argument separates them. Scanning both paths over $\theta\in(0.05,1.5)$
+finds a single crossover, at $\theta=0.6492$ (\cref{fig:swap}(b)): below
+it the mixed path has the smaller defect, above it the swap path does,
+through $\theta_*$ and beyond. The worst pair of deviations is therefore
+not one fixed configuration over the whole range, as
+\cref{sec:why-boundary-arcs} found for a single deviation.
 
 \Cref{thm:swap-m2-new} is a statement about one path and is not
 weakened by this. What the comparison rules out is reading it as
@@ -8181,7 +8177,7 @@ $\partial_h\Pi(h,h',x)=-A(h)\,\mathrm{fr}(h,h',x)$, and
 $\frac d{dh}s(2h)=A(h)$. On the range that occurs, $h,h'\in[1,D/2]$ and
 $x\le a_D$, the share decreases in $h'$ and in $\tau$ and increases in
 $x$: $q$ increases in $h'$; its derivative in $x$ has the sign of
-$x-\tau<0$; and
+$h'x-\tau<0$; and
 $\frac d{d\tau}\log q=-\frac x{h'-\tau x}+\frac\tau{R^2-\tau^2}>0$, since
 $\frac x{1-\tau x}\le\frac{a_D}{1-(D/2)a_D}=1.5103\ldots<2\le\frac\tau{R^2-\tau^2}$.
 Raising first $h_i$ and then $h_j$ from $1$, and bounding each share by
@@ -9644,7 +9640,7 @@ from $S(2)=0.13896$ to $S(2.0161)=0.12733$, $S(2.1)=0.07581$ and
 $S(2.2)=0.03340$, most of the union must come from centres close to $c$: if
 at most $22$ centres lay within $\rho$, then
 $U(Y)\le22S(2)+(M-22)S(\rho)$, which is below $3.10330$ once
-$S(\rho)<0.00576$, that is, once $\rho\ge2.328$ for $M=30$ and
+$(M-22)S(\rho)<0.0461$, that is, once $\rho\ge2.328$ for $M=30$ and
 $\rho\ge2.268$ for $M=25$. Hence at least $23$ centres lie within
 $2.328$, and by \cref{thm:kissing-stable} at most $24$ within $2.0161$. The
 two cases differ in kind.
@@ -10249,10 +10245,10 @@ programming bound \cite{CE03}.}
 \end{figure}
 
 \begin{remark}[Where the bound stands]\label{rem:density-cells}
-The bound lies between the linear programming bound $0.64775$ of Cohn and
+The bound lies between the linear programming bound $0.64774$ of Cohn and
 Elkies \cite{CE03}\footnote{Cohn and Elkies state their bounds for the centre
   density, the density divided by $\vol(B^n)$; their value $0.13126$ in
-  dimension four is a density of $0.13126\,\pi^2/2=0.64775$.} and the
+  dimension four is a density of $0.13126\,\pi^2/2=0.64774$.} and the
 three-point bound $0.63611$ of Cohn, de Laat and Salmon \cite{CdLS22}, the
 best known. It uses no Fourier analysis and no global object, only the volume
 of each cell inside the ball of radius $\sqrt{3/2}$ about its centre, and its
@@ -10272,9 +10268,9 @@ a centre in one of them is at distance at least $4/\sqrt2=2\sqrt2$.\footnote{The
   \cref{thm:kissing-stable} extended by a twenty-fifth point of its own type,
   at inner product at most $t_2$ with the other twenty-four and with the
   twenty-four at most $t_1=0.508$ apart, would exclude the configuration if
-  it excluded $t_2=0.5101$, the value for a centre within $2.025$. At degree
-  $10$ it does not: the margin by which that programme proves $N(2.0161)\le24$
-  is used up before $t_2$ reaches $0.5101$.} The second is a floor that no
+  it excluded $t_2=a(2.0161,2.025)=0.51013$, the value for a centre within
+  $2.025$. At degree $10$ it does not: the margin by which that programme
+  proves $N(2.0161)\le24$ is used up before $t_2$ reaches $0.5101$.} The second is a floor that no
 level can pass: at the root system $U(Y)=24\,S(2)-96\,\Pi(1,1,\tfrac12)=3.19636\ldots$
 and $T(Y)=7.90694\ldots<8$, so a bound on $T$ alone gives at best
 $(\pi^2/2)/7.90694=0.62411$. The rest of the way to $\pi^2/16$ is the volume
@@ -10823,6 +10819,7 @@ $\defect(\tilt,\dev)$ & \parbox[t]{0.76\textwidth}{\raggedright the volume defec
 $E_j$, $C_j$ & \parbox[t]{0.76\textwidth}{\raggedright the pieces of the free-volume identity (\cref{thm:freevol-new})}\\
 $Q$, $Q_D$ & \parbox[t]{0.76\textwidth}{\raggedright the polytope cut out by the $23$ undeviated roots, of volume $\frac{25}3$, and by the roots outside $D$}\\
 $B$ & \parbox[t]{0.76\textwidth}{\raggedright the cross-polytope $\{|x_0|+|x_1|+|x_2|+|x_3|\le2\}$ enclosing $Q$ (\cref{lem:crosspolytope})}\\
+$B(R)$ & \parbox[t]{0.76\textwidth}{\raggedright the closed ball of radius $R$ about the centre of the cell, the origin of its coordinates}\\
 $\capQ_K(w)$ & \parbox[t]{0.76\textwidth}{\raggedright the cap $\{x\in K:\langle x,w\rangle\ge1\}$ of a body $K$}\\
 $\omega(u)$ & \parbox[t]{0.76\textwidth}{\raggedright the pair weight: the overlap in $B(\sqrt{3/2})$ of the caps of two contacts at inner product $u$ (\cref{prop:truncated})}\\
 $A_*$ & \parbox[t]{0.76\textwidth}{\raggedright $\frac98\pi^2-23S(2)=7.907144\ldots$, the volume of $B(\sqrt{3/2})$ less $23$ contact caps}\\
