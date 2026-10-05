@@ -110,21 +110,35 @@ de Laat and Salmon, and far from pi^2/16 = 0.61685.
 | `check_M.log` | the exact check, `multi_cap/radial_case_check.py`: positivity by exact LDL^T, K <= Pi by branch and bound with Pi in Arb, the bin bounds, and the bound with no assumption on the count vector. All seven pass: L_M = 3.3352, 3.3274, 3.3524, 3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to 30 |
 | `case26_all.json`, `c26all_d2.log` | floating point: a two-point kernel plus a typed three-point kernel at M = 26, value 3.34979; not enough |
 
-A bound below 0.63611 needs L_26 <= 3.34549. Count splits at M = 26 reach that
-in floating point: {N(2.0161) <= 23, N(2.03) <= 25} gives 3.34336 and
-{N(2.0161) = 24, N(2.025) <= 24} gives 3.34491. The second needs the typed
-exclusion "24 directions with inner products at most t1 = 0.508 leave no
-further direction at inner product at most t2 = 0.5101 with all of them"
-(`multi_cap/typed_cardinality_sdp.py`; a corrected Z below 0 excludes the
-code in floating point):
+A bound below 0.63611 needs L_26 <= 3.34549. The route tried here splits the
+26-centre case by counts at 2.0161 and 2.03 (`split_level.py`, floating point):
+
+| leaf | counts | level | what removes its complement |
+|---|---|---|---|
+| A | N(2.0161) <= 23, N(2.03) <= 25 | `split26_A.log` | N(2.03) >= 26: at most 25 points of S^3 with inner products at most 0.51468 (`card26_d10_*.log`) |
+| B | N(2.0161) = 24, N(2.03) <= 24 | `split26_B.log` | N(2.03) >= 25: the typed exclusion at t2 = 0.5114 below |
+
+With N(2.03) <= 25 left out, leaf B is too high: {N(2.0161) = 24, N(r2) <= 24}
+gives 3.34717 at r2 = 2.0248 and 3.34708 at r2 = 2.025.
+
+The typed exclusion: 24 directions with inner products at most t1 = 0.508
+(centres within 2.0161) leave no further direction with inner product at most
+t2 with all of them (`multi_cap/typed_cardinality_sdp.py`; a corrected Z below
+0 excludes the code in floating point, `multi_cap/typed_cardinality_check.py`
+is the exact check). A centre within r2 of the origin has t2 = a(2.0161, r2):
+0.5101 for r2 = 2.0248, 0.51135 for 2.03, 0.5163 for 2.05, 0.6141 for sqrt6.
 
 | log | degree, t2 | result |
 |---|---|---|
 | `typed_d10_5101.log` | 10, 0.5101 | sampled Z +0.0255: no certificate of degree 10 (the sampled programme is a relaxation) |
 | `typed_d14.log` | 14, 0.5114 | sampled -1.95, corrected +6.60 after one round (old sampling) |
 | `typed2_d10_control.log` | 10, 0.508 | control, 25 points at 0.508, which `thm:kissing-stable` excludes: corrected Z -1.22 at round 2, so the refinement converges |
-| `typed2_d12_5101.log`, `typed2_d14_5101.log` | 12 and 14, 0.5101 | see the logs |
+| `typed2_d12_5101.log` | 12, 0.5101 | corrected Z -1.26 at round 4: excluded in floating point |
+| `typed2_d14_5101.log` | 14, 0.5101 | corrected Z +9.58 after two rounds |
+| `typed2_d12_5114.log` | 12, 0.5114 | the exclusion leaf B needs |
+| `typed2_d12_5163.log` | 12, 0.5163 | sampled Z +0.011: no certificate of degree 12 |
+| `typed2_d12_6141.log`, `typed2_d14_6141.log` | 12 and 14, 0.6141 | sampled Z +0.167 and +0.018: no certificate; an exclusion at sqrt6 would settle (C) when 24 centres lie within 2.0161 |
+| `typed2_d12_071_control.log`, `typed2_d14_071_control.log` | 12 and 14, 0.71 | control: the deep holes of the 24-cell are at inner product 0.7071, so no certificate exists; sampled Z +0.951 and +0.192 |
 
-The first split also needs N(2.03) <= 25, a plain bound for 26 points at
-inner product 0.51468.
-
+Degrees 16 and 18 at t2 = 0.6141 are run on a larger machine
+(`bigmachine/run_typed.py`).

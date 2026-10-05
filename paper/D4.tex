@@ -509,8 +509,9 @@ overlaps, an explicit function of the distances $|y|$ and of the angles
 between the directions. A two-point or three-point kernel that carries the
 distance from $c$ as a continuous label then bounds $T(Y)$ from below
 over all configurations at once. That is how
-\cref{thm:m23-labelled,thm:count31,thm:count30,thm:kissing-stable} are
-proved. For twenty-four centres $T$ can fall below $8$, and the cell has to
+\cref{thm:m23-labelled,thm:count31,thm:count30} are proved; the same
+kernels without the label count the centres near $c$
+(\cref{thm:kissing-stable,thm:twenty-six}). For twenty-four centres $T$ can fall below $8$, and the cell has to
 be bounded through the hull $K(Y)$ (\cref{prop:inversion-hull}); this is
 where (G) enters.
 
@@ -2192,16 +2193,15 @@ collapses, so the two sums take the values $-|C|$ and $0$ that bound
 them; since each singleton term is at most $-1$ and each remaining term at
 most $0$, every singleton term equals $-1$ and every remaining term
 equals $0$.%
-\footnote{An exact bound identifies a configuration by this argument
-  alone, and the argument uses very little. It does not use that $C$ is maximal in any sense other than
-  $|C|=K(\emptyset,\emptyset)$, it does not use that the kernel is
-  optimal, and it does not use the structure of $K$ beyond positivity
-  and the two families of inequalities. What it needs, and what a
-  bound such as the three-point value $24.047$ can never give, is that the number
-  $K(\emptyset,\emptyset)$ is attained by a code; that is why the
-  certificate has to have objective value $24$, not only a value
-  below $25$, and why its rounding to an exact rational point with
-  objective exactly $24$ is the decisive step of its construction.}
+\footnote{An exact bound identifies the configuration by this argument
+  alone, which uses nothing about $C$ beyond
+  $|C|=K(\emptyset,\emptyset)$, nothing about the kernel beyond positivity
+  and the two families of inequalities, and not its optimality. What it
+  needs, and what a bound such as the three-point value $24.047$ can never
+  give, is that $K(\emptyset,\emptyset)$ is attained by a code; hence the
+  certificate must have objective value $24$, not merely a value below
+  $25$, and its rounding to an exact rational point with objective exactly
+  $24$ is the decisive step of its construction.}
 \end{proof}
 
 The kernels to which the lemma is applied have a particular form, and
@@ -5184,6 +5184,32 @@ the true threshold lies below $s=0.0375$. The theorem does not describe the
 shape of a set of $24$ points with slack $s_0$, and \cref{sec:closure}
 needs that shape.
 
+The same method excludes twenty-six points at a larger slack, where the
+three-point bound at degree $10$ is about $25.68$.
+
+\begin{thm}[Twenty-six points]\label{thm:twenty-six}
+Let $s_1=0.01468$. Every set of points of $S^3$ whose pairwise inner
+products are at most $\tfrac12+s_1$ has at most $25$ elements.
+Consequently, in a packing of unit balls in $\mathbb{R}^4$, at most $25$
+other centres lie within distance $2/\sqrt{1-2s_1}=2.0300\ldots$ of any
+centre.
+\end{thm}
+
+\begin{proof}
+Let $t=\tfrac12+s_1$. Under (i) and (ii) of the proof of
+\cref{thm:kissing-stable}, the inequality obtained there, applied to a set
+of exactly $26$ points, reads $25(1-e_1)-600e_2\le f(1)+F(1,1,1)$, and a set
+of $26$ or more points contains one of exactly $26$. The certificate has
+degree $10$. It was found as the one of \cref{thm:kissing-stable}, with
+$f(1)+F(1,1,1)$ held at $24.8$, and it is checked in the same way:
+positivity by exact $LDL^{\mathsf T}$ factorisation; the value
+$f(1)+F(1,1,1)=24.799999928\ldots$, exactly; (i) with $e_1=10^{-6}$ on $790$
+intervals; and (ii) with $e_2=2.9\cdot10^{-4}$ on the ordered admissible
+domain, $1.33$ million boxes in all. Then
+$25(1-e_1)-600e_2=24.825975>24.8$. The second statement follows from the
+first exactly as in \cref{thm:kissing-stable}.
+\end{proof}
+
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\textwidth]{fig_cardinality}
@@ -6222,7 +6248,7 @@ those defining $Q$.
 \end{proof}
 
 The enclosure is efficient where it matters: $\vol(B)=\tfrac{32}{3}$
-against $\vol(Q)=\tfrac{25}{3}$, and, more importantly for the bound, the half-space
+against $\vol(Q)=\tfrac{25}{3}$, and, what matters for the bound, the half-space
 $\{x_0\ge1\}$ cuts from $B$ the cone over the octahedron
 $\{\sum_{j\ge1}|x_j|\le1\}$ with apex $2\base_0$, of volume exactly
 $\tfrac13$. On the critical direction the enclosure is therefore not lossy. \Cref{fig:cap}(a) shows the three bodies in section.
@@ -8587,11 +8613,10 @@ one for each count has at most $22$ strictly inside.\footnote{Adding a
   centre never raises the right side of \cref{lem:no-triple}: its cap
   loses to each other cap the lens they share, and these lenses are
   disjoint, since no point of $B(\sqrt{3/2})$ lies in three caps, so
-  together they are at most the cap. The least value over $M$ centres is
-  therefore at most that over $M-1$ whenever one more centre fits on the
-  sphere of radius $\sqrt6$. The survey finds it rising instead, because
-  in the configurations it finds past twenty-four the extra centres push
-  those near $c$ outward.} For $M\ge44$ no packing was found: from $300$
+  together they are at most the cap. The least value can therefore rise
+  from $M$ to $M+1$ only because no further centre fits in the least
+  configurations with $M$ centres, and making room for one pushes the
+  centres near $c$ outward.} For $M\ge44$ no packing was found: from $300$
 random starts for each count up to $49$, the least squared violation of
 the constraints grows from $0.14$ at $44$ to $6.5$ at $49$, while $42$ and
 $43$ centres fit with most of them on that sphere. At most $49$ centres
@@ -10379,7 +10404,8 @@ density at most $\pi^2/16$. With no assumption on the centres, the same
 lower bounds for the cells give $0.63668$ for the density of every packing
 of unit balls in $\mathbb{R}^4$ (\cref{thm:density-cells}). Along the way the paper proves that the kissing
 number of $\mathbb{R}^4$ is stable under a slack of $0.008$
-(\cref{thm:kissing-stable}), that twenty-four centres near a root system
+(\cref{thm:kissing-stable}), that no twenty-six points fit at a slack of
+$0.01468$ (\cref{thm:twenty-six}), that twenty-four centres near a root system
 leave no room for another within $\sqrt6$ (\cref{cor:no-room}), that the
 root system and the deletions of one root are infinitesimally rigid
 (\cref{prop:deletion-rigid,cor:root-rigid}), that a saturated configuration
@@ -10430,10 +10456,9 @@ inequality concrete: sixty-five pairs at $60^\circ$, or the weighted
 equivalent, where the deletion has eighty-eight, against a ceiling of one
 hundred and fifteen.
 
-One case rests on a finite certificate rather than on a closed-form
-argument: twenty-four contacts, \cref{thm:m24}. The certificate is the
-positive kernel of \cite{LLM24}, and the proof from it is given in full
-here: the bound of the second level of the hierarchy and its equality case
+The case of twenty-four contacts, \cref{thm:m24}, rests on a
+certificate computed by others, the positive kernel of \cite{LLM24}, and
+the proof from it is given in full here: the bound of the second level of the hierarchy and its equality case
 are \cref{lem:las2}, the positivity of the kernel is \cref{lem:gram}, the
 properties of the rational point that these lemmas use are
 \cref{prop:verified}, checked in all seven steps of the procedure
@@ -10609,7 +10634,7 @@ interval or ball arithmetic with outward rounding \cite[Ch.~5]{MKC09},
 \cite{Joh17}: every computed quantity is an interval that contains the true
 value, and a sign is decided only when the interval excludes zero. It covers
 the inequalities that the certificates of
-\cref{thm:certificate,thm:m23-labelled,thm:kissing-stable,thm:count31,thm:count30,prop:C-radial,prop:G-radial,prop:levels}
+\cref{thm:certificate,thm:m23-labelled,thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30,prop:C-radial,prop:G-radial,prop:levels}
 must satisfy on their domains, which are decided by branch and bound, and
 the constants of \cref{thm:near-contact,lem:twentyfour-close,cor:no-room,thm:G-pushout}.
 
@@ -10630,7 +10655,7 @@ The certificate of \cite{LLM24} is verified from the deposited data
 \cite{LLM24data} in code that shares nothing with its authors', with the
 exact rational arithmetic of FLINT and the ball arithmetic of Arb
 \cite{Joh17}. The semidefinite programmes behind
-\cref{thm:certificate,thm:kissing-stable,thm:count31,thm:count30} are posed
+\cref{thm:certificate,thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30} are posed
 with \cite{DB16} and solved by the interior-point method of \cite{GC26};
 what enters a proof is the rounding of the solution to rationals, checked
 as above. The box certificates are regenerated by the rule of

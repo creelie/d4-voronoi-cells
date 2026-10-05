@@ -8,15 +8,16 @@ For 24 points of S^3 with pairwise inner products at most t1 = 0.508 (centres
 within 2.0161, thm:kissing-stable) and one further point with inner product at
 most t2 with each of them (a centre within r), the typed programme of
 multi_cap/typed_cardinality_sdp.py looks for a certificate Z < 0 that no such
-code exists.  t2 = 0.5101 is r = 2.025, which would carry the density bound of
-thm:density-cells below the three-point bound; t2 = 0.6141 is r = sqrt 6, which
-would settle the case of twenty-four close centres in statement (C).
+code exists.  t2 = 0.6141 is r = sqrt 6, which would settle the case of
+twenty-four close centres in statement (C); t2 = 0.51135 is r = 2.03, one leaf
+of the count split at 26 centres in gap_closure/README.md.
 
 Floating point with sampled constraints refined in rounds (exploration); a
 corrected Z < 0 is what a rigorous check would then have to confirm.
 
     python run_typed.py [degrees ...] [--t2 a,b,...]
-                     (default degrees 16 18 20, t2 0.5101,0.5114)
+                     (default degrees 16 18 20, t2 0.5101,0.5114; the run
+                     on record is "16 18 --t2 0.6141")
 
 Writes run_typed.log next to itself, one line per round, flushed.
 """

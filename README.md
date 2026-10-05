@@ -40,7 +40,8 @@ sqrt 6, and (C), a bound on the caps when twenty-five to thirty do. Together
 they imply that D_4 gives the densest packing of R^4. **Neither is proved.**
 The paper records what is proved about them and where each method stops;
 `gap_closure/` holds the floating-point explorations against them, none of
-which is a certificate.
+which is a certificate, and the logs of the exact checks behind the density
+bound of the paper, whose certificates are in multi_cap/radial_certificates/.
 
 ## Citation
 
@@ -71,8 +72,8 @@ Deep Bhattacharjee, itsdeep@live.com.
     level2/             the second-level programme of de Laat, Leijenhorst and
                           de Muinck Keizer, set up from zonal/ and solved on
                           the enlarged domain [-1, 1/2 + s] (see level2/README.md)
-    gap_closure/        floating-point explorations of (C) at 25 to 30
-                          centres; no certificate (see gap_closure/README.md)
+    gap_closure/        floating-point explorations of (G) and (C), and the
+                          logs of the density bound (see gap_closure/README.md)
     lean/               Lean 4 checks, no Mathlib (see lean/README.md and the
                           table "The formally verified parts of the paper")
     third_party/        the certificate data set of de Laat, Leijenhorst and
