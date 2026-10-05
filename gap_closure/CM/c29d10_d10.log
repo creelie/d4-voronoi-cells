@@ -1,2 +1,3 @@
 resumed from c29r_d8_r2.npz, all samples kept
    direct: 8178 variables, 80780 inequalities, 7389 psd rows in 56 cones, 58548294 nonzeros [17 s to build]
+   51 type-count vectors
