@@ -226,7 +226,9 @@ def main():
     tsamp = {}
     for combo in itertools.combinations_with_replacement(TYPES, 3):
         T12, T13, T23 = tbound(combo[0], combo[1]), tbound(combo[0], combo[2]), tbound(combo[1], combo[2])
-        tsamp[combo] = np.r_[T3.triple_grid(T12, T13, T23, 12, 12, 6), T3.random_triples(T12, T13, T23, 1000)]
+        g1, g2, g3 = (int(x) for x in os.environ.get('TGRID', '12,12,6').split(','))
+        tsamp[combo] = np.r_[T3.triple_grid(T12, T13, T23, g1, g2, g3),
+                             T3.random_triples(T12, T13, T23, int(os.environ.get('TRAND', '1000')))]
     if os.environ.get('RESUME'):
         sv = np.load(os.environ['RESUME'])
         for st in psamp:
