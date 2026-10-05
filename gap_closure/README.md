@@ -20,9 +20,10 @@ within 2.15) and 6 beyond 2.4.
 | script | kernel | result (log) |
 |---|---|---|
 | `combo30.py` | distance-labelled two-point kernel plus a three-point kernel typed by distance class (A = [2, 2.05], B = (2.05, 2.25], F = [2.4, sqrt6)) | degree 0: 3.1212 (`combo30_d0.log`); degree 2: 3.1211 (`combo30_d2.log`); degree 6, three rounds: raw 3.0991, corrected 3.1160 (`combo30_d6b.log`) |
-| `combo30p.py` | the same, with the sample set pruned so that more rounds fit in memory | degree 6: raw 3.0995, corrected 3.1103 (`combo30p_d6.log`); degree 8, two rounds: raw 2.8946 then 2.9338, corrected 4.4901 then 3.8157 (`combo30p_d8.log`, `combo30p_d8b.log`); the third round needs more than 9 GB of memory |
+| `combo30p.py` | the same, with the sample set pruned so that more rounds fit in memory | degree 6: raw 3.0995, corrected 3.1103 (`combo30p_d6.log`); degree 8, two rounds: raw 2.8946 then 2.9338, corrected 4.4901 then 3.8157 (`combo30p_d8.log`, `combo30p_d8b.log`); resumed with 3000 pair and 1200 triple samples kept per kind (`combo30q_d8.log`): raw 2.9349 and 2.9388, corrected 3.3005 and 3.1528 in its first two rounds, the excess now coming from the triples |
 | `typed_delsarte.py`, `code_feasible.py`, `code_feasible2.py`, `code_feas_gen.py` | typed linear programming bound and local search for two-shell codes with points in holes | exploration only (`slackhole_d6.log`) |
 | `case_value.py` | value of the two-point case programme of the paper for given count constraints | used to choose splits |
+| `multi_cap/combo30_check.py` | the exact check that a certificate of `combo30p.py` has to pass: exact positivity, the pair inequalities by Bernstein branch and bound with Pi in Arb, the bins, the typed triple inequalities by Taylor branch and bound, and the bound over the five count vectors | its exact polynomials agree with the solver's to 2e-16 on test points; no certificate has been submitted to it yet |
 
 The raw value is the optimum on the samples; the corrected value adds, for each
 kind of pair and triple, the largest violation found between the samples times
@@ -98,16 +99,17 @@ neighbouring cells.
 
 Section "A density bound from the cells alone" of the paper (`prop:levels`,
 `thm:density-cells`) bounds the union of caps U(Y) for every count M from 24
-to 30 with no case split, so that every cell has volume at least
-9 pi^2/8 - max L_M = 7.7509 and every packing of unit balls in R^4 has density
-at most 0.63668. This is weaker than the three-point bound 0.63611 of Cohn,
+to 30, with no case split except at M = 26, where the case N(2.03) = 26 is
+empty by `thm:twenty-six`; so every cell has volume at least
+9 pi^2/8 - max L_M = 7.7532 and every packing of unit balls in R^4 has density
+at most 0.63649. This is weaker than the three-point bound 0.63611 of Cohn,
 de Laat and Salmon, and far from pi^2/16 = 0.61685.
 
 | file | what it is |
 |---|---|
 | `levels.py` | floating point: the least level L that a certificate can reach for M centres, by bisection; used to choose the levels |
-| `cert_M.log` | the certificate search, `multi_cap/radial_case_sdp.py M --level L`, writing `multi_cap/radial_certificates/density_M.json` |
-| `check_M.log` | the exact check, `multi_cap/radial_case_check.py`: positivity by exact LDL^T, K <= Pi by branch and bound with Pi in Arb, the bin bounds, and the bound with no assumption on the count vector. All seven pass: L_M = 3.3352, 3.3274, 3.3524, 3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to 30 |
+| `cert_M.log` | the certificate search, `multi_cap/radial_case_sdp.py M --level L`, writing `multi_cap/radial_certificates/density_M.json`; for M = 26, `cert_26_card.log`, with the spec `density_spec_26_card.json` (split at N(2.03), level 3.3503) |
+| `check_M.log` | the exact check, `multi_cap/radial_case_check.py`: positivity by exact LDL^T, K <= Pi by branch and bound with Pi in Arb, the bin bounds, and the bound with no assumption on the count vector. All seven pass: L_M = 3.3352, 3.3274, 3.3501, 3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to 30 (`check_26_level3353.log` is the earlier check of M = 26 with no split, 3.3524) |
 | `case26_all.json`, `c26all_d2.log` | floating point: a two-point kernel plus a typed three-point kernel at M = 26, value 3.34979; not enough |
 
 A bound below 0.63611 needs L_26 <= 3.34549. The route tried here splits the
@@ -119,7 +121,17 @@ A bound below 0.63611 needs L_26 <= 3.34549. The route tried here splits the
 | B | N(2.0161) = 24, N(2.03) <= 24 | `split26_B.log` | N(2.03) >= 25: the typed exclusion at t2 = 0.5114 below |
 
 With N(2.03) <= 25 left out, leaf B is too high: {N(2.0161) = 24, N(r2) <= 24}
-gives 3.34717 at r2 = 2.0248 and 3.34708 at r2 = 2.025.
+gives 3.34717 at r2 = 2.0248 and 3.34708 at r2 = 2.025. Within leaf B the
+optimum sits where a centre lies in (2.03, 2.05]: with N(2.05) <= 24 the level
+is 3.33516 (`split26_B1.log`), with N(2.05) >= 25 it is 3.34471
+(`split26_B2.log`), so an exclusion at r2 = 2.05 (t2 = 0.5163) would bring the
+level to 3.34336, that of leaf A.
+
+A cardinality bound alone does not move the two-point level: adding
+N(2.0793) <= 24 at M = 25 (no 25 points of S^3 with inner products at most
+0.5374, true numerically, the best 25-point code found having 0.537429,
+`multi_cap/runs/code25_best.txt`) leaves the level at 3.33003
+(`ladder25_t5374.log`).
 
 The typed exclusion: 24 directions with inner products at most t1 = 0.508
 (centres within 2.0161) leave no further direction with inner product at most
@@ -135,10 +147,15 @@ is the exact check). A centre within r2 of the origin has t2 = a(2.0161, r2):
 | `typed2_d10_control.log` | 10, 0.508 | control, 25 points at 0.508, which `thm:kissing-stable` excludes: corrected Z -1.22 at round 2, so the refinement converges |
 | `typed2_d12_5101.log` | 12, 0.5101 | corrected Z -1.26 at round 4: excluded in floating point |
 | `typed2_d14_5101.log` | 14, 0.5101 | corrected Z +9.58 after two rounds |
-| `typed2_d12_5114.log` | 12, 0.5114 | the exclusion leaf B needs |
+| `typed2_d12_5114.log` | 12, 0.5114 | the exclusion leaf B needs: corrected Z 25.9, 16.7, 21.2, 0.506 in rounds 1 to 4 (sampled -0.97 to -0.42); the run was stopped by the memory limit in round 5 |
 | `typed2_d12_5163.log` | 12, 0.5163 | sampled Z +0.011: no certificate of degree 12 |
 | `typed2_d12_6141.log`, `typed2_d14_6141.log` | 12 and 14, 0.6141 | sampled Z +0.167 and +0.018: no certificate; an exclusion at sqrt6 would settle (C) when 24 centres lie within 2.0161 |
 | `typed2_d12_071_control.log`, `typed2_d14_071_control.log` | 12 and 14, 0.71 | control: the deep holes of the 24-cell are at inner product 0.7071, so no certificate exists; sampled Z +0.951 and +0.192 |
 
 Degrees 16 and 18 at t2 = 0.6141 are run on a larger machine
-(`bigmachine/run_typed.py`).
+(`bigmachine/run_typed.py`): degree 16 gives sampled Z +0.0015 in each of
+three rounds, so no certificate of degree 16 either. The sampled values at
+sqrt6 fall about tenfold per degree (+1.87, +0.167, +0.018, +0.0015 at
+degrees 10 to 16); those of the 0.71 control, where no certificate can
+exist, fall too (+5.56, +0.951, +0.192 at degrees 10 to 14), so the fall
+alone does not point towards a certificate.

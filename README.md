@@ -30,7 +30,7 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
 
 With one deviating contact direction the bound has an elementary proof, by
 the extremal cap of a cross-polytope. With no assumption on the centres, the
-same lower bounds for the cells give density at most 0.63668 for every
+same lower bounds for the cells give density at most 0.63649 for every
 packing of unit balls in R^4; this is weaker than the three-point bound
 0.63611 of Cohn, de Laat and Salmon, and above pi^2/16 = 0.61685.
 

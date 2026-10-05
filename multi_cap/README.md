@@ -225,11 +225,13 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               vector, which holds for every set of M
                               centres since the multiplier and the bin
                               bounds are nonnegative: these are the values
-                              L_M of tab:levels (3.3352, 3.3274, 3.3524,
+                              L_M of tab:levels (3.3352, 3.3274, 3.3501,
                               3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to
-                              30).  density_spec_26.json sets the small
-                              margins that M = 26 needs, since the margin
-                              is given up at 325 pairs.  Logs:
+                              30).  density_spec_26_card.json splits M = 26
+                              at N(2.03) <= 25, the other case being empty
+                              by thm:twenty-six, and sets the small margins
+                              that M = 26 needs, since the margin is given
+                              up at 325 pairs.  Logs:
                               gap_closure/density/cert_M.log and
                               check_M.log.
 

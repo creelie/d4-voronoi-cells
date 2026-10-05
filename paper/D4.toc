@@ -128,22 +128,22 @@
 \contentsline {subsection}{\tocsubsection {}{21.4}{What is open}}{154}{subsection.21.4}%
 \contentsline {subsection}{\tocsubsection {}{21.5}{Outlook}}{154}{subsection.21.5}%
 \contentsline {section}{\tocsection {}{22}{Computer verification}}{155}{section.22}%
-\contentsline {subsection}{\tocsubsection {}{22.1}{Independent arithmetic}}{155}{subsection.22.1}%
+\contentsline {subsection}{\tocsubsection {}{22.1}{Independent arithmetic}}{156}{subsection.22.1}%
 \contentsline {subsection}{\tocsubsection {}{22.2}{The formal part}}{156}{subsection.22.2}%
 \contentsline {subsection}{\tocsubsection {}{22.3}{What is printed and what is archived}}{157}{subsection.22.3}%
-\contentsline {section}{\tocsection {}{}{Data and code availability}}{157}{section*.14}%
+\contentsline {section}{\tocsection {}{}{Data and code availability}}{158}{section*.14}%
 \contentsline {section}{\tocsection {}{}{Competing interests}}{158}{section*.15}%
 \contentsline {section}{\tocsection {}{}{Funding}}{158}{section*.16}%
 \contentsline {section}{\tocsection {Appendix}{A}{Index of notation}}{158}{appendix.A}%
 \contentsline {section}{\tocsection {Appendix}{B}{Methods of computation}}{159}{appendix.B}%
 \contentsline {subsection}{\tocsubsection {}{}{The box-covering certificate}}{159}{section*.17}%
-\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{159}{section*.18}%
+\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{160}{section*.18}%
 \contentsline {subsection}{\tocsubsection {}{}{The certificates}}{160}{section*.19}%
 \contentsline {subsection}{\tocsubsection {}{}{Software}}{161}{section*.20}%
 \contentsline {section}{\tocsection {Appendix}{C}{Numerical tables}}{161}{appendix.C}%
 \contentsline {subsection}{\tocsubsection {}{}{Chains}}{161}{section*.21}%
-\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{162}{section*.22}%
+\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{161}{section*.22}%
 \contentsline {subsection}{\tocsubsection {}{}{Sampling at the singular configurations}}{162}{section*.23}%
 \contentsline {section}{\tocsection {Appendix}{D}{Explicit coordinates of the reference cell}}{163}{appendix.D}%
 \contentsline {section}{\tocsection {Appendix}{E}{A model of the Bernstein certificate}}{163}{appendix.E}%
-\contentsline {section}{\tocsection {Appendix}{}{References}}{163}{section*.24}%
+\contentsline {section}{\tocsection {Appendix}{}{References}}{164}{section*.24}%

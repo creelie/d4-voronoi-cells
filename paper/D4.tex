@@ -411,12 +411,12 @@ nearest-neighbour distance $2$.
 
 Without the hypothesis on the centres the same cell bounds still control
 the density. At a centre with $24$ to $30$ others within $\sqrt6$ the cell
-is not shown to reach $8$, but it is shown to exceed $7.7509$, and this gives
+is not shown to reach $8$, but it is shown to exceed $7.7532$, and this gives
 the following bound for every packing (\cref{sec:density-cells}).
 
 \begin{thm}[Density from the cells]\label{thm:intro-density}
 Every packing of unit balls in $\mathbb{R}^4$ has density at most
-$0.63668$.
+$0.63649$.
 \end{thm}
 
 This lies between the linear programming bound $0.64774$ of Cohn and Elkies
@@ -2018,7 +2018,7 @@ packing density at most $\vol(B^4)/v$, and $7.798989\ldots$ would give
 $0.632749\ldots$, below the three-point bound $0.63611$ of \cite{CdLS22};
 but the constant holds only for cells whose active neighbours all touch,
 and a general packing has other cells. For every cell the paper proves
-$7.7509$ (\cref{thm:density-cells}).
+$7.7532$ (\cref{thm:density-cells}).
 What the covering estimate has that a density bound does not is that it
 is a statement about one cell at a time, as \cref{conj:multidir-new}
 requires, and that is why it settles the range
@@ -10198,14 +10198,16 @@ density of every packing.
 \begin{prop}[The union of caps from twenty-four to thirty centres]\label{prop:levels}
 Let $24\le M\le30$, and let $Y$ be a packing set of exactly $M$ centres with
 $2\le|y|<\sqrt6$. Then $U(Y)<L_M$, with $L_M$ as in \cref{tab:levels}. In
-particular $U(Y)<3.3524$ for every such set.
+particular $U(Y)<3.3501$ for every such set.
 \end{prop}
 
 \begin{proof}
 For $M=24$, the pair terms are nonnegative and $S$ is decreasing, so
 $U(Y)\le\sum_yS(|y|)\le24\,S(2)=3.335124\ldots$. For $25\le M\le30$ take in
-the proof of \cref{thm:count30} the tree with $M$ centres in place of thirty
-and no split, so that the only case is $N(2.0161)\le24$. It carries a
+the proof of \cref{thm:count30} the tree with $M$ centres in place of thirty.
+For $M\ne26$ it has no split, so that the only case is $N(2.0161)\le24$. For
+$M=26$ it has one, $N(2.03)\le25$ against $N(2.03)=26$, and the second case
+is empty by \cref{thm:twenty-six}. Each remaining case carries a
 certificate of degree $12$ in the angle and $4$ in the distance, with a
 multiplier $s\ge0$, and
 \[
@@ -10231,8 +10233,8 @@ others are values of certificates.}
 \toprule
 $M$ & $24$ & $25$ & $26$ & $27$ & $28$ & $29$ & $30$\\
 \midrule
-$L_M$ & $3.3352$ & $3.3274$ & $3.3524$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
-$\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7509$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
+$L_M$ & $3.3352$ & $3.3274$ & $3.3501$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
+$\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7532$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -10240,7 +10242,7 @@ $\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7509$ & $7.7943$ & $7.8446$ & $7.8
 \begin{thm}[Density from the cells]\label{thm:density-cells}
 Every packing of unit balls in $\mathbb{R}^4$ has density at most
 \[
-  \frac{\pi^2/2}{\frac98\pi^2-3.3524}=0.636674\ldots .
+  \frac{\pi^2/2}{\frac98\pi^2-3.3501}=0.636485\ldots .
 \]
 \end{thm}
 
@@ -10249,9 +10251,9 @@ Enlarge the packing to a saturated one, which does not lower its density,
 and let $c$ be a centre and $Y$ the set of other centres within $\sqrt6$ of
 it. If $|Y|\le23$, then $\vol(V_c)>8$ by \cref{thm:m23-labelled}. If
 $|Y|\ge31$, then $\vol(V_c)\ge T(Y)>8$ by \cref{thm:count31}. Otherwise
-$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3524$
+$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3501$
 by \cref{lem:no-triple,prop:levels}. Every cell therefore has volume at least
-$v=\frac98\pi^2-3.3524=7.7509\ldots$, and \cref{lem:cells-density} bounds the
+$v=\frac98\pi^2-3.3501=7.7532\ldots$, and \cref{lem:cells-density} bounds the
 density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
 \end{proof}
 
@@ -10282,9 +10284,17 @@ proof is local in the sense of \cref{sec:comparison-methods}.
 The bound is limited in two ways. The first is the level at $M=26$, the only count
 above $3.34549$ (\cref{fig:levels}(a)); if it fell to the largest of the other
 levels, $3.3352$ at $M=24$, the bound would be $0.63527$, below the
-three-point bound. The optimum of the programme at $M=26$ puts twenty-four
-centres within $2.0161$ and two just beyond, a configuration that the pair
-terms cannot exclude. A form of \cref{thm:m24-robust} with $\kappa=0.008$,
+three-point bound. With at most twenty-five centres within $2.03$, as
+\cref{thm:twenty-six} allows, the optimum of the programme at $M=26$ puts
+twenty-four centres within $2.0161$ and a twenty-fifth between $2.0161$ and
+$2.03$, a configuration that the pair terms cannot exclude. Without it the
+optimum falls to $3.34471$, the larger of its values when at most
+twenty-three centres lie within $2.0161$ ($3.34336$) and when twenty-four
+lie there and no other within $2.03$ ($3.34471$), and a level there would
+carry the bound to $0.63605$, below the three-point bound.\footnote{These
+  three values are optima of the programme in floating point, on sampled
+  constraints; only the certified levels of \cref{tab:levels} enter a
+  proof.} A form of \cref{thm:m24-robust} with $\kappa=0.008$,
 placing the twenty-four directions within the tolerance of
 \cref{cor:no-room}, would exclude it, since that corollary then leaves no
 further centre within $\sqrt6$; the deep holes of a root system of
@@ -10293,9 +10303,11 @@ a centre in one of them is at distance at least $4/\sqrt2=2\sqrt2$.\footnote{The
   \cref{thm:kissing-stable} extended by a twenty-fifth point of its own type,
   at inner product at most $t_2$ with the other twenty-four and with the
   twenty-four at most $t_1=0.508$ apart, would exclude the configuration if
-  it excluded $t_2=a(2.0161,2.025)=0.51013$, the value for a centre within
-  $2.025$. At degree $10$ it does not: the margin by which that programme
-  proves $N(2.0161)\le24$ is used up before $t_2$ reaches $0.5101$.} The second is a floor that no
+  it excluded $t_2=a(2.0161,2.03)=0.51135$, the value for a centre within
+  $2.03$. At degree $10$ it does not: the margin by which that programme
+  proves $N(2.0161)\le24$ is used up before $t_2$ reaches $0.5101$. At degree
+  $12$ the programme in floating point excludes $t_2=0.5101$ but not
+  $t_2=0.5163$.} The second is a floor that no
 level can pass: at the root system $U(Y)=24\,S(2)-96\,\Pi(1,1,\tfrac12)=3.19636\ldots$
 and $T(Y)=7.90694\ldots<8$, so a bound on $T$ alone gives at best
 $(\pi^2/2)/7.90694=0.62411$. The rest of the way to $\pi^2/16$ is the volume
@@ -10401,7 +10413,7 @@ neighbours within $\sqrt6$ are within $\varepsilon_0=4\cdot10^{-26}$ of
 contact (\cref{thm:near-contact}); and, by \cref{thm:main-general}, every
 periodic or saturated packing whose centres are all of these kinds has
 density at most $\pi^2/16$. With no assumption on the centres, the same
-lower bounds for the cells give $0.63668$ for the density of every packing
+lower bounds for the cells give $0.63649$ for the density of every packing
 of unit balls in $\mathbb{R}^4$ (\cref{thm:density-cells}). Along the way the paper proves that the kissing
 number of $\mathbb{R}^4$ is stable under a slack of $0.008$
 (\cref{thm:kissing-stable}), that no twenty-six points fit at a slack of
