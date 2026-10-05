@@ -2,7 +2,11 @@
 """
 radial_case_check.py -- proves the certificates written by radial_case_sdp.py:
 every packing set of exactly M centres y with 2 <= |y| < sqrt6 has union of
-caps U(Y) < 9 pi^2/8 - 8, so T(Y) > 8 (statement (C_M) at the count M).
+caps U(Y) < 9 pi^2/8 - 8, so T(Y) > 8 (statement (C_M) at the count M).  A
+certificate that records a level L proves U(Y) < L instead, by the same steps
+with L in place of 9 pi^2/8 - 8 (prop:levels), and prints as well the bound
+for U(Y) that the same maximum gives with no assumption on Y (s >= 0 and
+S >= 0), the entry of tab:levels.
 
 Exact rational arithmetic, Bernstein bounds and Arb ball arithmetic, as in
 radial_count_check.py, whose routines it uses.  N(r) is the number of centres
@@ -267,8 +271,13 @@ def main():
     c = json.load(open(sys.argv[1]))
     M, D, r = c['M'], c['D'], c['r']
     c1, c2, dmax = Fr(c['c1']), Fr(c['c2']), Fr(c['dmax'])
-    target = 9 * arb.pi() ** 2 / 8 - 8
-    print('statement (C_M) at M = %d: two-point certificates, degree %d in the angle and %d in the distance, one per case' % (M, D, r))
+    if 'level' in c:
+        target = A_(Fr(c['level']))
+        print('U(Y) < %s for M = %d: two-point certificates, degree %d in the angle and %d in the distance, one per case'
+              % (c['level'], M, D, r))
+    else:
+        target = 9 * arb.pi() ** 2 / 8 - 8
+        print('statement (C_M) at M = %d: two-point certificates, degree %d in the angle and %d in the distance, one per case' % (M, D, r))
     check('dmax exceeds sqrt 6', dmax ** 2 > 6)
     tl = []
     ok = check_tree(c['tree'], M, tl)
@@ -324,9 +333,15 @@ def main():
         total = A_(v) - A_(s) * target + A_(t) / 2
         check('  largest sum_b n_b m_b over the case, plus t/2, below the target', total < target,
               '%s < %s' % (total.str(8), target.str(8)))
+        if 'level' in c:
+            # s >= 0 and S >= 0, so the same maximum bounds U(Y) with no assumption on Y
+            print('  with no assumption on the count vector: U(Y) <= %s' % (A_(v) + A_(t) / 2).str(8), flush=True)
     if residual:
         print('PASS: a packing with exactly %d centres within sqrt 6 of a centre and T <= 8 there lies in %s: %s [%.0f s]'
               % (M, 'the residual case' if len(residual) == 1 else 'one of the residual cases', '; '.join(residual), time.time() - t0))
+    elif 'level' in c:
+        print('PASS: every packing set of exactly %d centres within sqrt 6 has union of caps U(Y) < %s [%.0f s]'
+              % (M, c['level'], time.time() - t0))
     else:
         print('PASS: every packing with exactly %d centres within sqrt 6 of a centre has T > 8 there [%.0f s]' % (M, time.time() - t0))
 

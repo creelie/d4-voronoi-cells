@@ -39,7 +39,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 import cvxpy as cp
-from three_point_sdp import leg_coeffs, Smat
+from three_point_sdp import leg_coeffs, Smat, cheb, phi, gegen
 from cardinality_sdp import Rows, grid_1d
 
 rng = np.random.default_rng(11)
@@ -96,6 +96,60 @@ def random_triples(n, t_uv, t_w):
     return tuple(np.concatenate(o) for o in out)
 
 
+def F_values(Fv, d, LC, u, v, w):
+    """F(u,v,w) = sum_k <F_k, S_k(u,v,w)> at arrays of points, without forming the rows:
+    with F_k symmetric the six permutations of S_k pair off by the third argument."""
+    out = np.zeros_like(u)
+    for (a, b, c) in ((u, v, w), (u, w, v), (v, w, u)):
+        for k in range(d + 1):
+            n = d - k + 1
+            out += phi(k, a, b, c, LC) * np.einsum('ni,ij,nj->n', cheb(a, n), Fv[k], cheb(b, n))
+    return out / 3.0
+
+
+def g_values(fv, Fv, d, LC, u):
+    """g(u) = f(u) + 3 F(u,u,1)."""
+    f = sum(fv[k - 1] * gegen(k, u) for k in range(1, d + 1))
+    return f + 3 * F_values(Fv, d, LC, u, u, np.ones_like(u))
+
+
+def climb(Fv, d, LC, u, v, w, t_uv, t_w, steps=(3e-2, 1e-2, 3e-3, 1e-3, 3e-4, 1e-4), tries=16, reps=4):
+    """local maxima of F over the admissible triples with u, v <= t_uv and w <= t_w, by random
+    hill climbing from the given points in the coordinates (u, v, phi), w = uv + r cos phi,
+    r = sqrt((1-u^2)(1-v^2)); a move that leaves the domain is clipped onto its boundary."""
+    def to_w(a, b, ph):
+        return a * b + np.sqrt(np.clip((1 - a * a) * (1 - b * b), 0, None)) * np.cos(ph)
+
+    def project(a, b, ph):
+        a = np.clip(a, -1, t_uv); b = np.clip(b, -1, t_uv); ph = np.clip(ph, 0, np.pi)
+        r = np.sqrt(np.clip((1 - a * a) * (1 - b * b), 0, None))
+        ww = a * b + r * np.cos(ph)
+        over = ww > t_w
+        if over.any():                       # move phi up to the plane w = t_w where possible
+            c = np.where(r[over] > 1e-12, (t_w - a[over] * b[over]) / np.maximum(r[over], 1e-12), -1.0)
+            ph = ph.copy(); ph[over] = np.arccos(np.clip(c, -1, 1))
+            ww = to_w(a, b, ph)
+        return a, b, ph, ww
+
+    r = np.sqrt(np.clip((1 - u * u) * (1 - v * v), 1e-300, None))
+    ph = np.arccos(np.clip((w - u * v) / r, -1, 1))
+    a, b, ph, ww = project(u.copy(), v.copy(), ph)
+    best = F_values(Fv, d, LC, a, b, ww)
+    m = len(a)
+    for st in steps:
+        for _ in range(reps):
+            D = rng.normal(size=(tries, m, 3)) * st
+            ca, cb, cph, cw = project((a + D[..., 0]).ravel(), (b + D[..., 1]).ravel(), (ph + D[..., 2]).ravel())
+            ok = cw <= t_w + 1e-15
+            val = np.where(ok, F_values(Fv, d, LC, ca, cb, cw), -np.inf).reshape(tries, m)
+            j = val.argmax(0); vbest = val[j, np.arange(m)]
+            up = vbest > best
+            idx = j * m + np.arange(m)
+            a = np.where(up, ca[idx], a); b = np.where(up, cb[idx], b)
+            ph = np.where(up, cph[idx], ph); best = np.where(up, vbest, best)
+    return best, (a, b, to_w(a, b, ph))
+
+
 def solve(d, t1, t2, n, U1, U2, P111, P112):
     LC = [leg_coeffs(k) for k in range(d + 1)]
     R = Rows(d, LC)
@@ -127,30 +181,33 @@ def solve(d, t1, t2, n, U1, U2, P111, P112):
     return prob, f.value, [F.value for F in Fs], (a2.value, b1.value, b2.value), R, time.time() - t0
 
 
-def evaluate(R, fv, Fv, t1, t2, n):
-    """the largest values of g and F on fine sets, and the corrected Z."""
-    d = R.d
+def evaluate(R, fv, Fv, t1, t2, n, n_climb=600):
+    """the largest values of g and F on fine sets and by local climbing, the corrected Z, and the
+    points to add to the samples."""
+    d = R.d; LC = R.LC
     out = {}
     for name, lo, hi in (('g1', -1, t1), ('g2', -1, t2)):
-        u = np.r_[np.linspace(lo, hi, 40001), hi]
-        Af, AF = R.rows_i(u)
-        val = Af @ fv + sum(AF[k] @ Fv[k].reshape(-1) for k in range(d + 1))
+        u = np.r_[np.linspace(lo, hi, 80001), hi]
+        val = g_values(fv, Fv, d, LC, u)
         out[name] = (float(val.max()), u[np.argsort(val)[-800:]])
-    for name, P in (('F1', (grid_111(t1, 90, 40), random_triples(250000, t1, t1))),
-                    ('F2', (grid_112(t1, t2, 90, 40), random_triples(250000, t2, t1)))):
-        best = -np.inf; keep = []
+    for name, t_uv, t_w, P in (('F1', t1, t1, (grid_111(t1, 90, 40), random_triples(250000, t1, t1))),
+                               ('F2', t2, t1, (grid_112(t1, t2, 90, 40), random_triples(250000, t2, t1)))):
+        vals, pts = [], [[], [], []]
         for (uu, vv, ww) in P:
-            for s in range(0, len(uu), 100000):
-                a, b, c = uu[s:s + 100000], vv[s:s + 100000], ww[s:s + 100000]
-                AF = R.rows_ii(a, b, c)
-                val = sum(AF[k] @ Fv[k].reshape(-1) for k in range(d + 1))
-                best = max(best, float(val.max()))
-                idx = np.argsort(val)[-1500:]
-                keep.append((val[idx], a[idx], b[idx], c[idx]))
-        vi = np.concatenate([k[0] for k in keep]); order = np.argsort(vi)[-2500:]
-        out[name] = (best, tuple(np.concatenate([k[j] for k in keep])[order] for j in (1, 2, 3)))
+            for s0 in range(0, len(uu), 50000):
+                a, b, c = uu[s0:s0 + 50000], vv[s0:s0 + 50000], ww[s0:s0 + 50000]
+                val = F_values(Fv, d, LC, a, b, c)
+                idx = np.argsort(val)[-3000:]
+                vals.append(val[idx]); pts[0].append(a[idx]); pts[1].append(b[idx]); pts[2].append(c[idx])
+        vals = np.concatenate(vals); pts = [np.concatenate(x) for x in pts]
+        order = np.argsort(vals)[::-1]
+        top = order[:n_climb]
+        cv, cp_ = climb(Fv, d, LC, pts[0][top], pts[1][top], pts[2][top], t_uv, t_w)
+        best = max(float(vals.max()), float(cv.max()))
+        keep = order[:3000]
+        add = tuple(np.r_[pts[j][keep], cp_[j]] for j in range(3))
+        out[name] = (best, add)
     one = np.array([1.0])
-    LC = [leg_coeffs(k) for k in range(d + 1)]
     A = float(np.sum(fv)) + sum(float(np.sum(Smat(k, d, one, one, one, LC)[0] * Fv[k])) for k in range(d + 1))
     g1 = out['g1'][0]
     # Z with the fine maxima, g1 entering through its excess over -1
@@ -159,7 +216,10 @@ def evaluate(R, fv, Fv, t1, t2, n):
     return Z, A, out
 
 
-def run(d, t1, t2, rounds=4, n=24, quiet=False):
+def run(d, t1, t2, rounds=12, n=24, quiet=False, save=None):
+    """refine until the corrected Z is below 0 (the code is excluded, in floating point) or the
+    sampled Z is above 0 (then no certificate of degree d exists: the sampled programme is a
+    relaxation of the exact one), or the rounds run out."""
     U1, U2 = grid_1d(t1, 300), grid_1d(t2, 300)
     P111, P112 = grid_111(t1, 24, 14), grid_112(t1, t2, 24, 14)
     res = None
@@ -171,10 +231,21 @@ def run(d, t1, t2, rounds=4, n=24, quiet=False):
         Z, A, out = evaluate(R, fv, Fv, t1, t2, n)
         if not quiet:
             print('  d=%d t1=%.5f t2=%.5f n=%d round %d: %s, sampled Z %.5f, corrected Z %.5f; A %.4f, '
-                  'max g on [-1,t1] %.2e (+1), g on [-1,t2] %.3e, F111 %.2e, F112 %.2e [%.0f s]'
-                  % (d, t1, t2, n, r + 1, prob.status, prob.value, Z, A, out['g1'][0] + 1, out['g2'][0],
-                     out['F1'][0], out['F2'][0], el), flush=True)
+                  'max g on [-1,t1] %.2e (+1), g on [-1,t2] %.3e (a2 %.3e), F111 %.2e (b1 %.2e), F112 %.2e (b2 %.2e) '
+                  '[%d+%d+%d+%d samples, %.0f s]'
+                  % (d, t1, t2, n, r + 1, prob.status, prob.value, Z, A, out['g1'][0] + 1, out['g2'][0], abv[0],
+                     out['F1'][0], abv[1], out['F2'][0], abv[2], len(U1), len(U2), len(P111[0]), len(P112[0]), el),
+                  flush=True)
         res = (prob.value, Z, fv, Fv)
+        if save:
+            np.savez(save, d=d, t1=t1, t2=t2, n=n, f=fv, a2=abv[0], b1=abv[1], b2=abv[2],
+                     **{'F%d' % k: Fv[k] for k in range(d + 1)})
+        if Z < 0:
+            print('  corrected Z below 0: the code is excluded in floating point', flush=True)
+            break
+        if prob.value > 1e-4:
+            print('  sampled Z above 0: no certificate of degree %d' % d, flush=True)
+            break
         U1 = np.r_[U1, out['g1'][1]]; U2 = np.r_[U2, out['g2'][1]]
         P111 = tuple(np.r_[P111[j], out['F1'][1][j]] for j in range(3))
         P112 = tuple(np.r_[P112[j], out['F2'][1][j]] for j in range(3))
@@ -193,4 +264,4 @@ if __name__ == '__main__':
     d, t1, t2 = int(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3])
     rounds = int(sys.argv[4]) if len(sys.argv) > 4 else 4
     n = int(sys.argv[5]) if len(sys.argv) > 5 else 24
-    run(d, t1, t2, rounds, n)
+    run(d, t1, t2, rounds, n, save=sys.argv[6] if len(sys.argv) > 6 else None)

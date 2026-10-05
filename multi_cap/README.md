@@ -1,13 +1,13 @@
 # multi_cap/
 
-The contact and non-contact cases of Sections 7 and 21, file by file. The subdirectories `second_order/` (Section 21.2) and `stability/` (the corollary "No room beside a near root system" and the floating-point searches behind it) have their own README files.
+The contact and non-contact cases of sec:deviation-domain and sec:noncontact, file by file. The subdirectories `second_order/` (sec:second-order) and `stability/` (the corollary "No room beside a near root system" and the floating-point searches behind it) have their own README files.
 
 ## Scripts
 
   closure_lemmas.py
-                              Supports Section 21.1 (Lemmas 21.3 and 21.6,
-                              Proposition 21.4, Corollaries 21.5 and 21.7,
-                              and the angle quoted after Theorem 21.8).
+                              Supports sec:closure (lem:holes and lem:no-triple,
+                              prop:inversion-hull, cor:root-subsets and cor:count,
+                              and the angle quoted after thm:m23-labelled).
                               Symbolic checks of the identities,
                               integer enumeration of the orthogonal root
                               pairs at the vertices of the 24-cell and of
@@ -20,9 +20,9 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               lean/D4Closure.lean.
 
   labelled_certificate_check.py
-                              Supports Theorem 21.8 (at most 23 centres
+                              Supports thm:m23-labelled (at most 23 centres
                               within sqrt 6).  Rebuilds the certificate of
-                              Theorem 7.73 and its bound exactly, rechecks
+                              thm:certificate and its bound exactly, rechecks
                               the positivity of its matrices, evaluates the
                               constants s(D), a_D, fr(1, 1, 1/2), r, kappa
                               and c in ball arithmetic (python-flint), reruns
@@ -34,7 +34,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               --skip-region-1 leaves out the rerun of (C).
 
   facet_bounds_probe.py [trials] [seed]
-                              Supports step (b) of Theorem 21.9.  Floating
+                              Supports step (b) of thm:near-contact.  Floating
                               point, exploration: on random and adversarial
                               perturbations of the root system, the facet
                               formula for the derivative of the volume
@@ -43,7 +43,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               cent over 4320 facets).  Log:
                               runs/facet_bounds_probe.log.
 
-  explicit_eps0.py DATA      Supports Theorems 7.76 and 21.9 (the explicit
+  explicit_eps0.py DATA      Supports thm:m24-robust and thm:near-contact (the explicit
                               epsilon_0 = 4e-26).  DATA is the folder
                               proofs/4_24 of the certificate in
                               ../third_party/llm24-certificate.  Bounds the
@@ -51,15 +51,15 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               weight can change sign (ball arithmetic,
                               python-flint), divides sigma_2 exactly by its
                               zeros and bounds the quotient below, checks
-                              the minor bounds of Lemma 7.77, and evaluates
+                              the minor bounds of lem:root-lattice-robust, and evaluates
                               the facet-by-facet and hull estimates of
-                              Theorem 21.9 in exact arithmetic (the
+                              thm:near-contact in exact arithmetic (the
                               neighbourhood sum of delta_i <= 4e-3).
                               About fifteen seconds.  Log:
                               runs/explicit_eps0.log.
 
   certify_cardinality.py CERT [e1] [e2] [wmin]
-                              Supports Theorem 7.79 (the kissing number is
+                              Supports thm:kissing-stable (the kissing number is
                               stable).  CERT is a file of
                               cardinality_certificates/.  Exact LDL^T of the
                               matrices F_k, the bound f(1) + F(1,1,1)
@@ -72,16 +72,15 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
   cardinality_sdp.py d t [rounds] [bound]
   cardinality_sdp.py sweep d rounds t1 t2 ...
-                              Finds the certificates of Theorem 7.79 (with a
+                              Finds the certificates of thm:kissing-stable (with a
                               bound, it fixes f(1) + F(1,1,1) and maximises
-                              the least slack) and draws the curve of Figure
-                              20(a).  Floating point, sampled constraints
+                              the least slack) and draws the curve of fig:positive-slack(a).  Floating point, sampled constraints
                               (cvxpy, Clarabel).  Logs:
                               runs/cardinality_search_*.log,
                               runs/cardinality_sweep_d*.log.
 
-  robust_ceiling.py           Supports Remark 7.78: the largest slack the
-                              proof of Theorem 7.76 can reach with the triple
+  robust_ceiling.py           Supports rem:robust-ceiling: the largest slack the
+                              proof of thm:m24-robust can reach with the triple
                               and quadruple terms set to zero, from the exact
                               sigma_2.  Log: runs/robust_ceiling.log.
 
@@ -94,7 +93,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
   three_point_probes.py windows d kappa win [rounds]
   three_point_probes.py cap d tau [rounds]
-                              Supports statements (i) to (iv) of Section 21.1.
+                              Supports statements (i) to (iv) of sec:closure.
                               Floating point, sampled constraints,
                               exploration: whether a three-point certificate
                               can force the pair inner products of a 24-point
@@ -106,7 +105,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               runs/three_point_probes.log.
 
   hole_labelled_sdp.py mode d kappa tau n [rounds]
-                              Supports Remark 21.28.  Floating point, sampled
+                              Supports rem:what-c-needs.  Floating point, sampled
                               constraints refined in rounds, Clarabel.  mode
                               "hole": n directions of slack kappa and one
                               further direction at inner product at most tau
@@ -121,10 +120,10 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               Logs: runs/hole_labelled_*.log.
 
   cap_probe.py d tau kappa [rounds]
-                              Supports statements (i) to (iv) of Section 21.1.
+                              Supports statements (i) to (iv) of sec:closure.
                               Floating point, sampled constraints,
                               exploration: the cap probe above with the 24
-                              directions at slack kappa, as Theorem 7.79
+                              directions at slack kappa, as thm:kissing-stable
                               allows for kappa = 0.008.  At degree 7, with
                               kappa = 0.008 and tau = 0.6141 (a further centre
                               within sqrt 6), the best certificate has value
@@ -132,12 +131,12 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
   radial_count_sdp.py M D r [eps [nd nu]]
   radial_count_sdp.py scan D r M1 M2 ...
-                              Theorem 21.25 and Table 4.  Floating point,
+                              thm:count31 and tab:kernel-limit.  Floating point,
                               sampled constraints: finds a two-point kernel,
                               polynomial of degree r in the distance and
                               of degree D in the inner product, whose
                               pair inequality bounds the union of the caps
-                              of Lemma 21.6 by M m + t/2 with m < 0, and
+                              of lem:no-triple by M m + t/2 with m < 0, and
                               writes it in exact dyadic form to
                               radial_certificates/radial_M.json.  With
                               "scan" it prints the best such bound for each
@@ -146,11 +145,11 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               80), runs/radial_count_scan.log.
 
   radial_count_check.py radial_certificates/radial_31.json
-                              Proves Theorem 21.25 from the certificate
+                              Proves thm:count31 from the certificate
                               alone: exact LDL^T for the positivity and the
                               Schur complement, a Bernstein branch and
                               bound of the pair inequality with the pair
-                              term (Lemma 21.24) in Arb ball arithmetic at
+                              term (lem:pair-closed) in Arb ball arithmetic at
                               the corners of 191 740 boxes, the per-point
                               bracket on 356 intervals, and
                               31 m + t/2 = 3.08537 < 9 pi^2/8 - 8.  Under
@@ -158,7 +157,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               runs/radial_count_check_31.log.
 
   radial_case_sdp.py M --spec radial_certificates/case_M_spec.json
-                              Theorem 21.30: two-point certificates for (C)
+                              thm:count30: two-point certificates for (C)
                               at one count M, one for each case of a tree
                               of bounds on the numbers N(r) of centres
                               within r (the tree for M = 30 is
@@ -174,7 +173,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               runs/radial_case_sdp_30.log.
 
   radial_case_check.py radial_certificates/case_M.json
-                              Proves Theorem 21.30 from the tree and the
+                              Proves thm:count30 from the tree and the
                               certificates: the splits cover every packing,
                               exact LDL^T, the pair branch and bound of
                               radial_count_check.py, the bin bounds, and
@@ -188,7 +187,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
   radial_certificates/case_24_r2.0161.json, case_24_r2.05.json,
   case_24_r2.1.json, case_24_r2.15.json
-                              Proposition 21.35: the same certificates at
+                              prop:G-radial: the same certificates at
                               M = 24, one split each: N(rho) <= c - 1
                               against N(rho) >= c for (rho, c) =
                               (2.0161, 11), (2.05, 20), (2.1, 22) and
@@ -201,13 +200,13 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               and runs/radial_case_check_24_r*.log.
 
   radial_certificates/case_M_rRHO.json, M = 25..30
-                              Proposition 21.32: the same single splits at
+                              prop:C-radial: the same single splits at
                               M = 25 to 30 centres, one file per radius
                               rho and count M, with the specs
                               case_M_rRHO_spec.json.  Each proves that the
                               case N(rho) <= n - 1 has T(Y) > 8, so that
                               at least n of the M centres lie within rho
-                              (Table 5); case_30_r2.25.json,
+                              (tab:C-radial); case_30_r2.25.json,
                               case_29_r2.3.json and case_2{7,8}_r2.35.json
                               prove that 24 of the M centres lie within
                               2.25, 2.3 and 2.35.  The margins
@@ -216,13 +215,31 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               Logs: runs/radial_case_sdp_M_r*.log and
                               runs/radial_case_check_M_r*.log.
 
+  radial_certificates/density_M.json, M = 24..30
+                              prop:levels and thm:density-cells: the same
+                              certificates with no split, against a level
+                              L instead of 9 pi^2/8 - 8 (radial_case_sdp.py
+                              M --level L; the file keeps the level).  With
+                              a level, radial_case_check.py also prints the
+                              largest bound with no assumption on the count
+                              vector, which holds for every set of M
+                              centres since the multiplier and the bin
+                              bounds are nonnegative: these are the values
+                              L_M of tab:levels (3.3352, 3.3274, 3.3524,
+                              3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to
+                              30).  density_spec_26.json sets the small
+                              margins that M = 26 needs, since the margin
+                              is given up at 325 pairs.  Logs:
+                              gap_closure/density/cert_M.log and
+                              check_M.log.
+
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
                               same boxes, tests and counts, four times
                               faster; used by radial_case_check.py.
 
   pushout_check.py
-                              Theorem 21.33: T on the one-centre ray at
+                              thm:G-pushout: T on the one-centre ray at
                               delta = 0.1971 exceeds 8 (Arb), the pyramid
                               condition (1 + eta)^2 - 1 < 1/3, and
                               g(eta)/eta >= 2/5 on [0, 0.09855] (exact); and a
@@ -231,14 +248,13 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               push-outs.  Log: runs/pushout_check.log.
 
   twentyfour_close_check.py
-                              Lemma 21.29: 22 S(2) + 11 S(2.444) < 9 pi^2/8 - 8,
-                              s(D) < B, the room 2.6492e-5 of Theorem
-                              21.8 against (M - 23) S(2.444) for
+                              lem:twentyfour-close: 22 S(2) + 11 S(2.444) < 9 pi^2/8 - 8,
+                              s(D) < B, the room 2.6492e-5 of thm:m23-labelled against (M - 23) S(2.444) for
                               M = 25..33, and 6 S(2.4) < 0.00368.  Arb at
                               200 bits, under a second.
 
   count_core_survey.py M K [starts] [seed]
-                              Remark 21.28.  Floating point, exploration: the
+                              rem:what-c-needs.  Floating point, exploration: the
                               least T over packings of M centres within
                               sqrt 6 with K of them held within rho_M, the
                               radius inside which at least 23 centres must
@@ -249,9 +265,9 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
   truncated_search.py M [starts] [seed]
   truncated_search.py rays
-                              Supports statements (i) to (iv) of Section 21.1.
+                              Supports statements (i) to (iv) of sec:closure.
                               Floating point, exploration: minimises the
-                              right side of Lemma 21.6 over configurations
+                              right side of lem:no-triple over configurations
                               of exactly M centres within sqrt 6.  Logs:
                               runs/truncated_search_M24.log to _M27.log.
                               With "rays" it prints where that right side
@@ -261,15 +277,15 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               runs/truncated_search_rays.log.
 
   near_contact_probe.py
-                              Supports the remarks after Theorem 21.9.
+                              Supports the remarks after thm:near-contact.
                               Floating point, exploration: the inversion
                               hull beside the volume, and 200 volume
                               minimisations near the root system.  Log:
                               runs/near_contact_probe_200_seed5.log.
 
   shell_reduction.py
-                              Supports Section 21 (Proposition 21.1,
-                              Lemma 21.2, Theorem 1.5, Table 3). The
+                              Supports sec:noncontact (prop:distance-criterion,
+                              lem:24-no-shell, thm:local-general, tab:distance-thresholds). The
                               covering bound with every centre within
                               2 sqrt 2 counted by the cap it cuts, as a
                               function Phi of the distances alone, stopped
@@ -278,13 +294,12 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               (python-flint): the covering radius of the
                               root directions is 45 degrees; Phi > 8.044
                               for m <= 22 contacts; the thresholds of
-                              Table 3; two examples showing why Lemmas 2.7
-                              and 2.9 need their hypotheses.  About 50 s.
+                              tab:distance-thresholds; two examples showing why lem:shell-new and lem:radial-new need their hypotheses.  About 50 s.
                               Log: runs/shell_reduction.log.
 
   shell_neighbour_search.py
                               Supports the paragraph "The open case,
-                              searched" of Section 21 and Figure 29(c).
+                              searched" of sec:noncontact and fig:noncontact(c).
                               Minimises the exact volume of the cell, with
                               its exact gradient, over configurations of
                               22 to 26 centres under the packing
@@ -294,7 +309,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               Logs: runs/shell_neighbour_search_*.log.
 
   root_deletions_exact.py
-                              Supports Propositions 7.55 and 7.56.
+                              Supports prop:meet22 and prop:meet21.
                               Exact integer vertex enumeration of the cell
                               left when j = 1, 2, 3 roots are removed from
                               D_4. Scaling the roots to integer vectors of
@@ -312,7 +327,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               No floating point anywhere.
 
   cell600_exact.py
-                              Establishes Proposition 7.63. The 120
+                              Establishes prop:cell600. The 120
                               vertices of the 600-cell with doubled
                               coordinates in Z[phi], every inner product
                               computed exactly in Z[phi]; two vertices are
@@ -352,7 +367,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               superseded by cell600_exact.py.
 
   inradius_search.py
-                              Supports Section 7.10. Maximises the inradius
+                              Exploration of 23-point codes, not cited in
+                              the paper. Maximises the inradius
                               g(W) of conv(W), the cosine of the covering
                               radius, over 23-point configurations with all
                               inner products at most 1/2, by a trust-region
@@ -385,8 +401,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               only. Exact; a few seconds.
 
   three_point_reduction.py
-                              Supports Section 7.11 and the r_* forms of
-                              Propositions 7.23, 7.41 and 7.44. Part 1:
+                              Supports sec:strict-inequality and the r_* forms of
+                              prop:second-order, prop:pair-budget and prop:two-point-barrier. Part 1:
                               the pair-only truncated-volume bound at the
                               limits r_23 and r_* (bracket, weight of a
                               60-degree pair, value at a deletion, pairs
@@ -401,7 +417,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               Under a minute (the Monte Carlo sample is seeded).
 
   truncated_volume.py
-                              Supports Section 7.11. Evaluates the volume
+                              Supports sec:strict-inequality. Evaluates the volume
                               of the cell inside a ball of radius R by a
                               fixed quasi-random quadrature on S^3
                               (deterministic, 400000 points), checks it
@@ -420,15 +436,15 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               for sqrt(3/2)). About two hours per run.
 
   three_point_sdp.py
-                              Supports Section 7.12: the three-point
+                              Supports sec:certificate: the three-point
                               (Bachoc-Vallentin) relaxation of the pair
-                              inequality of Theorem 7.69, and the
-                              certificate of Theorem 7.73. Builds the
+                              inequality of thm:strict-reduction, and the
+                              certificate of thm:certificate. Builds the
                               Gegenbauer polynomials of S^3, the matrices
                               Y_k for n = 4 (Legendre polynomials, in the
                               Chebyshev basis T_i(u) T_j(v)) and their
                               symmetrisation, imposes the condition (C) of
-                              Lemma 7.72 on a grid of admissible triples
+                              lem:certificate on a grid of admissible triples
                               and solves the semidefinite programme with
                               cvxpy and Clarabel. First mode: maximise the
                               bound, check on about 1.15 million further
@@ -449,7 +465,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                 python three_point_sdp.py 8 30 CLARABEL 5 0.0929
 
   certificate_check.py
-                              The proof of Theorem 7.73: verifies the
+                              The proof of thm:certificate: verifies the
                               certificate in exact rational and interval
                               arithmetic, sharing no code with the solver.
                               Step 1, exact LDL^T of the nine matrices and
@@ -470,7 +486,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                 python certificate_check.py 8 1e-6
 
   root_lattices_rank4.py
-                              Supports Lemma 7.26, the combinatorial half
+                              Supports lem:root-lattice, the combinatorial half
                               of the twenty-four-point classification.
                               Enumerates every positive definite Gram
                               matrix with 2 on the diagonal and -1, 0, 1
@@ -486,8 +502,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                 python root_lattices_rank4.py
 
   llm24_certificate_check.py
-                              Supports Theorem 7.25, Proposition 7.29 and
-                              Section 7.5.3: an independent verification,
+                              Supports thm:m24, prop:verified and
+                              sec:certificate-checked: an independent verification,
                               sharing no code with the authors' Julia
                               package, of the certificate of de Laat,
                               Leijenhorst and de Muinck Keizer (data set
@@ -540,8 +556,9 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                 bash run_llm24_full_verification.sh
 
   symmetric_search.py
-                              Supports Section 7.10 ("Configurations with a
-                              symmetry"). For every rotation type of order
+                              Exploration of 23-point codes with a
+                              symmetry, not cited in the paper. For every
+                              rotation type of order
                               n <= 12 (angles 2 pi a/n, 2 pi b/n in two
                               orthogonal planes) and the two improper
                               involutions, lists every orbit structure
@@ -562,8 +579,9 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               and C), three passes of
                               slack_continuation.py (seeds 1, 2, 3 with
                               40, 80 and 60 fresh starts per level; the
-                              table in Section 7.10 takes the largest
-                              inradius at each level over the three), and
+                              largest inradius at each level over the
+                              three is the value the exploration reports),
+                              and
                               inradius_search_300_seed7.log (300 direct
                               maximisations at slack 0: 94 feasible
                               endpoints, all deletions), and
@@ -602,7 +620,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               verification is deterministic.
 
   slack_continuation.py
-                              Supports Section 7.10 and its table. For
+                              Exploration of 23-point codes, not cited in
+                              the paper. For
                               delta on a schedule from 0.05 down to 0,
                               estimates h(delta), the largest inradius over
                               23-point configurations with inner products
@@ -619,8 +638,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                 python slack_continuation.py [fresh] [seed]
 
   root_meet.py
-                              Supports Propositions 7.55, 7.56 and
-                              Remark 7.58, in five parts:
+                              Supports prop:meet22 and prop:meet21 and
+                              rem:meet-next, in five parts:
 
                                 (i)   no pair of removed roots destroys a
                                       whole couple of complementary
@@ -653,8 +672,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
 
   multi_cap_reformulation.py
-                              Supports Proposition 7.5, Remark 7.6
-                              and Remark 7.3.
+                              Supports prop:multi-cap, op:multicap
+                              and rem:first-order-obstruction.
                               Checks, in order:
 
                                 (A) Q_D is bounded for every packing-valid
@@ -686,9 +705,9 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               checks, about four and a half minutes.
 
   polar_surface_reformulation.py
-                              Supports Section 7.3: Proposition 7.8,
-                              Corollary 7.9, Lemma 7.10, Lemma 7.11 and
-                              Remarks 7.12 and 7.13. Eighteen checks,
+                              Supports sec:polar-surface: prop:polar-form,
+                              cor:minimiser, lem:surface-form, lem:facet-inball and
+                              rem:facet-local-obstruction and rem:global-routes. Eighteen checks,
                               grouped here as follows:
 
                                 (a) the cell is the polar dual of the
@@ -722,7 +741,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                 (i) enlarging the configuration never
                                     increases the cell volume;
                                (i') the square-antiprism configuration of
-                                    Remark 7.12: its nine directions in
+                                    rem:facet-local-obstruction: its nine directions in
                                     R^4 are packing-valid, its facet has
                                     3-volume 16 sqrt(2) - 64/3 =
                                     1.2940836646 against the octahedron's
@@ -744,10 +763,10 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               sampling device and enters no argument.
                               Runtime under a minute.
 
-  covering_bound.py           Supports Section 7.4: Lemma 7.15,
-                              Theorem 7.16, Corollary 7.17,
-                              Proposition 7.18 and Table 1, which
-                              together are Theorem 1.3 of the paper (the
+  covering_bound.py           Supports sec:covering-bound: lem:radial-form,
+                              thm:covering-bound, cor:m22,
+                              prop:area-optimal and tab:covering-bound, which
+                              together give thm:local-fewcontacts (the
                               local bound at any centre with at most 22
                               contacts). Nineteen checks, grouped here
                               as follows:
@@ -767,9 +786,9 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                 (e) the closed form (pi m / 3) tan^3 r_m
                                     against numerical quadrature of the
                                     same estimate, agreeing to 1e-14;
-                                (f) the whole of Table 1 for
+                                (f) the whole of tab:covering-bound for
                                     m = 5 .. 24, and the monotonicity in m
-                                    that the proof of Corollary 7.17 uses;
+                                    that the proof of cor:m22 uses;
                                 (g) that 22 is exactly the largest m at
                                     which the bound reaches 8;
                                 (h) no violation of the bound at the root
@@ -780,13 +799,13 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                     8.046376 at m = 22, 7.798989 at
                                     m = 24, 7.916728 at m = 23, and the
                                     implied density 0.632749;
-                                (j) Proposition 7.18: the closed form for
+                                (j) prop:area-optimal: the closed form for
                                     phi'(s), the convexity of phi, and
                                     the fact that equal Voronoi cell
                                     areas reproduce the global bound and
                                     minimise the per-cell sum (against
                                     1500 random area splittings);
-                                (k) Proposition 7.21: every spherical
+                                (k) prop:covering-radius: every spherical
                                     Voronoi cell has circumradius at
                                     least arccos sqrt(5/8) = 37.7612
                                     degrees, checked against the
@@ -806,8 +825,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               and the polytope volumes are not.
                               Runtime under a minute.
 
-  saturation_search.py        Supports Section 7.7: Proposition 7.46 and
-                              Remark 7.47. Takes the covering radius as
+  saturation_search.py        Supports sec:m23-explicit: prop:no-transitive and
+                              rem:no-transitive. Takes the covering radius as
                               the objective from the start, which is the
                               quantity the open case is about. It uses
                               that g(W) is the inradius of conv(W) about
@@ -833,8 +852,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               every one of them a deletion. Runtime about
                               three minutes.
 
-  covering_multiplicity.py    Supports Section 7.7: Proposition 7.43
-                              and Proposition 7.44. Two parts:
+  covering_multiplicity.py    Supports sec:m23-explicit: prop:cov-mult
+                              and prop:two-point-barrier. Two parts:
 
                                 (a) the Cauchy-Schwarz bound on the total
                                     overlap of the 60-degree caps of a
@@ -848,15 +867,15 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                     Gegenbauer positivity at 12 degrees,
                                     whose minimum of the pair weight is
                                     0.041573648 against the 0.083272432
-                                    that Proposition 7.41 needs.
+                                    that prop:pair-budget needs.
 
                               Part (b) is the sharp statement about the
                               route: nothing reading only the pair angles
                               gets past half way. Runtime about four
                               minutes.
 
-  pair_budget.py              Supports Section 7.7: Proposition 7.41
-                              and Remark 7.42. Proposition 7.23 evaluates
+  pair_budget.py              Supports sec:m23-explicit: prop:pair-budget
+                              and rem:pair-budget. prop:second-order evaluates
                               the pairwise estimate at the deletion
                               configuration and gets 7.997885, three
                               pairs short of 8. The deletion
@@ -883,8 +902,9 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               The quadratures are adaptive; nothing here
                               is Monte Carlo. Runtime about two minutes.
 
-  spherical_code_23.py        Supports Section 7.9: Proposition 7.59,
-                              Theorem 7.60 and Remark 7.62. Contact
+  spherical_code_23.py        Exploration, not cited in the paper; the
+                              codes inside the 600-cell are settled exactly
+                              in sec:m23-codes. Contact
                               configurations of m directions are
                               spherical codes of m
                               points on S^3 of minimal angle at least 60
@@ -915,8 +935,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               configuration exists. Runtime about forty
                               minutes.
 
-  extendability.py            Supports Section 7.5: Theorem 7.25,
-                              Proposition 7.38 and Corollary 7.39. Six
+  extendability.py            Supports sec:m24: thm:m24,
+                              prop:extendable and cor:remaining. Six
                               checks:
 
                                 (a) the root configuration has
@@ -941,8 +961,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                                     Leijenhorst and de Muinck Keizer
                                     asserts of every 24-point
                                     configuration;
-                                (e) the numerical chain of Corollary
-                                    7.39;
+                                (e) the numerical chain of cor:remaining;
                                 (f) a search for a saturated 23-point
                                     configuration, over the 24 one-root
                                     deletions and random starts, which
@@ -956,7 +975,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
                               Runtime about 3 minutes.
 
-  second_order_estimate.py    Supports Lemma 7.22 and Proposition 7.23:
+  second_order_estimate.py    Supports lem:no-triples and prop:second-order:
                               the covering estimate with every pairwise
                               overlap put back. Four checks, the
                               quadratures in 30-digit arithmetic:
@@ -983,8 +1002,8 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
 
                               Runtime a few seconds.
 
-  local_cell_obstruction.py   Supports Remark 7.19: the shape deficit
-                              that Proposition 7.18 leaves cannot be
+  local_cell_obstruction.py   Supports rem:no-local-cell: the shape deficit
+                              that prop:area-optimal leaves cannot be
                               collected one cell at a time. Five checks:
 
                                 (a) at the root configuration the mean of
@@ -1026,7 +1045,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               percentages, not last digits.
                               Runtime about 30 seconds.
 
-  rigidity23.py               Supports Proposition 7.48, the
+  rigidity23.py               Supports prop:deletion-rigid, the
                               infinitesimal rigidity of the deletion
                               configuration. Five checks, all in exact
                               integer arithmetic on the unnormalised
@@ -1058,7 +1077,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               configurations is a rotation.
                               Runtime well under a second.
 
-  rigidity_spectrum.py        Supports Lemma 7.50 and Theorem 7.51.  In
+  rigidity_spectrum.py        Supports lem:rigidity-spectrum and thm:local-uniqueness.  In
                               integer arithmetic: 4N annihilates
                               x(x-8)(x-20)(x-24)(x-32) and the ranks of 4N - cI
                               (the spectrum of the rigidity operator); the
@@ -1067,8 +1086,7 @@ The contact and non-contact cases of Sections 7 and 21, file by file. The subdir
                               direction has ratio sqrt(96/11).  Under a second.
                               Log: runs/rigidity_spectrum.log.
 
-  rigidity24.py               Supports the corollary after Proposition
-                              7.48, the same statement for the root
+  rigidity24.py               Supports the corollary after prop:deletion-rigid, the same statement for the root
                               system itself with nothing deleted. Four
                               checks in exact integer arithmetic: 24
                               directions and 96 tight pairs, every

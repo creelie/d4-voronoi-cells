@@ -5,7 +5,8 @@ paper leaves open (Section "The statements (G) and (C)"): statement (C) for
 25 to 30 centres within sqrt6, and statement (G). **None of them yields a
 certificate.** They are floating-point semidefinite programmes on sampled
 constraints, kept so that the negative results quoted in the paper and in the
-pull request can be reproduced. No result here is used in any proof.
+pull request can be reproduced. No result here is used in any proof, except
+the exact checks logged in `density/check_M.log` (see the last section).
 
 The level that (C) asks for is `9 pi^2/8 - 8 = 3.10330`: a programme proves a
 case only if its bound, after the correction for the constraints that the
@@ -92,3 +93,38 @@ Voronoi cell of a direction has volume at most about 0.817, below the
 pi^2/12 = 0.8225 of the root system (`s3_cell.log`, Monte Carlo). A proof of
 (L) along the lines of dimension three therefore has to move volume between
 neighbouring cells.
+
+## density: a bound for every packing
+
+Section "A density bound from the cells alone" of the paper (`prop:levels`,
+`thm:density-cells`) bounds the union of caps U(Y) for every count M from 24
+to 30 with no case split, so that every cell has volume at least
+9 pi^2/8 - max L_M = 7.7509 and every packing of unit balls in R^4 has density
+at most 0.63668. This is weaker than the three-point bound 0.63611 of Cohn,
+de Laat and Salmon, and far from pi^2/16 = 0.61685.
+
+| file | what it is |
+|---|---|
+| `levels.py` | floating point: the least level L that a certificate can reach for M centres, by bisection; used to choose the levels |
+| `cert_M.log` | the certificate search, `multi_cap/radial_case_sdp.py M --level L`, writing `multi_cap/radial_certificates/density_M.json` |
+| `check_M.log` | the exact check, `multi_cap/radial_case_check.py`: positivity by exact LDL^T, K <= Pi by branch and bound with Pi in Arb, the bin bounds, and the bound with no assumption on the count vector. All seven pass: L_M = 3.3352, 3.3274, 3.3524, 3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to 30 |
+| `case26_all.json`, `c26all_d2.log` | floating point: a two-point kernel plus a typed three-point kernel at M = 26, value 3.34979; not enough |
+
+A bound below 0.63611 needs L_26 <= 3.34549. Count splits at M = 26 reach that
+in floating point: {N(2.0161) <= 23, N(2.03) <= 25} gives 3.34336 and
+{N(2.0161) = 24, N(2.025) <= 24} gives 3.34491. The second needs the typed
+exclusion "24 directions with inner products at most t1 = 0.508 leave no
+further direction at inner product at most t2 = 0.5101 with all of them"
+(`multi_cap/typed_cardinality_sdp.py`; a corrected Z below 0 excludes the
+code in floating point):
+
+| log | degree, t2 | result |
+|---|---|---|
+| `typed_d10_5101.log` | 10, 0.5101 | sampled Z +0.0255: no certificate of degree 10 (the sampled programme is a relaxation) |
+| `typed_d14.log` | 14, 0.5114 | sampled -1.95, corrected +6.60 after one round (old sampling) |
+| `typed2_d10_control.log` | 10, 0.508 | control, 25 points at 0.508, which `thm:kissing-stable` excludes: corrected Z -1.22 at round 2, so the refinement converges |
+| `typed2_d12_5101.log`, `typed2_d14_5101.log` | 12 and 14, 0.5101 | see the logs |
+
+The first split also needs N(2.03) <= 25, a plain bound for 26 points at
+inner product 0.51468.
+

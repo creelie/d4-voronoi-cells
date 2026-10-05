@@ -407,6 +407,21 @@ packing is at most $\pi^2/16$, with equality for the $D_4$ lattice at
 nearest-neighbour distance $2$.
 \end{thm}
 
+Without the hypothesis on the centres the same cell bounds still control
+the density. At a centre with $24$ to $30$ others within $\sqrt6$ the cell
+is not shown to reach $8$, but it is shown to exceed $7.7509$, and this gives
+the following bound for every packing (\cref{sec:density-cells}).
+
+\begin{thm}[Density from the cells]\label{thm:intro-density}
+Every packing of unit balls in $\mathbb{R}^4$ has density at most
+$0.63668$.
+\end{thm}
+
+This lies between the linear programming bound $0.64775$ of Cohn and Elkies
+\cite{CE03} and the three-point bound $0.63611$ of Cohn, de Laat and Salmon
+\cite{CdLS22}, and it uses nothing but the volume of each cell inside the
+ball of radius $\sqrt{3/2}$ about its centre.
+
 \subsection{Methods}\label{sec:methods-intro}
 
 The single-deviation case has a proof that uses no certificate at all,
@@ -704,11 +719,11 @@ The $24$-cell is the Voronoi cell of $D_4$ \cite[Ch.~VIII]{Cox73},
   vertices split under $W(D_4)$ into the $8$ points $\pm\sqrt2\,e_i$ and
   the $16$ points $(\pm1,\pm1,\pm1,\pm1)/\sqrt2$, which is the axis and
   sign division used throughout. Two numbers recur: the support function
-  of $\VCell$ equals $1$ at every contact direction, which is Layer $2$
-  of \cref{sec:argument-structure} in one line; and the circumradius is
-  $\sqrt2$, so the inradius-to-circumradius ratio is
-  $1/\sqrt2$, the slack that lets a facet hyperplane tilt without the
-  cell losing volume. The density $\pi^2/16$ is
+  of $\VCell$ equals $1$ at every root direction, which is
+  \cref{lem:root-aligned-new} in one line; and the circumradius is
+  $\sqrt2$, so the inradius-to-circumradius ratio is $1/\sqrt2$, and a
+  centre at distance $2\sqrt2$ or more cannot cut the cell
+  (\cref{lem:shell-new}). The density $\pi^2/16$ is
   $\vol(B^4)/8=(\pi^2/2)/8$.}
 
 The polytope itself is drawn four times over, each time from the coordinates and not as a schematic: \cref{fig:cell24}(a) is an
@@ -1078,7 +1093,11 @@ into $m$ separate ones, each settled by \cref{thm:eperp-closed}. Two
 things stand in the way, and both are structural.
 
 The first is the overlapping just described. On its own it can be controlled:
-Bonferroni's inequality gives
+Bonferroni's inequality\footnote{For any measure and any finitely many sets,
+  a point that lies in exactly $n\ge1$ of them is counted
+  $n-\binom n2\le1$ times by the right side of the inequality and once by
+  the left side, so the inequality holds pointwise and therefore after
+  integration.} gives
 \[
   \vol\Bigl(\bigcup_{j}E_j\Bigr)\;\ge\;\sum_j\vol(E_j)
   \;-\;\sum_{j<k}\vol(E_j\cap E_k),
@@ -1256,8 +1275,8 @@ the segment from $0$ to $2w$ is the hyperplane $\langle x,w\rangle=1$,
 which is the constraint defining $V_c(W)$. The directions of the $D_4$
 roots, $\base_i=\alpha_i/\sqrt2$, form a contact configuration with the
 pairwise inner products taking the four values $\pm\tfrac12$, $0$ and
-$-1$, so the bound is attained but never exceeded; this is the
-$g$-valued statement of \cref{lem:gram-new}.} Every local configuration
+$-1$, so the bound is attained but never exceeded
+(\cref{lem:gram-new}).} Every local configuration
 considered in this paper, deviated or not, is a contact configuration,
 and $V_c$ is its cell.
 
@@ -1756,7 +1775,7 @@ measure, and a round set is exactly the worst case for an integrand that
 grows with the distance. At the root configuration each cell is a
 spherical polytope with eight facets and circumradius $45^\circ$, while
 the cap of the same measure has radius $34.0986\ldots^\circ$; that
-difference is the whole of the remaining $0.2011$. Any improvement must
+difference is the whole of the remaining $0.2010$. Any improvement must
 therefore begin by proving that a spherical Voronoi cell of a
 $60^\circ$-separated set cannot be round, which is a statement about the
 shape of the cells and not about their areas.
@@ -1832,7 +1851,7 @@ Two contact counts survive \cref{cor:m22}, and they are of different
 kinds. At $m=24$ the configuration is a full contact shell and the
 question is the one \cref{conj:multidir-new} asks, whether two or more
 of the twenty-four directions can leave the roots; the estimate returns
-$7.7989\ldots$ there, a shortfall of $0.2011$. At $m=23$ the
+$7.7989\ldots$ there, a shortfall of $0.2010$. At $m=23$ the
 configuration need not be a deviation of the root system, so
 \cref{conj:multidir-new} does not reach it and \cref{cor:m22} stops one
 short; the estimate returns $7.9167\ldots$, a shortfall of $0.0833$.
@@ -1985,11 +2004,12 @@ $45^\circ$.
 \begin{remark}[What the constant is and is not]\label{rem:covering-scope}
 Two facts limit what $7.798989\ldots$ says.
 
-As a density statement it is weak. A per-cell bound $v$ gives packing
-density at most $\vol(B^4)/v$, so $7.798989\ldots$ gives $0.632749\ldots$,
-against $\pi^2/16=0.616850\ldots$ for $D_4$; the linear programming
-bound recalled in \cref{sec:comparison-methods} is stronger as a density
-bound.
+It is not a density bound. A lower bound $v$ for every cell would give
+packing density at most $\vol(B^4)/v$, and $7.798989\ldots$ would give
+$0.632749\ldots$, below the three-point bound $0.63611$ of \cite{CdLS22};
+but the constant holds only for cells whose active neighbours all touch,
+and a general packing has other cells. For every cell the paper proves
+$7.7509$ (\cref{thm:density-cells}).
 What the covering estimate has that a density bound does not is that it
 is a statement about one cell at a time, as \cref{conj:multidir-new}
 requires, and that is why it settles the range
@@ -2164,8 +2184,8 @@ collapses, so the two sums take the values $-|C|$ and $0$ that bound
 them; since each singleton term is at most $-1$ and each remaining term at
 most $0$, every singleton term equals $-1$ and every remaining term
 equals $0$.%
-\footnote{This is the whole of the argument by which an exact bound
-  identifies a configuration, and it uses very little. It does not use that $C$ is maximal in any sense other than
+\footnote{An exact bound identifies a configuration by this argument
+  alone, and the argument uses very little. It does not use that $C$ is maximal in any sense other than
   $|C|=K(\emptyset,\emptyset)$, it does not use that the kernel is
   optimal, and it does not use the structure of $K$ beyond positivity
   and the two families of inequalities. What it needs, and what a
@@ -2235,7 +2255,11 @@ The kernel that settles twenty-four points is of the form in
 \cref{lem:gram}, with the index set $\Lambda$ the sixty signatures
 $\lambda=(\lambda_1,\lambda_2)$, $\lambda_1\ge\lambda_2\ge0$,
 $\lambda_1+\lambda_2\le14$, of irreducible representations of
-$\mathrm O(4)$, and with the maps $\psi_{\lambda,a}$ the functions that
+$\mathrm O(4)$ other than $(1,1)$, $(3,3)$, $(5,5)$ and $(7,7)$,\footnote{Of
+  the sixty-four pairs with $\lambda_1\ge\lambda_2\ge0$ and
+  $\lambda_1+\lambda_2\le14$, the construction of \cite[\S3]{LLM24} leaves
+  out the four with $\lambda_1=\lambda_2$ odd, and the deposited data
+  carry a block for each of the other sixty.} and with the maps $\psi_{\lambda,a}$ the functions that
 \cite[\S2--3]{LLM24} attach to a subset $J$ of $S^3$ of size at most
 $2$: an irreducible representation $\rho_\lambda$ of
 $\mathrm{GL}(2,\mathbb C)$ on a space $W_\lambda$ carrying a Hermitian inner
@@ -2393,8 +2417,8 @@ The first assertion is Musin's theorem \cite{Mus08} that the kissing
 number in four dimensions is $24$, obtained here a second time from a
 different certificate. It is the second assertion that the present paper
 needs, and the three-point bound of Bachoc and Vallentin
-\cite{BV08}, at the first level of the same hierarchy and at best $24.047$
-\cite{Lei25}, and Musin's
+\cite{BV08}, at the first level of the same hierarchy and with best
+computed value $24.047$ \cite{Lei25}, and Musin's
 argument, which does not identify the configuration, do not give: it is
 the equality case, and the equality case is available only because the
 bound equals $24$ and is not only below $25$.
@@ -3129,7 +3153,8 @@ $0.07380\ldots$, four fifths of the $0.092855\ldots$ that
 $r_{23}$ it is $0.04157\ldots$ against $0.083272\ldots$, one half.
 Adding radii or degrees does not raise either value, and the same
 measure attains both: $103.7$ pairs at $62.3^\circ$, $90.0$ at
-$103.0^\circ$, $39.2$ at $122.6^\circ$ and $20.1$ at $154.1^\circ$.
+$103.0^\circ$, $39.2$ at $122.6^\circ$ and $20.1$ at $154.1^\circ$
+(\cref{fig:pairs}).
 
 So nothing that reads only the pair angles gets past four fifths of
 the way, whatever constraints of that type are imposed. The minimising
@@ -3144,6 +3169,22 @@ twenty-three contacts therefore uses the triples of directions: the
 three-point form of \cref{sec:strict-inequality} and its certificate in
 \cref{sec:certificate}.
 \end{remark}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_pairs}
+\caption{Pair angles at twenty-three contacts. (a) The $253$ pair angles
+of the deletion of a root (clay) and the measure that minimises
+$\sum_{i<j}\omega(\gamma_{ij})$ over all pair distributions satisfying the
+Bonferroni inequality and positive definiteness (blue,
+\cref{prop:two-point-barrier}). Only pairs closer than
+$2r_*=70.53^\circ$ (shaded) carry weight. (b) The weight $\omega$ of
+\cref{prop:pair-budget}. The deletion collects $88\,\omega(60^\circ)=0.1272$
+from its $88$ pairs at $60^\circ$; the minimiser moves its $103.7$ close
+pairs out to $62.3^\circ$, where $\omega$ has halved, and collects
+$0.0738$, short of the $0.0929$ that \eqref{eq:pair-budget} requires.}
+\label{fig:pairs}
+\end{figure}
 
 One family of candidates can be ruled out completely, and it is the family
 one would look at first. A configuration of a prime number of directions
@@ -3305,7 +3346,7 @@ radius as it stands; \cref{thm:local-uniqueness} supplies one.
 \begin{proof}
 The set $T$ is now the set of the $96$ pairs at $\langle a_i,a_j\rangle=1$,
 the edges of the $24$-cell, and every direction lies in $8$ of them
-(\cref{fig:pftwo}(a), drawn on page~\pageref{fig:pftwo}). The eight roots at $60^\circ$ from a root
+(\cref{fig:rig}(b)). The eight roots at $60^\circ$ from a root
 $a_i$ sum to $4a_i$, so the constant stress, weight $1$ on every pair of
 $T$ and $\mu_i=-4$, satisfies \eqref{eq:stress}; pairing it with a
 first-order motion as before forces all $96$ brackets to vanish, and the
@@ -3526,8 +3567,8 @@ $(144/\nu^2+\tfrac14)^{-1/2}$. A displacement of a single direction, with its
 rotational part removed, has $\|\Lambda\tau\|_1/\|\tau\|_2=\sqrt{96/11}=2.954$, so
 $\nu\le2.954$ and no sharpening of the constant can take this argument past
 $0.244$. No argument of this kind
-reaches a configuration that is nowhere near $\Rt$, which is the whole of
-the remaining difficulty.
+reaches a configuration far from $\Rt$, and the remaining difficulty lies
+with those configurations.
 \Cref{fig:rig}(a) and (b) draw the neighbour sum that makes the stress
 work, \cref{fig:rig}(c) the spectrum that supplies the constant, and
 \cref{fig:rig}(d) the two sides of the final inequality.
@@ -3542,9 +3583,9 @@ work, \cref{fig:rig}(c) the spectrum that supplies the constant, and
 What a proof of \cref{thm:m23} has to supply is clear from
 \cref{prop:area-optimal}: the covering estimate already uses the
 areas of the spherical Voronoi cells to the full, so the missing
-$0.083272\ldots$ has to come from their shape, and that is what the
-truncated volume of \cref{sec:strict-inequality} reads off, pair by
-pair, from the lenses in which neighbouring caps overlap.
+$0.083272\ldots$ has to come from their shape. The truncated volume of
+\cref{sec:strict-inequality} reads the shape off pair by pair, from the
+lenses in which neighbouring caps overlap.
 
 \subsection{How much of a root system a configuration can keep}\label{sec:root-meet}
 
@@ -3574,7 +3615,7 @@ couples of complementary index pairs,
   \qquad
   \{1,4\}\,\big|\,\{2,3\},
 \end{equation}
-and these three couples carry the whole argument. Throughout,
+and the argument uses only these three couples. Throughout,
 $t=1/\sqrt2$ and $v=(x_1,x_2,x_3,x_4)$.
 
 \begin{lem}[A filled support]\label{lem:filled-support}
@@ -3695,8 +3736,8 @@ Hence
 \end{equation}
 Each support $\{1,m\}$ keeps three of its four roots, all but
 $(e_1+e_m)/\sqrt2$, and these give $x_1-x_m\le t$ and $|x_m|-x_1\le t$.
-If $x_1\le-t$ the second forces $x_m=0$ for $m=2,3,4$, hence $v=-e_1$,
-which the first contradicts at $m=2$. Therefore $x_1\ge t$, and then
+If $x_1\le-t$ the second gives $|x_m|\le t+x_1\le0$, so $x_m=0$ for
+$m=2,3,4$ and $x_1=-t$, against $|v|=1$. Therefore $x_1\ge t$, and then
 $x_m\ge x_1-t\ge0$ for $m=2,3,4$: on $A(S)$ the first coordinate is at
 least $t$ and the other three are nonnegative. Consequently, for
 $v,v'\in A(S)$,
@@ -3977,7 +4018,7 @@ $\sec r_4=\sqrt{8/5}$.
 \end{proof}
 
 The three-dimensional analogue of all this can be drawn, and
-\cref{fig:pfone}(b) and \cref{fig:pftwo}(b) draw it: the Voronoi cell of the face-centred
+\cref{fig:pfone}(b) and \cref{fig:pftwo} draw it: the Voronoi cell of the face-centred
 cubic lattice, whose contact directions are the twelve vertices of a
 cuboctahedron, cut by the ball of radius $\sqrt{3/2}$, and the caps of
 radius $r_*$ about those twelve directions, which overlap in pairs and
@@ -3990,6 +4031,18 @@ exclusion, as it is on $S^3$ below $r_*$.
 \includegraphics[width=0.86\textwidth]{fig_c_pf1}
 \caption{(a) Two contact directions at angle $\gamma=60^\circ$ and their caps of radius $r=r_*$. The lens in which the caps overlap (violet) has measure $\Lambda(r,\gamma)$, and $\omega(\gamma)$ integrates it against $d(\sec^4r)$; the dark arc is $\gamma$ and the clay arc is $r$. (b) The caps of radius $r_*$ about the twelve contact directions of the same lattice, the sphere shaded by how many caps cover it: one (pale blue), two in the lenses, three at the eight triangle circumcentres (clay), and none in the six square holes (ochre).}
 \label{fig:pfone}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.42\textwidth]{fig_c_pf2}
+\caption{The truncated cell in dimension three: the Voronoi cell of the
+face-centred cubic lattice at inradius $1$, a rhombic dodecahedron, cut by
+the ball of radius $(3/2)^{1/2}$. The ball passes through the eight
+three-valent vertices (dark) and replaces the six four-valent corners by
+spherical squares (teal). Inside the ball the cell is an exact function of
+the pair angles of its twelve contact directions.}
+\label{fig:pftwo}
 \end{figure}
 
 At the deletion of a root the three-point bound
@@ -4060,17 +4113,9 @@ each direction nine neighbours at $62.3^\circ$ and nearly eight at
 $103^\circ$, a local picture that is consistent at any one direction
 and cannot be consistent at all twenty-three at once; telling the two
 apart requires three-point information. The semidefinite bounds of
-Bachoc and Vallentin \cite{BV08}, which carry the distribution of
-triples of directions, are the instrument built for that, and the next
-subsection uses them to reach the target.
+Bachoc and Vallentin \cite{BV08} carry the distribution of triples of
+directions, and the next subsection uses them to reach the target.
 \end{remark}
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=0.86\textwidth]{fig_c_pf2}
-\caption{(a) The contact graph of the root system from one root (dark, at the centre), the other twenty-three at radius proportional to angle: a cube at $60^\circ$ (clay), an octahedron at $90^\circ$ (teal), a cube at $120^\circ$ (blue), and the $88$ tight pairs among them; the eight at the centre are drawn dark, and they sum to four times it. (b) The truncated cell in dimension three: the Voronoi cell of the face-centred cubic lattice at inradius $1$, a rhombic dodecahedron, cut by the ball of radius $(3/2)^{1/2}$. The ball passes through the eight three-valent vertices and replaces the six four-valent corners by spherical squares (teal).}
-\label{fig:pftwo}
-\end{figure}
 
 \subsection{The inequality between pair angles}\label{sec:certificate}
 
@@ -4383,7 +4428,7 @@ $B=0.0929$; the relaxation had room, which is the situation
 certificate it should reject: adding $10^{-5}$ to $f_0$, which raises
 $P$ by $3\times10^{-5}$ and so exceeds the slack, produces a certificate
 for which the same programme exhibits the admissible triple
-$(-\tfrac1{16},-\tfrac1{16},-\tfrac1{16})$ at which \eqref{eq:C} fails,
+$(-\tfrac1{16},-\tfrac1{16},-\tfrac1{16})$ at which \eqref{eq:C} fails.
 \end{remark}
 
 \begin{figure}[tb]
@@ -4589,8 +4634,8 @@ $\tfrac12$, and bounds each sum of squares on the whole cube
 $[-1,1]^6$; and the lemma needs the inner products within
 $3\cdot10^{-4}$ of the four values, far closer than the conclusion should
 require, because it deduces integrality from a bound on each determinant
-separately. What matters for
-\cref{thm:near-contact} is that every constant is a number.%
+separately. For \cref{thm:near-contact} it suffices that every constant
+is explicit.%
 \footnote{The constant that dominates is the sum of squares of the
   four-point constraint with weight $e_1$, the sum of the six values
   $(u+1)(\tfrac12-u)$, for which the bound is $1.22\cdot10^{9}$; with the
@@ -4629,7 +4674,13 @@ orders of magnitude larger than in \cref{thm:m24-robust}.
 Let $s_0=0.008$. Every set of points of $S^3$ whose pairwise inner
 products are at most $\tfrac12+s_0$ has at most $24$ elements.
 Consequently, in a packing of unit balls in $\mathbb{R}^4$, at most $24$ other
-centres lie within distance $2/\sqrt{1-2s_0}=2.0161\ldots$ of any centre.
+centres lie within distance $2/\sqrt{1-2s_0}=2.0161\ldots$ of any
+centre.\footnote{Two centres at distances $d_1,d_2\in[2,\rho]$ from $c$ and
+  at least $2$ apart see each other from $c$ at inner product at most
+  $(d_1^2+d_2^2-4)/(2d_1d_2)$, which increases in each $d_i$ on that range, and
+  so at most $1-2/\rho^2$. This equals $\frac12+s_0$ exactly when
+  $\rho^2=4/(1-2s_0)$. The directions of the centres within $\rho$ therefore
+  form a set of the kind in the first sentence.}
 \end{thm}
 
 \begin{proof}
@@ -5009,7 +5060,7 @@ nondecreasing has all $n$th-order divided differences nonnegative, so
 $g[y_0,\dots,y_4]\ge0$ for any five nodes.%
 \footnote{The stronger conclusion one would like here is that
   $g[a_0,a_1,a_2,a_3]$ is Schur-convex in $(a_0,\dots,a_3)$, which would
-  reduce \cref{thm:cap-inequality} to evaluating $F$ at the majorisation
+  reduce \cref{thm:cap-inequality} to evaluating $g[\,\cdot\,]$ at the majorisation
   maximum $(1,0,0,0)$ in one step; see \cite[Ch.~3]{MOA11} for the
   criterion. It is not available. Schur-convexity of a symmetric
   divided difference of this form would follow from $g^{(5)}\ge0$, and
@@ -5039,19 +5090,19 @@ leaving a vertex direction, computed from the enumerated cell and
 independent of the argument below.
 
 \begin{proof}
-By \cref{lem:cap-formula} the claim is that $F(a):=g[a_0,a_1,a_2,a_3]\le1$
+By \cref{lem:cap-formula} the claim is that $\Phi(a):=g[a_0,a_1,a_2,a_3]\le1$
 on the simplex $a_k\ge0$, $\sum_ka_k=1$, with equality only at the
 vertices. Let $S=\{k:a_k>\tfrac14\}$; since the nodes sum to $1$,
 $|S|\le3$. We may relabel so that $a_0\ge a_1\ge a_2\ge a_3$.
 
 \emph{Case $|S|=0$.} All four nodes lie in $[0,\tfrac14]$, where $g$
-vanishes identically together with all its derivatives, so $F(a)=0$.
+vanishes identically together with all its derivatives, so $\Phi(a)=0$.
 
 \emph{Case $|S|=1$.} Only $a_0$ exceeds $\tfrac14$, and again $g$ vanishes
 to infinite order at the other three nodes, so the Newton form of the
 divided difference collapses to a single term:
 \[
-  F(a)=\frac{g(a_0)}{(a_0-a_1)(a_0-a_2)(a_0-a_3)} .
+  \Phi(a)=\frac{g(a_0)}{(a_0-a_1)(a_0-a_2)(a_0-a_3)} .
 \]
 Write $c=\sqrt{a_0}\in(\tfrac12,1]$. The nodes $a_1,a_2,a_3$ range over
 the polytope $P_c=\{\beta\in[0,\tfrac14]^3:\beta_1+\beta_2+\beta_3=1-c^2\}$,
@@ -5099,25 +5150,25 @@ so $r$ attains its minimum on that interval at an endpoint; $r(\tfrac12)=8$
 and $r(\tfrac1{\sqrt2})=23-11\sqrt2>0$, the latter because
 $23^2=529>242=2\cdot11^2$.
 
-In all three ranges $F(a)\le1$, with equality only when $c=1$, that is
+In all three ranges $\Phi(a)\le1$, with equality only when $c=1$, that is
 $a=(1,0,0,0)$ and $u=\pm e_0$.
 
 \emph{Case $|S|\ge2$.} Here $a_0\ge a_1\ge\tfrac14$. By
-\cref{lem:monotone}, $F$ is nondecreasing in each node, so on any box
-$\prod_k[l_k,h_k]$ one has $F(a)\le F(h)$. The region
+\cref{lem:monotone}, $\Phi$ is nondecreasing in each node, so on any box
+$\prod_k[l_k,h_k]$ one has $\Phi(a)\le \Phi(h)$. The region
 \[
   R=\Bigl\{a:\ a_0\ge a_1\ge a_2\ge a_3\ge0,\ \sum_ka_k=1,\ a_1\ge\tfrac14\Bigr\}
 \]
 is covered by $303$ boxes, obtained by bisecting a uniform initial grid of
 $216$ cubes of side $\tfrac18$ and refining only where needed, and on each
-box the value of $F$ at the upper corner is a rational number at most $1$;
+box the value of $\Phi$ at the upper corner is a rational number at most $1$;
 the largest of the $303$ corner values is $0.99755\ldots$. The nodes at a corner
 are taken at rational points $t_k$ with $t_k^2$ at least the corner
 coordinate, and ties are broken upward, both of which only increase the
 bound. The computation is exact rational arithmetic throughout, and is
 repeated in Lean, which finds the same $303$ boxes and the same largest value, and also checks the three polynomial
 identities and signs above.
-Since $\sup_R F=0.76583\ldots$, attained at $(\tfrac34,\tfrac14,0,0)$, the
+Since $\sup_R\Phi=0.76583\ldots$, attained at $(\tfrac34,\tfrac14,0,0)$, the
 certificate has a margin of about a quarter and does not depend on the
 fineness of the grid beyond what is stated.
 \end{proof}
@@ -5165,10 +5216,10 @@ For the equality case, suppose $\defect(\tilt,\dev)=0$, so
 $\vol(\capQ(\base_1))=\tfrac13$. Then the cap of $B$ also has volume
 $\tfrac13$, so $\base_1=\pm e_k$ by \cref{thm:cap-inequality}. If
 $\base_1=-\base_0$ then $\capQ(\base_1)=\{x\in Q:\langle
-x,\base_0\rangle\le-1\}$, which is empty because $-\alpha_0$ is a root and
+x,\base_0\rangle\le-1\}$, which lies in a hyperplane because $-\alpha_0$ is a root and
 $Q$ therefore lies in $\{\langle x,\base_0\rangle\ge-1\}$; if
 $\base_1=\pm v_j$ then $\pm v_j$ is itself one of the contact directions
-defining $Q$, so again the cap is empty. In each of these cases
+defining $Q$, so again the cap lies in a hyperplane and has volume $0$. In each of these cases
 $\defect=\tfrac13$, not $0$. The remaining possibility is
 $\base_1=\base_0$, that is $\tilt=0$, where the cap is the pyramid of
 \cref{lem:Q-structure} and $\defect=0$.
@@ -5182,9 +5233,10 @@ Let $u_1,\dots,u_n$ be the directions from $c$ of the active neighbours
 and $d_1,\dots,d_n$ their distances. Two active neighbours cannot lie on
 one ray from $c$, since they would be less than $2\sqrt2-2<2$ apart; so
 the directions are distinct. By hypothesis all but at most one of them are
-normalised roots of $\Rt$, and some normalised root $\base_0$ is not among
-them. If every direction is a root direction, let $\base_1=\base_0$;
-otherwise let $\base_1$ be the deviating one, and write
+normalised roots of $\Rt$. If every direction is a root direction, let
+$\base_0$ be any normalised root and $\base_1=\base_0$; otherwise let
+$\base_0$ be a normalised root that no direction takes, which exists by
+hypothesis, and $\base_1$ the deviating direction, and write
 $\base_1=\cos\tilt\,\base_0+\sin\tilt\,\dev$ with $\tilt\in[0,\pi]$ and
 $\dev$ a unit vector orthogonal to $\base_0$. By \cref{lem:radial-new},
 $\vol(V_c^{\mathrm{act}})$ is at least the volume of
@@ -5255,10 +5307,11 @@ Put $w=2\base_0-x$. Then $K$ becomes the cone
 $C=\{w:w_0\ge|w_1|+|w_2|+|w_3|\}$ with apex at the origin, and the
 half-space $\{\langle x,\base_1\rangle\ge1\}$ becomes $\{\langle
 w,\base_1\rangle\le2c-1\}$, since $\langle
-2\base_0,\base_1\rangle=2c$. If $2c-1\le0$ the intersection is empty,
-because $\langle w,\base_1\rangle\ge w_0\,(c-\sigma\max_j|\dev_j|)\ge0$
-on $C$ under the stated hypothesis, and then the cap is empty and
-$\defect=\tfrac13$, which is \eqref{eq:cone-bound}. Assume $2c-1>0$.
+2\base_0,\base_1\rangle=2c$. If $2c-1\le0$ the intersection is at most
+the apex, because $\langle w,\base_1\rangle\ge w_0\,(c-\sigma\max_j|\dev_j|)$
+on $C$, which is positive at every $w\ne0$ of $C$ under the stated
+hypothesis; then the cap has volume $0$ and $\defect=\tfrac13$, which is
+\eqref{eq:cone-bound}. Assume $2c-1>0$.
 
 Intersecting $C$ with an orthant $\{\sigma_jw_j\ge0\}$, $\sigma\in\{\pm
 1\}^3$, gives the simplicial cone generated by $g_0=e_0$ and
@@ -5451,9 +5504,9 @@ contacts and any further centre within $2\sqrt2$ always fail it, since
 the criterion counts caps and the case of $23$ contacts needs the pair
 terms of \cref{sec:strict-inequality}. The remaining case is therefore a
 centre crowded by at least twenty-three neighbours within $2\sqrt2$,
-among them near-contacts, centres a little farther than $2$. Both
-examples above are settled by the criterion, the $49$ balls with
-$\Phi>18.33$.
+among them near-contacts, centres a little farther than $2$. The
+packing of $49$ balls of \cref{sec:radial-new} is settled by the
+criterion, with $\Phi>18.33$.
 
 \begin{table}[t]
 \centering
@@ -5671,7 +5724,14 @@ If three centres $y_1,y_2,y_3$ did, the four points $0,y_1,y_2,y_3$,
 pairwise at least $2$ apart, would lie in the closed ball of radius $|x|$
 about $x$ (\cref{fig:tikz-closure}(a)). For four points $p_i$ with centroid $g$,
 $\sum_{i<j}|p_i-p_j|^2=4\sum_i|p_i-g|^2\le4\sum_i|p_i-x|^2$, so
-$24\le16|x|^2$, against $|x|<\sqrt{3/2}$. The formula is
+$24\le16|x|^2$, against $|x|<\sqrt{3/2}$.\footnote{The radius cannot be
+  enlarged. Four points pairwise at distance $2$, such as $c$ and three
+  contacts of $D_4$ at $60^\circ$ from one another, are the vertices of a
+  regular tetrahedron of edge $2$, whose circumradius is
+  $2\sqrt6/4=\sqrt{3/2}$, and at its circumcentre $x$, at distance
+  $\sqrt{3/2}$ from $c$, the bisecting hyperplanes of the three contacts
+  meet. The two inequalities of the proof are
+  then equalities: $g=x$, and every $|p_i-x|$ is $\sqrt{3/2}$.} The formula is
 inclusion and exclusion, whose terms of order three vanish.
 \end{proof}
 
@@ -5868,8 +5928,8 @@ branch and bounds are repeated in Lean in exact dyadic arithmetic, over
 $39\,399$ and $9\,545$ boxes, with the shares, the packing bounds and the
 envelopes of the $\Gamma_i$ computed there and only the tables of $\omega$,
 the constant $c$ and the enclosures of the cell integrals taken from ball
-arithmetic, and then a second time with those computed in Lean as well,
-together with $s(D)>8-A_*$, $a_D/(1-\frac D2a_D)<2$ and $\mathrm{fr}(1,\frac12)<\frac1{22}$
+arithmetic, and then a second time, over $39\,551$ and $9\,545$ boxes, with
+those computed in Lean as well, together with $s(D)>8-A_*$, $a_D/(1-\frac D2a_D)<2$ and $\mathrm{fr}(1,1,\frac12)<\frac1{22}$
 (\cref{sec:reproducibility-new}).
 \end{proof}
 
@@ -6183,9 +6243,9 @@ the pair terms for twenty-five or more. Four statements would give both.
   and a near-contact at $2+\delta$ removes $S(2+\delta)\approx0.14$.
 \item \emph{Certificates for the other configurations.} The right side of
   \cref{lem:no-triple} is at least $8$ for $24$ centres within $\sqrt6$
-  away from the root system, and for each count from $25$ to $30$; it is
-  for $23$ by \cref{thm:m23-labelled}, and from $31$ on by
-  \cref{thm:count31}.
+  away from the root system, and for each count from $25$ to $30$. It is
+  proved for $23$ by \cref{thm:m23-labelled}, from $31$ on by
+  \cref{thm:count31}, and at $30$ outside one class by \cref{thm:count30}.
 \end{enumerate}
 By \cref{prop:second-code}, statement (i) fails at slack $0.017$, so for
 twenty-four centres (i) and (ii) cannot be proved one after the other over
@@ -6487,7 +6547,8 @@ second order than the pushes do. Three things separate this from statement
 near the root system whose cell is smaller than that of the same distances
 at the roots, in $103$ of $237$ trials and by up to $3.6\cdot10^{-5}$, and by
 $0.117\,S^2$ at second order in the worst push pattern, so the bound does not
-reduce to monotonicity in the support numbers. The remainder is not bounded:
+reduce to monotonicity in the support numbers. No bound on the remainder is
+proved:
 on the $300$ packings of \cref{fig:second-order}(b), with $S$ up to $0.48$,
 the exact volume satisfies
 \[
@@ -6734,7 +6795,7 @@ directions of packings only with push-outs, and these compensate for the
 difference many times over, so the bound needed is on the whole cell, not on
 $Q_w$ (\cref{rem:what-g-needs}).
 
-Statement (i) of \cref{sec:closure} fails well before the slack at
+Statement (i) of \cref{sec:remains} fails well before the slack at
 which $25$-point codes appear.
 
 \begin{prop}[A second twenty-four-point code]\label{prop:second-code}
@@ -6756,7 +6817,7 @@ within $e_i+e_j\le2d(W)$ of one of those five values; so
 $d(W)\ge\tfrac{57}{500}$.
 \end{proof}
 
-The code is not an accident of rounding. Of $64$ random configurations,
+The same code appears from most starting points. Of $64$ random configurations,
 spread into codes of slack $0.03$ and then pushed to the least possible
 largest inner product, three return to the root system, and the other $59$
 all stop at the same value
@@ -6781,13 +6842,13 @@ centres with $2\le|y|<\sqrt6$ and $T(Y)\le8$, with equality only at the root
 system,
 \end{quote}
 a statement about $24$ points in which statements (i) and (ii) of
-\cref{sec:closure} enter together, and which \cref{prop:second-code} does
+\cref{sec:remains} enter together, and which \cref{prop:second-code} does
 not touch. The condition $T(Y)\le8$ cannot be dropped. When centres move
 out towards $\sqrt6$ the inversion hull shrinks, and there is a packing with
 $\vol(V(Y)\cap K(Y))=4.750$; there $T(Y)=10.82$. With the condition, the
 constrained minimisation (under the packing constraints and $T(Y)\le8$) finds
 nothing below $8$. None of $40$ random configurations can be brought into
-the region $T(Y)\le8$, in line with the survey of \cref{sec:closure}, where
+the region $T(Y)\le8$, in line with the survey of \cref{sec:remains}, where
 every local minimum of $T$ with $24$ centres is the root system. Of $64$
 starts made inside it, with tilts up to $0.3$ and up to four centres pushed
 out, one as far as $2.19$, the $20$ that stay in the region all end at the
@@ -6917,7 +6978,15 @@ centres.
 For $2\le d\le\sqrt6$ let $p(d)=(T_0(x),\dots,T_r(x))$, where the $T_a$ are
 the Chebyshev polynomials and $x=(2d-c_1)/c_2$ for rationals $c_1,c_2$ close
 to $2+\sqrt6$ and $\sqrt6-2$; let $U_k$ be the Chebyshev polynomials of the
-second kind, which are the zonal polynomials of $S^3$ \cite{DGS77}. For
+second kind, which are the zonal polynomials of $S^3$
+\cite{DGS77}.\footnote{The harmonic polynomials of degree $k$ on $S^3$
+  form a space of dimension $(k+1)^2$, and for an orthonormal basis $(Y_m)$
+  of it the addition theorem reads
+  $\sum_mY_m(x)Y_m(x')=\frac{k+1}{2\pi^2}\,U_k(\langle x,x'\rangle)$.
+  Hence $\sum_{y,y'}a_ya_{y'}U_k(\langle\hat y,\hat y'\rangle)\ge0$ for all
+  real $a_y$, which is the part of Schoenberg's theorem used below, and the
+  factor $1/(k+1)$ makes each zonal term equal to $1$ at $u=1$, since
+  $U_k(1)=k+1$.} For
 symmetric matrices $A_0,\dots,A_D$ put
 \[
   K(y,y')=\sum_{k=0}^{D}\frac{U_k(\langle\hat y,\hat y'\rangle)}{k+1}\;
@@ -6953,7 +7022,14 @@ about $41\,000$ sampled triples with a margin of $10^{-5}$; the proof does not
 use the samples. The matrices are rounded to dyadic rationals and are
 positive semidefinite by an exact $LDL^{\mathsf T}$, and $t$ is set to
 $z^{\mathsf T}A_0^{-1}z$ rounded up, which makes (b) exact. For (a), $K$ is a
-polynomial in $(|y|,|y'|,u)$; its tensor Bernstein coefficients on
+polynomial in $(|y|,|y'|,u)$; its tensor Bernstein
+coefficients\footnote{On an interval $[a,b]$ a polynomial of degree $n$ is a
+  combination of the polynomials
+  $\binom nk(x-a)^k(b-x)^{n-k}/(b-a)^n$, $0\le k\le n$, which are
+  nonnegative and sum to $1$. It therefore lies between the least and the
+  largest of its coefficients in that basis, and on halving the interval the
+  gap between these bounds and its true range shrinks quadratically. On a box
+  the basis is the product of the bases of the coordinates.} on
 $[2,d_{\max}]^2\times[-1,a(d_{\max},d_{\max})]$, with
 $d_{\max}=2.4494898>\sqrt6$, are computed exactly and subdivided at
 midpoints, and on each box the largest coefficient bounds $K$, while by
@@ -7699,6 +7775,125 @@ a new semidefinite method, and the computations of this section indicate
 that the remaining step does too.
 \end{remark}
 
+\section{A density bound from the cells alone}\label{sec:density-cells}
+
+Statements (G) and (C) are needed for the value $\pi^2/16$, but not for a
+bound on the density. By \cref{lem:no-triple} every cell has volume at least
+$T(Y)=\frac98\pi^2-U(Y)$, where $Y$ is the set of centres within $\sqrt6$ of
+its centre. If $|Y|\le23$ or $|Y|\ge31$, the cell has volume above $8$
+(\cref{thm:m23-labelled,thm:count31}); for the seven counts in between, the
+certificates of \cref{sec:G-and-C}, run with a level in place of
+$\frac98\pi^2-8$, bound $U(Y)$ from above. \Cref{lem:cells-density} turns the
+least of the resulting lower bounds for the cells into a bound for the
+density of every packing.
+
+\begin{prop}[The union of caps from twenty-four to thirty centres]\label{prop:levels}
+Let $24\le M\le30$, and let $Y$ be a packing set of exactly $M$ centres with
+$2\le|y|<\sqrt6$. Then $U(Y)<L_M$, with $L_M$ as in \cref{tab:levels}. In
+particular $U(Y)<3.3524$ for every such set.
+\end{prop}
+
+\begin{proof}
+For $M=24$, the pair terms are nonnegative and $S$ is decreasing, so
+$U(Y)\le\sum_yS(|y|)\le24\,S(2)=3.335124\ldots$. For $25\le M\le30$ take in
+the proof of \cref{thm:count30} the tree with $M$ centres in place of thirty
+and no split, so that the only case is $N(2.0161)\le24$. It carries a
+certificate of degree $12$ in the angle and $4$ in the distance, with a
+multiplier $s\ge0$, and
+\[
+  U(Y)\le\sum_bn_bm_b+\tfrac t2\le\max_n\sum_bn_b\bigl(m_b+sS(e_b)\bigr)+\tfrac t2,
+\]
+the first inequality by the chain of inequalities of that proof, which
+uses no assumption on $U(Y)$, the second because $s\ge0$ and $S\ge0$, and
+the maximum over the integer count vectors $n$ of the case, found exactly
+by dynamic programming. The right side, evaluated in interval arithmetic,
+is the entry of \cref{tab:levels}. Each certificate is checked as those of
+\cref{thm:count30}.
+\end{proof}
+
+\begin{table}[tb]
+\centering
+\caption{The levels of \cref{prop:levels}: for $M$ centres within $\sqrt6$,
+an upper bound $L_M$ for the union of caps $U(Y)$, and the lower bound
+$\frac98\pi^2-L_M$ for the volume of the cell that it gives. Every entry is
+rounded in the safe direction. For $M=24$ the bound is $24\,S(2)$, and the
+others are values of certificates.}
+\label{tab:levels}
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+$M$ & $24$ & $25$ & $26$ & $27$ & $28$ & $29$ & $30$\\
+\midrule
+$L_M$ & $3.3352$ & $3.3274$ & $3.3524$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
+$\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7509$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{thm}[Density from the cells]\label{thm:density-cells}
+Every packing of unit balls in $\mathbb{R}^4$ has density at most
+\[
+  \frac{\pi^2/2}{\frac98\pi^2-3.3524}=0.636674\ldots .
+\]
+\end{thm}
+
+\begin{proof}
+Enlarge the packing to a saturated one, which does not lower its density,
+and let $c$ be a centre and $Y$ the set of other centres within $\sqrt6$ of
+it. If $|Y|\le23$, then $\vol(V_c)>8$ by \cref{thm:m23-labelled}. If
+$|Y|\ge31$, then $\vol(V_c)\ge T(Y)>8$ by \cref{thm:count31}. Otherwise
+$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3524$
+by \cref{lem:no-triple,prop:levels}. Every cell therefore has volume at least
+$v=\frac98\pi^2-3.3524=7.7509\ldots$, and \cref{lem:cells-density} bounds the
+density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
+\end{proof}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{fig_tikz_levels}
+\caption{The density bound of \cref{thm:density-cells}. (a) The levels
+$L_M$ of \cref{prop:levels} against the level $\frac98\pi^2-8$ that statement
+(C) asks for (green) and the level $3.34549$ below which every count would
+have to fall for the bound to pass the three-point bound (violet). Only
+$M=26$ lies above the second. (b) The resulting bound with the others for
+$\mathbb{R}^4$: the density $\pi^2/16$ of $D_4$, the floor of
+\cref{rem:density-cells}, the three-point bound \cite{CdLS22}, and the linear
+programming bound \cite{CE03}.}
+\label{fig:levels}
+\end{figure}
+
+\begin{remark}[Where the bound stands]\label{rem:density-cells}
+The bound lies between the linear programming bound $0.64775$ of Cohn and
+Elkies \cite{CE03}\footnote{Cohn and Elkies state their bounds for the centre
+  density, the density divided by $\vol(B^n)$; their value $0.13126$ in
+  dimension four is a density of $0.13126\,\pi^2/2=0.64775$.} and the
+three-point bound $0.63611$ of Cohn, de Laat and Salmon \cite{CdLS22}, the
+best known. It uses no Fourier analysis and no global object, only the volume
+of each cell inside the ball of radius $\sqrt{3/2}$ about its centre, and its
+proof is local in the sense of \cref{sec:comparison-methods}.
+
+The bound is limited in two ways. The first is the level at $M=26$, the only count
+above $3.34549$ (\cref{fig:levels}(a)); if it fell to the largest of the other
+levels, $3.3352$ at $M=24$, the bound would be $0.63527$, below the
+three-point bound. The optimum of the programme at $M=26$ puts twenty-four
+centres within $2.0161$ and two just beyond, a configuration that the pair
+terms cannot exclude. A form of \cref{thm:m24-robust} with $\kappa=0.008$,
+placing the twenty-four directions within the tolerance of
+\cref{cor:no-room}, would exclude it, since that corollary then leaves no
+further centre within $\sqrt6$; the deep holes of a root system of
+$2$-vectors are at inner product $1/\sqrt2$ with its nearest directions, so
+a centre in one of them is at distance at least $4/\sqrt2=2\sqrt2$.\footnote{The three-point programme of
+  \cref{thm:kissing-stable} extended by a twenty-fifth point of its own type,
+  at inner product at most $t_2$ with the other twenty-four and with the
+  twenty-four at most $t_1=0.508$ apart, would exclude the configuration if
+  it excluded $t_2=0.5101$, the value for a centre within $2.025$. At degree
+  $10$ it does not: the margin by which that programme proves $N(2.0161)\le24$
+  is used up before $t_2$ reaches $0.5101$.} The second is a floor that no
+level can pass: at the root system $U(Y)=24\,S(2)-96\,\Pi(1,1,\tfrac12)=3.19636\ldots$
+and $T(Y)=7.90694\ldots<8$, so a bound on $T$ alone gives at best
+$(\pi^2/2)/7.90694=0.62411$. The rest of the way to $\pi^2/16$ is the volume
+that the cell of the root system has outside $B(\sqrt{3/2})$, which is the
+content of statement (G).
+\end{remark}
 
 \section{Comparison with other strategies}\label{sec:comparison-methods}
 
@@ -7769,7 +7964,9 @@ contain enough of a root system (\cref{cor:root-subsets}), or whose
 neighbours within $\sqrt6$ are within $\varepsilon_0=4\cdot10^{-26}$ of
 contact (\cref{thm:near-contact}); and, by \cref{thm:main-general}, every
 periodic or saturated packing whose centres are all of these kinds has
-density at most $\pi^2/16$. Along the way the paper proves that the kissing
+density at most $\pi^2/16$. With no assumption on the centres, the same
+lower bounds for the cells give $0.63668$ for the density of every packing
+of unit balls in $\mathbb{R}^4$ (\cref{thm:density-cells}). Along the way the paper proves that the kissing
 number of $\mathbb{R}^4$ is stable under a slack of $0.008$
 (\cref{thm:kissing-stable}), that twenty-four centres near a root system
 leave no room for another within $\sqrt6$ (\cref{cor:no-room}), that the
@@ -7820,7 +8017,10 @@ alone, where a kernel that adds to the labelled two-point kernel a
 three-point kernel typed by distance classes brings the optimum of the
 programme on its sample points below the level $\frac98\pi^2-8$, but not by
 a margin that survives the passage from samples to the whole domain; a finer
-sampling or a higher degree may close it, and with it (C) at thirty.
+sampling or a higher degree may close it, and with it (C) at thirty. For
+the density alone much less is needed: a level below $3.34549$ for the union
+of caps at twenty-six centres would carry \cref{thm:density-cells} below the
+three-point bound (\cref{rem:density-cells}).
 
 A third route avoids (G) and (C) as statements about single cells.
 \Cref{lem:redistribution} needs only a transfer of volume between
@@ -7852,7 +8052,7 @@ interval or ball arithmetic with outward rounding \cite[Ch.~5]{MKC09},
 \cite{Joh17}: every computed quantity is an interval that contains the true
 value, and a sign is decided only when the interval excludes zero. It covers
 the inequalities that the certificates of
-\cref{thm:certificate,thm:m23-labelled,thm:kissing-stable,thm:count31,thm:count30,prop:C-radial,prop:G-radial}
+\cref{thm:certificate,thm:m23-labelled,thm:kissing-stable,thm:count31,thm:count30,prop:C-radial,prop:G-radial,prop:levels}
 must satisfy on their domains, which are decided by branch and bound, and
 the constants of \cref{thm:near-contact,lem:twentyfour-close,cor:no-room,thm:G-pushout}.
 
@@ -8166,7 +8366,8 @@ $N(2.0161)\le24$ and $N(d_{\max})=30$, imply. The largest value of
 $\sum_bn_b(m_b+sS(e_b))$ over the count vectors of a case is found by
 dynamic programming over the bins in exact rational arithmetic, with the
 values $S(e_b)$ rounded up from ball arithmetic. The single splits of
-\cref{prop:C-radial,prop:G-radial} are found and checked in the same way.
+\cref{prop:C-radial,prop:G-radial}, and the certificates of the levels of
+\cref{prop:levels}, are found and checked in the same way.
 
 \subsection*{Software}
 
