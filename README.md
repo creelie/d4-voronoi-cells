@@ -24,8 +24,15 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
 - at least thirty-one lie within sqrt 6;
 - exactly thirty lie within sqrt 6, outside one configuration type
   (twenty-four within 2.25 and six beyond 2.4);
-- exactly twenty-four lie within sqrt 6, on the rays of a root system;
+- exactly twenty-four lie within sqrt 6, on the rays of a root system, or
+  the contacts contain enough of a root system;
 - no centre lies strictly between 2 + 4e-26 and sqrt 6.
+
+With one deviating contact direction the bound has an elementary proof, by
+the extremal cap of a cross-polytope. With no assumption on the centres, the
+same lower bounds for the cells give density at most 0.63668 for every
+packing of unit balls in R^4; this is weaker than the three-point bound
+0.63611 of Cohn, de Laat and Salmon, and above pi^2/16 = 0.61685.
 
 For the remaining centres the paper reduces the bound to two explicit
 statements: (G), a volume bound when exactly twenty-four centres lie within
@@ -37,9 +44,10 @@ which is a certificate.
 
 ## Citation
 
-Version v1.12.0, the one the paper cites, is archived on Zenodo as
-10.5281/zenodo.23076993; the concept DOI 10.5281/zenodo.22766562 resolves
-to the latest release. `CITATION.cff` and `.zenodo.json` carry the
+The release v2.0.0 accompanies version 3 of arXiv:2609.25120. The concept
+DOI 10.5281/zenodo.22766562, which the paper cites, covers every version
+and resolves to the latest release; the earlier package v1.12.0 is
+10.5281/zenodo.23076993. `CITATION.cff` and `.zenodo.json` carry the
 metadata. The package is maintained at
 https://github.com/creelie/d4-voronoi-cells and can also be obtained from
 Deep Bhattacharjee, itsdeep@live.com.
@@ -78,14 +86,15 @@ Deep Bhattacharjee, itsdeep@live.com.
     misc/               utility and diagnostic scripts
     release_notes/      the notes of each release
 
-Four directories support sections of earlier versions of arXiv:2609.25120
-that the current version does not contain: the chamber register and the
-root-aligned arc certificates (arc1_v1w1/, arc2_w1v2/), the joint-Hessian
-computations at several deviating directions (hessian_multidir/) and the swap
-configurations (swap_configs/). The current version proves the
-single-deviation theorem by the cap inequality alone and the multi-direction
-case through the classification of twenty-four contacts, so it uses none of
-them; they are kept so that the earlier versions stay reproducible.
+Four directories hold the elementary computations on deviations from the
+root system: the region certificates of the two arcs of the fundamental
+triangle (arc1_v1w1/, arc2_w1v2/), the joint Hessian at several deviating
+directions and the dense configurations A_18 and A_20 (hessian_multidir/),
+and the swap paths (swap_configs/). The single-deviation theorem itself is
+proved by the cap inequality (cap_certificate/), and the multi-direction case
+through the classification of twenty-four contacts; these four directories
+give the independent checks and the numerical evidence that the paper reports
+beside those proofs.
 
 ## Exact and numerical
 
@@ -156,8 +165,8 @@ regionC_derive.py, regionD_derive.py and regionE_derive.py), whose symbolic
 cancellation can take an hour or more, the directional sweeps in
 hessian_multidir/, about eight minutes each, and the formal check of the
 degree-10 certificate of the theorem "The kissing number is stable" in
-lean/cardinality/, about four
-hours on one core. The cached files in data/ spare the consuming scripts
+lean/cardinality/, several hours
+on one core. The cached files in data/ spare the consuming scripts
 the wait.
 
 A few symbolic steps do not terminate, and the paper reports that they do
@@ -167,8 +176,8 @@ environment variable overrides, and report what they established:
     arc2_w1v2/bandBcurve_certificate.py   BANDB_BUDGET_SECONDS (240) and
                                           BANDB_PER_SIMPLEX_SECONDS (90);
                                           the moving-volume step does not
-                                          complete; it belongs to an earlier
-                                          version (arc2_w1v2/)
+                                          complete, as the section on the
+                                          second arc reports
     misc/sumtest.py                       SUMTEST_STAGE_SECONDS (120)
     swap_configs/swap_exact_volume.py     SWAPVOL_STAGE_SECONDS (300)
     swap_configs/swap_exact_volume3.py    SWAPVOL_STAGE_SECONDS (300)
