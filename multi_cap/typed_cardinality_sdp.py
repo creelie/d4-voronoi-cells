@@ -216,6 +216,22 @@ def evaluate(R, fv, Fv, t1, t2, n, n_climb=600):
     return Z, A, out
 
 
+KEEP1 = int(os.environ.get('KEEP1', '0'))   # samples kept per one-variable set between rounds (0: all)
+KEEP3 = int(os.environ.get('KEEP3', '0'))   # samples kept per triple set between rounds (0: all)
+
+
+def prune(R, fv, Fv, U1, U2, P111, P112):
+    """keep, of the samples so far, those on which g and F come closest to their
+    largest values at the current solution, so that the programme stays small; the
+    points the new round adds are appended after this."""
+    d, LC = R.d, R.LC
+    def top(vals, k):
+        return np.argsort(vals)[-k:] if k and len(vals) > k else np.arange(len(vals))
+    i1 = top(g_values(fv, Fv, d, LC, U1), KEEP1); i2 = top(g_values(fv, Fv, d, LC, U2), KEEP1)
+    j1 = top(F_values(Fv, d, LC, *P111), KEEP3); j2 = top(F_values(Fv, d, LC, *P112), KEEP3)
+    return U1[i1], U2[i2], tuple(a[j1] for a in P111), tuple(a[j2] for a in P112)
+
+
 def run(d, t1, t2, rounds=12, n=24, quiet=False, save=None):
     """refine until the corrected Z is below 0 (the code is excluded, in floating point) or the
     sampled Z is above 0 (then no certificate of degree d exists: the sampled programme is a
@@ -246,6 +262,8 @@ def run(d, t1, t2, rounds=12, n=24, quiet=False, save=None):
         if prob.value > 1e-4:
             print('  sampled Z above 0: no certificate of degree %d' % d, flush=True)
             break
+        if KEEP1 or KEEP3:
+            U1, U2, P111, P112 = prune(R, fv, Fv, U1, U2, P111, P112)
         U1 = np.r_[U1, out['g1'][1]]; U2 = np.r_[U2, out['g2'][1]]
         P111 = tuple(np.r_[P111[j], out['F1'][1][j]] for j in range(3))
         P112 = tuple(np.r_[P112[j], out['F2'][1][j]] for j in range(3))
