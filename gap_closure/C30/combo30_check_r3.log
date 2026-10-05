@@ -31,3 +31,8 @@ residual case of thm:count30: combined certificate combo30q_d8_r3.npz, two-point
       AAA level 20: 13250 boxes verified, 79778 to bisect [111 s]
       AAB level 20: 42544 boxes verified, 193812 to bisect [290 s]
       AAF level 20: 43128 boxes verified, 199330 to bisect [297 s]
+      AAA level 30: 969033 boxes verified, 27046 to bisect [1938 s]
+      ABB level 10: 0 boxes verified, 618 to bisect [3 s]
+      ABB level 20: 46869 boxes verified, 167924 to bisect [262 s]
+      AAF level 30: 1140026 boxes verified, 3404 to bisect [2457 s]
+      ABF level 10: 0 boxes verified, 948 to bisect [5 s]
