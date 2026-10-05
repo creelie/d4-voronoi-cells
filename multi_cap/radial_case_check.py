@@ -2,7 +2,7 @@
 """
 radial_case_check.py -- proves the certificates written by radial_case_sdp.py:
 every packing set of exactly M centres y with 2 <= |y| < sqrt6 has union of
-caps U(Y) < 9 pi^2/8 - 8, so T(Y) > 8 (statement (C) at the count M).
+caps U(Y) < 9 pi^2/8 - 8, so T(Y) > 8 (statement (C_M) at the count M).
 
 Exact rational arithmetic, Bernstein bounds and Arb ball arithmetic, as in
 radial_count_check.py, whose routines it uses.  N(r) is the number of centres
@@ -268,7 +268,7 @@ def main():
     M, D, r = c['M'], c['D'], c['r']
     c1, c2, dmax = Fr(c['c1']), Fr(c['c2']), Fr(c['dmax'])
     target = 9 * arb.pi() ** 2 / 8 - 8
-    print('statement (C) at M = %d: two-point certificates, degree %d in the angle and %d in the distance, one per case' % (M, D, r))
+    print('statement (C_M) at M = %d: two-point certificates, degree %d in the angle and %d in the distance, one per case' % (M, D, r))
     check('dmax exceeds sqrt 6', dmax ** 2 > 6)
     tl = []
     ok = check_tree(c['tree'], M, tl)

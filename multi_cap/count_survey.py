@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-count_survey.py -- the right side T of Lemma 21.6 for every count of centres
-within sqrt 6 from 24 to the largest that fits (Section 21.1 of the paper;
+count_survey.py -- the right side T of prop:truncated for every count of centres
+within sqrt 6 from 24 to the largest that fits (sec:remains of the paper;
 floating point, exploration, not proof).
 
 For each M the script minimises T over configurations of M centres in the shell

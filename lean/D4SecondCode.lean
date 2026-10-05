@@ -1,8 +1,9 @@
 /-
-D4SecondCode.lean: Proposition 21.21 of the paper.  Statement (i) of "What is left"
-(Section 21.1) fails at slack 849/50000 = 0.01698.
+D4SecondCode.lean: the second 24-point code of sec:remains of the paper.  At slack
+849/50000 = 0.01698 the directions alone no longer place 24 points near a root
+system.
 
-The 24 points below have rational coordinates (from multi_cap/second_order/
+The 24 points below have rational coordinates (from multi_cap/second_code/
 code24_exact.py, which rounds the best code found by code24_second.py to
 points of S^3 by inverse stereographic projection).  Proved here by exact
 rational arithmetic:

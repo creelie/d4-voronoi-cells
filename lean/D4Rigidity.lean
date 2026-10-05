@@ -2,7 +2,7 @@
 D4Rigidity.lean
 
 The finite content of the lemma on the spectrum of the rigidity operator
-(Lemma 7.50 of the paper; multi_cap/rigidity_spectrum.py), computed from the
+(lem:rigidity-spectrum of the paper; multi_cap/rigidity_spectrum.py), computed from the
 integral D_4 roots.
 
 With the 24 roots a_i (entries 0, +-1, squared length 2), the 96 tight pairs
@@ -26,7 +26,7 @@ Proved here, by exact integer and rational computation:
   * one direction displaced, with the rotational part removed, has
     |Lambda tau|_1^2 / |tau|_2^2 = 96/11, so no constant of the argument passes
     sqrt(96/11).
-  * for Theorem 7.51: every root lies in eight tight pairs, the tight inner
+  * for thm:local-uniqueness: every root lies in eight tight pairs, the tight inner
     products of a tangent vector sum to zero (the column sums of Lambda' 2P
     vanish), and 12^2 * 11/16 + 1/4 = 397/4.
 
@@ -185,7 +185,7 @@ theorem one_direction :
      (lt.foldl (fun s v => s + rabs v) 0) ^ 2 / (2 * rdot tau tau) == 96 / 11) = true := by
   native_decide
 
-/-! ### The arithmetic of the radius 2/sqrt 397 (Theorem 7.51) -/
+/-! ### The arithmetic of the radius 2/sqrt 397 (thm:local-uniqueness) -/
 
 /-- Every root lies in exactly eight tight pairs, and the tight inner products of a
 tangent vector sum to zero: the column sums of Lambda' 2P vanish (the constant stress,

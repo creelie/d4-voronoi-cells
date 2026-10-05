@@ -24,18 +24,20 @@ below r_* and with three terms below r_4:
 with A_R = (1/4)[2 pi^2 + int_0^R (2 pi^2 - 23 C(r)) d(sec^4 r)],
 omega_R(g) = (1/4) int_0^R Lambda(r, g) d(sec^4 r) for the lens measure
 Lambda of two caps, and omega_3 the same integral of the triple measure.
-(P) is the second-order estimate of the paper with the integration
-carried to its natural limit r_* instead of r_23 = 34.6106 degrees.
+(P) is prop:truncated of the paper for twenty-three contacts; (T), in the
+ball of radius sqrt(8/5), is not used there.
 
 Part 1 prints the constants of (P): A_* = 7.907144, omega_*(60) =
 0.00144541, the value 8.034340 at a deletion of a root, and the number of
 pairs at 60 degrees, 64.24, that carry (P) past 8; and the same for the
-r_23 version of the paper (7.997885 at the deletion, 91 pairs needed).
+integration stopped at r_23 = 34.6106 degrees (7.997885 at the deletion, 91
+pairs needed).
 
 Part 2 prints the constants of (T): A_4 = 7.647558, omega_4(60) =
 0.00565947, omega_3(60,60,60) = 5.65e-5 by Monte Carlo, the value
-8.140848 at a deletion (against the quadrature of truncated_volume.py)
-and 7.968684 at the root system itself (24 contacts).
+8.140848 at a deletion (against an independent quadrature, 8.14068,
+quoted from an earlier version of this package) and 7.968684 at the root
+system itself (24 contacts).
 
 Part 3 is the pair-angle relaxation of (P): minimise sum omega_*(gamma)
 over all distributions of 253 pair angles in [60, 180] degrees subject to
@@ -43,7 +45,7 @@ the constraints every configuration satisfies (total mass, the
 second-order Bonferroni inequality at every radius, positive definiteness
 of the Gegenbauer polynomials up to degree 24), and compare the minimum
 with the target 8 - A_* = 0.092856.  It reaches 0.073797, four fifths of
-the target; the paper's r_23 version reaches one half.  The minimiser is
+the target; the r_23 version reaches one half.  The minimiser is
 printed.  Nothing in Part 3 is a proof of anything beyond the value of
 the relaxation on the grid.
 

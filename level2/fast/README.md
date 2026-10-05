@@ -26,8 +26,8 @@ everywhere (`runs/P2_1416_it86.txt`), so the certificate charges almost
 nothing to any single pair.
 
 The programme with exactly 24 points (`solve_fc.jl`) maximises the weighted
-design defect sum_k c_k S_k of the paper's proposition "No room from the
-design defects"; a value below 0.26785 at (14, 16) would bound the defect of
+design defect sum_k c_k S_k, with the weights c_k of an earlier version of
+the paper; a value below 0.26785 at (14, 16) would bound the defect of
 every 24-point code of slack 1/125, once rounded and checked.  At (6, 8) its
 value is 4.38, which says nothing at that degree.  Fixing all four subset
 counts leaves no interior (the variance of the number of points is then 0),

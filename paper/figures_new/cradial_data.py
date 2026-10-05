@@ -1,5 +1,4 @@
-"""cradial_data.py -- data of fig_tikz_cradial and of the table of the proposition "Where the
-centres lie from twenty-five to twenty-nine": for M centres within sqrt 6 with T(Y) <= 8, the least
+"""cradial_data.py -- data of fig_tikz_cradial and of tab:radial (prop:radial): for M centres within sqrt 6 with T(Y) <= 8, the least
 number of centres within a radius rho,
   - proved by the case certificates (read from ../../multi_cap/runs/radial_case_check_M_rRHO.log,
     and radial_case_check_30.log for thirty centres), a count at a radius also holding at every

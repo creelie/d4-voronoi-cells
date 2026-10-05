@@ -6,10 +6,10 @@ measured along the two rays of the root system that the paper uses:
   all pushed out evenly:  y_i = (2 + S/24) u_i,                        S = sum of the push-outs.
 
 Here V(Y) = {x : <x, y> <= |y|^2 / 2 for all y in Y} and K(Y) is the convex
-hull of 0 and the inverted centres 4 y / |y|^2 (Proposition 21.4 of the paper).
+hull of 0 and the inverted centres 4 y / |y|^2 (prop:inversion-hull of the paper).
 The exact volumes are computed by intersecting half-spaces (scipy), and
 vol(V \ K) = vol(V) - vol(V cap K) is compared with the estimate
-13958 Theta^4 of part (c) of the proof of Theorem 21.9, with Theta = S on
+13958 Theta^4 of part (c) of the proof of thm:near-contact, with Theta = S on
 these rays (the tilts vanish).
 
 Usage:  python3 hull_along_rays.py

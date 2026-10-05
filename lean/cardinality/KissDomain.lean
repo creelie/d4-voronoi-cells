@@ -1,5 +1,5 @@
 /-
-KissDomain.lean: the check of the three-point certificates of Theorem 7.79
+KissDomain.lean: the check of the three-point certificates of thm:kissing-stable
 (the kissing number is stable) inside Lean, in exact arithmetic.
 
 For a certificate (f_1, ..., f_d; F_0, ..., F_d) of KissData, this module

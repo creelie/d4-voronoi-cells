@@ -1,0 +1,89 @@
+% tikz_capscheme.tex -- fig:cap-scheme, the cap argument of sec:cap-theorem.
+%   (a) The plane x_2 = x_3 = 0 of the frame of four orthogonal roots, the
+%       deviating root being e_0.  B = {|x_0|+|x_1|+|x_2|+|x_3| <= 2} meets it in
+%       the square with vertices (+-2,0), (0,+-2); Q meets it in the pentagon
+%       (2,0), (1,1), (-1,1), (-1,-1), (1,-1); the 24-cell in the square
+%       [-1,1]^2.  The half-space x_0 >= 1 cuts the triangle (1,1), (2,0),
+%       (1,-1) off both Q and B; in four dimensions it has volume 1/3
+%       (lem:Q-structure).  A unit-distance half-space <x,w> >= 1, w at 25 deg,
+%       meets the boundary of B at (0.32,1.68) and (1.3885,-0.6115).  To scale.
+%   (b) The volume of the cap of B along two paths of unit normals from the
+%       vertex direction e_0: to the midpoint of an edge (45 deg) and to the
+%       centre of a facet (60 deg), from cap_paths.dat (cap_paths_data.py,
+%       which evaluates lem:cap-formula and checks it by Monte Carlo).
+% Test:   python3 tikz_overlap_check.py tikz_capscheme.tex
+% Build:  pdflatex tikz_capscheme.tex && pdftoppm -r 500 -png -singlefile tikz_capscheme.pdf ../figures/fig_tikz_capscheme
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\DeclareMathOperator{\vol}{vol}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cink}{HTML}{0B0B0B}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\definecolor{cpanel}{HTML}{F4F3EF}
+\input{tikzcheck}
+\autocheck
+\begin{document}
+\begin{tikzpicture}[font=\small]
+%% ------------------------------------------------------------------ (a)
+\begin{scope}[x=1.45cm, y=1.45cm]
+  % B minus Q
+  \fill[cink3!18] (2,0) -- (0,2) -- (-2,0) -- (0,-2) -- cycle;
+  % Q
+  \fill[cblue!14] (2,0) -- (1,1) -- (-1,1) -- (-1,-1) -- (1,-1) -- cycle;
+  % the 24-cell
+  \fill[cblue!30] (-1,-1) rectangle (1,1);
+  % the cap x_0 >= 1
+  \fill[corange!55] (1,1) -- (2,0) -- (1,-1) -- cycle;
+  % outlines
+  \draw[cink2, thin, dashed] (2,0) -- (0,2) -- (-2,0) -- (0,-2) -- cycle;
+  \draw[cblue!80!black, thick] (2,0) -- (1,1) -- (-1,1) -- (-1,-1) -- (1,-1) -- cycle;
+  \draw[cink, thin] (1,-1) -- (1,1);
+  % the unit circle
+  \draw[cink2, densely dotted] (0,0) circle (1);
+  % the tilted half-space <x,w> = 1, w at 25 degrees, tangent to the circle at w
+  \draw[caqua!70!black, thick] ($(25:1)+(115:1.95)$) -- ($(25:1)+(-65:1.45)$);
+  \draw[caqua!70!black, -{Stealth[length=5pt]}] (0,0) -- (25:1);
+  \fill[cink] (25:1) circle (0.9pt);
+  % axes
+  \draw[-{Stealth[length=5pt]}, cink2] (-2.35,0) -- (2.45,0);
+  \draw[-{Stealth[length=5pt]}, cink2] (0,-2.3) -- (0,2.35);
+  \node[anchor=north, inner sep=2pt] at (2.42,-0.04) {$x_0$};
+  \node[anchor=east, inner sep=2pt] at (-0.04,2.32) {$x_1$};
+  % labels
+  \node[inner sep=1.5pt] at (-1.42,0.3) {$B$};
+  \node[inner sep=1.5pt] at (-0.55,-0.45) {$\mathcal V$};
+  \node[inner sep=1.5pt] at (1.36,0.33) {$\tfrac13$};
+  \node[anchor=north west, inner sep=1.5pt] at (1.04,-1.04) {$x_0=1$};
+  \node[anchor=south west, inner sep=1.5pt, text=caqua!50!black] at (0.62,1.72) {$\langle x,w\rangle=1$};
+  \node[anchor=north west, inner sep=1.5pt, text=caqua!50!black] at (0.62,0.36) {$w$};
+\end{scope}
+%% ------------------------------------------------------------------ (b)
+\begin{axis}[name=A, at={(5.35cm,-2.75cm)}, anchor=south west, width=7.8cm, height=6.2cm,
+    xmin=0, xmax=62, ymin=0, ymax=0.39,
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
+    xtick={0,15,30,45,60}, ytick={0.1,0.2,0.3},
+    yticklabels={$0.1$,$0.2$,$0.3$},
+    xlabel={angle of $u$ from $e_0$ (degrees)}, ylabel={$\vol\bigl(B\cap\{\langle x,u\rangle\ge1\}\bigr)$},
+    xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+    clip=false]
+  \addplot[cink3, dashed, domain=0:62, samples=2] {1/3};
+  \addplot[corange, very thick] table[x=t, y=c1] {cap_paths.dat};
+  \addplot[cblue, very thick] table[x=t, y=c2] {cap_paths.dat};
+  \node[anchor=south west, inner sep=1.5pt, font=\footnotesize] at (axis cs:33,0.339) {$\tfrac13$, attained only at $u=e_0$};
+  \node[anchor=south west, inner sep=1.5pt, font=\footnotesize, text=corange!80!black] at (axis cs:46,0.232) {to an edge};
+  \node[anchor=west, inner sep=1.5pt, font=\footnotesize, text=cblue!80!black] at (axis cs:51,0.118) {to a facet};
+\end{axis}
+\node[anchor=north, inner sep=2pt] at ($(A.outer south)+(0,-0.02cm)$) {(b)};
+\node[anchor=north, inner sep=2pt] at ($(0,0)!(A.outer south)!(0,1)$) {(a)};
+\checkfigure
+\end{tikzpicture}
+\end{document}

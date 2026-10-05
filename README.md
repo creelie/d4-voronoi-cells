@@ -1,16 +1,15 @@
-# Supplementary code for Voronoi Cells of Four-Dimensional Unit-Ball Packings
+# The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture: supplementary code
 
-Programs, certificates, run logs and Lean 4 checks for
+Certificates, the programmes that check them, run logs and Lean 4 checks for
 
 > D. Bhattacharjee, U. Bhattacharya, P. Mandal and S. Bhattacharya,
-> *Voronoi Cells of Four-Dimensional Unit-Ball Packings*, arXiv:2609.25120.
+> *The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell
+> Conjecture*, arXiv:2609.25120.
 
-Every exact value the paper asserts is printed in the paper, so its
-derivations can be followed without running anything. The one computation
-the paper cannot print is the verification of the certificate of
-Section 7.5.3, whose inputs are the deposited data in `third_party/` and
-whose run logs are in `multi_cap/runs` and `zonal/runs`. The package lets every derivation, that one included, be
-repeated independently.
+Every exact value that a proof in the paper uses is stated in the paper. The
+objects it cannot print, the matrices of the semidefinite certificates and the
+box lists of the branch and bounds, are here, with the programmes that check
+them.
 
 ## What the paper proves
 
@@ -18,20 +17,23 @@ Let V_c be the Voronoi cell of a centre c of a packing of unit balls in
 R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
 24-cell of the D_4 root lattice, in each of the following cases:
 
-- every centre that can cut the cell touches c (contact configurations,
-  Sections 7 to 20, with the classification of twenty-four contacts proved
-  in Section 7.5);
-- at most twenty-three other centres lie within sqrt 6 of c (Theorem 21.8);
-- at least thirty-one lie within sqrt 6 (Theorem 21.25);
-- no centre lies strictly between 2 + 4e-26 and sqrt 6 (Theorem 21.9 and
-  Section 21.1).
+- every centre within 2 sqrt 2 of c touches c (contact configurations), with
+  the classification of twenty-four contacts proved from the certificate of
+  de Laat, Leijenhorst and de Muinck Keizer;
+- at most twenty-three other centres lie within sqrt 6 of c;
+- at least thirty-one lie within sqrt 6;
+- exactly thirty lie within sqrt 6, outside one configuration type
+  (twenty-four within 2.25 and six beyond 2.4);
+- exactly twenty-four lie within sqrt 6, on the rays of a root system;
+- no centre lies strictly between 2 + 4e-26 and sqrt 6.
 
-For the remaining centres, Proposition 21.23 reduces the bound to two
-explicit statements: (G), a volume bound when exactly twenty-four centres
-lie within sqrt 6, and (C), a bound on the caps when twenty-five to thirty
-do. Together they imply that D_4 gives the densest packing of R^4. Neither
-is proved; Section 21.3 records what is proved about them and where each
-method stops.
+For the remaining centres the paper reduces the bound to two explicit
+statements: (G), a volume bound when exactly twenty-four centres lie within
+sqrt 6, and (C), a bound on the caps when twenty-five to thirty do. Together
+they imply that D_4 gives the densest packing of R^4. **Neither is proved.**
+The paper records what is proved about them and where each method stops;
+`gap_closure/` holds the floating-point explorations against them, none of
+which is a certificate.
 
 ## Citation
 
@@ -44,48 +46,46 @@ Deep Bhattacharjee, itsdeep@live.com.
 
 ## Layout
 
-    paper/              the manuscript (D4.tex, D4.pdf), its figures and
-                          the scripts that draw them (figures_new/)
-    cap_certificate/    the cap inequality of Section 13, end to end
-    arc1_v1w1/          first-arc certificates (Sections 9 and 10)
-    arc2_w1v2/          second-arc certificates and the symmetry of the
-                          fundamental triangle (Sections 8, 11 and 12)
-    hessian_multidir/   joint-Hessian computations (Sections 15 to 18)
-    swap_configs/       swap configurations at finite angle (Section 20)
-    multi_cap/          the contact cases of Section 7 and the non-contact
-                          cases of Section 21: covering bound, twenty-three
-                          contacts, the certificate of de Laat, Leijenhorst
-                          and de Muinck Keizer, stability of the kissing
-                          number, the distance criterion, the labelled
-                          certificate, the counts and radial bounds for (C)
-                          and (G); second_order/ (Section 21.2) and
-                          stability/ (the corollary "No room beside a near
-                          root system") have their own README files
-    zonal/              the zonal matrices and the four polynomial
-                          identities of the certificate of Section 7.5.3,
-                          in exact arithmetic (see zonal/README.md)
-    level2/             the second-level programme of de Laat, Leijenhorst
-                          and de Muinck Keizer, set up from zonal/ and solved
-                          on the enlarged domain [-1, 1/2 + s] (see
-                          level2/README.md)
-    lean/               Lean 4 checks, no Mathlib: fifteen files checked
-                          by run_all.sh and three Lake projects (see
-                          lean/README.md and Table 6 of the paper)
-    third_party/        the certificate data set of de Laat, Leijenhorst
-                          and de Muinck Keizer, with its licence and checksum
+    paper/              the manuscript (D4.tex, D4.pdf), its figures and the
+                          scripts that draw them (figures_new/)
+    cap_certificate/    the cap inequality of the section "Positivity for
+                          every deviation direction", end to end
+    multi_cap/          the contact cases and the non-contact cases: covering
+                          bound, twenty-three contacts, the certificate of de
+                          Laat, Leijenhorst and de Muinck Keizer, stability of
+                          the kissing number, the distance criterion, the
+                          labelled certificate, the counts and radial bounds
+                          for (C) and (G), and the push-outs; second_order/
+                          and stability/ have their own README files
+    zonal/              the zonal matrices and the four polynomial identities
+                          of the certificate of the twenty-four-point case, in
+                          exact arithmetic (see zonal/README.md)
+    level2/             the second-level programme of de Laat, Leijenhorst and
+                          de Muinck Keizer, set up from zonal/ and solved on
+                          the enlarged domain [-1, 1/2 + s] (see level2/README.md)
+    gap_closure/        floating-point explorations of (C) at 25 to 30
+                          centres; no certificate (see gap_closure/README.md)
+    lean/               Lean 4 checks, no Mathlib (see lean/README.md and the
+                          table "The formally verified parts of the paper")
+    third_party/        the certificate data set of de Laat, Leijenhorst and
+                          de Muinck Keizer, with its licence and checksum
     independent_verification/
                         an independent re-verification of the package, with
                           its report and logs
     verification/       cross-checks of the reference cell
-    core/               arithmetic and Hessian routines shared by the scripts
-    data/               cached intermediate results (.pkl) of the longer
-                          symbolic derivations
+    core/               arithmetic routines shared by the scripts
+    data/               cached intermediate results (.pkl)
     misc/               utility and diagnostic scripts
     release_notes/      the notes of each release
 
-The README files of cap_certificate/, arc2_w1v2/, hessian_multidir/ and
-multi_cap/ describe their scripts one by one, with the results of the paper
-each one supports.
+Four directories support sections of earlier versions of arXiv:2609.25120
+that the current version does not contain: the chamber register and the
+root-aligned arc certificates (arc1_v1w1/, arc2_w1v2/), the joint-Hessian
+computations at several deviating directions (hessian_multidir/) and the swap
+configurations (swap_configs/). The current version proves the
+single-deviation theorem by the cap inequality alone and the multi-direction
+case through the classification of twenty-four contacts, so it uses none of
+them; they are kept so that the earlier versions stay reproducible.
 
 ## Exact and numerical
 
@@ -94,10 +94,9 @@ arithmetic (fractions.Fraction, sympy.Rational, Lean's Rat), in exact
 dyadic arithmetic, or in outward-rounded interval and ball arithmetic
 (mpmath intervals, python-flint's arb). High-precision floating point is
 used only for numerical estimates, which the paper labels as such and never
-uses as proofs. In particular no script in hessian_multidir/ proves the
-multi-direction positivity conjecture: each result there is either an exact
-statement about a specific finite configuration or numerical evidence
-reported as such.
+uses as proofs. The floating-point programmes of gap_closure/ and the sampled programmes
+of multi_cap/ only find candidates; a candidate enters a proof only after it
+is rounded to rationals and checked exactly or in interval arithmetic.
 
 ## Requirements
 
@@ -156,7 +155,8 @@ derivations in arc1_v1w1/ (regionA_derive.py, region6_derive.py,
 regionC_derive.py, regionD_derive.py and regionE_derive.py), whose symbolic
 cancellation can take an hour or more, the directional sweeps in
 hessian_multidir/, about eight minutes each, and the formal check of the
-degree-10 certificate of Theorem 7.79 in lean/cardinality/, about four
+degree-10 certificate of the theorem "The kissing number is stable" in
+lean/cardinality/, about four
 hours on one core. The cached files in data/ spare the consuming scripts
 the wait.
 
@@ -167,9 +167,8 @@ environment variable overrides, and report what they established:
     arc2_w1v2/bandBcurve_certificate.py   BANDB_BUDGET_SECONDS (240) and
                                           BANDB_PER_SIMPLEX_SECONDS (90);
                                           the moving-volume step does not
-                                          complete (Section 12.2), and
-                                          Proposition 8.5 makes the direct
-                                          certificate unnecessary
+                                          complete; it belongs to an earlier
+                                          version (arc2_w1v2/)
     misc/sumtest.py                       SUMTEST_STAGE_SECONDS (120)
     swap_configs/swap_exact_volume.py     SWAPVOL_STAGE_SECONDS (300)
     swap_configs/swap_exact_volume3.py    SWAPVOL_STAGE_SECONDS (300)

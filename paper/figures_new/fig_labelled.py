@@ -1,5 +1,5 @@
 """
-fig_labelled.py -- the labelled certificate of Theorem 21.8 (Section 21.1).
+fig_labelled.py -- fig:labelled-b, the proof of thm:m23 (centres at any distance).
 
 (a) A plane section through c = 0 and two centres y_i, y_j at the packing
     boundary |y_i - y_j| = 2, with d_i = 2.10 and d_j = 2, so that the
@@ -16,7 +16,7 @@ fig_labelled.py -- the labelled certificate of Theorem 21.8 (Section 21.1).
     contacts end at: Q0 = 1000 sum omega - P alone (dashed) turns negative,
     but the packing makes the centres move out, and Q0 plus the lower bound
     1000 sum Gamma_i of labelled_certificate_check.py (solid) stays
-    positive.  Blue: u = v = -sqrt3/2, where (C) comes closest to 0 on the
+    positive.  Blue: u = v = -sqrt3/2, where the certificate inequality (eq:cert) comes closest to 0 on the
     face; orange: u = v = t.  The strip is the region II_s of the proof.
 """
 import math

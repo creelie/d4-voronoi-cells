@@ -1,5 +1,5 @@
 """
-fig_closure.py -- the further reductions of Section 21.1.
+fig_closure.py -- fig:hull, the inversion hull and the bound near the root system.
 
 (a) A vertex of the 24-cell and its three orthogonal root pairs, in the linear
     projection of R^4 that keeps the vertex direction e_1 vertical and sends
@@ -7,20 +7,20 @@ fig_closure.py -- the further reductions of Section 21.1.
     normalised roots at the vertex v = sqrt2 e_1 lie on a hexagon at height
     1/sqrt2; the points 2u lie on a hexagon at height sqrt2, and v is the
     midpoint of each of the three chords 2u -- 2u' of an orthogonal pair
-    (Corollary 21.5).  One root is missing (hollow): its chord is gone, and v
+    (cor:root-subsets).  One root is missing (hollow): its chord is gone, and v
     is still the midpoint of the other two.  The projection is linear, so
     midpoints are exact.
-(b) The three-dimensional analogue of the inversion hull (Proposition 21.4):
+(b) The three-dimensional analogue of the inversion hull (prop:inversion-hull):
     the Voronoi cell of the twelve contacts of the face-centred cubic packing,
     a rhombic dodecahedron (blue), inside the convex hull of the points 2u
     (the cuboctahedron, orange), touching its boundary only at its six
     four-valent vertices, as the 24-cell touches the hull of the 2u at its 24
     vertices.
-(c) First order near the root system (Theorem 21.9): the exact volume
+(c) First order near the root system (thm:near-contact): the exact volume
     excess of the root system pushed out uniformly, 8(1 + delta/2)^4 - 8, and
     of the deletion with one centre held at 2 + delta on the deleted axis,
     1/3 - (1/3)(1 - delta/2)^4, against sum delta_i, with the tangent
-    (2/3) sum delta_i that the proof of Theorem 21.9 finds at the root system.
+    (2/3) sum delta_i that the proof of thm:near-contact finds at the root system.
 """
 import itertools
 import math

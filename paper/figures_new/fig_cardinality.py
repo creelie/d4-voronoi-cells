@@ -1,13 +1,12 @@
 """
-fig_cardinality.py -- the two halves of the twenty-four-point theorem at positive slack
-(Section 7.13).
+fig_cardinality.py -- fig:cardinality, twenty-four points at positive slack.
 
 (a) The three-point bound on A(4, 1/2 + s), the number of points of S^3 with inner
     products at most 1/2 + s, from the sampled programmes of degree 8 and 10
-    (multi_cap/runs/cardinality_sweep_d*.log), with the certified values of the
-    theorem that the kissing number is stable (multi_cap/runs/certify_cardinality_*.log)
+    (multi_cap/runs/cardinality_sweep_d*.log), with the certified values of
+    thm:kissing-stable (multi_cap/runs/certify_cardinality_*.log)
     and the slack at which a 25-point code exists (multi_cap/runs/code25_search.log).
-(b) The ceiling of the theorem 'Twenty-four points, approximately': with the triple
+(b) The ceiling of thm:m24-robust: with the triple
     and quadruple terms set to zero, the largest slack kappa its proof reaches,
     kappa < q_min f_min(delta) / (276 L_2), against the rounding tolerance delta
     (constants from multi_cap/runs/robust_ceiling.log).

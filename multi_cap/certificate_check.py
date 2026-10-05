@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 certificate_check.py -- verification of a three-point certificate for the
-pair inequality of Theorem 7.69, in exact rational and interval arithmetic
-(the proof of Theorem 7.73).
+pair inequality of cor:m23-contacts, in exact rational and interval arithmetic
+(the proof of thm:certificate).
 
 Input: continuation_out/certificate_d<d>.npz, written by three_point_sdp.py
 in certificate mode: floating-point numbers f_0, ..., f_d and symmetric
@@ -17,7 +17,7 @@ the following is established.
   2.  The bound B = N (N f_0 - f(1)) / 2 - N F(1,1,1) / (6 (N - 2)), with
       N = 23, computed exactly, divided by the scale 1000 of the solver,
       exceeds 8 - A_*, where A_* is evaluated in interval arithmetic from
-      its closed form (the integrals in Proposition 7.68 are elementary):
+      its closed form (the integrals in lem:pair are elementary):
       A_* = 9 pi^2 / 8 - 207 pi r_* / 8 + 253 pi / (12 sqrt 2), r_* = arctan(1/sqrt 2).
 
   3.  The polynomial P(u, v, t) = f(u) + f(v) + f(t) + F(u, v, t) +
@@ -25,7 +25,7 @@ the following is established.
       polynomials, as three_point_sdp.py does) +
       (F(1,u,u) + F(1,v,v) + F(1,t,t)) / (N - 2) is expanded exactly, as a
       polynomial with rational coefficients in u, v, t, and the inequality
-          1000 (omega(u) + omega(v) + omega(t)) >= P(u, v, t)          (C)
+          1000 (omega(u) + omega(v) + omega(t)) >= P(u, v, t)          (cert)
       is verified on the whole admissible domain -1 <= u <= v <= t <= 1/2,
       1 + 2uvt - u^2 - v^2 - t^2 >= 0 (P is symmetric, so this suffices)
       by interval branch and bound.  omega, its first and its second
@@ -38,14 +38,14 @@ the following is established.
       tables and the exact polynomial, the second derivatives from the
       bound on omega'' and an interval evaluation of the second derivatives
       of P over the box.  A variable whose range is not inside (1/3, 1/2]
-      has its omega term replaced by 0.  Boxes on which (C) is not decided
+      has its omega term replaced by 0.  Boxes on which (cert) is not decided
       are bisected along the direction that contributes most to the
       remainder; boxes outside the domain are discarded; an admissible
-      centre at which (C) is negative stops the run with a counterexample.
+      centre at which (cert) is negative stops the run with a counterexample.
 
 If all three steps pass, then for every contact configuration of 23
 directions sum_{i<j} omega(gamma_ij) >= B / 1000 > 8 - A_*, which is the
-hypothesis of Theorem 7.69.  The script prints what it verifies and
+hypothesis of cor:m23-contacts.  The script prints what it verifies and
 stops with a message at the first failure.
 
 Usage: python3 certificate_check.py [degree] [minimum box width]
@@ -288,7 +288,7 @@ def derivative(p, var):
     return r
 
 def verify_domain(P, tables, wmin, batch=150000, start=None):
-    """Interval branch and bound of (C) on the ordered admissible domain.
+    """Interval branch and bound of (cert) on the ordered admissible domain.
 
     On a box with centre c and half-widths r, with Q = 1000 (omega(u) +
     omega(v) + omega(t)) - P, Taylor's theorem gives
@@ -329,12 +329,12 @@ def verify_domain(P, tables, wmin, batch=150000, start=None):
             # P and its gradient at the centre, its Hessian on the box
             plo, phi = Pp.eval((c, c))
             q0 = down(q0 - phi); q0hi = up(q0hi - plo)
-            # a centre inside the domain at which (C) fails is a counterexample
+            # a centre inside the domain at which (cert) fails is a counterexample
             dclo, _ = det.eval((c, c))
             bad = alive & (dclo >= 0) & (c[0] <= c[1]) & (c[1] <= c[2]) & (q0hi < 0)
             if np.any(bad):
                 i = int(np.argmax(bad))
-                print(f"  FAILED: (C) is negative at the admissible triple ({c[0][i]:.9f}, {c[1][i]:.9f}, {c[2][i]:.9f}): "
+                print(f"  FAILED: (cert) is negative at the admissible triple ({c[0][i]:.9f}, {c[1][i]:.9f}, {c[2][i]:.9f}): "
                       f"at most {q0hi[i] / SCALE:.3e}")
                 return False
             first = np.zeros(c.shape[1]); contrib = np.zeros_like(c)
@@ -367,7 +367,7 @@ def verify_domain(P, tables, wmin, batch=150000, start=None):
                     i = int(np.argmax(undecided))
                     print(f"  FAILED: undecided box of width below {wmin} at u,v,t in "
                           f"[{L[0][i]:.6f},{Hh[0][i]:.6f}] x [{L[1][i]:.6f},{Hh[1][i]:.6f}] x [{L[2][i]:.6f},{Hh[2][i]:.6f}]; "
-                          f"lower bound of (C) there {qlo[i] / SCALE:.3e}, value at the centre at least {q0[i] / SCALE:.3e}")
+                          f"lower bound of (cert) there {qlo[i] / SCALE:.3e}, value at the centre at least {q0[i] / SCALE:.3e}")
                     return False
                 Lu, Hu = L[:, undecided], Hh[:, undecided]
                 axis = np.argmax(contrib[:, undecided], axis=0)
@@ -410,7 +410,7 @@ def main():
         print("  FAILED: the bound does not exceed 8 - A_*")
         if not (len(sys.argv) > 3 and sys.argv[3] == 'continue'): return
     print(f"  the bound exceeds 8 - A_* by {float(Bf - Fr(th)):.3e}")
-    # 3. the inequality (C) on the domain
+    # 3. the inequality (cert) on the domain
     for e, c in P.items():
         for perm in PERMS:
             assert P.get((e[perm[0]], e[perm[1]], e[perm[2]]), 0) == c, "P is not symmetric"
@@ -421,7 +421,7 @@ def main():
           f"omega' in [{d1lo[-1]:.8f}, {d1hi[-1]:.8f}]; |omega''| <= {M2:.6f} on [1/3, 1/2]")
     ok = verify_domain(P, tables, wmin)
     if ok:
-        print("PASS: (C) holds on the admissible domain; every contact configuration of 23 directions "
+        print("PASS: (cert) holds on the admissible domain; every contact configuration of 23 directions "
               f"satisfies sum omega(gamma_ij) >= {float(Bf):.9f} > 8 - A_*.")
     else:
         print("FAILED: the certificate could not be verified.")

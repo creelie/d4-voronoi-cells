@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-labelled_certificate_check.py -- the three-point certificate of Theorem 7.73
+labelled_certificate_check.py -- the three-point certificate of thm:certificate
 carried from contacts to centres at any distances: a centre of a unit-ball
 packing of R^4 with at most 23 other centres within sqrt 6 has a Voronoi cell
-of volume greater than 8 (Theorem 21.8 of the paper).
+of volume greater than 8 (thm:m23 of the paper).
 
 Setting.  c = 0; y_1, ..., y_23 are the centres with |y_i| < sqrt 6, at
 distances d_i = |y_i| >= 2, pairwise at least 2 apart; w_i = y_i / d_i,
-h_i = d_i / 2, u_ij = <w_i, w_j>.  R^2 = 3/2.  By Lemma 21.6 (no triple
+h_i = d_i / 2, u_ij = <w_i, w_j>.  R^2 = 3/2.  By lem:no-triple (no triple
 overlaps in B(R)),
 
     vol(V_c) >= T = 9 pi^2/8 - sum_i S(d_i) + sum_{i<j} Pair(h_i, h_j, u_ij)
@@ -15,18 +15,18 @@ overlaps in B(R)),
 
 S(d) the cap of B(R) beyond distance d/2, s(d) = S(2) - S(d) >= 0,
 Pair(h_i, h_j, u) the volume of the part of B(R) beyond both hyperplanes,
-A_* = 9 pi^2/8 - 23 S(2).  With all d_i = 2 this is Theorem 7.73's
+A_* = 9 pi^2/8 - 23 S(2).  With all d_i = 2 this is thm:certificate's
 T = A_* + sum omega(u_ij), omega(u) = Pair(1, 1, u).
 
 The labelled inequality.  Let P be the polynomial of the certificate of
-Theorem 7.73 and, for three centres, put (scale 1000, as the solver's)
+thm:certificate and, for three centres, put (scale 1000, as the solver's)
 
     Q = 1000 [Pair_12 + Pair_13 + Pair_23 + (s(d_1) + s(d_2) + s(d_3)) / 11]
         - P(u_23, u_13, u_12).
 
 Each pair lies in 21 = N - 2 triples and each centre in 231 = 21 * 11, so
 if Q >= 0 for every triple, summing over the triples and using the
-certificate lemma (Lemma 7.71, which holds for any 23 unit vectors) gives
+certificate lemma (lem:certificate, which holds for any 23 unit vectors) gives
 sum Pair + sum s >= B / 1000 > 8 - A_*, hence vol(V_c) > 8.  A centre at
 distance above D = 2.1648 settles the case by itself (s(D) > 8 - A_*, step
 2), so d_i in [2, D].  Q is symmetric under relabelling the three centres,
@@ -52,11 +52,11 @@ in x (step 2 checks the two numerical facts this uses).  Hence
     Gamma_i(h) = int_1^h A(tau) [1/11 - fr(tau, a_i) - fr(tau, b_i)] dtau,
 
 (a_1, b_1) = (t, v), (a_2, b_2) = (t, u), (a_3, b_3) = (v, u).  Q0 >= 0 on
-u, v, t <= 1/2 is the inequality (C) that certificate_check.py verifies.
+u, v, t <= 1/2 is the inequality (cert) that certificate_check.py verifies.
 
   Region I, t <= 1/2: fr(tau, x) <= fr(1, 1/2) < 1/22, so every Gamma_i >= 0
-      and Q >= Q0 >= 0 by (C).  Step 3 reruns certificate_check's
-      verification of (C) (skip with --skip-region-1; its log is
+      and Q >= Q0 >= 0 by (cert).  Step 3 reruns certificate_check's
+      verification of (cert) (skip with --skip-region-1; its log is
       multi_cap/runs/certificate_check.log of the supplement).
   Region II_s, 1/2 < t <= 1/2 + tau_1 (tau_1 = 1/100): the integrands are at
       least r = 1/11 - 2 fr(1, 1/2 + tau_1) > 0, so Gamma_1 + Gamma_2 >=
@@ -412,11 +412,11 @@ def main():
           % (len(us), us[-1], du, M2))
     # ------------------------------------------------------------ 3. region I
     if '--skip-region-1' in sys.argv:
-        print('[SKIP] step 3: region I is the inequality (C) of certificate_check.py (see its log)')
+        print('[SKIP] step 3: region I is the inequality (cert) of certificate_check.py (see its log)')
     else:
         tab1 = CC.omega_tables(om0, om1, om2, r_star)
         ok = CC.verify_domain(P, tab1, 1e-5)
-        check('step 3: region I, u <= v <= t <= 1/2: the inequality (C) of Theorem 7.73', ok)
+        check('step 3: region I, u <= v <= t <= 1/2: the inequality (cert) of thm:certificate', ok)
     # ------------------------------------------------------------ 4. the slab
     t1 = float(Fr(1, 2) + TAU1)
     ok, nd, no = verify(P, tables, [-1.0, -1.0, 0.5], [t1, t1, t1], wmin, ('lin', c_slab), 'II_s')

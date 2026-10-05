@@ -1,40 +1,10 @@
 tikz_closure: 13 nodes checked automatically (0 frames and 7 points or empty nodes left out)
   PASS
-tikz_counts: 2 boxes, 6 labels checked
-  PASS
-tikz_counts: 35 nodes checked automatically (0 frames and 2 points or empty nodes left out)
+tikz_cradial: 1 boxes, 5 labels checked
   PASS
 tikz_eps0: 32 nodes checked automatically (0 frames and 0 points or empty nodes left out)
   PASS
 tikz_labelled: 23 nodes checked automatically (0 frames and 0 points or empty nodes left out)
   PASS
-tikz_level2: 9 boxes, 6 labels checked
-  PASS
-tikz_level2: 27 nodes checked automatically (0 frames and 0 points or empty nodes left out)
-  PASS
-tikz_secondorder: 26 nodes checked automatically (0 frames and 1 points or empty nodes left out)
-  PASS
 tikz_stop: 16 nodes checked automatically (0 frames and 0 points or empty nodes left out)
-  PASS
-tikz_hexloop: 30 nodes checked automatically (0 frames and 11 points or empty nodes left out)
-  PASS
-tikz_count31: 53 nodes checked automatically (0 frames and 5 points or empty nodes left out)
-  PASS
-tikz_codes: 51 nodes checked automatically (0 frames and 3 points or empty nodes left out)
-  PASS
-tikz_margin: 2 boxes, 8 labels checked
-  PASS
-tikz_margin: 31 nodes checked automatically (0 frames and 10 points or empty nodes left out)
-  PASS
-tikz_lemma: 2 boxes, 7 labels checked
-  PASS
-tikz_lemma: 37 nodes checked automatically (0 frames and 10 points or empty nodes left out)
-  PASS
-tikz_radial: 2 boxes, 17 labels checked
-  PASS
-tikz_radial: 44 nodes checked automatically (0 frames and 23 points or empty nodes left out)
-  PASS
-tikz_cradial: 1 boxes, 5 labels checked
-  PASS
-tikz_cradial: 56 nodes checked automatically (0 frames and 1 points or empty nodes left out)
   PASS
