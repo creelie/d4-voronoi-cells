@@ -44,3 +44,8 @@ residual case of thm:count30: combined certificate combo30q_d8_r3.npz, two-point
       BBF level 20: 52024 boxes verified, 131722 to bisect [327 s]
       BBF level 30: 500251 boxes verified, 0 to bisect [1371 s]
       BFF level 10: 0 boxes verified, 620 to bisect [3 s]
+      AFF level 30: 896763 boxes verified, 16396 to bisect [2498 s]
+      BFF level 20: 51024 boxes verified, 188022 to bisect [302 s]
+      FFF level 10: 0 boxes verified, 342 to bisect [3 s]
+      FFF level 20: 21191 boxes verified, 54838 to bisect [101 s]
+      FFF level 30: 201886 boxes verified, 1034 to bisect [376 s]
