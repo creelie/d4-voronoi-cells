@@ -180,8 +180,12 @@ system; semidefinite programming}
 
 \begin{abstract}
 We prove that a Voronoi cell of a unit-ball packing in $\mathbb{R}^4$ has at
-least the volume of the regular twenty-four-cell whenever at most $23$ or at
-least $31$ other centres lie within $\sqrt6$ of its centre.
+least the volume of the regular twenty-four-cell whenever all its neighbours
+touch it, or at most $23$ or at least $31$ other centres lie within $\sqrt6$
+of its centre, and that the $D_4$ configuration is a strict local minimum of
+the cell volume. The twenty-four-cell conjecture, and with it the optimality
+of $D_4$ among all packings, reduces to two explicit inequalities for the
+remaining cells.
 \end{abstract}
 
 \maketitle
@@ -236,9 +240,8 @@ This paper proves the conjecture at every centre whose neighbours within
 $2\sqrt2$ touch it, at every centre with at most twenty-three or at least
 thirty-one other centres within $\sqrt6$, and in an explicit neighbourhood
 of the $D_4$ configuration, and it reduces the remaining centres to two
-explicit statements about at most thirty neighbours. Earlier versions of
-this article claimed the conjecture in full; that claim is withdrawn, and
-the cases left open are exactly those of \cref{conj:shell} below.
+explicit statements about at most thirty neighbours; the cases left open
+are those of \cref{conj:shell} below.
 
 \subsection{Results}\label{sec:results}
 
@@ -889,11 +892,12 @@ A packing is \emph{saturated} if no further unit ball can be added to it
 without overlap. The local bound passes to density in two settings.
 
 \begin{lem}[Cells and density]\label{lem:cells-density}
-Let $\mathcal{C}$ be the centre set of a unit-ball packing of
-$\mathbb{R}^4$ with $\vol(V_c)\ge8$ for every $c\in\mathcal{C}$. If
+Let $v>0$, and let $\mathcal{C}$ be the centre set of a unit-ball packing of
+$\mathbb{R}^4$ with $\vol(V_c)\ge v$ for every $c\in\mathcal{C}$. If
 $\mathcal{C}$ is periodic, or if every cell $V_c$ lies in the ball of
-radius $2$ about $c$, then $\delta(\mathcal{C})\le\pi^2/16$. Every cell of
-a saturated packing lies in the ball of radius $2$ about its centre.
+radius $2$ about $c$, then $\delta(\mathcal{C})\le\vol(B^4)/v$; for $v=8$
+this is $\pi^2/16$. Every cell of a saturated packing lies in the ball of
+radius $2$ about its centre.
 \end{lem}
 
 \begin{proof}
@@ -901,10 +905,10 @@ Let $\mathcal{C}$ be periodic, with period lattice $L$ and $N$ centres in a
 fundamental domain. The cells are permuted by $L$, they tile
 $\mathbb{R}^4$, and the cells of one period tile a fundamental domain up to
 translations by $L$; so their volumes add up to $\det L$, which is
-therefore at least $8N$, and $\delta(\mathcal{C})=N\vol(B^4)/\det L\le
-\vol(B^4)/8=\pi^2/16$. If every cell lies within $2$ of its centre, the
+therefore at least $vN$, and $\delta(\mathcal{C})=N\vol(B^4)/\det L\le
+\vol(B^4)/v$. If every cell lies within $2$ of its centre, the
 cells of the centres in $B_R$ have disjoint interiors and lie in
-$B_{R+2}$, so $8\,\#\{c:|c|\le R\}\le\vol(B_{R+2})$; divide by
+$B_{R+2}$, so $v\,\#\{c:|c|\le R\}\le\vol(B_{R+2})$; divide by
 $\vol(B_R)$ and let $R\to\infty$. Finally, if $z\in V_c$ and
 $|z-c|\ge2$, then $|z-c'|\ge|z-c|\ge2$ for every centre $c'$, and a unit
 ball about $z$ can be added; so in a saturated packing $|z-c|<2$ on $V_c$.
@@ -1022,8 +1026,7 @@ For every $D$ and every choice of tilts and deviation directions,
   \;-\;\vol\Bigl(\bigcup_{j\in D}C_j\Bigr)
   \;+\;\vol\Bigl(\bigcup_{j\in D}E_j\Bigr).
 \end{equation}
-The identity is exact, with no approximation of any kind. In particular
-$\vol(V_c)\ge8$ if and only if
+In particular $\vol(V_c)\ge8$ if and only if
 $\vol\bigl(\bigcup_{j}E_j\bigr)\ge\vol\bigl(\bigcup_{j}C_j\bigr)$.
 \end{thm}
 
@@ -1769,8 +1772,8 @@ $\vol(V_c(W))\ge8$ would follow from
 \end{equation}
 at every $w$, that is from the mean of $\sec^4$ over each cell being at
 least $16/\pi^2=1.621138\ldots$. At the root configuration every cell
-gives exactly that, so \eqref{eq:local-cell} is sharp. It is also false.
-A direction may carry nine contacts at $60^\circ$: writing
+attains that value, so \eqref{eq:local-cell} would be sharp; but it does
+not hold for every configuration. A direction may carry nine contacts at $60^\circ$: writing
 $w'=\tfrac12 w+\tfrac{\sqrt3}{2}n$ with $n$ a unit vector orthogonal to
 $w$, the condition $\langle w',w''\rangle\le\tfrac12$ becomes
 $\langle n',n''\rangle\le\tfrac13$, and nine unit vectors of
@@ -3511,10 +3514,9 @@ the classification by itself does not give: an explicit isolation
 radius about the normalised root system, $2/\sqrt{397}$ in the
 root-sum-of-squares displacement and about $0.02$ per direction,
 within which \cref{thm:m24} is proved directly and the kernel is not
-used. Beyond that radius the kernel is doing the work, and it is
-doing it on the whole of the rest of a
-$66$-dimensional quotient, $(S^3)^{24}$ modulo $O(4)$, which is by far
-the larger part. The constant $397/4$ is not optimal either. What the
+used. Beyond that radius only the kernel is used, on the rest of the
+$66$-dimensional quotient of $(S^3)^{24}$ by $O(4)$, which is by far the
+larger part. The constant $397/4$ is not optimal either. What the
 argument really uses is the least value $\nu$ of $\|\Lambda\tau\|_1$ over
 unit vectors $\tau\in\mathcal{T}$ orthogonal to $\ker\Lambda$, for which
 \cref{lem:rigidity-spectrum} gives $\nu\ge4/\sqrt{11}=1.206$, and the radius is
@@ -3879,8 +3881,8 @@ the pair angles of the configuration which proves \cref{thm:m23}
 outright, which the deletion of a root satisfies with room to spare,
 and which \cref{sec:certificate} then establishes. The tools are the ones already in
 hand, the covering bound of \cref{thm:covering-bound} and the exact
-overlaps of \cref{prop:second-order}; what is new is the observation of
-where the integration should stop, and what stopping there gains.
+overlaps of \cref{prop:second-order}; the new ingredient is the choice of
+where the integration stops, and the gain from stopping there.
 
 \begin{lem}[Contact directions in a cap]\label{lem:cap-count}
 If $k$ contact directions lie in a closed cap of angular radius $r$ on
@@ -5690,17 +5692,17 @@ $\vol(V_c)\ge\tfrac98\pi^2-22S(2)=8.04610\ldots$, in ball arithmetic, and again 
 \end{proof}
 
 $\Psi$ is a second distance criterion beside $\Phi$, with thresholds
-within $0.003$ of those of \cref{tab:distance-thresholds}. What is new is where the count is taken: within $\sqrt6$,
-and not within $2\sqrt2$, so that any number of centres between $\sqrt6$
-and $2\sqrt2$ is allowed.
+within $0.003$ of those of \cref{tab:distance-thresholds}. The count is
+taken within $\sqrt6$ rather than within $2\sqrt2$, so that any number of
+centres between $\sqrt6$ and $2\sqrt2$ is allowed.
 
 \begin{thm}[At most twenty-three centres within $\sqrt6$]\label{thm:m23-labelled}
 If at most $23$ centres other than $c$ lie within $\sqrt6$ of $c$, then
 $\vol(V_c)>8$, whatever their distances from $c$ and from one another.
 \end{thm}
 
-With all twenty-three at distance $2$ this is \cref{thm:m23}; what is new
-is that they need not touch $c$. A centre that moves out from distance
+With all twenty-three at distance $2$ this is \cref{thm:m23}; here they
+need not touch $c$. A centre that moves out from distance
 $2$ to $d$ returns to $B(\sqrt{3/2})$ the part $S(2)-S(d)$ of its cap,
 and it takes from each pair term it shares only the part of the moving
 section that the other cap covers. The proof lets the certificate of
@@ -7496,8 +7498,8 @@ and at $M=30$ and $\rho=2.1$ that of \cref{thm:count30}.}
 
 Statement (G) can be proved in full along one family: the root system with
 its centres pushed out along their own rays, by any amounts the region
-$T\le8$ allows. The gain is \cref{lem:pure-push}; what has to be controlled
-is the part of $V(Y)$ that the inversion hull cuts away, and it lies in
+$T\le8$ allows. \Cref{lem:pure-push} gives the gain, and it remains to
+control the part of $V(Y)$ that the inversion hull cuts away, which lies in
 small pyramids at the vertices of the $24$-cell.
 
 \begin{thm}[(G) along the push-outs]\label{thm:G-pushout}
@@ -7712,8 +7714,7 @@ which a semidefinite kernel certifies
 route is closed: by the result of Li \cite{Li25} recalled in
 \cref{sec:history-new}, no auxiliary function brings the linear programming
 bound down to $\pi^2/16$, and the three-point refinement of
-\cite{CdLS22} stays above it as well. A local method is therefore not a
-second choice here.
+\cite{CdLS22} stays above it as well.
 
 \subsection{What each method asks of the reader}
 
@@ -8201,11 +8202,10 @@ C.~B.~Barber, D.~P.~Dobkin, and H.~Huhdanpaa,
 ACM Trans.\ Math.\ Software \textbf{22} (1996), no.~4, 469--483.
 \bluelink{https://doi.org/10.1145/235815.235821}{doi:10.1145/235815.235821}
 
-\bibitem[BG23]{BG23}
-K.~J.~B\"or\"oczky and A.~Glazyrin,
-\textit{Stability of optimal spherical codes},
-preprint, arXiv:1711.06012, version~2 (2023).
-\bluelink{https://doi.org/10.48550/arXiv.1711.06012}{doi:10.48550/arXiv.1711.06012}
+\bibitem[BG24]{BG23}
+K.~J.~B\"or\"oczky and A.~Glazyrin, \textit{Stability of optimal spherical
+codes}, Monatsh.\ Math.\ \textbf{205} (2024), no.~3, 455--475.
+\bluelink{https://doi.org/10.1007/s00605-024-02021-6}{doi:10.1007/s00605-024-02021-6}
 
 \bibitem[BV08]{BV08}
 C.~Bachoc and F.~Vallentin,
