@@ -37,3 +37,38 @@ vectors by linear-programming duality instead of enumerating them
 (`combo_gen.py` enumerates them and runs out of memory). With the two-point
 kernel alone (degree 0 in the three-point part) the value is 3.1967
 (`c29all2_d0.log`), far above the level.
+
+## musin: where the two-point kernel fails
+
+`dual_where.py` reads off the optimal dual of the two-point programme of
+`thm:count31` (`multi_cap/radial_count_sdp.py`): the fictitious configuration
+that the kernel cannot exclude. At 25 centres it puts all 25 at distance 2,
+with pair inner products near 0.5, -0.15, -0.35 and -0.85; at 30 it puts 23.6
+at distance 2 and 6.4 near sqrt6 (`dual_where.log`). The kernel is blind in the
+way Delsarte's bound for the kissing number of R^4 (25.56) is blind.
+
+`musin_scan.py` adds Musin's relaxation (Ann. of Math. 168, 2008): the pair
+inequality is dropped for nearly antipodal pairs, and their excess is bounded
+centre by centre by the number of centres that fit in a cap about the
+antipode. At 30 centres the bound stays at 3.1441 for every threshold from
+0.95 to 0.6 (`musin_scan_30.log`): the dual has no surplus near the antipode.
+
+## localisation: the room for a budgeted localisation
+
+Both open statements reduce to one statement (L): 24 centres with
+T(Y) <= 8 + eta have directions within an explicit root-sum-square distance
+rho(eta) of a root system. The residual case at thirty needs rho < 0.206 at
+eta = 0.00368 (`rem:thirty-left`, `cor:no-room`).
+
+`budget_far.py` maximises the distance to the nearest root system under
+T(Y) <= 8 + eta and the packing conditions, from root systems pushed out at
+random (`budget_far.log`). The largest distance found is 0.0971 at
+eta = 0.00368 (19 feasible ends of 24 starts) and 0.1291 at eta = 0.0334.
+These are local searches near the root system, not bounds.
+
+`s3_cell.py` shows that a cell-by-cell volume bound on S^3 cannot prove (L):
+with 8 neighbours at 60 degrees whose link is the square antiprism, the
+Voronoi cell of a direction has volume at most about 0.817, below the
+pi^2/12 = 0.8225 of the root system (`s3_cell.log`, Monte Carlo). A proof of
+(L) along the lines of dimension three therefore has to move volume between
+neighbouring cells.

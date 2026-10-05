@@ -209,8 +209,11 @@ def main():
         for st in c2:
             p, q, u = rand_pairs(*st, 300000)
             Kv = np.einsum('nk,na,kab,nb->n', ubasis(u, D2), pbasis(p, R2), Av, pbasis(q, R2))
-            B = T3.Builder(L); T3.add_pair(B, np.arange(len(u)), ti[st[0]], ti[st[1]], u)
-            v = Kv - pair(p / 2, q / 2, u) + B.matrix(len(u)) @ x3v - c2[st].value
+            x3part = []
+            for i in range(0, len(u), 20000):
+                B = T3.Builder(L); T3.add_pair(B, np.arange(len(u[i:i + 20000])), ti[st[0]], ti[st[1]], u[i:i + 20000])
+                x3part.append(B.matrix(len(u[i:i + 20000])) @ x3v)
+            v = Kv - pair(p / 2, q / 2, u) + np.concatenate(x3part) - c2[st].value
             report.append('%s%s %.1e' % (st[0], st[1], v.max()))
             for nb in COUNTS:
                 corr[nb] += Npair(tcounts(nb), *st) * max(v.max(), 0)
