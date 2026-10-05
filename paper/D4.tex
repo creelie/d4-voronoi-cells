@@ -5204,7 +5204,9 @@ positivity by exact $LDL^{\mathsf T}$ factorisation; the value
 $f(1)+F(1,1,1)=24.799999928\ldots$, exactly; (i) with $e_1=10^{-6}$ on $790$
 intervals; and (ii) with $e_2=2.9\cdot10^{-4}$ on the ordered admissible
 domain, $1.33$ million boxes in all. Then
-$25(1-e_1)-600e_2=24.825975>24.8$. The second statement follows from the
+$25(1-e_1)-600e_2=24.825975>24.8$. The check is repeated in Lean from the
+certificate entries alone, as for \cref{thm:kissing-stable}, with the
+inequality taken at $|C|=26$. The second statement follows from the
 first exactly as in \cref{thm:kissing-stable}.
 \end{proof}
 
@@ -10677,7 +10679,7 @@ show where that method stops.
 
 \subsection{The formal part}\label{sec:formal-part}
 
-Eighteen parts of the paper are also verified in the Lean~4 proof
+Nineteen parts of the paper are also verified in the Lean~4 proof
 assistant \cite{MU21}, with no external library; each is a finite
 computation or a polynomial identity, and \cref{tab:formal} lists them.
 Identities are proved over every commutative ring by Lean's ring
@@ -10742,6 +10744,9 @@ of $\sigma_2$, its bounds on $[-1,\frac12]$, the constants of
 \cref{thm:kissing-stable} & Both certificates from their entries alone:
 positivity, the bound, and both branch and bounds ($441$ intervals and
 $181\,869$ boxes at degree $8$; $2\,957$ intervals at degree $10$). \\
+\cref{thm:twenty-six} & The certificate of degree $10$ from its entries
+alone: positivity, the value of the bound, the inequality at $|C|=26$, and
+both branch and bounds. \\
 \cref{lem:rigidity-spectrum,thm:local-uniqueness} & The annihilating
 polynomials of $4N$ and $2K$, the ranks over $\mathbb{Q}$, the diagonal
 $\frac{11}{16}$, the ratio $\sqrt{96/11}$ and the arithmetic of the radius

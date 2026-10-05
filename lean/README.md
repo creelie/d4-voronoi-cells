@@ -260,7 +260,9 @@ table, and passes in 954 s on 419 913 boxes (421 881 with the tables of
 `cardinality/` covers the certificate of thm:kissing-stable,
 the kissing number is stable: every set of points of S^3 with pairwise
 inner products at most 1/2 + s_0 has at most 24 elements, for s_0 = 0.008
-(degree 10, the certificate the theorem uses) and s_0 = 0.0065 (degree 8).
+(degree 10, the certificate the theorem uses) and s_0 = 0.0065 (degree 8),
+and the certificate of thm:twenty-six: at most 25 points at s_1 = 0.01468
+(degree 10, `Kiss26Data.lean`, `Kiss26Main.lean`).
 `gen_data.py` writes both certificates of `multi_cap/cardinality_certificates`
 into `KissData.lean` as exact dyadic numbers, with the threshold t as the
 decimal of the paper, the least double at or above it, and the tolerances
@@ -374,7 +376,8 @@ modules, not in the modules that others import.  Likewise
 
 compiles `KissDomain` and runs the checks of `KissMain8` (about seven
 minutes) and `KissMain10` (four hours and ten minutes, 15 052 s, on one
-core).
+core); `lake build Kiss26Main` runs the twenty-six-point check (9 536 s on one
+core, log `runs/Kiss26_build_2026-10-05.log`).
 
 Toolchain used: `leanprover/lean4:v4.34.0-rc2` (see `lean-toolchain`).
 
@@ -551,6 +554,19 @@ which thm:kissing-stable uses, at s = 0.008 (t = 127/250).  B = 24.974999950... 
 425 and 756 monomials, as there.  Build log `runs/KissCardinality_build.log`.
 With the tolerances lowered below the largest values of P1 and F (about
 -1.35e-4 and -1.18e-4 for degree 8) the branch and bounds fail, as they should.
+
+### cardinality/Kiss26Main.lean
+
+| theorem | statement |
+| --- | --- |
+| `cert26_exact` | f_k >= 0; every F_k symmetric positive definite (exact LDL^T); F symmetric in its three variables; top >= t; e1 <= 10^-6 and e2 <= 2.9 10^-4; 25 (1 - e1) - 600 e2 > f(1) + F(1,1,1), the inequality at \|C\| = 26 |
+| `cert26_i` | f(u) + 3 F(1,u,u) + 1 <= e1 on [-1, top] |
+| `cert26_ii` | F(u,v,w) <= e2 on -1 <= u <= v <= w <= top, 1 + 2uvw - u^2 - v^2 - w^2 >= 0 |
+
+The certificate is `multi_cap/cardinality_certificates/cert_d10_t0.51468.npz`
+(t = 0.51468, B = 24.799999928...), written into `Kiss26Data.lean` by
+`gen_data.py`.  All three theorems are settled by `native_decide`; the build
+took 9 536 s on one core (log `runs/Kiss26_build_2026-10-05.log`).
 
 ### D4Cap.lean
 
