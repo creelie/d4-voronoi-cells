@@ -6,3 +6,4 @@ d3=8 round 1: optimal_inaccurate  bound 3.23978 (target 3.10330), corrected <= 6
    c2: {'AA': -0.034485, 'AB': -0.016012, 'AF': -0.039027, 'BB': -0.0016, 'BF': -0.023201, 'FF': -0.059239}
    c3: {'AAA': 0.0022067, 'AAB': 0.001461, 'AAF': 0.0025045, 'ABB': 0.000884, 'ABF': 0.001846, 'AFF': 0.0035043, 'BBB': 0.0004779, 'BBF': 0.0013911, 'BFF': 0.0037429}
    direct: 4817 variables, 74700 inequalities, 4299 psd rows in 48 cones, 36648518 nonzeros [9 s to build]
+   33 type-count vectors
