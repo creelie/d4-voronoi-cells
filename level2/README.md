@@ -97,7 +97,8 @@ authors.  For a code of 24 points with inner products in that interval the
 chain of their proof then gives mu times the sum of w over the pairs at most
 N - 24, so every inner product has w(u) <= (N - 24)/mu, and lies close to
 -1, -1/2 or 0, or within s of 1/2.  That is the form of the classification
-of 24 points at positive slack that the paper asks for.  Near the double
+of 24 points at positive slack that the localisation of the paper's last
+section would need.  Near the double
 zeros w(u) is about u^2/8, so the window is about (8 (N - 24)/mu)^(1/2): the
 programme turns a bound N - 24 of order s into a window of order s^(1/2)
 unless the bound grows more slowly than s.
@@ -113,8 +114,7 @@ equals 3s/8 on each of their 96 pairs at 1/2, so every feasible (N, mu) has
 (N - 24)/mu >= 36 s.  At s = 0.008 that is 0.288, while w never exceeds
 0.019779 on the interval: the inequality w(u) <= (N - 24)/mu excludes no inner
 product, whatever the degree and whatever the machine.  `margin_floor_check.py`
-checks this (exactly, and in ball arithmetic); the paper states it as the
-proposition "The root system uses up the margin".  A weight that also vanishes
+checks this (exactly, and in ball arithmetic).  A weight that also vanishes
 at 1/2 escapes this floor, but no pointwise reading can beat the codes that
 exist, and at s = 0.008 there are 24-point codes with an inner product of
 0.1231, far from every root value.  So the (14, 16) margin run is not worth

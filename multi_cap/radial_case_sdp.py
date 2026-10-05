@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-radial_case_sdp.py -- two-point radial certificates for statement (C) at one
+radial_case_sdp.py -- two-point radial certificates for statement (C_M) at one
 count M, split into cases by how many centres lie within given radii.
 radial_case_check.py proves them.
 
@@ -8,7 +8,7 @@ For a packing set Y of M centres in the shell 2 <= |y| < sqrt6, let N(r) be the
 number of centres within r.  A case is a set of bounds lo_j <= N(r_j) <= hi_j
 at rational radii r_j; every case also carries N(2.0161) <= 24, which holds for
 every packing (the kissing number is stable).  Cutting the shell at the r_j
-into bins, with n_b centres in bin b, the kernel inequality of Theorem 21.25
+into bins, with n_b centres in bin b, the kernel inequality of thm:count31
 gives, for any certificate (A_k, z, t) with K <= Pi on admissible pairs,
 
     U(Y) <= sum_y f(|y|) + t/2 <= sum_b n_b m_b + t/2,
@@ -41,7 +41,11 @@ recomputes leaf k alone, identically; and
 
     python3 radial_case_sdp.py M [depth] [workers]
 
-grows a tree by trying the splits below (exploration).
+grows a tree by trying the splits below (exploration).  With --level L
+(a rational) every one of these proves U(Y) < L in place of
+U(Y) < 9 pi^2/8 - 8, the multiplier s then applying to sum_b n_b S(e_b) >= L,
+and the certificates go to radial_certificates/density_M.json with the level
+recorded (prop:levels).
 """
 import json
 import math
@@ -174,6 +178,8 @@ def values(pool, jobs):
 
 
 CACHE_FILE = 'radial_certificates/case_cache.json'
+LEVEL = None                           # set by --level: the rational level, as a string
+OUT = 'radial_certificates/case_%d.json'
 
 
 def describe(case):
@@ -336,26 +342,36 @@ def main_spec(M, spec_file):
             print('no certificate for this leaf'); return
         certs.append(cert)
     os.makedirs('radial_certificates', exist_ok=True)
-    json.dump({'M': M, 'D': D, 'r': R, 'c1': str(C1), 'c2': str(C2), 'dmax': str(DMAX), 'tree': tree_json(tree), 'leaves': certs},
-              open('radial_certificates/case_%d.json' % M, 'w'), indent=1)
-    print('wrote radial_certificates/case_%d.json [%.0f s]' % (M, time.time() - t0))
+    out = {'M': M, 'D': D, 'r': R, 'c1': str(C1), 'c2': str(C2), 'dmax': str(DMAX), 'tree': tree_json(tree), 'leaves': certs}
+    if LEVEL is not None:
+        out['level'] = LEVEL
+    json.dump(out, open(OUT % M, 'w'), indent=1)
+    print('wrote %s [%.0f s]' % (OUT % M, time.time() - t0))
 
 
 def redo_leaf(M, spec_file, k):
     """recompute the certificate of leaf k (1-based) of radial_certificates/case_M.json, as main_spec does."""
     spec = json.load(open(spec_file))
     x = leaves(from_spec(M, spec))[k - 1]
-    data = json.load(open('radial_certificates/case_%d.json' % M))
+    data = json.load(open(OUT % M))
     print('leaf %d [%s]' % (k, describe(x['case'])), flush=True)
     cert = certify_leaf(M, x['case'], k, bool(spec.get('antipodal')), spec.get('margins'))
     if cert is None:
         print('no certificate for this leaf'); return
     data['leaves'][k - 1] = cert
-    json.dump(data, open('radial_certificates/case_%d.json' % M, 'w'), indent=1)
-    print('replaced leaf %d of radial_certificates/case_%d.json' % (k, M))
+    json.dump(data, open(OUT % M, 'w'), indent=1)
+    print('replaced leaf %d of %s' % (k, OUT % M))
 
 
 def main():
+    global TARGET, LEVEL, OUT, CACHE_FILE
+    if '--level' in sys.argv:
+        i = sys.argv.index('--level')
+        LEVEL = str(Fr(sys.argv[i + 1]))
+        TARGET = float(Fr(LEVEL))
+        OUT = 'radial_certificates/density_%d.json'
+        del sys.argv[i:i + 2]
+        CACHE_FILE = 'radial_certificates/density_cache_%s.json' % LEVEL.replace('/', '_')
     if len(sys.argv) > 4 and sys.argv[2] == '--redo':
         return redo_leaf(int(sys.argv[1]), sys.argv[3], int(sys.argv[4]))
     if len(sys.argv) > 3 and sys.argv[2] == '--spec':

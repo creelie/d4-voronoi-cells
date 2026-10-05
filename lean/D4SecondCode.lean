@@ -1,8 +1,9 @@
 /-
-D4SecondCode.lean: Proposition 21.21 of the paper.  Statement (i) of "What is left"
-(Section 21.1) fails at slack 849/50000 = 0.01698.
+D4SecondCode.lean: the second 24-point code of sec:remains of the paper.  At slack
+849/50000 = 0.01698 the directions alone no longer place 24 points near a root
+system.
 
-The 24 points below have rational coordinates (from multi_cap/second_order/
+The 24 points below have rational coordinates (from multi_cap/second_code/
 code24_exact.py, which rounds the best code found by code24_second.py to
 points of S^3 by inverse stereographic projection).  Proved here by exact
 rational arithmetic:
@@ -12,8 +13,7 @@ rational arithmetic:
   * the inner product of points 8 and 10 is at distance at least 57/250 from
     each of -1, -1/2, 0, 1/2, 1.
 
-If the set were within d of the normalised root system (d(W) of Theorem
-7.51: after an orthogonal map and a relabelling the points move by e_i with
+If the set were within d of the normalised root system (d(W) of thm:local-uniqueness: after an orthogonal map and a relabelling the points move by e_i with
 sum e_i^2 = d^2), every inner product would be within e_i + e_j <= 2d of one
 of those five values.  So d(W) >= 57/500 > 1/48: the set has slack below
 0.017 and is far from the root system.  That step is the paper's.

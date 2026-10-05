@@ -2,7 +2,7 @@
 """
 a18_other_starts.py
 
-Section 18.2 of the paper: greedy dense growth to 18 roots started from
+sec:broad-sample of the paper: greedy dense growth to 18 roots started from
 roots 5 and 12 gives configurations congruent to A_18 (grown from root
 0). The check is exact: it generates the group of orthogonal maps that
 preserve the D4 roots from the signed coordinate permutations and the

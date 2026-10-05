@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 """
 three_point_sdp.py -- the three-point (Bachoc-Vallentin) relaxation of the
-pair inequality of Theorem 7.69, and the certificate of Theorem 7.73.
+pair inequality of cor:m23-contacts, and the certificate of thm:certificate.
 
 The question.  For twenty-three contact directions w_1, ..., w_23 (pairwise
 inner products at most 1/2) write u_ij = <w_i, w_j> and
     E(W) = sum_{i<j} omega(u_ij),
-where omega(u) = omega_*(arccos u) is the lens weight of the second-order
-estimate carried to r_* = arcsin(1/sqrt3): omega(1/2) = 0.00144541 at
-sixty degrees, decreasing to zero at u = 1/3 (70.53 degrees), and zero
-below.  Theorem 7.69 states that the m = 23 case follows from
+where omega(u) = Pi(1, 1, u) is the pair term of two contacts (eq:omega of
+the paper): omega(1/2) = 0.00144541 at sixty degrees, decreasing to zero at
+u = 1/3 (70.53 degrees), and zero below.  By eq:Astar the m = 23 case
+follows from
     E(W) >= 8 - A_* = 0.092855570   for every W,
-and Proposition 7.44 shows that the pair-angle relaxation reaches four
-fifths of this target.  This script computes the next relaxation in the
+and the pair-angle relaxation reaches only 0.0738, about four fifths of
+this target (three_point_reduction.py).  This script computes the next relaxation in the
 hierarchy, the one that sees the triples, and produces the certificate
-that certificate_check.py verifies (Theorem 7.73, Lemma 7.72).
+that certificate_check.py verifies (thm:certificate, lem:three-point-psd).
 
 The certificate.  Let G_k be the Gegenbauer polynomials of S^3, G_k(cos t)
 = sin((k+1)t) / ((k+1) sin t), and let S_k(u, v, t) be the matrices of
@@ -28,11 +28,11 @@ satisfies sum_{i,j} f(u_ij) >= N^2 f_0 and sum_{(i,j,k)} F(u_ij, u_ik,
 u_jk) >= 0, the second sum over all ordered triples, coincidences
 included.  Splitting the triple sum by coincidence pattern, if
     omega(u) + omega(v) + omega(t) - f(u) - f(v) - f(t) - F(u, v, t)
-      - (F(1,u,u) + F(1,v,v) + F(1,t,t)) / (N - 2)  >=  0                (C)
+      - (F(1,u,u) + F(1,v,v) + F(1,t,t)) / (N - 2)  >=  0                (cert)
 for every admissible triple (u, v, t) with u, v, t in [-1, 1/2] (that is,
 1 + 2uvt - u^2 - v^2 - t^2 >= 0), then
     E(W) >= N (N f_0 - f(1)) / 2 - N F(1,1,1) / (6 (N - 2)).
-In its first mode the script maximises this bound.  The condition (C)
+In its first mode the script maximises this bound.  The condition (cert)
 is imposed on a grid of admissible triples and then checked on a far
 finer set; the worst points of the check are added to the grid and the
 programme is solved again, for the given number of rounds; the reported
@@ -43,7 +43,7 @@ is whether the three-point relaxation has room to reach the target,
 and at degree 8 it has (0.09523 against 0.09286).
 
 In its second mode, with a fifth argument giving the bound, the bound
-is fixed there and the least slack of (C) over the sample is maximised,
+is fixed there and the least slack of (cert) over the sample is maximised,
 with F_k - 1e-7 I and f_k - 1e-7 positive semidefinite, and the result
 is written to continuation_out/certificate_d<degree>.npz.  That file is
 what certificate_check.py verifies in exact and interval arithmetic,
@@ -148,7 +148,7 @@ def sample_random(n, rng):
     return (np.r_[u[ok], ub[okb]], np.r_[v[ok], vb[okb]], np.r_[t[ok], tb[okb]])
 
 def constraint_rows(d, u, v, t, LC, om):
-    """Rows of (C): the omega part, the coefficient vectors of f_k, and of vec(F_k)."""
+    """Rows of (cert): the omega part, the coefficient vectors of f_k, and of vec(F_k)."""
     rhs = SCALE * (om(u) + om(v) + om(t))
     Af = np.stack([gegen(k, u) + gegen(k, v) + gegen(k, t) for k in range(d + 1)], axis=1)
     AF = []
@@ -161,7 +161,7 @@ def constraint_rows(d, u, v, t, LC, om):
 
 def solve(d, u, v, t, solver, om, LC, three_point=True, margin_at=None, eps=1e-7):
     """Maximise the bound; or, with margin_at = B given, fix the bound at B
-    (in the units of the solver) and maximise the least slack of (C) over
+    (in the units of the solver) and maximise the least slack of (cert) over
     the sample, with F_k - eps I and f_k - eps (k >= 1) positive semidefinite
     so that the rounded certificate stays strictly feasible."""
     rhs, Af, AF = constraint_rows(d, u, v, t, LC, om)
@@ -198,7 +198,7 @@ def solve(d, u, v, t, solver, om, LC, three_point=True, margin_at=None, eps=1e-7
     return prob.value, fv, Fv, el
 
 def check(d, fv, Fv, LC, om, rng, n_random=400000, n_uv=120, n_t=60, n_keep=3000):
-    """Largest violation of (C) over a fine grid and a random sample, and the
+    """Largest violation of (cert) over a fine grid and a random sample, and the
     n_keep worst points, to be added to the constraint set."""
     worst = -np.inf; keep = []
     for (u, v, t) in (sample_grid(n_uv, n_t), sample_random(n_random, rng)):
@@ -231,8 +231,8 @@ def main():
     print(f"target 8 - A_* = {target:.9f}; omega(1/2) = {om(0.5):.8f}; degree {d}; grid {n_uv} x {n_t}; "
           f"solver {solver}; {rounds} rounds of refinement")
     if margin is not None:
-        # certificate mode: the bound is fixed at `margin` and the least slack of (C) is maximised
-        print(f"certificate mode: bound fixed at {margin:.9f}, the least slack of (C) over the sample is maximised")
+        # certificate mode: the bound is fixed at `margin` and the least slack of (cert) is maximised
+        print(f"certificate mode: bound fixed at {margin:.9f}, the least slack of (cert) over the sample is maximised")
         u, v, t = sample_grid(n_uv, n_t)
         for r in range(rounds):
             val, fv, Fv, el = solve(d, u, v, t, solver, om, LC, three_point=True, margin_at=margin * SCALE)

@@ -11,8 +11,7 @@ applies to them.
 **The margin (step 4 of the earlier plan) gives nothing at slack 0.008, on
 any machine.**  The root system spends the margin: its 96 pairs at inner
 product 1/2 force (N - 24)/mu >= 36 s = 0.288, while the weight never exceeds
-0.019779 (`margin_floor_check.py`; the paper's proposition "The root system
-uses up the margin").  `las2_margin.jl` is kept for the record.
+0.019779 (`margin_floor_check.py`).  `las2_margin.jl` is kept for the record.
 
 What a larger machine would still add is precision.  A value of these
 programmes becomes a theorem only through a certificate rounded to rationals

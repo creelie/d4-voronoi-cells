@@ -1,13 +1,14 @@
 /-
 D4Closure.lean
 
-A machine check of the exact content of Section 21.1 of "Voronoi Cells of
-Four-Dimensional Unit-Ball Packings": the
-three identities behind Lemma 21.3 (holes), Proposition 21.4 (the inversion
-hull) and Lemma 21.6 (no three centres cut the same point of B(sqrt(3/2))),
-the identity and the count used in the proof of Theorem 21.8 (at most
-twenty-three centres within sqrt 6), and the finite combinatorics of
-Corollary 21.5 (contacts that contain most of a root system).
+A machine check of exact content of "The Sphere Packing Problem in Dimension 4
+and the Twenty-Four-Cell Conjecture" (paper/D4.tex; results are named by
+their LaTeX labels): the three identities behind lem:holes (holes),
+prop:inversion-hull (the inversion hull) and lem:no-triple (no three centres
+cut the same point of B(sqrt(3/2))), the identity and the count used in the
+proof of thm:m23 (at most twenty-three centres within sqrt 6), and the finite
+combinatorics of cor:root-subsets (contacts that contain most of a root
+system).
 
 The identities are proved over every commutative ring, with the ring solver
 of `grind`, so they hold verbatim over the reals; in the paper each is
@@ -29,7 +30,7 @@ open Lean.Grind
 section Identities
 variable {α : Type} [CommRing α]
 
-/-- Lemma 21.3: `|z - 2w|^2 - 4 = |z|^2 - 4<z,w> + 4(|w|^2 - 1)`, in coordinates.
+/-- lem:holes: `|z - 2w|^2 - 4 = |z|^2 - 4<z,w> + 4(|w|^2 - 1)`, in coordinates.
     For a unit contact direction `w` the last term vanishes, so `|z - 2w| >= 2`
     reads `<z,w> <= |z|^2/4`. -/
 theorem holes (z1 z2 z3 z4 w1 w2 w3 w4 : α) :
@@ -38,7 +39,7 @@ theorem holes (z1 z2 z3 z4 w1 w2 w3 w4 : α) :
         + 4*((w1^2 + w2^2 + w3^2 + w4^2) - 1) := by
   grind
 
-/-- Proposition 21.4, with the denominator `2|y|^2` cleared:
+/-- prop:inversion-hull, with the denominator `2|y|^2` cleared:
     `|y|^2 |z|^2 - 8<y,z> = (|z|^2 - 4)(|y|^2 - 4) + 4(|y - z|^2 - 4)`.
     Dividing by `2|y|^2` gives `|z|^2/2 - <4y/|y|^2, z>` on the left. -/
 theorem inversion_hull (y1 y2 y3 y4 z1 z2 z3 z4 : α) :
@@ -48,7 +49,7 @@ theorem inversion_hull (y1 y2 y3 y4 z1 z2 z3 z4 : α) :
       + 4*(((y1 - z1)^2 + (y2 - z2)^2 + (y3 - z3)^2 + (y4 - z4)^2) - 4) := by
   grind
 
-/-- Lemma 21.6, first identity, one coordinate at a time (the squared distances
+/-- lem:no-triple, first identity, one coordinate at a time (the squared distances
     are sums over the four coordinates of exactly these terms):
     `4 sum_{i<j} (p_i - p_j)^2 = sum_i (4 p_i - S)^2`,  S = p_0 + p_1 + p_2 + p_3,
     that is `sum_{i<j} |p_i - p_j|^2 = 4 sum_i |p_i - g|^2` with g = S/4. -/
@@ -58,7 +59,7 @@ theorem four_points (a b c d : α) :
         + (4*c - (a+b+c+d))^2 + (4*d - (a+b+c+d))^2 := by
   grind
 
-/-- Lemma 21.6, second identity, one coordinate at a time:
+/-- lem:no-triple, second identity, one coordinate at a time:
     `16 sum_i (p_i - x)^2 = sum_i (4 p_i - S)^2 + 4 (S - 4x)^2`,
     that is `sum_i |p_i - x|^2 = sum_i |p_i - g|^2 + 4|g - x|^2`: the centroid
     minimises the sum of squared distances. -/
@@ -69,7 +70,7 @@ theorem centroid (a b c d x : α) :
         + 4*((a+b+c+d) - 4*x)^2 := by
   grind
 
-/-- Theorem 21.8, range II_s: the packing bound `a(d1, d2) = (d1^2 + d2^2 - 4)/(2 d1 d2)`
+/-- thm:m23, range II_s: the packing bound `a(d1, d2) = (d1^2 + d2^2 - 4)/(2 d1 d2)`
     lies below its tangent plane `1/2 + (d1 + d2 - 4)/4` at `(2, 2)`; with the
     denominator `4 d1 d2` cleared the difference is
     `d1 d2 (d1 + d2 - 2) - 2 d1^2 - 2 d2^2 + 8 = (d1 - 2)(d2 - 2)(d1 + d2 + 2)`,
@@ -80,12 +81,12 @@ theorem amax_tangent (d1 d2 : α) :
 
 end Identities
 
-/-- Theorem 21.8, Step 2: of 23 centres, each pair lies in 21 triples and each
+/-- thm:m23, Step 2: of 23 centres, each pair lies in 21 triples and each
     centre in `C(22, 2) = 231 = 21 * 11` triples, which fixes the weight 1/11. -/
 theorem triple_counts : 23 - 2 = 21 ∧ 22 * 21 / 2 = 231 ∧ 231 = 21 * 11 := by
   decide
 
-/-! ## Corollary 21.5: the orthogonal root pairs at the vertices of the 24-cell -/
+/-! ## cor:root-subsets: the orthogonal root pairs at the vertices of the 24-cell -/
 
 abbrev Vec := Int × Int × Int × Int
 

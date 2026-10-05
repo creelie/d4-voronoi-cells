@@ -2,7 +2,7 @@
 D4Omega.lean: the transcendental inputs of the certificate checks, computed
 inside Lean.
 
-The branch and bounds of D4CertDomain (Theorem 7.73, region I of Theorem 21.8)
+The branch and bounds of D4CertDomain (thm:certificate, region I of thm:m23)
 and D4LabelledDomain (regions II_s and II_f) take omega, omega' and omega''
 from tables, and the labelled check takes the slab constant and the cell
 integrals of A(tau) as data; D4Certificate.lean compares the bound of the
@@ -18,7 +18,7 @@ roots from Nat.sqrt and arctan from its alternating series:
 
 for 1/3 <= u < 1, tau = ((1 - u)/(1 + u))^(1/2), t* = tan r_* = 1/sqrt2, h = d/2,
 R^2 = 3/2.  They are the closed forms of the paper (the lens integral of
-Proposition 7.68 and its derivatives, and the cap of B(sqrt(3/2))), simplified;
+lem:pair and its derivatives, and the cap of B(sqrt(3/2))), simplified;
 multi_cap/certificate_check.py evaluates the unsimplified forms, and the two
 agree to 1e-14 (checked with mpmath; the derivative identity symbolically).
 The tables are on the dyadic grid of step 2^-16 from the first grid point above
@@ -226,8 +226,8 @@ def smallS (d : Rat) : RI := RI.sub (capS (RI.ofNat 1)) (capS (RI.ofRat (d / 2))
 /-- The cell integrals ds_k = S(2 tau_k) - S(2 tau_{k+1}). -/
 def dsI (k : Nat) : RI := RI.sub (capS (RI.ofRat (tauK k))) (capS (RI.ofRat (tauK (k + 1))))
 
-/-- The constants: A_* against the bound of the certificate of Theorem 7.73 (at least
-92.8555703 in the units of the solver, D4Certificate.lean); step 2 of Theorem 21.8,
+/-- The constants: A_* against the bound of the certificate of thm:certificate (at least
+92.8555703 in the units of the solver, D4Certificate.lean); step 2 of thm:m23,
 s(D) > 8 - A_*, a_D / (1 - (D/2) a_D) < 2 (the share decreases in both heights),
 fr(1, 1/2) < 1/22, and the slab constant of the data at most
 4000 r kappa, r = 1/11 - 2 fr(1, 51/100), kappa = s(2.04) / 0.04; and the enclosures

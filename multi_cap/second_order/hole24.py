@@ -5,7 +5,7 @@ hole24.py -- the deepest hole of a 24-point code of slack s in S^3
 
 A further centre z within sqrt6 of c, beside 24 centres within 2 + delta, needs
 <z/|z|, w_i> <= a(2 + delta, sqrt6) for every direction w_i, where
-a(d, d') = (d^2 + d'^2 - 4)/(2 d d'); for delta = 0.0161 (Theorem 7.79: at most
+a(d, d') = (d^2 + d'^2 - 4)/(2 d d'); for delta = 0.0161 (thm:kissing-stable: at most
 24 centres within 2.0161) that is 0.6141.  At the root system the least
 possible value of max_i <theta, w_i> is 1/sqrt2 = 0.7071, at the 24 deep
 holes.  This script minimises t = max_i <theta, w_i> jointly over theta and

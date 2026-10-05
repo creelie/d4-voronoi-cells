@@ -2,7 +2,8 @@
 """
 p2_zeroset_check.py
 
-An independent check of the analytic half of the twenty-four-point lemma.
+An independent check of the analytic half of thm:m24 of the paper (the
+classification of twenty-four contacts).
 
 Input is the two-point polynomial p_2 of the de Laat-Leijenhorst-de Muinck
 Keizer certificate, as exact rationals, one coefficient per line in the format

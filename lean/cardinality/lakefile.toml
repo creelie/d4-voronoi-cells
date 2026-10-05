@@ -3,5 +3,5 @@ defaultTargets = ["KissLib"]
 
 [[lean_lib]]
 name = "KissLib"
-roots = ["KissData", "KissDomain", "KissChecks", "KissMain8", "KissMain10"]
+roots = ["KissData", "KissDomain", "KissChecks", "KissMain8", "KissMain10", "Kiss26Data", "Kiss26Main"]
 precompileModules = true

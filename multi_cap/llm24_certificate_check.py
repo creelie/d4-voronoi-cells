@@ -12,7 +12,7 @@ that can be checked from the published data alone.  The certificate is
 an exact rational feasible point of the second level of the Lasserre
 hierarchy for spherical codes in S^3 with pairwise inner product at most
 1/2, with objective value 24; it is what Lemma 5.1 of that paper and
-Theorem 7.25 of ours rest on.
+thm:m24 of ours rest on.
 
 Their verification procedure (README.txt of the data set) has seven
 steps.  This script re-implements, from the data files and from the

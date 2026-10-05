@@ -13,7 +13,7 @@ inner products.
     orbit structure about the chosen root, taking only the values 1, 1/2, 0,
     -1/2, -1.
 (c) The 276 pairs by inner product: 96 at 1/2, 72 at 0, 96 at -1/2, 12 at
-    -1, which is what Theorem (twenty-four points) forces of every contact
+    -1, which is what thm:m24 forces of every contact
     configuration of size 24, up to an orthogonal map.
 """
 import itertools

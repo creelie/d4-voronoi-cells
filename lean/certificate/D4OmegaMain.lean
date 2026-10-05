@@ -3,8 +3,8 @@ D4OmegaMain.lean: the checks of D4LabelledMain again, with nothing taken from
 outside Lean but the certificate: the tables of omega are computed in D4Omega
 from the closed forms, the slab constant and the enclosures of the cell integrals
 of the data are checked against values computed there, and so is the comparison
-of A_* with the bound of the certificate of Theorem 7.73.  Settled by
-native_decide.  D4OmegaRegionI.lean does the same for region I (Theorem 7.73).
+of A_* with the bound of the certificate of thm:certificate.  Settled by
+native_decide.  D4OmegaRegionI.lean does the same for region I (thm:certificate).
 -/
 import D4Omega
 

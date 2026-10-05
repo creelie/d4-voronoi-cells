@@ -5,10 +5,10 @@ over all sets of 24 unit directions, with no packing constraint (floating
 point, qhull; exploration).
 
 Near the root system the contact-cell volume is at least 8 on every set
-tested, with equality along closed curves (Proposition 21.19,
+tested, with equality along closed curves (prop:hexagon-loop,
 hexagon_loop.py).  Far from it the
 packing constraint (pairwise angles at least 60 degrees) is what forces the
-root system, by Theorem 7.25.  Without the constraint, the question is the
+root system, by thm:m24.  Without the constraint, the question is the
 least volume of a polytope with 24 facets circumscribed about the unit ball.
 The script minimises the volume over 24 unit vectors from random starts
 (L-BFGS on the unnormalised vectors, central differences) and prints the

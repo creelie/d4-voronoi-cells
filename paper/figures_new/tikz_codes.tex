@@ -1,11 +1,11 @@
-% tikz_codes.tex -- twenty-four-point codes at positive slack (Proposition 21.21, Remark 21.22).
+% tikz_codes.tex -- twenty-four-point codes at positive slack (prop:second-code, rem:what-c-needs).
 %   (a) The inner products of the 276 pairs: the root system (96 at 1/2, 72 at 0, 96 at -1/2,
-%       12 at -1) against the second code of Proposition 21.21 (largest inner product 0.516978).
+%       12 at -1) against the second code of prop:second-code (largest inner product 0.516978).
 %   (b) The deepest hole of a 24-point code of slack s: the least value of max_i <theta, w_i>
 %       found over codes of slack s and directions theta (floating point, local optimisation).
 %       A further centre within sqrt6 beside 24 centres within 2.0161 needs 0.6141 or less.
 %   (c) The least contact-cell volume found over 24-point codes of slack s: the root system and
-%       the curves of Proposition 21.19 give 8; codes away from the root system give the open marks.
+%       the curves of prop:hexagon-loop give 8; codes away from the root system give the open marks.
 % Build:  pdflatex tikz_codes.tex && pdftoppm -r 500 -png -singlefile tikz_codes.pdf ../figures/fig_tikz_codes
 % Test:   python3 tikz_overlap_check.py --auto tikz_codes.tex
 \documentclass[border=4pt]{standalone}
@@ -76,24 +76,24 @@
     legend cell align=left, legend style={font=\footnotesize, at={(0.03,0.97)}, anchor=north west, draw=cink3, fill=white},
     clip=false]
   \addplot[cblue, line width=0.9pt, mark=*, mark size=1.5pt] coordinates {(0.005,8) (0.010,8) (0.020,8)};
-  \addlegendentry{root system and curves of Prop.~2.26}
+  \addlegendentry{root system and curves of Prop.~18.19}
   \addplot[only marks, corange, mark=o, mark size=2pt, line width=0.7pt] coordinates {(0.020,8.06791) (0.030,7.99802) (0.035,7.99288)};
   \addlegendentry{codes away from the root system}
   \addplot[cink3, densely dotted, line width=0.6pt, domain=0:0.041] {8};
 \end{axis}
 \node[font=\bfseries] at ($(Cc.north west)+(-1.05cm,0.3cm)$) {(c)};
-%% (d) the reduction of Proposition 21.23, as a schematic
+%% (d) the reduction of prop:reduction-G, as a schematic
 \begin{scope}[shift={($(B.south)+(0,-2.35cm)$)}, font=\footnotesize,
     box/.style={draw=cink2, rounded corners=2pt, fill=white, align=center, inner sep=3pt, line width=0.5pt},
     ok/.style={box, fill=caqua!12, draw=caqua!70!black},
     open/.style={box, fill=corange!12, draw=corange!80!black},
     arr/.style={-{Stealth[length=4pt]}, cink2, line width=0.5pt}]
   \node[box] (Y) at (0,0) {$Y$: the centres within $\sqrt6$};
-  \node[ok] (m23) at (-3.0,-1.35) {$|Y|\le23$\\ Theorem 21.8};
+  \node[ok] (m23) at (-3.0,-1.35) {$|Y|\le23$\\ Theorem 18.8};
   \node[box] (m24) at (-1.0,-1.35) {$|Y|=24$};
   \node[open] (m25) at (1.15,-1.35) {$25\le|Y|\le30$\\ statement (C)};
-  \node[ok] (m31) at (3.35,-1.35) {$|Y|\ge31$\\ Theorem 21.25};
-  \node[ok] (T8) at (-2.1,-2.75) {$T(Y)>8$\\ Lemma 21.6};
+  \node[ok] (m31) at (3.35,-1.35) {$|Y|\ge31$\\ Theorem 18.25};
+  \node[ok] (T8) at (-2.1,-2.75) {$T(Y)>8$\\ Lemma 18.6};
   \node[open] (G) at (0.1,-2.75) {$T(Y)\le8$\\ statement (G)};
   \draw[arr] (Y) -- (m23);
   \draw[arr] (Y) -- (m24);

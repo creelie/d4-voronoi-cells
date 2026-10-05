@@ -1,6 +1,6 @@
 /-
 D4HoleBudget.lean: the exact content of parts (ii) and (iii) of the
-corollary "No room beside a near root system" (Section 21.1 of the paper).
+corollary "No room beside a near root system" (sec:closure of the paper).
 
 Part (ii).  Write u for 1/sqrt2 (so 2u^2 = 1), tau = u - h,
 gamma = 2 sqrt2 h - 4h^2 = 4uh - 4h^2, beta = sqrt2 h - gamma = 2uh - gamma, and

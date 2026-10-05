@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-robust_ceiling.py -- the ceiling of the theorem 'Twenty-four points, approximately'
+robust_ceiling.py -- the ceiling of thm:m24-robust of the paper
 (the robust reading of the kernel of de Laat, Leijenhorst and de Muinck Keizer).
 
 Write p_2 for the two-point polynomial of llm24_out/llm24_p2.txt (sigma_2 in the

@@ -6,7 +6,7 @@ sampled constraints; exploration, not proof.)
 
 24 points of label 0 with inner products at most 1/2 + kappa, and one point of
 label 1 whose inner products with them are at most tau.  For 24 centres within
-2.0161 (Theorem 7.79) kappa = a(2.0161, 2.0161) - 1/2 = 0.0080 and a further
+2.0161 (thm:kissing-stable) kappa = a(2.0161, 2.0161) - 1/2 = 0.0080 and a further
 centre within sqrt6 has tau = a(sqrt6, 2.0161) = 0.6141.  The kernels are those
 of three_point_probes.py (Bachoc and Vallentin, with labels); normalised to
 total trace 1, a negative least value of 24 (24 b_0 + b_1) + 24 s_0 + s_1

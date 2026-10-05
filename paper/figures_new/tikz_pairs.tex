@@ -1,0 +1,88 @@
+% tikz_pairs.tex -- pair angles at twenty-three contacts (prop:two-point-barrier).
+%   (a) The 253 pair angles of the deletion of a root, against the measure that minimises
+%       sum omega over the pair distributions allowed by Bonferroni and positive definiteness.
+%   (b) The weight omega(gamma) of prop:pair-budget, with what each distribution collects.
+% Data: pairs_omega.dat, written by pairs_data.py (mpmath, 30 digits).
+% Build:  pdflatex tikz_pairs.tex && pdftoppm -r 500 -png -singlefile tikz_pairs.pdf ../figures/fig_tikz_pairs
+% Test:   python3 tikz_overlap_check.py tikz_pairs.tex
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\definecolor{cblue}{HTML}{2A78D6}
+\definecolor{corange}{HTML}{EB6834}
+\definecolor{caqua}{HTML}{1BAF7A}
+\definecolor{cviolet}{HTML}{4A3AA7}
+\definecolor{cink2}{HTML}{52514E}
+\definecolor{cink3}{HTML}{8B8A85}
+\definecolor{cpale}{HTML}{F3F1EC}
+\input{tikzcheck}
+\begin{document}
+\begin{tikzpicture}[font=\small]
+\begin{axis}[name=A, width=8.6cm, height=6.4cm, xmin=46, xmax=188, ymin=0, ymax=128,
+    xtick={60,90,120,150,180}, xticklabels={$60^\circ$,$90^\circ$,$120^\circ$,$150^\circ$,$180^\circ$},
+    ytick={0,25,50,75,100},
+    xlabel={pair angle $\gamma$}, ylabel={number of pairs},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize}, clip=false]
+  \fill[cpale] (axis cs:46,0) rectangle (axis cs:70.53,128);
+  \draw[cink3, densely dotted, line width=0.5pt] (axis cs:70.53,0) -- (axis cs:70.53,128);
+  \addplot[corange, line width=1.6pt, ycomb, mark=*, mark size=1.6pt, mark options={fill=corange}]
+    coordinates {(60,88) (90,66) (120,88) (180,11)};
+  \addplot[cblue, line width=1.6pt, ycomb, mark=square*, mark size=1.5pt, mark options={fill=cblue}]
+    coordinates {(62.3,103.7) (103.0,90.0) (122.6,39.2) (154.1,20.1)};
+  \coordinate (A-d60) at (axis cs:57.8,88);
+  \coordinate (A-m62) at (axis cs:62.3,105.5);
+  \coordinate (A-d90) at (axis cs:90,66);
+  \coordinate (A-m103) at (axis cs:103,90);
+  \coordinate (A-d120) at (axis cs:117.8,88);
+  \coordinate (A-m122) at (axis cs:124.6,39.2);
+  \coordinate (A-m154) at (axis cs:154.1,20.1);
+  \coordinate (A-d180) at (axis cs:180,11);
+  \coordinate (A-shade) at (axis cs:58.3,129);
+  \coordinate (A-key) at (axis cs:132,124);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=east, text=corange!85!black] (ld60) at (A-d60) {$88$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, text=cblue!85!black] (lm62) at (A-m62) {$103.7$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, yshift=2pt, text=corange!85!black] (ld90) at (A-d90) {$66$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, yshift=2pt, text=cblue!85!black] (lm103) at (A-m103) {$90.0$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=east, text=corange!85!black] (ld120) at (A-d120) {$88$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=cblue!85!black] (lm122) at (A-m122) {$39.2$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, yshift=2pt, text=cblue!85!black] (lm154) at (A-m154) {$20.1$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, yshift=2pt, text=corange!85!black] (ld180) at (A-d180) {$11$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, text=cink2, align=center] (lsh) at (A-shade) {$\omega>0$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=north west, align=left] (lkey) at (A-key)
+  {\textcolor{corange!85!black}{$\bullet$ deletion of a root}\\
+   \textcolor{cblue!85!black}{$\blacksquare$ two-point minimiser}};
+\begin{axis}[name=B, at={($(A.east)+(1.9cm,0)$)}, anchor=west, width=8.2cm, height=6.4cm,
+    xmin=59.5, xmax=72, ymin=0, ymax=1.62,
+    xtick={60,62,64,66,68,70,72}, xticklabels={$60^\circ$,$62^\circ$,$64^\circ$,$66^\circ$,$68^\circ$,$70^\circ$,$72^\circ$},
+    ytick={0,0.5,1,1.5},
+    xlabel={pair angle $\gamma$}, ylabel={$10^{3}\,\omega(\gamma)$},
+    axis lines=left, tick style={cink2}, tick label style={font=\footnotesize}, clip=false]
+  \addplot[cviolet, line width=0.9pt] table[x=g, y=w] {pairs_omega.dat};
+  \addplot[corange, only marks, mark=*, mark size=2pt] coordinates {(60,1.44541)};
+  \addplot[cblue, only marks, mark=square*, mark size=1.9pt] coordinates {(62.3,0.72527)};
+  \draw[cink3, densely dotted, line width=0.5pt] (axis cs:70.529,0) -- (axis cs:70.529,0.45);
+  \coordinate (B-d) at (axis cs:60.6,1.47);
+  \coordinate (B-m) at (axis cs:63.0,0.78);
+  \coordinate (B-z) at (axis cs:70.529,0.47);
+  \coordinate (B-need) at (axis cs:64.6,1.36);
+\end{axis}
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, text=corange!85!black, align=left] (lbd) at (B-d)
+  {$88\,\omega(60^\circ)=0.1272$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south west, text=cblue!85!black, align=left] (lbm) at (B-m)
+  {minimiser: $\textstyle\sum\omega=0.0738$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=north west, text=cink2, align=left] (lbn) at (B-need)
+  {needed: $8-A_*=0.0929$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, text=cink2] (lbz) at (B-z) {$2r_*$};
+\node[font=\bfseries] (pa) at ($(A.north west)+(-1.2cm,0.35cm)$) {(a)};
+\node[font=\bfseries] (pb) at ($(B.north west)+(-1.2cm,0.35cm)$) {(b)};
+\def\figboxes{pa,pb}
+\def\figlabels{ld60,lm62,ld90,lm103,ld120,lm122,lm154,ld180,lsh,lkey,lbd,lbm,lbn,lbz}
+\checkfigure
+\end{tikzpicture}
+\end{document}

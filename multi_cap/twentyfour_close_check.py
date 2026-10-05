@@ -13,7 +13,7 @@ M centres, 25 <= M <= 33, within sqrt 6, and T(Y) <= 8.
       theorem gives T(X) >= A* + min(s(D), B) with A* = 9 pi^2/8 - 23 S(2),
       D = 2.1648, s(D) = S(2) - S(D) and B = 0.0929000002 (the value of the
       certificate), and T(Y) >= T(X) - (M - 23) S(2.444) > 8 for M <= 33.
-  (c) With 34 centres the room of (b) is not enough, and (C) at 34 is the
+  (c) With 34 centres the room of (b) is not enough, and (C_M) at M = 34 is the
       theorem on thirty-one or more centres.
   (d) At thirty centres the 24 closest have T <= 8 + 6 S(2.4).
 """

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-closure_lemmas.py -- the further reductions of the case left open by the
-distance criterion (Section 21.1 of the paper), checked in exact
-arithmetic (sympy, integers) and in ball arithmetic (python-flint's arb).
+closure_lemmas.py -- lem:holes, prop:inversion-hull, cor:root-subsets,
+lem:no-triple and prop:count22 of the paper ((A) to (E) below), checked in
+exact arithmetic (sympy, integers) and in ball arithmetic (python-flint's
+arb).  The distance criterion printed under (E) and part (F) are further
+checks that the paper does not use.
 
 Throughout, c = 0 is a centre of a unit-ball packing of R^4, the other
 centres are points z with |z| >= 2 and pairwise distances >= 2, and the
@@ -46,13 +48,13 @@ the centres at distance exactly 2, written 2w with w a unit vector.
       hyperplane at distance d/2, zero for d >= sqrt 6.  S decreases in d, so
       if at most 22 centres lie within sqrt 6, vol(V_c) >= 9 pi^2/8 - 22 S(2),
       which is certified above 8.046 here;  the same function
-      Psi(d_1, d_2, ...) = 9 pi^2/8 - sum S(d_i) is a second distance
-      criterion, and its thresholds are printed beside those of Phi;
+      Psi(d_1, d_2, ...) = 9 pi^2/8 - sum S(d_i) is a distance criterion,
+      and its thresholds are printed;
 
   (F) 23 contacts: if their covering radius is at most arccos(sqrt 6 / 4),
       52.2388 degrees, every other centre is at distance >= sqrt 6 by (A), and
-      the certificate of Theorem 7.73 bounds vol(V_c cap B(sqrt(3/2))) above 8
-      (the case quoted after Theorem 21.8, which labelled_certificate_check.py
+      the certificate of thm:certificate bounds vol(V_c cap B(sqrt(3/2))) above 8
+      (the case quoted after thm:m23, which labelled_certificate_check.py
       proves for any 23 centres within sqrt 6, whatever their distances).
 
 Exit status 0 when every check passes.
@@ -93,7 +95,7 @@ W2 = (w.T * w)[0]
 okA = sp.expand(((z - 2 * w).T * (z - 2 * w))[0] - 4 - (Z2 - 4 * (z.T * w)[0] + 4 * W2 - 4)) == 0
 check('(A) hole lemma: |z - 2w|^2 - 4 = |z|^2 - 4<z,w> for unit w (symbolic)', okA,
       'so <z/|z|, w> <= |z|/4 for every centre z and contact direction w;\n'
-      'for the root system g = 1/sqrt 2 and 4g = 2 sqrt 2 (Lemma 21.2)')
+      'for the root system g = 1/sqrt 2 and 4g = 2 sqrt 2 (lem:roots)')
 check('(B) inversion hull: |z|^2/2 - <4y/|y|^2, z> = [(|z|^2-4)(|y|^2-4) + 4(|y-z|^2-4)]/(2|y|^2)'
       ' (symbolic)', okB,
       'both brackets are >= 0 for centres y, z (|y|, |z| >= 2, |y - z| >= 2)')
@@ -187,7 +189,7 @@ check('(E) count criterion: at most 22 centres within sqrt 6 give vol(V_c) > 8.0
       bound22.lower() > arb('8.046'),
       'vol B(sqrt(3/2)) = 9 pi^2/8 = %s,  S(2) = %s\n'
       '9 pi^2/8 - 22 S(2) = %s\n'
-      '9 pi^2/8 - 23 S(2) = %s  (= A_* of Theorem 7.73, which the pair terms lift above 8)'
+      '9 pi^2/8 - 23 S(2) = %s  (= A_* of thm:certificate, which the pair terms lift above 8)'
       % (VB.str(12, radius=False), S2.str(12, radius=False), bound22.str(12, radius=False),
          A_star.str(12, radius=False)))
 
@@ -209,13 +211,11 @@ def psi_threshold(m, k):
 
 
 rows = []
-phi_thr = {(22, 1): 2.16756, (21, 2): 2.07044, (20, 3): 2.04503, (19, 4): 2.03312,
-           (18, 6): 2.05596, (22, 2): 2.23400, (21, 3): 2.12666, (12, 12): 2.02666}
-for (m, k), tphi in phi_thr.items():
+for (m, k) in [(22, 1), (21, 2), (20, 3), (19, 4), (18, 6), (22, 2), (21, 3), (12, 12)]:
     t = psi_threshold(m, k)
-    rows.append('%2d contacts + %2d at d:  Psi > 8 for d >= %s   (Phi: d >= %.5f)'
-                % (m, k, ('%.5f' % float(t)) if t else 'none below sqrt 6', tphi))
-check('(E\') the second distance criterion Psi (ball arithmetic)', True, '\n'.join(rows))
+    rows.append('%2d contacts + %2d at d:  Psi > 8 for d >= %s'
+                % (m, k, ('%.5f' % float(t)) if t else 'none below sqrt 6'))
+check('(E\') the distance criterion Psi (ball arithmetic)', True, '\n'.join(rows))
 
 # --------------------------------------------------------------------------
 # (F) 23 contacts: the covering-radius threshold
@@ -225,7 +225,7 @@ ang = c.acos() * 180 / PI
 check('(F) 23 contacts with covering radius <= arccos(sqrt6/4) leave nothing within sqrt 6',
       abs(float(ang) - 52.2388) < 1e-3 and abs(4 * c - arb(6).sqrt()).upper() < arb('1e-40'),
       'arccos(sqrt 6/4) = %s degrees; 4 cos of it = sqrt 6 = 2 sqrt(3/2), the diameter of\n'
-      'the ball of Theorem 7.73, so V_c and V_c(W) agree inside it' % ang.str(8, radius=False))
+      'the ball of thm:certificate, so V_c and V_c(W) agree inside it' % ang.str(8, radius=False))
 
 print()
 print('%d checks failed' % len(FAILS) if FAILS else 'all checks passed')

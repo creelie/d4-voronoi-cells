@@ -2,7 +2,7 @@
 """
 multidir_exact_zero_hessian_hp.py
 
-Examines the joint Hessian at the dense configuration A_18 of Section 17
+Examines the joint Hessian at the dense configuration A_18 of sec:exact-sing
 of the paper in high-precision arithmetic (hp_volume.py, up to 45
 decimal digits). Double precision cannot decide whether its smallest
 eigenvalues are small and positive, zero or negative: its absolute

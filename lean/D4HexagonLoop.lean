@@ -1,5 +1,5 @@
 /-
-D4HexagonLoop.lean: the algebra of Proposition 21.19 of the paper, a closed
+D4HexagonLoop.lean: the algebra of prop:hexagon-loop of the paper, a closed
 curve of direction sets through the root system along which the contact cell
 {x : <x, w_i> <= 1} has volume exactly 8.
 
