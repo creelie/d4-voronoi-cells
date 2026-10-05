@@ -75,6 +75,11 @@ the searches reach 0.339, 0.378 and 0.378 for rmax = 2.25, 2.35 and 2.444
 further centre the root-sum-square route does not suffice, and the hole form of
 (L) is needed.
 
+`hole_room.py` holds the 25th centre at a given distance r and minimises T
+over 25 centres (`hole_room.log`): the least T found is 8.290, 8.287, 8.277,
+8.259, 8.276, 8.275 and 8.264 at r = 2.0161, 2.05, 2.1, 2.2, 2.3, 2.4 and
+2.449, so the hole form of (L) has a margin of about 0.26 at every distance.
+
 `link_census.py` lists, point by point, the near neighbours (inner product at
 least 0.4), the distance of the link from a cube and the Voronoi cell on S^3
 (`link_census.log`). At the root system and at the ends of `budget_far.py`
