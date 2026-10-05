@@ -5,3 +5,4 @@ d3=8 round 1: optimal_inaccurate  bound 3.05917 (target 3.10330), corrected <= 4
    viol: AA 2.7e-09, AB -7.5e-08, AF -4.0e-10, BB 2.3e-02, BF -9.8e-08, FF -3.2e-07, AAA 1.3e-06, AAB 3.3e-06, AAF 4.2e-06, ABB 3.4e-05, ABF 5.8e-05, AFF 1.5e-05, BBB 6.2e-05, BBF 4.1e-05, BFF 3.3e-05, FFF 3.4e-06
    c2: {'AA': -0.004848, 'AB': -0.000949, 'AF': 0.012316, 'BB': 0.004377, 'BF': 0.015554, 'FF': 0.027841}
    c3: {'AAA': 0.0011984, 'AAB': 0.0011656, 'AAF': 0.0006306, 'ABB': 0.0010302, 'ABF': 0.00051, 'AFF': -0.0003895, 'BBB': 0.0009284, 'BBF': 0.0005103, 'BFF': -0.0001952, 'FFF': 0.0066689}
+   direct: 5088 variables, 78860 inequalities, 4299 psd rows in 48 cones, 37493133 nonzeros [12 s to build]

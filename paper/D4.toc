@@ -142,7 +142,7 @@
 \contentsline {subsection}{\tocsubsection {}{}{Software}}{161}{section*.20}%
 \contentsline {section}{\tocsection {Appendix}{C}{Numerical tables}}{161}{appendix.C}%
 \contentsline {subsection}{\tocsubsection {}{}{Chains}}{161}{section*.21}%
-\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{161}{section*.22}%
+\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{162}{section*.22}%
 \contentsline {subsection}{\tocsubsection {}{}{Sampling at the singular configurations}}{162}{section*.23}%
 \contentsline {section}{\tocsection {Appendix}{D}{Explicit coordinates of the reference cell}}{163}{appendix.D}%
 \contentsline {section}{\tocsection {Appendix}{E}{A model of the Bernstein certificate}}{163}{appendix.E}%
