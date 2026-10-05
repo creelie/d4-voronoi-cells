@@ -72,7 +72,7 @@ TAG = CASE.get('tag', 'case')
 
 
 def tcounts(nb):
-    out = {'A': 0, 'B': 0, 'F': 0}
+    out = {s: 0 for s in TYPES}
     for (ty, lo, hi), n in zip(BINS, nb):
         out[ty] += n
     return out
