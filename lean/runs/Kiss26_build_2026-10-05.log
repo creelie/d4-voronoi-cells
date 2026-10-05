@@ -1,0 +1,4 @@
+$ cd lean/cardinality && lake build Kiss26Main && lake env lean Kiss26Stat.lean
+start Mon Oct 5 15:04:39 UTC 2026
+✔ [12/14] Built Kiss26Data:c.o (10s)
+✔ [13/14] Built Kiss26Data:dynlib (1.9s)
