@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 closure_lemmas.py -- lem:holes, prop:inversion-hull, cor:root-subsets,
-lem:no-triple and prop:count22 of the paper ((A) to (E) below), checked in
+lem:no-triple and cor:count of the paper ((A) to (E) below), checked in
 exact arithmetic (sympy, integers) and in ball arithmetic (python-flint's
 arb).  The distance criterion printed under (E) and part (F) are further
 checks that the paper does not use.
@@ -95,7 +95,7 @@ W2 = (w.T * w)[0]
 okA = sp.expand(((z - 2 * w).T * (z - 2 * w))[0] - 4 - (Z2 - 4 * (z.T * w)[0] + 4 * W2 - 4)) == 0
 check('(A) hole lemma: |z - 2w|^2 - 4 = |z|^2 - 4<z,w> for unit w (symbolic)', okA,
       'so <z/|z|, w> <= |z|/4 for every centre z and contact direction w;\n'
-      'for the root system g = 1/sqrt 2 and 4g = 2 sqrt 2 (lem:roots)')
+      'for the root system g = 1/sqrt 2 and 4g = 2 sqrt 2 (lem:holes)')
 check('(B) inversion hull: |z|^2/2 - <4y/|y|^2, z> = [(|z|^2-4)(|y|^2-4) + 4(|y-z|^2-4)]/(2|y|^2)'
       ' (symbolic)', okB,
       'both brackets are >= 0 for centres y, z (|y|, |z| >= 2, |y - z| >= 2)')

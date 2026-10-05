@@ -63,7 +63,7 @@ distinct matrices by two or three orders of magnitude.
 | file | what it does |
 | --- | --- |
 | `o4.py` | the monomial integral over `O(n)`, by the Gorin-Lopez recursion, in exact rationals |
-| `gl2.py` | the `GL(2)` matrix coefficients, and the scalars of Section 3.1 (Hermite and row-reduced normal forms over `Z` and `Q`) |
+| `gl2.py` | the `GL(2)` matrix coefficients, and the scalars of Section 3.1 of de Laat, Leijenhorst and de Muinck Keizer (Hermite and row-reduced normal forms over `Z` and `Q`) |
 | `ps_build.py` | builds the three factors of the integrand for every `(lambda, k1, k2)` and writes them for the kernel |
 | `psker.c` | the kernel: the triple walk, the memoised integral, exact rational accumulation (needs GMP) |
 | `spec_split.py` | shares the entries between processes and skips ones already done |

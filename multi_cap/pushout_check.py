@@ -64,7 +64,7 @@ def G(h, x):
 
 
 def Pi(h1, h2, u):
-    """lem:pair, as a ball; the branch decisions must be definite."""
+    """lem:pair-closed, as a ball; the branch decisions must be definite."""
     h1, h2, ua = A_(h1), A_(h2), A_(u)
     g = ua.acos()
     a1, a2 = (h1 / R).acos(), (h2 / R).acos()

@@ -2,7 +2,7 @@
 """
 radial_count_sdp.py -- a two-point radial certificate that the pair terms of
 prop:truncated exceed 8 whenever at least M centres lie within sqrt6 (thm:count31:
-statement (C_M) of thm:reduction for every count from M = 31 on).  Finds the
+statement (C) of prop:reduction-G for every count from M = 31 on).  Finds the
 certificate (floating point) and writes it in exact dyadic form;
 radial_count_check.py proves it.
 
