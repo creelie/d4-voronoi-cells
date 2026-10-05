@@ -199,6 +199,8 @@ def build_and_solve(d3, rounds, psamp, tsamp):
     st = clarabel.DefaultSettings()
     st.max_iter = int(os.environ.get('MAX_ITER', '500'))
     st.verbose = bool(int(os.environ.get('VERBOSE', '0')))
+    st.direct_solve_method = os.environ.get('DSM', st.direct_solve_method)
+    st.max_threads = int(os.environ.get('THREADS', str(st.max_threads)))
     print('   direct: %d variables, %d inequalities, %d psd rows in %d cones, %d nonzeros [%.0f s to build]'
           % (nvar, nnon, pb, len(cones) - 1, A.nnz, time.time() - t0), flush=True)
     sol = clarabel.DefaultSolver(P, q, A, b, cones, st).solve()
