@@ -15,7 +15,8 @@ would settle the case of twenty-four close centres in statement (C).
 Floating point with sampled constraints refined in rounds (exploration); a
 corrected Z < 0 is what a rigorous check would then have to confirm.
 
-    python run_typed.py [degrees ...]        (default 16 18 20)
+    python run_typed.py [degrees ...] [--t2 a,b,...]
+                     (default degrees 16 18 20, t2 0.5101,0.5114)
 
 Writes run_typed.log next to itself, one line per round, flushed.
 """
@@ -67,10 +68,16 @@ if __name__ == '__main__':
         sys.exit(1)
     import typed_cardinality_sdp as T
     T.print = lambda *a, **k: say(' '.join(str(x) for x in a))     # route the per-round lines to the log
-    degrees = [int(x) for x in sys.argv[1:]] or [16, 18, 20]
+    args = sys.argv[1:]
+    t2s = (0.5101, 0.5114)
+    if '--t2' in args:
+        i = args.index('--t2')
+        t2s = tuple(float(x) for x in args[i + 1].split(','))
+        del args[i:i + 2]
+    degrees = [int(x) for x in args] or [16, 18, 20]
     t1 = 0.508
     for d in degrees:
-        for t2 in (0.508, 0.5101, 0.5114):
+        for t2 in t2s:
             t0 = time.time()
             say('degree %d, t1 %.4f, t2 %.4f: start' % (d, t1, t2))
             try:
