@@ -58,6 +58,18 @@ floating point but with less room than the exact check at thirty used up
 certificates would have to pass; none has yet. Runs on a larger machine go
 through `bigmachine/run_combo.py`.
 
+Each round of `combo_gen2.py` (and so of `combo_direct.py`) looks for the
+violations between the samples by random points and grids and, unless
+`REFINE=0`, by a compass search from the worst of them and from the worst
+samples (`REFINE` starts per kind, default 60), which only moves to admissible
+points of larger value. On the round-2 certificate at 29 that search finds
+violations two to four times larger than the random points for the triples
+(for example 1.8e-4 against 8.0e-5 for ABF), which is why the corrected values
+of the earlier rounds were too low. `multi_cap/combo_case_check.py` with
+`PRECHECK=1` computes the thresholds of the exact check and the bound they
+give, without the branch and bounds, to say whether a certificate is worth
+the full check.
+
 ## musin: where the two-point kernel fails
 
 `dual_where.py` reads off the optimal dual of the two-point programme of
