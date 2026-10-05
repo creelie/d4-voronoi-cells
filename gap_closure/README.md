@@ -66,6 +66,21 @@ random (`budget_far.log`). The largest distance found is 0.0971 at
 eta = 0.00368 (19 feasible ends of 24 starts) and 0.1291 at eta = 0.0334.
 These are local searches near the root system, not bounds.
 
+`room_table.py` gives, for one further centre at distance r, the budget
+eta = S(r) and the distance that `cor:no-room` (ii) needs, with a(sqrt6, rho)
+replaced by a(r, rho24) (`room_table.log`). `budget_far.py eta starts seed rmax`
+holds the 24 centres within rmax. At the worst budget, eta = S(2.0161) = 0.127,
+the searches reach 0.339, 0.378 and 0.378 for rmax = 2.25, 2.35 and 2.444
+(`budget_far_r.log`), against 0.348, 0.288 and 0.231 needed: for a close
+further centre the root-sum-square route does not suffice, and the hole form of
+(L) is needed.
+
+`link_census.py` lists, point by point, the near neighbours (inner product at
+least 0.4), the distance of the link from a cube and the Voronoi cell on S^3
+(`link_census.log`). At the root system and at the ends of `budget_far.py`
+every point has 8 near neighbours with a cube-like link; the second code has
+none (6, 7 and 9 near neighbours).
+
 `s3_cell.py` shows that a cell-by-cell volume bound on S^3 cannot prove (L):
 with 8 neighbours at 60 degrees whose link is the square antiprism, the
 Voronoi cell of a direction has volume at most about 0.817, below the
