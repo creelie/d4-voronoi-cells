@@ -306,8 +306,13 @@ def main():
         c2keys = list(itertools.combinations_with_replacement(TYPES, 2))
         c3keys = [cb for cb in itertools.combinations_with_replacement(TYPES, 3)
                   if not all(Ntriple(tcounts(nb), list(cb)) == 0 for nb in COUNTS)]
-        prune(psamp, tsamp, sv['x3'], sv['A'], dict(zip(c2keys, sv['c2'])), dict(zip(c3keys, sv['c3'])), L0)
-        print('resumed from %s, pruned to %d pair and %d triple samples per kind' % (os.environ['RESUME'], KEEP_P, KEEP_T), flush=True)
+        if os.environ.get('RESUME_NOPRUNE') == '1':
+            # samples of a certificate of another degree: keep them all, since its
+            # thresholds say nothing about the kernel of this degree
+            print('resumed from %s, all samples kept' % os.environ['RESUME'], flush=True)
+        else:
+            prune(psamp, tsamp, sv['x3'], sv['A'], dict(zip(c2keys, sv['c2'])), dict(zip(c3keys, sv['c3'])), L0)
+            print('resumed from %s, pruned to %d pair and %d triple samples per kind' % (os.environ['RESUME'], KEEP_P, KEEP_T), flush=True)
     for rnd in range(rounds):
         t0 = time.time()
         prob, L, X3, A, z, t, m, c2, c3, pvec = build_and_solve(d3, rounds, psamp, tsamp)
