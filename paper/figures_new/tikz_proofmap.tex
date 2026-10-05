@@ -4,7 +4,7 @@
 %   contact, split by the number |Y| of centres within sqrt6
 %   (thm:m23-labelled, thm:count31, thm:count30, prop:C-radial, lem:no-triple,
 %   thm:G-pushout, thm:near-contact).  Green boxes are proved, orange boxes are
-%   open; the box for thirty centres is proved except one configuration type.
+%   open.
 % Test:   python3 tikz_overlap_check.py tikz_proofmap.tex
 % Build:  pdflatex tikz_proofmap.tex && pdftoppm -r 500 -png -singlefile tikz_proofmap.pdf ../figures/fig_tikz_proofmap
 \documentclass[border=4pt]{standalone}
@@ -30,7 +30,6 @@
   box/.default=6.1cm,
   head/.style={box=#1, fill=cpanel},
   ok/.style={box=5.45cm, fill=caqua!16, draw=caqua!70!black, font=\footnotesize},
-  part/.style={box=5.45cm, fill=caqua!8, draw=corange!80!black, dashed, font=\footnotesize},
   open/.style={box=5.45cm, fill=corange!16, draw=corange!80!black, font=\footnotesize},
   arr/.style={-{Stealth[length=5pt]}, cink2}]
 \node[head=9.6cm, align=center] (root) at (0,0)
@@ -50,8 +49,8 @@
   {some centre within $\sqrt6$ is not a contact; split by $|Y|$};
 \node[ok, anchor=north east] (R1) at ($(R.south east)+(0,-0.35)$) {$|Y|\le23$: labelled three-point certificate};
 \node[ok, anchor=north east] (R2) at ($(R1.south east)+(0,-0.22)$) {$|Y|\ge31$: labelled two-point kernel, $T(Y)>8$};
-\node[part, anchor=north east] (R3) at ($(R2.south east)+(0,-0.22)$)
-  {$|Y|=30$: proved except $24$ centres within $2.25$ and $6$ beyond $2.4$};
+\node[ok, anchor=north east] (R3) at ($(R2.south east)+(0,-0.22)$)
+  {$|Y|=30$: two-point cases and a kernel on typed triples, $T(Y)>8$};
 \node[open, anchor=north east] (R4) at ($(R3.south east)+(0,-0.22)$) {$25\le|Y|\le29$: statement (C)};
 \node[ok, anchor=north east] (R5) at ($(R4.south east)+(0,-0.22)$) {$|Y|=24$, $T(Y)>8$: no three caps meet};
 \node[open, anchor=north east] (R6) at ($(R5.south east)+(0,-0.22)$)
@@ -70,9 +69,8 @@
 \draw[arr] (L3.south) -- (L3.south |- C.north);
 \draw[arr] (R6.south) -- (R6.south |- C.north);
 %% legend
-\node[ok, text width=1.35cm, align=center, anchor=north east] (k1) at ($(C.south)+(-1.15,-0.3)$) {proved};
+\node[ok, text width=1.35cm, align=center, anchor=north east] (k1) at ($(C.south)+(-0.15,-0.3)$) {proved};
 \node[open, text width=1.35cm, align=center, anchor=west] (k2) at ($(k1.east)+(0.3,0)$) {open};
-\node[part, text width=1.35cm, align=center, anchor=west] (k3) at ($(k2.east)+(0.3,0)$) {in part};
 \checkfigure
 \end{tikzpicture}
 \end{document}

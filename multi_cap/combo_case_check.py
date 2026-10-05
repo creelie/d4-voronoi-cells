@@ -14,6 +14,11 @@ and then, for every integer vector of bin counts that the constraints allow, the
 in exact arithmetic, the largest of which must lie below 9 pi^2/8 - 8.
 
 Usage: python3 combo_case_check.py case.json cert.npz d3 [margin2 margin3 marginm]
+
+With PRECHECK=1 in the environment it stops after the thresholds: it samples and
+refines every inequality as the check does, skips the branch and bounds, and prints
+the bound over the count vectors that those thresholds would give.  That is floating
+point and proves nothing; it tells whether a certificate is worth the full check.
 """
 import itertools
 import json
@@ -34,6 +39,7 @@ from certificate_check import ldl_positive  # noqa: E402
 from truncated_search import pair as pair_float  # noqa: E402
 
 CASE = json.load(open(sys.argv[1]))
+PRE = os.environ.get('PRECHECK') == '1'
 
 
 def num(x):
@@ -150,16 +156,18 @@ def main():
     jobs = [(A, C.pair3_poly(Bk, d3, C.TYPES.index(s), C.TYPES.index(tt)), c2[(s, tt)], (C.TRANGE[s], C.TRANGE[tt]), s == tt)
             for (s, tt) in c2]
     from multiprocessing import Pool
-    with Pool(min(int(os.environ.get('PAIR_PROCS', '3')), len(jobs))) as pool:
-        res = pool.starmap(C.pair_box_check, jobs)
-    for (s, tt), (ok, msg) in zip(c2, res):
-        C.check('K + PAIR3_%s%s <= Pi + c2 on the admissible pairs' % (s, tt), ok, msg)
+    if not PRE:
+        with Pool(min(int(os.environ.get('PAIR_PROCS', '3')), len(jobs))) as pool:
+            res = pool.starmap(C.pair_box_check, jobs)
+        for (s, tt), (ok, msg) in zip(c2, res):
+            C.check('K + PAIR3_%s%s <= Pi + c2 on the admissible pairs' % (s, tt), ok, msg)
     # (c) bins
     mf = np.array(Z['m'], float)
     assert len(mf) == len(C.BINTYPE)
     m = [C.above(v + mgm) for v in mf]
-    okb, msg = bracket_check(A, z, D2, R2, C1, C2, C.DMAX, C.EDGES, m)
-    C.check('f <= m_b on every bin', okb, msg)
+    if not PRE:
+        okb, msg = bracket_check(A, z, D2, R2, C1, C2, C.DMAX, C.EDGES, m)
+        C.check('f <= m_b on every bin', okb, msg)
     # (d) triples
     c3 = {}
     tjobs = []
@@ -189,13 +197,14 @@ def main():
         print('  triple %s: float largest %.6e on %d samples; threshold %.6e; %d monomials, symmetry %d'
               % (''.join(combo), vals.max(), len(g), float(c3[combo]), len(P), sym), flush=True)
         tjobs.append((combo, (Pr, tops, sym, float(c3[combo]), ''.join(combo))))
-    with Pool(int(os.environ.get('TRIPLE_PROCS', '3'))) as pool:
-        res = pool.starmap(C.triple_box_check, [a for _, a in tjobs])
-    nbox = 0
-    for (combo, _), (ok, msg, nd) in zip(tjobs, res):
-        C.check('TRIPLE3_%s <= c3 on the admissible triples' % ''.join(combo), ok, msg)
-        nbox += nd
-    print('  triple boxes in all: %d' % nbox, flush=True)
+    if not PRE:
+        with Pool(int(os.environ.get('TRIPLE_PROCS', '3'))) as pool:
+            res = pool.starmap(C.triple_box_check, [a for _, a in tjobs])
+        nbox = 0
+        for (combo, _), (ok, msg, nd) in zip(tjobs, res):
+            C.check('TRIPLE3_%s <= c3 on the admissible triples' % ''.join(combo), ok, msg)
+            nbox += nd
+        print('  triple boxes in all: %d' % nbox, flush=True)
     # the bound, over every count vector
     cache = {}
     worst, wvec = None, None
@@ -210,6 +219,10 @@ def main():
             worst, wvec = val, nb
     print('  %d count vectors, %d type-count vectors; largest bound %.6f at %s' % (len(C.COUNTS), len(cache), float(worst), wvec),
           flush=True)
+    if PRE:
+        print('PRECHECK (floating point, no branch and bound): the thresholds give %.6f against 9 pi^2/8 - 8 = %s [%.0f s]'
+              % (float(worst), target.str(8), time.time() - t0))
+        return
     C.check('largest bound over the count vectors below 9 pi^2/8 - 8', A_(worst) < target,
             '%.6f < %s' % (float(worst), target.str(8)))
     print('PASS: in case %s every packing set of %d centres has U(Y) <= %.6f < 9 pi^2/8 - 8, so T(Y) > 8 [%.0f s]'

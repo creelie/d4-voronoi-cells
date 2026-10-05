@@ -72,7 +72,7 @@ TAG = CASE.get('tag', 'case')
 
 
 def tcounts(nb):
-    out = {'A': 0, 'B': 0, 'F': 0}
+    out = {s: 0 for s in TYPES}
     for (ty, lo, hi), n in zip(BINS, nb):
         out[ty] += n
     return out
@@ -219,6 +219,72 @@ def prune(psamp, tsamp, x3v, Av, c2v, c3v, L):
         tsamp[cb] = g[np.argsort(v)[-KEEP_T:]]
 
 
+REFINE = int(os.environ.get('REFINE', '60'))   # starts of the local ascent per kind and round (0: none)
+_E6 = np.vstack([np.eye(3), -np.eye(3)])
+
+
+def pair_values(st, X, x3v, Av, L, cst):
+    """K - Pi + PAIR3_st - c_st at the rows (p, q, u) of X"""
+    ti = {s: i for i, s in enumerate(TYPES)}
+    p, q, u = X[:, 0], X[:, 1], X[:, 2]
+    Kv = np.einsum('nk,na,kab,nb->n', ubasis(u, D2), pbasis(p, R2), Av, pbasis(q, R2))
+    B = T3.Builder(L); T3.add_pair(B, np.arange(len(u)), ti[st[0]], ti[st[1]], u)
+    return Kv - pair(p / 2, q / 2, u) + B.matrix(len(u)) @ x3v - cst
+
+
+def triple_values(cb, X, x3v, L, cst):
+    """TRIPLE3_cb - c_cb at the rows (u12, u13, u23) of X"""
+    ti = {s: i for i, s in enumerate(TYPES)}
+    B = T3.Builder(L); T3.add_triple(B, np.arange(len(X)), tuple(ti[x] for x in cb), X[:, 0], X[:, 1], X[:, 2])
+    return B.matrix(len(X)) @ x3v - cst
+
+
+def climb(f, X, proj, feas, h0=0.02, hmin=1e-7, iters=300):
+    """compass search from each row of X for a local maximum of f over the admissible
+    set (proj maps onto the box constraints, feas tests the rest); it only ever moves
+    to admissible points of larger value, so the values it returns are attained."""
+    X = proj(np.array(X, float)); K = len(X)
+    val = f(X); h = np.full(K, h0)
+    for _ in range(iters):
+        live = h >= hmin
+        if not live.any():
+            break
+        idx = np.flatnonzero(live)
+        Cd = proj((X[idx, None, :] + h[idx, None, None] * _E6[None]).reshape(-1, 3))
+        ok = feas(Cd)
+        v = np.full(len(Cd), -np.inf)
+        if ok.any():
+            v[ok] = f(Cd[ok])
+        v = v.reshape(len(idx), 6); j = v.argmax(1); best = v[np.arange(len(idx)), j]
+        up = best > val[idx]
+        X[idx[up]] = Cd.reshape(len(idx), 6, 3)[up, j[up]]; val[idx[up]] = best[up]
+        h[idx[up]] *= 1.5; h[idx[~up]] /= 2
+    return X, val
+
+
+def pair_proj(st):
+    (a0, a1), (b0, b1) = TRANGE[st[0]], TRANGE[st[1]]
+
+    def proj(X):
+        X[:, 0] = np.clip(X[:, 0], a0, a1); X[:, 1] = np.clip(X[:, 1], b0, b1)
+        X[:, 2] = np.clip(X[:, 2], -1, amax(X[:, 0], X[:, 1]))
+        return X
+    return proj
+
+
+def triple_proj(cb):
+    T = np.array([tbound(cb[0], cb[1]), tbound(cb[0], cb[2]), tbound(cb[1], cb[2])])
+
+    def proj(X):
+        return np.clip(X, -1, T)
+    return proj
+
+
+def gram_ok(X):
+    a, b, c = X[:, 0], X[:, 1], X[:, 2]
+    return 1 + 2 * a * b * c - a * a - b * b - c * c >= 0
+
+
 def main():
     d3 = int(sys.argv[1]) if len(sys.argv) > 1 else 6
     rounds = int(sys.argv[2]) if len(sys.argv) > 2 else 3
@@ -226,7 +292,9 @@ def main():
     tsamp = {}
     for combo in itertools.combinations_with_replacement(TYPES, 3):
         T12, T13, T23 = tbound(combo[0], combo[1]), tbound(combo[0], combo[2]), tbound(combo[1], combo[2])
-        tsamp[combo] = np.r_[T3.triple_grid(T12, T13, T23, 12, 12, 6), T3.random_triples(T12, T13, T23, 1000)]
+        g1, g2, g3 = (int(x) for x in os.environ.get('TGRID', '12,12,6').split(','))
+        tsamp[combo] = np.r_[T3.triple_grid(T12, T13, T23, g1, g2, g3),
+                             T3.random_triples(T12, T13, T23, int(os.environ.get('TRAND', '1000')))]
     if os.environ.get('RESUME'):
         sv = np.load(os.environ['RESUME'])
         for st in psamp:
@@ -259,11 +327,20 @@ def main():
                 B = T3.Builder(L); T3.add_pair(B, np.arange(len(u[i:i + 20000])), ti[st[0]], ti[st[1]], u[i:i + 20000])
                 x3part.append(B.matrix(len(u[i:i + 20000])) @ x3v)
             v = Kv - pair(p / 2, q / 2, u) + np.concatenate(x3part) - c2[st].value
-            report.append('%s%s %.1e' % (st[0], st[1], v.max()))
-            for k in TCK:
-                corr[k] += Npair(dict(zip(TYPES, k)), *st) * max(v.max(), 0)
             w = np.argsort(v)[-3000:]
             newp[st] = (p[w], q[w], u[w])
+            vmax = v.max()
+            if REFINE:
+                old = np.stack(psamp[st], 1)
+                vo = pair_values(st, old, x3v, Av, L, c2[st].value)
+                starts = np.r_[np.stack([p[w[-REFINE:]], q[w[-REFINE:]], u[w[-REFINE:]]], 1), old[np.argsort(vo)[-REFINE:]]]
+                X, val = climb(lambda Y: pair_values(st, Y, x3v, Av, L, c2[st].value), starts, pair_proj(st),
+                               lambda Y: np.ones(len(Y), bool))
+                vmax = max(vmax, val.max())
+                newp[st] = tuple(np.r_[a, X[:, i]] for i, a in enumerate(newp[st]))
+            report.append('%s%s %.1e' % (st[0], st[1], vmax))
+            for k in TCK:
+                corr[k] += Npair(dict(zip(TYPES, k)), *st) * max(vmax, 0)
         for cb in c3:
             T12, T13, T23 = tbound(cb[0], cb[1]), tbound(cb[0], cb[2]), tbound(cb[1], cb[2])
             g = np.r_[T3.random_triples(T12, T13, T23, 8000), T3.triple_grid(T12, T13, T23, 26, 26, 10)]
@@ -273,10 +350,18 @@ def main():
                 B = T3.Builder(L); T3.add_triple(B, np.arange(len(gg)), tuple(ti[x] for x in cb), gg[:, 0], gg[:, 1], gg[:, 2])
                 vals.append(B.matrix(len(gg)) @ x3v)
             v = np.concatenate(vals) - c3[cb].value
-            report.append('%s %.1e' % (''.join(cb), v.max()))
-            for k in TCK:
-                corr[k] += Ntriple(dict(zip(TYPES, k)), list(cb)) * max(v.max(), 0)
             newt[cb] = g[np.argsort(v)[-400:]]
+            vmax = v.max()
+            if REFINE:
+                old = tsamp[cb]
+                vo = triple_values(cb, old, x3v, L, c3[cb].value)
+                starts = np.r_[g[np.argsort(v)[-REFINE:]], old[np.argsort(vo)[-REFINE:]]]
+                X, val = climb(lambda Y: triple_values(cb, Y, x3v, L, c3[cb].value), starts, triple_proj(cb), gram_ok)
+                vmax = max(vmax, val.max())
+                newt[cb] = np.r_[newt[cb], X]
+            report.append('%s %.1e' % (''.join(cb), vmax))
+            for k in TCK:
+                corr[k] += Ntriple(dict(zip(TYPES, k)), list(cb)) * max(vmax, 0)
         print('d3=%d round %d: %s  bound %.5f (target %.5f), corrected <= %.5f  [%.0f s]\n   viol: %s' % (
             d3, rnd + 1, prob.status, prob.value, TARGET, prob.value + max(corr.values()), time.time() - t0, ', '.join(report)), flush=True)
         print('   c2: %s' % {''.join(k): round(float(v.value), 6) for k, v in c2.items()}, flush=True)
