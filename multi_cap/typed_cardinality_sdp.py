@@ -30,7 +30,7 @@ of type 111 and F <= b2 on those of type 112, then
 
 for every such code; a certificate with Z < 0 proves that none exists.
 
-Usage: python3 typed_cardinality_sdp.py d t1 t2 [rounds] [n]
+Usage: python3 typed_cardinality_sdp.py d t1 t2 [rounds] [n] [save.npz]
        python3 typed_cardinality_sdp.py sweep d rounds t1 t2a t2b ...
 """
 import os

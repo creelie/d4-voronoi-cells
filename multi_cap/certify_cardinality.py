@@ -18,13 +18,13 @@ D4 code package, reused unchanged):
           P2 is symmetric, so the ordered domain suffices)
   5. Conclusion: every code C on S^3 with pairwise inner products <= t satisfies
           (|C|-1)(1 - e1) - (|C|-1)(|C|-2) e2 <= B - 1 ,
-     and if that fails at |C| = 25 then |C| <= 24.
+     and if that fails at |C| = N then |C| <= N - 1 (N = 25 unless given).
 
 The threshold t is the decimal the certificate file records (0.5065, say), taken
 exactly; the branch and bound runs to the least double >= t, so that the domain it
 covers contains [-1, t] even where the double nearest t lies below it.
 
-Usage: python3 certify_cardinality.py cert.npz [e1] [e2] [wmin]
+Usage: python3 certify_cardinality.py cert.npz [e1] [e2] [wmin] [N]
 """
 import os
 import sys
@@ -168,6 +168,7 @@ def main():
     e1 = below(sys.argv[2]) if len(sys.argv) > 2 else below('1e-6')
     e2 = below(sys.argv[3]) if len(sys.argv) > 3 else below('1e-4')
     wmin = float(sys.argv[4]) if len(sys.argv) > 4 else 1e-5
+    N = int(sys.argv[5]) if len(sys.argv) > 5 else 25      # the number of points to exclude
     Z = np.load(path)
     d = len(Z['f']); t = Fr(repr(float(Z['t'])))          # the recorded decimal, exactly
     f = [max(Fr(float(x)), Fr(0)) for x in Z['f']]
@@ -192,17 +193,17 @@ def main():
     ok2, _ = verify_3d(P2, t, e2, wmin)
     if not (ok1 and ok2):
         print("FAILED"); sys.exit(1)
-    # 5. conclusion at |C| = 25: need 24(1-e1) - 24*23*e2 > B - 1
-    lhs = Fr(24) * (1 - Fr(e1)) - Fr(24 * 23) * Fr(e2)          # the doubles the checks used, exactly
-    print(f"5. at |C| = 25:  24(1-e1) - 552 e2 = {float(lhs):.6f}  vs  B - 1 = {float(B - 1):.6f}")
+    # 5. conclusion at |C| = N: need (N-1)(1-e1) - (N-1)(N-2) e2 > B - 1
+    lhs = Fr(N - 1) * (1 - Fr(e1)) - Fr((N - 1) * (N - 2)) * Fr(e2)   # the doubles the checks used, exactly
+    print(f"5. at |C| = {N}:  {N-1}(1-e1) - {(N-1)*(N-2)} e2 = {float(lhs):.6f}  vs  B - 1 = {float(B - 1):.6f}")
     if lhs > B - 1:
         s = t - Fr(1, 2)
-        print(f"PASS: A(4, {float(t)}) <= 24.  Any set of points of S^3 with pairwise inner products at most 1/2 + {float(s)} has at most 24 points")
-        print(f"      (a set of 25 or more would contain 25 points, and the bound excludes |C| = 25);")
+        print(f"PASS: A(4, {float(t)}) <= {N-1}.  Any set of points of S^3 with pairwise inner products at most 1/2 + {float(s)} has at most {N-1} points")
+        print(f"      (a set of {N} or more would contain {N} points, and the bound excludes |C| = {N});")
         d_ = 2 / np.sqrt(1 - 2 * float(s))
-        print(f"      equivalently, in a unit-ball packing of R^4 at most 24 other centres lie within distance {d_:.6f} of any centre.")
+        print(f"      equivalently, in a unit-ball packing of R^4 at most {N-1} other centres lie within distance {d_:.6f} of any centre.")
     else:
-        print("FAILED: the bound does not exclude 25 points"); sys.exit(1)
+        print(f"FAILED: the bound does not exclude {N} points"); sys.exit(1)
 
 
 if __name__ == '__main__':
