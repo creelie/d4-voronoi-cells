@@ -54,7 +54,7 @@ splits the close centres of 28 into four types. At 29 and degree 8
 is 3.0287, 3.0568, 3.0592, 3.0605 in four rounds and the corrected value
 comes down to 3.1026, below the level in
 floating point but with less room than the exact check at thirty used up
-(about 0.09). `multi_cap/combo_case_check.py` is the exact check these
+(about 0.08, from the corrected 3.0062 to the proved 3.0872). `multi_cap/combo_case_check.py` is the exact check these
 certificates would have to pass; none has yet. Runs on a larger machine go
 through `bigmachine/run_combo.py`.
 
