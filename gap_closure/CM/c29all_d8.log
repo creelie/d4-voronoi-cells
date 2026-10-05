@@ -1,0 +1,8 @@
+   51 type-count vectors
+/home/claude/d4-voronoi-cells/gap_closure/CM/combo_gen2.py:189: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver='CLARABEL', max_iter=500)
+d3=8 round 1: optimal_inaccurate  bound 3.02868 (target 3.10330), corrected <= 4.58827  [1797 s]
+   viol: AA 1.5e-06, AB 2.4e-06, AF 2.9e-08, BB -1.7e-07, BF 8.9e-06, FF -1.6e-07, AAA 1.3e-04, AAB 4.3e-04, AAF 4.0e-04, ABB 5.1e-04, ABF 1.1e-03, AFF 4.2e-04, BBB 1.2e-04, BBF 2.4e-04, BFF 1.8e-04, FFF 1.2e-04
+   c2: {'AA': -0.034446, 'AB': -0.016726, 'AF': 0.001486, 'BB': 0.005162, 'BF': 0.016358, 'FF': 0.037284}
+   c3: {'AAA': 0.0031644, 'AAB': 0.0026022, 'AAF': 0.0017723, 'ABB': 0.0018497, 'ABF': 0.0012998, 'AFF': 0.0001908, 'BBB': 0.001049, 'BBF': 0.0007832, 'BFF': -0.0004731, 'FFF': 0.0061492}
+   51 type-count vectors
