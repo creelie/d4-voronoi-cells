@@ -161,8 +161,9 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               at one count M, one for each case of a tree
                               of bounds on the numbers N(r) of centres
                               within r (the tree for M = 30 is
-                              case_30_spec.json; a leaf marked residual
-                              carries no certificate).  Floating point;
+                              case_30_spec.json; its fifth leaf, marked
+                              residual, is settled by combo30_check.py
+                              below).  Floating point;
                               writes radial_certificates/case_M.json.
                               Without --spec it grows a tree by trying
                               splits.  A spec with "antipodal": true also
@@ -234,6 +235,30 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               up at 325 pairs.  Logs:
                               gap_closure/density/cert_M.log and
                               check_M.log.
+
+  combo30_check.py radial_certificates/combo30_d8.npz 8 2e-5 5e-6 2e-6
+                              thm:count30, fifth case (24 centres within
+                              2.25, 6 beyond 2.4): the two-point kernel
+                              labelled by distance plus the three-point
+                              kernel on directions typed by distance
+                              (lem:typed-triples), with the certificate of
+                              gap_closure/C30/combo30p.py.  Exact LDL^T, the
+                              six pair inequalities by tensor Bernstein
+                              bounds with Pi in Arb (47 646 boxes), the bins
+                              (4131 intervals), the nine triple inequalities
+                              by second-order Taylor forms (8 275 056
+                              boxes), and the bound at the five count
+                              vectors: largest 3.087203 at (22, 1, 1, 0, 6),
+                              below 9 pi^2/8 - 8.  115 minutes.  Log:
+                              runs/combo30_check.log.
+
+  combo_case_check.py case.json cert.npz d3 [m2 m3 mm]
+                              The same check for a case file of
+                              gap_closure/CM (statement (C) at 25 to 29
+                              centres, the count constraints of
+                              prop:C-radial), with the bound taken over
+                              every allowed vector of bin counts in exact
+                              arithmetic.  No certificate has passed it.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

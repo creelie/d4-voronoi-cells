@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """
 combo30_check.py -- rigorous verification of a certificate written by
-gap_closure/C30/combo30p.py for the case that thm:count30 leaves: thirty
+gap_closure/C30/combo30p.py for the fifth case of thm:count30: thirty
 centres within sqrt6 of c, twenty-four of them within 2.25 (22 within 2.05,
 23 within 2.15) and six in [2.4, sqrt6).  If it passes, every such packing set
-has union of caps U(Y) < 9 pi^2/8 - 8, so T(Y) > 8 there.
+has union of caps U(Y) < 9 pi^2/8 - 8, so T(Y) > 8 there.  It passes on
+radial_certificates/combo30_d8.npz at d3 = 8 with the margins 2e-5, 5e-6 and
+2e-6: the largest bound is 3.087203, at the bin counts (22, 1, 1, 0, 6)
+(runs/combo30_check.log, 6891 s).
 
 The certificate combines the distance-labelled two-point kernel of thm:count31,
     K(y, y') = sum_k U_k(<y^,y'^>)/(k+1) p(|y|)^T A_k p(|y'|),

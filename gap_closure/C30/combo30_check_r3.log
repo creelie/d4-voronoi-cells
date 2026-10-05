@@ -49,3 +49,20 @@ residual case of thm:count30: combined certificate combo30q_d8_r3.npz, two-point
       FFF level 10: 0 boxes verified, 342 to bisect [3 s]
       FFF level 20: 21191 boxes verified, 54838 to bisect [101 s]
       FFF level 30: 201886 boxes verified, 1034 to bisect [376 s]
+      BFF level 30: 824571 boxes verified, 1634 to bisect [1168 s]
+  [ok] TRIPLE3_AAA <= c3 on the admissible triples  (997000 boxes, largest centre value 8.8778e-02)
+  [ok] TRIPLE3_AAB <= c3 on the admissible triples  (1422187 boxes, largest centre value 6.1716e-02)
+  [ok] TRIPLE3_AAF <= c3 on the admissible triples  (1143430 boxes, largest centre value -2.3065e-01)
+  [ok] TRIPLE3_ABB <= c3 on the admissible triples  (797913 boxes, largest centre value 3.1854e-02)
+  [ok] TRIPLE3_ABF <= c3 on the admissible triples  (1478704 boxes, largest centre value -1.1892e-01)
+  [ok] TRIPLE3_AFF <= c3 on the admissible triples  (906757 boxes, largest centre value 4.4188e-01)
+  [ok] TRIPLE3_BBF <= c3 on the admissible triples  (500251 boxes, largest centre value -3.8959e-03)
+  [ok] TRIPLE3_BFF <= c3 on the admissible triples  (825855 boxes, largest centre value 1.7271e-03)
+  [ok] TRIPLE3_FFF <= c3 on the admissible triples  (202959 boxes, largest centre value 1.8229e-01)
+  counts (22, 1, 1, 0, 6): bound 3.087203
+  counts (22, 2, 0, 0, 6): bound 3.059290
+  counts (23, 0, 1, 0, 6): bound 3.068790
+  counts (23, 1, 0, 0, 6): bound 3.040877
+  counts (24, 0, 0, 0, 6): bound 3.036875
+  [ok] largest bound over the five count vectors below 9 pi^2/8 - 8  (3.087203 < [3.1033050 +/- 4.88e-8])
+PASS: in the residual case of thm:count30 every packing set has U(Y) <= 3.087203 < 9 pi^2/8 - 8, so T(Y) > 8 [6891 s]

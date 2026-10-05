@@ -2,28 +2,32 @@
 
 This directory holds the computations run against the two statements that the
 paper leaves open (Section "The statements (G) and (C)"): statement (C) for
-25 to 30 centres within sqrt6, and statement (G). **None of them yields a
-certificate.** They are floating-point semidefinite programmes on sampled
-constraints, kept so that the negative results quoted in the paper and in the
-pull request can be reproduced. No result here is used in any proof, except
-the exact checks logged in `density/check_M.log` (see the last section).
+25 to 29 centres within sqrt6, and statement (G), and the residual case at
+thirty centres, which they settled. They are floating-point semidefinite
+programmes on sampled constraints. **Only one of them yields a certificate**:
+the round-3 certificate of `C30/combo30p.py`, which `multi_cap/combo30_check.py`
+proves exactly and which is the fifth case of `thm:count30`. The rest are kept
+so that the values quoted in the paper and in the pull requests can be
+reproduced, and no result of theirs is used in any proof, except the exact
+checks logged in `density/check_M.log` (see the last section).
 
 The level that (C) asks for is `9 pi^2/8 - 8 = 3.10330`: a programme proves a
 case only if its bound, after the correction for the constraints that the
 samples miss, is below that level.
 
-## C30: the residual case at thirty centres
+## C30: the residual case at thirty centres (proved)
 
-The case left by `thm:count30`: 24 centres within 2.25 (22 within 2.05, 23
-within 2.15) and 6 beyond 2.4.
+The fifth case of `thm:count30`: 24 centres within 2.25 (22 within 2.05, 23
+within 2.15) and 6 beyond 2.4. The two-point programmes of the tree do not
+close it (`rem:thirty-pairs`); the kernel on typed triples does.
 
 | script | kernel | result (log) |
 |---|---|---|
 | `combo30.py` | distance-labelled two-point kernel plus a three-point kernel typed by distance class (A = [2, 2.05], B = (2.05, 2.25], F = [2.4, sqrt6)) | degree 0: 3.1212 (`combo30_d0.log`); degree 2: 3.1211 (`combo30_d2.log`); degree 6, three rounds: raw 3.0991, corrected 3.1160 (`combo30_d6b.log`) |
-| `combo30p.py` | the same, with the sample set pruned so that more rounds fit in memory | degree 6: raw 3.0995, corrected 3.1103 (`combo30p_d6.log`); degree 8, two rounds: raw 2.8946 then 2.9338, corrected 4.4901 then 3.8157 (`combo30p_d8.log`, `combo30p_d8b.log`); resumed with 3000 pair and 1200 triple samples kept per kind (`combo30q_d8.log`): raw 2.9349 and 2.9388, corrected 3.3005 and 3.1528 in its first two rounds, the excess now coming from the triples |
+| `combo30p.py` | the same, with the sample set pruned so that more rounds fit in memory | degree 6: raw 3.0995, corrected 3.1103 (`combo30p_d6.log`); degree 8, two rounds: raw 2.8946 then 2.9338, corrected 4.4901 then 3.8157 (`combo30p_d8.log`, `combo30p_d8b.log`); resumed with 3000 pair and 1200 triple samples kept per kind (`combo30q_d8.log`): raw 2.9349, 2.9388, 2.9414, 2.9422 and corrected 3.3005, 3.1528, 3.0062, 2.9971 in four rounds; the round-3 certificate `combo30q_d8_r3.npz` is the one proved (copied to `multi_cap/radial_certificates/combo30_d8.npz`) |
 | `typed_delsarte.py`, `code_feasible.py`, `code_feasible2.py`, `code_feas_gen.py` | typed linear programming bound and local search for two-shell codes with points in holes | exploration only (`slackhole_d6.log`) |
 | `case_value.py` | value of the two-point case programme of the paper for given count constraints | used to choose splits |
-| `multi_cap/combo30_check.py` | the exact check that a certificate of `combo30p.py` has to pass: exact positivity, the pair inequalities by Bernstein branch and bound with Pi in Arb, the bins, the typed triple inequalities by Taylor branch and bound, and the bound over the five count vectors | its exact polynomials agree with the solver's to 2e-16 on test points; no certificate has been submitted to it yet |
+| `multi_cap/combo30_check.py` | the exact check that a certificate of `combo30p.py` has to pass: exact positivity, the pair inequalities by Bernstein branch and bound with Pi in Arb, the bins, the typed triple inequalities by Taylor branch and bound, and the bound over the five count vectors | **PASS** on `combo30q_d8_r3.npz` with margins 2e-5, 5e-6, 2e-6: 47 646 pair boxes, 4131 bin intervals, 8 275 056 triple boxes, largest bound 3.087203 at counts (22, 1, 1, 0, 6) < 3.10330 (`C30/combo30_check_r3.log`, 6891 s) |
 
 The raw value is the optimum on the samples; the corrected value adds, for each
 kind of pair and triple, the largest violation found between the samples times
@@ -39,6 +43,20 @@ vectors by linear-programming duality instead of enumerating them
 (`combo_gen.py` enumerates them and runs out of memory). With the two-point
 kernel alone (degree 0 in the three-point part) the value is 3.1967
 (`c29all2_d0.log`), far above the level.
+
+`combo_direct.py` runs the same programme through Clarabel's own interface
+instead of cvxpy, in about half the memory (environment: `DSM` the
+factorisation, `THREADS`, `TAG`). The case files `case25_all.json` to
+`case28_all.json` carry the constraints of `prop:C-radial` at 25 to 28
+centres (5330, 17 845, 42 927 and 74 550 count vectors), and `case28_t4.json`
+splits the close centres of 28 into four types. At 29 and degree 8
+(`c29all_d8.log`, continued from its samples in `c29x_d8.log`) the raw value
+is 3.0287, 3.0568, 3.0592, 3.0605 in four rounds and the corrected value
+comes down to 3.1026, below the level in
+floating point but with less room than the exact check at thirty used up
+(about 0.09). `multi_cap/combo_case_check.py` is the exact check these
+certificates would have to pass; none has yet. Runs on a larger machine go
+through `bigmachine/run_combo.py`.
 
 ## musin: where the two-point kernel fails
 
