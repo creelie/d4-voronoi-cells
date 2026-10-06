@@ -91,4 +91,5 @@ mc12.npy: 12 close centres, largest violation 4.611e-09
 stops at 12 close centres; best move to 13 misses by 4.174e-03
 
 27 (c28_maxclose.py 1000 91 27; radial counts of 27 at bin maxima, the 20 within 2.1 variable): codes with 18 centres within 2.0161 fit, so the split at 27 would need a limit of at least 18:
-after 450 starts: feasible close counts {0: 5, 1: 5, 2: 22, 3: 24, 4: 35, 5: 64, 6: 96, 7: 107, 8: 118, 9: 111, 10: 131, 11: 101, 12: 62, 13: 79, 14: 40, 15: 13, 16: 5, 18: 3}
+after 1000 starts: feasible close counts {0: 12, 1: 12, 2: 44, 3: 66, 4: 87, 5: 137, 6: 203, 7: 233, 8: 289, 9: 260, 10: 283, 11: 201, 12: 162, 13: 130, 14: 95, 15: 43, 16: 7, 17: 3, 18: 3}
+largest feasible close count: 18
