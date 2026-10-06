@@ -164,7 +164,7 @@ degree 6 (floating point, `c28lo{k}_d6.log`):
 
 At degree 8 the value drops by about 0.11 (k = 19: 3.09003 in round 1,
 `c28lo19_d8.log`; k = 20: 3.10234, `c28lo20_d8.log`, stopped when the smaller
-limits came in). `c28lo13_d8.log` runs k = 13 at degree 8 for four rounds.
+limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`).
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
@@ -179,7 +179,7 @@ centre of a 9-centre code in from 2.1 to 2.0161 in small steps
 that makes the 21 distances within 2.1 variables and rewards those at 2.0161
 (`CM/c28_maxclose.py`) finds 12 in 2000 starts and never 13
 (`CM/c28_close12_witness.txt`, slack 1e-5; from it `CM/c28_extend.py` misses
-13 by 4.2e-3). At 27 the same search finds 18. So the limit k at 28 has to be
+13 by 4.2e-3, and 600 steps of basin hopping, `CM/c28_hop.py`, stay at 12). At 27 the same search finds 18. So the limit k at 28 has to be
 at least 12, and at 27 at least 18. A miss in
 a local search is evidence, not a proof, and the statement is of the same kind
 as the 24-plus-one exclusion below, which three-point bounds do not settle: the
