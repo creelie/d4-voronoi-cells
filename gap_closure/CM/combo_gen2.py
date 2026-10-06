@@ -195,6 +195,7 @@ def tbound(s, t):
 
 
 KEEP_P, KEEP_T = int(os.environ.get('KEEP_P', '5000')), int(os.environ.get('KEEP_T', '2500'))
+KEEP_BASE = os.environ.get('KEEP_BASE') == '1'   # keep the starting pair grid through every pruning
 
 
 def prune(psamp, tsamp, x3v, Av, c2v, c3v, L):
@@ -210,6 +211,11 @@ def prune(psamp, tsamp, x3v, Av, c2v, c3v, L):
         v = Kv - pair(p / 2, q / 2, u) + B.matrix(len(u)) @ x3v - c2v[st]
         w = np.argsort(v)[-KEEP_P:]
         psamp[st] = (p[w], q[w], u[w])
+        if KEEP_BASE:
+            # the starting grid stays, so that no region of the pairs is left unsampled
+            # after a round in which it was far from binding
+            X = np.unique(np.r_[np.stack(psamp[st], 1), np.stack(pair_samples(*st), 1)], axis=0)
+            psamp[st] = (X[:, 0], X[:, 1], X[:, 2])
     for cb in tsamp:
         g = tsamp[cb]
         if len(g) <= KEEP_T or cb not in c3v:
