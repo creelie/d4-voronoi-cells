@@ -77,3 +77,8 @@ largest count reached: 9
      code 3: stops at 8 close centres; best move to 9 misses by 5.042e-04
      code 4: stops at 9 close centres; best move to 10 misses by 1.118e-03
      code 5: stops at 8 close centres; best move to 9 misses by 6.514e-04
+
+Direct search for the largest close count (c28_maxclose.py 400 81): the 21 distances within 2.1 are variables, -sum s_j plus a growing penalty on the violations, then the centres with s_j above 0.98, 0.9 or 0.7 are fixed at 2.0161 and the rest at 2.1.  Counts of feasible codes by close count, over the three thresholds of every start:
+after 400 starts: feasible close counts {0: 17, 1: 47, 2: 82, 3: 158, 4: 186, 5: 212, 6: 173, 7: 121, 8: 63, 9: 26, 10: 7}
+largest feasible close count: 10
+A code with 10 close centres, all 378 constraints met with slack 7.3e-8 (largest inner product 0.508 between close centres), is saved in c28_close10_witness.txt.  A run with 2000 starts (seed 83) is in progress.
