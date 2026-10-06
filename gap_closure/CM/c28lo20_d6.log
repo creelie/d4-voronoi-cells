@@ -1,0 +1,2 @@
+28 with at most 20 centres within 2.0161 (case28_lo20.json), three-point degree 6, one round; the whole case gives 3.23113 and at most 19 gives 3.20482 at this degree; started Tue Oct  6 17:57:08 UTC 2026
+   direct: 3852 variables, 67288 inequalities, 2253 psd rows in 40 cones, 17785456 nonzeros [6 s to build]
