@@ -1,0 +1,2 @@
+27, whole case (case27_all.json), three-point degree 6, one round, as the base for the split by centres within 2.0161.  Started Tue Oct  6 20:19:04 UTC 2026
+   direct: 3027 variables, 66188 inequalities, 2253 psd rows in 40 cones, 17774291 nonzeros [6 s to build]

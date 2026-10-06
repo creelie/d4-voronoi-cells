@@ -64,3 +64,16 @@ m = 9: 1 codes found in 4000 starts
    code 0: best so far -1.157e-09
 m + 1 = 10 by continuation: smallest largest violation -1.157e-09
 Chains of such moves from codes with 6 and 8 close centres run in c28_chain.py (chain6.log, chain8.log).
+
+Chains of continuation moves (c28_chain.py 6 300 71 and c28_chain.py 8 3000 73), greedy, one centre at a time:
+m = 6: 16 codes found in 300 starts
+largest count reached: 8
+   chains from 6: 16
+m = 8: 6 codes found in 3000 starts
+largest count reached: 9
+     code 0: stops at 8 close centres; best move to 9 misses by 1.246e-03
+     code 1: stops at 8 close centres; best move to 9 misses by 9.128e-04
+     code 2: stops at 9 close centres; best move to 10 misses by 1.600e-04
+     code 3: stops at 8 close centres; best move to 9 misses by 5.042e-04
+     code 4: stops at 9 close centres; best move to 10 misses by 1.118e-03
+     code 5: stops at 8 close centres; best move to 9 misses by 6.514e-04

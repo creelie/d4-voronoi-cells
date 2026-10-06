@@ -1,0 +1,2 @@
+27 with at most 16 centres within 2.0161 (case27_lo16.json), three-point degree 6, one round.  Local search under the radial counts of 27 fits 16 centres within 2.0161 (2 of 1000 starts) and not 20.  Started Tue Oct  6 20:19:04 UTC 2026
+   direct: 3027 variables, 66188 inequalities, 2253 psd rows in 40 cones, 17774291 nonzeros [6 s to build]
