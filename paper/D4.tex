@@ -8197,12 +8197,30 @@ $E\succeq0$. Hence
   \min_Q\|X-VQ\|^2=e+\sum_k\bigl(\sqrt{\lambda_k}-\sqrt6\bigr)^2
   \ \le\ e+\frac{(\alpha+e)^2}{\bigl(\sqrt{6-\alpha-e}+\sqrt6\bigr)^2}.
 \]
-The right side increases in $\alpha$ and in $e$. Splitting
-$[0,2\cdot0.3059/12]$ into $200$ intervals of $e$ and bounding the square
-roots by rationals, one checks in exact arithmetic, and again in Lean, that it stays below
-$0.0515$ whenever $\alpha^2+12e\le2\cdot0.3059$, while $6h^2>0.05197$ at
+Put $\kappa=2\cdot0.3059=0.6118$, so that $\alpha^2+12e\le\kappa$ under
+\textup{(iii)}. Then $\alpha\le\sqrt\kappa$ and
+$\alpha+e\le\alpha+\frac1{12}(\kappa-\alpha^2)\le\sqrt\kappa<0.7822$, the
+middle expression being increasing in $\alpha$ for $\alpha<6$. So the
+denominator is at least
+$D_0=(\sqrt{5.2178}+\sqrt6)^2>(2.2842+2.4494)^2>22.4069$, and, using
+$e\le\frac1{12}(\kappa-\alpha^2)$ in the first term and $e\le\frac\kappa{12}$
+in the square,
+\[
+  e+\frac{(\alpha+e)^2}{D_0}
+  \ \le\ \frac{\kappa-\alpha^2}{12}+\frac{(\alpha+\kappa/12)^2}{D_0}
+  \ =\ \frac\kappa{12}+\frac{\kappa^2}{144D_0}+\frac{\kappa}{6D_0}\,\alpha
+  -\Bigl(\frac1{12}-\frac1{D_0}\Bigr)\alpha^2 .
+\]
+This is a concave quadratic in $\alpha$, and its largest value,
+$\frac\kappa{12}+\frac{\kappa^2}{144D_0}
++\frac{\kappa^2}{144D_0^2}\bigl(\frac1{12}-\frac1{D_0}\bigr)^{-1}$, is below
+$0.05124$ for every $D_0\ge22.4069$. Hence
+$\min_Q\|X-VQ\|^2<0.0515$, while $6h^2>0.05197$ at
 $\rho=2/\sqrt{1-0.016}$. Therefore \textup{(ii)} holds with
-$\sigma(x)=Q^{\mathsf T}x$ for the minimising $Q$.
+$\sigma(x)=Q^{\mathsf T}x$ for the minimising $Q$. (Splitting
+$[0,\kappa/12]$ into $200$ intervals of $e$ and bounding the square roots by
+rationals gives the same conclusion in exact arithmetic, and this is checked
+again in Lean.)
 
 For the last statement, the directions of the $24$ centres have pairwise
 inner products at most $a(\rho,\rho)=\frac12+2\cdot10^{-26}$, so
