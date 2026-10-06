@@ -11,7 +11,8 @@ active there and the bound when each of them is relaxed by one, the spread of th
 per-centre function f over the bins, and the points where the pair and triple
 inequalities come closest to their thresholds.  Nothing in a proof uses these values.
 
-Usage: python3 combo_tight.py count29|count30     Logs: runs/combo29_tight.log, runs/combo30_tight.log.
+Usage: python3 combo_tight.py count29|count30|level26
+Logs: runs/combo29_tight.log, runs/combo30_tight.log, runs/combo26_level_tight.log (prop:levels at M = 26).
 """
 import itertools
 import json
@@ -29,9 +30,12 @@ from radial_count_sdp import C1, C2  # noqa: E402
 from truncated_search import pair as pair_float, S as S_float  # noqa: E402
 
 WHICH = sys.argv[1]
-if WHICH == 'count29':
-    CERT, LOG, MGM = 'combo29_d8.npz', 'combo29_check.log', 1e-6
-    CASE = json.load(open(os.path.join(HERE, '..', 'gap_closure', 'CM', 'case29_all.json')))
+if WHICH in ('count29', 'level26'):
+    if WHICH == 'count29':
+        CERT, LOG, MGM, CF = 'combo29_d8.npz', 'combo29_check.log', 1e-6, 'case29_all.json'
+    else:
+        CERT, LOG, MGM, CF = 'combo26_level_d8.npz', 'combo26_level_check.log', 2e-6, 'case26_all.json'
+    CASE = json.load(open(os.path.join(HERE, '..', 'gap_closure', 'CM', CF)))
     num = lambda x: C.DMAX if x == 'sqrt6' else C.Fr(str(x))  # noqa: E731
     C.TYPES = list(CASE['types'])
     C.TRANGE = {k: (num(a), num(b)) for k, (a, b) in CASE['trange'].items()}
@@ -42,7 +46,7 @@ else:
     CERT, LOG, MGM = 'combo30_d8.npz', 'combo30_check.log', 2e-6
     CONS = None
 D3 = 8
-LEVEL = 9 * math.pi ** 2 / 8 - 8
+LEVEL = 3.3352 if WHICH == 'level26' else 9 * math.pi ** 2 / 8 - 8
 
 
 def counts(cons, M, nb):

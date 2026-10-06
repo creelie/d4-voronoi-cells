@@ -181,7 +181,11 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               where the pair and triple inequalities come
                               closest to their thresholds.  Used in no
                               proof.  Logs: runs/combo29_tight.log,
-                              runs/combo30_tight.log.
+                              runs/combo30_tight.log.  With level26 the
+                              same for the certificate of prop:levels at
+                              M = 26 (largest 3.32906; with 23 centres
+                              within 2.444 it would be 3.3590 > 3.3352):
+                              runs/combo26_level_tight.log.
 
   radial_count_check.py radial_certificates/radial_31.json
                               Proves thm:count31 from the certificate
