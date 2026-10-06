@@ -126,12 +126,65 @@ rounds drops the samples once they are satisfied. With `TSYM=n` every kind
 with two points of one type carries a fixed n-by-n grid on that symmetric
 slice (u13 = u23 or u12 = u13, and for three equal types also the diagonal),
 kept through every pruning, and the probes add one of twice that density
-(`c28s_d10.log`, continued from the round-3 certificate).
+(`c28s_d10.log`, continued from the round-3 certificate). Its first round gave
+3.09379 on the samples, but with the symmetric triples held the solver moved
+weight onto the pairs and used the gaps between the pair samples, thinned to
+5000 per kind by the pruning: the pair violations reached 0.56 and the
+corrected value 134.9. The second round put those pair points back and gave
+3.09513 (corrected 29.4); the run was stopped in round 3. Over the five rounds
+at degree 10 the value on the samples went 3.09166, 3.09216, 3.09435, 3.09379,
+3.09513, while the violations between samples moved from kind to kind and never
+fell below about 1e-4. The sampled value bounds the optimum over all admissible
+pairs and triples from below, and the margins of the exact check (2e-5 on each
+of the 378 pairs and 2e-6 on each of the 3276 triples, as at 29 and 30) cost
+about 0.014, so the exact check would need that optimum below about 3.089,
+which the samples already exceed. The whole case at 28 is out of reach of the
+kernel at degree 10.
 
 The case at 28 does not split usefully at the count that limits the bound
 at 29. With at least 19 of the centres within 2.05 (`case28_hiA.json`), the
 kernel of three-point degree 6 gives 3.23113 in one round, the value of the
-whole case at that degree (`c28hiA_d6.log`).
+whole case at that degree (`c28hiA_d6.log`). At degree 10 the round-3
+certificate is flat in the counts as well (`count_effect.py`,
+`c28m_r3_counts.log`): its largest value over the count vectors, 3.09436, is at
+22 centres within 2.0161, one in (2.05, 2.1], one in (2.2, 2.35] and four
+beyond 2.35, and asking for 10 to 21 centres within 2.05, 24 within 2.2, 25 to
+27 within 2.35, or at most 20 to 22 within 2.0161 changes it by at most
+1.6e-4. Sharper radial counts would not lower the bound at 28; the obstacle
+is the arrangement of 22 nearly touching centres with six farther out.
+
+The case does split at the count of centres within 2.0161. Replacing the
+condition N(2.0161) <= 24 of `case28_all.json` by N(2.0161) <= k
+(`case28_lo{k}.json`) lowers the kernel steadily; in one round of three-point
+degree 6 (floating point, `c28lo{k}_d6.log`):
+
+| k | 24 (whole case) | 21 | 20 | 19 | 15 | 13 | 8 |
+|---|---|---|---|---|---|---|---|
+| value | 3.23113 | 3.21554 | 3.21021 | 3.20482 | 3.18288 | 3.17164 | 3.14307 |
+
+At degree 8 the value drops by about 0.11 (k = 19: 3.09003 in round 1,
+`c28lo19_d8.log`; k = 20: 3.10234, `c28lo20_d8.log`, stopped when the smaller
+limits came in). `c28lo13_d8.log` runs k = 13 at degree 8 for four rounds.
+A certificate for some k reduces (C) at 28 to a statement about directions
+alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
+within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
+Since a(r, s) increases in both distances, it suffices to rule out the
+directions with every centre at the largest distance its count allows.
+`CM/code_feas_dist.py` searches for such directions by local minimisation of
+the squared violations (`CM/c28_direction_search.log`): with 2000 starts it
+fits 9 centres within 2.0161 and none of 10 to 20 (least largest violation
+1.6e-3 at 10, 2.8e-2 at 20). Random starts miss rare arrangements: moving one
+centre of a 9-centre code in from 2.1 to 2.0161 in small steps
+(`CM/c28_continue.py`, `CM/c28_chain.py`) gives a code with 10, and a search
+that makes the 21 distances within 2.1 variables and rewards those at 2.0161
+(`CM/c28_maxclose.py`) finds 12 in 2000 starts and never 13
+(`CM/c28_close12_witness.txt`, slack 1e-5; from it `CM/c28_extend.py` misses
+13 by 4.2e-3). At 27 the same search finds 18. So the limit k at 28 has to be
+at least 12, and at 27 at least 18. A miss in
+a local search is evidence, not a proof, and the statement is of the same kind
+as the 24-plus-one exclusion below, which three-point bounds do not settle: the
+typed three-point bound on 20 centres within 2.0161, one at 2.1, three at 2.35
+and four at sqrt6 stays at 0 (`CM/c28_typed_dirs.py`).
 
 ## musin: where the two-point kernel fails
 

@@ -277,3 +277,8 @@ Killed
 [15:37 UTC: D4A18.lean was stopped by the container's memory limit.  It needs about
  8 GB, and the degree-10 run at 28 neighbours held 6.3 GB beside it.  The other
  fourteen files passed above.  D4A18.lean is rechecked alone once that run ends.]
+== D4A18.lean (rechecked alone, 17:08 UTC)
+'D4A18.stab_count' depends on axioms: [propext]
+'D4A18.congruent_from5' depends on axioms: [propext]
+'D4A18.congruent_from12' depends on axioms: [propext]
+[D4A18.lean passed alone in 113 s with a peak of 8.03 GB: all fifteen files check on main 998923d.]
