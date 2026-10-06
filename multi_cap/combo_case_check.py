@@ -20,6 +20,12 @@ refines every inequality as the check does, skips the branch and bounds, and pri
 the bound over the count vectors that those thresholds would give.  That is floating
 point and proves nothing; it tells whether a certificate is worth the full check.
 
+With BORDER=1 the matrix [[A_0, z], [z^T, t]] is rounded to an exact positive definite
+matrix as a whole, eigenvalues clipped at 0 and shifted as for the other blocks, instead
+of rounding A_0 and z and setting t = z^T A_0^{-1} z rounded up; when A_0 is nearly
+singular this keeps t near the solver's value.  Either way the bordered matrix is
+checked positive semidefinite by exact LDL^T.
+
 With LEVEL=<decimal> the final comparison is with that number instead of 9 pi^2/8 - 8:
 the check then proves the density level U(Y) < LEVEL for every packing set of the case,
 whose constraints hold whenever U(Y) >= 9 pi^2/8 - 8, so that U(Y) < max(9 pi^2/8 - 8,
@@ -45,6 +51,7 @@ from truncated_search import pair as pair_float  # noqa: E402
 
 CASE = json.load(open(sys.argv[1]))
 PRE = os.environ.get('PRECHECK') == '1'
+BORDER = os.environ.get('BORDER') == '1'
 
 
 def num(x):
@@ -105,15 +112,27 @@ def main():
     C.check('dmax exceeds sqrt 6', C.DMAX ** 2 > 6)
     # (a) positivity
     Af = np.array(Z['A'], float)
-    A0 = C.psd_exact(Af[0], Fr(1, 2 ** 30))
+    if BORDER:
+        # round the bordered matrix [[A_0, z], [z^T, t]] as a whole: when A_0 is nearly
+        # singular, z^T A_0^{-1} z after rounding A_0 alone can exceed the solver's t
+        nA = len(Af[0])
+        Bd = np.zeros((nA + 1, nA + 1))
+        Bd[:nA, :nA] = Af[0]; Bd[:nA, nA] = Bd[nA, :nA] = np.array(Z['z'], float); Bd[nA, nA] = float(Z['t'])
+        Zm = C.psd_exact(Bd, Fr(1, 2 ** 30))
+        A0 = [row[:nA] for row in Zm[:nA]]
+        z = [Zm[i][nA] for i in range(nA)]
+        t = Zm[nA][nA]
+    else:
+        A0 = C.psd_exact(Af[0], Fr(1, 2 ** 30))
+        z = [C.dyad(v) for v in np.array(Z['z'], float)]
     A = [A0] + [C.psd_exact(Af[k], Fr(1, 2 ** 30)) for k in range(1, D2 + 1)]
-    z = [C.dyad(v) for v in np.array(Z['z'], float)]
     good = all(ldl_psd(A[k])[0] for k in range(1, D2 + 1))
     g0, piv = ldl_psd(A0)
-    wv = solve_exact(A0, z)
-    tq = sum(a * b for a, b in zip(z, wv))
-    t = Fr(-(-tq.numerator * 2 ** 48 // tq.denominator), 2 ** 48)
-    Zm = [row[:] + [z[i]] for i, row in enumerate(A0)] + [z + [t]]
+    if not BORDER:
+        wv = solve_exact(A0, z)
+        tq = sum(a * b for a, b in zip(z, wv))
+        t = Fr(-(-tq.numerator * 2 ** 48 // tq.denominator), 2 ** 48)
+        Zm = [row[:] + [z[i]] for i, row in enumerate(A0)] + [z + [t]]
     gz, _ = ldl_psd(Zm)
     C.check('A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)',
             good and g0 and all(p > 0 for p in piv) and gz, 't = %.9f, float t %.9f' % (float(t), float(Z['t'])))
