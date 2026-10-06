@@ -29,3 +29,5 @@ statement (C) at 26 centres, case case26_all.json: combined certificate combo26_
       AAB level 10: 0 boxes verified, 622 to bisect [1 s]
       AAF level 10: 0 boxes verified, 624 to bisect [1 s]
       AAA level 20: 14307 boxes verified, 74532 to bisect [37 s]
+      AAF level 20: 57274 boxes verified, 150270 to bisect [101 s]
+      AAB level 20: 38524 boxes verified, 231964 to bisect [117 s]
