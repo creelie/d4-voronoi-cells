@@ -40,3 +40,6 @@ statement (C) at 26 centres, case case26_all.json: combined certificate combo26_
       ABF level 30: 266469 boxes verified, 652 to bisect [201 s]
       ABF level 40: 267406 boxes verified, 228 to bisect [204 s]
       AFF level 10: 0 boxes verified, 624 to bisect [1 s]
+      AFF level 20: 41547 boxes verified, 34184 to bisect [46 s]
+      BBB level 10: 0 boxes verified, 340 to bisect [1 s]
+      BBB level 20: 17681 boxes verified, 80234 to bisect [43 s]
