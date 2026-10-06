@@ -8011,6 +8011,32 @@ $256$ fractional bits. It closes (a) with the same $191\,740$ boxes and (c)
 with the same $356$ intervals (\cref{sec:formal-part}).
 \end{proof}
 
+\begin{remark}[Where the certificate of \cref{thm:count31} is tight]\label{rem:count31-tight}
+The bound $|Y|m+\frac t2$ is affine in the number of centres, with slope
+$m=-0.072797\ldots$ and value $\frac t2=5.342081\ldots$ at $|Y|=0$, so it
+crosses $\frac98\pi^2-8$ at $|Y|=30.75$; that is why the certificate
+starts at $31$, and why at $30$ it gives only $3.15817$. By complementary
+slackness the measures at which the programme attains its value are carried
+by the points where the certificate is tight, and those points can be read
+off. In floating point, the function in (c) comes within $3\cdot10^{-5}$ of
+$m$ only at the two ends of the distance range, $d=2$ and $d=\sqrt6$, and
+lies at least $4.6\cdot10^{-4}$ below $m$ in between, $1.7\cdot10^{-3}$ at
+$d=2.2$. For the three pairs of end distances the slack of (a) falls to the
+margin $10^{-5}$ of the programme at the touching inner product
+$u=a(|y|,|y'|)$ and at three further inner products: $u=-0.821$, $-0.426$
+and $-0.121$ for two centres at distance $2$; $u=-0.770$, $-0.430$ and
+$-0.067$ for one at $2$ and one at $\sqrt6$; and $u=-0.581$, $-0.499$ and
+$0.041$ for two at $\sqrt6$, where $u=-1$ is tight as well. Off the ends
+the slack of (a) is at least $2.6\cdot10^{-4}$. So the relaxation is
+extremal on a distribution of centres at distance $2$ and at distance
+$\sqrt6$ whose pairs sit at these four or five inner products, the nodes of
+a Delsarte-type bound, and not at the inner products $-1$, $-\frac12$, $0$
+and $\frac12$ of the root system. Below $31$ the value of the programme
+lies above the largest union that the search of \cref{fig:counts} finds
+(\cref{tab:kernel-limit}), so the measures on which it is extremal are not
+those of the packings found.
+\end{remark}
+
 With at most $23$ centres within $\sqrt6$ the bound holds by
 \cref{thm:m23-labelled}, and with $31$ or more by \cref{thm:count31}
 (\cref{fig:count31}); \cref{thm:count30,thm:count29} below settle thirty and

@@ -144,6 +144,14 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (python3 radial_count_sdp.py 31 12 4 1e-5 31
                               80), runs/radial_count_scan.log.
 
+  count31_tight.py            rem:count31-tight.  Floating point, from
+                              radial_certificates/radial_31.json: the
+                              affine bound M m + t/2, the distances where
+                              condition (c) is tight (the ends 2 and sqrt 6)
+                              and the inner products where condition (a) is
+                              tight for the end distances.  Used in no
+                              proof.  Log: runs/count31_tight.log.
+
   radial_count_check.py radial_certificates/radial_31.json
                               Proves thm:count31 from the certificate
                               alone: exact LDL^T for the positivity and the
