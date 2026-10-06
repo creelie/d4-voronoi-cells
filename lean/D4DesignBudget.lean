@@ -7,9 +7,12 @@ G_k(1) = 1) and p = sum_(k=0..5) p_k G_k for the rationals p_k below:
 
   * pmono is the list of monomial coefficients of p (checked from the U_k);
   * p(t) < 0 on [-1, th], with th = 0.614039 > tau, where
-    tau^2 = 139129/369000 (as in D4HoleBudget); checked by a Taylor bound
-    about the midpoint of each of 29 subintervals that cover the range
-    without gaps;
+    tau^2 = 139129/369000 (as in D4HoleBudget), proved in the paper by the
+    identity -p = (1 + t) A^2 + (th - t) B^2 + R: theorem two_square checks
+    that R has constant term larger than the sum of the absolute values of
+    its other coefficients (so R > 0 on [-1, 1]);
+  * independently, the same sign by a Taylor bound about the midpoint of each
+    of 29 subintervals that cover the range without gaps;
   * (24 p_0)^2 > 0.26785 * sum_(k=1..5) p_k^2 / c_k for the weights c_k;
   * over the 24 roots +-e_j +-e_k, sum over ordered pairs of G_k(<a,b>/2)
     is 0 for k = 1, ..., 5 (the root system is a spherical 5-design).
@@ -32,6 +35,10 @@ def pmono : List Rat := [(-9643697013659281 / 2256524186592810000000 : Rat), (-1
 
 def th : Rat := (614039 / 1000000 : Rat)
 
+def sqA : List Rat := [(26327 / 100000000 : Rat), (14931 / 25000000 : Rat), (3523 / 3125000 : Rat)]
+
+def sqB : List Rat := [(260109 / 100000000 : Rat), (4473253 / 100000000 : Rat), (177231 / 3125000 : Rat)]
+
 /-- coefficient i of sum_k g_k U_k/(k+1) -/
 def monoOf (g : List Rat) (i : Nat) : Rat :=
   (List.range g.length).foldl (fun s k =>
@@ -52,6 +59,27 @@ def shift (cs : List Rat) (m : Rat) : List Rat :=
   (List.range (cs.length - 1)).foldl (fun c j => shiftPass m j c) cs
 
 def rabs (x : Rat) : Rat := if x < 0 then -x else x
+
+/-- the product of two polynomials, constant term first -/
+def pmul (a b : List Rat) : List Rat :=
+  (List.range (a.length + b.length - 1)).map (fun n =>
+    (List.range (n + 1)).foldl (fun s i => s + a.getD i 0 * b.getD (n - i) 0) 0)
+
+/-- the sum of two polynomials, constant term first -/
+def padd (a b : List Rat) : List Rat :=
+  (List.range (max a.length b.length)).map (fun i => a.getD i 0 + b.getD i 0)
+
+/-- R = -p - (1 + t) A^2 - (th - t) B^2 -/
+def rest : List Rat :=
+  padd (pmono.map (fun x => -x))
+    ((padd (pmul [1, 1] (pmul sqA sqA)) (pmul [th, -1] (pmul sqB sqB))).map (fun x => -x))
+
+/-- R > 0 on [-1, 1], because its constant term beats the other coefficients;
+so -p = (1 + t) A^2 + (th - t) B^2 + R > 0 on [-1, th] -/
+theorem two_square :
+    (rest.length == 6 &&
+      decide (rest.tail.foldl (fun s x => s + rabs x) 0 < rest.getD 0 0)) = true := by
+  decide +kernel
 
 /-- an upper bound for the polynomial cs on [a, b]: c_0 + sum |c_i| r^i about the midpoint -/
 def upper (cs : List Rat) (a b : Rat) : Rat :=
@@ -147,6 +175,7 @@ theorem roots_design :
 
 end D4DesignBudget
 
+#print axioms D4DesignBudget.two_square
 #print axioms D4DesignBudget.p_negative_below_th
 #print axioms D4DesignBudget.threshold
 #print axioms D4DesignBudget.roots_design
