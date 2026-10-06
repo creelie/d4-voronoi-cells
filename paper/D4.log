@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  6 OCT 2026 10:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  6 OCT 2026 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1053,7 +1053,7 @@ Package rerunfilecheck Info: File `D4.out' has not changed.
 Here is how much of TeX's memory you used:
  19020 strings out of 476106
  315459 string characters out of 5793933
- 1956975 words of memory out of 5000000
+ 1955975 words of memory out of 5000000
  39806 multiletter control sequences out of 15000+600000
  676160 words of font info for 110 fonts, out of 8000000 for 9000
  220 hyphenation exceptions out of 8191
@@ -1077,7 +1077,7 @@ ts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb>
 are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on D4.pdf (175 pages, 21248634 bytes).
+Output written on D4.pdf (175 pages, 21248567 bytes).
 PDF statistics:
  3784 PDF objects out of 4296 (max. 8388607)
  3455 compressed objects within 35 object streams
