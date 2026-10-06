@@ -6951,8 +6951,8 @@ packing whose twenty-four centres within $\sqrt6$ of $c$ are that close to
 $\sqrt2\,\Rt'$, for some copy $\Rt'$ of $\Rt$, and whose other centres are
 unrestricted, has $\vol(V_c)\ge8$, with equality only at $\sqrt2\,\Rt'$
 itself, and to first order the excess is $\frac23\sum\delta_i$
-(\cref{fig:closure}(c)). The two constants are of very different
-sizes. The neighbourhood of the second statement comes from the rigidity
+(\cref{fig:closure}(c)). The two constants differ greatly in
+size. The neighbourhood of the second statement comes from the rigidity
 of \cref{thm:local-uniqueness} and from elementary estimates for the
 facets of a polytope near the $24$-cell, and uses no certificate. The
 constant $\varepsilon_0$ is chosen so that \cref{thm:m24-robust}
@@ -7526,9 +7526,9 @@ past them, is that the displayed inequality holds for every packing with
 $d(W)\le\tfrac1{48}$, and a proof through a bound on the remainder has to
 control the cubic term to the size it has on the tested packings,
 $0.004\,S^3$, where the estimates of the proof of \cref{thm:near-contact}
-have constants of order $10^2$ already at second order. The natural
-structure of such a proof is that the extremal family is the one-centre
-ray, on which everything is explicit. And the inequality concerns $V(Y)$,
+have constants of order $10^2$ already at second order. In such a proof
+the extremal family is the one-centre ray, on which everything is
+explicit. And the inequality concerns $V(Y)$,
 while far centres may cut off the part of $V(Y)$ outside the inversion hull
 $K(Y)$ (\cref{prop:inversion-hull}), which part (c) of the proof of
 \cref{thm:near-contact} bounds by $13\,958\,\Theta^4$. That bound is far
@@ -9210,7 +9210,7 @@ parts of the others are checked in Lean (\cref{sec:formal-part}).
 \subsection{Other dimensions}\label{sec:other-dims-new}
 
 The lattices $D_5$, $E_6$ and $E_7$, with their Voronoi cells
-\cite{CS1988,Cox73}, are the natural next cases for the same argument.
+\cite{CS1988,Cox73}, are the next cases for the same argument.
 The truncation to a ball in which no three caps meet, and the labelled
 kernels that bound the union of the caps, carry over in form to every
 dimension, and the second variation at the lattice takes the same shape in
@@ -9251,7 +9251,7 @@ periodic or saturated packing whose centres are all of these kinds has
 density at most $\pi^2/16$. With no assumption on the centres, the same
 lower bounds for the cells give $0.63527$ for the density of every packing
 of unit balls in $\mathbb{R}^4$ (\cref{thm:density-cells}), below the
-three-point bound $0.63611$ of \cite{CdLS22}. Along the way the paper proves that the kissing
+three-point bound $0.63611$ of \cite{CdLS22}. The paper also proves that the kissing
 number of $\mathbb{R}^4$ is stable under a slack of $0.008$
 (\cref{thm:kissing-stable}), that no twenty-six points fit at a slack of
 $0.01468$ (\cref{thm:twenty-six}), that twenty-four centres near a root system
@@ -9314,7 +9314,7 @@ properties of the rational point that these lemmas use are
 (\cref{sec:certificate-checked}), and the passage from the four inner
 products to the root system is \cref{lem:root-lattice}. That the root
 system is isolated among contact configurations of $24$ directions is
-proved besides, with no certificate (\cref{cor:root-rigid}).
+also proved, with no certificate (\cref{cor:root-rigid}).
 \Cref{cor:m24-reduction} reduces the volume statement for $24$ contacts to
 the inequality $E(W)\ge8-32\pi+10\pi^2$ between pair and triple angles,
 through a third-order inclusion and exclusion inside the ball of radius
@@ -10413,7 +10413,7 @@ across the entire domain $\arcp\in[0,\pi/4]$:
 \begin{enumerate}[leftmargin=2em]
 \item the universal curve $\tilt=\pi/3$, inherited unchanged from
 \cref{thm:arc1-breakpoints-new} (it is proved once, for every choice of
-deviation direction, and simply restricts to this arc);
+deviation direction, and restricts to this arc);
 \item a curve $\mathsf W'$, $\tilt=2\arctan(\cos\arcp)$, from the same
 sign vertex $w=(1,1,1,1)/\sqrt2$ that gave curve $\mathsf W$ on the
 first arc, but with a \emph{different} functional dependence on
@@ -10463,7 +10463,7 @@ shows that this is no coincidence.
 
 The topmost region, bounded above by $\tilt=\pi/2$ and below by curve
 $\mathsf W'$, spanning the entire $\arcp\in(0,\pi/4)$ domain with no
-internal splitting, is the natural first target for a certificate,
+internal splitting, is the first target for a certificate,
 since its lower boundary is itself rational in Weierstrass coordinates
 (the same functional form, $\mathsf u=(1-\mathsf v^2)/(1+\mathsf v^2)$, as
 the first arc's own curve $\mathsf A$). \Cref{sec:arc2-cert} gives a
@@ -11274,7 +11274,7 @@ either configuration, and none of it proves the defect positive for
 every set of deviations. That statement ranges over every set of
 deviating roots at every $m\ge2$; the dense range of
 \cref{sec:dense-configs-new} contributes two examined configurations
-out of a very large family, and the rest of that family, with every
+out of a large family, and the rest of that family, with every
 other value of $m$, is not examined. The degeneracy of
 \cref{sec:musin-degeneracy} restricts what an elementary proof can look
 like: if the second derivative vanishes on the near-null subspaces, as
@@ -11542,7 +11542,7 @@ floating-point findings; nothing about that path is proved here.
 
 \subsubsection{The triangle swap, \texorpdfstring{$m=3$}{m=3}}\label{sec:swap-m3}
 
-The natural next configuration is a real $3$-clique: three pairwise
+The next configuration is a real $3$-clique: three pairwise
 Gram-$\tfrac12$ roots rotated simultaneously in a cyclic swap, with the
 remaining $21$ roots fixed. Cramer's rule and staged simplification, as
 for $m=2$, give a closed form in two pieces, split at $\theta=\pi/6$.
