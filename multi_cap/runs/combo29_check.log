@@ -16,3 +16,16 @@ statement (C) at 29 centres, case case29_all.json: combined certificate combo29_
   [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (9987 boxes closed, 9367 set aside, Pi in Arb at 0 corners)
   [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (525 boxes closed, 402 set aside, Pi in Arb at 0 corners)
   [ok] f <= m_b on every bin  (17762 intervals, least room 1.11e-10)
+  triple AAA: float largest 1.062005e-03 on 649660 samples; threshold 1.063027e-03; 425 monomials, symmetry 2
+  triple AAB: float largest 1.077887e-03 on 649681 samples; threshold 1.079007e-03; 425 monomials, symmetry 1
+  triple AAF: float largest 5.864406e-04 on 649567 samples; threshold 5.876966e-04; 425 monomials, symmetry 1
+  triple ABB: float largest 1.015377e-03 on 649589 samples; threshold 1.016378e-03; 425 monomials, symmetry 1
+  triple ABF: float largest 5.003095e-04 on 649449 samples; threshold 5.020802e-04; 425 monomials, symmetry 0
+  triple AFF: float largest -7.464747e-04 on 649302 samples; threshold -7.447309e-04; 425 monomials, symmetry 1
+  triple BBB: float largest 8.986047e-04 on 649339 samples; threshold 8.998970e-04; 425 monomials, symmetry 2
+  triple BBF: float largest 6.020303e-04 on 649263 samples; threshold 6.030341e-04; 425 monomials, symmetry 1
+  triple BFF: float largest -4.055105e-04 on 649083 samples; threshold -4.025770e-04; 425 monomials, symmetry 1
+  triple FFF: float largest 8.614177e-03 on 648938 samples; threshold 8.615185e-03; 425 monomials, symmetry 2
+      AAF level 10: 0 boxes verified, 622 to bisect [1 s]
+      AAA level 10: 0 boxes verified, 338 to bisect [1 s]
+      AAB level 10: 0 boxes verified, 618 to bisect [2 s]
