@@ -14,7 +14,8 @@ and Z_k(x, y) = Re((sqrt(D) w_x conj(sqrt(D) w_y))^k) = (R_x R_y)^(k/2) T_k(C_xy
 is a polynomial and a positive kernel for each k (the plane is identified with C; the value
 does not depend on the identification).  For psd matrices G^{PQ}_k,
   K_{e1,e2}(x, y) = sum_{k=0..d4} Z_k(x, y) b_k(x)^T G^{type(e1) type(e2)}_k b_k(y),
-  b_k(x) = e(type(x)) (x) (T_i(u1) T_j(u2))_{i+j <= d4-k},
+  b_k(x) = e(type(x)) (x) (T_i(u1) T_j(u2))_{i+j <= d4-k}, or with WITH_S=1
+  (T_a(s) T_i(u1) T_j(u2))_{a+i+j <= d4-k}, s being fixed with the poles,
 is positive, so S = sum over ordered pairs e1 != e2 of sum_{x,y in C} K_{e1,e2}(x, y) >= 0.
 Grouping the terms by the set {e1, e2, x, y}:
   pairs {p, q}:       x, y in {e1, e2}                                       (PAIR4)
@@ -39,14 +40,18 @@ PERMS2 = {n: list(itertools.permutations(range(n), 2)) for n in (2, 3, 4)}
 
 
 def mon2(n):
-    return [(i, j) for i in range(n + 1) for j in range(n + 1 - i)]
+    return [(0, i, j) for i in range(n + 1) for j in range(n + 1 - i)]
+
+
+def mon3(n):
+    return [(a, i, j) for a in range(n + 1) for i in range(n + 1 - a) for j in range(n + 1 - a - i)]
 
 
 class Layout4(T3.Layout):
-    def __init__(self, m, d, d4, poles):
+    def __init__(self, m, d, d4, poles, with_s=False):
         super().__init__(m, d)
         self.d4 = d4
-        self.mons = {k: mon2(d4 - k) for k in range(d4 + 1)}
+        self.mons = {k: (mon3 if with_s else mon2)(d4 - k) for k in range(d4 + 1)}
         off = self.n
         for (P, Q) in poles:
             for k in range(d4 + 1):
@@ -56,10 +61,10 @@ class Layout4(T3.Layout):
         self.poles = set(poles)
 
 
-def feat4(L, typ, k, u1, u2):
+def feat4(L, typ, k, u1, u2, s):
     ms = L.mons[k]; nm = len(ms); deg = L.d4 - k
-    C1 = T3.cheb(u1, deg + 1); C2 = T3.cheb(u2, deg + 1)
-    V = np.stack([C1[:, i] * C2[:, j] for i, j in ms], -1)
+    C1 = T3.cheb(u1, deg + 1); C2 = T3.cheb(u2, deg + 1); C0 = T3.cheb(s, deg + 1)
+    V = np.stack([C0[:, a] * C1[:, i] * C2[:, j] for a, i, j in ms], -1)
     return np.arange(typ * nm, (typ + 1) * nm), V
 
 
@@ -89,8 +94,8 @@ def add_pair4(B, rows, P0, Q0, s):
         if (P, Q) not in L.poles:
             continue
         name = ('G', P, Q, 0)
-        i1, v1 = feat4(L, P, 0, one, s)
-        i2, v2 = feat4(L, Q, 0, s, one)
+        i1, v1 = feat4(L, P, 0, one, s, s)
+        i2, v2 = feat4(L, Q, 0, s, one, s)
         B.add_bilinear(rows, name, i1, v1, i1, v1, one)
         B.add_bilinear(rows, name, i2, v2, i2, v2, one)
         B.add_bilinear(rows, name, i1, v1, i2, v2, 2 * one)
@@ -107,14 +112,14 @@ def add_triple4(B, rows, types, U):
         if (P, Q) not in L.poles:
             continue
         s, u1, u2 = U[(i, j)], U[(i, k)], U[(j, k)]
-        i1, v1 = feat4(L, P, 0, one, s)
-        i2, v2 = feat4(L, Q, 0, s, one)
-        iz, vz = feat4(L, Z, 0, u1, u2)
+        i1, v1 = feat4(L, P, 0, one, s, s)
+        i2, v2 = feat4(L, Q, 0, s, one, s)
+        iz, vz = feat4(L, Z, 0, u1, u2, s)
         B.add_bilinear(rows, ('G', P, Q, 0), i1, v1, iz, vz, 2 * one)
         B.add_bilinear(rows, ('G', P, Q, 0), i2, v2, iz, vz, 2 * one)
         R = np.maximum(Rgram(s, u1, u2), 0)
         for kk in range(L.d4 + 1):
-            iz, vz = feat4(L, Z, kk, u1, u2)
+            iz, vz = feat4(L, Z, kk, u1, u2, s)
             B.add_bilinear(rows, ('G', P, Q, kk), iz, vz, iz, vz, R ** kk)
 
 
@@ -130,8 +135,8 @@ def add_quad4(B, rows, types, U):
         Rx = np.maximum(Rgram(s, u1x, u2x), 0); Ry = np.maximum(Rgram(s, u1y, u2y), 0)
         C = (1 - s * s) * t - (u1x * u1y + u2x * u2y - s * (u1x * u2y + u2x * u1y))
         for kk in range(L.d4 + 1):
-            ix, vx = feat4(L, types[k], kk, u1x, u2x)
-            iy, vy = feat4(L, types[l], kk, u1y, u2y)
+            ix, vx = feat4(L, types[k], kk, u1x, u2x, s)
+            iy, vy = feat4(L, types[l], kk, u1y, u2y, s)
             B.add_bilinear(rows, ('G', P, Q, kk), ix, vx, iy, vy, 2 * Zk(kk, Rx, Ry, C))
 
 
@@ -240,11 +245,11 @@ def refine_quads(L, xv, types, Tmat, q0, cval, iters=40):
     return np.array(out)
 
 
-def solve(counts, Tmat, d, d4, rounds=3, nquad=3000, sizes=(14, 14, 7), nrand=1500, verbose=True):
+def solve(counts, Tmat, d, d4, rounds=3, nquad=3000, sizes=(14, 14, 7), nrand=1500, verbose=True, with_s=False):
     m = len(counts)
     pair_list = [(s, t) for s in range(m) for t in range(s, m) if (comb(counts[s], 2) if s == t else counts[s] * counts[t]) > 0]
     poles = sorted({(s, t) for (a, b) in pair_list for (s, t) in ((a, b), (b, a))})
-    L = Layout4(m, d, d4, poles)
+    L = Layout4(m, d, d4, poles, with_s)
     triple_list = [c for c in itertools.combinations_with_replacement(range(m), 3) if T3.ncount(counts, list(c)) > 0]
     quad_list = [c for c in itertools.combinations_with_replacement(range(m), 4) if T3.ncount(counts, list(c)) > 0 and d4 >= 0]
     psamp = {p: np.unique(np.r_[T3.grid1(Tmat[p[0]][p[1]], 600), Tmat[p[0]][p[1]]]) for p in pair_list}
@@ -331,7 +336,7 @@ def solve(counts, Tmat, d, d4, rounds=3, nquad=3000, sizes=(14, 14, 7), nrand=15
     return prob.value, prob.value + corr, X, cvars
 
 
-def selftest(d=4, d4=3, seed=0):
+def selftest(d=4, d4=3, seed=0, with_s=True):
     """compare the grouped identity with the direct double sum over ordered poles, on a code
     with two types and random psd blocks."""
     r = np.random.default_rng(seed)
@@ -340,7 +345,7 @@ def selftest(d=4, d4=3, seed=0):
     C /= np.linalg.norm(C, axis=1, keepdims=True)
     types = [0] * 9 + [1] * 4
     n = len(C); m = 2
-    L = Layout4(m, d, d4, [(0, 0), (0, 1), (1, 0), (1, 1)])
+    L = Layout4(m, d, d4, [(0, 0), (0, 1), (1, 0), (1, 1)], with_s)
     Gm = {}
     for name, (off, s) in L.blocks.items():
         A = r.normal(size=(s, s)); Gm[name] = A @ A.T / s
@@ -356,7 +361,7 @@ def selftest(d=4, d4=3, seed=0):
             ms = L.mons[k]; nm = len(ms)
             b = np.zeros((n, m * nm))
             for x in range(n):
-                ii, vv = feat4(L, types[x], k, np.array([u1[x]]), np.array([u2[x]]))
+                ii, vv = feat4(L, types[x], k, np.array([u1[x]]), np.array([u2[x]]), np.array([s]))
                 b[x, ii] = vv[0]
             Z = Zk(k, R[:, None], R[None, :], Cm)
             direct += np.sum(Z * (b @ Gm[('G', P, Q, k)] @ b.T))
@@ -378,6 +383,7 @@ def selftest(d=4, d4=3, seed=0):
 
 if __name__ == '__main__':
     mode = sys.argv[1]
+    WS = bool(int(os.environ.get('WITH_S', '0')))
     if mode == 'selftest':
         selftest()
     elif mode == 'hole':        # 24 points within dA and nF more within dF, typed by distance
@@ -386,7 +392,7 @@ if __name__ == '__main__':
         a = T3.a_
         T = [[a(dA, dA), a(dA, dF)], [a(dA, dF), a(dF, dF)]]
         print('24 within %.4f and %d within %.4f; T = %s' % (dA, nF, dF, np.round(T, 5)), flush=True)
-        solve([24, nF], T, d, d4, rounds)
+        solve([24, nF], T, d, d4, rounds, with_s=WS)
     elif mode == 'kiss':        # n points with inner products <= t
         d, d4, rounds, n = map(int, sys.argv[2:6]); t = float(sys.argv[6])
-        solve([n], [[t]], d, d4, rounds)
+        solve([n], [[t]], d, d4, rounds, with_s=WS)
