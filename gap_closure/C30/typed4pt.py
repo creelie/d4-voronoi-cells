@@ -217,7 +217,8 @@ def quad_chunk(L):
 
 
 def tri_chunk(L):
-    per = 6 * (2 * len(L.mons[0]) ** 2 + sum(len(L.mons[k]) ** 2 for k in range(L.d4 + 1))) + 3 * (L.d + 1) ** 3
+    n0 = len(L.mons[0]) if L.d4 >= 0 else 0
+    per = 6 * (2 * n0 ** 2 + sum(len(L.mons[k]) ** 2 for k in range(L.d4 + 1))) + 3 * (L.d + 1) ** 3
     return max(50, int(2e7 // per))
 
 
