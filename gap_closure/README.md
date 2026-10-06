@@ -173,10 +173,14 @@ directions with every centre at the largest distance its count allows.
 `CM/code_feas_dist.py` searches for such directions by local minimisation of
 the squared violations (`CM/c28_direction_search.log`): with 2000 starts it
 fits 9 centres within 2.0161 and none of 10 to 20 (least largest violation
-1.6e-3 at 10, 2.8e-2 at 20); at 27 it fits 16 and not 20. Random starts
-miss rare arrangements: moving one centre of a 9-centre code in from 2.1 to
-2.0161 in small steps (`CM/c28_continue.py`) gives a code with 10, and
-`CM/c28_chain.py` repeats such moves to find where the count stops. A miss in
+1.6e-3 at 10, 2.8e-2 at 20). Random starts miss rare arrangements: moving one
+centre of a 9-centre code in from 2.1 to 2.0161 in small steps
+(`CM/c28_continue.py`, `CM/c28_chain.py`) gives a code with 10, and a search
+that makes the 21 distances within 2.1 variables and rewards those at 2.0161
+(`CM/c28_maxclose.py`) finds 12 in 2000 starts and never 13
+(`CM/c28_close12_witness.txt`, slack 1e-5; from it `CM/c28_extend.py` misses
+13 by 4.2e-3). At 27 the same search finds 18. So the limit k at 28 has to be
+at least 12, and at 27 at least 18. A miss in
 a local search is evidence, not a proof, and the statement is of the same kind
 as the 24-plus-one exclusion below, which three-point bounds do not settle: the
 typed three-point bound on 20 centres within 2.0161, one at 2.1, three at 2.35
