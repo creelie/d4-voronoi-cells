@@ -197,9 +197,10 @@ of `CM/c24lvl_d6.log`, 3.21901 on its samples), it passes with
 U(Y) <= 3.253872 (`multi_cap/runs/combo24_level_check.log`); dropping the
 pair terms gives only 24 S(2) = 3.335124. At M = 25 the same kernel at degree
 6 stays at 3.313 on its samples, and its round-1 certificate prechecks at
-3.3768, above the two-point level 3.3274 (`CM/c25lvl_d6.log`): one centre
-beside twenty-four nearly touching ones is the configuration it cannot
-exclude. So every cell has
+3.3768, above the two-point level 3.3274 (`CM/c25lvl_d6.log`). Its largest
+value is at the bin counts (17, 0, 4, 1, 1, 2, 0), with exactly the seventeen
+centres within 2.05 that `prop:C-radial` proves, as the level at 26 is
+largest at its fifteen. So every cell has
 volume at least 9 pi^2/8 - max L_M = 7.7742, the largest level being
 L_26 = 3.3291, and every packing of unit balls in R^4 has density at most
 0.63477. This is below
