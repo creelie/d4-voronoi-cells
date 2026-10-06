@@ -37,3 +37,16 @@ The radial counts of the other cases (control: 29, where (C) is proved), seed 29
 2.0161*7,2.1*14,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 12/1000, best max violation -5.188e-10
 2.0161*8,2.1*13,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 1/1000, best max violation 3.302e-09
 2.0161*9,2.1*12,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 1/1000, best max violation 4.615e-13
+
+2000 starts (seed 41), the same distances, 10 to 20 centres within 2.0161 (local search: a miss is evidence, not a proof):
+2.0161*10,2.1*11,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/2000, best max violation 1.582e-03
+2.0161*12,2.1*9,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/2000, best max violation 8.126e-03
+2.0161*14,2.1*7,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/2000, best max violation 6.178e-03
+2.0161*16,2.1*5,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/2000, best max violation 1.643e-02
+2.0161*18,2.1*3,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/2000, best max violation 1.751e-02
+2.0161*20,2.1*1,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/2000, best max violation 2.751e-02
+
+27 (radial counts 14 within 2.05, 20 within 2.1, 21 within 2.15, 22 within 2.2, 24 within 2.35), 1000 starts (seed 43):
+2.0161*8,2.05*6,2.1*6,2.15*1,2.2*1,2.35*2,sqrt6*3: feasible starts 205/1000, best max violation -7.021e-08
+2.0161*12,2.05*2,2.1*6,2.15*1,2.2*1,2.35*2,sqrt6*3: feasible starts 63/1000, best max violation -2.016e-09
+2.0161*16,2.1*4,2.15*1,2.2*1,2.35*2,sqrt6*3: feasible starts 2/1000, best max violation -2.043e-08

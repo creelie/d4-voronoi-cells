@@ -8,3 +8,5 @@ d3=8 round 1: optimal_inaccurate  bound 3.10234 (target 3.10330), corrected <= 3
    c2: {'AA': 0.027876, 'AB': 0.03728, 'AF': 0.044849, 'BB': 0.04579, 'BF': 0.049184, 'FF': 0.058054}
    c3: {'AAA': 0.0014081, 'AAB': 0.0010815, 'AAF': 0.0007759, 'ABB': 0.0007846, 'ABF': 0.0006445, 'AFF': 0.0002789, 'BBB': 0.0005314, 'BBF': 0.0005717, 'BFF': 0.0002437, 'FFF': 0.0014148}
    direct: 5898 variables, 86428 inequalities, 4299 psd rows in 48 cones, 39512130 nonzeros [13 s to build]
+PEAK_RSS_GB 5.64 exit -15 wall 3586 s
+[stopped 18:53 UTC in round 2: with at most 8 centres within 2.0161 the bound at degree 6 fell to 3.14307 against 3.23113, so the runs moved to smaller counts]
