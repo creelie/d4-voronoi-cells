@@ -1,0 +1,18 @@
+statement (C) at 26 centres, case case26_all.json: combined certificate combo26_level_d8.npz, two-point degree 12/4, three-point degree 8; 17845 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 8.282667607, float t 8.282669772)
+  [ok] three-point blocks positive definite (exact LDL^T)  (35 blocks)
+  point terms: {'A': '0.237248', 'B': '0.076471', 'F': '0.090236'}
+  pair AA: float largest K + PAIR3 - Pi -2.329178e-02 (file c2 -2.329185e-02); threshold -2.327176e-02
+  pair AB: float largest K + PAIR3 - Pi -1.038348e-02 (file c2 -1.039879e-02); threshold -1.036330e-02
+  pair AF: float largest K + PAIR3 - Pi -1.505743e-02 (file c2 -1.505192e-02); threshold -1.503736e-02
+  pair BB: float largest K + PAIR3 - Pi -1.733338e-03 (file c2 -1.733343e-03); threshold -1.713338e-03
+  pair BF: float largest K + PAIR3 - Pi -4.532285e-03 (file c2 -4.413312e-03); threshold -4.512281e-03
+  pair FF: float largest K + PAIR3 - Pi -3.702309e-03 (file c2 -1.509593e-03); threshold -3.681549e-03
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (398 boxes closed, 306 set aside, Pi in Arb at 354 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (8293 boxes closed, 7976 set aside, Pi in Arb at 201 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (139 boxes closed, 129 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (1117 boxes closed, 1024 set aside, Pi in Arb at 107 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (44 boxes closed, 27 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (5 boxes closed, 0 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (6323 intervals, least room 1.50e-10)

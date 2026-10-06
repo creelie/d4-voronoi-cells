@@ -59,3 +59,18 @@ statement (C) at 29 centres, case case29_all.json: combined certificate combo29_
       BFF level 30: 821462 boxes verified, 20700 to bisect [735 s]
       FFF level 30: 319887 boxes verified, 9550 to bisect [218 s]
       FFF level 40: 351407 boxes verified, 19354 to bisect [252 s]
+      ABF level 30: 4190246 boxes verified, 143634 to bisect [4132 s]
+  [ok] TRIPLE3_AAA <= c3 on the admissible triples  (1335595 boxes, largest centre value 1.0623e-03)
+  [ok] TRIPLE3_AAB <= c3 on the admissible triples  (3129863 boxes, largest centre value 1.0780e-03)
+  [ok] TRIPLE3_AAF <= c3 on the admissible triples  (1496860 boxes, largest centre value 5.8669e-04)
+  [ok] TRIPLE3_ABB <= c3 on the admissible triples  (1153946 boxes, largest centre value 1.0153e-03)
+  [ok] TRIPLE3_ABF <= c3 on the admissible triples  (4348276 boxes, largest centre value 5.0107e-04)
+  [ok] TRIPLE3_AFF <= c3 on the admissible triples  (1691160 boxes, largest centre value -7.4588e-04)
+  [ok] TRIPLE3_BBB <= c3 on the admissible triples  (785970 boxes, largest centre value 8.9888e-04)
+  [ok] TRIPLE3_BBF <= c3 on the admissible triples  (1145875 boxes, largest centre value 6.0203e-04)
+  [ok] TRIPLE3_BFF <= c3 on the admissible triples  (845532 boxes, largest centre value -4.0358e-04)
+  [ok] TRIPLE3_FFF <= c3 on the admissible triples  (368680 boxes, largest centre value 8.6139e-03)
+  triple boxes in all: 16301757
+  23396 count vectors, 51 type-count vectors; largest bound 3.101462 at (19, 0, 4, 0, 0, 5, 1)
+  [ok] largest bound over the count vectors below 9 pi^2/8 - 8  (3.101462 < [3.1033050 +/- 4.88e-8])
+PASS: in case case29_all.json every packing set of 29 centres has U(Y) <= 3.101462 < 9 pi^2/8 - 8, so T(Y) > 8 [6214 s]

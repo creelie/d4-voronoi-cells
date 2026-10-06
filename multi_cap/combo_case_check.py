@@ -19,6 +19,11 @@ With PRECHECK=1 in the environment it stops after the thresholds: it samples and
 refines every inequality as the check does, skips the branch and bounds, and prints
 the bound over the count vectors that those thresholds would give.  That is floating
 point and proves nothing; it tells whether a certificate is worth the full check.
+
+With LEVEL=<decimal> the final comparison is with that number instead of 9 pi^2/8 - 8:
+the check then proves the density level U(Y) < LEVEL for every packing set of the case,
+whose constraints hold whenever U(Y) >= 9 pi^2/8 - 8, so that U(Y) < max(9 pi^2/8 - 8,
+LEVEL) for every packing set of M centres.
 """
 import itertools
 import json
@@ -89,7 +94,10 @@ def main():
     mgm = float(sys.argv[6]) if len(sys.argv) > 6 else 2e-6
     Z = np.load(path)
     rng = np.random.default_rng(7)
-    target = 9 * arb.pi() ** 2 / 8 - 8
+    if os.environ.get('LEVEL'):
+        target, tname = A_(Fr(os.environ['LEVEL'])), os.environ['LEVEL']
+    else:
+        target, tname = 9 * arb.pi() ** 2 / 8 - 8, '9 pi^2/8 - 8'
     D2, R2 = C.D2, C.R2
     print('statement (C) at %d centres, case %s: combined certificate %s, two-point degree %d/%d, three-point degree %d; '
           '%d count vectors' % (CASE['M'], os.path.basename(sys.argv[1]), os.path.basename(path), D2, R2, d3, len(C.COUNTS)),
@@ -220,13 +228,18 @@ def main():
     print('  %d count vectors, %d type-count vectors; largest bound %.6f at %s' % (len(C.COUNTS), len(cache), float(worst), wvec),
           flush=True)
     if PRE:
-        print('PRECHECK (floating point, no branch and bound): the thresholds give %.6f against 9 pi^2/8 - 8 = %s [%.0f s]'
-              % (float(worst), target.str(8), time.time() - t0))
+        print('PRECHECK (floating point, no branch and bound): the thresholds give %.6f against %s = %s [%.0f s]'
+              % (float(worst), tname, target.str(8), time.time() - t0))
         return
-    C.check('largest bound over the count vectors below 9 pi^2/8 - 8', A_(worst) < target,
+    C.check('largest bound over the count vectors below %s' % tname, A_(worst) < target,
             '%.6f < %s' % (float(worst), target.str(8)))
-    print('PASS: in case %s every packing set of %d centres has U(Y) <= %.6f < 9 pi^2/8 - 8, so T(Y) > 8 [%.0f s]'
-          % (os.path.basename(sys.argv[1]), CASE['M'], float(worst), time.time() - t0))
+    if os.environ.get('LEVEL'):
+        print('PASS: in case %s every packing set of %d centres has U(Y) <= %.6f < %s, so U(Y) < max(9 pi^2/8 - 8, %s) '
+              'for every packing set of %d centres [%.0f s]'
+              % (os.path.basename(sys.argv[1]), CASE['M'], float(worst), tname, tname, CASE['M'], time.time() - t0))
+    else:
+        print('PASS: in case %s every packing set of %d centres has U(Y) <= %.6f < 9 pi^2/8 - 8, so T(Y) > 8 [%.0f s]'
+              % (os.path.basename(sys.argv[1]), CASE['M'], float(worst), time.time() - t0))
 
 
 if __name__ == '__main__':
