@@ -58,3 +58,9 @@ d=6 round 1: optimal Val=-5.6459e-09 corrected=1.0988e-05  maxviol=2.1e-08  [101
 5000 starts (seed 53), 10 and 11 centres within 2.0161:
 2.0161*10,2.1*11,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/5000, best max violation 2.060e-03
 2.0161*11,2.1*10,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/5000, best max violation 3.063e-03
+
+Continuation (c28_continue.py 9 4000 61): from a code with 9 centres within 2.0161, one centre at 2.1 moved in to 2.0161 in 25 steps, re-minimising at each step.  10 close centres fit, which the random starts above had missed:
+m = 9: 1 codes found in 4000 starts
+   code 0: best so far -1.157e-09
+m + 1 = 10 by continuation: smallest largest violation -1.157e-09
+Chains of such moves from codes with 6 and 8 close centres run in c28_chain.py (chain6.log, chain8.log).
