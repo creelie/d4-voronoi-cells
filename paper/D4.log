@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  6 OCT 2026 12:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  6 OCT 2026 12:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -774,7 +774,7 @@ Package pdftex.def Info: figures/fig_c_d4contacts.png  used on input line 2844.
 
 (pdftex.def)             Requested size: 433.62001pt x 186.48195pt.
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-2902.
+2901.
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -787,135 +787,136 @@ c/dvips/lm/lm-rmtt.enc}]
 <figures/fig_c_verify.png, id=1041, 2828.5675pt x 982.67125pt>
 File: figures/fig_c_verify.png Graphic file (type png)
 <use figures/fig_c_verify.png>
-Package pdftex.def Info: figures/fig_c_verify.png  used on input line 3009.
+Package pdftex.def Info: figures/fig_c_verify.png  used on input line 3008.
 (pdftex.def)             Requested size: 433.62001pt x 150.6331pt.
 
 [41] [42 <./figures/fig_c_verify.png (PNG copy)>] [43] [44] [45] [46]
 <figures/fig_c_counting.png, id=1145, 2942.995pt x 2049.6575pt>
 File: figures/fig_c_counting.png Graphic file (type png)
 <use figures/fig_c_counting.png>
-Package pdftex.def Info: figures/fig_c_counting.png  used on input line 3473.
+Package pdftex.def Info: figures/fig_c_counting.png  used on input line 3472.
 (pdftex.def)             Requested size: 433.62001pt x 301.99347pt.
  [47]
 [48 <./figures/fig_c_counting.png (PNG copy)>] [49]
-<figures/fig_tikz_pairs.png, id=1202, 504.58914pt x 192.9609pt>
+<figures/fig_tikz_pairs.png, id=1203, 504.58914pt x 192.9609pt>
 File: figures/fig_tikz_pairs.png Graphic file (type png)
 <use figures/fig_tikz_pairs.png>
-Package pdftex.def Info: figures/fig_tikz_pairs.png  used on input line 3690.
+Package pdftex.def Info: figures/fig_tikz_pairs.png  used on input line 3688.
 (pdftex.def)             Requested size: 433.62001pt x 165.8283pt.
  [50] [51 <./figures/fig_tikz_pairs.png (PNG copy)>] [52] [53] [54] [55]
 <figures/fig_c_rig.png, id=1289, 334.97145pt x 327.3831pt>
 File: figures/fig_c_rig.png Graphic file (type png)
 <use figures/fig_c_rig.png>
-Package pdftex.def Info: figures/fig_c_rig.png  used on input line 4098.
+Package pdftex.def Info: figures/fig_c_rig.png  used on input line 4096.
 (pdftex.def)             Requested size: 355.57158pt x 347.51398pt.
- [56] [57 <./figures/fig_c_rig.png>] [58]
-<figures/fig_c_rootmeet.png, id=1335, 2193.19376pt x 1182.4175pt>
+ [56 <./figures/fig_c_rig.png>]
+[57] [58]
+<figures/fig_c_rootmeet.png, id=1336, 2193.19376pt x 1182.4175pt>
 File: figures/fig_c_rootmeet.png Graphic file (type png)
 <use figures/fig_c_rootmeet.png>
-Package pdftex.def Info: figures/fig_c_rootmeet.png  used on input line 4310.
+Package pdftex.def Info: figures/fig_c_rootmeet.png  used on input line 4308.
 (pdftex.def)             Requested size: 433.62001pt x 233.77298pt.
  [59 <./figures/fig_c_rootmeet.png (PNG copy)>] [60] [61]
 <figures/fig_c_structab.png, id=1392, 332.442pt x 172.7253pt>
 File: figures/fig_c_structab.png Graphic file (type png)
 <use figures/fig_c_structab.png>
-Package pdftex.def Info: figures/fig_c_structab.png  used on input line 4551.
+Package pdftex.def Info: figures/fig_c_structab.png  used on input line 4549.
 (pdftex.def)             Requested size: 372.91347pt x 193.75409pt.
 <figures/fig_c_structcd.png, id=1393, 321.78218pt x 175.79677pt>
 File: figures/fig_c_structcd.png Graphic file (type png)
 <use figures/fig_c_structcd.png>
-Package pdftex.def Info: figures/fig_c_structcd.png  used on input line 4558.
+Package pdftex.def Info: figures/fig_c_structcd.png  used on input line 4556.
 (pdftex.def)             Requested size: 372.91347pt x 203.72856pt.
- [62] [63 <./figures/fig_c_structab.png (PNG copy)>] [64 <./figures/fig_c_struc
-tcd.png (PNG copy)>]
+ [62]
+[63 <./figures/fig_c_structab.png (PNG copy)>] [64 <./figures/fig_c_structcd.pn
+g (PNG copy)>]
 <figures/fig_c_slack.png, id=1417, 2193.19376pt x 967.615pt>
 File: figures/fig_c_slack.png Graphic file (type png)
 <use figures/fig_c_slack.png>
-Package pdftex.def Info: figures/fig_c_slack.png  used on input line 4702.
+Package pdftex.def Info: figures/fig_c_slack.png  used on input line 4700.
 (pdftex.def)             Requested size: 433.62001pt x 191.30489pt.
  [65] [66 <./figures/fig_c_slack.png (PNG copy)>] [67]
 <figures/fig_c_pf1.png, id=1467, 1889.0575pt x 992.70876pt>
 File: figures/fig_c_pf1.png Graphic file (type png)
 <use figures/fig_c_pf1.png>
-Package pdftex.def Info: figures/fig_c_pf1.png  used on input line 4883.
+Package pdftex.def Info: figures/fig_c_pf1.png  used on input line 4880.
 (pdftex.def)             Requested size: 372.91347pt x 195.96315pt.
 <figures/fig_c_pf2.png, id=1468, 923.45pt x 972.63374pt>
 File: figures/fig_c_pf2.png Graphic file (type png)
 <use figures/fig_c_pf2.png>
-Package pdftex.def Info: figures/fig_c_pf2.png  used on input line 4890.
+Package pdftex.def Info: figures/fig_c_pf2.png  used on input line 4887.
 (pdftex.def)             Requested size: 182.1196pt x 191.80736pt.
  [68 <./figures/fig_c_pf1.png (PNG copy)>] [69 <./figures/fig_c_pf2.png (PNG co
-py)>] [70] [71]
-[72]
+py)>]
+[70] [71] [72]
 <figures/fig_c_certificate.png, id=1546, 2193.19376pt x 1121.18875pt>
 File: figures/fig_c_certificate.png Graphic file (type png)
 <use figures/fig_c_certificate.png>
-Package pdftex.def Info: figures/fig_c_certificate.png  used on input line 5207
+Package pdftex.def Info: figures/fig_c_certificate.png  used on input line 5204
 .
 (pdftex.def)             Requested size: 433.62001pt x 221.66759pt.
  [73 <./figures/fig_c_certificate.png (PNG copy)>]
 <figures/fig_c_domain3d.png, id=1567, 2193.19376pt x 1176.395pt>
 File: figures/fig_c_domain3d.png Graphic file (type png)
 <use figures/fig_c_domain3d.png>
-Package pdftex.def Info: figures/fig_c_domain3d.png  used on input line 5255.
+Package pdftex.def Info: figures/fig_c_domain3d.png  used on input line 5252.
 (pdftex.def)             Requested size: 433.62001pt x 232.58229pt.
  [74 <./figures/fig_c_domain3d.png (PNG copy)>] [75] [76]
 <figures/fig_tikz_eps0.png, id=1605, 492.73686pt x 375.804pt>
 File: figures/fig_tikz_eps0.png Graphic file (type png)
 <use figures/fig_tikz_eps0.png>
-Package pdftex.def Info: figures/fig_tikz_eps0.png  used on input line 5431.
+Package pdftex.def Info: figures/fig_tikz_eps0.png  used on input line 5428.
 (pdftex.def)             Requested size: 433.62001pt x 330.72574pt.
- [77 <./figures/fig_tikz_eps0.png (PNG copy)>]
-[78]
+ [77 <./figures/fig_tikz_eps0.png (PNG copy)>] [78]
 <figures/fig_cardinality.png, id=1649, 413.20372pt x 192.41887pt>
 File: figures/fig_cardinality.png Graphic file (type png)
 <use figures/fig_cardinality.png>
-Package pdftex.def Info: figures/fig_cardinality.png  used on input line 5604.
+Package pdftex.def Info: figures/fig_cardinality.png  used on input line 5601.
 (pdftex.def)             Requested size: 433.62001pt x 201.93126pt.
  [79] [80 <./figures/fig_cardinality.png>] [81]
 <figures/fig_c_cap.png, id=1679, 2805.48125pt x 1133.23375pt>
 File: figures/fig_c_cap.png Graphic file (type png)
 <use figures/fig_c_cap.png>
-Package pdftex.def Info: figures/fig_c_cap.png  used on input line 5765.
+Package pdftex.def Info: figures/fig_c_cap.png  used on input line 5762.
 (pdftex.def)             Requested size: 433.62001pt x 175.14795pt.
  [82 <./figures/fig_c_cap.png (PNG copy)>] [83] [84] [85]
 <figures/fig_tikz_capscheme.png, id=1731, 452.98836pt x 229.24043pt>
 File: figures/fig_tikz_capscheme.png Graphic file (type png)
 <use figures/fig_tikz_capscheme.png>
 Package pdftex.def Info: figures/fig_tikz_capscheme.png  used on input line 609
-6.
+2.
 (pdftex.def)             Requested size: 433.62001pt x 219.44568pt.
  [86] [87 <./figures/fig_tikz_capscheme.png (PNG copy)>] [88]
 <figures/fig_c_defect.png, id=1776, 2193.19376pt x 1233.60875pt>
 File: figures/fig_c_defect.png Graphic file (type png)
 <use figures/fig_c_defect.png>
-Package pdftex.def Info: figures/fig_c_defect.png  used on input line 6303.
+Package pdftex.def Info: figures/fig_c_defect.png  used on input line 6299.
 (pdftex.def)             Requested size: 433.62001pt x 243.89388pt.
  [89] [90 <./figures/fig_c_defect.png (PNG copy)>]
 <figures/fig_noncontact.png, id=1817, 509.14215pt x 166.221pt>
 File: figures/fig_noncontact.png Graphic file (type png)
 <use figures/fig_noncontact.png>
-Package pdftex.def Info: figures/fig_noncontact.png  used on input line 6451.
+Package pdftex.def Info: figures/fig_noncontact.png  used on input line 6447.
 (pdftex.def)             Requested size: 433.62001pt x 141.56749pt.
- [91] [92 <./figures/fig_noncontact.png>]
+
+[91] [92 <./figures/fig_noncontact.png>]
 <figures/fig_tikz_closure.png, id=1848, 335.76642pt x 165.4983pt>
 File: figures/fig_tikz_closure.png Graphic file (type png)
 <use figures/fig_tikz_closure.png>
-Package pdftex.def Info: figures/fig_tikz_closure.png  used on input line 6541.
+Package pdftex.def Info: figures/fig_tikz_closure.png  used on input line 6537.
 
 (pdftex.def)             Requested size: 398.92961pt x 196.63983pt.
  [93 <./figures/fig_tikz_closure.png (PNG copy)>]
 <figures/fig_closure.png, id=1861, 520.52467pt x 193.6836pt>
 File: figures/fig_closure.png Graphic file (type png)
 <use figures/fig_closure.png>
-Package pdftex.def Info: figures/fig_closure.png  used on input line 6620.
+Package pdftex.def Info: figures/fig_closure.png  used on input line 6616.
 (pdftex.def)             Requested size: 433.62001pt x 161.35135pt.
-
-[94]
+ [94]
 <figures/fig_tikz_labelled.png, id=1881, 494.3268pt x 186.02298pt>
 File: figures/fig_tikz_labelled.png Graphic file (type png)
 <use figures/fig_tikz_labelled.png>
-Package pdftex.def Info: figures/fig_tikz_labelled.png  used on input line 6713
+Package pdftex.def Info: figures/fig_tikz_labelled.png  used on input line 6709
 .
 (pdftex.def)             Requested size: 433.62001pt x 163.18127pt.
  [95 <./figures/fig_closure.png>] [96 <./figures/fig_tikz_labelled.png (PNG cop
@@ -923,122 +924,126 @@ y)>] [97]
 <figures/fig_labelled.png, id=1931, 509.14215pt x 198.0198pt>
 File: figures/fig_labelled.png Graphic file (type png)
 <use figures/fig_labelled.png>
-Package pdftex.def Info: figures/fig_labelled.png  used on input line 6872.
+Package pdftex.def Info: figures/fig_labelled.png  used on input line 6868.
 (pdftex.def)             Requested size: 433.62001pt x 168.65pt.
  [98 <./figures/fig_labelled.png>]
 <figures/fig_tikz_stop.png, id=1947, 462.38345pt x 201.34422pt>
 File: figures/fig_tikz_stop.png Graphic file (type png)
 <use figures/fig_tikz_stop.png>
-Package pdftex.def Info: figures/fig_tikz_stop.png  used on input line 6922.
+Package pdftex.def Info: figures/fig_tikz_stop.png  used on input line 6918.
 (pdftex.def)             Requested size: 433.62001pt x 188.82117pt.
  [99 <./figures/fig_tikz_stop.png (PNG copy)>] [100] [101] [102] [103]
 <figures/fig_tikz_margin.png, id=2038, 478.28287pt x 197.58618pt>
 File: figures/fig_tikz_margin.png Graphic file (type png)
 <use figures/fig_tikz_margin.png>
-Package pdftex.def Info: figures/fig_tikz_margin.png  used on input line 7307.
+Package pdftex.def Info: figures/fig_tikz_margin.png  used on input line 7303.
 (pdftex.def)             Requested size: 433.62001pt x 179.13438pt.
 <figures/fig_tikz_counts.png, id=2042, 475.10298pt x 194.4063pt>
 File: figures/fig_tikz_counts.png Graphic file (type png)
 <use figures/fig_tikz_counts.png>
-Package pdftex.def Info: figures/fig_tikz_counts.png  used on input line 7322.
+Package pdftex.def Info: figures/fig_tikz_counts.png  used on input line 7318.
 (pdftex.def)             Requested size: 433.62001pt x 177.43207pt.
 <figures/fig_tikz_level2.png, id=2044, 568.7649pt x 234.1548pt>
 File: figures/fig_tikz_level2.png Graphic file (type png)
 <use figures/fig_tikz_level2.png>
-Package pdftex.def Info: figures/fig_tikz_level2.png  used on input line 7335.
+Package pdftex.def Info: figures/fig_tikz_level2.png  used on input line 7331.
 (pdftex.def)             Requested size: 433.62001pt x 178.52043pt.
  [104] [105 <./figures/fig_tikz_margin.png (PNG copy)>] [106 <./figures/fig_tik
-z_counts.png (PNG copy)>] [107 <./figures/fig_tikz_level2.png (PNG copy)>]
+z_counts.png (PNG copy)>]
+[107 <./figures/fig_tikz_level2.png (PNG copy)>]
 <figures/fig_tikz_secondorder.png, id=2080, 483.63084pt x 213.63013pt>
 File: figures/fig_tikz_secondorder.png Graphic file (type png)
 <use figures/fig_tikz_secondorder.png>
 Package pdftex.def Info: figures/fig_tikz_secondorder.png  used on input line 7
-490.
+486.
 (pdftex.def)             Requested size: 433.62001pt x 191.5384pt.
  [108 <./figures/fig_tikz_secondorder.png (PNG copy)>] [109] [110]
 <figures/fig_tikz_hexloop.png, id=2117, 411.07176pt x 354.99023pt>
 File: figures/fig_tikz_hexloop.png Graphic file (type png)
 <use figures/fig_tikz_hexloop.png>
-Package pdftex.def Info: figures/fig_tikz_hexloop.png  used on input line 7710.
+Package pdftex.def Info: figures/fig_tikz_hexloop.png  used on input line 7706.
 
 (pdftex.def)             Requested size: 433.62001pt x 374.46783pt.
  [111] [112 <./figures/fig_tikz_hexloop.png (PNG copy)>]
 <figures/fig_tikz_codes.png, id=2155, 493.89317pt x 320.73425pt>
 File: figures/fig_tikz_codes.png Graphic file (type png)
 <use figures/fig_tikz_codes.png>
-Package pdftex.def Info: figures/fig_tikz_codes.png  used on input line 7866.
+Package pdftex.def Info: figures/fig_tikz_codes.png  used on input line 7862.
 (pdftex.def)             Requested size: 433.62001pt x 281.601pt.
-
-[113] [114 <./figures/fig_tikz_codes.png (PNG copy)>] [115]
+ [113] [114 <./figures/fig_tikz_codes.png (PNG copy)>] [115]
 <figures/fig_tikz_count31.png, id=2211, 482.61906pt x 338.65723pt>
 File: figures/fig_tikz_count31.png Graphic file (type png)
 <use figures/fig_tikz_count31.png>
-Package pdftex.def Info: figures/fig_tikz_count31.png  used on input line 8085.
+Package pdftex.def Info: figures/fig_tikz_count31.png  used on input line 8081.
 
 (pdftex.def)             Requested size: 433.62001pt x 304.28743pt.
- [116] [117]
-[118 <./figures/fig_tikz_count31.png (PNG copy)>] [119] [120] [121]
+
+[116] [117] [118 <./figures/fig_tikz_count31.png (PNG copy)>] [119] [120]
+[121]
 <figures/fig_tikz_lemma.png, id=2294, 478.13832pt x 193.82814pt>
 File: figures/fig_tikz_lemma.png Graphic file (type png)
 <use figures/fig_tikz_lemma.png>
-Package pdftex.def Info: figures/fig_tikz_lemma.png  used on input line 8437.
+Package pdftex.def Info: figures/fig_tikz_lemma.png  used on input line 8433.
 (pdftex.def)             Requested size: 433.62001pt x 175.7835pt.
  [122 <./figures/fig_tikz_lemma.png (PNG copy)>] [123] [124]
 <figures/fig_tikz_cradial.png, id=2352, 425.6703pt x 315.53082pt>
 File: figures/fig_tikz_cradial.png Graphic file (type png)
 <use figures/fig_tikz_cradial.png>
-Package pdftex.def Info: figures/fig_tikz_cradial.png  used on input line 8690.
+Package pdftex.def Info: figures/fig_tikz_cradial.png  used on input line 8686.
 
 (pdftex.def)             Requested size: 433.62001pt x 321.43272pt.
- [125] [126] [127 <./figures/fig_tikz_cradial.png (PNG copy)>] [128]
+ [125]
+[126] [127 <./figures/fig_tikz_cradial.png (PNG copy)>] [128]
 <figures/fig_tikz_radial.png, id=2402, 478.13832pt x 192.38274pt>
 File: figures/fig_tikz_radial.png Graphic file (type png)
 <use figures/fig_tikz_radial.png>
-Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 8880.
+Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 8876.
 (pdftex.def)             Requested size: 433.62001pt x 174.47264pt.
  [129 <./figures/fig_tikz_radial.png (PNG copy)>] [130]
 <figures/fig_tikz_levels.png, id=2453, 529.16093pt x 199.60974pt>
 File: figures/fig_tikz_levels.png Graphic file (type png)
 <use figures/fig_tikz_levels.png>
-Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 9031.
+Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 9027.
 (pdftex.def)             Requested size: 433.62001pt x 163.56833pt.
- [131] [132 <./figures/fig_tikz_levels.png (PNG copy)>] [133]
-[134] [135] [136] [137] [138] [139] [140] [141] [142]
+ [131] [132 <./figures/fig_tikz_levels.png (PNG copy)>] [133] [134] [135] [136]
+ [137] [138] [139] [140] [141] [142]
 <figures/fig_tikz_octant.png, id=2849, 384.62094pt x 184.57758pt>
 File: figures/fig_tikz_octant.png Graphic file (type png)
 <use figures/fig_tikz_octant.png>
-Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 9781.
+Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 9777.
 (pdftex.def)             Requested size: 433.62001pt x 208.10551pt.
- [143 <./figures/fig_tikz_octant.png (PNG copy)>] [144] [145] [146]
+
+[143 <./figures/fig_tikz_octant.png (PNG copy)>] [144] [145] [146]
 <figures/fig_c_arcs.png, id=2931, 2193.19376pt x 1332.98pt>
 File: figures/fig_c_arcs.png Graphic file (type png)
 <use figures/fig_c_arcs.png>
-Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10146.
+Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10142.
 (pdftex.def)             Requested size: 433.62001pt x 263.54033pt.
- [147] [148 <./figures/fig_c_arcs.png (PNG copy)>] [149] [150] [151] [152] [153
-] [154] [155]
+ [147]
+[148 <./figures/fig_c_arcs.png (PNG copy)>] [149] [150] [151] [152] [153]
+[154] [155]
 <figures/fig_chain_plateau.png, id=3084, 2617.78pt x 1674.255pt>
 File: figures/fig_chain_plateau.png Graphic file (type png)
 <use figures/fig_chain_plateau.png>
-Package pdftex.def Info: figures/fig_chain_plateau.png  used on input line 1074
-1.
+Package pdftex.def Info: figures/fig_chain_plateau.png  used on input line 1073
+7.
 (pdftex.def)             Requested size: 429.28618pt x 274.55405pt.
 <figures/fig_dense_growth.png, id=3090, 2280.52pt x 1250.6725pt>
 File: figures/fig_dense_growth.png Graphic file (type png)
 <use figures/fig_dense_growth.png>
-Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 10769
+Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 10765
 .
 (pdftex.def)             Requested size: 429.28618pt x 235.41653pt.
  [156 <./figures/fig_chain_plateau.png (PNG copy)>] [157 <./figures/fig_dense_g
-rowth.png (PNG copy)>]
-[158] [159] [160] [161] [162] [163]
+rowth.png (PNG copy)>] [158] [159] [160] [161] [162] [163]
 <figures/fig_c_swap.png, id=3243, 2981.1375pt x 1180.41pt>
 File: figures/fig_c_swap.png Graphic file (type png)
 <use figures/fig_c_swap.png>
-Package pdftex.def Info: figures/fig_c_swap.png  used on input line 11339.
+Package pdftex.def Info: figures/fig_c_swap.png  used on input line 11335.
 (pdftex.def)             Requested size: 433.62001pt x 171.6864pt.
- [164] [165 <./figures/fig_c_swap.png>]
-[166] [167] [168] [169] [170] [171] [172] [173] [174] [175] (./D4.aux)
+ [164]
+[165 <./figures/fig_c_swap.png>] [166] [167] [168] [169] [170] [171] [172]
+[173] [174] [175] (./D4.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1073,7 +1078,7 @@ ts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb>
 are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on D4.pdf (175 pages, 21251546 bytes).
+Output written on D4.pdf (175 pages, 21250727 bytes).
 PDF statistics:
  3783 PDF objects out of 4296 (max. 8388607)
  3454 compressed objects within 35 object streams

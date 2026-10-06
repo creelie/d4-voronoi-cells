@@ -27,7 +27,7 @@
 \contentsline {subsubsection}{\tocsubsubsection {}{5.5.3}{The certificate, checked}}{39}{subsubsection.5.5.3}%
 \contentsline {subsection}{\tocsubsection {}{5.6}{A volume identity exact at the root system}}{41}{subsection.5.6}%
 \contentsline {subsection}{\tocsubsection {}{5.7}{The saturated case}}{47}{subsection.5.7}%
-\contentsline {subsection}{\tocsubsection {}{5.8}{How much of a root system a configuration can keep}}{56}{subsection.5.8}%
+\contentsline {subsection}{\tocsubsection {}{5.8}{How much of a root system a configuration can keep}}{57}{subsection.5.8}%
 \contentsline {subsection}{\tocsubsection {}{5.9}{The remaining case as a question about codes}}{60}{subsection.5.9}%
 \contentsline {subsection}{\tocsubsection {}{5.10}{The largest inradius as the minimal angle rises}}{62}{subsection.5.10}%
 \contentsline {subsection}{\tocsubsection {}{5.11}{The remaining case as a strict inequality}}{66}{subsection.5.11}%

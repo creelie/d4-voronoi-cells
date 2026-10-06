@@ -1689,7 +1689,7 @@ and every packing-valid choice of $w_j$, with equality only at
 $w_j=\base_j$, by \cref{cor:conj-resolved} and therefore by the
 classification of \cref{thm:m24}. A proof of it that does not go through
 the classification would have to bound the union of the $m$ caps
-directly; the rest of this section explains why the natural ways of doing
+directly; the rest of this section shows why the standard ways of doing
 so fail.
 \end{remark}
 
@@ -2859,13 +2859,12 @@ orthogonal map.}
 
 The first assertion is Musin's theorem \cite{Mus08} that the kissing
 number in four dimensions is $24$, obtained here a second time from a
-different certificate. It is the second assertion that the present paper
-needs, and the three-point bound of Bachoc and Vallentin
+different certificate. The present paper needs the second assertion,
+the equality case. Neither the three-point bound of Bachoc and Vallentin
 \cite{BV08}, at the first level of the same hierarchy and with best
-computed value $24.047$ \cite{Lei25}, and Musin's
-argument, which does not identify the configuration, do not give: it is
-the equality case, and the equality case is available only because the
-bound equals $24$ and is not only below $25$.
+computed value $24.047$ \cite{Lei25}, nor Musin's argument identifies the
+configuration; the equality case is available here only because the
+bound equals $24$ and is not merely below $25$.
 
 \begin{proof}[Proof of \cref{thm:m24}]
 A contact configuration is a subset of $S^3$ whose pairwise inner
@@ -2893,13 +2892,13 @@ objective value exactly $24$, and deposited that point at
 permits redistribution, and the supplementary archive of this paper
 \cite{D4Zenodo} carries the data with the licence notice, so that every
 input to \cref{prop:verified} travels with the paper.%
-\footnote{A proof that depends on a data file should not depend on a
-  server. The deposited archive has MD5 checksum
+\footnote{The deposited archive has MD5 checksum
   $\mathtt{02acd5270f7b3fa799abdeb5291706fd}$ and $234$ megabytes in
-  $331$ files; recording the checksum fixes which bytes the statements
-  below refer to, and allows the copy in the supplementary archive, the
-  deposited copy and any downloaded copy to be compared byte for byte.
-  The checksum is verified before the data are read.}
+  $331$ files. The checksum fixes which bytes the statements below refer
+  to, and allows the copy in the supplementary archive, the deposited
+  copy and any downloaded copy to be compared byte for byte. It is
+  verified before the data are read, so the proof does not depend on the
+  server that hosts the data.}
 Their paper is, at the time of writing, a preprint; nothing below
 depends on it.
 
@@ -3000,7 +2999,7 @@ size at most two of any set of points, which nothing in the computation
 forces; on random four-point sets its least eigenvalue is zero to the
 working precision for every signature, including those with
 $\lambda_2>0$, which the comparison with the Gegenbauer polynomials
-does not reach. Finally the entries can be set beside those of the
+does not reach. The entries were also compared with those of the
 authors: for the thirteen signatures with $|\lambda|\le10$ and
 $\lambda_2\le4$ all $88$ entries agree coefficient by coefficient.
 
@@ -3251,16 +3250,17 @@ $2024\,\mathbb{E}_p[h]<\tau$ rules out every degree-$d$ certificate at
 once. Restricting $p$ to a finite set of triples only shrinks the dual
 feasible set, so such a $p$ is a proof and not an estimate.
 
-At degree $6$ the computation points to one. We solved the dual on a grid
+At degree $6$ the computation gives such a $p$ in floating point. We
+solved the dual on a grid
 of admissible triples with every constraint held with a margin
 $\varepsilon=10^{-6}$, and rechecked the returned measure against the
 constraints without the margin: the measure deposited in the supplement
 has value $5.9424$ on $2170$ triples, and a rerun with a later solver
 gives $5.9851$ on $522$ triples, with least eigenvalue $10^{-6}$ in the
 moment matrices and least two-point slack $7.7\times10^{-3}$; both values
-lie below $\tau=6.1650791$ by more than $0.18$. That is strong evidence
-that no degree-$6$ certificate of this form exists. It is not a proof in
-the sense of \cref{sec:certificate}: a proof would round the measure to
+lie below $\tau=6.1650791$ by more than $0.18$. So, up to floating
+point, no degree-$6$ certificate of this form exists. This is not a proof
+in the sense of \cref{sec:certificate}: a proof would round the measure to
 rationals, check the moment matrices by an exact $LDL^\top$, and bound
 $\omega_3$ rigorously in the value, and the supplement does not carry
 such a check. Nothing in this paper depends on the conclusion.
@@ -3276,8 +3276,8 @@ $8$ moves the value by less than $0.005$. At degree $20$ the shortfall
 is still $1.4\times10^{-2}$, where a certificate that is to be rounded
 exactly would need it to be zero.
 
-Four further computations say that the shortfall is structural rather
-than numerical. First, the same two-point and three-point conditions,
+Four further computations show that the shortfall is structural and
+not numerical. First, the same two-point and three-point conditions,
 read as conditions on a code of $N$ points instead of $24$, remain
 feasible up to $N=26.61$ at degree $4$, $N=24.77$ at degree $6$ and
 $N=24.24$ at degree $8$: the relaxation does not detect that $24$ is the
@@ -3328,11 +3328,10 @@ The three-point level therefore does not decide this question, and
 uniqueness. What \cref{cor:m24-reduction} adds is an
 exact reduction of its volume consequence to a single inequality
 between pair and triple angles; what the computations above add is the
-location of the obstruction. Closing the $24$-contact case at the
-three-point level calls not for a longer computation at higher
-precision, but for a method that certifies the uniqueness of the root
-configuration; the second level of the hierarchy supplies one and the
-first does not.
+location of the obstruction. Closing the $24$-contact case needs a
+method that certifies the uniqueness of the root configuration, which a
+longer computation at higher precision does not supply; the second level
+of the hierarchy supplies one and the first does not.
 \end{remark}
 
 \begin{remark}[The second moment]\label{rem:m24-remains}
@@ -3358,7 +3357,7 @@ the count of the root system. That bound does not follow from
 at most $36$, which is the root system's own value and is not available
 in advance.
 
-Even granting it the route stops short. The ratio $\omega_2(u)/u^2$
+Even with that bound the route falls short. The ratio $\omega_2(u)/u^2$
 increases on $(0,\tfrac12]$, from $0.0487$ at $u=0.05$ to $0.3043$ at
 $u=\tfrac12$, so for a fixed second moment $\sum_P\omega_2(u_{ij})$ is
 smallest when the mass is spread over as many pairs as possible at as
@@ -3585,8 +3584,7 @@ $\lfloor 230/2\rfloor=115$ edges.
 \begin{remark}[The one route that is not blocked]\label{rem:pair-budget}
 With the integration stopped at $r_{23}$, as in
 \eqref{eq:second-order-value}, the estimate misses $8$ at the deletion
-configuration by three pairs, the number often quoted as closing off the
-pairwise route. Carried to $r_*$ it does not miss: the
+configuration by three pairs. Carried to $r_*$ it does not miss: the
 deletion has $88$ pairs against the $64.24$ that \eqref{eq:pair-budget}
 asks for, a surplus of $0.034$, and the weight falls away quickly once a
 pair opens up, with $\omega(62^\circ)/\omega(60^\circ)=0.55504\ldots$
@@ -3597,8 +3595,8 @@ the weighted number of pairs at or near $60^\circ$ that every contact
 configuration of $23$ directions satisfies. \Cref{prop:two-point-barrier}
 says how much of it the pair angles supply on their own, and
 \cref{sec:strict-inequality} sets the statement out in full.
-\Cref{fig:counting}(c) and (d) set the numbers down, for both
-integration limits.
+\Cref{fig:counting}(c) and (d) plot these numbers for both integration
+limits.
 \end{remark}
 
 Two further facts about the pair angles show how far a bound of this
@@ -3629,8 +3627,8 @@ Cauchy--Schwarz gives $\int N^2\ge(\int N)^2/2\pi^2$, and rearranging is
 
 The second fact is negative. The estimate of \cref{prop:second-order}
 depends on a configuration only through the multiset of its pair
-angles, and one can ask how far that multiset alone can carry it, by
-relaxing the multiset to an arbitrary measure subject to every
+angles, and the question is how far that multiset alone carries it, when
+one relaxes the multiset to an arbitrary measure subject to every
 inequality of the same character that a configuration satisfies.
 
 \begin{lem}[Pair-angle constraints]\label{lem:pair-angle-constraints}
@@ -3671,8 +3669,8 @@ measure attains both: $103.7$ pairs at $62.3^\circ$, $90.0$ at
 $103.0^\circ$, $39.2$ at $122.6^\circ$ and $20.1$ at $154.1^\circ$
 (\cref{fig:pairs}).
 
-So nothing that reads only the pair angles gets past four fifths of
-the way, whatever constraints of that type are imposed. The minimising
+So a bound that reads only the pair angles, through constraints of these
+two kinds, reaches four fifths of the way and no further. The minimising
 measure gives every direction nine neighbours at $62.3^\circ$ and nearly
 eight at $103^\circ$, which is consistent at any one direction, and
 Bonferroni's inequality and positive definiteness cannot detect that
@@ -3701,8 +3699,8 @@ $0.0738$, short of the $0.0929$ that \eqref{eq:pair-budget} requires.}
 \label{fig:pairs}
 \end{figure}
 
-One family of candidates can be ruled out completely, and it is the family
-one would look at first. A configuration of a prime number of directions
+One family of candidates can be ruled out completely, the symmetric one.
+A configuration of a prime number of directions
 with any symmetry transitive on them is a single orbit of a rotation
 of that order, and in dimension four such an orbit carries a single
 parameter.
@@ -3758,17 +3756,17 @@ product is not a rounding effect.
 \Cref{prop:no-transitive} is not the proof of \cref{thm:m23}; its
 content is the following. A saturated configuration, if one exists,
 has no symmetry acting transitively on its directions: it is not a single
-orbit of anything. That removes every construction of the kind one reaches
-for first, and it is consistent with the rest of what is known about the
-case, since the only contact configurations of $23$ directions known
-to us are the deletions, whose symmetry group is the stabiliser of a root in the Weyl
+orbit of anything. That removes every construction as a single orbit,
+and it is consistent with the rest of what is known about the case, since
+the only known contact configurations of $23$ directions are the
+deletions, whose symmetry group is the stabiliser of a root in the Weyl
 group and has four orbits on the remaining directions, of sizes
 $1,8,6,8$. A search looked for the rest: it minimised $\max_I|z_I|$
 directly, from perturbed deletions, from random starts and from partially
 completed root systems, and over $202$ starts it reached $12$ contact
 configurations, all with the inner-product multiset of a deletion and all
-with $g$ exactly $\tfrac12$. That is exploration, and we report it as
-such.
+with $g$ exactly $\tfrac12$. The search is exploration and enters no
+proof.
 \end{remark}
 
 The one configuration that comes close to the description is the
@@ -4769,15 +4767,14 @@ side. This is a search, not a proof.
 \enlargethispage{\baselineskip}
 \subsection{The remaining case as a strict inequality}\label{sec:strict-inequality}
 
-Everything in this section so far has approached \cref{thm:m23} through
-the configuration. This subsection approaches it through the cell, and
-arrives at a statement of a different character: an inequality between
-the pair angles of the configuration which proves \cref{thm:m23}
-outright, which the deletion of a root satisfies with room to spare,
-and which \cref{sec:certificate} then establishes. The tools are the ones already in
-hand, the covering bound of \cref{thm:covering-bound} and the exact
-overlaps of \cref{prop:second-order}; the new ingredient is the choice of
-where the integration stops, and the gain from stopping there.
+The preceding subsections approach \cref{thm:m23} through the
+configuration. This subsection approaches it through the cell and arrives
+at an inequality between the pair angles of the configuration that proves
+\cref{thm:m23}, that the deletion of a root satisfies with room to spare,
+and that \cref{sec:certificate} establishes. The tools are the covering
+bound of \cref{thm:covering-bound} and the exact overlaps of
+\cref{prop:second-order}; what is added is the choice of where the
+integration stops, and the gain from stopping there.
 
 \begin{lem}[Contact directions in a cap]\label{lem:cap-count}
 If $k$ contact directions lie in a closed cap of angular radius $r$ on
@@ -5909,12 +5906,11 @@ $g''''>0$ there, while $g'''\equiv0$ on $[0,\tfrac14]$; therefore $g'''$ is
 nondecreasing on $[0,\infty)$. A function whose $(n-1)$st derivative is
 nondecreasing has all $n$th-order divided differences nonnegative, so
 $g[y_0,\dots,y_4]\ge0$ for any five nodes.%
-\footnote{The stronger conclusion one would like here is that
-  $g[a_0,a_1,a_2,a_3]$ is Schur-convex in $(a_0,\dots,a_3)$, which would
-  reduce \cref{thm:cap-inequality} to evaluating $g[\,\cdot\,]$ at the majorisation
-  maximum $(1,0,0,0)$ in one step; see \cite[Ch.~3]{MOA11} for the
-  criterion. It is not available. Schur-convexity of a symmetric
-  divided difference of this form would follow from $g^{(5)}\ge0$, and
+\footnote{If $g[a_0,a_1,a_2,a_3]$ were Schur-convex in
+  $(a_0,\dots,a_3)$, \cref{thm:cap-inequality} would reduce in one step
+  to evaluating $g[\,\cdot\,]$ at the majorisation maximum $(1,0,0,0)$.
+  The criterion for Schur-convexity of a symmetric divided difference of
+  this form \cite[Ch.~3]{MOA11} is $g^{(5)}\ge0$, and
   $g^{(5)}(t^2)=\tfrac{45}{4}t^{-7}(1-4t^2)$ is negative at every
   $t>\tfrac12$, which is the whole interior of the support. The one
   place the fifth derivative is positive is the point mass at
