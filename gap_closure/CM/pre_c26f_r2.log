@@ -16,3 +16,7 @@ statement (C) at 26 centres, case case26_all.json: combined certificate c26f_d8_
   triple ABF: float largest 1.087280e-03 on 649299 samples; threshold 1.098817e-03; 425 monomials, symmetry 0
   triple AFF: float largest 8.097778e-04 on 649302 samples; threshold 8.233562e-04; 425 monomials, symmetry 1
   triple BBB: float largest 5.086133e-04 on 648923 samples; threshold 5.106324e-04; 425 monomials, symmetry 2
+  triple BBF: float largest 6.329336e-04 on 648919 samples; threshold 6.349838e-04; 425 monomials, symmetry 1
+  triple BFF: float largest 6.810048e-04 on 648934 samples; threshold 6.991531e-04; 425 monomials, symmetry 1
+  17845 count vectors, 33 type-count vectors; largest bound 3.419077 at (15, 0, 9, 0, 0, 0, 2)
+PRECHECK (floating point, no branch and bound): the thresholds give 3.419077 against 9 pi^2/8 - 8 = [3.1033050 +/- 4.88e-8] [426 s]
