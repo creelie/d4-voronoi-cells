@@ -4098,7 +4098,8 @@ work, \cref{fig:rig}(c) the spectrum that supplies the constant, and
 \label{fig:rig}
 \end{figure}
 
-Beyond that, what we have is negative and numerical. Searches started
+Beyond that radius only numerical exploration is available. Searches
+started
 from each of the twenty-four deletions, from greedy random packings and
 from annealed random starts produced no contact configuration of $23$
 directions with $g(W)>\tfrac12$; the largest value found was $\tfrac12$
@@ -4298,8 +4299,9 @@ its circumradius is $2$.
 \end{proof}
 
 \Cref{fig:rootmeet} collects the two ingredients. The bound of
-\cref{cor:meet20} is the first statement we have that separates a
-hypothetical saturated configuration from the root system by a fixed amount, not by an unspecified small one: three of its
+\cref{cor:meet20} separates a hypothetical saturated configuration from
+the root system by a fixed amount, not by an unspecified small one: three
+of its
 twenty-three directions lie outside every copy of $\Rt$, so it is not
 reachable from a deletion by exchanging one or two directions.
 
@@ -4332,9 +4334,8 @@ $0.538256\ldots$, at $\delta=5^\circ$ it is $0.592985\ldots$, at
 $\delta=10^\circ$ it is $0.676602\ldots$, and it increases from there. Hence the
 doorways at twenty roots hold two directions but not three, which would
 push \cref{cor:meet20} to nineteen. This is a computation and not a
-proof: it is a search over a family of local minima, not an exhaustive
-argument, and the case analysis that turns it into one is four times
-the length of \cref{prop:meet21}. The same enumeration is carried out for
+proof: it searches a family of local minima and is not exhaustive. The
+same enumeration is carried out for
 one, two and three removed roots in exact integer arithmetic as a check on \cref{prop:meet22} and
 \cref{prop:meet21}.
 \end{remark}
@@ -4377,14 +4378,14 @@ interior point.
 At $m\le22$ the first alternative is the one that holds, and the
 configurations at those sizes fill out an open set; that is why
 \cref{cor:m22} has to hold uniformly over a family of positive
-dimension, and it does. At $m=23$ every computation we know of, our own
-in \cref{rem:code-search} and the published tables \cite{Slo}, returns
+dimension, and it does. At $m=23$ every known computation, that of
+\cref{rem:code-search} and the published tables \cite{Slo}, returns
 $\theta(23)=60^\circ$, and if that is the true value the second
 alternative takes over: the configurations that \cref{thm:m23} is about
 are extremal codes, not a family with interior. That is the structural
 difference between $23$ and every size below it, and a set with empty
-interior may have no saturated member. We have no proof that
-$\theta(23)=60^\circ$; \cref{sec:slack-continuation} shows how the codes
+interior may have no saturated member. That $\theta(23)=60^\circ$ is
+not proved here; \cref{sec:slack-continuation} shows how the codes
 of $23$ points behave as their minimal angle is pushed towards $60^\circ$
 from below. \Cref{thm:m23} does not need it: the volume bound is proved
 in \cref{sec:certificate} for every contact configuration of $23$
@@ -4664,7 +4665,7 @@ $0$ & $60.000^\circ$ & $0.500000$ & $60.000^\circ$ & $51$ & $51$\\
 \end{tabular}
 \end{table}
 
-Three things stand out. First, for $\delta\ge0.009$, that is for minimal
+The table shows three things. First, for $\delta\ge0.009$, that is for minimal
 angles up to $59.40^\circ$, the best configurations have inradius
 between $0.65$ and $0.70$: their covering radius is between $46^\circ$
 and $49^\circ$, so twenty-three caps of radius $49^\circ$ about their
@@ -4904,9 +4905,9 @@ for $\gamma\ge2r_4=75.52^\circ$. A direct quadrature of
 $\min(\sec\delta,\sqrt{8/5})^4$ over $S^3$ returns $8.14068$, and the
 same quadrature at the full root system, with $24$ directions, returns
 $7.96841$: there the truncation discards the deep holes at $45^\circ$
-and the bound falls below the true value $8$, which says that at
-$24$ contacts the three-point information below $r_4$ is not enough,
-as it need not be. At $23$ contacts it is enough at the one
+and the bound falls below the true value $8$, so at $24$ contacts the
+three-point information below $r_4$ does not suffice; that case is
+settled by \cref{thm:m24} instead. At $23$ contacts it is enough at the one
 configuration known, with $0.14$ to spare, and the pair-only bound
 \eqref{eq:second-order} at $R=r_*$ is enough there too, with $0.034$.
 That is the content of the following statement, which is the form in
@@ -5234,8 +5235,8 @@ $F_k-10^{-7}I$ and $f_k-10^{-7}$ constrained to be positive
 semidefinite so that the solution survives being read as exact
 rationals: the least slack is $1.35\times10^{-5}$ on the final sample
 of $21\,648$ triples and $1.30\times10^{-5}$ on the check, against
-$\omega(60^\circ)=0.00145$. Two features of the solution
-stand out. The two-point part is almost inert, $f_0=0.000927$ and
+$\omega(60^\circ)=0.00145$. The solution has two further features.
+The two-point part is almost inert, $f_0=0.000927$ and
 $f_1,\dots,f_8$ below $3\times10^{-8}$, so it is the matrices $F_k$ that
 carry the argument. And the inequality is far from tight at the
 deletion of a root, where the pair sum is $0.1272$ against
@@ -9038,8 +9039,8 @@ programming bound \cite{CE03}.}
 
 \begin{remark}[Where the bound stands]\label{rem:density-cells}
 The bound lies below the three-point bound $0.63611$ of Cohn, de Laat and
-Salmon \cite{CdLS22}, the best bound in dimension four that we know of
-before it, and below the linear programming bound $0.64774$ of Cohn and
+Salmon \cite{CdLS22}, the best published bound in dimension four before
+it, and below the linear programming bound $0.64774$ of Cohn and
 Elkies \cite{CE03}.\footnote{Cohn and Elkies state their bounds for the centre
   density, the density divided by $\vol(B^n)$; their value $0.13126$ in
   dimension four is a density of $0.13126\,\pi^2/2=0.64774$.} It uses no Fourier analysis and no global object, only the volume
