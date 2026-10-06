@@ -216,6 +216,21 @@ def quad_chunk(L):
     return max(50, int(2e7 // per))
 
 
+def tri_chunk(L):
+    per = 6 * (2 * len(L.mons[0]) ** 2 + sum(len(L.mons[k]) ** 2 for k in range(L.d4 + 1))) + 3 * (L.d + 1) ** 3
+    return max(50, int(2e7 // per))
+
+
+def tri_matrix(L, c, g, chunk=None):
+    """constraint rows of TRIPLE + TRIPLE4 for the triples g (columns u12, u13, u23), in chunks."""
+    out = []; chunk = chunk or tri_chunk(L)
+    for i in range(0, len(g), chunk):
+        gg = g[i:i + chunk]; rows = np.arange(len(gg))
+        B = T3.Builder(L); T3.add_triple(B, rows, c, gg[:, 0], gg[:, 1], gg[:, 2]); add_triple4(B, rows, c, tri_U(gg))
+        out.append(B.matrix(len(gg)))
+    return sp.vstack(out).tocsr()
+
+
 def quad_matrix(L, types, q, chunk=None):
     """constraint rows of QUAD4 for the samples q, built in chunks so that the coordinate lists
     (about 10^4 entries per quadruple at d4 = 5) never hold more than one chunk."""
@@ -301,10 +316,9 @@ def solve(counts, Tmat, d, d4, rounds=3, nquad=3000, sizes=(14, 14, 7), nrand=15
             cons.append(B.matrix(len(u)) @ xall <= cv)
             val = val + (comb(counts[pr[0]], 2) if pr[0] == pr[1] else counts[pr[0]] * counts[pr[1]]) * cv
         for c in triple_list:
-            g = tsamp[c]; rows = np.arange(len(g))
-            B = T3.Builder(L); T3.add_triple(B, rows, c, g[:, 0], g[:, 1], g[:, 2]); add_triple4(B, rows, c, tri_U(g))
+            g = tsamp[c]
             cv = cp.Variable(); cvars[c] = cv
-            cons.append(B.matrix(len(g)) @ xall <= cv)
+            cons.append(tri_matrix(L, c, g) @ xall <= cv)
             val = val + T3.ncount(counts, list(c)) * cv
         for c in quad_list:
             q = qsamp[c]
@@ -331,9 +345,7 @@ def solve(counts, Tmat, d, d4, rounds=3, nquad=3000, sizes=(14, 14, 7), nrand=15
             g = np.r_[T3.random_triples(T12, T13, T23, 12000), T3.triple_grid(T12, T13, T23, 30, 30, 12)]
             vv = []
             for i in range(0, len(g), 5000):
-                gg = g[i:i + 5000]; rows = np.arange(len(gg))
-                B = T3.Builder(L); T3.add_triple(B, rows, c, gg[:, 0], gg[:, 1], gg[:, 2]); add_triple4(B, rows, c, tri_U(gg))
-                vv.append(B.matrix(len(gg)) @ xv)
+                vv.append(tri_matrix(L, c, g[i:i + 5000]) @ xv)
             vv = np.concatenate(vv) - cvars[c].value
             viol[c] = vv.max(); corr += T3.ncount(counts, list(c)) * max(vv.max(), 0)
             tsamp[c] = np.r_[tsamp[c], g[np.argsort(vv)[-400:]]]
