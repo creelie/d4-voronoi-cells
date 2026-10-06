@@ -1,0 +1,2 @@
+resumed from c26f_d8_r4.npz, pruned to 3000 pair and 3000 triple samples per kind
+   direct: 4817 variables, 71454 inequalities, 4299 psd rows in 48 cones, 34795633 nonzeros [8 s to build]
