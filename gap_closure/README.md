@@ -173,9 +173,14 @@ directions with every centre at the largest distance its count allows.
 `CM/code_feas_dist.py` searches for such directions by local minimisation of
 the squared violations (`CM/c28_direction_search.log`): with 2000 starts it
 fits 9 centres within 2.0161 and none of 10 to 20 (least largest violation
-1.6e-3 at 10, 2.8e-2 at 20); at 27 it fits 16 and not 20. A miss in a local
-search is evidence, not a proof, and the statement is of the same kind as the
-24-plus-one exclusion below, which three-point bounds do not settle.
+1.6e-3 at 10, 2.8e-2 at 20); at 27 it fits 16 and not 20. Random starts
+miss rare arrangements: moving one centre of a 9-centre code in from 2.1 to
+2.0161 in small steps (`CM/c28_continue.py`) gives a code with 10, and
+`CM/c28_chain.py` repeats such moves to find where the count stops. A miss in
+a local search is evidence, not a proof, and the statement is of the same kind
+as the 24-plus-one exclusion below, which three-point bounds do not settle: the
+typed three-point bound on 20 centres within 2.0161, one at 2.1, three at 2.35
+and four at sqrt6 stays at 0 (`CM/c28_typed_dirs.py`).
 
 ## musin: where the two-point kernel fails
 
