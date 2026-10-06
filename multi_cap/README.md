@@ -144,6 +144,22 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (python3 radial_count_sdp.py 31 12 4 1e-5 31
                               80), runs/radial_count_scan.log.
 
+  cardinality_tight.py cert.npz e1 e2 N
+                              rem:cardinality-tight.  Floating point, from
+                              cardinality_certificates/cert_d10_t0.50800.npz
+                              (thm:kissing-stable, N = 25) and
+                              cert_d10_t0.51468.npz (thm:twenty-six,
+                              N = 26): B = 1 + f(1) + F(1,1,1), the largest
+                              values of f + 3F(1,u,u) + 1 and of F and
+                              where they occur (u = t, and the triple
+                              (2t^2 - 1, t, t) of two touching pairs in a
+                              plane), both polynomials at the inner
+                              products of the root system, and how the
+                              room of the final inequality is used.  Used
+                              in no proof.  Logs:
+                              runs/cardinality_tight_kissing.log,
+                              runs/cardinality_tight_26.log.
+
   count31_tight.py            rem:count31-tight.  Floating point, from
                               radial_certificates/radial_31.json: the
                               affine bound M m + t/2, the distances where

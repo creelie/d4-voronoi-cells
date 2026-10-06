@@ -1440,9 +1440,11 @@ been made into a certificate in this way is never used as a bound.
 kernel each one uses, its degree, the size of the finite check of its
 inequalities, and the value it proves against the value it needs. The
 theorems are stated and proved in the sections named there, which also
-say how each certificate was found; \cref{rem:count31-tight,rem:typed-tight}
-say where the certificates of \cref{thm:count31,thm:count30,thm:count29}
-are tight and which count each of them needs.
+say how each certificate was found;
+\cref{rem:cardinality-tight,rem:count31-tight,rem:typed-tight} say where the
+certificates of
+\cref{thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30,thm:count29}
+are tight and what each of them needs.
 
 \begin{table}[htbp]
 \centering
@@ -5598,6 +5600,30 @@ certificate entries alone, as for \cref{thm:kissing-stable}, with the
 inequality taken at $|C|=26$. The second statement follows from the
 first exactly as in \cref{thm:kissing-stable}.
 \end{proof}
+
+\begin{remark}[Where the certificates of \cref{thm:kissing-stable,thm:twenty-six} are tight]\label{rem:cardinality-tight}
+In both certificates the two-point part is almost absent, with $f(1)$
+below $10^{-4}$, and the bound is carried by the three-point matrices:
+$F(1,1,1)=23.95993$ at $s_0=0.008$ and $24.79993$ at $s_1=0.01468$. In
+floating point both polynomials of the proof are negative on their whole
+domains. The largest value of $f(u)+3F(1,u,u)+1$ is $-1.5\cdot10^{-5}$ at
+$s_0$ and $-1.8\cdot10^{-4}$ at $s_1$, attained at the touching inner
+product $u=t$. The largest value of $F$ is $-1.3\cdot10^{-5}$ at
+$(-0.477,t,t)$ and $-8.8\cdot10^{-6}$ at $(-0.470,t,t)$: two pairs at the
+touching angle and the third pair nearly opposite, the three directions
+lying in one plane at $s_1$ and nearly so at $s_0$. This is the triple
+$(-\frac12,\frac12,\frac12)$ of three consecutive points of a hexagon of
+the root system, compressed to the inner product $t$. At the inner
+products of the root system itself both polynomials stay well below zero,
+the first between $-9.3\cdot10^{-3}$ and $-3.9\cdot10^{-5}$ at $s_0$, the
+second below $-5.3\cdot10^{-5}$, so the certificates do not single out
+the root system: they bound the size of a code by $24.96$ and $25.8$, and
+integrality does the rest. The room in the final inequalities, $0.04$ and
+$0.2$, goes almost entirely into the thresholds that the branch and bound
+proves: $552e_2=0.0386$ and $600e_2=0.174$, against $(|C|-1)e_1$ of about
+$2.5\cdot10^{-5}$. With the floating-point maxima in place of $e_1$ and
+$e_2$ the left sides would be $24.0072$ and $25.0053$.
+\end{remark}
 
 \begin{figure}[tb]
 \centering
