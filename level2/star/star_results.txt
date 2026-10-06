@@ -1,0 +1,1 @@
+d1=2 delta=4 prec=128 B=127//250 BL=127//250 value=3.011406517420815e15 status=dFeas seconds=347.7

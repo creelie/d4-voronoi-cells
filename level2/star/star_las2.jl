@@ -17,9 +17,9 @@
 #   k = 2: u in [-1, BL];
 #   k = 3: u12, u13 in [-1, BL], u23 in [-1, B];
 #   k = 4: u12, u13, u14 in [-1, BL], u23, u24, u34 in [-1, B].
-# These pieces have less symmetry than the full domain, so the sum-of-squares parts
-# here use plain monomial bases and samples unisolvent for all polynomials of the
-# degree (no symmetry reduction).  With BL = B the programme is the plain one,
+# These pieces have less symmetry than the full domain: the sum-of-squares parts use
+# monomial bases, summed over the stabiliser of point 1 (SYM=1, the default; SYM=0
+# uses no symmetry and samples unisolvent for all polynomials of the degree).  With BL = B the programme is the plain one,
 # written less economically, which is the control.
 #
 # usage: julia --project=$LSC star_las2.jl D1 DELTA PREC B BL [OUT]
@@ -48,8 +48,7 @@ function monomials_upto(x, m)
     out
 end
 
-function grid_samples(nv, d, FF)
-    n = binomial(nv + d, nv)
+function grid_samples(nv, d, FF, n = binomial(nv + d, nv))
     ch = [ClusteredLowRankSolver.sample_points_chebyshev(2d + 2k, -1, 1) for k = 1:nv]
     ch = [[FF(floor(Int, x * 10^4) // 10^4) for x in v] for v in ch]
     idxs = Set{Vector{Int}}()
@@ -60,13 +59,30 @@ function grid_samples(nv, d, FF)
     sort!(samples)
 end
 
+# The stabiliser H of point 1 among the permutations of the k points, acting on the
+# pair variables (12, 13, 14, 23, 24, 34 for k = 4; 12, 13, 23 for k = 3).  With
+# SYM = 1 each sum-of-squares term is summed over H, so the identity lies in the
+# H-invariant polynomials and as many generic samples as their dimension suffice.
+function stabiliser(k)
+    if k == 4
+        pm, _ = L.embed_s4_action()
+        return [pm[p] for p in L.SymmetricGroup(4) if p.d[1] == 1]
+    elseif k == 3
+        return [L.Perm([1, 2, 3]), L.Perm([2, 1, 3])]
+    end
+end
+
 loc(u, a, b) = (u - a) * (b - u)
 
 function star_sos(k, d, B, BL, FF)
     nv = binomial(k, 2)
     R, x = polynomial_ring(FF, nv)
-    samples = grid_samples(nv, d, FF)
+    sym = get(ENV, "SYM", "1") == "1"
+    H = sym ? stabiliser(k) : [L.Perm(collect(1:nv))]
+    nsamp = sym ? length(L.invariant_basis(nv, d, H)) : binomial(nv + d, nv)
+    samples = grid_samples(nv, d, FF, nsamp)
     Rs = SampledMPolyRing(FF, samples)
+    act(q, h) = evaluate(q, [x[h.d[i]] for i = 1:nv])
     idx = 1
     G = Matrix{typeof(R(1))}(undef, k, k)
     for i = 1:k
@@ -92,8 +108,9 @@ function star_sos(k, d, B, BL, FF)
     for (gi, g) in enumerate(dom)
         m = div(d - total_degree(g), 2)
         m < 0 && continue
-        basis = [Rs(mon) for mon in monomials_upto(x, m)]
-        sos[(Symbol("star$k"), gi)] = LowRankMatPol([g], [basis])
+        mons = monomials_upto(x, m)
+        sos[(Symbol("star$k"), gi)] = LowRankMatPol([act(g, h) for h in H],
+                                                    [[Rs(act(mon, h)) for mon in mons] for h in H])
     end
     sos, samples
 end
