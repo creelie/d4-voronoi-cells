@@ -185,11 +185,11 @@ system; semidefinite programming}
 \begin{abstract}
 We prove that every Voronoi cell of a unit-ball packing in $\mathbb{R}^4$ has
 at least the volume of the regular twenty-four-cell, with equality only for
-$D_4$, unless $24$ to $29$ other centres lie within $\sqrt6$ of its centre,
+$D_4$, unless $24$ to $28$ other centres lie within $\sqrt6$ of its centre,
 not all at distance $2$. Hence the twenty-four-cell conjecture holds for every
 contact configuration, $D_4$ is a strict local minimum of the cell volume, and
 no periodic packing avoiding the exception is denser than $D_4$; the remaining
-cells reduce to two explicit inequalities about at most twenty-nine centres.
+cells reduce to two explicit inequalities about at most twenty-eight centres.
 \end{abstract}
 
 \maketitle
@@ -242,9 +242,9 @@ contact graph on $S^3$.
 
 This paper proves the conjecture at every centre whose neighbours within
 $2\sqrt2$ touch it, at every centre with at most twenty-three or at least
-thirty other centres within $\sqrt6$, and in an explicit neighbourhood
+twenty-nine other centres within $\sqrt6$, and in an explicit neighbourhood
 of the $D_4$ configuration, and it reduces the remaining centres to two
-explicit statements about at most twenty-nine neighbours; the cases left open
+explicit statements about at most twenty-eight neighbours; the cases left open
 are those of \cref{conj:shell} below.
 
 \subsection{Results}\label{sec:results}
@@ -325,7 +325,7 @@ set of other centres within $\sqrt6$ of $c$. The conclusion of
 \begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
 \item $|Y|\le23$, at any distances;
 \item $|Y|\ge31$, and then $\vol(V_c)>8.0179$;
-\item $|Y|=30$;
+\item $|Y|=29$ or $|Y|=30$;
 \item $|Y|=24$, and $Y$ lies on the rays from $c$ through the roots of a
 copy of $\Rt$;
 \item the contact directions of $c$ contain all but at most two of the
@@ -336,7 +336,7 @@ $2+\varepsilon_0$ and $\sqrt6$, where $\varepsilon_0=4\cdot10^{-26}$.
 \end{enumerate}
 \end{thm}
 
-These are \cref{thm:m23-labelled,thm:count31,thm:count30,cor:rays,cor:root-subsets,thm:near-contact}.
+These are \cref{thm:m23-labelled,thm:count31,thm:count30,thm:count29,cor:rays,cor:root-subsets,thm:near-contact}.
 Case (f) makes the $D_4$ configuration a strict local minimum of the cell
 volume among all packings, in an explicit neighbourhood; the constant
 $\varepsilon_0$ comes from a robust form of the classification
@@ -356,7 +356,7 @@ $\Phi(d_1,d_2,\dots)\le8$.
 The twenty-four-cell conjecture is \cref{thm:local-general} together with
 \cref{conj:shell}. By \cref{thm:intro-closure} and
 \cref{thm:kissing-stable}, a centre at which \cref{conj:shell} fails has
-between $24$ and $29$ other centres within $\sqrt6$, one of them at a
+between $24$ and $28$ other centres within $\sqrt6$, one of them at a
 distance between $2+\varepsilon_0$ and $\sqrt6$, and at most $24$ within
 $2.0161$. For a set $Y$ of centres within $\sqrt6$ of $c$ let $T(Y)$ be the
 volume of the part of $B(c,\sqrt{3/2})$ that no half-space of $Y$ cuts off,
@@ -370,14 +370,14 @@ $Y$ alone cuts out satisfies $\vol(V(Y)\cap K(Y))\ge8$, with equality only
 for a copy of $\sqrt2\,\Rt$;
 \item[\textup{(C)}] if $|Y|\ge25$, then $T(Y)>8$.
 \end{enumerate}
-We prove (C) for $|Y|\ge30$ (\cref{thm:count31,thm:count30}), at thirty
-with a kernel on triples of directions that carry the range of their
-distance from $c$ as a type; for $25\le|Y|\le29$ we prove lower bounds on
+We prove (C) for $|Y|\ge29$ (\cref{thm:count31,thm:count30,thm:count29}), at
+thirty and twenty-nine with a kernel on triples of directions that carry the
+range of their distance from $c$ as a type; for $25\le|Y|\le28$ we prove lower bounds on
 the number of centres within $2.05$, $2.1$, $2.15$ and $2.2$
 (\cref{prop:C-radial}). We prove (G) along
 every push-out of the root system and in a neighbourhood of it
 (\cref{thm:G-pushout,thm:near-contact}). Statement (G) in general, and (C)
-for $25\le|Y|\le29$, are open, and \cref{sec:G-and-C} sets out what each
+for $25\le|Y|\le28$, are open, and \cref{sec:G-and-C} sets out what each
 needs; \cref{fig:proof-map} shows the cases. The density bound does not
 require them cell by cell:
 \cref{lem:redistribution} shows that it suffices to move volume between
@@ -392,7 +392,7 @@ centres they cover. Whether such a transfer exists is open as well.
 configurations, by the number $m$ of contacts:
 \cref{cor:m22,thm:m23,thm:m24}. Right, a centre within $\sqrt6$ of $c$
 that is not a contact, by the number $|Y|$ of centres within $\sqrt6$:
-\cref{thm:m23-labelled,thm:count31,thm:count30,lem:no-triple}, statement
+\cref{thm:m23-labelled,thm:count31,thm:count30,thm:count29,lem:no-triple}, statement
 (C) of \cref{prop:reduction-G} with the counts of \cref{prop:C-radial},
 and statement (G) with \cref{thm:G-pushout,thm:near-contact}. Green cases
 are proved and orange cases are open.}
@@ -409,7 +409,7 @@ nearest-neighbour distance $2$.
 \end{thm}
 
 Without the hypothesis on the centres the same cell bounds still control
-the density. At a centre with $24$ to $29$ others within $\sqrt6$ the cell
+the density. At a centre with $24$ to $28$ others within $\sqrt6$ the cell
 is not shown to reach $8$, but it is shown to exceed $7.7532$, and this gives
 the following bound for every packing (\cref{sec:density-cells}).
 
@@ -508,7 +508,7 @@ overlaps, an explicit function of the distances $|y|$ and of the angles
 between the directions. A two-point or three-point kernel that carries the
 distance from $c$ as a label, continuous or by ranges, then bounds $T(Y)$
 from below over all configurations at once. That is how
-\cref{thm:m23-labelled,thm:count31,thm:count30} are proved; the same
+\cref{thm:m23-labelled,thm:count31,thm:count30,thm:count29} are proved; the same
 kernels without the label count the centres near $c$
 (\cref{thm:kissing-stable,thm:twenty-six}). For twenty-four centres $T$ can fall below $8$, and the cell has to
 be bounded through the hull $K(Y)$ (\cref{prop:inversion-hull}); this is
@@ -8588,9 +8588,9 @@ the pair terms for twenty-five or more. Four statements would give both.
   and a near-contact at $2+\delta$ removes $S(2+\delta)\approx0.14$.
 \item \emph{Certificates for the other configurations.} The right side of
   \cref{lem:no-triple} is at least $8$ for $24$ centres within $\sqrt6$
-  away from the root system, and for each count from $25$ to $29$. It is
-  proved for $23$ by \cref{thm:m23-labelled}, at $30$ by \cref{thm:count30}
-  and from $31$ on by \cref{thm:count31}.
+  away from the root system, and for each count from $25$ to $28$. It is
+  proved for $23$ by \cref{thm:m23-labelled}, at $29$ and $30$ by
+  \cref{thm:count29,thm:count30} and from $31$ on by \cref{thm:count31}.
 \end{enumerate}
 By \cref{prop:second-code}, statement (i) fails at slack $0.017$, so for
 twenty-four centres (i) and (ii) cannot be proved one after the other over
@@ -8630,7 +8630,7 @@ fit within $\sqrt6$ in any case.\footnote{Two centres at distances
   negative at $0$, takes the value $49.577\ldots$ at $1$. The three-point
   bound does no better, $49.5$ at degree $8$. The largest packing the
   survey finds has $43$ centres, $29$ of them within $10^{-4}$ of the
-  sphere of radius $\sqrt6$.} The configurations with $25$ to $29$ centres therefore have room to spare;
+  sphere of radius $\sqrt6$.} The configurations with $25$ to $28$ centres therefore have room to spare;
 what (C) lacks is a relaxation that detects it. Second, at twenty-four
 centres the size of the gap can be read off: the pair terms reach $8$
 only at $\sum\delta_i=0.155$ along the root system pushed out evenly, and
@@ -9229,11 +9229,12 @@ them, and \cref{rem:what-g-needs-2} sets out what a proof needs.
 
 For twenty-five or more centres within $\sqrt6$ the pair terms alone
 suffice from thirty-one centres on (\cref{thm:count31}), and with triples
-of typed directions added they suffice at thirty (\cref{thm:count30}). From
-twenty-five to twenty-nine they are not proved to suffice, although the
-least value of $T$ found numerically for such configurations is $8.264$
-(\cref{fig:counts}). Together with (G), the counts from twenty-five to
-twenty-nine are all that stands between the theorems of this section and
+of typed directions added they suffice at thirty and at twenty-nine
+(\cref{thm:count30,thm:count29}). From twenty-five to twenty-eight they are
+not proved to suffice, although the least value of $T$ found numerically for
+such configurations is $8.264$ (\cref{fig:counts}). Together with (G), the
+counts from twenty-five to twenty-eight are all that stands between the
+theorems of this section and
 \cref{conj:shell}.
 
 \begin{prop}[The two statements that remain]\label{prop:reduction-G}
@@ -9277,8 +9278,8 @@ beyond the slack $0.008$ of \cref{thm:kissing-stable} and the slack $0.01698$
 of the second code. (c) The least contact-cell volume found over codes of
 slack $s$. (d) The cases of \cref{prop:reduction-G}; the green boxes are
 proved, the orange ones are statement (G) and statement (C) for twenty-five
-to twenty-nine centres, (C) being proved from thirty on by
-\cref{thm:count31,thm:count30}.
+to twenty-eight centres, (C) being proved from twenty-nine on by
+\cref{thm:count31,thm:count30,thm:count29}.
 Panels (b) and (c) are floating-point minimisations, evidence and not
 bounds.}
 \label{fig:codes}
@@ -9286,10 +9287,10 @@ bounds.}
 
 \subsection{The statements (G) and (C)}\label{sec:G-and-C}
 
-This subsection proves (C) for every count from thirty on, shows that
+This subsection proves (C) for every count from twenty-nine on, shows that
 twenty-four centres close to a root system leave no room for another within
 $\sqrt6$, proves (G) along the push-outs of the root system, and then sets
-out what (G), and (C) for the counts from twenty-five to twenty-nine, still
+out what (G), and (C) for the counts from twenty-five to twenty-eight, still
 require. Throughout, $Y$ is the set of centres $y$ with
 $2\le|y|<\sqrt6$, $\hat y=y/|y|$, $R=\sqrt{3/2}$, and
 \[
@@ -9416,8 +9417,8 @@ decreasing, and the final inequality in ball arithmetic.
 
 With at most $23$ centres within $\sqrt6$ the bound holds by
 \cref{thm:m23-labelled}, and with $31$ or more by \cref{thm:count31}
-(\cref{fig:count31}); \cref{thm:count30} below settles thirty, and what
-remains of (C) is the range from $25$ to $29$.
+(\cref{fig:count31}); \cref{thm:count30,thm:count29} below settle thirty and
+twenty-nine, and what remains of (C) is the range from $25$ to $28$.
 
 \begin{remark}[Where the kernel stops]\label{rem:kernel-limit}
 The argument is Delsarte's linear programming method \cite{DGS77}, with the
@@ -9443,7 +9444,8 @@ Giving each direction only the range of its distance as a type
 (\cref{lem:typed-triples}) keeps the distances in the inequalities on pairs,
 which stay three-dimensional, and leaves the inequalities on triples in the
 three inner products alone; at angular degree $8$ this closes the last case
-at thirty (\cref{thm:count30}).
+at thirty (\cref{thm:count30}) and the whole of twenty-nine
+(\cref{thm:count29}).
 \end{remark}
 
 \begin{table}[tb]
@@ -9494,7 +9496,8 @@ $\Pi$ at $u=\frac12$, the inner product of neighbouring roots
 ($1.4354\cdot10^{-3}$ against $1.4454\cdot10^{-3}$). (c) The same near
 $u=\frac12$; $\Pi$ is positive from $u=\frac13$, where the two caps first
 meet. (d) The counts of centres within $\sqrt6$ and what settles each;
-thirty is settled by the kernel on typed triples of \cref{thm:count30}.
+thirty and twenty-nine are settled by the kernel on typed triples of
+\cref{thm:count30,thm:count29}.
 Panel (a) is floating point, except the value $3.0854$ at $31$, which is
 proved.}
 \label{fig:count31}
@@ -9663,16 +9666,16 @@ inequality $0.614039>\tau$, the bound $0.26785$ and the vanishing of
 $S_1,\dots,S_5$ for the root system are checked again in Lean.
 \end{proof}
 
-\begin{remark}[What (C) needs from twenty-five to twenty-nine centres]\label{rem:what-c-needs}
-Let $Y$ be a packing set of $M$ centres, $25\le M\le29$, with
+\begin{remark}[What (C) needs from twenty-five to twenty-eight centres]\label{rem:what-c-needs}
+Let $Y$ be a packing set of $M$ centres, $25\le M\le28$, with
 $U(Y)\ge3.10330$. Since $U(Y)\le\sum_yS(|y|)$ and $S$ falls steeply,
 from $S(2)=0.13896$ to $S(2.0161)=0.12733$, $S(2.1)=0.07581$ and
 $S(2.2)=0.03340$, most of the union must come from centres close to $c$: if
 at most $22$ centres lay within $\rho$, then
 $U(Y)\le22S(2)+(M-22)S(\rho)$, which is below $3.10330$ once
-$(M-22)S(\rho)<0.0461$, that is, once $\rho\ge2.321$ for $M=29$ and
+$(M-22)S(\rho)<0.0461$, that is, once $\rho\ge2.313$ for $M=28$ and
 $\rho\ge2.268$ for $M=25$. Hence at least $23$ centres lie within
-$2.321$, and by \cref{thm:kissing-stable} at most $24$ within $2.0161$. The
+$2.313$, and by \cref{thm:kissing-stable} at most $24$ within $2.0161$. The
 two cases differ in kind.
 
 With $24$ centres close to $c$, the others must find room beside them, and
@@ -9733,7 +9736,7 @@ $4.4\cdot10^{-5}$ there, against $S(2.2)=0.0334$ for each further centre
 within $2.2$; so the further centres must be compensated by their own pair
 terms with the $23$. Packings leave room here: minimised with at least $23$
 centres held within $\rho$, $T$ does not come below $8.353$, $8.472$,
-$8.681$, $8.781$ and $8.771$ for $M=25,\dots,29$. The relaxations do
+$8.681$ and $8.781$ for $M=25,\dots,28$. The relaxations do
 not see that room. The root system with one centre pushed out along its ray
 to a distance between $2.0161$ and $2.197$, together with a fictitious
 centre near $\sqrt6$ in one of its holes, has a union of caps at least
@@ -10034,8 +10037,8 @@ within $2.25$ of $c$ if $M=30$, within $2.3$ if $M=29$, and within $2.35$
 if $M=27$ or $28$; and at least $8$ lie within $2.0161$ if $M=29$.
 \end{prop}
 
-At $M=30$ the proposition enters the proof of \cref{thm:count30}, which
-then shows that no such $Y$ exists.
+At $M=30$ and $M=29$ the proposition enters the proofs of
+\cref{thm:count30,thm:count29}, which then show that no such $Y$ exists.
 
 \begin{proof}
 For an entry $n$ at the radius $\rho$, take in the proof of
@@ -10121,6 +10124,44 @@ and at $M=30$ and $\rho=2.1$ that of the first split in the proof of
 \cref{thm:count30}.}
 \label{fig:C-radial}
 \end{figure}
+
+The counts of \cref{prop:C-radial} are enough at twenty-nine centres: with
+them in place of the tree of \cref{thm:count30}, the kernel on typed
+triples closes the case at once.
+
+\begin{thm}[Twenty-nine centres]\label{thm:count29}
+If exactly $29$ centres other than $c$ lie within $\sqrt6$ of $c$, then
+$T(Y)>8$.
+\end{thm}
+
+\begin{proof}
+Suppose that $T(Y)\le8$. By \cref{prop:C-radial} at least $8$ centres lie
+within $2.0161$, $19$ within $2.05$, $22$ within $2.1$, $23$ within $2.15$
+and $24$ within $2.3$, and by \cref{thm:kissing-stable} at most $24$ lie
+within $2.0161$. Give a centre the type $\mathsf a$, $\mathsf b$ or
+$\mathsf f$ as its distance from $c$ lies in $[2,2.05]$, $(2.05,2.3]$ or
+$(2.3,\sqrt6)$, and give its direction the same type. With the seven bins
+$[2,2.0161]$, $(2.0161,2.05]$, $(2.05,2.1]$, $(2.1,2.15]$, $(2.15,2.2]$,
+$(2.2,2.3]$ and $(2.3,\sqrt6)$, the integer vectors $(n_b)$ with
+$\sum_bn_b=29$ that meet these bounds number $23\,396$. They fall into $51$
+classes by the numbers of centres of each type, and the class fixes the
+numbers $N_{st}$ of pairs and $N_{str}$ of triples of each combination of
+types. The derivation of \eqref{eq:thirty-bound} applies word for word,
+with these bins and types, and it remains to see that its right side is
+below $\frac98\pi^2-8$ at each of the $23\,396$ vectors.
+
+The certificate again has $D=12$ and $r=4$ in the pair kernel and $d=8$ in
+\eqref{eq:typed-triples}, and it is made exact and checked as in the proof
+of \cref{thm:count30}. The room is smaller than at thirty, and the margins
+are smaller with it: $5\cdot10^{-6}$ for the pairs and $10^{-6}$ for the
+triples and for the bins, each given up at every one of the $406$ pairs or
+$3654$ triples. The six inequalities on pairs close $21\,895$ boxes, the
+bins take $17\,762$ intervals, and the ten inequalities on triples, one for
+each combination of types, close $16\,301\,757$ boxes. The right side of
+\eqref{eq:thirty-bound}, evaluated in exact rational arithmetic, is largest
+at $(19,0,4,0,0,5,1)$, where it is $3.10147$, below
+$\frac98\pi^2-8=3.10330\ldots$.
+\end{proof}
 
 Statement (G) can be proved in full along one family: the root system with
 its centres pushed out along their own rays, by any amounts the region
@@ -10544,8 +10585,9 @@ the bound has an elementary proof, through the extremal cap of a
 cross-polytope (\cref{thm:local-uncond,thm:cap-inequality}).
 
 The conjecture holds also at every centre with at most twenty-three other
-centres within $\sqrt6$ (\cref{thm:m23-labelled}) or with at least thirty
-(\cref{thm:count31,thm:count30}); at every centre whose twenty-four neighbours within
+centres within $\sqrt6$ (\cref{thm:m23-labelled}) or with at least
+twenty-nine (\cref{thm:count31,thm:count30,thm:count29}); at every centre whose
+twenty-four neighbours within
 $\sqrt6$ lie on the rays of a root system (\cref{cor:rays}), whose contacts
 contain enough of a root system (\cref{cor:root-subsets}), or whose
 neighbours within $\sqrt6$ are within $\varepsilon_0=4\cdot10^{-26}$ of
@@ -10698,13 +10740,13 @@ the last drop, return $7.997885\ldots$ at twenty-three contacts
 
 \subsection{What is open}
 
-What is not proved is \cref{conj:shell}: a centre with between $24$ and $29$
+What is not proved is \cref{conj:shell}: a centre with between $24$ and $28$
 other centres within $\sqrt6$, one of them at a distance between
 $2+\varepsilon_0$ and $\sqrt6$. By \cref{prop:reduction-G} it follows from
 statement (G) for twenty-four centres and statement (C) for twenty-five to
-twenty-nine, and together these would give $\Delta_4=\pi^2/16$
-(\cref{cor:conj-density}). Statement (C) is proved from thirty centres on
-(\cref{thm:count31,thm:count30}). Statement (G) is proved along the
+twenty-eight, and together these would give $\Delta_4=\pi^2/16$
+(\cref{cor:conj-density}). Statement (C) is proved from twenty-nine centres on
+(\cref{thm:count31,thm:count30,thm:count29}). Statement (G) is proved along the
 push-outs of the root system and near it
 (\cref{thm:G-pushout,thm:near-contact}), and its second order is
 nonnegative on the packing cone (\cref{prop:cone-min,prop:tilt-block}).
@@ -10732,16 +10774,20 @@ would prove (G) and, through \cref{cor:no-room}, the case of twenty-four
 close centres in (C). The unlabelled version of that programme, which
 settles twenty-four contacts, is already large \cite{LLM24}, and the
 labelled one is larger. The second route continues the kernel that
-settles thirty centres, the labelled two-point kernel together with the
-three-point kernel on directions typed by distance
-(\cref{lem:typed-triples}), downward through the counts. At twenty-nine
-centres the bounds of \cref{prop:C-radial} take the place of the tree of
-cases in the proof of \cref{thm:count30}, the types are wider, and at $d=8$ the
-optimum of the programme on its sample points lies below
-$\frac98\pi^2-8$, though not yet by a margin that survives the passage
-from samples to the whole domain; a higher degree, or a finer division of
-the distances into types, may close it, and each count down to
-twenty-five is a separate programme of the same kind. For
+settles thirty and twenty-nine centres, the labelled two-point kernel
+together with the three-point kernel on directions typed by distance
+(\cref{lem:typed-triples}), downward through the counts. At twenty-eight
+centres, with three types and $d=8$, the optimum of the programme on its
+sample points is already $3.107$, above $\frac98\pi^2-8$; at twenty-nine the degree
+$d=10$ lowers that optimum from $3.064$ to $3.012$, so a higher degree, or a
+finer division of the distances into types, may close twenty-eight. Each
+count down to twenty-five is a separate programme of the same kind, and at
+twenty-six and twenty-seven the optima at $d=8$ are $3.246$ and $3.157$,
+further above the level.\footnote{These optima are those of the programmes
+  in floating point, on sampled constraints, and only show where the method
+  stands; an optimum on samples is never larger than that of the full
+  programme, so a value above the level means that no certificate of that
+  form exists.} For
 the density alone much less is needed: a level below $3.34549$ for the union
 of caps at twenty-six centres would carry \cref{thm:density-cells} below the
 three-point bound (\cref{rem:density-cells}).
@@ -10754,7 +10800,7 @@ conjecture, where the score of a decomposition star replaces the volume of
 a Voronoi cell \cite{Hal05}. In dimension four the transfer can vanish at
 every centre covered by \cref{thm:local-general,thm:intro-closure}; what
 has to be shown is that at a centre of \cref{conj:shell}, with $24$ to
-$29$ neighbours within $\sqrt6$ and one of them not in contact, the
+$28$ neighbours within $\sqrt6$ and one of them not in contact, the
 neighbours whose cells exceed $8$ can supply the deficit. Whether a
 transfer of this kind exists is open, and it is a weaker statement than
 the twenty-four-cell conjecture, since it can hold even if some cell has
@@ -10789,7 +10835,7 @@ interval or ball arithmetic with outward rounding \cite[Ch.~5]{MKC09},
 \cite{Joh17}: every computed quantity is an interval that contains the true
 value, and a sign is decided only when the interval excludes zero. It covers
 the inequalities that the certificates of
-\cref{thm:certificate,thm:m23-labelled,thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30,prop:C-radial,prop:G-radial,prop:levels}
+\cref{thm:certificate,thm:m23-labelled,thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30,thm:count29,prop:C-radial,prop:G-radial,prop:levels}
 must satisfy on their domains, which are decided by branch and bound, and
 the constants of \cref{thm:near-contact,lem:twentyfour-close,cor:no-room,thm:G-pushout}.
 
@@ -10810,7 +10856,7 @@ The certificate of \cite{LLM24} is verified from the deposited data
 \cite{LLM24data} in code that shares nothing with its authors', with the
 exact rational arithmetic of FLINT and the ball arithmetic of Arb
 \cite{Joh17}. The semidefinite programmes behind
-\cref{thm:certificate,thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30} are posed
+\cref{thm:certificate,thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30,thm:count29} are posed
 with \cite{DB16} and solved by the interior-point method of \cite{GC26};
 what enters a proof is the rounding of the solution to rationals, checked
 as above. The box certificates are regenerated by the rule of
@@ -11057,7 +11103,7 @@ certificate is reported. In \cref{thm:cap-inequality} the enclosure is the
 corner value supplied by \cref{lem:monotone}; in
 \cref{thm:certificate,thm:m23-labelled,thm:kissing-stable} it is a
 second-order Taylor form with rigorous tables of $\omega$, $\omega'$ and
-$\omega''$; in \cref{thm:count31,thm:count30} it is the largest Bernstein
+$\omega''$; in \cref{thm:count31,thm:count30,thm:count29} it is the largest Bernstein
 coefficient \cite{Far12} of the kernel on the box less the corner value of
 $\Pi$ in ball arithmetic.
 
@@ -11142,7 +11188,11 @@ $\sum_bn_b(m_b+sS(e_b))$ over the count vectors of a case is found by
 dynamic programming over the bins in exact rational arithmetic, with the
 values $S(e_b)$ rounded up from ball arithmetic. The single splits of
 \cref{prop:C-radial,prop:G-radial}, and the certificates of the levels of
-\cref{prop:levels}, are found and checked in the same way.
+\cref{prop:levels}, are found and checked in the same way. So is the
+certificate of \cref{thm:count29}, except that the pairs of the starting grid
+are kept in every round: without them the pruning to the pairs nearest to
+violation can leave a region of pairs unsampled for a round, and the next
+solution then violates its inequality there.
 
 \emph{Holes.} The labelled programmes of \cref{rem:what-c-needs} have two
 classes of directions, $n$ of slack $0.008$ and one further direction. They

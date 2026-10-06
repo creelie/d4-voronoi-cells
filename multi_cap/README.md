@@ -258,7 +258,25 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               centres, the count constraints of
                               prop:C-radial), with the bound taken over
                               every allowed vector of bin counts in exact
-                              arithmetic.  No certificate has passed it.
+                              arithmetic.  thm:count29: on
+                              radial_certificates/combo29_d8.npz with
+                              gap_closure/CM/case29_all.json and margins
+                              5e-6, 1e-6, 1e-6 it passes: the six pair
+                              inequalities (21 895 boxes), the bins
+                              (17 762 intervals), the ten triple
+                              inequalities (16 301 757 boxes), and the
+                              largest bound over the 23 396 count vectors,
+                              3.101462 at (19, 0, 4, 0, 0, 5, 1), below
+                              9 pi^2/8 - 8.  104 minutes on four cores.
+                              Log: runs/combo29_check.log.  With
+                              LEVEL=L in the environment the last
+                              comparison is with L instead, for a density
+                              level: the case constraints hold whenever
+                              U(Y) >= 9 pi^2/8 - 8, so a pass gives
+                              U(Y) < max(9 pi^2/8 - 8, L) for every set of
+                              M centres (runs/combo26_level_check.log, on
+                              radial_certificates/combo26_level_d8.npz
+                              with case26_all.json against 3.3352).
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

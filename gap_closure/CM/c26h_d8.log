@@ -18,3 +18,4 @@ d3=8 round 3: optimal_inaccurate  bound 3.24563 (target 3.10330), corrected <= 3
    c2: {'AA': -0.023292, 'AB': -0.010399, 'AF': -0.015052, 'BB': -0.001733, 'BF': -0.004413, 'FF': -0.00151}
    c3: {'AAA': 0.0014939, 'AAB': 0.0009554, 'AAF': 0.0012934, 'ABB': 0.0005931, 'ABF': 0.0008263, 'AFF': 0.000947, 'BBB': 0.0004063, 'BBF': 0.0005624, 'BFF': 0.0014158}
    direct: 4817 variables, 92734 inequalities, 4299 psd rows in 48 cones, 45651939 nonzeros [12 s to build]
+stopped 03:13 UTC 2026-10-06 in round 4: the round-3 certificate is in its exact level check
