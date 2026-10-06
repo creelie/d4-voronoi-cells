@@ -158,20 +158,27 @@ neighbouring cells.
 
 Section "A density bound from the cells alone" of the paper (`prop:levels`,
 `thm:density-cells`) bounds the union of caps U(Y) for every count M from 24
-to 30, with no case split except at M = 26, where the case N(2.03) = 26 is
-empty by `thm:twenty-six`; so every cell has volume at least
-9 pi^2/8 - max L_M = 7.7532 and every packing of unit balls in R^4 has density
-at most 0.63649. This is weaker than the three-point bound 0.63611 of Cohn,
-de Laat and Salmon, and far from pi^2/16 = 0.61685.
+to 30. At M = 24 the bound is 24 S(2) = 3.335124; at 25 and 27 to 30 it comes
+from two-point certificates with no split; at M = 26 it comes from the
+combined kernel of `CM/` (labelled pairs and typed triples, degree 8), run
+against a level: `multi_cap/combo_case_check.py` with LEVEL=3.3352 on
+`CM/case26_all.json` and `multi_cap/radial_certificates/combo26_level_d8.npz`
+(the round-3 certificate of `CM/c26h_d8.log`) passes with U(Y) <= 3.329050
+(`multi_cap/runs/combo26_level_check.log`). So every cell has volume at least
+9 pi^2/8 - max L_M = 7.7681, the largest level being 24 S(2) at M = 24, and
+every packing of unit balls in R^4 has density at most 0.63527. This is below
+the three-point bound 0.63611 of Cohn, de Laat and Salmon, and above
+pi^2/16 = 0.61685; it is a density bound, not statement (G) or (C).
 
 | file | what it is |
 |---|---|
 | `levels.py` | floating point: the least level L that a certificate can reach for M centres, by bisection; used to choose the levels |
 | `cert_M.log` | the certificate search, `multi_cap/radial_case_sdp.py M --level L`, writing `multi_cap/radial_certificates/density_M.json`; for M = 26, `cert_26_card.log`, with the spec `density_spec_26_card.json` (split at N(2.03), level 3.3503) |
-| `check_M.log` | the exact check, `multi_cap/radial_case_check.py`: positivity by exact LDL^T, K <= Pi by branch and bound with Pi in Arb, the bin bounds, and the bound with no assumption on the count vector. All seven pass: L_M = 3.3352, 3.3274, 3.3501, 3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to 30 (`check_26_level3353.log` is the earlier check of M = 26 with no split, 3.3524) |
-| `case26_all.json`, `c26all_d2.log` | floating point: a two-point kernel plus a typed three-point kernel at M = 26, value 3.34979; not enough |
+| `check_M.log` | the exact check, `multi_cap/radial_case_check.py`: positivity by exact LDL^T, K <= Pi by branch and bound with Pi in Arb, the bin bounds, and the bound with no assumption on the count vector. All seven pass: two-point levels 3.3352, 3.3274, 3.3501, 3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to 30 (`check_26_level3353.log` is the earlier check of M = 26 with no split, 3.3524); the paper takes 3.3291 at M = 26 from the combined kernel above |
+| `case26_all.json`, `c26all_d2.log` | floating point: an early two-point kernel plus a typed three-point kernel at M = 26 with these coarse types and no counts, value 3.34979; superseded by `CM/case26_all.json` with the counts of `prop:C-radial`, which certifies 3.3291 |
 
-A bound below 0.63611 needs L_26 <= 3.34549. The route tried here splits the
+Before the combined kernel, a bound below 0.63611 was sought with the pair
+kernel alone, which needs L_26 <= 3.34549. The route tried there splits the
 26-centre case by counts at 2.0161 and 2.03 (`split_level.py`, floating point):
 
 | leaf | counts | level | what removes its complement |
