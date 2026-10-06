@@ -1,0 +1,4 @@
+28 with at most 13 centres within 2.0161 (case28_lo13.json), three-point degree 8, four rounds, fixed coplanar and symmetric grids (TCOPLANAR=24, TSYM=24), REFINE=100.  At degree 6 the limit lowers the bound steadily: whole case 3.23113, at most 21 3.21554, 20 3.21021, 19 3.20482, 15 3.18288, 13 3.17164, 8 3.14307.  Local search (2000 starts) finds no code of 28 directions with 10 to 20 centres within 2.0161 under the radial counts of 28, and finds one with 9.  Started Tue Oct  6 19:09:55 UTC 2026
+fixed coplanar triples per kind: {'AAA': 630, 'AAB': 686, 'AAF': 701, 'ABB': 703, 'ABF': 730, 'AFF': 741, 'BBB': 741, 'BBF': 741, 'BFF': 741, 'FFF': 741}
+fixed triples per kind with the symmetric slices: {'AAA': 1465, 'AAB': 1064, 'AAF': 1075, 'ABB': 1092, 'ABF': 730, 'AFF': 1125, 'BBB': 1580, 'BBF': 1121, 'BFF': 1124, 'FFF': 1585}
+   direct: 5898 variables, 79249 inequalities, 4299 psd rows in 48 cones, 33859040 nonzeros [12 s to build]
