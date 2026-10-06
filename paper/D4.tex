@@ -7275,9 +7275,16 @@ being $-1$, $-\tfrac12$, $0$ and $\tfrac12$. The weight vanishes at the
 first three and equals $\tfrac32\cdot1\cdot\tfrac14\cdot s=\tfrac38s$ at
 $\tfrac12$, and each root has eight neighbours at $60^\circ$, so $96$ of
 the $276$ pairs have inner product $\tfrac12$ and the sum of the weights
-is $96\cdot\tfrac38s=36s$. The bound $\max w\le0.019779$ at
-$s=0.008$ is an evaluation of $w$ in ball arithmetic on $2\cdot10^5$
-subintervals of $[-1,0.508]$; \cref{fig:margin} shows both quantities.
+is $96\cdot\tfrac38s=36s$. The comparison $36s\ge\max w$ at $s=0.008$
+needs only crude estimates. Put $b=\frac12+s$. On $[0,b]$,
+$(u+1)(u+\frac12)^2\le(1+b)(\frac12+b)^2$, and $u^2(b-u)\le\frac4{27}b^3$,
+the largest value of $u^2(b-u)$; at $s=0.008$ the product is below
+$0.0298$. On $[-1,0]$, $(u+1)(b-u)\le\frac14(1+b)^2$ by the inequality of
+arithmetic and geometric means, and $|u(u+\frac12)|\le\frac12$, so
+$w\le\frac1{16}(1+b)^2<0.143$. Both are below $36s=0.288$. A finer
+evaluation, in ball arithmetic on $2\cdot10^5$ subintervals of
+$[-1,0.508]$, gives $\max w\le0.019779$; \cref{fig:margin} shows both
+quantities.
 \end{proof}
 
 Near the double zero at $0$ one has $w(u)=\tfrac18(1+2s)u^2+O(u^3)$, so
