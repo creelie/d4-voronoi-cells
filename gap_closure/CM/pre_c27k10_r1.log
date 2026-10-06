@@ -16,3 +16,4 @@ statement (C) at 27 centres, case case27_all.json: combined certificate c27k10_d
   triple ABF: float largest 1.354198e-02 on 649349 samples; threshold 1.355399e-02; 756 monomials, symmetry 0
   triple AFF: float largest 1.298373e-02 on 649302 samples; threshold 1.300558e-02; 756 monomials, symmetry 1
   triple BBB: float largest 2.416725e-03 on 649325 samples; threshold 2.431527e-03; 756 monomials, symmetry 2
+  triple BBF: float largest 1.771828e-03 on 649158 samples; threshold 1.776182e-03; 756 monomials, symmetry 1
