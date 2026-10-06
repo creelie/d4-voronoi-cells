@@ -210,10 +210,16 @@ def random_quads(types, Tmat, n):
     return np.concatenate(outs)
 
 
-def quad_matrix(L, types, q, chunk=1500):
+def quad_chunk(L):
+    """quadruples per chunk, so that one chunk holds about 2e7 coordinate entries."""
+    per = 12 * sum(len(L.mons[k]) ** 2 for k in range(L.d4 + 1))
+    return max(50, int(2e7 // per))
+
+
+def quad_matrix(L, types, q, chunk=None):
     """constraint rows of QUAD4 for the samples q, built in chunks so that the coordinate lists
     (about 10^4 entries per quadruple at d4 = 5) never hold more than one chunk."""
-    out = []
+    out = []; chunk = chunk or quad_chunk(L)
     for i in range(0, len(q), chunk):
         qq = q[i:i + chunk]
         B = T3.Builder(L); add_quad4(B, np.arange(len(qq)), types, quad_U(qq))
@@ -222,9 +228,9 @@ def quad_matrix(L, types, q, chunk=1500):
 
 
 def quad_values(L, xv, types, q):
-    vals = []
-    for i in range(0, len(q), 1500):
-        qq = q[i:i + 1500]
+    vals = []; chunk = quad_chunk(L)
+    for i in range(0, len(q), chunk):
+        qq = q[i:i + chunk]
         B = T3.Builder(L); add_quad4(B, np.arange(len(qq)), types, quad_U(qq))
         vals.append(B.matrix(len(qq)) @ xv)
     return np.concatenate(vals)
