@@ -132,7 +132,9 @@ to t^2 (2t - 1)^4, and that the third vanishes at a = 1/4; checks the three
 polynomial identities of the case |S| = 1, the positivity of their factors on
 rational intervals containing the three ranges, and the integer inequalities
 at the endpoints; and reruns the box certificate of the case |S| >= 2 exactly
-as the script does, 303 boxes, the largest corner value 0.99755050.  Nine
+as the script does, 303 boxes, the largest corner value 0.99755050.  The
+paper proves that case by hand (the bound 8/9 at the five vertices of the
+region), and the box certificate is its independent check.  Nine
 theorems, `native_decide`, about ten seconds; log `runs/D4Cap_2026-09-27.log`.
 The cap formula and the monotonicity of the divided difference are the
 paper's.
@@ -622,7 +624,7 @@ took 9 536 s on one core (log `runs/Kiss26_build_2026-10-05.log`).
 | `case_identities` | the three polynomial identities of the case \|S\| = 1 |
 | `case_signs` | 14c^3 - 18c^2 + 7c - 1 > 0 on [0.866, 1], q > 0 on [0.7071, 0.8661], r > 0 on [1/2, 0.7072] |
 | `endpoint_integers` | 113^2 > 2 * 79^2, 163^2 > 3 * 93^2, 23^2 > 2 * 11^2 |
-| `box_certificate` | the box certificate of the case \|S\| >= 2 finishes with 303 boxes, largest corner value in (0.9975, 1] |
+| `box_certificate` | the box certificate of the case \|S\| >= 2 (the independent check of the hand proof) finishes with 303 boxes, largest corner value in (0.9975, 1] |
 
 ### D4Rigidity.lean
 

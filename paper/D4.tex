@@ -459,10 +459,11 @@ so $Q\subseteq B$, and the enclosure loses nothing in the one direction
 that matters, since $\{x_0\ge1\}$ cuts exactly $\frac13$ off both. What
 remains is a question about the cross-polytope alone, answered by
 \cref{thm:cap-inequality}: among the half-spaces at unit distance from the
-centre, those normal to a vertex direction cut off the most. Its proof
-writes the cap volume as a divided difference of $a(2\sqrt a-1)_+^4$ and
-uses that this function has a nondecreasing third derivative
-(\cref{fig:cap-scheme}).
+centre, those normal to a vertex direction cut off the most. Its proof,
+by hand, writes the cap volume as a divided difference of
+$a(2\sqrt a-1)_+^4$, that is, as an average of the third derivative of
+this function over a simplex, and uses that the third derivative is
+nondecreasing and, beyond $\frac14$, concave (\cref{fig:cap-scheme}).
 
 The covering estimate measures the cell radially. With $\delta(\theta)$ the
 angular distance from $\theta\in S^3$ to the nearest contact direction, the
@@ -1457,7 +1458,6 @@ Result & Kernel & Degree & Finite check & Proved / needed\\
 \cref{thm:count29} & pairs; typed triples & $12$, $4$; $8$ & $16.3$ million boxes & $3.10147$ / $3.10330$\\
 \cref{prop:levels}, $M=26$ & pairs; typed triples & $8$ (triples) & $7.5$ million boxes & $3.32906$ / $3.3352$\\
 \cref{prop:C-radial} & pairs, labelled & $12$, $4$ & one split per entry & $3.10276$ / $3.10330$\\
-\cref{thm:cap-inequality} & none & & $303$ boxes, exact & $0.99755$ / $1$\\
 \bottomrule
 \end{tabular}
 \caption{The certificates on which proofs rest. The degree of a kernel on
@@ -1468,9 +1468,8 @@ that the theorem needs. In the first row the bound on the size of a code
 is exactly $24$, as the classification needs. In the next four rows the
 certificate proves a lower bound, which has to exceed the number on the
 right; for \cref{thm:m23-labelled} it is the sign of every term of its
-proof. In the remaining rows it proves an upper bound, on $U(Y)$ or, in
-the last row, on the function $\Phi$ of the proof of
-\cref{thm:cap-inequality}, which has to lie below the number on the right.
+proof. In the remaining rows it proves an upper bound on $U(Y)$, which has
+to lie below the number on the right.
 For \cref{thm:count30,prop:C-radial} the value is the largest over the
 cases of the proof.}
 \label{tab:certificates}
@@ -5861,7 +5860,7 @@ $f$ takes distinct values $f_0,\dots,f_4$, one has
   the distribution of $\sum_i f_i\lambda_i$ for $\lambda$ uniform on the
   simplex. The coordinates $\lambda_i$ are the normalised spacings of
   four independent uniform points on an interval, and the density of
-  $\sum f_i\lambda_i$ is $4!$ times the third-order divided difference
+  $\sum f_i\lambda_i$ is $4!$ times the fourth-order divided difference
   of $t\mapsto(t-x)_+^{3}/3!$ in the nodes $f_i$, which is the
   Curry--Schoenberg B-spline with those knots \cite{CSc66}. Integrating
   that density from $s$ upwards raises the truncated power by one degree
@@ -6018,25 +6017,92 @@ $23^2=529>242=2\cdot11^2$.
 In all three ranges $\Phi(a)\le1$, with equality only when $c=1$, that is
 $a=(1,0,0,0)$ and $u=\pm e_0$.
 
-\emph{Case $|S|\ge2$.} Here $a_0\ge a_1\ge\tfrac14$. By
-\cref{lem:monotone}, $\Phi$ is nondecreasing in each node, so on any box
-$\prod_k[l_k,h_k]$ one has $\Phi(a)\le \Phi(h)$. The region
+\emph{Case $|S|\ge2$.} Here $a_0\ge a_1\ge\tfrac14$, so $a$ lies in
 \[
-  R=\Bigl\{a:\ a_0\ge a_1\ge a_2\ge a_3\ge0,\ \sum_ka_k=1,\ a_1\ge\tfrac14\Bigr\}
+  R=\Bigl\{a:\ a_0\ge a_1\ge a_2\ge a_3\ge0,\ \sum_ka_k=1,\ a_1\ge\tfrac14\Bigr\}.
 \]
-is covered by $303$ boxes, obtained by bisecting a uniform initial grid of
-$216$ cubes of side $\tfrac18$ and refining only where needed, and on each
-box the value of $\Phi$ at the upper corner is a rational number at most $1$;
-the largest of the $303$ corner values is $0.99755\ldots$. The nodes at a corner
-are taken at rational points $t_k$ with $t_k^2$ at least the corner
-coordinate, and ties are broken upward, both of which only increase the
-bound. The computation is exact rational arithmetic throughout, and is
-repeated in Lean, which finds the same $303$ boxes and the same largest value, and also checks the three polynomial
-identities and signs above.
-Since $\sup_R\Phi=0.76583\ldots$, attained at $(\tfrac34,\tfrac14,0,0)$, the
-certificate has a margin of about a quarter and does not depend on the
-fineness of the grid beyond what is stated.
+This is a polytope of dimension three, and at each of its vertices three of
+the five inequalities $a_0\ge a_1$, $a_1\ge a_2$, $a_2\ge a_3$, $a_3\ge0$,
+$a_1\ge\frac14$ hold with equality. Solving the ten such systems and keeping
+the solutions that lie in $R$ gives the five vertices
+\[
+  (\tfrac34,\tfrac14,0,0),\quad(\tfrac12,\tfrac12,0,0),\quad
+  (\tfrac12,\tfrac14,\tfrac14,0),\quad(\tfrac13,\tfrac13,\tfrac13,0),\quad
+  (\tfrac14,\tfrac14,\tfrac14,\tfrac14).
+\]
+Three facts bound $\Phi$ on $R$.
+
+First, $\Phi$ is an average of $g'''$. Let $\lambda$ be uniformly
+distributed on the simplex $\{\lambda\in\mathbb{R}^4:\lambda_k\ge0,\
+\sum_k\lambda_k=1\}$ and put $T=\sum_ka_k\lambda_k$. Then
+\begin{equation}\label{eq:hermite-genocchi}
+  \Phi(a)=\tfrac16\,\mathbb{E}\,g'''(T).
+\end{equation}%
+\footnote{This is the Hermite--Genocchi formula, and it follows from the
+  footnote to \cref{eq:simplex-slice}. For a $C^3$ function $h$ and a point
+  $c$ below every node, Taylor's formula with integral remainder writes
+  $h(x)$ as a polynomial of degree two plus
+  $\int_c^\infty h'''(s)\,\frac12(x-s)_+^2\,ds$. The polynomial has third
+  divided difference $0$, and for distinct nodes the third divided
+  difference of $x\mapsto\frac12(x-s)_+^2$ is $\frac16$ times the density
+  $f_T(s)$ of $T=\sum_ka_k\lambda_k$ at $s$, the Curry--Schoenberg B-spline
+  of that footnote in dimension three \cite{CSc66}. So
+  $h[a_0,a_1,a_2,a_3]=\frac16\int h'''(s)\,f_T(s)\,ds=\frac16\,\mathbb{E}\,h'''(T)$,
+  and coincident nodes follow by continuity. The function $g$ is $C^3$ by
+  \cref{lem:monotone}, so the formula applies to it.}
+
+Second, $g'''(a)\le96\,(a-\tfrac14)_+$ for every $a\ge0$. Both sides vanish
+for $a\le\frac14$. On $[\frac14,\infty)$ the function $g'''$ is concave,
+since its second derivative $g^{(5)}=\frac{45}{4}\,a^{-7/2}(1-4a)$ is
+negative there, so it lies below its tangent at $\frac14$. By
+\cref{eq:g-derivs}, $g'''(\frac14)=0$ and $g''''(\frac14)=96$, so that
+tangent is $96(a-\frac14)$.
+
+Third, $\mathbb{E}\lambda_k=\frac14$ for each $k$, so $\mathbb{E}T=\frac14$
+because the nodes sum to $1$, and
+$\mathbb{E}(T-\frac14)_+=\frac12\,\mathbb{E}\,\bigl|T-\tfrac14\bigr|
+=\frac12\,\mathbb{E}\,\bigl|\sum_k(a_k-\tfrac14)\lambda_k\bigr|$. The
+last expression is an average of absolute values of linear functions of
+$a$, hence a convex function of $a$.
+
+Together,
+\[
+  \Phi(a)\;\le\;16\,\mathbb{E}\bigl(T-\tfrac14\bigr)_+ ,
+\]
+and the right side, being convex, is largest on $R$ at a vertex. To evaluate
+it there, apply \cref{eq:hermite-genocchi} to $h(x)=(x-\frac14)_+^4$, whose
+third derivative is $24(x-\frac14)_+$; this gives
+$16\,\mathbb{E}(T-\frac14)_+=4\,h[a_0,a_1,a_2,a_3]$. The function $h$
+vanishes on $[0,\frac14]$ together with its first three derivatives, so, as
+in the case $|S|=1$, only the nodes above $\frac14$ contribute:
+\[
+\begin{aligned}
+  h[\tfrac34,\tfrac14,0,0]&=\frac{h(\frac34)}{\frac12\cdot\frac34\cdot\frac34}=\frac29,&
+  h[\tfrac12,\tfrac12,0,0]&=\frac{d}{dx}\,\frac{h(x)}{x^2}\Big|_{x=\frac12}=\frac3{16},\\
+  h[\tfrac12,\tfrac14,\tfrac14,0]&=\frac{h(\frac12)}{\frac14\cdot\frac14\cdot\frac12}=\frac18,&
+  h[\tfrac13,\tfrac13,\tfrac13,0]&=\frac12\,\frac{d^2}{dx^2}\,\frac{h(x)}{x}\Big|_{x=\frac13}=\frac{27}{256},
+\end{aligned}
+\]
+and $h[\frac14,\frac14,\frac14,\frac14]=0$. The largest is $\frac29$, so
+$\Phi(a)\le\frac89<1$ on all of $R$, and the case $|S|\ge2$ contains no
+point of equality.
 \end{proof}
+
+\begin{remark}[An independent check of the case $|S|\ge2$]\label{rem:cap-boxes}
+The maximum of $\Phi$ on $R$ is $0.76583\ldots$, attained at
+$(\frac34,\frac14,0,0)$, against the bound $\frac89=0.888\ldots$ just
+proved. The case can also be settled by a finite check that uses only
+\cref{lem:monotone}: $\Phi$ is nondecreasing in each node, so on any box
+$\prod_k[l_k,h_k]$ it is at most its value at the upper corner. Bisecting a
+uniform grid of $216$ cubes of side $\frac18$, and refining only where
+needed, covers $R$ by $303$ boxes whose upper corner values are rational
+numbers at most $1$, the largest being $0.99755\ldots$. The nodes at a
+corner are taken at rational points $t_k$ with $t_k^2$ at least the corner
+coordinate, and ties are broken upward, both of which only raise the bound.
+The check is exact rational arithmetic throughout and is repeated in Lean,
+which finds the same $303$ boxes and the same largest value and also checks
+the three polynomial inequalities of the case $|S|=1$.
+\end{remark}
 
 \begin{figure}[tb]
 \centering
@@ -9450,8 +9516,8 @@ $\frac{11}{16}$, the ratio $\sqrt{96/11}$ and the arithmetic of the radius
 $2/\sqrt{397}$. \\
 \cref{sec:cap-theorem} & The $25$ vertices of $Q$, $\vol Q=\frac{25}3$,
 \cref{lem:crosspolytope}, the fourth derivative of \cref{lem:monotone},
-the three ranges of the case $|S|=1$ and the $303$ boxes of the case
-$|S|\ge2$. \\
+the three ranges of the case $|S|=1$ and the $303$ boxes of the
+independent check of the case $|S|\ge2$ (\cref{rem:cap-boxes}). \\
 \cref{prop:hexagon-loop} & The integrals $J_1$ and $J_2$ in closed form in
 $\mathbb{Q}(\sqrt3)[c,s]/(c^2+s^2-1)$, the identity
 $3J_1^2-4\sqrt3J_2=32$, the conditions on the slices, the Gram matrix at
@@ -9482,10 +9548,9 @@ fraction or polynomial, as a table entry, or as the rule that produces it. A rea
 coefficient list of the arcs from \cref{def:joint-hessian-new} and the
 boundary curves of \cref{thm:arc1-breakpoints-new,thm:arc2-breakpoints-new},
 and the roots are numbered as in \cref{app:numerical-tables}.
-The cap inequality of \cref{sec:cap-theorem} is self-contained in this
-sense, since the cap formula, the monotonicity, the three polynomial
-inequalities and the subdivision rule are given in full and the rule
-regenerates the $303$ boxes. The objects that are not printed are the
+The cap inequality of \cref{sec:cap-theorem} is proved by hand in full,
+and the subdivision rule of \cref{rem:cap-boxes} regenerates the $303$
+boxes that check it independently. The objects that are not printed are the
 matrices of the semidefinite certificates and the lists of boxes of the
 branch and bounds; they are in the archive described below, together with
 the programmes that check them and the Lean development.
@@ -11487,8 +11552,9 @@ disjoint interiors, and this is checked on the box boundaries in exact
 rational arithmetic rather than assumed from the construction; so every
 quoted box count is exact. There is one way to fail, a box of width below
 $\varepsilon$ on which the sign is still undecided, and then no partial
-certificate is reported. In \cref{thm:cap-inequality} the enclosure is the
-corner value supplied by \cref{lem:monotone}; in
+certificate is reported. In the independent check of \cref{thm:cap-inequality}
+(\cref{rem:cap-boxes}) the enclosure is the corner value supplied by
+\cref{lem:monotone}; in
 \cref{thm:certificate,thm:m23-labelled,thm:kissing-stable} it is a
 second-order Taylor form with rigorous tables of $\omega$, $\omega'$ and
 $\omega''$; in \cref{thm:count31,thm:count30,thm:count29} it is the largest Bernstein
@@ -11510,11 +11576,12 @@ rounded kernel still satisfies it between the sample points.
 \subsection*{The certificates}
 
 \emph{The cap inequality.} The chain of \cref{sec:cap-theorem} is exact from
-end to end: the vertex enumeration of $Q$, with $25$ vertices and
-$\vol Q=\frac{25}3$, \cref{lem:crosspolytope}, the monotonicity of
-\cref{lem:monotone}, the three polynomial inequalities of the case $|S|=1$,
-and the $303$ boxes of the case $|S|\ge2$, whose largest corner value is
-$0.99755\ldots$.
+end to end and needs no computer: the vertex enumeration of $Q$, with $25$
+vertices and $\vol Q=\frac{25}3$, \cref{lem:crosspolytope}, the
+monotonicity of \cref{lem:monotone}, the three polynomial inequalities of
+the case $|S|=1$, and the five vertex values of the case $|S|\ge2$, the
+largest $\frac29$. The $303$ boxes of \cref{rem:cap-boxes}, whose largest
+corner value is $0.99755\ldots$, check the case $|S|\ge2$ independently.
 
 \emph{The arcs.} On each region of \cref{sec:arc1-cert,sec:arc2-cert} the
 numerator and the denominator of $\defect$ are written in the Bernstein
