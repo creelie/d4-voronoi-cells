@@ -19,3 +19,6 @@ d3=10 round 3: NumericalError  bound 3.09435 (target 3.10330), corrected <= 4.24
    viol: AA 3.1e-07, AB 1.1e-07, AF 1.6e-07, BB -4.4e-06, BF -4.2e-06, FF -5.3e-05, AAA 6.6e-07, AAB 4.0e-05, AAF 8.3e-06, ABB 6.3e-05, ABF 2.0e-05, AFF 1.3e-05, BBB 6.8e-04, BBF 5.6e-05, BFF 4.8e-05, FFF -3.8e-05
    c2: {'AA': -0.078223, 'AB': -0.041041, 'AF': -0.032423, 'BB': -0.006789, 'BF': -0.001268, 'FF': 0.006296}
    c3: {'AAA': 0.0045713, 'AAB': 0.003162, 'AAF': 0.0028255, 'ABB': 0.0018515, 'ABF': 0.0016169, 'AFF': 0.0012532, 'BBB': 0.0006531, 'BBF': 0.000558, 'BFF': 0.0004473, 'FFF': 0.0015657}
+   direct: 8988 variables, 107892 inequalities, 7389 psd rows in 56 cones, 77397945 nonzeros [23 s to build]
+PEAK_RSS_GB 10.72 exit -15
+[stopped 15:02 UTC on 2026-10-06 in round 4, to restart from c28m_d10_r3.npz with fixed grids on the symmetric slices (TSYM=32): the worst violations of rounds 1 to 3 sit at triples with two or three equal inner products, BBB at (0.3316, 0.3316, 0.3316), ABB at (-0.6188, -0.6188, 0.2783), AAB at (-0.6524, 0.3879, 0.3879); see c28s_d10.log]

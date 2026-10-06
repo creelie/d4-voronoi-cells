@@ -116,7 +116,17 @@ the triple violations between them fell from about 1e-3 to between 4e-5 and
 4.4e-4, and the corrected value from 6.45 to 3.957. The worst violations now
 sit inside the Gram domain, at triples with three nearly equal inner products
 near 0.31, so the second round adds those points; a bound at 28 needs the
-triple violations below about 2e-6.
+triple violations below about 2e-6. Round 2 gave 3.09216 on the samples and
+3.227 corrected, round 3 3.09435 and 4.247: the violations move from one kind
+to another, and the worst of rounds 1 to 3 sit at triples fixed by the
+exchange of two points of the same type (BBB at (0.3316, 0.3316, 0.3316),
+ABB at (-0.6188, -0.6188, 0.2783), AAB at (-0.6524, 0.3879, 0.3879)), where a
+symmetric kernel has its critical points and from which the pruning between
+rounds drops the samples once they are satisfied. With `TSYM=n` every kind
+with two points of one type carries a fixed n-by-n grid on that symmetric
+slice (u13 = u23 or u12 = u13, and for three equal types also the diagonal),
+kept through every pruning, and the probes add one of twice that density
+(`c28s_d10.log`, continued from the round-3 certificate).
 
 The case at 28 does not split usefully at the count that limits the bound
 at 29. With at least 19 of the centres within 2.05 (`case28_hiA.json`), the

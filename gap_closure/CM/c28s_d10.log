@@ -1,0 +1,5 @@
+28 at degree 10, continued from c28m_d10_r3.npz (round 3 of c28m, 3.09435 on its samples), pruned to KEEP_T=2500, with the fixed 32-by-32 grid of coplanar triples (TCOPLANAR=32) and fixed 32-by-32 grids on the symmetric slices u13 = u23, u12 = u13 and the diagonal (TSYM=32), where rounds 1 to 3 left their worst violations; REFINE=150; started Tue Oct  6 15:00:03 UTC 2026
+resumed from c28m_d10_r3.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8988 variables, 77713 inequalities, 7389 psd rows in 56 cones, 53163648 nonzeros [16 s to build]
