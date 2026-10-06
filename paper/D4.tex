@@ -8265,29 +8265,27 @@ $p=\sum_{k=0}^5p_kG_k$ with
   \tfrac{29}{33806},\ \tfrac{17}{14206},\ \tfrac{95}{98183},\
   \tfrac{52}{86257}\Bigr).
 \]
-Then $p(t)<0$ for $-1\le t\le s$, where $s=0.614039$. Put
+Then $p(t)<0$ for $-1\le t\le t_0$, where $t_0=0.614039$. Put
 \[
   A(t)=10^{-8}\bigl(26327+59724\,t+112736\,t^2\bigr),\qquad
   B(t)=10^{-8}\bigl(260109+4473253\,t+5671392\,t^2\bigr),
 \]
-and $R=-p-(1+t)A^2-(s-t)B^2$. The polynomial $R$ has degree at most $5$,
+and $R=-p-(1+t)A^2-(t_0-t)B^2$. The polynomial $R$ has degree at most $5$,
 constant term $4.99996\ldots\cdot10^{-8}$, and its other five coefficients
 below $4.5\cdot10^{-10}$ in absolute value, so $R(t)>4.8\cdot10^{-8}$ for
-$|t|\le1$. For $-1\le t\le s$ the first two terms of
+$|t|\le1$. For $-1\le t\le t_0$ the first two terms of
 \[
-  -p(t)=(1+t)A(t)^2+(s-t)B(t)^2+R(t)
+  -p(t)=(1+t)A(t)^2+(t_0-t)B(t)^2+R(t)
 \]
-are nonnegative, hence $p(t)<0$.\footnote{Every polynomial of degree five
-  that is nonnegative on $[-1,s]$ can be written as $(1+t)A^2+(s-t)B^2$ with
-  quadratics $A$ and $B$; the quadratics above are such a pair for
-  $-p-5\cdot10^{-8}$, rounded to eight decimals, and $R$ absorbs the
-  rounding. Both nearly vanish at $-0.7256$ and $-0.0633$, where $p$ has two
+are nonnegative, hence $p(t)<0$.\footnote{The quadratics $A$ and $B$ solve
+  $-p-5\cdot10^{-8}=(1+t)A^2+(t_0-t)B^2$, six equations for their six
+  coefficients, rounded to eight decimals, and $R$ absorbs the rounding. Both nearly vanish at $-0.7256$ and $-0.0633$, where $p$ has two
   pairs of complex roots, $0.007$ and $0.010$ from the real axis, and comes
   within $10^{-7}$ of zero; the only real root of $p$ is $0.61474$. That is
   why the representation needs eight decimals. A Taylor bound about the
-  midpoint of each of $29$ subintervals of $[-1,s]$, in rational arithmetic,
-  gives the sign of $p$ independently.} Moreover $s>\tau=a(\sqrt6,\rho)$,
-since $\tau^2=(2+\rho^2)^2/(24\rho^2)=139129/369000<s^2$.
+  midpoint of each of $29$ subintervals of $[-1,t_0]$, in rational arithmetic,
+  gives the sign of $p$ independently.} Moreover $t_0>\tau=a(\sqrt6,\rho)$,
+since $\tau^2=(2+\rho^2)^2/(24\rho^2)=139129/369000<t_0^2$.
 
 Let $z$ be a further centre with $|z|<\sqrt6$. As in the proof of
 \cref{cor:no-room}, $\langle\hat z,\hat y_i\rangle\le\tau$ for every $i$,
