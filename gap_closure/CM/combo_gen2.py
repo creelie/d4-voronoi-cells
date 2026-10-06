@@ -196,6 +196,7 @@ def tbound(s, t):
 
 KEEP_P, KEEP_T = int(os.environ.get('KEEP_P', '5000')), int(os.environ.get('KEEP_T', '2500'))
 KEEP_BASE = os.environ.get('KEEP_BASE') == '1'   # keep the starting pair grid through every pruning
+NEWP, NEWT = int(os.environ.get('NEWP', '3000')), int(os.environ.get('NEWT', '400'))   # worst new samples added per kind and round
 
 
 def prune(psamp, tsamp, x3v, Av, c2v, c3v, L):
@@ -338,7 +339,7 @@ def main():
                 B = T3.Builder(L); T3.add_pair(B, np.arange(len(u[i:i + 20000])), ti[st[0]], ti[st[1]], u[i:i + 20000])
                 x3part.append(B.matrix(len(u[i:i + 20000])) @ x3v)
             v = Kv - pair(p / 2, q / 2, u) + np.concatenate(x3part) - c2[st].value
-            w = np.argsort(v)[-3000:]
+            w = np.argsort(v)[-NEWP:]
             newp[st] = (p[w], q[w], u[w])
             vmax = v.max()
             if REFINE:
@@ -354,14 +355,14 @@ def main():
                 corr[k] += Npair(dict(zip(TYPES, k)), *st) * max(vmax, 0)
         for cb in c3:
             T12, T13, T23 = tbound(cb[0], cb[1]), tbound(cb[0], cb[2]), tbound(cb[1], cb[2])
-            g = np.r_[T3.random_triples(T12, T13, T23, 8000), T3.triple_grid(T12, T13, T23, 26, 26, 10)]
+            g = np.r_[T3.random_triples(T12, T13, T23, int(os.environ.get('TPROBE', '8000'))), T3.triple_grid(T12, T13, T23, 26, 26, 10)]
             vals = []
             for i in range(0, len(g), 5000):
                 gg = g[i:i + 5000]
                 B = T3.Builder(L); T3.add_triple(B, np.arange(len(gg)), tuple(ti[x] for x in cb), gg[:, 0], gg[:, 1], gg[:, 2])
                 vals.append(B.matrix(len(gg)) @ x3v)
             v = np.concatenate(vals) - c3[cb].value
-            newt[cb] = g[np.argsort(v)[-400:]]
+            newt[cb] = g[np.argsort(v)[-NEWT:]]
             vmax = v.max()
             if REFINE:
                 old = tsamp[cb]

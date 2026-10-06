@@ -96,6 +96,13 @@ of the earlier rounds were too low. `multi_cap/combo_case_check.py` with
 `PRECHECK=1` computes the thresholds of the exact check and the bound they
 give, without the branch and bounds, to say whether a certificate is worth
 the full check.
+Each round adds the `NEWP` worst new pair samples (default 3000) and the
+`NEWT` worst new triple samples (default 400) per kind, the triples drawn from
+`TPROBE` random points (default 8000) and a grid, before the compass search.
+With `BORDER=1` the exact check rounds the bordered matrix
+[[A_0, z], [z^T, t]] as a whole instead of setting t = z^T A_0^{-1} z after
+rounding A_0, which keeps t at the solver's value when A_0 is nearly singular
+(at 28 and degree 10 the difference is 0.007 in the bound).
 
 ## musin: where the two-point kernel fails
 
