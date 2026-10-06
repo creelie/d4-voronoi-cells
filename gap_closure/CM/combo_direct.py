@@ -16,6 +16,7 @@ upper triangle by columns, off-diagonal entries times sqrt 2).
 
 Usage: python3 combo_direct.py d3 rounds case.json        (as combo_gen2.py)
 """
+import gc
 import itertools
 import math
 import os
@@ -164,7 +165,8 @@ def build_and_solve(d3, rounds, psamp, tsamp):
             r.append(row); c.append(c3i[cb]); v.append(float(Ntriple(tc, list(cb))))
         r.append(row); c.append(etai); v.append(-1.0)
         add(sp.csr_matrix((v, (r, c)), shape=(row + 1, nvar)), np.zeros(row + 1))
-    Anon = sp.vstack(blocks, format='csc'); bnon = np.concatenate(bvec)
+    Anon = sp.vstack(blocks, format='csr'); bnon = np.concatenate(bvec)
+    blocks.clear(); bvec.clear()                                    # free the pieces at once
     nnon = Anon.shape[0]
     # PSD cones
     cones = [clarabel.NonnegativeConeT(nnon)]
@@ -192,7 +194,9 @@ def build_and_solve(d3, rounds, psamp, tsamp):
         I = L.idx(name)
         psd(Ent(s, lambda i, j, I=I: I[i, j]))
     Apsd = sp.csc_matrix((pv, (pr, pc)), shape=(pb, nvar))
-    A = sp.vstack([Anon, Apsd], format='csc')
+    A = sp.vstack([Anon, Apsd], format='csr')
+    del Anon, Apsd
+    A = A.tocsc()
     b = np.r_[bnon, np.zeros(pb)]
     q = np.zeros(nvar); q[etai] = 1.0
     P = sp.csc_matrix((nvar, nvar))
@@ -203,7 +207,11 @@ def build_and_solve(d3, rounds, psamp, tsamp):
     st.max_threads = int(os.environ.get('THREADS', str(st.max_threads)))
     print('   direct: %d variables, %d inequalities, %d psd rows in %d cones, %d nonzeros [%.0f s to build]'
           % (nvar, nnon, pb, len(cones) - 1, A.nnz, time.time() - t0), flush=True)
-    sol = clarabel.DefaultSolver(P, q, A, b, cones, st).solve()
+    solver = clarabel.DefaultSolver(P, q, A, b, cones, st)
+    del A                       # Clarabel keeps its own copy; drop ours before the factorisations
+    gc.collect()
+    sol = solver.solve()
+    del solver
     sname = str(sol.status).split('.')[-1]
     status = {'Solved': 'optimal', 'AlmostSolved': 'optimal_inaccurate'}.get(sname, sname)
     x = np.array(sol.x)

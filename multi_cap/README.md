@@ -225,10 +225,11 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               largest bound with no assumption on the count
                               vector, which holds for every set of M
                               centres since the multiplier and the bin
-                              bounds are nonnegative: these are the values
-                              L_M of tab:levels (3.3352, 3.3274, 3.3501,
-                              3.3090, 3.2587, 3.2080, 3.1538 for M = 24 to
-                              30).  density_spec_26_card.json splits M = 26
+                              bounds are nonnegative: 3.3352, 3.3274,
+                              3.3501, 3.3090, 3.2587, 3.2080, 3.1538 for
+                              M = 24 to 30, the values L_M of tab:levels
+                              except at M = 26, where the table takes 3.3291
+                              from combo_case_check.py below.  density_spec_26_card.json splits M = 26
                               at N(2.03) <= 25, the other case being empty
                               by thm:twenty-six, and sets the small margins
                               that M = 26 needs, since the margin is given
@@ -274,9 +275,18 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               level: the case constraints hold whenever
                               U(Y) >= 9 pi^2/8 - 8, so a pass gives
                               U(Y) < max(9 pi^2/8 - 8, L) for every set of
-                              M centres (runs/combo26_level_check.log, on
+                              M centres.  prop:levels at M = 26: on
                               radial_certificates/combo26_level_d8.npz
-                              with case26_all.json against 3.3352).
+                              with case26_all.json, margins 2e-5, 2e-6,
+                              2e-6 and LEVEL=3.3352 it passes: the six
+                              pair inequalities (9 996 boxes), the bins
+                              (6 323 intervals), the nine triple
+                              inequalities (7 512 629 boxes), and the
+                              largest bound over the 17 845 count vectors,
+                              3.329050 at (15, 0, 9, 0, 0, 0, 2), below
+                              3.3352; this is L_26 = 3.3291 of tab:levels.
+                              46 minutes on four cores.  Log:
+                              runs/combo26_level_check.log.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

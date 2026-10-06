@@ -1,10 +1,10 @@
 # Lean 4 verification
 
-Fifteen files and three small Lake projects: machine checks of finite
+Fifteen files and four small Lake projects: machine checks of finite
 arithmetic and of polynomial identities taken from the paper.
 `run_all.sh` checks the fifteen files with
 the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
-prints the axiom report of each; the three Lake projects are built with
+prints the axiom report of each; the four Lake projects are built with
 `lake build` in their directories.
 
 `D4Closure.lean` covers the exact
@@ -285,6 +285,32 @@ What makes a certificate a proof (Schoenberg's theorem, the positivity of the
 three-point kernels of Bachoc and Vallentin, the counting argument) is in the
 paper and is not formalised.
 
+`count/` covers the certificate of thm:count31: with at least 31 centres
+within sqrt 6 of a centre, the union of the caps has volume below
+9 pi^2/8 - 8.  `gen_count_data.py` writes the certificate
+`multi_cap/radial_certificates/radial_31.json` into `CountData31.lean` as
+exact rationals, and `CountDomain.lean` repeats the four checks of
+`multi_cap/radial_count_check.py` from those entries alone: A_1, ..., A_12
+positive semidefinite and A_0 positive definite by exact LDL^T, t = z^T
+A_0^{-1} z rounded up to a multiple of 2^-48 and the bordered matrix
+[[A_0, z], [z^T, t]] positive semidefinite; the pair inequality
+K(d, d', u) <= Pi(d/2, d'/2, u) for 2 <= d <= d' <= dmax, -1 <= u <=
+a(d, d'), by the same branch and bound, with the tensor Bernstein
+coefficients of K computed exactly, rounded up once to multiples of 2^-320
+and subdivided exactly in dyadic arithmetic, and Pi bounded below at the
+corner (d_hi, d'_hi, u_lo) from its closed form in outward-rounded interval
+arithmetic with 256 fractional bits (square roots from Nat.sqrt, arctan
+from its series, pi from Machin's formula, sin and cos from their Taylor
+series with remainders); the bracket S(d) + K(d, d, 1)/2 - z . p(d) <= m on
+[2, dmax]; and m < 0, 31 m + t/2 < 9 pi^2/8 - 8.  A floating-point value of
+Pi only decides on which boxes the rigorous bound is computed; no box is
+closed on its strength.  The branch and bound closes 191 740 boxes and sets
+aside 180 310, with 54 248 rigorous values of Pi, the counts of the Python
+check.  `Count31Main.lean` states the four checks as theorems and settles
+them by `native_decide`.  That a certificate meeting these conditions
+bounds the union of the caps (Schoenberg's theorem and the two-point
+certificate theorem) is in the paper and is not formalised.
+
 `D4InnerProducts.lean` covers the last step of the verification of the
 certificate of de Laat, Leijenhorst and de Muinck Keizer (thm:m24,
 prop:verified and sec:certificate-checked): the two-point polynomial p_2 of that certificate, computed
@@ -377,7 +403,14 @@ modules, not in the modules that others import.  Likewise
 compiles `KissDomain` and runs the checks of `KissMain8` (about seven
 minutes) and `KissMain10` (four hours and ten minutes, 15 052 s, on one
 core); `lake build Kiss26Main` runs the twenty-six-point check (9 536 s on one
-core, log `runs/Kiss26_build_2026-10-05.log`).
+core, log `runs/Kiss26_build_2026-10-05.log`).  And
+
+    cd count
+    lake build
+
+compiles `CountDomain` and runs the four checks of `Count31Main` (3 381 s on
+one core, almost all of it the pair inequality; log
+`runs/Count31_build_2026-10-06.log`).
 
 Toolchain used: `leanprover/lean4:v4.34.0-rc2` (see `lean-toolchain`).
 
@@ -568,6 +601,15 @@ The certificate is `multi_cap/cardinality_certificates/cert_d10_t0.51468.npz`
 `gen_data.py`.  All three theorems are settled by `native_decide`; the build
 took 9 536 s on one core (log `runs/Kiss26_build_2026-10-05.log`).
 
+### count/Count31Main.lean
+
+| theorem | statement |
+| --- | --- |
+| `count31_positivity` | A_0, ..., A_12 symmetric, A_1, ..., A_12 positive semidefinite and A_0 positive definite (exact LDL^T); [[A_0, z], [z^T, t]] positive semidefinite with t = z^T A_0^{-1} z rounded up to a multiple of 2^-48 |
+| `count31_pairs` | dmax^2 > 6 and K(d, d', u) <= Pi(d/2, d'/2, u) for 2 <= d <= d' <= dmax, -1 <= u <= a(d, d') (191 740 boxes closed, 180 310 set aside) |
+| `count31_bracket` | S(d) + K(d, d, 1)/2 - z . p(d) <= m on [2, dmax] (356 intervals) |
+| `count31_final` | m < 0 and 31 m + t/2 < 9 pi^2/8 - 8 |
+
 ### D4Cap.lean
 
 | theorem | statement |
@@ -614,8 +656,8 @@ took 9 536 s on one core (log `runs/Kiss26_build_2026-10-05.log`).
 
 ## What is not proved
 
-Nothing else in the paper. The theorems of `certificate/` and
-`cardinality/` are that programs return true; the mathematics that makes the
+Nothing else in the paper. The theorems of `certificate/`,
+`cardinality/` and `count/` are that programs return true; the mathematics that makes the
 programs proofs (Taylor's theorem on a box, the monotonicity of omega and of
 the shares fr, the integration of the Gamma terms, Schoenberg's theorem and
 the positivity of the three-point kernels of Bachoc and Vallentin, the

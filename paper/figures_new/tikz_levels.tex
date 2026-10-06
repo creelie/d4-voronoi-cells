@@ -4,7 +4,9 @@
 %       for and the level below which the density bound would pass the three-point bound.
 %   (b) The resulting density bound on a scale with the other bounds for R^4.
 % Data: the unconditional bounds printed by radial_case_check.py for the certificates
-%       multi_cap/radial_certificates/density_M.json (M = 25..30), and 24 S(2) for M = 24.
+%       multi_cap/radial_certificates/density_M.json (M = 25, 27..30), the bound printed by
+%       combo_case_check.py with LEVEL=3.3352 for combo26_level_d8.npz (M = 26), and 24 S(2)
+%       for M = 24.
 % Build:  pdflatex tikz_levels.tex && pdftoppm -r 500 -png -singlefile tikz_levels.pdf ../figures/fig_tikz_levels
 % Test:   python3 tikz_overlap_check.py tikz_levels.tex
 \documentclass[border=4pt]{standalone}
@@ -21,8 +23,8 @@
 \definecolor{cviolet}{HTML}{4A3AA7}
 \definecolor{cink2}{HTML}{52514E}
 \definecolor{cink3}{HTML}{8B8A85}
-\def\Lsix{3.3501}
-\def\Dsix{0.63649}
+\def\Lsix{3.3291}
+\def\Dsix{0.63527}
 \input{tikzcheck}
 \begin{document}
 \begin{tikzpicture}[font=\small]
@@ -38,8 +40,8 @@
   \addplot[cblue, line width=0.5pt, densely dotted, mark=none] coordinates
     {(24,3.33513) (25,3.32739) (26,\Lsix) (27,3.30896) (28,3.25870) (29,3.20799) (30,3.15376)};
   \addplot[only marks, mark=*, mark size=2.2pt, cblue] coordinates
-    {(24,3.33513) (25,3.32739) (27,3.30896) (28,3.25870) (29,3.20799) (30,3.15376)};
-  \addplot[only marks, mark=*, mark size=2.6pt, corange] coordinates {(26,\Lsix)};
+    {(25,3.32739) (26,\Lsix) (27,3.30896) (28,3.25870) (29,3.20799) (30,3.15376)};
+  \addplot[only marks, mark=*, mark size=2.6pt, corange] coordinates {(24,3.33513)};
   \coordinate (A-c) at (axis cs:30.6,3.10330);
   \coordinate (A-r) at (axis cs:26.75,3.3505);
   \coordinate (A-26) at (axis cs:26,\Lsix);
@@ -54,8 +56,8 @@
   {$9\pi^2/8-8$:\\statement (C)};
 \node[lbl, inner sep=1pt, font=\footnotesize, anchor=south west, text=cviolet] (lr) at (A-r)
   {$3.34549$: the three-point bound};
-\node[lbl, inner sep=1pt, font=\footnotesize, anchor=south, yshift=3pt, text=corange!85!black] (l26) at (A-26) {$\Lsix$};
-\node[lbl, inner sep=1pt, font=\scriptsize, anchor=north, yshift=-4pt, text=cblue!85!black] (l24) at (A-24) {$3.3352$};
+\node[lbl, inner sep=1pt, font=\scriptsize, anchor=north, yshift=-4pt, text=cblue!85!black] (l26) at (A-26) {$\Lsix$};
+\node[lbl, inner sep=1pt, font=\footnotesize, anchor=north, yshift=-4pt, text=corange!85!black] (l24) at (A-24) {$3.3352$};
 \node[lbl, inner sep=1pt, font=\scriptsize, anchor=north, yshift=-4pt, text=cblue!85!black] (l25) at (A-25) {$3.3274$};
 \node[lbl, inner sep=1pt, font=\scriptsize, anchor=south west, xshift=2pt, yshift=2pt, text=cblue!85!black] (l27) at (A-27) {$3.3090$};
 \node[lbl, inner sep=1pt, font=\scriptsize, anchor=south west, xshift=2pt, yshift=2pt, text=cblue!85!black] (l28) at (A-28) {$3.2587$};
@@ -63,25 +65,25 @@
 \node[lbl, inner sep=1pt, font=\scriptsize, anchor=south west, xshift=2pt, yshift=2pt, text=cblue!85!black] (l30) at (A-30) {$3.1538$};
 \begin{axis}[name=B, at={($(A.east)+(3.9cm,0)$)}, anchor=west, width=7.4cm, height=6.6cm,
     xmin=0.612, xmax=0.656, ymin=0.4, ymax=5.6,
-    ytick={1,2,3,4,5}, yticklabels={$D_4$ lattice, floor of the method, three-point bound, the cells, linear programming},
+    ytick={1,2,3,4,5}, yticklabels={$D_4$ lattice, floor of the method, the cells, three-point bound, linear programming},
     xtick={0.62,0.63,0.64,0.65}, xticklabels={$0.62$,$0.63$,$0.64$,$0.65$},
     xlabel={density of a unit-ball packing of $\mathbb{R}^4$},
     axis lines=left, tick style={cink2}, tick label style={font=\footnotesize},
     scaled x ticks=false, clip=false]
   \draw[cink3!40, line width=0.4pt] (axis cs:0.612,1) -- (axis cs:0.6162,1);
   \draw[cink3!40, line width=0.4pt] (axis cs:0.612,2) -- (axis cs:0.6235,2);
-  \draw[cink3!40, line width=0.4pt] (axis cs:0.612,3) -- (axis cs:0.6355,3);
-  \draw[cink3!40, line width=0.4pt] (axis cs:0.612,4) -- (axis cs:0.6275,4);
+  \draw[cink3!40, line width=0.4pt] (axis cs:0.612,3) -- (axis cs:0.6262,3);
+  \draw[cink3!40, line width=0.4pt] (axis cs:0.612,4) -- (axis cs:0.6355,4);
   \draw[cink3!40, line width=0.4pt] (axis cs:0.612,5) -- (axis cs:0.6385,5);
   \addplot[only marks, mark=*, mark size=2.2pt, cink2] coordinates {(0.61685,1)};
   \addplot[only marks, mark=*, mark size=2.2pt, cink3] coordinates {(0.62411,2)};
-  \addplot[only marks, mark=*, mark size=2.2pt, cviolet] coordinates {(0.63611,3)};
-  \addplot[only marks, mark=*, mark size=2.4pt, corange] coordinates {(\Dsix,4)};
+  \addplot[only marks, mark=*, mark size=2.2pt, cviolet] coordinates {(0.63611,4)};
+  \addplot[only marks, mark=*, mark size=2.4pt, corange] coordinates {(\Dsix,3)};
   \addplot[only marks, mark=*, mark size=2.2pt, cblue] coordinates {(0.64774,5)};
   \coordinate (B-1) at (axis cs:0.61685,1);
   \coordinate (B-2) at (axis cs:0.62411,2);
-  \coordinate (B-3) at (axis cs:0.63611,3);
-  \coordinate (B-4) at (axis cs:\Dsix,4);
+  \coordinate (B-3) at (axis cs:0.63611,4);
+  \coordinate (B-4) at (axis cs:\Dsix,3);
   \coordinate (B-5) at (axis cs:0.64774,5);
 \end{axis}
 \node[lbl, inner sep=1pt, font=\footnotesize, anchor=west, xshift=3pt, text=cink2] (lb1) at (B-1) {$0.61685$};
