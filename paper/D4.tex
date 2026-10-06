@@ -5711,8 +5711,8 @@ By \cref{lem:Q-structure}, $\vol(Q)=\tfrac{25}{3}$, and
 \cref{eq:defect-is-vol} gives $\defect=\vol(Q)-\vol(\capQ(\base_1))-8$.
 \end{proof}
 
-The deviation parameters have now left the body and entered the cutting
-half-space: $Q$ is one fixed polytope with $25$ vertices, and the
+The deviation parameters enter only through the cutting half-space: $Q$
+is one fixed polytope with $25$ vertices, and the
 question is how much of it a half-space at unit distance from the origin
 can cut off. At $\base_1=\base_0$ the answer is $\tfrac13$, the pyramid.
 
@@ -5752,11 +5752,11 @@ roots are distinct from $\alpha_0$, so all sixteen constraints are among
 those defining $Q$.
 \end{proof}
 
-The enclosure is efficient where it matters: $\vol(B)=\tfrac{32}{3}$
-against $\vol(Q)=\tfrac{25}{3}$, and, what matters for the bound, the half-space
-$\{x_0\ge1\}$ cuts from $B$ the cone over the octahedron
+The enclosure enlarges the volume, $\vol(B)=\tfrac{32}{3}$ against
+$\vol(Q)=\tfrac{25}{3}$, but not the cap in the critical direction: the
+half-space $\{x_0\ge1\}$ cuts from $B$ the cone over the octahedron
 $\{\sum_{j\ge1}|x_j|\le1\}$ with apex $2\base_0$, of volume exactly
-$\tfrac13$. On the critical direction the enclosure is therefore not lossy. \Cref{fig:cap}(a) shows the three bodies in section.
+$\tfrac13$, which is the pyramid it cuts from $Q$. \Cref{fig:cap}(a) shows the three bodies in section.
 
 \begin{figure}[tb]
 \centering
@@ -6177,10 +6177,10 @@ form $c+\sqrt2\,\Rt$. Conversely that configuration has cell $c+\VCell$, of
 volume $8$.
 \end{proof}
 
-Two features of the argument deserve comment. First, it covers every
-combinatorial type of the perturbed cell at once, because the cap
-inequality is a statement about a single polytope and makes no reference
-to which facets the deviating half-space cuts. Second, the enclosure
+The argument covers every combinatorial type of the perturbed cell at
+once, because the cap inequality is a statement about a single polytope
+and makes no reference to which facets the deviating half-space cuts. The
+enclosure
 $Q\subseteq B$ adds $\tfrac73$ to the volume of $Q$, more than a quarter of
 it, and yet loses nothing at the critical direction, so the estimate is sharp; the same
 argument applied to the $24$-cell in place of $Q$, or to a smaller
@@ -6490,8 +6490,8 @@ found was, for every $\delta\le0.4$, that of the family above,
 $\tfrac{25}3-\tfrac13(1-\tfrac\delta2)^4$, to nine digits; at
 $\delta=0.8$ it was $8.2837$, with $22$ contacts, a little below that
 value; the least over all eight was $8.00067$, at $\delta=0.001$, and no
-feasible endpoint fell below $8$ (\cref{fig:noncontact}(c)). A search is
-evidence and not proof. What a proof needs, for caps of unequal
+feasible endpoint fell below $8$ (\cref{fig:noncontact}(c)). The search
+enters no proof. What a proof needs, for caps of unequal
 radii, is what the proof of \cref{thm:m23} supplies for equal ones, an
 exact account of the pairs, with the three-point method of \cite{BV08}
 carried from the sphere to a shell; \cref{sec:closure} does that for at
@@ -9218,8 +9218,8 @@ the target by $0.0000444$. The relaxation on pair angles alone reaches
 $79.5$ per cent of the target (\cref{prop:two-point-barrier}); the triples
 supply the rest, and the polynomial part of the certificate is almost
 inert, so the three-point matrices carry the argument
-(\cref{rem:certificate-found}). A relaxation could succeed here, where a
-classification of the codes could not be had, because the inequality is
+(\cref{rem:certificate-found}). A relaxation succeeds here, where no
+classification of the codes is available, because the inequality is
 strict at the deletion, whereas the deletion lies on the boundary of the
 classification (\cref{rem:strict-kind,rem:m23-uniqueness}).
 
@@ -9280,7 +9280,7 @@ representation it carries on the near-null subspace, and
 invariant under it form a space of dimension $5$ instead of $35$. A fit of
 those five coefficients admits a sum-of-squares representation with a small
 margin (\cref{prop:a18-sos-reduced}); the fit is numerical, so this is
-evidence and not a proof. Along three swap paths, at $m=2,3,6$, the
+not a proof. Along three swap paths, at $m=2,3,6$, the
 inequality is proved over the whole angular range of the unconstrained
 defect (\cref{sec:swap-configs}).
 
@@ -9368,13 +9368,17 @@ labelled one is larger. The second route continues the kernel that
 settles thirty and twenty-nine centres, the labelled two-point kernel
 together with the three-point kernel on directions typed by distance
 (\cref{lem:typed-triples}), downward through the counts. At twenty-eight
-centres, with three types and $d=8$, the optimum of the programme on its
-sample points is already $3.107$, above $\frac98\pi^2-8$; at twenty-nine the degree
-$d=10$ lowers that optimum from $3.064$ to $3.012$, so a higher degree, or a
-finer division of the distances into types, may close twenty-eight. Each
-count down to twenty-five is a separate programme of the same kind, and at
-twenty-six and twenty-seven the optima at $d=8$ are $3.246$ and $3.157$,
-further above the level.\footnote{These optima are those of the programmes
+centres, with three types, the optimum of the programme on its sample
+points is $3.107$ at $d=8$, above $\frac98\pi^2-8=3.10330$, and $3.091$ at
+$d=10$, below it; at twenty-nine the step from $d=8$ to $d=10$ lowers the
+optimum from $3.064$ to $3.012$. Whether a certificate of degree $10$
+exists at twenty-eight is not settled: the solutions found so far violate
+the triple constraint between the samples by about $10^{-3}$, on triples of
+directions in a common $2$-plane through $c$, and with $\binom{28}3=3276$
+triples this exceeds the margin of $0.012$ many times over. At
+twenty-seven the optima at $d=8$, $10$ and $12$ are $3.157$, $3.123$ and
+$3.113$, and at twenty-six the optimum at $d=8$ is $3.246$, all above the
+level.\footnote{These optima are those of the programmes
   in floating point, on sampled constraints, and only show where the method
   stands; an optimum on samples is never larger than that of the full
   programme, so a value above the level means that no certificate of that
