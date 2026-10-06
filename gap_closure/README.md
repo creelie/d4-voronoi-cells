@@ -111,7 +111,17 @@ triples of directions in one 2-plane through the centre, which the grid and
 the random points reach only thinly. With `TCOPLANAR=n` every kind of triple
 carries a fixed n-by-n grid of such coplanar triples, equally spaced in the
 two angles and kept through every pruning, and the probes add a grid of twice
-that density (`c28m_d10.log`).
+that density (`c28m_d10.log`). Its first round gave 3.09166 on the samples;
+the triple violations between them fell from about 1e-3 to between 4e-5 and
+4.4e-4, and the corrected value from 6.45 to 3.957. The worst violations now
+sit inside the Gram domain, at triples with three nearly equal inner products
+near 0.31, so the second round adds those points; a bound at 28 needs the
+triple violations below about 2e-6.
+
+The case at 28 does not split usefully at the count that limits the bound
+at 29. With at least 19 of the centres within 2.05 (`case28_hiA.json`), the
+kernel of three-point degree 6 gives 3.23113 in one round, the value of the
+whole case at that degree (`c28hiA_d6.log`).
 
 ## musin: where the two-point kernel fails
 
