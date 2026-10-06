@@ -1,1 +1,3 @@
 d1=2 delta=4 prec=128 B=127//250 BL=127//250 value=3.011406517420815e15 status=dFeas seconds=347.7
+d1=4 delta=6 prec=128 B=127//250 BL=127//250 value=34.07267532413623 status=pdOpt seconds=622.0
+d1=4 delta=6 prec=128 B=127//250 BL=6141//10000 value=137.53348442408887 status=pdOpt seconds=725.0
