@@ -150,7 +150,7 @@ B = parse(Rational{BigInt}, ARGS[4]); BL = parse(Rational{BigInt}, ARGS[5])
 out = length(ARGS) >= 6 ? ARGS[6] : "star_results.txt"
 setprecision(prec)
 t0 = time()
-problem = star_problem(4, d1, dl, QQ(B), QQ(BL))
+problem = star_problem(4, d1, dl, B, BL)
 sdp = ClusteredLowRankSDP(problem)
 @info "built in $(round(time() - t0, digits = 1)) s"
 status, primal, dual, _, _ = solvesdp(convert_to_prec(sdp, prec); prec = prec,
