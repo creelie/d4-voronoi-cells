@@ -197,6 +197,7 @@ def tbound(s, t):
 KEEP_P, KEEP_T = int(os.environ.get('KEEP_P', '5000')), int(os.environ.get('KEEP_T', '2500'))
 KEEP_BASE = os.environ.get('KEEP_BASE') == '1'   # keep the starting pair grid through every pruning
 TCOPLANAR = int(os.environ.get('TCOPLANAR', '0'))  # n > 0: a fixed n-by-n grid of coplanar triples per kind
+TSYM = int(os.environ.get('TSYM', '0'))            # n > 0: a fixed n-by-n grid on the symmetric slices per kind
 PERM_T = {}                                        # the fixed triples, kept through every pruning
 
 
@@ -212,6 +213,29 @@ def coplanar_grid(T12, T13, T23, n):
         P = np.stack([np.cos(A), np.cos(B), w], 1)
         out.append(P[w <= T23])
     return np.unique(np.round(np.concatenate(out), 12), axis=0)
+
+
+def symmetric_grid(cb, T12, T13, T23, n):
+    """triples (u12, u13, u23) fixed by the exchange of two points of the same type, where
+    the triple inequality of a symmetric kernel has its critical points: u13 = u23 when the
+    first two types agree, u12 = u13 when the last two do, and for three equal types also
+    the diagonal u12 = u13 = u23.  The free inner products run over n equally spaced values
+    each, and only admissible triples (Gram determinant >= 0) are kept."""
+    out = []
+    if cb[0] == cb[1]:                      # u12 = x, u13 = u23 = y
+        X, Y = (v.ravel() for v in np.meshgrid(np.linspace(-1, T12, n), np.linspace(-1, min(T13, T23), n)))
+        out.append(np.stack([X, Y, Y], 1))
+    if cb[1] == cb[2]:                      # u23 = x, u12 = u13 = y
+        X, Y = (v.ravel() for v in np.meshgrid(np.linspace(-1, T23, n), np.linspace(-1, min(T12, T13), n)))
+        out.append(np.stack([Y, Y, X], 1))
+    if cb[0] == cb[1] == cb[2]:
+        d = np.linspace(-0.5, T12, 4 * n)
+        out.append(np.stack([d, d, d], 1))
+    if not out:
+        return np.zeros((0, 3))
+    P = np.concatenate(out)
+    P = P[1 + 2 * P[:, 0] * P[:, 1] * P[:, 2] - (P ** 2).sum(1) >= 0]
+    return np.unique(np.round(P, 12), axis=0)
 NEWP, NEWT = int(os.environ.get('NEWP', '3000')), int(os.environ.get('NEWT', '400'))   # worst new samples added per kind and round
 
 
@@ -343,6 +367,12 @@ def main():
             PERM_T[cb] = coplanar_grid(tbound(cb[0], cb[1]), tbound(cb[0], cb[2]), tbound(cb[1], cb[2]), TCOPLANAR)
             tsamp[cb] = np.unique(np.r_[tsamp[cb], PERM_T[cb]], axis=0)
         print('fixed coplanar triples per kind: %s' % {''.join(k): len(v) for k, v in PERM_T.items()}, flush=True)
+    if TSYM:
+        for cb in tsamp:
+            sg = symmetric_grid(cb, tbound(cb[0], cb[1]), tbound(cb[0], cb[2]), tbound(cb[1], cb[2]), TSYM)
+            PERM_T[cb] = np.unique(np.r_[PERM_T.get(cb, np.zeros((0, 3))), sg], axis=0)
+            tsamp[cb] = np.unique(np.r_[tsamp[cb], sg], axis=0)
+        print('fixed triples per kind with the symmetric slices: %s' % {''.join(k): len(v) for k, v in PERM_T.items()}, flush=True)
     for rnd in range(rounds):
         t0 = time.time()
         prob, L, X3, A, z, t, m, c2, c3, pvec = build_and_solve(d3, rounds, psamp, tsamp)
@@ -381,6 +411,8 @@ def main():
             g = np.r_[T3.random_triples(T12, T13, T23, int(os.environ.get('TPROBE', '8000'))), T3.triple_grid(T12, T13, T23, 26, 26, 10)]
             if TCOPLANAR:
                 g = np.r_[g, coplanar_grid(T12, T13, T23, 2 * TCOPLANAR + 1)]
+            if TSYM:
+                g = np.r_[g, symmetric_grid(cb, T12, T13, T23, 2 * TSYM + 1)]
             vals = []
             for i in range(0, len(g), 5000):
                 gg = g[i:i + 5000]
@@ -406,8 +438,8 @@ def main():
         prune(psamp, tsamp, x3v, Av, {k: v.value for k, v in c2.items()}, {k: v.value for k, v in c3.items()}, L)
         for st in newp:
             psamp[st] = tuple(np.r_[a, b] for a, b in zip(psamp[st], newp[st]))
-        for cb in newt:
-            tsamp[cb] = np.r_[tsamp[cb], newt[cb]]
+        for cb in newt:                                   # the climbs often end at the same point: keep each once
+            tsamp[cb] = np.unique(np.round(np.r_[tsamp[cb], newt[cb]], 12), axis=0)
         np.savez('%s_d%d_r%d.npz' % (TAG, d3, rnd + 1), x3=x3v, A=Av, z=z.value, t=t.value, m=m.value,
                  bound=prob.value, c2=np.array([c2[k].value for k in c2]), c3=np.array([c3[k].value for k in c3]),
                  **{'p_' + ''.join(k): np.array(v) for k, v in psamp.items()},

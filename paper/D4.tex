@@ -192,7 +192,7 @@ contact configuration, $D_4$ is a strict local minimum of the cell volume, and
 no periodic packing avoiding the exception is denser than $D_4$; the remaining
 cells reduce to two explicit inequalities about at most twenty-eight centres.
 The cells alone bound the density of every packing of unit balls in
-$\mathbb{R}^4$ by $0.63527$, below the three-point bound.
+$\mathbb{R}^4$ by $0.63477$, below the three-point bound.
 \end{abstract}
 
 \maketitle
@@ -413,12 +413,12 @@ nearest-neighbour distance $2$.
 
 Without the hypothesis on the centres the same cell bounds still control
 the density. At a centre with $24$ to $28$ others within $\sqrt6$ the cell
-is not shown to reach $8$, but it is shown to exceed $7.7681$, and this gives
+is not shown to reach $8$, but it is shown to exceed $7.7742$, and this gives
 the following bound for every packing (\cref{sec:density-cells}).
 
 \begin{thm}[Density from the cells]\label{thm:intro-density}
 Every packing of unit balls in $\mathbb{R}^4$ has density at most
-$0.63527$.
+$0.63477$.
 \end{thm}
 
 This is below the three-point bound $0.63611$ of Cohn, de Laat and Salmon
@@ -1440,7 +1440,11 @@ been made into a certificate in this way is never used as a bound.
 kernel each one uses, its degree, the size of the finite check of its
 inequalities, and the value it proves against the value it needs. The
 theorems are stated and proved in the sections named there, which also
-say how each certificate was found.
+say how each certificate was found;
+\cref{rem:cardinality-tight,rem:count31-tight,rem:typed-tight} say where the
+certificates of
+\cref{thm:kissing-stable,thm:twenty-six,thm:count31,thm:count30,thm:count29}
+are tight and what each of them needs.
 
 \begin{table}[htbp]
 \centering
@@ -1458,7 +1462,8 @@ Result & Kernel & Degree & Finite check & Proved / needed\\
 \cref{thm:count31} & pairs, labelled & $12$, $4$ & $191\,740$ boxes & $3.08537$ / $3.10330$\\
 \cref{thm:count30} & pairs; typed triples & $12$, $4$; $8$ & $193$ million boxes & $3.0992$ / $3.10330$\\
 \cref{thm:count29} & pairs; typed triples & $12$, $4$; $8$ & $16.3$ million boxes & $3.10147$ / $3.10330$\\
-\cref{prop:levels}, $M=26$ & pairs; typed triples & $8$ (triples) & $7.5$ million boxes & $3.32906$ / $3.3352$\\
+\cref{prop:levels}, $M=24$ & pairs; typed triples & $6$ (triples) & $104\,028$ boxes & $3.25388$ / $3.3291$\\
+\cref{prop:levels}, $M=26$ & pairs; typed triples & $8$ (triples) & $7.5$ million boxes & $3.32906$ / $3.3291$\\
 \cref{prop:C-radial} & pairs, labelled & $12$, $4$ & one split per entry & $3.10276$ / $3.10330$\\
 \bottomrule
 \end{tabular}
@@ -2456,7 +2461,7 @@ packing density at most $\vol(B^4)/v$, and $7.798989\ldots$ would give
 $0.632749\ldots$, below the three-point bound $0.63611$ of \cite{CdLS22};
 but the constant holds only for cells whose active neighbours all touch,
 and a general packing has other cells. For every cell the paper proves
-$7.7681$ (\cref{thm:density-cells}).
+$7.7742$ (\cref{thm:density-cells}).
 Unlike a density bound, the covering estimate concerns one cell at a
 time, as \cref{conj:multidir-new} requires, and so it settles the range
 $m\le22$ outright.
@@ -5206,13 +5211,17 @@ gives the rest.
 \caption{(a) The certificate of \cref{thm:certificate}: the slack of the
 condition \eqref{eq:C}, the amount by which its left-hand side exceeds
 $0$, on the slice of the admissible domain in which one pair of the
-triple is at $60^\circ$. It is positive throughout, least near a
-coplanar triple with one nearly antipodal pair, and largest, about
-$4\times10^{-4}$, in the interior. The six squares are the triples that
-occur in a deletion of a root. (b) The values of the relaxations against the target $8-A_*$: the
+triple is at $60^\circ$. It is positive throughout and largest, about
+$4\times10^{-4}$, in the interior. It is least, $2.3\times10^{-6}$, at the
+corner $(-\frac{\sqrt3}2,-\frac{\sqrt3}2)$ where the two arcs of coplanar
+triples meet the diagonal, the triple in which the third direction lies
+opposite the bisector of the pair at $60^\circ$; a search of the whole
+domain finds no smaller value. The six squares are the triples with a pair at $60^\circ$ that occur
+in the root system less one root. (b) The values of the relaxations against the target $8-A_*$: the
 pair angles alone (\cref{prop:two-point-barrier}), the three-point
 relaxation at degrees $6$ and $8$, and the certificate, at which the
-bound is fixed at $0.0929$ and the least slack is maximised.}
+bound is fixed at $0.0929$ and the least slack is maximised; the dotted
+line is the pair sum $0.127196$ of the root system less one root.}
 \label{fig:certpair}
 \end{figure}
 
@@ -5235,7 +5244,13 @@ $F_k-10^{-7}I$ and $f_k-10^{-7}$ constrained to be positive
 semidefinite so that the solution survives being read as exact
 rationals: the least slack is $1.35\times10^{-5}$ on the final sample
 of $21\,648$ triples and $1.30\times10^{-5}$ on the check, against
-$\omega(60^\circ)=0.00145$. The solution has two further features.
+$\omega(60^\circ)=0.00145$. On the whole domain it is smaller,
+$2.30\times10^{-6}$, at the coplanar triple
+$(-\frac{\sqrt3}2,-\frac{\sqrt3}2,\frac12)$, in which two directions are
+at $60^\circ$ and the third lies opposite their bisector. Neither the
+sample nor the check came near that point; the branch and bound of the
+proof covers every admissible triple and decides it as it decides the
+rest. The solution has two further features.
 The two-point part is almost inert, $f_0=0.000927$ and
 $f_1,\dots,f_8$ below $3\times10^{-8}$, so it is the matrices $F_k$ that
 carry the argument. And the inequality is far from tight at the
@@ -5255,9 +5270,11 @@ $(-\tfrac1{16},-\tfrac1{16},-\tfrac1{16})$ at which \eqref{eq:C} fails.
 of \cref{lem:certificate} in three dimensions, where the triples
 $(u,v,t)$ of pairwise inner products of three contact directions fill
 the part of the cube $[-1,\tfrac12]^3$ enclosed by the surface of
-coplanar triples. The surface is coloured by the slack of \eqref{eq:C},
-which is least along the curves where two of the three directions are
-nearly antipodal. (b) The branch and bound of the proof of \cref{thm:certificate},
+coplanar triples. The surface is coloured by the slack of \eqref{eq:C}.
+The slack is small, from about $1.2\times10^{-5}$, along the curves where
+two of the three directions are nearly antipodal, and least,
+$2.3\times10^{-6}$, at the triple $(-\frac{\sqrt3}2,-\frac{\sqrt3}2,\frac12)$
+and its permutations. (b) The branch and bound of the proof of \cref{thm:certificate},
 level by level: the boxes live, the boxes discarded on the enclosure,
 and the width reached.}
 \label{fig:dom3d}
@@ -5596,6 +5613,30 @@ certificate entries alone, as for \cref{thm:kissing-stable}, with the
 inequality taken at $|C|=26$. The second statement follows from the
 first exactly as in \cref{thm:kissing-stable}.
 \end{proof}
+
+\begin{remark}[Where the certificates of \cref{thm:kissing-stable,thm:twenty-six} are tight]\label{rem:cardinality-tight}
+In both certificates the two-point part is almost absent, with $f(1)$
+below $10^{-4}$, and the bound is carried by the three-point matrices:
+$F(1,1,1)=23.95993$ at $s_0=0.008$ and $24.79993$ at $s_1=0.01468$. In
+floating point both polynomials of the proof are negative on their whole
+domains. The largest value of $f(u)+3F(1,u,u)+1$ is $-1.5\cdot10^{-5}$ at
+$s_0$ and $-1.8\cdot10^{-4}$ at $s_1$, attained at the touching inner
+product $u=t$. The largest value of $F$ is $-1.3\cdot10^{-5}$ at
+$(-0.477,t,t)$ and $-8.8\cdot10^{-6}$ at $(-0.470,t,t)$: two pairs at the
+touching angle and the third pair nearly opposite, the three directions
+lying in one plane at $s_1$ and nearly so at $s_0$. This is the triple
+$(-\frac12,\frac12,\frac12)$ of three consecutive points of a hexagon of
+the root system, compressed to the inner product $t$. At the inner
+products of the root system itself both polynomials are negative, the
+first between $-9.3\cdot10^{-3}$ and $-3.9\cdot10^{-5}$ at $s_0$, the
+second at most $-5.3\cdot10^{-5}$, so neither is tight there and the
+certificates do not single out the root system: they bound the size of a code by $24.96$ and $25.8$, and
+integrality does the rest. The room in the final inequalities, $0.04$ and
+$0.2$, goes almost entirely into the thresholds that the branch and bound
+proves: $552e_2=0.0386$ and $600e_2=0.174$, against $(|C|-1)e_1$ of about
+$2.5\cdot10^{-5}$. With the floating-point maxima in place of $e_1$ and
+$e_2$ the left sides would be $24.0072$ and $25.0053$.
+\end{remark}
 
 \begin{figure}[tb]
 \centering
@@ -6949,8 +6990,8 @@ packing whose twenty-four centres within $\sqrt6$ of $c$ are that close to
 $\sqrt2\,\Rt'$, for some copy $\Rt'$ of $\Rt$, and whose other centres are
 unrestricted, has $\vol(V_c)\ge8$, with equality only at $\sqrt2\,\Rt'$
 itself, and to first order the excess is $\frac23\sum\delta_i$
-(\cref{fig:closure}(c)). The two constants are of very different
-sizes. The neighbourhood of the second statement comes from the rigidity
+(\cref{fig:closure}(c)). The two constants differ greatly in
+size. The neighbourhood of the second statement comes from the rigidity
 of \cref{thm:local-uniqueness} and from elementary estimates for the
 facets of a polytope near the $24$-cell, and uses no certificate. The
 constant $\varepsilon_0$ is chosen so that \cref{thm:m24-robust}
@@ -7524,9 +7565,9 @@ past them, is that the displayed inequality holds for every packing with
 $d(W)\le\tfrac1{48}$, and a proof through a bound on the remainder has to
 control the cubic term to the size it has on the tested packings,
 $0.004\,S^3$, where the estimates of the proof of \cref{thm:near-contact}
-have constants of order $10^2$ already at second order. The natural
-structure of such a proof is that the extremal family is the one-centre
-ray, on which everything is explicit. And the inequality concerns $V(Y)$,
+have constants of order $10^2$ already at second order. In such a proof
+the extremal family is the one-centre ray, on which everything is
+explicit. And the inequality concerns $V(Y)$,
 while far centres may cut off the part of $V(Y)$ outside the inversion hull
 $K(Y)$ (\cref{prop:inversion-hull}), which part (c) of the proof of
 \cref{thm:near-contact} bounds by $13\,958\,\Theta^4$. That bound is far
@@ -8758,6 +8799,54 @@ at $(19,0,4,0,0,5,1)$, where it is $3.10147$, below
 $\frac98\pi^2-8=3.10330\ldots$.
 \end{proof}
 
+\begin{remark}[Where the certificates of \cref{thm:count30,thm:count29} are tight]\label{rem:typed-tight}
+At twenty-nine centres the seven bin bounds $m_b$ agree to within
+$10^{-4}$: in floating point the function $f$ of the proof of
+\cref{thm:count30} stays within $2.2\cdot10^{-4}$ of $-1.0883$ on the whole of
+$[2,\sqrt6]$. Up to $3\cdot10^{-3}$, the right side of \eqref{eq:thirty-bound}
+therefore depends only on the numbers $n_{\mathsf a}$, $n_{\mathsf b}$ and
+$n_{\mathsf f}$ of centres of the three types, and it is largest at
+$(n_{\mathsf a},n_{\mathsf b},n_{\mathsf f})=(19,9,1)$, where six of the
+$23\,396$ vectors share the largest value, $3.10147$, to within $10^{-6}$. With the
+number $n_{\mathsf a}$ of centres within $2.05$ held fixed and the other
+bounds of \cref{prop:C-radial} kept, the largest value falls by $0.005$ to
+$0.007$ for each centre added between $10$ and $22$: it is $3.1442$ at $n_{\mathsf a}=12$,
+$3.1082$ at $18$, $3.1015$ at $19$ and $3.0872$ at $21$. The certificate
+thus needs the count $N(2.05)\ge19$ of \cref{prop:C-radial} exactly; with
+$18$ in its place the bound would exceed $\frac98\pi^2-8$. At $(19,9,1)$ the
+bound is the sum of $-24.215$ from the centres, $18.390$ from $\frac t2$,
+$5.257$ from the pairs and $3.670$ from the triples. Each inequality on
+pairs stays within $10^{-6}$ of its largest value along whole intervals of
+inner products, for two centres at distance $2$ on $[-0.631,0.029]$ and
+near $-1$, $-0.82$ and $\frac12$, while the inequalities on triples are
+largest at isolated triples, three of them (of types $\mathsf{aaa}$,
+$\mathsf{abb}$ and $\mathsf{bbf}$) with the three directions in one plane
+through $c$.
+
+In the fifth case of \cref{thm:count30} the numbers of centres of each type
+are nearly fixed, $22$ to $24$ of type $\mathsf a$, at most $2$ of type
+$\mathsf b$ and $6$ of type $\mathsf f$, and the certificate is fitted to
+them. At $(22,1,1,0,6)$, where the bound $3.08720$ is largest, the triples of
+types $\mathsf{aaa}$, $\mathsf{aaf}$ and $\mathsf{aff}$ contribute $136.7$,
+$-319.7$ and $145.8$, all the pairs together $31.29$ and all the triples
+$-35.63$, against $9.185$ from $\frac t2$ and $-1.762$ from the centres. A
+certificate with such cancellations serves only the counts it was made for.
+The bound is largest at the fewest centres within $2.05$ and within $2.15$
+that the case allows, $22$ and $23$, and it falls as centres move inward,
+to $3.0369$ when all twenty-four lie within $2.05$.
+
+The certificate behind the level $L_{26}$ of \cref{prop:levels}, the
+largest of the levels, rests on two counts. Its largest value, $3.32906$, is
+at $(n_{\mathsf a},n_{\mathsf b},n_{\mathsf f})=(15,9,2)$, with exactly the
+fifteen centres within $2.05$ of \cref{prop:C-radial} and the twenty-four
+within $2.444$ of \cref{lem:twentyfour-close}. With fourteen centres within
+$2.05$ it would be $3.33156$, and with twenty-three within $2.444$ it would
+be $3.3590$. In the other direction it falls by $0.003$ to $0.008$ for each
+further centre within $2.05$, to $3.30716$ at twenty and $3.27836$ at
+twenty-four. A larger count within $2.05$ at $M=26$ would therefore lower
+$L_{26}$; below $3.3274$ the level at $M=25$ would be the largest.
+\end{remark}
+
 Statement (G) can be proved in full along one family: the root system with
 its centres pushed out along their own rays, by any amounts the region
 $T\le8$ allows. \Cref{lem:pure-push} gives the gain, and it remains to
@@ -8974,12 +9063,30 @@ density of every packing.
 \begin{prop}[The union of caps from twenty-four to thirty centres]\label{prop:levels}
 Let $24\le M\le30$, and let $Y$ be a packing set of exactly $M$ centres with
 $2\le|y|<\sqrt6$. Then $U(Y)<L_M$, with $L_M$ as in \cref{tab:levels}. In
-particular $U(Y)<3.3352$ for every such set.
+particular $U(Y)<3.3291$ for every such set.
 \end{prop}
 
 \begin{proof}
-For $M=24$, the pair terms are nonnegative and $S$ is decreasing, so
-$U(Y)\le\sum_yS(|y|)\le24\,S(2)=3.335124\ldots$. For $M=26$, if
+For $M=24$, if $T(Y)>8$ then $U(Y)<\frac98\pi^2-8$. Otherwise the counts of
+\cref{prop:G-radial} hold: at least $11$ centres lie within $2.0161$, $20$
+within $2.05$, $22$ within $2.1$ and $23$ within $2.15$. With the types
+$\mathsf a$, $\mathsf b$, $\mathsf f$ of the distance ranges $[2,2.05]$,
+$(2.05,2.444]$ and $(2.444,\sqrt6)$ and the bins with ends $2.0161$, $2.05$,
+$2.1$, $2.15$, $2.2$ and $2.444$, the derivation of \eqref{eq:thirty-bound}
+bounds $U(Y)$. A certificate of degree $6$ in \eqref{eq:typed-triples}
+gives at most $3.25388$ over the $376$ count vectors of the case, at
+$(24,0,0,0,0,0,0)$, where all twenty-four centres lie within $2.0161$. It is
+made exact and checked as in the proof of \cref{thm:count29}, with margins
+of $2\cdot10^{-5}$ for the pairs and $2\cdot10^{-6}$ for the triples and
+the bins, except that the matrix of (b) is rounded to dyadic rationals as a
+whole: its negative eigenvalues are set to zero, $2^{-30}$ is added to its
+diagonal, and an exact $LDL^{\mathsf T}$ factorisation shows it positive
+semidefinite. Its six inequalities on pairs close $3\,361$ boxes, the bins take $285$
+intervals, and its seven inequalities on triples close $104\,028$ boxes;
+at most one centre lies beyond $2.15$, so no triple has two centres of type
+$\mathsf f$. With the pair terms dropped one has only
+$U(Y)\le\sum_yS(|y|)\le24\,S(2)=3.335124\ldots$, since $S$ is decreasing.
+For $M=26$, if
 $T(Y)>8$ then $U(Y)<\frac98\pi^2-8$. Otherwise the counts of
 \cref{prop:C-radial} and \cref{lem:twentyfour-close} hold: at least $15$
 centres lie within $2.05$, $20$ within $2.1$, $22$ within $2.15$, $23$
@@ -9017,16 +9124,16 @@ is the entry of \cref{tab:levels}. Each certificate is checked as those of
 \caption{The levels of \cref{prop:levels}: for $M$ centres within $\sqrt6$,
 an upper bound $L_M$ for the union of caps $U(Y)$, and the lower bound
 $\frac98\pi^2-L_M$ for the volume of the cell that it gives. Every entry is
-rounded in the safe direction. For $M=24$ the bound is $24\,S(2)$, for
-$M=26$ the value of the kernel on typed triples, and the others are values
-of two-point certificates.}
+rounded in the safe direction. For $M=24$ and $M=26$ the bound is the value
+of the kernel on typed triples, and the others are values of two-point
+certificates.}
 \label{tab:levels}
 \begin{tabular}{@{}lccccccc@{}}
 \toprule
 $M$ & $24$ & $25$ & $26$ & $27$ & $28$ & $29$ & $30$\\
 \midrule
-$L_M$ & $3.3352$ & $3.3274$ & $3.3291$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
-$\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
+$L_M$ & $3.2539$ & $3.3274$ & $3.3291$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
+$\frac98\pi^2-L_M$ & $7.8494$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -9034,7 +9141,7 @@ $\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8
 \begin{thm}[Density from the cells]\label{thm:density-cells}
 Every packing of unit balls in $\mathbb{R}^4$ has density at most
 \[
-  \frac{\pi^2/2}{\frac98\pi^2-3.3352}=0.635264\ldots .
+  \frac{\pi^2/2}{\frac98\pi^2-3.3291}=0.634766\ldots .
 \]
 \end{thm}
 
@@ -9043,9 +9150,9 @@ Enlarge the packing to a saturated one, which does not lower its density,
 and let $c$ be a centre and $Y$ the set of other centres within $\sqrt6$ of
 it. If $|Y|\le23$, then $\vol(V_c)>8$ by \cref{thm:m23-labelled}. If
 $|Y|\ge31$, then $\vol(V_c)\ge T(Y)>8$ by \cref{thm:count31}. Otherwise
-$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3352$
+$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3291$
 by \cref{lem:no-triple,prop:levels}. Every cell therefore has volume at least
-$v=\frac98\pi^2-3.3352=7.7681\ldots$, and \cref{lem:cells-density} bounds the
+$v=\frac98\pi^2-3.3291=7.7742\ldots$, and \cref{lem:cells-density} bounds the
 density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
 \end{proof}
 
@@ -9056,7 +9163,7 @@ density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
 $L_M$ of \cref{prop:levels} against the level $\frac98\pi^2-8$ that statement
 (C) asks for (green) and the level $3.34549$ below which every count would
 have to fall for the bound to pass the three-point bound (violet); all of
-them do, the largest being $24\,S(2)$ at $M=24$ (orange). (b) The resulting
+them do, the largest being $L_{26}$ (orange). (b) The resulting
 bound (orange) with the others for $\mathbb{R}^4$: the density $\pi^2/16$ of $D_4$, the floor of
 \cref{rem:density-cells}, the three-point bound \cite{CdLS22}, and the linear
 programming bound \cite{CE03}.}
@@ -9073,16 +9180,18 @@ Elkies \cite{CE03}.\footnote{Cohn and Elkies state their bounds for the centre
 of each cell inside the ball of radius $\sqrt{3/2}$ about its centre, and its
 proof is local in the sense of \cref{sec:comparison-methods}.
 
-The bound is limited in two ways. The first is the level at $M=24$, where
-the pair terms are dropped altogether, $24\,S(2)=3.33512$ against
-$3.19636$ at the root system, and with it the levels at $M=25$ and $M=26$
-just below it (\cref{fig:levels}(a)). The kernel on typed triples, which
-brings the level at $M=26$ from $3.3501$ to $3.3291$, can be run at the other
-counts in the same way, at $M=24$ with the counts of \cref{prop:G-radial} in
-place of those of \cref{prop:C-radial}. The pairs alone could not have
-brought the level at $M=26$ below $3.34549$.
+The bound is limited in two ways. The first is the level at $M=26$,
+$3.3291$, with the level $3.3274$ of the pairs alone at $M=25$ just below it
+(\cref{fig:levels}(a)). The kernel on typed triples brings the level at
+$M=24$ from $24\,S(2)=3.33512$, the value with the pair terms dropped, to
+$3.2539$, against $3.19636$ at the root system, and the level at $M=26$ from
+$3.3501$ to $3.3291$. At $M=26$ the optimum of its programme in floating
+point is $3.2456$ on the sampled constraints; the certified level is higher
+because the exact check bounds each inequality on triples over the whole
+domain, where it exceeds its values at the samples. The pairs alone could
+not have brought the level at $M=26$ below $3.34549$.
 With at most twenty-five centres within $2.03$, as
-\cref{thm:twenty-six} allows, the optimum of the programme at $M=26$ puts
+\cref{thm:twenty-six} allows, the optimum of the programme on pairs at $M=26$ puts
 twenty-four centres within $2.0161$ and a twenty-fifth between $2.0161$ and
 $2.03$, a configuration that the pair terms cannot exclude. Without it the
 optimum falls to $3.34471$, the larger of its values when at most
@@ -9171,7 +9280,7 @@ parts of the others are checked in Lean (\cref{sec:formal-part}).
 \subsection{Other dimensions}\label{sec:other-dims-new}
 
 The lattices $D_5$, $E_6$ and $E_7$, with their Voronoi cells
-\cite{CS1988,Cox73}, are the natural next cases for the same argument.
+\cite{CS1988,Cox73}, are the next cases for the same argument.
 The truncation to a ball in which no three caps meet, and the labelled
 kernels that bound the union of the caps, carry over in form to every
 dimension, and the second variation at the lattice takes the same shape in
@@ -9210,9 +9319,9 @@ neighbours within $\sqrt6$ are within $\varepsilon_0=4\cdot10^{-26}$ of
 contact (\cref{thm:near-contact}); and, by \cref{thm:main-general}, every
 periodic or saturated packing whose centres are all of these kinds has
 density at most $\pi^2/16$. With no assumption on the centres, the same
-lower bounds for the cells give $0.63527$ for the density of every packing
+lower bounds for the cells give $0.63477$ for the density of every packing
 of unit balls in $\mathbb{R}^4$ (\cref{thm:density-cells}), below the
-three-point bound $0.63611$ of \cite{CdLS22}. Along the way the paper proves that the kissing
+three-point bound $0.63611$ of \cite{CdLS22}. The paper also proves that the kissing
 number of $\mathbb{R}^4$ is stable under a slack of $0.008$
 (\cref{thm:kissing-stable}), that no twenty-six points fit at a slack of
 $0.01468$ (\cref{thm:twenty-six}), that twenty-four centres near a root system
@@ -9275,7 +9384,7 @@ properties of the rational point that these lemmas use are
 (\cref{sec:certificate-checked}), and the passage from the four inner
 products to the root system is \cref{lem:root-lattice}. That the root
 system is isolated among contact configurations of $24$ directions is
-proved besides, with no certificate (\cref{cor:root-rigid}).
+also proved, with no certificate (\cref{cor:root-rigid}).
 \Cref{cor:m24-reduction} reduces the volume statement for $24$ contacts to
 the inequality $E(W)\ge8-32\pi+10\pi^2$ between pair and triple angles,
 through a third-order inclusion and exclusion inside the ball of radius
@@ -9631,7 +9740,8 @@ level of the Lasserre hierarchy and the certificate of \cite{LLM24data};
 in C, for the enumeration of the independent sets in the graph of the
 600-cell and for an integral over $O(4)$ in the re-verification of that
 certificate; and in shell scripts that run the checks in sequence. The
-formalisation of \cref{sec:formal-part} is written in Lean~4 with Mathlib. Part of this code, including the
+formalisation of \cref{sec:formal-part} is written in Lean~4 alone, with no
+external library. Part of this code, including the
 re-verification of the computations, the programmes behind
 \cref{sec:noncontact,sec:closure,sec:second-order,sec:m24-robust,sec:G-and-C}
 and part of the Lean development, was developed with the assistance of
@@ -10047,26 +10157,23 @@ would give $\defect(\tilt,Q)\ge\min(\defect(\tilt,\mathrm{endpoint}_1),
 This would settle the whole triangle with no further derivation.
 \end{quote}
 
-This argument is false. Testing it directly, geodesics from each
-vertex to random points on the opposite edge, and fully generic interior-to-interior
-chords, sampled at $25$ values of $\tilt$ each, finds small positive
-discrete second differences (apparent local convexity, not concavity)
-at several points, concentrated toward $\tilt$ near $\pi/2$. These are not
-grid artifacts. Fixing one
-such point and halving the step size eight times ($h=0.08$ down to
-$h\approx3\times10^{-4}$) gives
-$d^2(h)/h^2$ converging to $+0.3056$, constant to four
-significant figures over the last five halvings, the signature of a
-nonzero positive second derivative at that point, not
-discretisation noise (which would shrink faster than $h^2$ and show no
-stable limit) and not a combinatorial breakpoint nearby (the local
-vertex count is confirmed constant at $37$ throughout a window around
-the point). The candidate argument fails: $\defect(\tilt,\cdot)$ is
-not concave along every interior geodesic, so the interior cannot be
-reduced to the boundary this way, at any $\tilt$ in the domain (the
-effect was not confined to $\tilt$ near $\pi/2$, only larger there).
-The finding is negative: it rules out the whole class of arguments
-that let the boundary drag the interior along.
+This argument is false. Along geodesics from each vertex to random
+points on the opposite edge, and along chords between random interior
+points, each sampled at $25$ values of $\tilt$, the discrete second
+differences are positive at several points, most of them with $\tilt$
+near $\pi/2$; there the defect is locally convex, not concave. The effect
+does not come from the grid. At one such point, halving the step eight
+times, from $h=0.08$ to $h\approx3\times10^{-4}$, gives values of
+$d^2(h)/h^2$ that converge to $+0.3056$ and agree to four significant
+figures over the last five halvings. Discretisation error would shrink
+faster than $h^2$ and have no stable limit, and no combinatorial
+breakpoint lies nearby, since the local vertex count stays $37$ in a
+window around the point; so the second derivative there is positive.
+Hence $\defect(\tilt,\cdot)$ is not concave along every interior geodesic,
+and the interior cannot be reduced to the boundary in this way at any
+$\tilt$ of the domain: the effect occurs throughout and is only largest
+near $\tilt=\pi/2$. This rules out every reduction of the interior to the
+boundary by concavity along geodesics.
 
 \paragraph{The interior's own combinatorial structure}
 
@@ -10195,16 +10302,15 @@ crossings $\arcp_1,\arcp_2,\arcp_3$.}
 
 \subsubsection{Exact remapping and box covering}\label{sec:method-overview-new}
 
-Two complementary exact techniques are used across the eight regions of
-\cref{thm:arc1-breakpoints-new}, chosen region by region according to
-whether the region's boundary curve is itself rational in Weierstrass
-coordinates.
+Each of the eight regions of \cref{thm:arc1-breakpoints-new} is
+certified by one of two exact methods, according to whether its boundary
+curve is rational in Weierstrass coordinates.
 
 \subparagraph{Exact zero-margin certificates.} When a region's lower (or
 upper) boundary curve is rational in $\mathsf u=\tan(\tilt/2)$ and
 $\mathsf v=\tan(\arcp/2)$, as are the universal curve and the
 curves $\mathsf W$, $\mathsf A$ of \cref{thm:arc1-breakpoints-new}, a
-further exact substitution maps the curved region onto an exact unit
+further exact substitution maps the curved region onto the unit
 square, after which the volume-defect numerator and denominator become
 two explicit polynomials with coefficients in $\mathbb{Z}[\sqrt2]$ (or,
 where a crossover point of the region's own two bounding curves is used
@@ -10218,10 +10324,9 @@ one sign on the whole open region, with \emph{no excluded margin}
 not rational (the curve $\mathsf Y$ is of genus one, see region $4$
 below), the region is instead covered by many small
 rectangular boxes in the plain Weierstrass coordinates, with corners
-chosen numerically to sit safely inside the true domain; the same exact
-Bernstein sign certificate is then run independently on each box, at the
-cost of a thin, explicitly quantified excluded margin near the true
-boundary.
+chosen numerically inside the domain, and the same exact Bernstein sign
+test is applied to each box. This leaves out a thin margin of known size
+along the boundary.
 
 \subsubsection{The region count}\label{sec:region-count-correction}
 
@@ -10256,10 +10361,10 @@ and of the denominator have one sign throughout, so $\defect$ has one
 sign on the certified part.
 \end{thm}
 
-The eight regions follow in turn, each with its representative-point vertex
-count (moving vertices, from the deviating cap, plus fixed vertices,
-confirmed unchanged across several sample points spanning the region),
-its exact fixed-volume contribution (the boundary simplices not
+For each of the eight regions we give the number of vertices at a
+representative point (moving vertices, from the deviating cap, plus fixed
+vertices; the numbers are the same at several sample points across the
+region), its exact fixed-volume contribution (the boundary simplices not
 involving the deviating cap, which sum to an exact rational constant
 independent of $(\tilt,\arcp)$), and its certificate method.
 
@@ -10317,9 +10422,9 @@ the same point. Box-covering certificate.
 by the universal line and then, past $\arcp_1$, by $\mathsf Y$, for
 $\arcp\in(0,\arcp_2)$; it pinches to a point at $\arcp_2$. Its ceiling
 changes curve inside the region while the combinatorial type stays the
-same, as convex-hull volumes on the two sides of $\arcp_1$, agreeing with
-one formula to twelve decimal places, confirm. A representative point has $32$ vertices ($23$
-fixed $+9$ moving); the fixed-only sum is exactly $65/12$. Box-covering
+same: convex-hull volumes on the two sides of $\arcp_1$ agree with one
+formula to twelve decimal places. A representative point has $32$
+vertices ($23$ fixed $+9$ moving); the fixed-only sum is exactly $65/12$. Box-covering
 certificate.
 
 \subparagraph{Region $\mathsf D$.} A lens, bounded above by the universal
@@ -10374,7 +10479,7 @@ across the entire domain $\arcp\in[0,\pi/4]$:
 \begin{enumerate}[leftmargin=2em]
 \item the universal curve $\tilt=\pi/3$, inherited unchanged from
 \cref{thm:arc1-breakpoints-new} (it is proved once, for every choice of
-deviation direction, and simply restricts to this arc);
+deviation direction, and restricts to this arc);
 \item a curve $\mathsf W'$, $\tilt=2\arctan(\cos\arcp)$, from the same
 sign vertex $w=(1,1,1,1)/\sqrt2$ that gave curve $\mathsf W$ on the
 first arc, but with a \emph{different} functional dependence on
@@ -10390,17 +10495,16 @@ $c=\sqrt2\,e_3$, the same functional form as curve $\mathsf Y$ on the
 first arc, but arising here from a different vertex.
 \end{enumerate}
 The two vertices responsible for the first arc's remaining curves,
-$y=(1,-1,1,1)/\sqrt2$ and $a=\sqrt2\,e_1$, are confirmed here to touch
-nowhere in this arc's open interior.
+$y=(1,-1,1,1)/\sqrt2$ and $a=\sqrt2\,e_1$, give no breakpoint in the
+open interior of this arc.
 \end{thm}
 
 As on the first arc, each equation is the passage of the deviating
-hyperplane through the named vertex, and completeness is confirmed by a
-dense scan ($150$ values of $\arcp$, $900$-point $\tilt$-grid with
-bisection refinement) finding at most four breakpoints at any sampled
-$\arcp$, every one matching one of the four curves above to a tolerance
-of $2\times10^{-4}$, far smaller than the curves' own separation, with
-zero unexplained transitions across the entire scan.
+hyperplane through the named vertex. A dense scan ($150$ values of
+$\arcp$, a $900$-point grid in $\tilt$ refined by bisection) finds at
+most four breakpoints at each sampled $\arcp$, each on one of the four
+curves to within $2\times10^{-4}$, far below the separation of the
+curves, and no other transition.
 
 \subsubsection{The combinatorial atlas}
 
@@ -10413,31 +10517,30 @@ points on $\arcp\in(0,\pi/4)$:
   \arcp_3 &= \arcsin(\tfrac1{\sqrt3}) = 0.615480\ldots\quad (\mathsf B=\text{universal}),
   \end{aligned}
 \]
-each solved exactly and confirmed numerically to eleven significant
+each found exactly and checked numerically to eleven significant
 figures. The equations of $\mathsf W'$, $\mathsf B$ and $\mathsf C$ are
 those of $\mathsf A$, $\mathsf W$ and $\mathsf Y$ on the first arc, so the
 arrangement, drawn in \cref{fig:arcs}(b), is the same, with the same
-three crossings and the same eight regions. \Cref{prop:arc2-is-arc1}
-shows that this is no coincidence.
+three crossings and the same eight regions; \cref{prop:arc2-is-arc1}
+explains why.
 
 \subsubsection{Region top}
 
 The topmost region, bounded above by $\tilt=\pi/2$ and below by curve
-$\mathsf W'$, spanning the entire $\arcp\in(0,\pi/4)$ domain with no
-internal splitting, is the natural first target for a certificate,
-since its lower boundary is itself rational in Weierstrass coordinates
-(the same functional form, $\mathsf u=(1-\mathsf v^2)/(1+\mathsf v^2)$, as
-the first arc's own curve $\mathsf A$). \Cref{sec:arc2-cert} gives a
-complete, exact, zero-margin certificate for this region.
+$\mathsf W'$, spans the whole range $\arcp\in(0,\pi/4)$ with no internal
+splitting, and its lower boundary is rational in Weierstrass coordinates
+(of the form $\mathsf u=(1-\mathsf v^2)/(1+\mathsf v^2)$, as the curve
+$\mathsf A$ of the first arc). \Cref{sec:arc2-cert} gives an exact
+zero-margin certificate for this region.
 
 \subsubsection{The band immediately below region top}\label{sec:band-below-top-new}
 
 The next region down, bounded above by $\mathsf W'$ and below,
 depending on $\arcp$, by whichever of curves $\mathsf C$, the universal
-curve, or $\mathsf B$ is locally uppermost, is combinatorially a
-single connected region across each of the three $\arcp$-sub-intervals
-determined by the crossings $\arcp_1,\arcp_3$ above, but the identity of
-its \emph{lower} boundary curve changes between them:
+curve, or $\mathsf B$ is locally uppermost, is one combinatorial region
+on each of the three $\arcp$-sub-intervals cut by the crossings
+$\arcp_1,\arcp_3$, and its \emph{lower} boundary curve changes between
+them:
 \[
   \text{lower boundary} = \begin{cases}
     \mathsf C & \arcp\in(0,\arcp_1),\\
@@ -10445,11 +10548,10 @@ its \emph{lower} boundary curve changes between them:
     \mathsf B & \arcp\in(\arcp_3,\pi/4).
   \end{cases}
 \]
-This is confirmed directly: combinatorial-pattern stability is checked
-at eight sample points spanning the middle sub-interval
-$\arcp\in(\arcp_1,\arcp_3)$ and found identical at every one ($34$
-vertices, the same active-facet pattern throughout), confirming this
-middle sub-part is a single connected combinatorial region on its own.
+At eight sample points across the middle sub-interval
+$\arcp\in(\arcp_1,\arcp_3)$ the cell has the same combinatorial pattern,
+$34$ vertices and the same active facets, so the middle sub-part is one
+combinatorial region.
 \Cref{sec:arc2-cert} gives a direct certificate on this middle
 sub-part, the widest of the three by $\arcp$-range. The two remaining
 sub-parts are handled not by a direct computation but by the
@@ -10463,38 +10565,35 @@ arc's certificates onto the whole of this one.
 \begin{thm}[Certificate, second arc, region top]\label{thm:arc2-regiontop-new}
 On the region bounded above by $\tilt=\pi/2$ and below by curve
 $\mathsf W'$ (\cref{thm:arc2-breakpoints-new}), for the entire domain
-$\arcp\in(0,\pi/4)$, the volume-defect function $\defect$ admits an
-exact, zero-margin Bernstein-basis positivity certificate: after the
-same remapping as on the first arc's region top, the resulting numerator has $286$ Bernstein coefficients
-(degree $(12,21)$) and the denominator $231$ (degree $(10,20)$), every
-one of the $286$ numerator coefficients strictly negative and every
-one of the $231$ denominator coefficients strictly negative, exactly
-in $\mathbb{Z}[\sqrt2]$ arithmetic.
+$\arcp\in(0,\pi/4)$, the volume-defect function $\defect$ has an exact
+zero-margin certificate in the Bernstein basis: after the change of
+variables used for region top of the first arc, the numerator has $286$
+Bernstein coefficients (degree $(12,21)$) and the denominator $231$
+(degree $(10,20)$), and all of them are negative, exactly in
+$\mathbb{Z}[\sqrt2]$.
 \end{thm}
 
-Since numerator and denominator are of the same constant sign
-throughout, their ratio is strictly positive on the entire open region,
-with \emph{no} excluded margin, the same standard as the strongest
-certificates on the first arc. The vertex and volume stage underlying
-this certificate finds $32$ vertices ($8$ moving under the deviating
-cap, $24$ fixed) at a representative point, confirmed unchanged across
-five sample points spanning nearly the full $\arcp$-range; the exact
+Since numerator and denominator have one sign throughout, their ratio
+is positive on the whole open region, with \emph{no} excluded margin, as
+for the zero-margin certificates of the first arc. The cell has $32$
+vertices ($8$ moving under the deviating cap, $24$ fixed) at a
+representative point and at five sample points across nearly the whole
+$\arcp$-range; the exact
 fixed-volume contribution is $77/12$, and the closed-form moving volume
 is checked against a direct convex-hull volume computation to eleven
-significant figures at the representative point before any symbolic
-remapping is attempted. An independent sanity check evaluates the
-volume-defect quantity numerically at $55$ points scattered across the
-full $(\arcp,\tilt)$-domain: all $55$ strictly positive, with zero
-exceptions, fully consistent with the certificate.
+significant figures at the representative point, before the symbolic
+change of variables. As an independent check, the defect evaluated
+numerically at $55$ points spread over the whole $(\arcp,\tilt)$-domain
+is positive at all of them, as the certificate requires.
 
 \subsubsection{The band below region top}\label{sec:arc2-band-cert-new}
 
 For the middle sub-part of the band described in
 \cref{sec:band-below-top-new}, bounded above by $\mathsf W'$ and below
 by the universal curve $\tilt=\pi/3$, for $\arcp$ in the sub-interval
-$(\arcp_1,\arcp_3)=(0.169918,0.615480)$, an exact zero-margin
-certificate of the type used in \cref{sec:arc2-regiontop-new} is not
-attempted, because the lower boundary here is the constant curve
+$(\arcp_1,\arcp_3)=(0.169918,0.615480)$, we do not use an exact
+zero-margin certificate as in \cref{sec:arc2-regiontop-new}, because the
+lower boundary here is the constant curve
 $\tilt=\pi/3$: mapping between it and the curved upper boundary
 $\mathsf W'$ brings $\sqrt3$ into the arithmetic beside $\sqrt2$, and the
 exact sign test used here works over $\mathbb{Q}(\sqrt2)$. The box
@@ -10503,13 +10602,11 @@ covering of the harder regions of the first arc is used instead.
 \begin{thm}[Certificate, second arc, band below region top]\label{thm:arc2-band-new}
 On the middle sub-part described above, the volume-defect numerator and
 denominator, mapped to the coordinates $(\mathsf u,\mathsf v)$
-(degree $(12,12)$ and $(10,11)$ respectively, exact $\mathbb{Z}[\sqrt2]$
-coefficients throughout, each mapping step verified against a
-$200$-digit numerical evaluation of the original trigonometric
-expression), are certified on all $40$ boxes covering the sub-interval:
-every one of the $169$ Bernstein coefficients of $N$, and every one of
-the $169$ Bernstein coefficients of $D$, on every box, is strictly
-positive. Hence $\defect>0$ on the covered region, which is the
+(degrees $(12,12)$ and $(10,11)$, with exact coefficients in
+$\mathbb{Z}[\sqrt2]$, each step of the change of variables compared with
+a $200$-digit evaluation of the original trigonometric expression), have
+positive Bernstein coefficients, all $169$ of $N$ and all $169$ of $D$,
+on each of the $40$ boxes that cover the sub-interval. Hence $\defect>0$ on the covered region, which is the
 sub-part minus the excluded margin described below.
 \end{thm}
 
@@ -10528,12 +10625,11 @@ included, is \cref{thm:eperp-closed}.
 The first of the two remaining sub-parts of the band described in
 \cref{sec:band-below-top-new}, bounded above by $\mathsf W'$ and below
 by curve $\mathsf C$ (\cref{thm:arc2-breakpoints-new}), for
-$\arcp\in(0,\arcp_1)=(0,0.169918)$, is combinatorially stable ($34$
-vertices, $11$ moving under the deviating cap and $23$ fixed,
-identical at eight sample points spanning the sub-interval) and admits
-a certificate by exactly the same box-covering method used for the
-sub-part of \cref{thm:arc2-band-new}, adapted only by replacing the
-constant lower boundary $\tilt=\pi/3$ with the curve $\mathsf C$
+$\arcp\in(0,\arcp_1)=(0,0.169918)$, has one combinatorial type ($34$
+vertices, $11$ moving under the deviating cap and $23$ fixed, the same at
+eight sample points across the sub-interval). It is certified by the box
+covering of \cref{thm:arc2-band-new}, with the constant lower boundary
+$\tilt=\pi/3$ replaced by the curve $\mathsf C$
 (evaluated numerically when the lower corner of each box is placed;
 box covering does not need the boundary to be rational).
 
@@ -10541,13 +10637,11 @@ box covering does not need the boundary to be rational).
 On the sub-part described above, the exact fixed-volume contribution is
 $17/3$; the moving-volume numerator and denominator, mapped to plain
 coordinates $(\mathsf u,\mathsf v)$, have degree $(12,12)$ and $(10,11)$
-respectively (the same degrees as \cref{thm:arc2-band-new}'s own
-middle sub-part, exact $\mathbb{Z}[\sqrt2]$ coefficients throughout,
-each mapping step verified against a $200$-digit numerical evaluation
-of the original trigonometric expression). All $40$ boxes covering the
-sub-interval are certified: every one of the $169$ Bernstein
-coefficients of $N$, and every one of the $169$ Bernstein coefficients
-of $D$, on every box, is strictly positive. Hence $\defect>0$ on the
+respectively, as in \cref{thm:arc2-band-new}, with exact coefficients
+in $\mathbb{Z}[\sqrt2]$, each step of the change of variables compared
+with a $200$-digit evaluation of the original trigonometric expression.
+On each of the $40$ boxes that cover the sub-interval all $169$
+Bernstein coefficients of $N$ and all $169$ of $D$ are positive. Hence $\defect>0$ on the
 covered region, which is the sub-part minus the excluded margin
 described below.
 \end{thm}
@@ -10562,38 +10656,35 @@ each box. A finer covering would reduce it.
 \subsubsection{The band's \texorpdfstring{$\mathsf B$}{B}-bounded sub-part}\label{sec:arc2-bandB-new}
 
 One sub-part of the band, bounded above by $\mathsf W'$ and below by
-curve $\mathsf B$ for $\arcp\in(\arcp_3,\pi/4)$, does not yield to the
-same method. Its combinatorial data behave exactly as elsewhere: the
-representative point has $34$ vertices, $11$ moving and $23$ fixed, and
-the pattern is identical at eight sample points spanning the
-sub-interval, with fixed volume contribution $6$. The moving volume is
-another matter: for one of the $74$ moving boundary simplices the exact
+curve $\mathsf B$ for $\arcp\in(\arcp_3,\pi/4)$, is not certified by
+this method. Its combinatorial data are as elsewhere: the representative
+point has $34$ vertices, $11$ moving and $23$ fixed, the pattern is the
+same at eight sample points across the sub-interval, and the fixed volume
+contribution is $6$. But for one of the $74$ moving boundary simplices the exact
 simplification of the determinant over the relevant algebraic extension
 could not be completed, so there is no closed form for the volume and the
 direct computation gives no certificate on this sub-part.
 
-None is needed. \Cref{sec:full-triangle-symmetry} shows that the
-second arc, this sub-part included, is the first arc's own defect
-function in disguise, so the certificates of \cref{sec:arc1-cert}
-already cover it. The three direct certificates recorded above remain
-useful as an independent check of that identification on part of the
-domain, computed by a route that shares nothing with it.
+No certificate is needed there. By \cref{sec:full-triangle-symmetry}
+the defect on the second arc, this sub-part included, is the defect on
+the first arc after a change of variables, so the certificates of
+\cref{sec:arc1-cert} cover it. The three direct certificates above check
+that identification independently on part of the domain.
 
 \subsubsection{Coverage of the boundary}\label{sec:arc2-coverage}
 
 \Cref{fig:fundamental-domain}(b) shows the certificate carried by each
-region of the first arc. Read directly, the region-by-region computations of this subsection settle
-three of the second arc's regions and do not reach the others. Read through
-\cref{prop:arc2-is-arc1}, they are not needed: the second arc and
-the third edge both carry the first arc's certificates, at the first
-arc's margins. The interior of the triangle is a separate matter, settled
-by a different argument in \cref{sec:cap-theorem}.
+region of the first arc. The computations of this subsection certify
+three regions of the second arc directly and do not reach the others. By
+\cref{prop:arc2-is-arc1} they are not needed: the second arc and the
+third edge carry the certificates of the first arc, with its margins.
+The interior of the triangle is settled by a different argument in
+\cref{sec:cap-theorem}.
 
 \subsection{What the single-deviation case contains}\label{sec:deviation-scope-summary}
 
-The single-deviation problem has now been treated in two ways, and they
-return different things: one proves the theorem, the other gives the
-numbers.
+The single-deviation problem is treated here in two ways: one proves the
+theorem, the other gives the values of the defect.
 
 The regional route occupies \cref{sec:arc1-breakpoints} through
 \cref{sec:arc2-cert}. On the first boundary arc of the fundamental
@@ -10614,23 +10705,22 @@ certificate together with its margins
 (\cref{cor:restated-conjecture-holds}).
 
 That route cannot reach the interior. The symmetry group does not move
-an interior point to an edge, the natural convexity reduction is false
+an interior point to an edge, the reduction by convexity is false
 (\cref{sec:interior-structure}), and the interior carries at least four
 distinct combinatorial region types against the boundary's one, so a
 regional treatment there would need four new volume formulas before any
 certificate could be attempted.
 
 The global route is \cref{sec:cap-theorem}. It discards the triangle,
-the arcs and the combinatorial types alike, and replaces them by a
-single question about one fixed polytope: how much can a
-half-space at unit distance from the centre cut off? The answer,
-$\tfrac13$, is exactly the volume of the pyramid that the undeviated
-configuration already cuts off, which is why the resulting bound is
-sharp and why equality pins down the $D_4$ configuration
-(\cref{thm:eperp-closed}). The argument is insensitive to the tilt, to
-the deviation direction, and to the combinatorial type of the cell.
+the arcs and the combinatorial types alike, and replaces them by one
+question about a fixed polytope, how much a half-space at unit distance
+from the centre can cut off. The answer is $\tfrac13$, the volume of the
+pyramid that the undeviated configuration already cuts off, which is why
+the bound is sharp and why equality forces the $D_4$ configuration
+(\cref{thm:eperp-closed}). The argument does not depend on the tilt, the
+deviation direction or the combinatorial type of the cell.
 
-Neither route subsumes the other in practice. \Cref{thm:eperp-closed}
+Neither route contains the other. \Cref{thm:eperp-closed}
 gives the sign everywhere and nothing else; it does not produce the
 defect as a function, and it cannot say where along an arc the defect is
 small or how the breakpoints sit. The regional certificates give exactly
@@ -11235,7 +11325,7 @@ either configuration, and none of it proves the defect positive for
 every set of deviations. That statement ranges over every set of
 deviating roots at every $m\ge2$; the dense range of
 \cref{sec:dense-configs-new} contributes two examined configurations
-out of a very large family, and the rest of that family, with every
+out of a large family, and the rest of that family, with every
 other value of $m$, is not examined. The degeneracy of
 \cref{sec:musin-degeneracy} restricts what an elementary proof can look
 like: if the second derivative vanishes on the near-null subspaces, as
@@ -11503,7 +11593,7 @@ floating-point findings; nothing about that path is proved here.
 
 \subsubsection{The triangle swap, \texorpdfstring{$m=3$}{m=3}}\label{sec:swap-m3}
 
-The natural next configuration is a real $3$-clique: three pairwise
+The next configuration is a real $3$-clique: three pairwise
 Gram-$\tfrac12$ roots rotated simultaneously in a cyclic swap, with the
 remaining $21$ roots fixed. Cramer's rule and staged simplification, as
 for $m=2$, give a closed form in two pieces, split at $\theta=\pi/6$.

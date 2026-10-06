@@ -144,6 +144,22 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (python3 radial_count_sdp.py 31 12 4 1e-5 31
                               80), runs/radial_count_scan.log.
 
+  cardinality_tight.py cert.npz e1 e2 N
+                              rem:cardinality-tight.  Floating point, from
+                              cardinality_certificates/cert_d10_t0.50800.npz
+                              (thm:kissing-stable, N = 25) and
+                              cert_d10_t0.51468.npz (thm:twenty-six,
+                              N = 26): B = 1 + f(1) + F(1,1,1), the largest
+                              values of f + 3F(1,u,u) + 1 and of F and
+                              where they occur (u = t, and the triple
+                              (2t^2 - 1, t, t) of two touching pairs in a
+                              plane), both polynomials at the inner
+                              products of the root system, and how the
+                              room of the final inequality is used.  Used
+                              in no proof.  Logs:
+                              runs/cardinality_tight_kissing.log,
+                              runs/cardinality_tight_26.log.
+
   count31_tight.py            rem:count31-tight.  Floating point, from
                               radial_certificates/radial_31.json: the
                               affine bound M m + t/2, the distances where
@@ -151,6 +167,26 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               and the inner products where condition (a) is
                               tight for the end distances.  Used in no
                               proof.  Log: runs/count31_tight.log.
+
+  combo_tight.py count29|count30
+                              rem:typed-tight.  Floating point, from
+                              combo29_d8.npz and combo30_d8.npz and the
+                              thresholds their checks proved: the bound
+                              split into centres, t/2, pairs and triples
+                              at the count vectors where it is largest,
+                              the count constraints active there (at 29,
+                              N(2.05) >= 19; with 18 the bound is 3.1082),
+                              the largest bound for each count within
+                              2.05, the spread of f over the bins, and
+                              where the pair and triple inequalities come
+                              closest to their thresholds.  Used in no
+                              proof.  Logs: runs/combo29_tight.log,
+                              runs/combo30_tight.log.  With level26 the
+                              same for the certificate of prop:levels at
+                              M = 26 (largest 3.32906, at 15 centres
+                              within 2.05; with 14 it would be 3.33156,
+                              and with 23 centres within 2.444, 3.3590):
+                              runs/combo26_level_tight.log.
 
   radial_count_check.py radial_certificates/radial_31.json
                               Proves thm:count31 from the certificate
@@ -236,8 +272,9 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               bounds are nonnegative: 3.3352, 3.3274,
                               3.3501, 3.3090, 3.2587, 3.2080, 3.1538 for
                               M = 24 to 30, the values L_M of tab:levels
-                              except at M = 26, where the table takes 3.3291
-                              from combo_case_check.py below.  density_spec_26_card.json splits M = 26
+                              except at M = 24 and 26, where the table takes
+                              3.2539 and 3.3291 from combo_case_check.py
+                              below.  density_spec_26_card.json splits M = 26
                               at N(2.03) <= 25, the other case being empty
                               by thm:twenty-six, and sets the small margins
                               that M = 26 needs, since the margin is given
@@ -294,7 +331,18 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.329050 at (15, 0, 9, 0, 0, 0, 2), below
                               3.3352; this is L_26 = 3.3291 of tab:levels.
                               46 minutes on four cores.  Log:
-                              runs/combo26_level_check.log.
+                              runs/combo26_level_check.log.  prop:levels
+                              at M = 24: on
+                              radial_certificates/combo24_level_d6.npz
+                              (three-point degree 6) with case24_all.json,
+                              the same margins, BORDER=1 and LEVEL=3.3291
+                              it passes: the six pair inequalities (3 361
+                              boxes), the bins (285 intervals), the seven
+                              triple inequalities (104 028 boxes), and the
+                              largest bound over the 376 count vectors,
+                              3.253872 at (24, 0, 0, 0, 0, 0, 0); this is
+                              L_24 = 3.2539.  Four minutes.  Log:
+                              runs/combo24_level_check.log.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
@@ -547,6 +595,21 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               failure with the box or the counterexample.
                               Needs numpy, mpmath, sympy.
                                 python certificate_check.py 8 1e-6
+
+  certificate_tight.py
+                              rem:certificate-found and fig:certpair.
+                              Floating point, from
+                              continuation_out/certificate_d8.npz: the two
+                              parts of the bound B (0.2345077 from f_0 and
+                              -0.1416077 from F(1,1,1); f_1 + ... + f_8 is
+                              5.2e-8), the least slack of (C) on the whole
+                              domain, 2.30e-6 at the coplanar triple
+                              (-sqrt3/2, -sqrt3/2, 1/2), which the samples
+                              of the solver did not reach (their least is
+                              1.3e-5), the slack at the triples of the root
+                              system less one root, and its pair sum
+                              0.127196.  Used in no proof.  Log:
+                              runs/certificate_tight.log.
 
   root_lattices_rank4.py
                               Supports lem:root-lattice, the combinatorial half

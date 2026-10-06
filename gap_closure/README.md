@@ -111,7 +111,27 @@ triples of directions in one 2-plane through the centre, which the grid and
 the random points reach only thinly. With `TCOPLANAR=n` every kind of triple
 carries a fixed n-by-n grid of such coplanar triples, equally spaced in the
 two angles and kept through every pruning, and the probes add a grid of twice
-that density (`c28m_d10.log`).
+that density (`c28m_d10.log`). Its first round gave 3.09166 on the samples;
+the triple violations between them fell from about 1e-3 to between 4e-5 and
+4.4e-4, and the corrected value from 6.45 to 3.957. The worst violations now
+sit inside the Gram domain, at triples with three nearly equal inner products
+near 0.31, so the second round adds those points; a bound at 28 needs the
+triple violations below about 2e-6. Round 2 gave 3.09216 on the samples and
+3.227 corrected, round 3 3.09435 and 4.247: the violations move from one kind
+to another, and the worst of rounds 1 to 3 sit at triples fixed by the
+exchange of two points of the same type (BBB at (0.3316, 0.3316, 0.3316),
+ABB at (-0.6188, -0.6188, 0.2783), AAB at (-0.6524, 0.3879, 0.3879)), where a
+symmetric kernel has its critical points and from which the pruning between
+rounds drops the samples once they are satisfied. With `TSYM=n` every kind
+with two points of one type carries a fixed n-by-n grid on that symmetric
+slice (u13 = u23 or u12 = u13, and for three equal types also the diagonal),
+kept through every pruning, and the probes add one of twice that density
+(`c28s_d10.log`, continued from the round-3 certificate).
+
+The case at 28 does not split usefully at the count that limits the bound
+at 29. With at least 19 of the centres within 2.05 (`case28_hiA.json`), the
+kernel of three-point degree 6 gives 3.23113 in one round, the value of the
+whole case at that degree (`c28hiA_d6.log`).
 
 ## musin: where the two-point kernel fails
 
@@ -174,15 +194,26 @@ neighbouring cells.
 
 Section "A density bound from the cells alone" of the paper (`prop:levels`,
 `thm:density-cells`) bounds the union of caps U(Y) for every count M from 24
-to 30. At M = 24 the bound is 24 S(2) = 3.335124; at 25 and 27 to 30 it comes
-from two-point certificates with no split; at M = 26 it comes from the
-combined kernel of `CM/` (labelled pairs and typed triples, degree 8), run
-against a level: `multi_cap/combo_case_check.py` with LEVEL=3.3352 on
+to 30. At 25 and 27 to 30 the bound comes from two-point certificates with no
+split; at M = 24 and M = 26 it comes from the combined kernel of `CM/`
+(labelled pairs and typed triples), run against a level with
+`multi_cap/combo_case_check.py`. At M = 26, degree 8, with LEVEL=3.3352 on
 `CM/case26_all.json` and `multi_cap/radial_certificates/combo26_level_d8.npz`
-(the round-3 certificate of `CM/c26h_d8.log`) passes with U(Y) <= 3.329050
-(`multi_cap/runs/combo26_level_check.log`). So every cell has volume at least
-9 pi^2/8 - max L_M = 7.7681, the largest level being 24 S(2) at M = 24, and
-every packing of unit balls in R^4 has density at most 0.63527. This is below
+(the round-3 certificate of `CM/c26h_d8.log`), it passes with
+U(Y) <= 3.329050 (`multi_cap/runs/combo26_level_check.log`). At M = 24,
+degree 6, with LEVEL=3.3291 on `CM/case24_all.json` and
+`multi_cap/radial_certificates/combo24_level_d6.npz` (the round-1 certificate
+of `CM/c24lvl_d6.log`, 3.21901 on its samples), it passes with
+U(Y) <= 3.253872 (`multi_cap/runs/combo24_level_check.log`); dropping the
+pair terms gives only 24 S(2) = 3.335124. At M = 25 the same kernel at degree
+6 stays at 3.313 on its samples, and its round-1 certificate prechecks at
+3.3768, above the two-point level 3.3274 (`CM/c25lvl_d6.log`). Its largest
+value is at the bin counts (17, 0, 4, 1, 1, 2, 0), with exactly the seventeen
+centres within 2.05 that `prop:C-radial` proves, as the level at 26 is
+largest at its fifteen. So every cell has
+volume at least 9 pi^2/8 - max L_M = 7.7742, the largest level being
+L_26 = 3.3291, and every packing of unit balls in R^4 has density at most
+0.63477. This is below
 the three-point bound 0.63611 of Cohn, de Laat and Salmon, and above
 pi^2/16 = 0.61685; it is a density bound, not statement (G) or (C).
 
