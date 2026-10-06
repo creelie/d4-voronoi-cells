@@ -126,12 +126,23 @@ rounds drops the samples once they are satisfied. With `TSYM=n` every kind
 with two points of one type carries a fixed n-by-n grid on that symmetric
 slice (u13 = u23 or u12 = u13, and for three equal types also the diagonal),
 kept through every pruning, and the probes add one of twice that density
-(`c28s_d10.log`, continued from the round-3 certificate).
+(`c28s_d10.log`, continued from the round-3 certificate). Its first round gave
+3.09379 on the samples, but with the symmetric triples held the solver moved
+weight onto the pairs and used the gaps between the pair samples, thinned to
+5000 per kind by the pruning: the pair violations reached 0.56 and the
+corrected value 134.9. The second round puts those pair points back.
 
 The case at 28 does not split usefully at the count that limits the bound
 at 29. With at least 19 of the centres within 2.05 (`case28_hiA.json`), the
 kernel of three-point degree 6 gives 3.23113 in one round, the value of the
-whole case at that degree (`c28hiA_d6.log`).
+whole case at that degree (`c28hiA_d6.log`). At degree 10 the round-3
+certificate is flat in the counts as well (`count_effect.py`,
+`c28m_r3_counts.log`): its largest value over the count vectors, 3.09436, is at
+22 centres within 2.0161, one in (2.05, 2.1], one in (2.2, 2.35] and four
+beyond 2.35, and asking for 10 to 21 centres within 2.05, 24 within 2.2, 25 to
+27 within 2.35, or at most 20 to 22 within 2.0161 changes it by at most
+1.6e-4. Sharper radial counts would not lower the bound at 28; the obstacle
+is the arrangement of 22 nearly touching centres with six farther out.
 
 ## musin: where the two-point kernel fails
 
