@@ -150,6 +150,7 @@ with the arguments each README lists. The Lean files are checked with
     (cd lean/cell600 && lake build)
     (cd lean/certificate && lake build)
     (cd lean/cardinality && lake build)
+    (cd lean/count && lake build)
 
 and the generated Lean files are regenerated with the gen_*.py scripts
 beside them (lean/README.md lists them). The C enumeration of the 600-cell

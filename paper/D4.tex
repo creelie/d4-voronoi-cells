@@ -7943,7 +7943,14 @@ in ball arithmetic \cite{Joh17}. Boxes with $|y|>|y'|$ ($K$ and $\Pi$ are
 symmetric) or lying wholly beyond $u=a(|y|,|y'|)$ are set aside by exact
 rational tests, and the branch and bound closes (a) with $191\,740$ boxes.
 Condition (c) is checked in the same way on $356$ intervals, $S$ being
-decreasing, and the final inequality in ball arithmetic.
+decreasing, and the final inequality in ball arithmetic. The whole check is
+repeated in Lean from the entries of the certificate alone, in exact dyadic
+arithmetic: the coefficients of $K$ are rounded up once to multiples of
+$2^{-320}$, which can only raise $K$ because the Bernstein basis is
+nonnegative, every subdivision is then carried out without rounding, and
+$\Pi$, $S$ and $\pi$ are bounded in outward-rounded interval arithmetic with
+$256$ fractional bits. It closes (a) with the same $191\,740$ boxes and (c)
+with the same $356$ intervals (\cref{sec:formal-part}).
 \end{proof}
 
 With at most $23$ centres within $\sqrt6$ the bound holds by
@@ -9361,7 +9368,7 @@ show where that method stops.
 
 \subsection{The formal part}\label{sec:formal-part}
 
-Nineteen parts of the paper are also verified in the Lean~4 proof
+Twenty parts of the paper are also verified in the Lean~4 proof
 assistant \cite{MU21}, with no external library; each is a finite
 computation or a polynomial identity, and \cref{tab:formal} lists them.
 Identities are proved over every commutative ring by Lean's ring
@@ -9429,6 +9436,13 @@ $181\,869$ boxes at degree $8$; $2\,957$ intervals at degree $10$). \\
 \cref{thm:twenty-six} & The certificate of degree $10$ from its entries
 alone: positivity, the value of the bound, the inequality at $|C|=26$, and
 both branch and bounds. \\
+\cref{thm:count31} & The certificate from its entries alone: $A_1,\dots,A_{12}$
+and the bordered matrix of (b) positive semidefinite by exact
+$LDL^{\mathsf T}$, with $t$ computed exactly; the pair inequality (a) by
+branch and bound in exact dyadic arithmetic, with $\Pi$ bounded below in
+outward-rounded $256$-bit interval arithmetic ($191\,740$ boxes closed and
+$180\,310$ set aside); the bracket (c) on $356$ intervals; and
+$31m+\frac t2<\frac98\pi^2-8$. \\
 \cref{lem:rigidity-spectrum,thm:local-uniqueness} & The annihilating
 polynomials of $4N$ and $2K$, the ranks over $\mathbb{Q}$, the diagonal
 $\frac{11}{16}$, the ratio $\sqrt{96/11}$ and the arithmetic of the radius
