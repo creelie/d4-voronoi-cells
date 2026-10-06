@@ -1,0 +1,4 @@
+28 at degree 10, continued from c28k_d10_r2.npz (round 5, bound 3.09111), pruned to KEEP_T=2500, with a fixed 32-by-32 grid of coplanar triples per kind (TCOPLANAR=32), where rounds 4 and 5 left violations of about 1e-3; started Tue Oct  6 12:20:02 UTC 2026
+resumed from c28k_d10_r2.npz, pruned to 3000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+   direct: 8988 variables, 80858 inequalities, 7389 psd rows in 56 cones, 57377823 nonzeros [18 s to build]

@@ -196,6 +196,22 @@ def tbound(s, t):
 
 KEEP_P, KEEP_T = int(os.environ.get('KEEP_P', '5000')), int(os.environ.get('KEEP_T', '2500'))
 KEEP_BASE = os.environ.get('KEEP_BASE') == '1'   # keep the starting pair grid through every pruning
+TCOPLANAR = int(os.environ.get('TCOPLANAR', '0'))  # n > 0: a fixed n-by-n grid of coplanar triples per kind
+PERM_T = {}                                        # the fixed triples, kept through every pruning
+
+
+def coplanar_grid(T12, T13, T23, n):
+    """triples of unit vectors in one 2-plane, the boundary of the Gram domain: with
+    the first at angle 0 and the others at angles a and +-b, the inner products are
+    cos a, cos b and cos(a -+ b); a and b run over n equally spaced angles each."""
+    a = np.linspace(np.arccos(T12), np.pi, n)
+    b = np.linspace(np.arccos(T13), np.pi, n)
+    A, B = (x.ravel() for x in np.meshgrid(a, b))
+    out = []
+    for w in (np.cos(A - B), np.cos(A + B)):
+        P = np.stack([np.cos(A), np.cos(B), w], 1)
+        out.append(P[w <= T23])
+    return np.unique(np.round(np.concatenate(out), 12), axis=0)
 NEWP, NEWT = int(os.environ.get('NEWP', '3000')), int(os.environ.get('NEWT', '400'))   # worst new samples added per kind and round
 
 
@@ -224,6 +240,8 @@ def prune(psamp, tsamp, x3v, Av, c2v, c3v, L):
         B = T3.Builder(L); T3.add_triple(B, np.arange(len(g)), tuple(ti[x] for x in cb), g[:, 0], g[:, 1], g[:, 2])
         v = B.matrix(len(g)) @ x3v - c3v[cb]
         tsamp[cb] = g[np.argsort(v)[-KEEP_T:]]
+        if cb in PERM_T:
+            tsamp[cb] = np.unique(np.r_[tsamp[cb], PERM_T[cb]], axis=0)
 
 
 REFINE = int(os.environ.get('REFINE', '60'))   # starts of the local ascent per kind and round (0: none)
@@ -320,6 +338,11 @@ def main():
         else:
             prune(psamp, tsamp, sv['x3'], sv['A'], dict(zip(c2keys, sv['c2'])), dict(zip(c3keys, sv['c3'])), L0)
             print('resumed from %s, pruned to %d pair and %d triple samples per kind' % (os.environ['RESUME'], KEEP_P, KEEP_T), flush=True)
+    if TCOPLANAR:
+        for cb in tsamp:
+            PERM_T[cb] = coplanar_grid(tbound(cb[0], cb[1]), tbound(cb[0], cb[2]), tbound(cb[1], cb[2]), TCOPLANAR)
+            tsamp[cb] = np.unique(np.r_[tsamp[cb], PERM_T[cb]], axis=0)
+        print('fixed coplanar triples per kind: %s' % {''.join(k): len(v) for k, v in PERM_T.items()}, flush=True)
     for rnd in range(rounds):
         t0 = time.time()
         prob, L, X3, A, z, t, m, c2, c3, pvec = build_and_solve(d3, rounds, psamp, tsamp)
@@ -356,6 +379,8 @@ def main():
         for cb in c3:
             T12, T13, T23 = tbound(cb[0], cb[1]), tbound(cb[0], cb[2]), tbound(cb[1], cb[2])
             g = np.r_[T3.random_triples(T12, T13, T23, int(os.environ.get('TPROBE', '8000'))), T3.triple_grid(T12, T13, T23, 26, 26, 10)]
+            if TCOPLANAR:
+                g = np.r_[g, coplanar_grid(T12, T13, T23, 2 * TCOPLANAR + 1)]
             vals = []
             for i in range(0, len(g), 5000):
                 gg = g[i:i + 5000]

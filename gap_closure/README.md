@@ -103,6 +103,15 @@ With `BORDER=1` the exact check rounds the bordered matrix
 [[A_0, z], [z^T, t]] as a whole instead of setting t = z^T A_0^{-1} z after
 rounding A_0, which keeps t at the solver's value when A_0 is nearly singular
 (at 28 and degree 10 the difference is 0.007 in the bound).
+At 28 and degree 10 the rounds after the first stopped improving: the raw
+value stayed at 3.0913 and 3.0911 while the triple constraints failed by about
+1e-3 between the samples (corrected 6.48 and 6.45). The solver meets its own
+samples to 5e-7; the failures lie on the boundary of the Gram domain, the
+triples of directions in one 2-plane through the centre, which the grid and
+the random points reach only thinly. With `TCOPLANAR=n` every kind of triple
+carries a fixed n-by-n grid of such coplanar triples, equally spaced in the
+two angles and kept through every pruning, and the probes add a grid of twice
+that density (`c28m_d10.log`).
 
 ## musin: where the two-point kernel fails
 
