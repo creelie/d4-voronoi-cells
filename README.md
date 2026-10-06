@@ -21,7 +21,7 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
   the classification of twenty-four contacts proved from the certificate of
   de Laat, Leijenhorst and de Muinck Keizer;
 - at most twenty-three other centres lie within sqrt 6 of c;
-- at least thirty lie within sqrt 6;
+- at least twenty-nine lie within sqrt 6;
 - exactly twenty-four lie within sqrt 6, on the rays of a root system, or
   the contacts contain enough of a root system;
 - no centre lies strictly between 2 + 4e-26 and sqrt 6.
@@ -34,7 +34,7 @@ packing of unit balls in R^4; this is weaker than the three-point bound
 
 For the remaining centres the paper reduces the bound to two explicit
 statements: (G), a volume bound when exactly twenty-four centres lie within
-sqrt 6, and (C), a bound on the caps when twenty-five to twenty-nine do. Together
+sqrt 6, and (C), a bound on the caps when twenty-five to twenty-eight do. Together
 they imply that D_4 gives the densest packing of R^4. **Neither is proved.**
 The paper records what is proved about them and where each method stops;
 `gap_closure/` holds the floating-point explorations against them, none of

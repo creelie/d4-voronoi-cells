@@ -2,7 +2,7 @@
 %   Left: contact configurations, split by the number m of contacts
 %   (cor:m22, thm:m23, thm:m24).  Right: a centre within sqrt6 that is not a
 %   contact, split by the number |Y| of centres within sqrt6
-%   (thm:m23-labelled, thm:count31, thm:count30, prop:C-radial, lem:no-triple,
+%   (thm:m23-labelled, thm:count31, thm:count30, thm:count29, prop:C-radial, lem:no-triple,
 %   thm:G-pushout, thm:near-contact).  Green boxes are proved, orange boxes are
 %   open.
 % Test:   python3 tikz_overlap_check.py tikz_proofmap.tex
@@ -50,8 +50,8 @@
 \node[ok, anchor=north east] (R1) at ($(R.south east)+(0,-0.35)$) {$|Y|\le23$: labelled three-point certificate};
 \node[ok, anchor=north east] (R2) at ($(R1.south east)+(0,-0.22)$) {$|Y|\ge31$: labelled two-point kernel, $T(Y)>8$};
 \node[ok, anchor=north east] (R3) at ($(R2.south east)+(0,-0.22)$)
-  {$|Y|=30$: two-point cases and a kernel on typed triples, $T(Y)>8$};
-\node[open, anchor=north east] (R4) at ($(R3.south east)+(0,-0.22)$) {$25\le|Y|\le29$: statement (C)};
+  {$|Y|=29$ or $30$: a kernel on typed triples, with two-point cases at $30$, $T(Y)>8$};
+\node[open, anchor=north east] (R4) at ($(R3.south east)+(0,-0.22)$) {$25\le|Y|\le28$: statement (C)};
 \node[ok, anchor=north east] (R5) at ($(R4.south east)+(0,-0.22)$) {$|Y|=24$, $T(Y)>8$: no three caps meet};
 \node[open, anchor=north east] (R6) at ($(R5.south east)+(0,-0.22)$)
   {$|Y|=24$, $T(Y)\le8$: statement (G), proved on the push-outs and near $D_4$};

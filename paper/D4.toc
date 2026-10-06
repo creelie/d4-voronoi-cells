@@ -119,31 +119,31 @@
 \contentsline {section}{\tocsection {}{20}{Comparison with other strategies}}{153}{section.20}%
 \contentsline {subsection}{\tocsubsection {}{20.1}{Local against global}}{153}{subsection.20.1}%
 \contentsline {subsection}{\tocsubsection {}{20.2}{Linear programming bounds in dimension four}}{153}{subsection.20.2}%
-\contentsline {subsection}{\tocsubsection {}{20.3}{What each method asks of the reader}}{153}{subsection.20.3}%
-\contentsline {subsection}{\tocsubsection {}{20.4}{Other dimensions}}{153}{subsection.20.4}%
+\contentsline {subsection}{\tocsubsection {}{20.3}{What each method asks of the reader}}{154}{subsection.20.3}%
+\contentsline {subsection}{\tocsubsection {}{20.4}{Other dimensions}}{154}{subsection.20.4}%
 \contentsline {section}{\tocsection {}{21}{Conclusion}}{154}{section.21}%
 \contentsline {subsection}{\tocsubsection {}{21.1}{What is proved}}{154}{subsection.21.1}%
-\contentsline {subsection}{\tocsubsection {}{21.2}{The contact cases}}{154}{subsection.21.2}%
-\contentsline {subsection}{\tocsubsection {}{21.3}{Several deviations by elementary means}}{155}{subsection.21.3}%
-\contentsline {subsection}{\tocsubsection {}{21.4}{What is open}}{156}{subsection.21.4}%
-\contentsline {subsection}{\tocsubsection {}{21.5}{Outlook}}{156}{subsection.21.5}%
-\contentsline {section}{\tocsection {}{22}{Computer verification}}{157}{section.22}%
+\contentsline {subsection}{\tocsubsection {}{21.2}{The contact cases}}{155}{subsection.21.2}%
+\contentsline {subsection}{\tocsubsection {}{21.3}{Several deviations by elementary means}}{156}{subsection.21.3}%
+\contentsline {subsection}{\tocsubsection {}{21.4}{What is open}}{157}{subsection.21.4}%
+\contentsline {subsection}{\tocsubsection {}{21.5}{Outlook}}{157}{subsection.21.5}%
+\contentsline {section}{\tocsection {}{22}{Computer verification}}{158}{section.22}%
 \contentsline {subsection}{\tocsubsection {}{22.1}{Independent arithmetic}}{158}{subsection.22.1}%
 \contentsline {subsection}{\tocsubsection {}{22.2}{The formal part}}{158}{subsection.22.2}%
-\contentsline {subsection}{\tocsubsection {}{22.3}{What is printed and what is archived}}{159}{subsection.22.3}%
+\contentsline {subsection}{\tocsubsection {}{22.3}{What is printed and what is archived}}{160}{subsection.22.3}%
 \contentsline {section}{\tocsection {}{}{Data and code availability}}{160}{section*.14}%
-\contentsline {section}{\tocsection {}{}{Competing interests}}{160}{section*.15}%
-\contentsline {section}{\tocsection {}{}{Funding}}{160}{section*.16}%
-\contentsline {section}{\tocsection {Appendix}{A}{Index of notation}}{160}{appendix.A}%
-\contentsline {section}{\tocsection {Appendix}{B}{Methods of computation}}{161}{appendix.B}%
-\contentsline {subsection}{\tocsubsection {}{}{The box-covering certificate}}{161}{section*.17}%
-\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{162}{section*.18}%
-\contentsline {subsection}{\tocsubsection {}{}{The certificates}}{162}{section*.19}%
-\contentsline {subsection}{\tocsubsection {}{}{Software}}{163}{section*.20}%
+\contentsline {section}{\tocsection {}{}{Competing interests}}{161}{section*.15}%
+\contentsline {section}{\tocsection {}{}{Funding}}{161}{section*.16}%
+\contentsline {section}{\tocsection {Appendix}{A}{Index of notation}}{161}{appendix.A}%
+\contentsline {section}{\tocsection {Appendix}{B}{Methods of computation}}{162}{appendix.B}%
+\contentsline {subsection}{\tocsubsection {}{}{The box-covering certificate}}{162}{section*.17}%
+\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{163}{section*.18}%
+\contentsline {subsection}{\tocsubsection {}{}{The certificates}}{163}{section*.19}%
+\contentsline {subsection}{\tocsubsection {}{}{Software}}{164}{section*.20}%
 \contentsline {section}{\tocsection {Appendix}{C}{Numerical tables}}{164}{appendix.C}%
-\contentsline {subsection}{\tocsubsection {}{}{Chains}}{164}{section*.21}%
-\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{164}{section*.22}%
+\contentsline {subsection}{\tocsubsection {}{}{Chains}}{165}{section*.21}%
+\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{165}{section*.22}%
 \contentsline {subsection}{\tocsubsection {}{}{Sampling at the singular configurations}}{165}{section*.23}%
-\contentsline {section}{\tocsection {Appendix}{D}{Explicit coordinates of the reference cell}}{165}{appendix.D}%
-\contentsline {section}{\tocsection {Appendix}{E}{A model of the Bernstein certificate}}{165}{appendix.E}%
-\contentsline {section}{\tocsection {Appendix}{}{References}}{166}{section*.24}%
+\contentsline {section}{\tocsection {Appendix}{D}{Explicit coordinates of the reference cell}}{166}{appendix.D}%
+\contentsline {section}{\tocsection {Appendix}{E}{A model of the Bernstein certificate}}{166}{appendix.E}%
+\contentsline {section}{\tocsection {Appendix}{}{References}}{167}{section*.24}%

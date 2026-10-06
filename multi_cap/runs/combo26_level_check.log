@@ -16,3 +16,16 @@ statement (C) at 26 centres, case case26_all.json: combined certificate combo26_
   [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (44 boxes closed, 27 set aside, Pi in Arb at 0 corners)
   [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (5 boxes closed, 0 set aside, Pi in Arb at 0 corners)
   [ok] f <= m_b on every bin  (6323 intervals, least room 1.50e-10)
+  triple AAA: float largest 1.495333e-03 on 649660 samples; threshold 1.497925e-03; 425 monomials, symmetry 2
+  triple AAB: float largest 9.573107e-04 on 649576 samples; threshold 9.598990e-04; 425 monomials, symmetry 1
+  triple AAF: float largest 1.320087e-03 on 649567 samples; threshold 1.322105e-03; 425 monomials, symmetry 1
+  triple ABB: float largest 5.945645e-04 on 649313 samples; threshold 5.966748e-04; 425 monomials, symmetry 1
+  triple ABF: float largest 1.040978e-03 on 649299 samples; threshold 1.043879e-03; 425 monomials, symmetry 0
+  triple AFF: float largest 1.141615e-03 on 649302 samples; threshold 1.145076e-03; 425 monomials, symmetry 1
+  triple BBB: float largest 4.070524e-04 on 648923 samples; threshold 4.094797e-04; 425 monomials, symmetry 2
+  triple BBF: float largest 6.544102e-04 on 648919 samples; threshold 6.564131e-04; 425 monomials, symmetry 1
+  triple BFF: float largest 1.041112e-03 on 648934 samples; threshold 1.043982e-03; 425 monomials, symmetry 1
+      AAA level 10: 0 boxes verified, 334 to bisect [1 s]
+      AAB level 10: 0 boxes verified, 622 to bisect [1 s]
+      AAF level 10: 0 boxes verified, 624 to bisect [1 s]
+      AAA level 20: 14307 boxes verified, 74532 to bisect [37 s]

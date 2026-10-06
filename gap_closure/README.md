@@ -2,11 +2,14 @@
 
 This directory holds the computations run against the two statements that the
 paper leaves open (Section "The statements (G) and (C)"): statement (C) for
-25 to 29 centres within sqrt6, and statement (G), and the residual case at
-thirty centres, which they settled. They are floating-point semidefinite
-programmes on sampled constraints. **Only one of them yields a certificate**:
-the round-3 certificate of `C30/combo30p.py`, which `multi_cap/combo30_check.py`
-proves exactly and which is the fifth case of `thm:count30`. The rest are kept
+25 to 28 centres within sqrt6 and statement (G), and the two cases they
+settled, the residual case at thirty centres and the whole case at
+twenty-nine. They are floating-point semidefinite programmes on sampled
+constraints. **Two of them yield certificates**: the round-3 certificate of
+`C30/combo30p.py`, which `multi_cap/combo30_check.py` proves exactly and which
+is the fifth case of `thm:count30`, and the certificate of the run `c29r4` of
+`CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
+which is `thm:count29`. The rest are kept
 so that the values quoted in the paper and in the pull requests can be
 reproduced, and no result of theirs is used in any proof, except the exact
 checks logged in `density/check_M.log` (see the last section).
@@ -34,7 +37,7 @@ kind of pair and triple, the largest violation found between the samples times
 the number of such pairs or triples. At degree 6 the raw value rises with each
 round of added samples and the corrected value stays above 3.10330.
 
-## CM: twenty-five to twenty-nine centres
+## CM: twenty-five to twenty-nine centres (twenty-nine proved)
 
 `combo_gen2.py` generalises `combo30.py` to an arbitrary case file
 (`case29_all.json`: 29 centres, types A, B, F, seven bins and the count
@@ -52,11 +55,35 @@ centres (5330, 17 845, 42 927 and 74 550 count vectors), and `case28_t4.json`
 splits the close centres of 28 into four types. At 29 and degree 8
 (`c29all_d8.log`, continued from its samples in `c29x_d8.log`) the raw value
 is 3.0287, 3.0568, 3.0592, 3.0605 in four rounds and the corrected value
-comes down to 3.1026, below the level in
-floating point but with less room than the exact check at thirty used up
-(about 0.08, from the corrected 3.0062 to the proved 3.0872). `multi_cap/combo_case_check.py` is the exact check these
-certificates would have to pass; none has yet. Runs on a larger machine go
-through `bigmachine/run_combo.py`.
+comes down to 3.1026, but the corrected values of these early rounds were too
+low (see the next paragraph): the precheck of the round-2 certificate of the
+run with the compass search (`c29r_d8.log`) gives 3.196 (`pre_c29r_r2.log`).
+
+The run that closes 29 continues that one. Resumed with `REFINE=100`
+(`c29r3_d8.log`), its raw value is 3.06337 to 3.06413 in four rounds, with
+corrected values 4.86, 3.09964, 5.78 and 3.227: pruning to the samples nearest
+to violation dropped whole regions of pairs, which came back as large
+violations a round later. With `KEEP_BASE=1`, which keeps the starting grid of
+pair samples through every pruning, the resumed run `c29r4` (`c29r4_d8.log`)
+gives raw 3.06421 and corrected 3.10016 in its first round. The precheck of
+that certificate at margins 5e-6, 5e-7, 1e-6 is 3.099635
+(`pre_c29r4_r1_small.log`), and the exact check
+`multi_cap/combo_case_check.py case29_all.json
+radial_certificates/combo29_d8.npz 8 5e-6 1e-6 1e-6` passes with 3.101462 <
+3.10330 (`multi_cap/runs/combo29_check.log`, 104 minutes): this is
+`thm:count29`, and `combo29_d8.npz` is `c29r4_d8_r1.npz`. Four types at 29
+(`c29t4c_d8.log`) and degree 10 (`c29d10_d10.log` here, which diverged, and
+`bigmachine/records/c29all_d10.log` on a 16-core machine, raw 2.9353,
+3.0004, 3.0105, 3.0119 in four rounds) were not needed.
+
+Below 29 the programme stays above the level on its samples, and samples only
+lower the optimum: at 28, 3.10668 with three types (`c28x_d8.log`, one round)
+and 3.11169 with four (`c28t4_d8.log`, round 2); at 27, 3.1570 (round 1 on the
+larger machine, `bigmachine/records/c27all_d8.log`); at 26, 3.30766 at
+degree 6 (`c26s_d6.log`) and 3.2456 at degree 8 (`c26h_d8.log`). At 29 degree
+10 lowers the raw value by about 0.05 against degree 8, so 28 is run at
+degree 10 next. Runs on a larger machine go through
+`bigmachine/run_combo.py`.
 
 Each round of `combo_gen2.py` (and so of `combo_direct.py`) looks for the
 violations between the samples by random points and grids and, unless
@@ -92,7 +119,7 @@ T(Y) <= 8 + eta have directions within an explicit root-sum-square distance
 rho(eta) of a root system. Through `cor:no-room`, the residual case at thirty
 would have needed rho < 0.206 at eta = 0.00368; the kernel on typed triples
 settled that case instead (`thm:count30`), and (L) remains the route for
-twenty-five to twenty-nine centres and for (G).
+twenty-five to twenty-eight centres and for (G).
 
 `budget_far.py` maximises the distance to the nearest root system under
 T(Y) <= 8 + eta and the packing conditions, from root systems pushed out at
