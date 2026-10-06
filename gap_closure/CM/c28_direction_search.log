@@ -54,3 +54,7 @@ The radial counts of the other cases (control: 29, where (C) is proved), seed 29
 Typed three-point bound (c28_typed_dirs.py 20 6 2; typed3pt.py falls back on SCS where CLARABEL fails) on the four types 20 within 2.0161, 1 at 2.1, 3 at 2.35, 4 at sqrt6:
 d=6 round 1: optimal Val=-5.6459e-09 corrected=1.0988e-05  maxviol=2.1e-08  [1019 s]
 [stopped 19:38 in round 2: Val stays at 0 (the zero kernel), so the typed three-point bound of degree 6 does not exclude 20 centres within 2.0161 at 28]
+
+5000 starts (seed 53), 10 and 11 centres within 2.0161:
+2.0161*10,2.1*11,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/5000, best max violation 2.060e-03
+2.0161*11,2.1*10,2.15*1,2.2*1,2.35*1,sqrt6*4: feasible starts 0/5000, best max violation 3.063e-03
