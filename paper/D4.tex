@@ -742,12 +742,12 @@ The $24$-cell is the Voronoi cell of $D_4$ \cite[Ch.~VIII]{Cox73},
   (\cref{lem:shell-new}). The density $\pi^2/16$ is
   $\vol(B^4)/8=(\pi^2/2)/8$.}
 
-The polytope itself is drawn four times over, each time from the coordinates and not as a schematic: \cref{fig:cell24}(a) is an
+\Cref{fig:cell24} draws the polytope from its coordinates. Panel (a) is an
 orthogonal projection to $\mathbb{R}^3$, in which the axis family and
-the sign family are told apart by colour, \cref{fig:cell24}(b) is the
-Schlegel diagram from one octahedral facet, \cref{fig:cell24}(c) is the
+the sign family are told apart by colour, (b) is the
+Schlegel diagram from one octahedral facet, (c) is the
 three-dimensional form of the cap inequality of \cref{sec:cap-theorem}, and
-\cref{fig:cell24}(d) is the decomposition into the three $16$-cells that
+(d) is the decomposition into the three $16$-cells that
 triality permutes.
 
 \begin{figure}[tb]
@@ -858,14 +858,16 @@ $\alpha/\sqrt2$, $\alpha\in\Rt$, then $\vol(V_c)\ge8$.
 \end{lem}
 
 \begin{proof}
-By \cref{lem:hmin-new}, $h(\alpha/\sqrt2)=1$ for every root direction,
-so the supporting hyperplane cut by an active neighbour at the minimum
-packing radius $2$ along a root direction passes exactly through
-$\VCell$'s own bounding hyperplane in that direction, neither cutting
-into $\VCell$ nor leaving room outside it. Hence every active
-half-space contains $\VCell$, and $V_c\supseteq\VCell$, giving
-$\vol(V_c)\ge\vol(\VCell)=8$ immediately, with equality exactly at the
-all-contact, all-root-aligned configuration.
+Take $c=0$. An active neighbour at distance $d\ge2$ in the root
+direction $\alpha/\sqrt2$ contributes the half-space
+$\{z:\langle z,\alpha/\sqrt2\rangle\le d/2\}$, which contains
+$\{z:\langle z,\alpha/\sqrt2\rangle\le1\}$ and hence $\VCell$, since
+$h(\alpha/\sqrt2)=1$ by \cref{lem:hmin-new}. The other centres lie at
+distance at least $2\sqrt2$ and contain $\VCell$ in their half-spaces by
+\cref{lem:shell-new}. So $V_c\supseteq\VCell$ and
+$\vol(V_c)\ge\vol(\VCell)=8$. Equality forces $V_c=\VCell$, so each of the
+$24$ facet hyperplanes of $\VCell$ bounds $V_c$, and each is then the
+bisector of a contact in its root direction.
 \end{proof}
 
 This is the base case that every other configuration, deviating by a
@@ -1534,9 +1536,8 @@ $\langle x,\base_k\rangle>1$, which is where $E_k$ lives. At an adjacent
 pair with both tilts $30^\circ$ the overlap has volume $0.0137\ldots$,
 against a defect of $0.1845\ldots$, so it is not a small correction. The
 sets $C_j$ can also overlap, though only at large tilts and only for
-adjacent pairs; the largest overlap we have found in a search over
-random packing-valid configurations of two to four deviating directions
-is $1.6\times10^{-3}$.
+adjacent pairs; over random packing-valid configurations of two to four
+deviating directions the largest overlap is $1.6\times10^{-3}$.
 
 Consequently the quantity $\sum_j\vol(E_j)-\sum_j\vol(C_j)$ is
 \emph{not} equal to $\vol(V_c)-8$, and its sign is neither implied by
@@ -1548,9 +1549,9 @@ an identity, and it is the union form that
 \end{remark}
 
 \begin{remark}[Why the single-deviation theorem does not reduce the general case]\label{rem:first-order-obstruction}
-One could try to split the comparison of \cref{conj:multidir-new}
-into $m$ separate ones, each settled by \cref{thm:eperp-closed}. Two
-things stand in the way, and both are structural.
+Splitting the comparison of \cref{conj:multidir-new} into $m$ separate
+ones, each settled by \cref{thm:eperp-closed}, fails for two structural
+reasons.
 
 The first is the overlapping just described. On its own it can be controlled:
 Bonferroni's inequality\footnote{For any measure and any finitely many sets,
@@ -1577,17 +1578,17 @@ controls. With one root deviating, $E_j$ is cut out by the other
 twenty-three root half-spaces, and \cref{lem:Q-structure} identifies
 it inside the pyramid $\mathrm{Pyr}_j$. With $m$ roots deviating it is
 cut out by the $24-m$ fixed half-spaces together with the $m-1$ other
-tilted ones, and the exchange is not benign. The eight lateral facets of
+tilted ones. The eight lateral facets of
 $\mathrm{Pyr}_j$ lie on the hyperplanes of the eight roots at $60^\circ$
 to $\alpha_j$, so for an adjacent $k$ the pyramid meets $\{\langle
 x,\base_k\rangle=1\}$ in a facet and not transversally: dropping
 that constraint opens $E_j$ out, and reimposing it in the tilted
 position $\{\langle x,w_k\rangle\le1\}$ slices back in along a whole
-face. The two effects do not cancel, and neither dominates. In a search
-over packing-valid configurations with $2\le m\le6$ and tilts up to
-$0.9$ we found $\vol(E_j)$ both exceeding its single-deviation value and
-falling short of it, in the latter case by more than $0.1$, against
-defects of order $0.3$. Therefore \cref{thm:eperp-closed} gives no bound
+face. The two effects do not cancel, and neither dominates: over random
+packing-valid configurations with $2\le m\le6$ and tilts up to $0.9$,
+$\vol(E_j)$ both exceeds its single-deviation value and falls short of
+it, in the latter case by more than $0.1$, against defects of order
+$0.3$. Therefore \cref{thm:eperp-closed} gives no bound
 on $\vol(E_j)-\vol(C_j)$ once $m\ge2$, and \eqref{eq:termwise-hope}
 cannot be reached term by term.
 
@@ -1629,10 +1630,9 @@ sums of volumes (\cref{rem:sums-not-unions}).}
 
 \subsection{A fixed-body form of the multi-direction problem}\label{sec:multi-cap}
 
-\Cref{rem:first-order-obstruction} says what does not work. What the cap
-reformulation of \cref{sec:cap-theorem} does become for $m\ge2$ is a
-single extremal problem about a single fixed polytope, exactly as in the
-case $m=1$, and not the sum of $m$ problems.
+For $m\ge2$ the cap reformulation of \cref{sec:cap-theorem} still gives
+one extremal problem about one fixed polytope, as in the case $m=1$, and
+not a sum of $m$ problems.
 
 Let $D$ be the set of deviating roots, $|D|=m$, and put
 \[
@@ -1693,8 +1693,7 @@ directly; the rest of this section explains why the natural ways of doing
 so fail.
 \end{remark}
 
-The boundedness hypothesis is mild and its exact range is known. $Q_D$ is
-bounded precisely when the $24-m$ undeviated root directions positively
+$Q_D$ is bounded precisely when the $24-m$ undeviated root directions positively
 span $\mathbb{R}^4$, and an exhaustive enumeration over all
 packing-valid sets $D$ gives the following: for $m\le5$ it is bounded in
 every case, all $24$, $276$, $2024$, $10626$ and $42504$ of them
@@ -1709,11 +1708,9 @@ those a direct argument needs a bounded substitute for $Q_D$ first;
 \subsection{Polar and boundary forms of the same question}\label{sec:polar-surface}
 
 The multi-cap form keeps a fixed body and moves the cutting half-spaces.
-There is a third way of writing the same question, which discards the
-reference cell altogether and states the problem directly in terms of
-the contact configuration. It costs nothing to set up, it makes the
-relation to the $24$-cell conjecture explicit, and it gives the
-sharpest available statement of what a proof of
+A third form of the same question discards the reference cell and states
+the problem in terms of the contact configuration alone. It makes the
+relation to the $24$-cell conjecture explicit and shows what a proof of
 \cref{conj:multidir-new} cannot look like.
 
 \begin{definition}\label{def:contact-config}
@@ -1804,13 +1801,12 @@ each step leaves the volume no larger by \cref{prop:polar-form}(ii), so
 the resulting maximal configuration is again a minimiser.
 \end{proof}
 
-Thus the inequality is a statement about maximal contact configurations
-only, and there is an extremal configuration to identify. That
-is as far as soft arguments take it: what they leave is the question of
-whether the maximal configurations of $24$ directions are the root
-system alone, which is the rigidity half of the kissing problem in
-dimension four and is settled in \cref{thm:m24} below, by the
-semidefinite certificate of \cref{thm:twentyfour-points}.
+So the inequality concerns maximal contact configurations only, and an
+extremal configuration exists. The remaining question, whether the
+maximal configurations of $24$ directions are the root system alone, is
+the rigidity half of the kissing problem in dimension four; it is settled
+in \cref{thm:m24} below by the semidefinite certificate of
+\cref{thm:twentyfour-points}.
 
 The second form replaces the volume by the boundary measure.
 
@@ -1837,9 +1833,9 @@ $F_w$ that is not a facet is lower-dimensional and contributes nothing.
 
 At the root configuration all $24$ sets $F_w$ are facets, each a regular
 octahedron of $3$-volume $\tfrac43$, and \eqref{eq:surface} reads
-$8=\tfrac14\cdot32$. The reason every facet is an octahedron of exactly that
-size is isolated below, since the same computation limits the
-method.
+$8=\tfrac14\cdot32$. The next lemma shows why every facet is an
+octahedron of exactly that size, and the same computation marks the limit
+of facet-by-facet arguments.
 
 \begin{lem}[Facet shape and inball]\label{lem:facet-inball}
 Let $W$ be a contact configuration, $w\in W$, and write
@@ -1886,9 +1882,9 @@ the eight vertex directions of a cube, and the eight constraints
 $\langle y,\widehat{w'}\rangle\le1/\sqrt3$ cut out exactly the regular
 octahedron $\{y:|y_1|+|y_2|+|y_3|\le1\}$ of $3$-volume $\tfrac43$, the
 remaining sixteen constraints being inactive. The bound
-\eqref{eq:facet-lower} is therefore attained in shape but not in size:
-the octahedron circumscribes the ball of radius $1/\sqrt3$ and has
-$1.654\ldots$ times its volume.
+\eqref{eq:facet-lower} is therefore not attained there: the octahedron
+circumscribes the ball of radius $1/\sqrt3$ and has $1.654\ldots$ times
+its volume.
 
 \begin{remark}[Why no facet-by-facet argument can succeed]\label{rem:facet-local-obstruction}
 Combining \eqref{eq:surface} and \eqref{eq:facet-lower} with
@@ -1900,11 +1896,11 @@ $|W|\le24$ gives, for every contact configuration,
 which at the largest possible value $|W|=24$ is
 $8\pi/(3\sqrt3)=4.836798\ldots$, short of $8$ by more than $3$. The
 inequality $V_c(W)\supseteq B^4$, which follows from $|w|=1$ for every
-$w$ and is the same computation run in one step instead of facet by facet, does slightly better at $\pi^2/2=4.934802\ldots$, and no better.
+$w$ and is the same computation run in one step instead of facet by
+facet, gives slightly more, $\pi^2/2=4.934802\ldots$.
 
-The conclusion is not that these two bounds happen to be weak. It is
-that the whole class they belong to is too small, and one example settles
-it. An argument that uses only the pairwise condition
+Both bounds belong to a class that cannot reach $8$, as one example
+shows. An argument that uses only the pairwise condition
 $g_{ww'}\le\tfrac12$, and nothing about how the rest of the
 configuration is arranged, can produce only a bound of the form
 $\vol_3(F_w)\ge\beta$ with $\beta$ a universal constant; the largest
@@ -1939,24 +1935,22 @@ bound is at most
 \[
   6\beta^{*}\;\le\;96\sqrt2-128\;=\;7.764502\ldots
 \]
-Hence no bound of this class can reach $8$, whatever it is, and its
-ceiling is below even the crude covering estimate of
-\cref{thm:covering-bound}. For a configuration with $|W|\le23$ the same
-computation returns at most $7.441\ldots$, so the method fails first
-exactly where the statement is least delicate.
+Hence no bound of this class reaches $8$, and its ceiling lies below
+the covering estimate of \cref{thm:covering-bound}. For a configuration
+with $|W|\le23$ the same computation returns at most $7.441\ldots$, so
+the method fails even where the inequality has the most room.
 
 What is missing is the interaction between facets: the direction $w'$
 that makes $F_w$ small is itself a direction whose own facet $F_{w'}$ is
 then constrained, and \eqref{eq:surface} becomes usable only if that
-trade is accounted for across the configuration. This is the same
-phenomenon that \cref{rem:first-order-obstruction} records in the
-free-volume language, seen from the boundary instead.
+trade is accounted for across the configuration. This is the obstruction
+of \cref{rem:first-order-obstruction}, seen from the boundary.
 \end{remark}
 
 \begin{remark}[Two global routes that do not reach the equality case]\label{rem:global-routes}
-Two standard tools apply to \eqref{eq:polar} and both fail at the
-configuration where the inequality is tight, which is the decisive test
-for a method that must produce a sharp constant.
+Two standard tools apply to \eqref{eq:polar}, and both lose at the
+configuration where the inequality is tight, so neither gives the sharp
+constant.
 
 The polar volume has the integral form
 $\vol(K^{\circ})=\tfrac14\int_{S^3}h_K(\theta)^{-4}\,d\theta$, where
@@ -1969,21 +1963,22 @@ $\bar h\le(\pi^2/16)^{1/4}=0.886226\ldots$. For $K=\conv(W)$ at the root
 configuration, $h_K(\theta)$ is $2^{-1/2}$ times the sum of the two
 largest absolute coordinates of $\theta$, and $\bar h=0.89372\ldots$, evaluated
 numerically at four million sample directions with a standard error of
-$2\times10^{-5}$, so the criterion fails by a small margin. The failure is not an artefact of
-the estimate being loose in a repairable way: Jensen is an equality only
-when $h_K$ is constant, that is only for a ball, so at any polytope the
-bound is strictly below the true volume, and at the root configuration
-it returns $7.7351\ldots$ against the true $8$. No inequality of this
-shape can be sharp where the inequality is.
+$2\times10^{-5}$, so the criterion fails by a small margin. No
+refinement of the estimate repairs this: Jensen's inequality is an
+equality only when $h_K$ is constant, that is only for a ball, so at any
+polytope the bound is strictly below the true volume, and at the root
+configuration it returns $7.7351\ldots$ against the true $8$. No
+inequality of this shape is sharp at the root configuration.
 
 The Mahler-type route fares worse. Mahler's conjectured lower bound
 $\vol(K)\vol(K^{\circ})\ge4^{n}/n!$, itself open in dimension four,
 would give $\vol(K)\vol(K^{\circ})\ge\tfrac{32}3$; but at the root
 configuration $\conv(W)$ is the $24$-cell of circumradius $1$, of volume
 $2$, and the product is $16$, so the inequality carries a factor
-$\tfrac32$ of slack exactly where none can be afforded, and dividing by
-$\vol(K)\le2$ returns only $\tfrac{16}3$. Using instead the crude
-$\vol(K)\le\vol(B^4)=\pi^2/2$ returns $64/(3\pi^2)=2.16\ldots$.
+$\tfrac32$ of slack at the one configuration where the bound must be
+exact, and dividing by $\vol(K)\le2$ returns only $\tfrac{16}3$. Using
+$\vol(K)\le\vol(B^4)=\pi^2/2$ instead returns
+$64/(3\pi^2)=2.16\ldots$.
 
 Both evaluations, together with the facet-local bound of
 \cref{rem:facet-local-obstruction}, the boundary identity
@@ -2018,19 +2013,17 @@ contact direction leaves a root, and \cref{conj:multidir-new} is the
 remainder, proved in \cref{cor:conj-resolved} by the classification of
 \cref{thm:m24} and by nothing else in this paper; what the conjecture
 asks beyond contact configurations is \cref{conj:shell}. The
-reformulations of this subsection do not make a direct proof easier;
-what they do is fix the exact shape of the obstacle and remove three
-families of approach from consideration, a fourth having gone in
-\cref{rem:first-order-obstruction}. Partial results towards the
+reformulations of this subsection do not make a direct proof easier.
+They fix the exact shape of the obstacle and exclude three families of
+approach, and \cref{rem:first-order-obstruction} excludes a fourth. Partial results towards the
 conjecture, by a different route, are in \cite{Mus18}.
 \end{remark}
 
 \subsection{A bound from the contact caps}\label{sec:covering-bound}
 
-The boundary form measures the cell from outside, facet by facet. There
-is a third measurement, from the centre outward, and it is the one that
-gives a bound for every configuration at once, however many of its
-contact directions deviate.
+The boundary form measures the cell from outside, facet by facet.
+Measuring from the centre outward instead gives a bound for every
+configuration at once, however many of its contact directions deviate.
 
 \begin{lem}[Radial form]\label{lem:radial-form}
 Let $W$ be a contact configuration and let
@@ -2063,10 +2056,10 @@ the ray through $\theta$ and is unbounded. Substituting
 $\rho=1/\cos\delta$ gives \eqref{eq:radial}.
 \end{proof}
 
-Therefore the problem is to show that a set of $m\le24$ points on $S^3$ with
+So the problem is to show that a set of $m\le24$ points on $S^3$ with
 pairwise angular distance at least $60^\circ$ cannot be so evenly spread
-that the mean of $\sec^4\delta$ drops below $32/(2\pi^2)$. Written this
-way, a crude covering estimate already gives most of what is wanted.
+that the mean of $\sec^4\delta$ drops below $32/(2\pi^2)$. In this form
+a covering estimate on $S^3$ already gives most of the bound.
 
 \begin{thm}[Covering bound]\label{thm:covering-bound}
 Let $W$ be a contact configuration with $|W|=m$ and bounded cell, and
@@ -2164,7 +2157,7 @@ of those deviations. Consequently
 \[
   \vol(V_c)\;\ge\;\tfrac{\pi\cdot24}{3}\tan^3r_{24}=7.798989\ldots
 \]
-holds for every contact configuration whatever, and the local bound
+holds for every contact configuration, and the local bound
 $\vol(V_c)\ge8$ is left undecided only for configurations with exactly
 $23$ or exactly $24$ contacts.
 \end{cor}
@@ -2227,9 +2220,8 @@ when all the measures agree, and $\phi(2\pi^2/m)=\tan^3r_m$ by the
 definition \eqref{eq:rm} of $r_m$.
 \end{proof}
 
-Hence \cref{thm:covering-bound} is not one estimate among several: it is
-the strongest conclusion that the areas of the spherical Voronoi cells
-can support, and at the root configuration those areas are all equal, so
+So \cref{thm:covering-bound} is the strongest conclusion that the areas
+of the spherical Voronoi cells can support, and at the root configuration those areas are all equal, so
 no redistribution argument can improve it there. What the estimate gives
 away is shape. It replaces each cell by the round set of the same
 measure, and a round set is exactly the worst case for an integrand that
@@ -2242,8 +2234,8 @@ $60^\circ$-separated set cannot be round, which is a statement about the
 shape of the cells and not about their areas.
 
 \begin{remark}[The shape is not local to a cell]\label{rem:no-local-cell}
-The natural way to get at that shape is one cell at a time, and it fails
-in both of the decompositions the configuration provides.
+Working one cell at a time fails in both decompositions that the
+configuration provides.
 
 On $\Omega_w$ the integrand of \eqref{eq:radial} is $\sec^4d(\theta,w)$,
 so the Voronoi decomposition localises the identity exactly, and
@@ -2300,7 +2292,7 @@ graph has clique number three. Thus the
 locally densest arrangement is not one the extremal configuration
 contains.
 
-Therefore the deficit that \cref{prop:area-optimal} shows is needed is not
+So the gain over \cref{prop:area-optimal} that a proof needs is not
 additive over cells. Cells worse than round exist in both
 decompositions, and what makes the root configuration extremal is the way its cells fit together, not the shape of any one of them. All
 of this is checked numerically, with integrals over $S^3$ by Monte Carlo; the
@@ -2364,8 +2356,8 @@ and treating them as disjoint gives only $7.79966$. The missing
 $0.2003$ is a statement about how much of the sphere lies far from $W$,
 not about how far the farthest point is.
 
-The overlaps the estimate throws away can be put back exactly, and the
-result measures how much room the method has left.
+The overlaps the estimate discards can be put back exactly, and the
+result shows how much room the method has left.
 
 \begin{lem}[Three caps do not meet]\label{lem:no-triples}
 Three directions of a contact configuration have circumradius at least
@@ -2442,17 +2434,15 @@ $88$ close pairs are all at exactly $60^\circ$, the right-hand side of
   8.034340\ldots\ \text{at } R=r_* ,
 \end{equation}
 against $7.916728\ldots$ for the plain estimate and $\tfrac{25}3$ for
-the true volume. The first of these is the number one obtains by
-stopping the integration where the covering estimate stops, at the
-radius $r_{23}=34.6106\ldots^\circ$ at which the caps would exactly
+the true volume. The first stops the integration where the covering
+estimate stops, at the radius $r_{23}=34.6106\ldots^\circ$ at which the caps would exactly
 exhaust the sphere if they were disjoint, and it falls short of $8$ by
-$0.002115\ldots$. The second carries the same exact identity to its
-natural limit $r_*$, the smallest circumradius of three contact
-directions, and it passes $8$ with $0.034340\ldots$ to spare. The
-pairwise estimate is therefore not blocked at the deletion
-configuration; what it asks of an arbitrary configuration of $23$
-directions is worked out in \cref{prop:pair-budget}, and
-\cref{sec:strict-inequality} takes the matter further. At $m=24$ the
+$0.002115\ldots$. The second carries the same identity to its limit
+$r_*$, the smallest circumradius of three contact directions, and passes
+$8$ with $0.034340\ldots$ to spare. So the pairwise estimate is not
+blocked at the deletion configuration; \cref{prop:pair-budget} works out
+what it asks of an arbitrary configuration of $23$ directions, and
+\cref{sec:strict-inequality} continues from there. At $m=24$ the
 same computation gives $7.858738\ldots$ at $R=r_{24}$ and
 $7.906940\ldots$ at $R=r_*$, against the true value $8$; there the
 truncation discards the deep holes of the root system, which sit at
@@ -2467,15 +2457,14 @@ $0.632749\ldots$, below the three-point bound $0.63611$ of \cite{CdLS22};
 but the constant holds only for cells whose active neighbours all touch,
 and a general packing has other cells. For every cell the paper proves
 $7.7681$ (\cref{thm:density-cells}).
-What the covering estimate has that a density bound does not is that it
-is a statement about one cell at a time, as \cref{conj:multidir-new}
-requires, and that is why it settles the range
+Unlike a density bound, the covering estimate concerns one cell at a
+time, as \cref{conj:multidir-new} requires, and so it settles the range
 $m\le22$ outright.
 
-The estimate is crude: the only fact about the configuration it uses is
-that $m$ caps cannot cover more than $m$ times the area of one cap. \Cref{prop:second-order} says how
-much of that crudeness is repairable from pair data alone, and the
-answer is almost all of it at $m=23$ and little of it at $m=24$. What
+The only fact about the configuration that the estimate uses is that
+$m$ caps cannot cover more than $m$ times the area of one cap.
+\Cref{prop:second-order} shows how much of the loss pair data recover:
+almost all of it at $m=23$ and little of it at $m=24$. What
 neither version reaches is the tail: both stop at $r_m$, while the
 survival function stays positive out to the covering radius, $45^\circ$
 at the root configuration. Going further means a lower bound on the
@@ -2494,8 +2483,8 @@ are \cref{lem:no-triples}, \eqref{eq:lens} and the two values above.
 
 \subsection{Twenty-four contacts}\label{sec:m24}
 
-At the top of the range the problem changes character completely, because
-a contact configuration of the maximal size is rigid.
+At the top of the range the problem changes, because a contact
+configuration of maximal size is rigid.
 
 \begin{thm}[Twenty-four contacts]\label{thm:m24}
 Let $W$ be a contact configuration with $|W|=24$. Then $W$ is the image
@@ -4496,8 +4485,8 @@ sets in question are exactly the independent sets of the graph $\Gamma$
 on $I$ whose edges join vertices at $36^\circ$, and every vertex of
 $\Gamma$ has degree $12$, its vertex figure being an icosahedron. The
 symmetry group of the $600$-cell is transitive on $I$, so it suffices to
-enumerate the independent sets through one fixed vertex $v_0$, and this
-is a finite search which we carry out to the end: a depth-first
+enumerate the independent sets through one fixed vertex $v_0$. This is a
+finite search, carried out completely by a depth-first
 enumeration over bitsets, with the standard pruning that an independent
 set meets every clique of $\Gamma$ at most once, so that a greedy
 partition of the remaining candidates into cliques bounds what can still
@@ -4532,14 +4521,14 @@ the three counts $0$, $5$ and $115$ by the same depth-first search
 
 
 \begin{remark}[What the $600$-cell decides]\label{rem:cell600-scope}
-\Cref{prop:cell600} closes the family one reaches for first
+\Cref{prop:cell600} settles the first family of candidates
 (\cref{fig:structcd}(a), drawn on page~\pageref{fig:structcd}). The unit
 icosians form the largest finite subgroup of the unit quaternions, the
 binary icosahedral group of order $120$; they contain the twenty-four
 Hurwitz units, which are $\Rt$, in twenty-five different ways; and a
-subset of them with all inner products at most $\tfrac12$ is the first
-thing to try when looking for a code built on the golden ratio rather
-than on $\sqrt2$. The proposition says that no such subset of $23$
+subset of them with all inner products at most $\tfrac12$ is the
+obvious candidate for a code built on the golden ratio rather than on
+$\sqrt2$. The proposition says that no such subset of $23$
 points escapes a copy of $\Rt$. It does not cover codes whose
 coordinates lie outside $\mathbb{Q}(\sqrt5)$, nor the continuous families
 that \cref{sec:slack-continuation} finds once the minimal angle is allowed
@@ -4573,9 +4562,8 @@ and nothing else; there the arithmetic is in $\mathbb{Z}[\sqrt2]$.
 
 \subsection{The largest inradius as the minimal angle rises}\label{sec:slack-continuation}
 
-The remaining case can be put as the value of one function at one
-point, and the function can be computed away from that point. For
-$\delta\ge0$ let
+The remaining case is the value at one point of a function that can be
+computed away from that point. For $\delta\ge0$ let
 \[
   K(\delta)=\bigl\{W=(w_1,\dots,w_{23})\in(S^3)^{23} :
   \langle w_i,w_j\rangle\le\tfrac12+\delta\ \text{for all } i\ne j\bigr\},

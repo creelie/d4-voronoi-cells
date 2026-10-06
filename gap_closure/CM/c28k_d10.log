@@ -7,3 +7,4 @@ d3=10 round 1: NumericalError  bound 3.09134 (target 3.10330), corrected <= 6.47
    c2: {'AA': -0.123939, 'AB': -0.06328, 'AF': -0.056011, 'BB': -0.006291, 'BF': -0.002008, 'FF': 0.004601}
    c3: {'AAA': 0.0071466, 'AAB': 0.0048452, 'AAF': 0.0045647, 'ABB': 0.0026672, 'ABF': 0.0024857, 'AFF': 0.0021737, 'BBB': 0.0006354, 'BBF': 0.0005921, 'BFF': 0.0005055, 'FFF': 0.0014277}
    direct: 8988 variables, 102684 inequalities, 7389 psd rows in 56 cones, 73903812 nonzeros [25 s to build]
+   105 type-count vectors
