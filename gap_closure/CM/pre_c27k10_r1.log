@@ -7,3 +7,5 @@ statement (C) at 27 centres, case case27_all.json: combined certificate c27k10_d
   pair AB: float largest K + PAIR3 - Pi -3.096896e-01 (file c2 -3.096921e-01); threshold -3.096696e-01
   pair AF: float largest K + PAIR3 - Pi -2.936488e-01 (file c2 -2.936575e-01); threshold -2.936288e-01
   pair BB: float largest K + PAIR3 - Pi -2.307721e-02 (file c2 -2.307830e-02); threshold -2.305721e-02
+  pair BF: float largest K + PAIR3 - Pi -9.991155e-03 (file c2 -9.991874e-03); threshold -9.971133e-03
+  pair FF: float largest K + PAIR3 - Pi 7.364461e-03 (file c2 7.364703e-03); threshold 7.384568e-03
