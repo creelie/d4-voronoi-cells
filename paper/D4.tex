@@ -5210,13 +5210,17 @@ gives the rest.
 \caption{(a) The certificate of \cref{thm:certificate}: the slack of the
 condition \eqref{eq:C}, the amount by which its left-hand side exceeds
 $0$, on the slice of the admissible domain in which one pair of the
-triple is at $60^\circ$. It is positive throughout, least near a
-coplanar triple with one nearly antipodal pair, and largest, about
-$4\times10^{-4}$, in the interior. The six squares are the triples that
-occur in a deletion of a root. (b) The values of the relaxations against the target $8-A_*$: the
+triple is at $60^\circ$. It is positive throughout and largest, about
+$4\times10^{-4}$, in the interior. It is least, $2.3\times10^{-6}$, at the
+corner $(-\frac{\sqrt3}2,-\frac{\sqrt3}2)$ where the two arcs of coplanar
+triples meet the diagonal, the triple in which the third direction lies
+opposite the bisector of the pair at $60^\circ$; a search of the whole
+domain finds no smaller value. The six squares are the triples with a pair at $60^\circ$ that occur
+in the root system less one root. (b) The values of the relaxations against the target $8-A_*$: the
 pair angles alone (\cref{prop:two-point-barrier}), the three-point
 relaxation at degrees $6$ and $8$, and the certificate, at which the
-bound is fixed at $0.0929$ and the least slack is maximised.}
+bound is fixed at $0.0929$ and the least slack is maximised; the dotted
+line is the pair sum $0.127196$ of the root system less one root.}
 \label{fig:certpair}
 \end{figure}
 
@@ -5239,7 +5243,13 @@ $F_k-10^{-7}I$ and $f_k-10^{-7}$ constrained to be positive
 semidefinite so that the solution survives being read as exact
 rationals: the least slack is $1.35\times10^{-5}$ on the final sample
 of $21\,648$ triples and $1.30\times10^{-5}$ on the check, against
-$\omega(60^\circ)=0.00145$. The solution has two further features.
+$\omega(60^\circ)=0.00145$. On the whole domain it is smaller,
+$2.30\times10^{-6}$, at the coplanar triple
+$(-\frac{\sqrt3}2,-\frac{\sqrt3}2,\frac12)$, in which two directions are
+at $60^\circ$ and the third lies opposite their bisector. Neither the
+sample nor the check came near that point; the branch and bound of the
+proof covers every admissible triple and decides it as it decides the
+rest. The solution has two further features.
 The two-point part is almost inert, $f_0=0.000927$ and
 $f_1,\dots,f_8$ below $3\times10^{-8}$, so it is the matrices $F_k$ that
 carry the argument. And the inequality is far from tight at the
@@ -5259,9 +5269,11 @@ $(-\tfrac1{16},-\tfrac1{16},-\tfrac1{16})$ at which \eqref{eq:C} fails.
 of \cref{lem:certificate} in three dimensions, where the triples
 $(u,v,t)$ of pairwise inner products of three contact directions fill
 the part of the cube $[-1,\tfrac12]^3$ enclosed by the surface of
-coplanar triples. The surface is coloured by the slack of \eqref{eq:C},
-which is least along the curves where two of the three directions are
-nearly antipodal. (b) The branch and bound of the proof of \cref{thm:certificate},
+coplanar triples. The surface is coloured by the slack of \eqref{eq:C}.
+The slack is small, from about $1.2\times10^{-5}$, along the curves where
+two of the three directions are nearly antipodal, and least,
+$2.3\times10^{-6}$, at the triple $(-\frac{\sqrt3}2,-\frac{\sqrt3}2,\frac12)$
+and its permutations. (b) The branch and bound of the proof of \cref{thm:certificate},
 level by level: the boxes live, the boxes discarded on the enclosure,
 and the width reached.}
 \label{fig:dom3d}

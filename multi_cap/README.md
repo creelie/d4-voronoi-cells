@@ -583,6 +583,21 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               Needs numpy, mpmath, sympy.
                                 python certificate_check.py 8 1e-6
 
+  certificate_tight.py
+                              rem:certificate-found and fig:certpair.
+                              Floating point, from
+                              continuation_out/certificate_d8.npz: the two
+                              parts of the bound B (0.2345077 from f_0 and
+                              -0.1416077 from F(1,1,1); f_1 + ... + f_8 is
+                              5.2e-8), the least slack of (C) on the whole
+                              domain, 2.30e-6 at the coplanar triple
+                              (-sqrt3/2, -sqrt3/2, 1/2), which the samples
+                              of the solver did not reach (their least is
+                              1.3e-5), the slack at the triples of the root
+                              system less one root, and its pair sum
+                              0.127196.  Used in no proof.  Log:
+                              runs/certificate_tight.log.
+
   root_lattices_rank4.py
                               Supports lem:root-lattice, the combinatorial half
                               of the twenty-four-point classification.

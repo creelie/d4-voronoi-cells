@@ -33,8 +33,8 @@
 \contentsline {subsection}{\tocsubsection {}{5.11}{The remaining case as a strict inequality}}{66}{subsection.5.11}%
 \contentsline {subsection}{\tocsubsection {}{5.12}{The inequality between pair angles}}{70}{subsection.5.12}%
 \contentsline {subsubsection}{\tocsubsubsection {}{}{From a feasible point to an inequality}}{70}{section*.2}%
-\contentsline {subsection}{\tocsubsection {}{5.13}{Twenty-four points at positive slack}}{75}{subsection.5.13}%
-\contentsline {section}{\tocsection {}{6}{Positivity for every deviation direction}}{80}{section.6}%
+\contentsline {subsection}{\tocsubsection {}{5.13}{Twenty-four points at positive slack}}{74}{subsection.5.13}%
+\contentsline {section}{\tocsection {}{6}{Positivity for every deviation direction}}{81}{section.6}%
 \contentsline {subsection}{\tocsubsection {}{6.1}{The defect as a cap deficiency}}{81}{subsection.6.1}%
 \contentsline {subsection}{\tocsubsection {}{6.2}{A cross-polytope around $Q$}}{82}{subsection.6.2}%
 \contentsline {subsection}{\tocsubsection {}{6.3}{The extremal cap of the cross-polytope}}{82}{subsection.6.3}%

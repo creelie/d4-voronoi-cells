@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1791283290.92194 "D4.tex" "D4.pdf" "D4" 1791283295.90248 0
+["pdflatex"] 1791294761.2085 "D4.tex" "D4.pdf" "D4" 1791294766.50388 0
   "/etc/texmf/web2c/texmf.cnf" 1791167710.21763 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -173,15 +173,15 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1791167717.02445 319537 d0d0708249356078afe7362801504ba7 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1791167733 6830979 a1e9af113476dc8647f3fd0b74091426 ""
-  "D4.aux" 1791283295.69142 180540 4c856af5049c68888f83950258c32244 "pdflatex"
-  "D4.out" 1791283295.69942 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
-  "D4.tex" 1791283271.31461 662244 db5140e54b89f9d69dae856f368a177e ""
-  "D4.toc" 1791283295.69942 16472 39fe7532c3345afdee9718cae6a9cbbc "pdflatex"
+  "D4.aux" 1791294766.28411 182129 0a3fbd140937d7486294ae2bb342e47b "pdflatex"
+  "D4.out" 1791294766.29611 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
+  "D4.tex" 1791294755.6681 667851 4be50d7e4afb0ee11aa65c9dd25326a5 ""
+  "D4.toc" 1791294766.30011 16472 5aca0b4a4f9e6d2451f5af1bfacf53e9 "pdflatex"
   "figures/fig_c_arcs.png" 1791200272.16814 336878 4c1b9c3d0b1a9128902704d0d11d85ab ""
   "figures/fig_c_boundary.png" 1791176609.09636 617440 259bcb0e568cae0aa081f441887c3181 ""
   "figures/fig_c_cap.png" 1791176609.10244 208804 61f766f080181d31da4449ac77367fa8 ""
   "figures/fig_c_cell24.png" 1791176609.10436 1475920 676d71ae28bd726cc80b1a92c99c3587 ""
-  "figures/fig_c_certificate.png" 1790897134.09392 377087 b71a5442686e43f2a7d646a90ec633dd ""
+  "figures/fig_c_certificate.png" 1791294685.7081 314212 08ff251f74323ca35b8e2fdab4a8fa03 ""
   "figures/fig_c_corner.png" 1791176609.11806 1420813 8f1c8e46b44e1f9602232bdbcff752f6 ""
   "figures/fig_c_counting.png" 1791176609.12036 926271 3f5b9d02546c257874ff00012aee556b ""
   "figures/fig_c_d4contacts.png" 1790897134.10992 434445 822663c1c5a123dea0f4c73ca40689da ""
