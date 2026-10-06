@@ -10087,26 +10087,23 @@ would give $\defect(\tilt,Q)\ge\min(\defect(\tilt,\mathrm{endpoint}_1),
 This would settle the whole triangle with no further derivation.
 \end{quote}
 
-This argument is false. Testing it directly, geodesics from each
-vertex to random points on the opposite edge, and fully generic interior-to-interior
-chords, sampled at $25$ values of $\tilt$ each, finds small positive
-discrete second differences (apparent local convexity, not concavity)
-at several points, concentrated toward $\tilt$ near $\pi/2$. These are not
-grid artifacts. Fixing one
-such point and halving the step size eight times ($h=0.08$ down to
-$h\approx3\times10^{-4}$) gives
-$d^2(h)/h^2$ converging to $+0.3056$, constant to four
-significant figures over the last five halvings, the signature of a
-nonzero positive second derivative at that point, not
-discretisation noise (which would shrink faster than $h^2$ and show no
-stable limit) and not a combinatorial breakpoint nearby (the local
-vertex count is confirmed constant at $37$ throughout a window around
-the point). The candidate argument fails: $\defect(\tilt,\cdot)$ is
-not concave along every interior geodesic, so the interior cannot be
-reduced to the boundary this way, at any $\tilt$ in the domain (the
-effect was not confined to $\tilt$ near $\pi/2$, only larger there).
-The finding is negative: it rules out the whole class of arguments
-that let the boundary drag the interior along.
+This argument is false. Along geodesics from each vertex to random
+points on the opposite edge, and along chords between random interior
+points, each sampled at $25$ values of $\tilt$, the discrete second
+differences are positive at several points, most of them with $\tilt$
+near $\pi/2$; there the defect is locally convex, not concave. The effect
+does not come from the grid. At one such point, halving the step eight
+times, from $h=0.08$ to $h\approx3\times10^{-4}$, gives values of
+$d^2(h)/h^2$ that converge to $+0.3056$ and agree to four significant
+figures over the last five halvings. Discretisation error would shrink
+faster than $h^2$ and have no stable limit, and no combinatorial
+breakpoint lies nearby, since the local vertex count stays $37$ in a
+window around the point; so the second derivative there is positive.
+Hence $\defect(\tilt,\cdot)$ is not concave along every interior geodesic,
+and the interior cannot be reduced to the boundary in this way at any
+$\tilt$ of the domain: the effect occurs throughout and is only largest
+near $\tilt=\pi/2$. This rules out every reduction of the interior to the
+boundary by concavity along geodesics.
 
 \paragraph{The interior's own combinatorial structure}
 
@@ -10235,16 +10232,15 @@ crossings $\arcp_1,\arcp_2,\arcp_3$.}
 
 \subsubsection{Exact remapping and box covering}\label{sec:method-overview-new}
 
-Two complementary exact techniques are used across the eight regions of
-\cref{thm:arc1-breakpoints-new}, chosen region by region according to
-whether the region's boundary curve is itself rational in Weierstrass
-coordinates.
+Each of the eight regions of \cref{thm:arc1-breakpoints-new} is
+certified by one of two exact methods, according to whether its boundary
+curve is rational in Weierstrass coordinates.
 
 \subparagraph{Exact zero-margin certificates.} When a region's lower (or
 upper) boundary curve is rational in $\mathsf u=\tan(\tilt/2)$ and
 $\mathsf v=\tan(\arcp/2)$, as are the universal curve and the
 curves $\mathsf W$, $\mathsf A$ of \cref{thm:arc1-breakpoints-new}, a
-further exact substitution maps the curved region onto an exact unit
+further exact substitution maps the curved region onto the unit
 square, after which the volume-defect numerator and denominator become
 two explicit polynomials with coefficients in $\mathbb{Z}[\sqrt2]$ (or,
 where a crossover point of the region's own two bounding curves is used
@@ -10258,10 +10254,9 @@ one sign on the whole open region, with \emph{no excluded margin}
 not rational (the curve $\mathsf Y$ is of genus one, see region $4$
 below), the region is instead covered by many small
 rectangular boxes in the plain Weierstrass coordinates, with corners
-chosen numerically to sit safely inside the true domain; the same exact
-Bernstein sign certificate is then run independently on each box, at the
-cost of a thin, explicitly quantified excluded margin near the true
-boundary.
+chosen numerically inside the domain, and the same exact Bernstein sign
+test is applied to each box. This leaves out a thin margin of known size
+along the boundary.
 
 \subsubsection{The region count}\label{sec:region-count-correction}
 
@@ -10296,10 +10291,10 @@ and of the denominator have one sign throughout, so $\defect$ has one
 sign on the certified part.
 \end{thm}
 
-The eight regions follow in turn, each with its representative-point vertex
-count (moving vertices, from the deviating cap, plus fixed vertices,
-confirmed unchanged across several sample points spanning the region),
-its exact fixed-volume contribution (the boundary simplices not
+For each of the eight regions we give the number of vertices at a
+representative point (moving vertices, from the deviating cap, plus fixed
+vertices; the numbers are the same at several sample points across the
+region), its exact fixed-volume contribution (the boundary simplices not
 involving the deviating cap, which sum to an exact rational constant
 independent of $(\tilt,\arcp)$), and its certificate method.
 
@@ -10357,9 +10352,9 @@ the same point. Box-covering certificate.
 by the universal line and then, past $\arcp_1$, by $\mathsf Y$, for
 $\arcp\in(0,\arcp_2)$; it pinches to a point at $\arcp_2$. Its ceiling
 changes curve inside the region while the combinatorial type stays the
-same, as convex-hull volumes on the two sides of $\arcp_1$, agreeing with
-one formula to twelve decimal places, confirm. A representative point has $32$ vertices ($23$
-fixed $+9$ moving); the fixed-only sum is exactly $65/12$. Box-covering
+same: convex-hull volumes on the two sides of $\arcp_1$ agree with one
+formula to twelve decimal places. A representative point has $32$
+vertices ($23$ fixed $+9$ moving); the fixed-only sum is exactly $65/12$. Box-covering
 certificate.
 
 \subparagraph{Region $\mathsf D$.} A lens, bounded above by the universal
@@ -10430,17 +10425,16 @@ $c=\sqrt2\,e_3$, the same functional form as curve $\mathsf Y$ on the
 first arc, but arising here from a different vertex.
 \end{enumerate}
 The two vertices responsible for the first arc's remaining curves,
-$y=(1,-1,1,1)/\sqrt2$ and $a=\sqrt2\,e_1$, are confirmed here to touch
-nowhere in this arc's open interior.
+$y=(1,-1,1,1)/\sqrt2$ and $a=\sqrt2\,e_1$, give no breakpoint in the
+open interior of this arc.
 \end{thm}
 
 As on the first arc, each equation is the passage of the deviating
-hyperplane through the named vertex, and completeness is confirmed by a
-dense scan ($150$ values of $\arcp$, $900$-point $\tilt$-grid with
-bisection refinement) finding at most four breakpoints at any sampled
-$\arcp$, every one matching one of the four curves above to a tolerance
-of $2\times10^{-4}$, far smaller than the curves' own separation, with
-zero unexplained transitions across the entire scan.
+hyperplane through the named vertex. A dense scan ($150$ values of
+$\arcp$, a $900$-point grid in $\tilt$ refined by bisection) finds at
+most four breakpoints at each sampled $\arcp$, each on one of the four
+curves to within $2\times10^{-4}$, far below the separation of the
+curves, and no other transition.
 
 \subsubsection{The combinatorial atlas}
 
@@ -10453,31 +10447,30 @@ points on $\arcp\in(0,\pi/4)$:
   \arcp_3 &= \arcsin(\tfrac1{\sqrt3}) = 0.615480\ldots\quad (\mathsf B=\text{universal}),
   \end{aligned}
 \]
-each solved exactly and confirmed numerically to eleven significant
+each found exactly and checked numerically to eleven significant
 figures. The equations of $\mathsf W'$, $\mathsf B$ and $\mathsf C$ are
 those of $\mathsf A$, $\mathsf W$ and $\mathsf Y$ on the first arc, so the
 arrangement, drawn in \cref{fig:arcs}(b), is the same, with the same
-three crossings and the same eight regions. \Cref{prop:arc2-is-arc1}
-shows that this is no coincidence.
+three crossings and the same eight regions; \cref{prop:arc2-is-arc1}
+explains why.
 
 \subsubsection{Region top}
 
 The topmost region, bounded above by $\tilt=\pi/2$ and below by curve
-$\mathsf W'$, spanning the entire $\arcp\in(0,\pi/4)$ domain with no
-internal splitting, is the first target for a certificate,
-since its lower boundary is itself rational in Weierstrass coordinates
-(the same functional form, $\mathsf u=(1-\mathsf v^2)/(1+\mathsf v^2)$, as
-the first arc's own curve $\mathsf A$). \Cref{sec:arc2-cert} gives a
-complete, exact, zero-margin certificate for this region.
+$\mathsf W'$, spans the whole range $\arcp\in(0,\pi/4)$ with no internal
+splitting, and its lower boundary is rational in Weierstrass coordinates
+(of the form $\mathsf u=(1-\mathsf v^2)/(1+\mathsf v^2)$, as the curve
+$\mathsf A$ of the first arc). \Cref{sec:arc2-cert} gives an exact
+zero-margin certificate for this region.
 
 \subsubsection{The band immediately below region top}\label{sec:band-below-top-new}
 
 The next region down, bounded above by $\mathsf W'$ and below,
 depending on $\arcp$, by whichever of curves $\mathsf C$, the universal
-curve, or $\mathsf B$ is locally uppermost, is combinatorially a
-single connected region across each of the three $\arcp$-sub-intervals
-determined by the crossings $\arcp_1,\arcp_3$ above, but the identity of
-its \emph{lower} boundary curve changes between them:
+curve, or $\mathsf B$ is locally uppermost, is one combinatorial region
+on each of the three $\arcp$-sub-intervals cut by the crossings
+$\arcp_1,\arcp_3$, and its \emph{lower} boundary curve changes between
+them:
 \[
   \text{lower boundary} = \begin{cases}
     \mathsf C & \arcp\in(0,\arcp_1),\\
@@ -10485,11 +10478,10 @@ its \emph{lower} boundary curve changes between them:
     \mathsf B & \arcp\in(\arcp_3,\pi/4).
   \end{cases}
 \]
-This is confirmed directly: combinatorial-pattern stability is checked
-at eight sample points spanning the middle sub-interval
-$\arcp\in(\arcp_1,\arcp_3)$ and found identical at every one ($34$
-vertices, the same active-facet pattern throughout), confirming this
-middle sub-part is a single connected combinatorial region on its own.
+At eight sample points across the middle sub-interval
+$\arcp\in(\arcp_1,\arcp_3)$ the cell has the same combinatorial pattern,
+$34$ vertices and the same active facets, so the middle sub-part is one
+combinatorial region.
 \Cref{sec:arc2-cert} gives a direct certificate on this middle
 sub-part, the widest of the three by $\arcp$-range. The two remaining
 sub-parts are handled not by a direct computation but by the
@@ -10503,38 +10495,35 @@ arc's certificates onto the whole of this one.
 \begin{thm}[Certificate, second arc, region top]\label{thm:arc2-regiontop-new}
 On the region bounded above by $\tilt=\pi/2$ and below by curve
 $\mathsf W'$ (\cref{thm:arc2-breakpoints-new}), for the entire domain
-$\arcp\in(0,\pi/4)$, the volume-defect function $\defect$ admits an
-exact, zero-margin Bernstein-basis positivity certificate: after the
-same remapping as on the first arc's region top, the resulting numerator has $286$ Bernstein coefficients
-(degree $(12,21)$) and the denominator $231$ (degree $(10,20)$), every
-one of the $286$ numerator coefficients strictly negative and every
-one of the $231$ denominator coefficients strictly negative, exactly
-in $\mathbb{Z}[\sqrt2]$ arithmetic.
+$\arcp\in(0,\pi/4)$, the volume-defect function $\defect$ has an exact
+zero-margin certificate in the Bernstein basis: after the change of
+variables used for region top of the first arc, the numerator has $286$
+Bernstein coefficients (degree $(12,21)$) and the denominator $231$
+(degree $(10,20)$), and all of them are negative, exactly in
+$\mathbb{Z}[\sqrt2]$.
 \end{thm}
 
-Since numerator and denominator are of the same constant sign
-throughout, their ratio is strictly positive on the entire open region,
-with \emph{no} excluded margin, the same standard as the strongest
-certificates on the first arc. The vertex and volume stage underlying
-this certificate finds $32$ vertices ($8$ moving under the deviating
-cap, $24$ fixed) at a representative point, confirmed unchanged across
-five sample points spanning nearly the full $\arcp$-range; the exact
+Since numerator and denominator have one sign throughout, their ratio
+is positive on the whole open region, with \emph{no} excluded margin, as
+for the zero-margin certificates of the first arc. The cell has $32$
+vertices ($8$ moving under the deviating cap, $24$ fixed) at a
+representative point and at five sample points across nearly the whole
+$\arcp$-range; the exact
 fixed-volume contribution is $77/12$, and the closed-form moving volume
 is checked against a direct convex-hull volume computation to eleven
-significant figures at the representative point before any symbolic
-remapping is attempted. An independent sanity check evaluates the
-volume-defect quantity numerically at $55$ points scattered across the
-full $(\arcp,\tilt)$-domain: all $55$ strictly positive, with zero
-exceptions, fully consistent with the certificate.
+significant figures at the representative point, before the symbolic
+change of variables. As an independent check, the defect evaluated
+numerically at $55$ points spread over the whole $(\arcp,\tilt)$-domain
+is positive at all of them, as the certificate requires.
 
 \subsubsection{The band below region top}\label{sec:arc2-band-cert-new}
 
 For the middle sub-part of the band described in
 \cref{sec:band-below-top-new}, bounded above by $\mathsf W'$ and below
 by the universal curve $\tilt=\pi/3$, for $\arcp$ in the sub-interval
-$(\arcp_1,\arcp_3)=(0.169918,0.615480)$, an exact zero-margin
-certificate of the type used in \cref{sec:arc2-regiontop-new} is not
-attempted, because the lower boundary here is the constant curve
+$(\arcp_1,\arcp_3)=(0.169918,0.615480)$, we do not use an exact
+zero-margin certificate as in \cref{sec:arc2-regiontop-new}, because the
+lower boundary here is the constant curve
 $\tilt=\pi/3$: mapping between it and the curved upper boundary
 $\mathsf W'$ brings $\sqrt3$ into the arithmetic beside $\sqrt2$, and the
 exact sign test used here works over $\mathbb{Q}(\sqrt2)$. The box
@@ -10543,13 +10532,11 @@ covering of the harder regions of the first arc is used instead.
 \begin{thm}[Certificate, second arc, band below region top]\label{thm:arc2-band-new}
 On the middle sub-part described above, the volume-defect numerator and
 denominator, mapped to the coordinates $(\mathsf u,\mathsf v)$
-(degree $(12,12)$ and $(10,11)$ respectively, exact $\mathbb{Z}[\sqrt2]$
-coefficients throughout, each mapping step verified against a
-$200$-digit numerical evaluation of the original trigonometric
-expression), are certified on all $40$ boxes covering the sub-interval:
-every one of the $169$ Bernstein coefficients of $N$, and every one of
-the $169$ Bernstein coefficients of $D$, on every box, is strictly
-positive. Hence $\defect>0$ on the covered region, which is the
+(degrees $(12,12)$ and $(10,11)$, with exact coefficients in
+$\mathbb{Z}[\sqrt2]$, each step of the change of variables compared with
+a $200$-digit evaluation of the original trigonometric expression), have
+positive Bernstein coefficients, all $169$ of $N$ and all $169$ of $D$,
+on each of the $40$ boxes that cover the sub-interval. Hence $\defect>0$ on the covered region, which is the
 sub-part minus the excluded margin described below.
 \end{thm}
 
@@ -10568,12 +10555,11 @@ included, is \cref{thm:eperp-closed}.
 The first of the two remaining sub-parts of the band described in
 \cref{sec:band-below-top-new}, bounded above by $\mathsf W'$ and below
 by curve $\mathsf C$ (\cref{thm:arc2-breakpoints-new}), for
-$\arcp\in(0,\arcp_1)=(0,0.169918)$, is combinatorially stable ($34$
-vertices, $11$ moving under the deviating cap and $23$ fixed,
-identical at eight sample points spanning the sub-interval) and admits
-a certificate by exactly the same box-covering method used for the
-sub-part of \cref{thm:arc2-band-new}, adapted only by replacing the
-constant lower boundary $\tilt=\pi/3$ with the curve $\mathsf C$
+$\arcp\in(0,\arcp_1)=(0,0.169918)$, has one combinatorial type ($34$
+vertices, $11$ moving under the deviating cap and $23$ fixed, the same at
+eight sample points across the sub-interval). It is certified by the box
+covering of \cref{thm:arc2-band-new}, with the constant lower boundary
+$\tilt=\pi/3$ replaced by the curve $\mathsf C$
 (evaluated numerically when the lower corner of each box is placed;
 box covering does not need the boundary to be rational).
 
@@ -10581,13 +10567,11 @@ box covering does not need the boundary to be rational).
 On the sub-part described above, the exact fixed-volume contribution is
 $17/3$; the moving-volume numerator and denominator, mapped to plain
 coordinates $(\mathsf u,\mathsf v)$, have degree $(12,12)$ and $(10,11)$
-respectively (the same degrees as \cref{thm:arc2-band-new}'s own
-middle sub-part, exact $\mathbb{Z}[\sqrt2]$ coefficients throughout,
-each mapping step verified against a $200$-digit numerical evaluation
-of the original trigonometric expression). All $40$ boxes covering the
-sub-interval are certified: every one of the $169$ Bernstein
-coefficients of $N$, and every one of the $169$ Bernstein coefficients
-of $D$, on every box, is strictly positive. Hence $\defect>0$ on the
+respectively, as in \cref{thm:arc2-band-new}, with exact coefficients
+in $\mathbb{Z}[\sqrt2]$, each step of the change of variables compared
+with a $200$-digit evaluation of the original trigonometric expression.
+On each of the $40$ boxes that cover the sub-interval all $169$
+Bernstein coefficients of $N$ and all $169$ of $D$ are positive. Hence $\defect>0$ on the
 covered region, which is the sub-part minus the excluded margin
 described below.
 \end{thm}
@@ -10602,38 +10586,35 @@ each box. A finer covering would reduce it.
 \subsubsection{The band's \texorpdfstring{$\mathsf B$}{B}-bounded sub-part}\label{sec:arc2-bandB-new}
 
 One sub-part of the band, bounded above by $\mathsf W'$ and below by
-curve $\mathsf B$ for $\arcp\in(\arcp_3,\pi/4)$, does not yield to the
-same method. Its combinatorial data behave exactly as elsewhere: the
-representative point has $34$ vertices, $11$ moving and $23$ fixed, and
-the pattern is identical at eight sample points spanning the
-sub-interval, with fixed volume contribution $6$. The moving volume is
-another matter: for one of the $74$ moving boundary simplices the exact
+curve $\mathsf B$ for $\arcp\in(\arcp_3,\pi/4)$, is not certified by
+this method. Its combinatorial data are as elsewhere: the representative
+point has $34$ vertices, $11$ moving and $23$ fixed, the pattern is the
+same at eight sample points across the sub-interval, and the fixed volume
+contribution is $6$. But for one of the $74$ moving boundary simplices the exact
 simplification of the determinant over the relevant algebraic extension
 could not be completed, so there is no closed form for the volume and the
 direct computation gives no certificate on this sub-part.
 
-None is needed. \Cref{sec:full-triangle-symmetry} shows that the
-second arc, this sub-part included, is the first arc's own defect
-function in disguise, so the certificates of \cref{sec:arc1-cert}
-already cover it. The three direct certificates recorded above remain
-useful as an independent check of that identification on part of the
-domain, computed by a route that shares nothing with it.
+No certificate is needed there. By \cref{sec:full-triangle-symmetry}
+the defect on the second arc, this sub-part included, is the defect on
+the first arc after a change of variables, so the certificates of
+\cref{sec:arc1-cert} cover it. The three direct certificates above check
+that identification independently on part of the domain.
 
 \subsubsection{Coverage of the boundary}\label{sec:arc2-coverage}
 
 \Cref{fig:fundamental-domain}(b) shows the certificate carried by each
-region of the first arc. Read directly, the region-by-region computations of this subsection settle
-three of the second arc's regions and do not reach the others. Read through
-\cref{prop:arc2-is-arc1}, they are not needed: the second arc and
-the third edge both carry the first arc's certificates, at the first
-arc's margins. The interior of the triangle is a separate matter, settled
-by a different argument in \cref{sec:cap-theorem}.
+region of the first arc. The computations of this subsection certify
+three regions of the second arc directly and do not reach the others. By
+\cref{prop:arc2-is-arc1} they are not needed: the second arc and the
+third edge carry the certificates of the first arc, with its margins.
+The interior of the triangle is settled by a different argument in
+\cref{sec:cap-theorem}.
 
 \subsection{What the single-deviation case contains}\label{sec:deviation-scope-summary}
 
-The single-deviation problem has now been treated in two ways, and they
-return different things: one proves the theorem, the other gives the
-numbers.
+The single-deviation problem is treated here in two ways: one proves the
+theorem, the other gives the values of the defect.
 
 The regional route occupies \cref{sec:arc1-breakpoints} through
 \cref{sec:arc2-cert}. On the first boundary arc of the fundamental
@@ -10654,23 +10635,22 @@ certificate together with its margins
 (\cref{cor:restated-conjecture-holds}).
 
 That route cannot reach the interior. The symmetry group does not move
-an interior point to an edge, the natural convexity reduction is false
+an interior point to an edge, the reduction by convexity is false
 (\cref{sec:interior-structure}), and the interior carries at least four
 distinct combinatorial region types against the boundary's one, so a
 regional treatment there would need four new volume formulas before any
 certificate could be attempted.
 
 The global route is \cref{sec:cap-theorem}. It discards the triangle,
-the arcs and the combinatorial types alike, and replaces them by a
-single question about one fixed polytope: how much can a
-half-space at unit distance from the centre cut off? The answer,
-$\tfrac13$, is exactly the volume of the pyramid that the undeviated
-configuration already cuts off, which is why the resulting bound is
-sharp and why equality pins down the $D_4$ configuration
-(\cref{thm:eperp-closed}). The argument is insensitive to the tilt, to
-the deviation direction, and to the combinatorial type of the cell.
+the arcs and the combinatorial types alike, and replaces them by one
+question about a fixed polytope, how much a half-space at unit distance
+from the centre can cut off. The answer is $\tfrac13$, the volume of the
+pyramid that the undeviated configuration already cuts off, which is why
+the bound is sharp and why equality forces the $D_4$ configuration
+(\cref{thm:eperp-closed}). The argument does not depend on the tilt, the
+deviation direction or the combinatorial type of the cell.
 
-Neither route subsumes the other in practice. \Cref{thm:eperp-closed}
+Neither route contains the other. \Cref{thm:eperp-closed}
 gives the sign everywhere and nothing else; it does not produce the
 defect as a function, and it cannot say where along an arc the defect is
 small or how the breakpoints sit. The regional certificates give exactly

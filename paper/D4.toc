@@ -99,7 +99,7 @@
 \contentsline {subsubsection}{\tocsubsubsection {}{B.4.3}{Region top}}{152}{subsubsection.B.4.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.4.4}{The band immediately below region top}}{152}{subsubsection.B.4.4}%
 \contentsline {subsection}{\tocsubsection {}{B.5}{Certificates on the second arc}}{152}{subsection.B.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.5.1}{Region top: an exact, zero-margin certificate}}{153}{subsubsection.B.5.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.5.1}{Region top: an exact, zero-margin certificate}}{152}{subsubsection.B.5.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.2}{The band below region top}}{153}{subsubsection.B.5.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.3}{The band's $\mathsf C$-bounded sub-part}}{153}{subsubsection.B.5.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.4}{The band's $\mathsf B$-bounded sub-part}}{154}{subsubsection.B.5.4}%
@@ -108,48 +108,48 @@
 \contentsline {section}{\tocsection {Appendix}{C}{Several simultaneous deviations}}{155}{appendix.C}%
 \contentsline {subsection}{\tocsubsection {}{C.1}{The joint Hessian technique}}{155}{subsection.C.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.1.1}{Simultaneous deviations}}{155}{subsubsection.C.1.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.1.2}{Two directions and chains}}{156}{subsubsection.C.1.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.1.2}{Two directions and chains}}{155}{subsubsection.C.1.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.1.3}{The case $m=2$ from first principles}}{156}{subsubsection.C.1.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.1.4}{Dense configurations}}{157}{subsubsection.C.1.4}%
-\contentsline {subsection}{\tocsubsection {}{C.2}{A degeneracy of the Hessian technique}}{157}{subsection.C.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.1.4}{Dense configurations}}{156}{subsubsection.C.1.4}%
+\contentsline {subsection}{\tocsubsection {}{C.2}{A degeneracy of the Hessian technique}}{156}{subsection.C.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.2.1}{The limit of a second-order method}}{157}{subsubsection.C.2.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.2.2}{Precision}}{158}{subsubsection.C.2.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.2.3}{Quartic positivity}}{158}{subsubsection.C.2.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.2.2}{Precision}}{157}{subsubsection.C.2.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.2.3}{Quartic positivity}}{157}{subsubsection.C.2.3}%
 \contentsline {subsection}{\tocsubsection {}{C.3}{A singular dense configuration}}{158}{subsection.C.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.3.1}{The configuration $A_{18}$}}{159}{subsubsection.C.3.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.3.1}{The configuration $A_{18}$}}{158}{subsubsection.C.3.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.3.2}{The high-precision volume method}}{159}{subsubsection.C.3.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.3.3}{The dimension count}}{159}{subsubsection.C.3.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.3.4}{The quartic behaviour}}{159}{subsubsection.C.3.4}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.3.5}{Consequence}}{160}{subsubsection.C.3.5}%
-\contentsline {subsection}{\tocsubsection {}{C.4}{Broadened directional sampling}}{160}{subsection.C.4}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.4.1}{Sampling the full near-null subspace at $A_{18}$}}{160}{subsubsection.C.4.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.3.5}{Consequence}}{159}{subsubsection.C.3.5}%
+\contentsline {subsection}{\tocsubsection {}{C.4}{Broadened directional sampling}}{159}{subsection.C.4}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.4.1}{Sampling the full near-null subspace at $A_{18}$}}{159}{subsubsection.C.4.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.4.2}{A second configuration: $m=20$}}{160}{subsubsection.C.4.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.4.3}{A sum-of-squares test of a fitted quartic at $A_{18}$}}{160}{subsubsection.C.4.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.4.4}{What the sampling establishes}}{161}{subsubsection.C.4.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.4.5}{An exact symmetry of $A_{18}$}}{161}{subsubsection.C.4.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.4.6}{The invariant quartics at $A_{18}$}}{162}{subsubsection.C.4.6}%
-\contentsline {subsection}{\tocsubsection {}{C.5}{What is known about several simultaneous deviations}}{163}{subsection.C.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.5.1}{Proved and observed}}{163}{subsubsection.C.5.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.4.6}{The invariant quartics at $A_{18}$}}{161}{subsubsection.C.4.6}%
+\contentsline {subsection}{\tocsubsection {}{C.5}{What is known about several simultaneous deviations}}{162}{subsection.C.5}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.5.1}{Proved and observed}}{162}{subsubsection.C.5.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.5.2}{What the classification settles}}{163}{subsubsection.C.5.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.5.3}{Not established by the methods of this appendix}}{163}{subsubsection.C.5.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.5.4}{What the reformulations settle}}{164}{subsubsection.C.5.4}%
-\contentsline {subsection}{\tocsubsection {}{C.6}{Swap configurations at finite angle}}{165}{subsection.C.6}%
+\contentsline {subsection}{\tocsubsection {}{C.6}{Swap configurations at finite angle}}{164}{subsection.C.6}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.1}{The swap path and its symmetry}}{165}{subsubsection.C.6.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.6.2}{The closed form for $F_{\mathrm {swap}}$}}{165}{subsubsection.C.6.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.6.2}{The closed form for $F_{\mathrm {swap}}$}}{166}{subsubsection.C.6.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.3}{The norm trick, and the $m=2$ result}}{166}{subsubsection.C.6.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.4}{The swap path is not the worst path at every angle}}{167}{subsubsection.C.6.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.5}{The triangle swap, $m=3$}}{167}{subsubsection.C.6.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.6.6}{The hexagon swap, $m=6$}}{168}{subsubsection.C.6.6}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.6.6}{The hexagon swap, $m=6$}}{167}{subsubsection.C.6.6}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.7}{Scope}}{168}{subsubsection.C.6.7}%
 \contentsline {section}{\tocsection {Appendix}{D}{Methods of computation}}{168}{appendix.D}%
 \contentsline {subsection}{\tocsubsection {}{}{The box-covering certificate}}{168}{section*.18}%
-\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{169}{section*.19}%
+\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{168}{section*.19}%
 \contentsline {subsection}{\tocsubsection {}{}{The certificates}}{169}{section*.20}%
-\contentsline {subsection}{\tocsubsection {}{}{Software}}{171}{section*.21}%
-\contentsline {section}{\tocsection {Appendix}{E}{Numerical tables}}{171}{appendix.E}%
-\contentsline {subsection}{\tocsubsection {}{}{Chains}}{171}{section*.22}%
-\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{171}{section*.23}%
+\contentsline {subsection}{\tocsubsection {}{}{Software}}{170}{section*.21}%
+\contentsline {section}{\tocsection {Appendix}{E}{Numerical tables}}{170}{appendix.E}%
+\contentsline {subsection}{\tocsubsection {}{}{Chains}}{170}{section*.22}%
+\contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{170}{section*.23}%
 \contentsline {subsection}{\tocsubsection {}{}{Sampling at the singular configurations}}{171}{section*.24}%
 \contentsline {section}{\tocsection {Appendix}{F}{Explicit coordinates of the reference cell}}{172}{appendix.F}%
-\contentsline {section}{\tocsection {Appendix}{G}{A model of the Bernstein certificate}}{173}{appendix.G}%
+\contentsline {section}{\tocsection {Appendix}{G}{A model of the Bernstein certificate}}{172}{appendix.G}%
 \contentsline {section}{\tocsection {Appendix}{}{References}}{173}{section*.25}%
