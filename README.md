@@ -9,7 +9,12 @@ Certificates, the programmes that check them, run logs and Lean 4 checks for
 Every exact value that a proof in the paper uses is stated in the paper. The
 objects it cannot print, the matrices of the semidefinite certificates and the
 box lists of the branch and bounds, are here, with the programmes that check
-them.
+them. The paper's section "Positive kernels and certificates" proves the
+positivity theorems that turn each of these certificates into a proof, states
+what each check must establish, and lists the certificates with the size of
+each check. The region-by-region computations for one deviating contact and
+the computations for several deviating contacts are in two appendices of the
+paper; no proof uses them.
 
 ## What the paper proves
 

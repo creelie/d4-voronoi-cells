@@ -55,8 +55,8 @@ The second-arc certificate scripts (sec:arc2-cert) and the symmetry of the funda
 
   cap_reformulation_check.py The supporting script for
                               the paper's strongest single-deviation
-                              result. The paper's Section "A closed-form
-                              cap bound" proves, with no floating-point
+                              result. The paper's section "Positivity
+                              for every deviation direction" proves, with no floating-point
                               step anywhere, that the defect equals
                               1/3 minus the volume of the cap cut from a
                               fixed 25-vertex polytope Q by the deviated
