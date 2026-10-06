@@ -210,10 +210,21 @@ def random_quads(types, Tmat, n):
     return np.concatenate(outs)
 
 
+def quad_matrix(L, types, q, chunk=1500):
+    """constraint rows of QUAD4 for the samples q, built in chunks so that the coordinate lists
+    (about 10^4 entries per quadruple at d4 = 5) never hold more than one chunk."""
+    out = []
+    for i in range(0, len(q), chunk):
+        qq = q[i:i + chunk]
+        B = T3.Builder(L); add_quad4(B, np.arange(len(qq)), types, quad_U(qq))
+        out.append(B.matrix(len(qq)))
+    return sp.vstack(out).tocsr()
+
+
 def quad_values(L, xv, types, q):
     vals = []
-    for i in range(0, len(q), 4000):
-        qq = q[i:i + 4000]
+    for i in range(0, len(q), 1500):
+        qq = q[i:i + 1500]
         B = T3.Builder(L); add_quad4(B, np.arange(len(qq)), types, quad_U(qq))
         vals.append(B.matrix(len(qq)) @ xv)
     return np.concatenate(vals)
@@ -290,10 +301,9 @@ def solve(counts, Tmat, d, d4, rounds=3, nquad=3000, sizes=(14, 14, 7), nrand=15
             cons.append(B.matrix(len(g)) @ xall <= cv)
             val = val + T3.ncount(counts, list(c)) * cv
         for c in quad_list:
-            q = qsamp[c]; rows = np.arange(len(q))
-            B = T3.Builder(L); add_quad4(B, rows, c, quad_U(q))
+            q = qsamp[c]
             cv = cp.Variable(); cvars[c] = cv
-            cons.append(B.matrix(len(q)) @ xall <= cv)
+            cons.append(quad_matrix(L, c, q) @ xall <= cv)
             val = val + T3.ncount(counts, list(c)) * cv
         cons.append(sum(cp.trace(X[name]) for name in L.blocks) <= 1)
         prob = cp.Problem(cp.Minimize(val), cons)
@@ -384,6 +394,7 @@ def selftest(d=4, d4=3, seed=0, with_s=True):
 if __name__ == '__main__':
     mode = sys.argv[1]
     WS = bool(int(os.environ.get('WITH_S', '0')))
+    NQ = int(os.environ.get("NQUAD", "3000"))
     if mode == 'selftest':
         selftest()
     elif mode == 'hole':        # 24 points within dA and nF more within dF, typed by distance
@@ -392,7 +403,7 @@ if __name__ == '__main__':
         a = T3.a_
         T = [[a(dA, dA), a(dA, dF)], [a(dA, dF), a(dF, dF)]]
         print('24 within %.4f and %d within %.4f; T = %s' % (dA, nF, dF, np.round(T, 5)), flush=True)
-        solve([24, nF], T, d, d4, rounds, with_s=WS)
+        solve([24, nF], T, d, d4, rounds, nquad=NQ, with_s=WS)
     elif mode == 'kiss':        # n points with inner products <= t
         d, d4, rounds, n = map(int, sys.argv[2:6]); t = float(sys.argv[6])
-        solve([n], [[t]], d, d4, rounds, with_s=WS)
+        solve([n], [[t]], d, d4, rounds, nquad=NQ, with_s=WS)
