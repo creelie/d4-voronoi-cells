@@ -5614,10 +5614,10 @@ touching angle and the third pair nearly opposite, the three directions
 lying in one plane at $s_1$ and nearly so at $s_0$. This is the triple
 $(-\frac12,\frac12,\frac12)$ of three consecutive points of a hexagon of
 the root system, compressed to the inner product $t$. At the inner
-products of the root system itself both polynomials stay well below zero,
-the first between $-9.3\cdot10^{-3}$ and $-3.9\cdot10^{-5}$ at $s_0$, the
-second below $-5.3\cdot10^{-5}$, so the certificates do not single out
-the root system: they bound the size of a code by $24.96$ and $25.8$, and
+products of the root system itself both polynomials are negative, the
+first between $-9.3\cdot10^{-3}$ and $-3.9\cdot10^{-5}$ at $s_0$, the
+second at most $-5.3\cdot10^{-5}$, so neither is tight there and the
+certificates do not single out the root system: they bound the size of a code by $24.96$ and $25.8$, and
 integrality does the rest. The room in the final inequalities, $0.04$ and
 $0.2$, goes almost entirely into the thresholds that the branch and bound
 proves: $552e_2=0.0386$ and $600e_2=0.174$, against $(|C|-1)e_1$ of about
@@ -8797,16 +8797,16 @@ $(n_{\mathsf a},n_{\mathsf b},n_{\mathsf f})=(19,9,1)$, where six of the
 $23\,396$ vectors share the largest value, $3.10147$, to within $10^{-6}$. With the
 number $n_{\mathsf a}$ of centres within $2.05$ held fixed and the other
 bounds of \cref{prop:C-radial} kept, the largest value falls by $0.005$ to
-$0.007$ for each centre added: it is $3.1442$ at $n_{\mathsf a}=12$,
+$0.007$ for each centre added between $10$ and $22$: it is $3.1442$ at $n_{\mathsf a}=12$,
 $3.1082$ at $18$, $3.1015$ at $19$ and $3.0872$ at $21$. The certificate
 thus needs the count $N(2.05)\ge19$ of \cref{prop:C-radial} exactly; with
 $18$ in its place the bound would exceed $\frac98\pi^2-8$. At $(19,9,1)$ the
 bound is the sum of $-24.215$ from the centres, $18.390$ from $\frac t2$,
 $5.257$ from the pairs and $3.670$ from the triples. Each inequality on
-pairs comes within $10^{-6}$ of its threshold along whole intervals of
+pairs stays within $10^{-6}$ of its largest value along whole intervals of
 inner products, for two centres at distance $2$ on $[-0.631,0.029]$ and
-near $-1$, $-0.82$ and $\frac12$, while the inequalities on triples reach
-their thresholds at single triples, three of them (of types $\mathsf{aaa}$,
+near $-1$, $-0.82$ and $\frac12$, while the inequalities on triples are
+largest at isolated triples, three of them (of types $\mathsf{aaa}$,
 $\mathsf{abb}$ and $\mathsf{bbf}$) with the three directions in one plane
 through $c$.
 
@@ -8828,8 +8828,9 @@ $(n_{\mathsf a},n_{\mathsf b},n_{\mathsf f})=(15,9,2)$, and with only $23$
 centres allowed within $2.444$ in place of the $24$ of
 \cref{lem:twentyfour-close} it would be $3.3590$, above $3.3352$. The count
 within $2.05$ matters less: over $n_{\mathsf a}$ the largest value is
-$3.3354$, at $n_{\mathsf a}=10$, so twelve centres within $2.05$ would
-suffice, against the fifteen of \cref{prop:C-radial}.
+$3.3354$, at $n_{\mathsf a}=10$, and only $n_{\mathsf a}=10$ and $11$ exceed
+$3.3352$, so twelve centres within $2.05$ would suffice, against the
+fifteen of \cref{prop:C-radial}.
 \end{remark}
 
 Statement (G) can be proved in full along one family: the root system with

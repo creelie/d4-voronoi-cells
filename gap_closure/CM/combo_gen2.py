@@ -406,8 +406,8 @@ def main():
         prune(psamp, tsamp, x3v, Av, {k: v.value for k, v in c2.items()}, {k: v.value for k, v in c3.items()}, L)
         for st in newp:
             psamp[st] = tuple(np.r_[a, b] for a, b in zip(psamp[st], newp[st]))
-        for cb in newt:
-            tsamp[cb] = np.r_[tsamp[cb], newt[cb]]
+        for cb in newt:                                   # the climbs often end at the same point: keep each once
+            tsamp[cb] = np.unique(np.round(np.r_[tsamp[cb], newt[cb]], 12), axis=0)
         np.savez('%s_d%d_r%d.npz' % (TAG, d3, rnd + 1), x3=x3v, A=Av, z=z.value, t=t.value, m=m.value,
                  bound=prob.value, c2=np.array([c2[k].value for k in c2]), c3=np.array([c3[k].value for k in c3]),
                  **{'p_' + ''.join(k): np.array(v) for k, v in psamp.items()},
