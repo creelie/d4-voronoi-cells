@@ -152,6 +152,21 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               tight for the end distances.  Used in no
                               proof.  Log: runs/count31_tight.log.
 
+  combo_tight.py count29|count30
+                              rem:typed-tight.  Floating point, from
+                              combo29_d8.npz and combo30_d8.npz and the
+                              thresholds their checks proved: the bound
+                              split into centres, t/2, pairs and triples
+                              at the count vectors where it is largest,
+                              the count constraints active there (at 29,
+                              N(2.05) >= 19; with 18 the bound is 3.1082),
+                              the largest bound for each count within
+                              2.05, the spread of f over the bins, and
+                              where the pair and triple inequalities come
+                              closest to their thresholds.  Used in no
+                              proof.  Logs: runs/combo29_tight.log,
+                              runs/combo30_tight.log.
+
   radial_count_check.py radial_certificates/radial_31.json
                               Proves thm:count31 from the certificate
                               alone: exact LDL^T for the positivity and the

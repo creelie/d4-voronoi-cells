@@ -18,11 +18,11 @@
 \contentsline {subsection}{\tocsubsection {}{4.4}{The certificates of this paper}}{20}{subsection.4.4}%
 \contentsline {section}{\tocsection {}{5}{The general local problem}}{20}{section.5}%
 \contentsline {subsection}{\tocsubsection {}{5.1}{The free-volume identity in general}}{20}{subsection.5.1}%
-\contentsline {subsection}{\tocsubsection {}{5.2}{A fixed-body form of the multi-direction problem}}{22}{subsection.5.2}%
-\contentsline {subsection}{\tocsubsection {}{5.3}{Polar and boundary forms of the same question}}{23}{subsection.5.3}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{A fixed-body form of the multi-direction problem}}{23}{subsection.5.2}%
+\contentsline {subsection}{\tocsubsection {}{5.3}{Polar and boundary forms of the same question}}{24}{subsection.5.3}%
 \contentsline {subsection}{\tocsubsection {}{5.4}{A bound from the contact caps}}{28}{subsection.5.4}%
-\contentsline {subsection}{\tocsubsection {}{5.5}{Twenty-four contacts}}{33}{subsection.5.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{5.5.1}{The bound of the second level, and its equality case}}{34}{subsubsection.5.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.5}{Twenty-four contacts}}{34}{subsection.5.5}%
+\contentsline {subsubsection}{\tocsubsubsection {}{5.5.1}{The bound of the second level, and its equality case}}{35}{subsubsection.5.5.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{5.5.2}{The certificate kernel}}{36}{subsubsection.5.5.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{5.5.3}{The certificate, checked}}{39}{subsubsection.5.5.3}%
 \contentsline {subsection}{\tocsubsection {}{5.6}{A volume identity exact at the root system}}{41}{subsection.5.6}%
@@ -45,111 +45,111 @@
 \contentsline {subsection}{\tocsubsection {}{7.2}{What remains near the contact regime}}{102}{subsection.7.2}%
 \contentsline {subsection}{\tocsubsection {}{7.3}{The second order at the root system}}{104}{subsection.7.3}%
 \contentsline {subsection}{\tocsubsection {}{7.4}{The statements (G) and (C)}}{113}{subsection.7.4}%
-\contentsline {section}{\tocsection {}{8}{A density bound from the cells alone}}{130}{section.8}%
+\contentsline {section}{\tocsection {}{8}{A density bound from the cells alone}}{131}{section.8}%
 \contentsline {section}{\tocsection {}{9}{Comparison with other strategies}}{133}{section.9}%
 \contentsline {subsection}{\tocsubsection {}{9.1}{Local against global}}{133}{subsection.9.1}%
 \contentsline {subsection}{\tocsubsection {}{9.2}{Linear programming bounds in dimension four}}{133}{subsection.9.2}%
-\contentsline {subsection}{\tocsubsection {}{9.3}{What each method asks of the reader}}{133}{subsection.9.3}%
+\contentsline {subsection}{\tocsubsection {}{9.3}{What each method asks of the reader}}{134}{subsection.9.3}%
 \contentsline {subsection}{\tocsubsection {}{9.4}{Other dimensions}}{134}{subsection.9.4}%
 \contentsline {section}{\tocsection {}{10}{Conclusion}}{134}{section.10}%
 \contentsline {subsection}{\tocsubsection {}{10.1}{What is proved}}{134}{subsection.10.1}%
-\contentsline {subsection}{\tocsubsection {}{10.2}{The contact cases}}{134}{subsection.10.2}%
-\contentsline {subsection}{\tocsubsection {}{10.3}{Several deviations by elementary means}}{135}{subsection.10.3}%
-\contentsline {subsection}{\tocsubsection {}{10.4}{What is open}}{136}{subsection.10.4}%
-\contentsline {subsection}{\tocsubsection {}{10.5}{Outlook}}{136}{subsection.10.5}%
-\contentsline {section}{\tocsection {}{11}{Computer verification}}{137}{section.11}%
+\contentsline {subsection}{\tocsubsection {}{10.2}{The contact cases}}{135}{subsection.10.2}%
+\contentsline {subsection}{\tocsubsection {}{10.3}{Several deviations by elementary means}}{136}{subsection.10.3}%
+\contentsline {subsection}{\tocsubsection {}{10.4}{What is open}}{137}{subsection.10.4}%
+\contentsline {subsection}{\tocsubsection {}{10.5}{Outlook}}{137}{subsection.10.5}%
+\contentsline {section}{\tocsection {}{11}{Computer verification}}{138}{section.11}%
 \contentsline {subsection}{\tocsubsection {}{11.1}{Independent arithmetic}}{138}{subsection.11.1}%
 \contentsline {subsection}{\tocsubsection {}{11.2}{The formal part}}{138}{subsection.11.2}%
 \contentsline {subsection}{\tocsubsection {}{11.3}{What is printed and what is archived}}{140}{subsection.11.3}%
-\contentsline {section}{\tocsection {}{}{Data and code availability}}{140}{section*.3}%
-\contentsline {section}{\tocsection {}{}{Competing interests}}{140}{section*.4}%
+\contentsline {section}{\tocsection {}{}{Data and code availability}}{141}{section*.3}%
+\contentsline {section}{\tocsection {}{}{Competing interests}}{141}{section*.4}%
 \contentsline {section}{\tocsection {}{}{Funding}}{141}{section*.5}%
 \contentsline {section}{\tocsection {Appendix}{A}{Index of notation}}{141}{appendix.A}%
 \contentsline {section}{\tocsection {Appendix}{B}{The single-deviation defect region by region}}{142}{appendix.B}%
 \contentsline {subsection}{\tocsubsection {}{B.1}{The deviation domain and its fundamental triangle}}{142}{subsection.B.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.1.1}{The two remaining parameter spaces}}{142}{subsubsection.B.1.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.1.2}{The fundamental domain of deviation directions}}{142}{subsubsection.B.1.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.1.3}{Where the worst direction sits}}{143}{subsubsection.B.1.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.1.4}{The third edge, closed by an exact symmetry}}{144}{subsubsection.B.1.4}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.1.2}{The fundamental domain of deviation directions}}{143}{subsubsection.B.1.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.1.3}{Where the worst direction sits}}{144}{subsubsection.B.1.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.1.4}{The third edge, closed by an exact symmetry}}{145}{subsubsection.B.1.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.1.5}{The full symmetry group of the fundamental triangle, and its consequence for the second arc}}{145}{subsubsection.B.1.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.1.6}{The interior of the fundamental triangle}}{146}{subsubsection.B.1.6}%
-\contentsline {paragraph}{\tocparagraph {}{}{A candidate reduction, tested and falsified}}{146}{section*.6}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.1.6}{The interior of the fundamental triangle}}{147}{subsubsection.B.1.6}%
+\contentsline {paragraph}{\tocparagraph {}{}{A candidate reduction, tested and falsified}}{147}{section*.6}%
 \contentsline {paragraph}{\tocparagraph {}{}{The interior's own combinatorial structure}}{147}{section*.7}%
-\contentsline {subsection}{\tocsubsection {}{B.2}{Breakpoint classification on the first arc}}{147}{subsection.B.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.2.1}{Setup}}{147}{subsubsection.B.2.1}%
+\contentsline {subsection}{\tocsubsection {}{B.2}{Breakpoint classification on the first arc}}{148}{subsection.B.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.2.1}{Setup}}{148}{subsubsection.B.2.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.2.2}{The eight combinatorial regions}}{148}{subsubsection.B.2.2}%
-\contentsline {subsection}{\tocsubsection {}{B.3}{Certificates on the first arc}}{149}{subsection.B.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.3.1}{Exact remapping and box covering}}{149}{subsubsection.B.3.1}%
+\contentsline {subsection}{\tocsubsection {}{B.3}{Certificates on the first arc}}{148}{subsection.B.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.3.1}{Exact remapping and box covering}}{148}{subsubsection.B.3.1}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Exact zero-margin certificates.}}{149}{section*.8}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Box-covering certificates.}}{149}{section*.9}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.3.2}{The region count}}{149}{subsubsection.B.3.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.3.3}{The eight regions, one by one}}{149}{subsubsection.B.3.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.3.2}{The region count}}{150}{subsubsection.B.3.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.3.3}{The eight regions, one by one}}{150}{subsubsection.B.3.3}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region top.}}{150}{section*.10}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $2$.}}{150}{section*.11}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $4$ (two-piece).}}{150}{section*.12}%
-\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $6$.}}{150}{section*.13}%
-\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf A$.}}{150}{section*.14}%
-\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf D$.}}{150}{section*.15}%
-\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf E$.}}{150}{section*.16}%
-\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf C$.}}{150}{section*.17}%
+\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $6$.}}{151}{section*.13}%
+\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf A$.}}{151}{section*.14}%
+\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf D$.}}{151}{section*.15}%
+\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf E$.}}{151}{section*.16}%
+\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf C$.}}{151}{section*.17}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.3.4}{What the eight certificates establish}}{151}{subsubsection.B.3.4}%
 \contentsline {subsection}{\tocsubsection {}{B.4}{Breakpoint classification on the second arc}}{151}{subsection.B.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.4.1}{Setup}}{151}{subsubsection.B.4.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.4.2}{The combinatorial atlas}}{151}{subsubsection.B.4.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.4.3}{Region top}}{151}{subsubsection.B.4.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.4.2}{The combinatorial atlas}}{152}{subsubsection.B.4.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.4.3}{Region top}}{152}{subsubsection.B.4.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.4.4}{The band immediately below region top}}{152}{subsubsection.B.4.4}%
 \contentsline {subsection}{\tocsubsection {}{B.5}{Certificates on the second arc}}{152}{subsection.B.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.5.1}{Region top: an exact, zero-margin certificate}}{152}{subsubsection.B.5.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.5.2}{The band below region top}}{152}{subsubsection.B.5.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.5.1}{Region top: an exact, zero-margin certificate}}{153}{subsubsection.B.5.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.5.2}{The band below region top}}{153}{subsubsection.B.5.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.3}{The band's $\mathsf C$-bounded sub-part}}{153}{subsubsection.B.5.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.5.4}{The band's $\mathsf B$-bounded sub-part}}{153}{subsubsection.B.5.4}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.5.4}{The band's $\mathsf B$-bounded sub-part}}{154}{subsubsection.B.5.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.5}{Coverage of the boundary}}{154}{subsubsection.B.5.5}%
 \contentsline {subsection}{\tocsubsection {}{B.6}{What the single-deviation case contains}}{154}{subsection.B.6}%
-\contentsline {section}{\tocsection {Appendix}{C}{Several simultaneous deviations}}{154}{appendix.C}%
+\contentsline {section}{\tocsection {Appendix}{C}{Several simultaneous deviations}}{155}{appendix.C}%
 \contentsline {subsection}{\tocsubsection {}{C.1}{The joint Hessian technique}}{155}{subsection.C.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.1.1}{Simultaneous deviations}}{155}{subsubsection.C.1.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.1.2}{Two directions and chains}}{155}{subsubsection.C.1.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.1.3}{The case $m=2$ from first principles}}{155}{subsubsection.C.1.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.1.4}{Dense configurations}}{156}{subsubsection.C.1.4}%
-\contentsline {subsection}{\tocsubsection {}{C.2}{A degeneracy of the Hessian technique}}{156}{subsection.C.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.2.1}{The limit of a second-order method}}{156}{subsubsection.C.2.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.2.2}{Precision}}{156}{subsubsection.C.2.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.2.3}{Quartic positivity}}{157}{subsubsection.C.2.3}%
-\contentsline {subsection}{\tocsubsection {}{C.3}{A singular dense configuration}}{157}{subsection.C.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.3.1}{The configuration $A_{18}$}}{157}{subsubsection.C.3.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.3.2}{The high-precision volume method}}{158}{subsubsection.C.3.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.1.2}{Two directions and chains}}{156}{subsubsection.C.1.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.1.3}{The case $m=2$ from first principles}}{156}{subsubsection.C.1.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.1.4}{Dense configurations}}{157}{subsubsection.C.1.4}%
+\contentsline {subsection}{\tocsubsection {}{C.2}{A degeneracy of the Hessian technique}}{157}{subsection.C.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.2.1}{The limit of a second-order method}}{157}{subsubsection.C.2.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.2.2}{Precision}}{158}{subsubsection.C.2.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.2.3}{Quartic positivity}}{158}{subsubsection.C.2.3}%
+\contentsline {subsection}{\tocsubsection {}{C.3}{A singular dense configuration}}{158}{subsection.C.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.3.1}{The configuration $A_{18}$}}{159}{subsubsection.C.3.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.3.2}{The high-precision volume method}}{159}{subsubsection.C.3.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.3.3}{The dimension count}}{159}{subsubsection.C.3.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.3.4}{The quartic behaviour}}{159}{subsubsection.C.3.4}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.3.5}{Consequence}}{159}{subsubsection.C.3.5}%
-\contentsline {subsection}{\tocsubsection {}{C.4}{Broadened directional sampling}}{159}{subsection.C.4}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.4.1}{Sampling the full near-null subspace at $A_{18}$}}{159}{subsubsection.C.4.1}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.4.2}{A second configuration: $m=20$}}{159}{subsubsection.C.4.2}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.3.5}{Consequence}}{160}{subsubsection.C.3.5}%
+\contentsline {subsection}{\tocsubsection {}{C.4}{Broadened directional sampling}}{160}{subsection.C.4}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.4.1}{Sampling the full near-null subspace at $A_{18}$}}{160}{subsubsection.C.4.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.4.2}{A second configuration: $m=20$}}{160}{subsubsection.C.4.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.4.3}{A sum-of-squares test of a fitted quartic at $A_{18}$}}{160}{subsubsection.C.4.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.4.4}{What the sampling establishes}}{160}{subsubsection.C.4.4}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.4.5}{An exact symmetry of $A_{18}$}}{160}{subsubsection.C.4.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.4.6}{The invariant quartics at $A_{18}$}}{161}{subsubsection.C.4.6}%
-\contentsline {subsection}{\tocsubsection {}{C.5}{What is known about several simultaneous deviations}}{162}{subsection.C.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.5.1}{Proved and observed}}{162}{subsubsection.C.5.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.4.4}{What the sampling establishes}}{161}{subsubsection.C.4.4}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.4.5}{An exact symmetry of $A_{18}$}}{161}{subsubsection.C.4.5}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.4.6}{The invariant quartics at $A_{18}$}}{162}{subsubsection.C.4.6}%
+\contentsline {subsection}{\tocsubsection {}{C.5}{What is known about several simultaneous deviations}}{163}{subsection.C.5}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.5.1}{Proved and observed}}{163}{subsubsection.C.5.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.5.2}{What the classification settles}}{163}{subsubsection.C.5.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.5.3}{Not established by the methods of this appendix}}{163}{subsubsection.C.5.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.5.4}{What the reformulations settle}}{163}{subsubsection.C.5.4}%
-\contentsline {subsection}{\tocsubsection {}{C.6}{Swap configurations at finite angle}}{164}{subsection.C.6}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.6.1}{The swap path and its symmetry}}{164}{subsubsection.C.6.1}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.5.4}{What the reformulations settle}}{164}{subsubsection.C.5.4}%
+\contentsline {subsection}{\tocsubsection {}{C.6}{Swap configurations at finite angle}}{165}{subsection.C.6}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.6.1}{The swap path and its symmetry}}{165}{subsubsection.C.6.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.2}{The closed form for $F_{\mathrm {swap}}$}}{165}{subsubsection.C.6.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.3}{The norm trick, and the $m=2$ result}}{166}{subsubsection.C.6.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.6.4}{The swap path is not the worst path at every angle}}{166}{subsubsection.C.6.4}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.6.4}{The swap path is not the worst path at every angle}}{167}{subsubsection.C.6.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.5}{The triangle swap, $m=3$}}{167}{subsubsection.C.6.5}%
-\contentsline {subsubsection}{\tocsubsubsection {}{C.6.6}{The hexagon swap, $m=6$}}{167}{subsubsection.C.6.6}%
+\contentsline {subsubsection}{\tocsubsubsection {}{C.6.6}{The hexagon swap, $m=6$}}{168}{subsubsection.C.6.6}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.6.7}{Scope}}{168}{subsubsection.C.6.7}%
 \contentsline {section}{\tocsection {Appendix}{D}{Methods of computation}}{168}{appendix.D}%
 \contentsline {subsection}{\tocsubsection {}{}{The box-covering certificate}}{168}{section*.18}%
-\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{168}{section*.19}%
-\contentsline {subsection}{\tocsubsection {}{}{The certificates}}{168}{section*.20}%
-\contentsline {subsection}{\tocsubsection {}{}{Software}}{170}{section*.21}%
-\contentsline {section}{\tocsection {Appendix}{E}{Numerical tables}}{170}{appendix.E}%
-\contentsline {subsection}{\tocsubsection {}{}{Chains}}{170}{section*.22}%
+\contentsline {subsection}{\tocsubsection {}{}{Rounding a semidefinite solution}}{169}{section*.19}%
+\contentsline {subsection}{\tocsubsection {}{}{The certificates}}{169}{section*.20}%
+\contentsline {subsection}{\tocsubsection {}{}{Software}}{171}{section*.21}%
+\contentsline {section}{\tocsection {Appendix}{E}{Numerical tables}}{171}{appendix.E}%
+\contentsline {subsection}{\tocsubsection {}{}{Chains}}{171}{section*.22}%
 \contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{171}{section*.23}%
 \contentsline {subsection}{\tocsubsection {}{}{Sampling at the singular configurations}}{171}{section*.24}%
 \contentsline {section}{\tocsection {Appendix}{F}{Explicit coordinates of the reference cell}}{172}{appendix.F}%
-\contentsline {section}{\tocsection {Appendix}{G}{A model of the Bernstein certificate}}{172}{appendix.G}%
+\contentsline {section}{\tocsection {Appendix}{G}{A model of the Bernstein certificate}}{173}{appendix.G}%
 \contentsline {section}{\tocsection {Appendix}{}{References}}{173}{section*.25}%
