@@ -325,3 +325,23 @@ sqrt6 fall about tenfold per degree (+1.87, +0.167, +0.018, +0.0015 at
 degrees 10 to 16); those of the 0.71 control, where no certificate can
 exist, fall too (+5.56, +0.951, +0.192 at degrees 10 to 14), so the fall
 alone does not point towards a certificate.
+
+A four-point kernel does not help at the degrees that fit here.
+`C30/typed4pt.py` adds to the typed three-point kernel of `C30/typed3pt.py` a
+kernel that fixes two of the directions, e1 and e2, expands every other
+direction x in Chebyshev polynomials of (<e1, x>, <e2, x>) (and, with
+`WITH_S=1`, of <e1, e2>), and multiplies by the zonal functions of the plane
+orthogonal to e1 and e2; summed over the code it is a sum over pairs, triples
+and quadruples, and `typed4pt.py selftest` checks that grouping against the
+direct sum over the ordered poles (difference 1e-10). On 25 directions with
+inner products at most t the three-point part of degree 8 alone excludes the
+code up to t = 0.507 (corrected value -0.0096 there) and gives 0 from 0.508
+on; at degree 4 it gives 0 already at 0.5. Four-point parts of degree 3 and 5
+at t = 0.508 (over three-point degree 8), and of degree 3 (with or without
+<e1, e2>) and 5 at t = 0.5 (over three-point degree 4), all settle at the
+value 0 once the samples are refined. The negative values of their first
+rounds, down to -31, came from gaps between the quadruple samples (0.035 to
+0.053 in round 1), and fell to 0 as the gaps closed. On the 24-plus-one
+exclusion at sqrt6 the four-point part of degree 3 gives 0 as well. Degree 5
+with <e1, e2> needs more memory than this container has. Commands and output
+are in `C30/typed4pt_runs.log`.
