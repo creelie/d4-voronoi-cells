@@ -1,0 +1,9 @@
+statement (C) at 27 centres, case case27_all.json: combined certificate c27k10_d10_r1.npz, two-point degree 12/4, three-point degree 10; 42927 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 14.560493694, float t 14.553939796)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '4.110951', 'B': '0.289959', 'F': '0.086473'}
+  pair AA: float largest K + PAIR3 - Pi -5.978084e-01 (file c2 -5.978158e-01); threshold -5.977884e-01
+  pair AB: float largest K + PAIR3 - Pi -3.096896e-01 (file c2 -3.096921e-01); threshold -3.096696e-01
+  pair AF: float largest K + PAIR3 - Pi -2.936488e-01 (file c2 -2.936575e-01); threshold -2.936288e-01
+  pair BB: float largest K + PAIR3 - Pi -2.307721e-02 (file c2 -2.307830e-02); threshold -2.305721e-02
