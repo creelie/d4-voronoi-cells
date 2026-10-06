@@ -97,3 +97,7 @@ largest feasible close count: 18
 Basin hopping from the 12-close code (c28_hop.py c28_close12_witness.txt 600 0.05 101: perturb by 0.05, rerun the close-count search from there, keep any gain):
 after 600 hops: 12 close centres
 largest: 12
+
+Typed three-point bound at degree 8 (c28_typed_dirs.py 23 8 3) on 23 within 2.0161, 1 at 2.35 and 4 at sqrt6:
+d=8 round 1: optimal_inaccurate Val=2.3745e-07 corrected=3.6166e-05  maxviol=1.2e-07  [681 s]
+[stopped after round 1: the value is 0, so degree 8 does not exclude 23 centres within 2.0161 at 28; the run for 22 (c28_typed_dirs.py 22 8 3) was stopped before its first round ended]
