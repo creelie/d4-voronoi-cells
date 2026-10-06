@@ -81,4 +81,14 @@ largest count reached: 9
 Direct search for the largest close count (c28_maxclose.py 400 81): the 21 distances within 2.1 are variables, -sum s_j plus a growing penalty on the violations, then the centres with s_j above 0.98, 0.9 or 0.7 are fixed at 2.0161 and the rest at 2.1.  Counts of feasible codes by close count, over the three thresholds of every start:
 after 400 starts: feasible close counts {0: 17, 1: 47, 2: 82, 3: 158, 4: 186, 5: 212, 6: 173, 7: 121, 8: 63, 9: 26, 10: 7}
 largest feasible close count: 10
-A code with 10 close centres, all 378 constraints met with slack 7.3e-8 (largest inner product 0.508 between close centres), is saved in c28_close10_witness.txt.  A run with 2000 starts (seed 83) is in progress.
+A code with 10 close centres, all 378 constraints met with slack 7.3e-8 (largest inner product 0.508 between close centres), was found (the later run below found 12).
+
+c28_maxclose.py 2000 83, the same search with 2000 starts:
+after 2000 starts: feasible close counts {0: 68, 1: 225, 2: 415, 3: 718, 4: 1016, 5: 1074, 6: 854, 7: 634, 8: 273, 9: 90, 10: 13, 11: 3, 12: 1}
+largest feasible close count: 12
+The code with 12 close centres re-minimised with a margin: all 378 constraints hold with slack 1e-5 (c28_close12_witness.txt).  Moving one more centre in from it by continuation (c28_extend.py, 40 steps, every candidate) misses 13 by 4.2e-3:
+mc12.npy: 12 close centres, largest violation 4.611e-09
+stops at 12 close centres; best move to 13 misses by 4.174e-03
+
+27 (c28_maxclose.py 1000 91 27; radial counts of 27 at bin maxima, the 20 within 2.1 variable): codes with 18 centres within 2.0161 fit, so the split at 27 would need a limit of at least 18:
+after 450 starts: feasible close counts {0: 5, 1: 5, 2: 22, 3: 24, 4: 35, 5: 64, 6: 96, 7: 107, 8: 118, 9: 111, 10: 131, 11: 101, 12: 62, 13: 79, 14: 40, 15: 13, 16: 5, 18: 3}
