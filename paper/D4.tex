@@ -192,7 +192,7 @@ contact configuration, $D_4$ is a strict local minimum of the cell volume, and
 no periodic packing avoiding the exception is denser than $D_4$; the remaining
 cells reduce to two explicit inequalities about at most twenty-eight centres.
 The cells alone bound the density of every packing of unit balls in
-$\mathbb{R}^4$ by $0.63527$, below the three-point bound.
+$\mathbb{R}^4$ by $0.63477$, below the three-point bound.
 \end{abstract}
 
 \maketitle
@@ -413,12 +413,12 @@ nearest-neighbour distance $2$.
 
 Without the hypothesis on the centres the same cell bounds still control
 the density. At a centre with $24$ to $28$ others within $\sqrt6$ the cell
-is not shown to reach $8$, but it is shown to exceed $7.7681$, and this gives
+is not shown to reach $8$, but it is shown to exceed $7.7742$, and this gives
 the following bound for every packing (\cref{sec:density-cells}).
 
 \begin{thm}[Density from the cells]\label{thm:intro-density}
 Every packing of unit balls in $\mathbb{R}^4$ has density at most
-$0.63527$.
+$0.63477$.
 \end{thm}
 
 This is below the three-point bound $0.63611$ of Cohn, de Laat and Salmon
@@ -1462,7 +1462,8 @@ Result & Kernel & Degree & Finite check & Proved / needed\\
 \cref{thm:count31} & pairs, labelled & $12$, $4$ & $191\,740$ boxes & $3.08537$ / $3.10330$\\
 \cref{thm:count30} & pairs; typed triples & $12$, $4$; $8$ & $193$ million boxes & $3.0992$ / $3.10330$\\
 \cref{thm:count29} & pairs; typed triples & $12$, $4$; $8$ & $16.3$ million boxes & $3.10147$ / $3.10330$\\
-\cref{prop:levels}, $M=26$ & pairs; typed triples & $8$ (triples) & $7.5$ million boxes & $3.32906$ / $3.3352$\\
+\cref{prop:levels}, $M=24$ & pairs; typed triples & $6$ (triples) & $104\,028$ boxes & $3.25388$ / $3.3291$\\
+\cref{prop:levels}, $M=26$ & pairs; typed triples & $8$ (triples) & $7.5$ million boxes & $3.32906$ / $3.3291$\\
 \cref{prop:C-radial} & pairs, labelled & $12$, $4$ & one split per entry & $3.10276$ / $3.10330$\\
 \bottomrule
 \end{tabular}
@@ -2460,7 +2461,7 @@ packing density at most $\vol(B^4)/v$, and $7.798989\ldots$ would give
 $0.632749\ldots$, below the three-point bound $0.63611$ of \cite{CdLS22};
 but the constant holds only for cells whose active neighbours all touch,
 and a general packing has other cells. For every cell the paper proves
-$7.7681$ (\cref{thm:density-cells}).
+$7.7742$ (\cref{thm:density-cells}).
 Unlike a density bound, the covering estimate concerns one cell at a
 time, as \cref{conj:multidir-new} requires, and so it settles the range
 $m\le22$ outright.
@@ -8834,15 +8835,16 @@ The bound is largest at the fewest centres within $2.05$ and within $2.15$
 that the case allows, $22$ and $23$, and it falls as centres move inward,
 to $3.0369$ when all twenty-four lie within $2.05$.
 
-The certificate behind the level $L_{26}$ of \cref{prop:levels} rests on a
-different count. Its largest value, $3.32906$, is at
-$(n_{\mathsf a},n_{\mathsf b},n_{\mathsf f})=(15,9,2)$, and with only $23$
-centres allowed within $2.444$ in place of the $24$ of
-\cref{lem:twentyfour-close} it would be $3.3590$, above $3.3352$. The count
-within $2.05$ matters less: over $n_{\mathsf a}$ the largest value is
-$3.3354$, at $n_{\mathsf a}=10$, and only $n_{\mathsf a}=10$ and $11$ exceed
-$3.3352$, so twelve centres within $2.05$ would suffice, against the
-fifteen of \cref{prop:C-radial}.
+The certificate behind the level $L_{26}$ of \cref{prop:levels}, the
+largest of the levels, rests on two counts. Its largest value, $3.32906$, is
+at $(n_{\mathsf a},n_{\mathsf b},n_{\mathsf f})=(15,9,2)$, with exactly the
+fifteen centres within $2.05$ of \cref{prop:C-radial} and the twenty-four
+within $2.444$ of \cref{lem:twentyfour-close}. With fourteen centres within
+$2.05$ it would be $3.33156$, and with twenty-three within $2.444$ it would
+be $3.3590$. In the other direction it falls by $0.003$ to $0.008$ for each
+further centre within $2.05$, to $3.30716$ at twenty and $3.27836$ at
+twenty-four. A larger count within $2.05$ at $M=26$ would therefore lower
+$L_{26}$; below $3.3274$ the level at $M=25$ would be the largest.
 \end{remark}
 
 Statement (G) can be proved in full along one family: the root system with
@@ -9061,12 +9063,27 @@ density of every packing.
 \begin{prop}[The union of caps from twenty-four to thirty centres]\label{prop:levels}
 Let $24\le M\le30$, and let $Y$ be a packing set of exactly $M$ centres with
 $2\le|y|<\sqrt6$. Then $U(Y)<L_M$, with $L_M$ as in \cref{tab:levels}. In
-particular $U(Y)<3.3352$ for every such set.
+particular $U(Y)<3.3291$ for every such set.
 \end{prop}
 
 \begin{proof}
-For $M=24$, the pair terms are nonnegative and $S$ is decreasing, so
-$U(Y)\le\sum_yS(|y|)\le24\,S(2)=3.335124\ldots$. For $M=26$, if
+For $M=24$, if $T(Y)>8$ then $U(Y)<\frac98\pi^2-8$. Otherwise the counts of
+\cref{prop:G-radial} hold: at least $11$ centres lie within $2.0161$, $20$
+within $2.05$, $22$ within $2.1$ and $23$ within $2.15$. With the types
+$\mathsf a$, $\mathsf b$, $\mathsf f$ of the distance ranges $[2,2.05]$,
+$(2.05,2.444]$ and $(2.444,\sqrt6)$ and the bins with ends $2.0161$, $2.05$,
+$2.1$, $2.15$, $2.2$ and $2.444$, the derivation of \eqref{eq:thirty-bound}
+bounds $U(Y)$. A certificate of degree $6$ in \eqref{eq:typed-triples}, made
+exact and checked as in the proof of \cref{thm:count29} with margins of
+$2\cdot10^{-5}$ for the pairs and $2\cdot10^{-6}$ for the triples and the
+bins, gives at most $3.25388$ over the $376$ count vectors of the case, at
+$(24,0,0,0,0,0,0)$, where all twenty-four centres lie within $2.0161$. Its
+six inequalities on pairs close $3\,361$ boxes, the bins take $285$
+intervals, and its seven inequalities on triples close $104\,028$ boxes;
+at most one centre lies beyond $2.15$, so no triple has two centres of type
+$\mathsf f$. With the pair terms dropped one has only
+$U(Y)\le\sum_yS(|y|)\le24\,S(2)=3.335124\ldots$, since $S$ is decreasing.
+For $M=26$, if
 $T(Y)>8$ then $U(Y)<\frac98\pi^2-8$. Otherwise the counts of
 \cref{prop:C-radial} and \cref{lem:twentyfour-close} hold: at least $15$
 centres lie within $2.05$, $20$ within $2.1$, $22$ within $2.15$, $23$
@@ -9104,16 +9121,16 @@ is the entry of \cref{tab:levels}. Each certificate is checked as those of
 \caption{The levels of \cref{prop:levels}: for $M$ centres within $\sqrt6$,
 an upper bound $L_M$ for the union of caps $U(Y)$, and the lower bound
 $\frac98\pi^2-L_M$ for the volume of the cell that it gives. Every entry is
-rounded in the safe direction. For $M=24$ the bound is $24\,S(2)$, for
-$M=26$ the value of the kernel on typed triples, and the others are values
-of two-point certificates.}
+rounded in the safe direction. For $M=24$ and $M=26$ the bound is the value
+of the kernel on typed triples, and the others are values of two-point
+certificates.}
 \label{tab:levels}
 \begin{tabular}{@{}lccccccc@{}}
 \toprule
 $M$ & $24$ & $25$ & $26$ & $27$ & $28$ & $29$ & $30$\\
 \midrule
-$L_M$ & $3.3352$ & $3.3274$ & $3.3291$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
-$\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
+$L_M$ & $3.2539$ & $3.3274$ & $3.3291$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
+$\frac98\pi^2-L_M$ & $7.8494$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -9121,7 +9138,7 @@ $\frac98\pi^2-L_M$ & $7.7681$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8
 \begin{thm}[Density from the cells]\label{thm:density-cells}
 Every packing of unit balls in $\mathbb{R}^4$ has density at most
 \[
-  \frac{\pi^2/2}{\frac98\pi^2-3.3352}=0.635264\ldots .
+  \frac{\pi^2/2}{\frac98\pi^2-3.3291}=0.634766\ldots .
 \]
 \end{thm}
 
@@ -9130,9 +9147,9 @@ Enlarge the packing to a saturated one, which does not lower its density,
 and let $c$ be a centre and $Y$ the set of other centres within $\sqrt6$ of
 it. If $|Y|\le23$, then $\vol(V_c)>8$ by \cref{thm:m23-labelled}. If
 $|Y|\ge31$, then $\vol(V_c)\ge T(Y)>8$ by \cref{thm:count31}. Otherwise
-$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3352$
+$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3291$
 by \cref{lem:no-triple,prop:levels}. Every cell therefore has volume at least
-$v=\frac98\pi^2-3.3352=7.7681\ldots$, and \cref{lem:cells-density} bounds the
+$v=\frac98\pi^2-3.3291=7.7742\ldots$, and \cref{lem:cells-density} bounds the
 density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
 \end{proof}
 
@@ -9143,7 +9160,7 @@ density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
 $L_M$ of \cref{prop:levels} against the level $\frac98\pi^2-8$ that statement
 (C) asks for (green) and the level $3.34549$ below which every count would
 have to fall for the bound to pass the three-point bound (violet); all of
-them do, the largest being $24\,S(2)$ at $M=24$ (orange). (b) The resulting
+them do, the largest being $L_{26}$ (orange). (b) The resulting
 bound (orange) with the others for $\mathbb{R}^4$: the density $\pi^2/16$ of $D_4$, the floor of
 \cref{rem:density-cells}, the three-point bound \cite{CdLS22}, and the linear
 programming bound \cite{CE03}.}
@@ -9160,14 +9177,16 @@ Elkies \cite{CE03}.\footnote{Cohn and Elkies state their bounds for the centre
 of each cell inside the ball of radius $\sqrt{3/2}$ about its centre, and its
 proof is local in the sense of \cref{sec:comparison-methods}.
 
-The bound is limited in two ways. The first is the level at $M=24$, where
-the pair terms are dropped altogether, $24\,S(2)=3.33512$ against
-$3.19636$ at the root system, and with it the levels at $M=25$ and $M=26$
-just below it (\cref{fig:levels}(a)). The kernel on typed triples, which
-brings the level at $M=26$ from $3.3501$ to $3.3291$, can be run at the other
-counts in the same way, at $M=24$ with the counts of \cref{prop:G-radial} in
-place of those of \cref{prop:C-radial}. The pairs alone could not have
-brought the level at $M=26$ below $3.34549$.
+The bound is limited in two ways. The first is the level at $M=26$,
+$3.3291$, with the level $3.3274$ of the pairs alone at $M=25$ just below it
+(\cref{fig:levels}(a)). The kernel on typed triples brings the level at
+$M=24$ from $24\,S(2)=3.33512$, the value with the pair terms dropped, to
+$3.2539$, against $3.19636$ at the root system, and the level at $M=26$ from
+$3.3501$ to $3.3291$. At $M=26$ the optimum of its programme in floating
+point is $3.2456$ on the sampled constraints; the certified level is higher
+because the exact check bounds each inequality on triples over the whole
+domain, where it exceeds its values at the samples. The pairs alone could
+not have brought the level at $M=26$ below $3.34549$.
 With at most twenty-five centres within $2.03$, as
 \cref{thm:twenty-six} allows, the optimum of the programme at $M=26$ puts
 twenty-four centres within $2.0161$ and a twenty-fifth between $2.0161$ and
@@ -9297,7 +9316,7 @@ neighbours within $\sqrt6$ are within $\varepsilon_0=4\cdot10^{-26}$ of
 contact (\cref{thm:near-contact}); and, by \cref{thm:main-general}, every
 periodic or saturated packing whose centres are all of these kinds has
 density at most $\pi^2/16$. With no assumption on the centres, the same
-lower bounds for the cells give $0.63527$ for the density of every packing
+lower bounds for the cells give $0.63477$ for the density of every packing
 of unit balls in $\mathbb{R}^4$ (\cref{thm:density-cells}), below the
 three-point bound $0.63611$ of \cite{CdLS22}. The paper also proves that the kissing
 number of $\mathbb{R}^4$ is stable under a slack of $0.008$

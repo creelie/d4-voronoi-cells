@@ -183,8 +183,9 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               proof.  Logs: runs/combo29_tight.log,
                               runs/combo30_tight.log.  With level26 the
                               same for the certificate of prop:levels at
-                              M = 26 (largest 3.32906; with 23 centres
-                              within 2.444 it would be 3.3590 > 3.3352):
+                              M = 26 (largest 3.32906, at 15 centres
+                              within 2.05; with 14 it would be 3.33156,
+                              and with 23 centres within 2.444, 3.3590):
                               runs/combo26_level_tight.log.
 
   radial_count_check.py radial_certificates/radial_31.json
@@ -271,8 +272,9 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               bounds are nonnegative: 3.3352, 3.3274,
                               3.3501, 3.3090, 3.2587, 3.2080, 3.1538 for
                               M = 24 to 30, the values L_M of tab:levels
-                              except at M = 26, where the table takes 3.3291
-                              from combo_case_check.py below.  density_spec_26_card.json splits M = 26
+                              except at M = 24 and 26, where the table takes
+                              3.2539 and 3.3291 from combo_case_check.py
+                              below.  density_spec_26_card.json splits M = 26
                               at N(2.03) <= 25, the other case being empty
                               by thm:twenty-six, and sets the small margins
                               that M = 26 needs, since the margin is given
@@ -329,7 +331,18 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.329050 at (15, 0, 9, 0, 0, 0, 2), below
                               3.3352; this is L_26 = 3.3291 of tab:levels.
                               46 minutes on four cores.  Log:
-                              runs/combo26_level_check.log.
+                              runs/combo26_level_check.log.  prop:levels
+                              at M = 24: on
+                              radial_certificates/combo24_level_d6.npz
+                              (three-point degree 6) with case24_all.json,
+                              the same margins, BORDER=1 and LEVEL=3.3291
+                              it passes: the six pair inequalities (3 361
+                              boxes), the bins (285 intervals), the seven
+                              triple inequalities (104 028 boxes), and the
+                              largest bound over the 376 count vectors,
+                              3.253872 at (24, 0, 0, 0, 0, 0, 0); this is
+                              L_24 = 3.2539.  Four minutes.  Log:
+                              runs/combo24_level_check.log.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

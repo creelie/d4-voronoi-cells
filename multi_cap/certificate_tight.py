@@ -60,7 +60,7 @@ B = part1 + part2
 print('certificate_d8.npz: degree %d, N = %d; B / 1000 = %.9f' % (d, N, float(B) / SCALE))
 print('   N (N f_0 - f(1)) / 2 / 1000 = %+.9f   (f_0 = %.6f, f(1) = %.6f)' % (float(part1) / SCALE, float(f[0]), float(f1)))
 print('   -N F(1,1,1) / (6 (N-2)) / 1000 = %+.9f   (F(1,1,1) = %.6f)' % (float(part2) / SCALE, float(F111)))
-print('   f(1) - f_0 = f_1 + ... + f_8 = %.3e, so the two-point part is nearly constant' % float(f1 - f[0]))
+print('   (f(1) - f_0) / 1000 = (f_1 + ... + f_8) / 1000 = %.2e: the two-point part is nearly constant' % (float(f1 - f[0]) / SCALE))
 
 om_half = float(omega(0.5))
 print('omega(1/2) = %.9f; omega vanishes for u <= 1/3' % om_half)

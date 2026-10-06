@@ -13,3 +13,4 @@ d3=10 round 2: NumericalError  bound 3.09216 (target 3.10330), corrected <= 3.22
    viol: AA 5.1e-07, AB 2.2e-07, AF 2.8e-07, BB -1.9e-06, BF -9.0e-06, FF -6.4e-05, AAA 6.5e-06, AAB 5.3e-06, AAF 2.5e-05, ABB 1.5e-05, ABF 4.4e-05, AFF 2.0e-05, BBB 4.0e-05, BBF 1.1e-04, BFF 3.0e-06, FFF 1.9e-05
    c2: {'AA': -0.083926, 'AB': -0.04507, 'AF': -0.038055, 'BB': -0.007615, 'BF': -0.002771, 'FF': 0.003771}
    c3: {'AAA': 0.0048494, 'AAB': 0.0034103, 'AAF': 0.0031682, 'ABB': 0.0020059, 'ABF': 0.0018287, 'AFF': 0.0015401, 'BBB': 0.0006604, 'BBF': 0.0005929, 'BFF': 0.0005223, 'FFF': 0.0014921}
+   direct: 8988 variables, 107022 inequalities, 7389 psd rows in 56 cones, 76760595 nonzeros [20 s to build]

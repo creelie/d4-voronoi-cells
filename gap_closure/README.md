@@ -184,15 +184,21 @@ neighbouring cells.
 
 Section "A density bound from the cells alone" of the paper (`prop:levels`,
 `thm:density-cells`) bounds the union of caps U(Y) for every count M from 24
-to 30. At M = 24 the bound is 24 S(2) = 3.335124; at 25 and 27 to 30 it comes
-from two-point certificates with no split; at M = 26 it comes from the
-combined kernel of `CM/` (labelled pairs and typed triples, degree 8), run
-against a level: `multi_cap/combo_case_check.py` with LEVEL=3.3352 on
+to 30. At 25 and 27 to 30 the bound comes from two-point certificates with no
+split; at M = 24 and M = 26 it comes from the combined kernel of `CM/`
+(labelled pairs and typed triples), run against a level with
+`multi_cap/combo_case_check.py`. At M = 26, degree 8, with LEVEL=3.3352 on
 `CM/case26_all.json` and `multi_cap/radial_certificates/combo26_level_d8.npz`
-(the round-3 certificate of `CM/c26h_d8.log`) passes with U(Y) <= 3.329050
-(`multi_cap/runs/combo26_level_check.log`). So every cell has volume at least
-9 pi^2/8 - max L_M = 7.7681, the largest level being 24 S(2) at M = 24, and
-every packing of unit balls in R^4 has density at most 0.63527. This is below
+(the round-3 certificate of `CM/c26h_d8.log`), it passes with
+U(Y) <= 3.329050 (`multi_cap/runs/combo26_level_check.log`). At M = 24,
+degree 6, with LEVEL=3.3291 on `CM/case24_all.json` and
+`multi_cap/radial_certificates/combo24_level_d6.npz` (the round-1 certificate
+of a run of `combo_direct.py 6 2 case24_all.json`, 3.21901 on its samples),
+it passes with U(Y) <= 3.253872 (`multi_cap/runs/combo24_level_check.log`);
+dropping the pair terms gives only 24 S(2) = 3.335124. So every cell has
+volume at least 9 pi^2/8 - max L_M = 7.7742, the largest level being
+L_26 = 3.3291, and every packing of unit balls in R^4 has density at most
+0.63477. This is below
 the three-point bound 0.63611 of Cohn, de Laat and Salmon, and above
 pi^2/16 = 0.61685; it is a density bound, not statement (G) or (C).
 
