@@ -243,7 +243,11 @@ def solve(counts, Tmat, d, rounds=3, sizes=(14, 14, 7), nrand=1500, verbose=True
         tr = sum(cp.trace(X[name]) for name in L.blocks)
         cons.append(tr <= 1)
         prob = cp.Problem(cp.Minimize(val), cons)
-        prob.solve(solver='CLARABEL', max_iter=400)
+        try:
+            prob.solve(solver='CLARABEL', max_iter=400)
+        except cp.error.SolverError:
+            print('   CLARABEL failed; SCS', flush=True)
+            prob.solve(solver='SCS', eps=1e-7, max_iters=200000)
         # check on finer samples
         xv = np.concatenate([np.r_[np.diag(X[n].value), X[n].value[np.triu_indices(X[n].shape[0], 1)]] for n in L.blocks])
         corr = 0.0; viol = {}
