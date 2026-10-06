@@ -10,9 +10,13 @@ weights c_k are those of the paper.  The Lean file checks, by kernel
 computation on Rat:
 
   * the monomial coefficients of p;
-  * p(t) < 0 on [-1, th], where th = 0.614039 > tau (tau^2 = 139129/369000),
-    by a Taylor bound about the midpoint of each subinterval listed in the
-    file, which cover the range without gaps;
+  * the two-square identity of the paper's proof: with the quadratics A and B
+    below, R = -p - (1 + t) A^2 - (th - t) B^2 has constant term larger than
+    the sum of the absolute values of its other coefficients, so R > 0 on
+    [-1, 1] and p < 0 on [-1, th];
+  * independently, p(t) < 0 on [-1, th], where th = 0.614039 > tau
+    (tau^2 = 139129/369000), by a Taylor bound about the midpoint of each
+    subinterval listed in the file, which cover the range without gaps;
   * (24 p_0)^2 > 0.26785 * sum_k p_k^2 / c_k;
   * the root system has S_1 = ... = S_5 = 0.
 
@@ -31,6 +35,8 @@ P_GEGEN = [Fr(39954677, 453230000000), Fr(41, 89653), Fr(29, 33806),
 C_W = [Fr(103, 963), Fr(191, 963), Fr(280, 963), Fr(230, 963), Fr(159, 963)]
 TH = Fr(614039, 10 ** 6)
 PHI = Fr(26785, 10 ** 5)
+A_SQ = [Fr(26327, 10 ** 8), Fr(59724, 10 ** 8), Fr(112736, 10 ** 8)]
+B_SQ = [Fr(260109, 10 ** 8), Fr(4473253, 10 ** 8), Fr(5671392, 10 ** 8)]
 
 
 def cheb_u(k):
@@ -83,6 +89,25 @@ def cover(cs, lo, hi, out, depth=0):
     cover(cs, mid, hi, out, depth + 1)
 
 
+def pmul(a, b):
+    out = [Fr(0)] * (len(a) + len(b) - 1)
+    for i, x in enumerate(a):
+        for j, y in enumerate(b):
+            out[i + j] += x * y
+    return out
+
+
+def padd(a, b):
+    n = max(len(a), len(b))
+    return [(a[i] if i < len(a) else 0) + (b[i] if i < len(b) else 0) for i in range(n)]
+
+
+def two_square_rest(pm):
+    """R = -p - (1 + t) A^2 - (th - t) B^2, constant term first"""
+    sq = padd(pmul([1, 1], pmul(A_SQ, A_SQ)), pmul([TH, -1], pmul(B_SQ, B_SQ)))
+    return padd([-x for x in pm], [-x for x in sq])
+
+
 def lean_rat(x):
     x = Fr(x)
     return f"({x.numerator} : Rat)" if x.denominator == 1 else f"({x.numerator} / {x.denominator} : Rat)"
@@ -94,6 +119,8 @@ def lst(xs):
 
 def main():
     pm = monomial(P_GEGEN)
+    rest = two_square_rest(pm)
+    assert rest[0] - sum(abs(x) for x in rest[1:]) > Fr(48, 10 ** 9)
     I1 = []
     cover(pm, Fr(-1), TH, I1)
     phi_ok = (24 * P_GEGEN[0]) ** 2 > PHI * sum(x * x / c for x, c in zip(P_GEGEN[1:], C_W))
@@ -109,9 +136,12 @@ G_k(1) = 1) and p = sum_(k=0..5) p_k G_k for the rationals p_k below:
 
   * pmono is the list of monomial coefficients of p (checked from the U_k);
   * p(t) < 0 on [-1, th], with th = 0.614039 > tau, where
-    tau^2 = 139129/369000 (as in D4HoleBudget); checked by a Taylor bound
-    about the midpoint of each of {len(I1)} subintervals that cover the range
-    without gaps;
+    tau^2 = 139129/369000 (as in D4HoleBudget), proved in the paper by the
+    identity -p = (1 + t) A^2 + (th - t) B^2 + R: theorem two_square checks
+    that R has constant term larger than the sum of the absolute values of
+    its other coefficients (so R > 0 on [-1, 1]);
+  * independently, the same sign by a Taylor bound about the midpoint of each
+    of {len(I1)} subintervals that cover the range without gaps;
   * (24 p_0)^2 > 0.26785 * sum_(k=1..5) p_k^2 / c_k for the weights c_k;
   * over the 24 roots +-e_j +-e_k, sum over ordered pairs of G_k(<a,b>/2)
     is 0 for k = 1, ..., 5 (the root system is a spherical 5-design).
@@ -133,6 +163,10 @@ def weights : List Rat := {lst(C_W)}
 def pmono : List Rat := {lst(pm)}
 
 def th : Rat := {lean_rat(TH)}
+
+def sqA : List Rat := {lst(A_SQ)}
+
+def sqB : List Rat := {lst(B_SQ)}
 """)
     L.append("""/-- coefficient i of sum_k g_k U_k/(k+1) -/
 def monoOf (g : List Rat) (i : Nat) : Rat :=
@@ -154,6 +188,27 @@ def shift (cs : List Rat) (m : Rat) : List Rat :=
   (List.range (cs.length - 1)).foldl (fun c j => shiftPass m j c) cs
 
 def rabs (x : Rat) : Rat := if x < 0 then -x else x
+
+/-- the product of two polynomials, constant term first -/
+def pmul (a b : List Rat) : List Rat :=
+  (List.range (a.length + b.length - 1)).map (fun n =>
+    (List.range (n + 1)).foldl (fun s i => s + a.getD i 0 * b.getD (n - i) 0) 0)
+
+/-- the sum of two polynomials, constant term first -/
+def padd (a b : List Rat) : List Rat :=
+  (List.range (max a.length b.length)).map (fun i => a.getD i 0 + b.getD i 0)
+
+/-- R = -p - (1 + t) A^2 - (th - t) B^2 -/
+def rest : List Rat :=
+  padd (pmono.map (fun x => -x))
+    ((padd (pmul [1, 1] (pmul sqA sqA)) (pmul [th, -1] (pmul sqB sqB))).map (fun x => -x))
+
+/-- R > 0 on [-1, 1], because its constant term beats the other coefficients;
+so -p = (1 + t) A^2 + (th - t) B^2 + R > 0 on [-1, th] -/
+theorem two_square :
+    (rest.length == 6 &&
+      decide (rest.tail.foldl (fun s x => s + rabs x) 0 < rest.getD 0 0)) = true := by
+  decide +kernel
 
 /-- an upper bound for the polynomial cs on [a, b]: c_0 + sum |c_i| r^i about the midpoint -/
 def upper (cs : List Rat) (a b : Rat) : Rat :=
@@ -200,6 +255,7 @@ theorem roots_design :
 
 end D4DesignBudget
 
+#print axioms D4DesignBudget.two_square
 #print axioms D4DesignBudget.p_negative_below_th
 #print axioms D4DesignBudget.threshold
 #print axioms D4DesignBudget.roots_design
