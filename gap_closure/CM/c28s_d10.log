@@ -4,3 +4,8 @@ fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 
 fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
    direct: 8988 variables, 77713 inequalities, 7389 psd rows in 56 cones, 53163648 nonzeros [16 s to build]
    105 type-count vectors
+d3=10 round 1: NumericalError  bound 3.09379 (target 3.10330), corrected <= 134.87009  [3322 s]
+   viol: AA 8.2e-03, AB 4.3e-02, AF 1.0e-01, BB 5.4e-01, BF 3.3e-01, FF 5.6e-01, AAA 8.8e-05, AAB 4.4e-04, AAF 1.3e-04, ABB 4.6e-04, ABF 5.7e-04, AFF 3.0e-04, BBB 3.0e-04, BBF 5.4e-04, BFF 3.5e-04, FFF -2.7e-05
+   c2: {'AA': -0.129, 'AB': -0.075744, 'AF': -0.107262, 'BB': -0.022533, 'BF': -0.059066, 'FF': -0.096077}
+   c3: {'AAA': 0.0071379, 'AAB': 0.0051758, 'AAF': 0.0063489, 'ABB': 0.0031945, 'ABF': 0.0045259, 'AFF': 0.005821, 'BBB': 0.0011767, 'BBF': 0.0028057, 'BFF': 0.0044447, 'FFF': 0.0072922}
+   direct: 8988 variables, 101297 inequalities, 7389 psd rows in 56 cones, 70920350 nonzeros [22 s to build]
