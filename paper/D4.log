@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  6 OCT 2026 14:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  6 OCT 2026 14:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1003,21 +1003,21 @@ Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 8992.
 <figures/fig_tikz_levels.png, id=2494, 529.16093pt x 199.60974pt>
 File: figures/fig_tikz_levels.png Graphic file (type png)
 <use figures/fig_tikz_levels.png>
-Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 9158.
+Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 9161.
 (pdftex.def)             Requested size: 433.62001pt x 163.56833pt.
  [133 <./figures/fig_tikz_levels.png (PNG copy)>] [134] [135] [136] [137] [138]
  [139] [140] [141] [142] [143]
 <figures/fig_tikz_octant.png, id=2876, 384.62094pt x 184.57758pt>
 File: figures/fig_tikz_octant.png Graphic file (type png)
 <use figures/fig_tikz_octant.png>
-Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 9915.
+Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 9918.
 (pdftex.def)             Requested size: 433.62001pt x 208.10551pt.
  [144]
 [145 <./figures/fig_tikz_octant.png (PNG copy)>] [146] [147] [148]
 <figures/fig_c_arcs.png, id=2969, 2193.19376pt x 1332.98pt>
 File: figures/fig_c_arcs.png Graphic file (type png)
 <use figures/fig_c_arcs.png>
-Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10277.
+Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10280.
 (pdftex.def)             Requested size: 433.62001pt x 263.54033pt.
  [149]
 [150 <./figures/fig_c_arcs.png (PNG copy)>] [151] [152] [153] [154] [155]
@@ -1026,12 +1026,12 @@ Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10277.
 File: figures/fig_chain_plateau.png Graphic file (type png)
 <use figures/fig_chain_plateau.png>
 Package pdftex.def Info: figures/fig_chain_plateau.png  used on input line 1085
-5.
+8.
 (pdftex.def)             Requested size: 429.28618pt x 274.55405pt.
 <figures/fig_dense_growth.png, id=3123, 2280.52pt x 1250.6725pt>
 File: figures/fig_dense_growth.png Graphic file (type png)
 <use figures/fig_dense_growth.png>
-Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 10883
+Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 10886
 .
 (pdftex.def)             Requested size: 429.28618pt x 235.41653pt.
  [157] [158 <./figures/fig_chain_plateau.png (PNG copy)>] [159 <./figures/fig_d
@@ -1039,7 +1039,7 @@ ense_growth.png (PNG copy)>] [160] [161] [162] [163] [164] [165]
 <figures/fig_c_swap.png, id=3281, 2981.1375pt x 1180.41pt>
 File: figures/fig_c_swap.png Graphic file (type png)
 <use figures/fig_c_swap.png>
-Package pdftex.def Info: figures/fig_c_swap.png  used on input line 11453.
+Package pdftex.def Info: figures/fig_c_swap.png  used on input line 11456.
 (pdftex.def)             Requested size: 433.62001pt x 171.6864pt.
  [166 <./figures/fig_c_swap.png>] [167] [168] [169] [170] [171] [172] [173] [17
 4]
@@ -1078,7 +1078,7 @@ ts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb>
 are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on D4.pdf (177 pages, 21140917 bytes).
+Output written on D4.pdf (177 pages, 21141143 bytes).
 PDF statistics:
  3822 PDF objects out of 4296 (max. 8388607)
  3490 compressed objects within 35 object streams

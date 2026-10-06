@@ -48,7 +48,7 @@
 \contentsline {section}{\tocsection {}{8}{A density bound from the cells alone}}{132}{section.8}%
 \contentsline {section}{\tocsection {}{9}{Comparison with other strategies}}{134}{section.9}%
 \contentsline {subsection}{\tocsubsection {}{9.1}{Local against global}}{134}{subsection.9.1}%
-\contentsline {subsection}{\tocsubsection {}{9.2}{Linear programming bounds in dimension four}}{134}{subsection.9.2}%
+\contentsline {subsection}{\tocsubsection {}{9.2}{Linear programming bounds in dimension four}}{135}{subsection.9.2}%
 \contentsline {subsection}{\tocsubsection {}{9.3}{What each method asks of the reader}}{135}{subsection.9.3}%
 \contentsline {subsection}{\tocsubsection {}{9.4}{Other dimensions}}{135}{subsection.9.4}%
 \contentsline {section}{\tocsection {}{10}{Conclusion}}{135}{section.10}%
