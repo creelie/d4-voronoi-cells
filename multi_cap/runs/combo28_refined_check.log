@@ -1,0 +1,41 @@
+Wed Oct  7 12:15:24 UTC 2026
+statement (C) at 28 centres, case case28_lo13.json: combined certificate c28lo13b_d8_r1.npz, two-point degree 12/4, three-point degree 8; 60214 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 65.795580334, float t 65.795580333)
+  [ok] three-point blocks positive definite (exact LDL^T)  (35 blocks)
+  point terms: {'A': '0.208647', 'B': '0.145419', 'F': '0.033715'}
+  pair AA: float largest K + PAIR3 - Pi 5.813446e-02 (file c2 5.813425e-02); threshold 5.813947e-02
+  pair AB: float largest K + PAIR3 - Pi 6.430800e-02 (file c2 6.430800e-02); threshold 6.431300e-02
+  pair AF: float largest K + PAIR3 - Pi 7.160842e-02 (file c2 7.160821e-02); threshold 7.161343e-02
+  pair BB: float largest K + PAIR3 - Pi 6.596511e-02 (file c2 6.596460e-02); threshold 6.597015e-02
+  pair BF: float largest K + PAIR3 - Pi 7.086813e-02 (file c2 7.086644e-02); threshold 7.087321e-02
+  pair FF: float largest K + PAIR3 - Pi 7.557776e-02 (file c2 7.557772e-02); threshold 7.558276e-02
+  pair BB on bins 3-6: float largest K + PAIR3 - Pi 6.594507e-02; threshold 6.595046e-02 against 6.597015e-02 for the kind
+  pair BB on bins 6-6: float largest K + PAIR3 - Pi 6.596460e-02; threshold 6.596960e-02 against 6.597015e-02 for the kind
+  [ok] K + PAIR3_BB <= Pi + its threshold on the pairs of bins 3-6  (59 boxes closed, 26 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + its threshold on the pairs of bins 6-6  (2781 boxes closed, 2216 set aside, Pi in Arb at 0 corners)
+  triple AAA: float largest 8.320207e-04 on 649660 samples; threshold 8.325950e-04; 425 monomials, symmetry 2
+  triple AAB: float largest 5.616402e-04 on 649656 samples; threshold 5.623316e-04; 425 monomials, symmetry 1
+  triple AAF: float largest 3.215639e-04 on 649567 samples; threshold 3.222705e-04; 425 monomials, symmetry 1
+  triple ABB: float largest 4.640639e-04 on 649516 samples; threshold 4.646916e-04; 425 monomials, symmetry 1
+  triple ABF: float largest 3.201323e-04 on 649349 samples; threshold 3.215218e-04; 425 monomials, symmetry 0
+  triple AFF: float largest 1.493794e-04 on 649302 samples; threshold 1.503529e-04; 425 monomials, symmetry 1
+  triple BBB: float largest 5.425782e-04 on 649325 samples; threshold 5.435452e-04; 425 monomials, symmetry 2
+  triple BBF: float largest 4.824154e-04 on 649158 samples; threshold 4.838167e-04; 425 monomials, symmetry 1
+  triple BFF: float largest 4.809436e-04 on 649009 samples; threshold 4.819378e-04; 425 monomials, symmetry 1
+  triple FFF: float largest 7.688680e-04 on 648938 samples; threshold 7.793708e-04 (refined 7.688708e-04, extra 1e-05); 425 monomials, symmetry 2
+  triple ABF on bins 1-3-7 (inner products at most 0.528444, 0.614029, 0.623065): float largest 3.161651e-04 on 649545 samples; threshold 3.187930e-04 against 3.215218e-04 for the kind; symmetry 0
+  triple BBB on bins 3-3-3 (inner products at most 0.546485, 0.546485, 0.546485): float largest 5.349585e-04 on 649699 samples; threshold 5.354878e-04 against 5.435452e-04 for the kind; symmetry 2
+  triple AAB on bins 1-1-3 (inner products at most 0.507954, 0.528444, 0.528444): float largest 5.610140e-04 on 649670 samples; threshold 5.616713e-04 against 5.623316e-04 for the kind; symmetry 1
+  triple ABF on bins 1-6-7 (inner products at most 0.589632, 0.614029, 0.653414): float largest 3.177035e-04 on 649394 samples; threshold 3.187930e-04 against 3.215218e-04 for the kind; symmetry 0
+  triple AFF on bins 1-7-7 (inner products at most 0.614029, 0.614029, 0.666667): float largest 1.467859e-04 on 649315 samples; threshold 1.503529e-04 against 1.503529e-04 for the kind; symmetry 1
+  triple AAB on bins 1-1-6 (inner products at most 0.507954, 0.589632, 0.589632): float largest 5.616905e-04 on 649656 samples; threshold 5.623316e-04 against 5.623316e-04 for the kind; symmetry 1
+      BBB bins 3-3-3 level 10: 0 boxes verified, 338 to bisect [2 s]
+      AAB bins 1-1-3 level 10: 0 boxes verified, 606 to bisect [2 s]
+      ABF bins 1-3-7 level 10: 0 boxes verified, 946 to bisect [3 s]
+      BBB bins 3-3-3 level 20: 19787 boxes verified, 68046 to bisect [72 s]
+      AAB bins 1-1-3 level 20: 37022 boxes verified, 245754 to bisect [248 s]
+      ABF bins 1-3-7 level 20: 87827 boxes verified, 408136 to bisect [463 s]
+      BBB bins 3-3-3 level 30: 338766 boxes verified, 10760 to bisect [521 s]
+      ABF bins 1-6-7 level 10: 0 boxes verified, 946 to bisect [3 s]
+      ABF bins 1-6-7 level 20: 86219 boxes verified, 429398 to bisect [469 s]

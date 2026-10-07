@@ -52,6 +52,20 @@ through the triple kinds it allows (the sampling sequence is fixed), so with
 PRECHECK=1 and the main case and arguments of a passing full check the run reproduces
 that check's thresholds, printed for comparison, and settles the listed cases at the
 cost of the sampling alone.
+
+With REFINE_TRIPLES=<b>-<b'>-<b''>[,...] (bins numbered from 1, e.g. 1-3-7) each listed
+combination of bins gets a threshold of its own: a triple of centres in the bins b, b',
+b'' has inner products at most a(hi_b, hi_b'), a(hi_b, hi_b''), a(hi_b', hi_b''), so
+TRIPLE3 of its kind is sampled, refined and checked by branch and bound on that smaller
+set, and in the bound the triples of those bins are counted with the smaller threshold
+instead of that of the kind.  These thresholds are sampled with a generator of their
+own, so the other thresholds are unchanged.  TRIPLE_EXTRA takes such a combination as
+well (e.g. 1-3-7:1e-6).  REFINE_PAIRS=<b>-<b'>[,...] does the same for the pair
+inequality on the pairs with distances in the bins b and b', on that rectangle of
+distances (sampled with a generator of their own as well).  With ONLY=NONE the branch and bounds of the kinds are skipped
+and only those of the listed combinations run; the run then ends PARTIAL, and it proves
+the case together with a passing full check of the same case, certificate, arguments
+and options, whose thresholds it reproduces.
 """
 import itertools
 import json
@@ -59,6 +73,7 @@ import os
 import sys
 import time
 from fractions import Fraction as Fr
+from math import comb
 
 import numpy as np
 from flint import arb
@@ -76,6 +91,8 @@ PRE = os.environ.get('PRECHECK') == '1'
 BORDER = os.environ.get('BORDER') == '1'
 EXTRA = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('TRIPLE_EXTRA', '').split(',') if e)}
 ONLY = [e for e in os.environ.get('ONLY', '').split(',') if e]
+REFINE = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_TRIPLES', '').split(',') if e]
+REFINE_PAIRS = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_PAIRS', '').split(',') if e]
 
 
 def num(x):
@@ -167,18 +184,19 @@ def main():
     pt = {s: C.point_term(Bk, d3, i) for i, s in enumerate(C.TYPES)}
     print('  point terms: %s' % {s: '%.6f' % float(v) for s, v in pt.items()}, flush=True)
     # (b) pairs
-    c2 = {}
-    for (s, tt) in itertools.combinations_with_replacement(C.TYPES, 2):
-        i, j = C.TYPES.index(s), C.TYPES.index(tt)
+    Af2 = [np.array([[float(v) for v in row] for row in a]) for a in A]
+
+    def pair_setup(i, j, box, rng_):
+        """sample and refine K + PAIR3 - Pi on the pairs with distances in box"""
         Pu = C.pair3_poly(Bk, d3, i, j)
-        (a0, a1), (b0, b1) = C.TRANGE[s], C.TRANGE[tt]
+        (a0, a1), (b0, b1) = box
         n = 400000
-        p = float(a0) + float(a1 - a0) * rng.random(n); q = float(b0) + float(b1 - b0) * rng.random(n)
+        p = float(a0) + float(a1 - a0) * rng_.random(n); q = float(b0) + float(b1 - b0) * rng_.random(n)
         k6 = n // 6
         p[:k6] = float(a0); q[k6:2 * k6] = float(b0); p[2 * k6:3 * k6] = float(a1); q[3 * k6:4 * k6] = float(b1)
         top = (p * p + q * q - 4) / (2 * p * q)
-        u = -1 + (top + 1) * rng.random(n) ** 0.5
-        u[4 * k6:5 * k6] = top[4 * k6:5 * k6] - 3e-3 * rng.random(k6)
+        u = -1 + (top + 1) * rng_.random(n) ** 0.5
+        u[4 * k6:5 * k6] = top[4 * k6:5 * k6] - 3e-3 * rng_.random(k6)
         gd, ge = np.meshgrid(np.linspace(float(a0), float(a1), 25), np.linspace(float(b0), float(b1), 25), indexing='ij')
         gd, ge = gd.ravel(), ge.ravel()
         gt = (gd * gd + ge * ge - 4) / (2 * gd * ge)
@@ -186,7 +204,6 @@ def main():
         gp = np.repeat(gd, len(sv)); gq = np.repeat(ge, len(sv))
         gu = -1 + (np.repeat(gt, len(sv)) + 1) * np.tile(1 - sv[::-1], len(gd))
         p, q, u = np.r_[p, gp], np.r_[q, gq], np.r_[u, gu]
-        Af2 = [np.array([[float(v) for v in row] for row in a]) for a in A]
         Kv = np.zeros(len(u))
         x = (2 * p - float(C1)) / float(C2); y = (2 * q - float(C1)) / float(C2)
         Tx = [np.ones_like(x), x]; Ty = [np.ones_like(y), y]
@@ -200,18 +217,39 @@ def main():
         P3 = np.polyval([float(c) for c in Pu[::-1]], u)
         v = Kv + P3 - pair_float(p / 2, q / 2, u)
         w = np.argsort(v)[-40:]
-        best = C.refine_pair(A, Pu, np.stack([p[w], q[w], u[w]], 1), (C.TRANGE[s], C.TRANGE[tt]))
-        c2[(s, tt)] = C.above(max(float(v.max()), best) + mg2)
+        best = C.refine_pair(A, Pu, np.stack([p[w], q[w], u[w]], 1), box)
+        return C.above(max(float(v.max()), best) + mg2), float(v.max()), Pu
+
+    c2 = {}
+    for (s, tt) in itertools.combinations_with_replacement(C.TYPES, 2):
+        i, j = C.TYPES.index(s), C.TYPES.index(tt)
+        c2[(s, tt)], vmax, _ = pair_setup(i, j, (C.TRANGE[s], C.TRANGE[tt]), rng)
         print('  pair %s%s: float largest K + PAIR3 - Pi %.6e (file c2 %.6e); threshold %.6e'
-              % (s, tt, v.max(), float(Z['c2'][len(c2) - 1]), float(c2[(s, tt)])), flush=True)
+              % (s, tt, vmax, float(Z['c2'][len(c2) - 1]), float(c2[(s, tt)])), flush=True)
     jobs = [(A, C.pair3_poly(Bk, d3, C.TYPES.index(s), C.TYPES.index(tt)), c2[(s, tt)], (C.TRANGE[s], C.TRANGE[tt]), s == tt)
             for (s, tt) in c2]
+    labels = ['K + PAIR3_%s%s <= Pi + c2 on the admissible pairs' % st for st in c2]
+    if PRE or ONLY:
+        jobs, labels = [], []
+    # pairs refined by bins, with a generator of their own
+    c2r = {}
+    prng = np.random.default_rng(13)
+    for bs in REFINE_PAIRS:
+        s, tt = C.BINTYPE[bs[0]], C.BINTYPE[bs[1]]
+        box = ((C.EDGES[bs[0]], C.EDGES[bs[0] + 1]), (C.EDGES[bs[1]], C.EDGES[bs[1] + 1]))
+        c2r[bs], vmax, Pu = pair_setup(C.TYPES.index(s), C.TYPES.index(tt), box, prng)
+        name = 'bins ' + '-'.join(str(b + 1) for b in bs)
+        print('  pair %s%s on %s: float largest K + PAIR3 - Pi %.6e; threshold %.6e against %.6e for the kind'
+              % (s, tt, name, vmax, float(c2r[bs]), float(c2[(s, tt)])), flush=True)
+        if not PRE:
+            jobs.append((A, Pu, c2r[bs], box, bs[0] == bs[1]))
+            labels.append('K + PAIR3_%s%s <= Pi + its threshold on the pairs of %s' % (s, tt, name))
     from multiprocessing import Pool
-    if not PRE and not ONLY:
+    if jobs:
         with Pool(min(int(os.environ.get('PAIR_PROCS', '3')), len(jobs))) as pool:
             res = pool.starmap(C.pair_box_check, jobs)
-        for (s, tt), (ok, msg) in zip(c2, res):
-            C.check('K + PAIR3_%s%s <= Pi + c2 on the admissible pairs' % (s, tt), ok, msg)
+        for label, (ok, msg) in zip(labels, res):
+            C.check(label, ok, msg)
     # (c) bins
     mf = np.array(Z['m'], float)
     assert len(mf) == len(C.BINTYPE)
@@ -220,22 +258,19 @@ def main():
         okb, msg = bracket_check(A, z, D2, R2, C1, C2, C.DMAX, C.EDGES, m)
         C.check('f <= m_b on every bin', okb, msg)
     # (d) triples
-    c3 = {}
-    tjobs = []
-    for combo in itertools.combinations_with_replacement(C.TYPES, 3):
-        if all(C.Ntriple(tcounts(nb), list(combo)) == 0 for nb in C.COUNTS):
-            continue
-        P = C.triple3_poly(Bk, d3, combo)
-        T12, T13, T23 = C.tmax(combo[0], combo[1]), C.tmax(combo[0], combo[2]), C.tmax(combo[1], combo[2])
-        g = C.random_gram(float(T12), float(T13), float(T23), 200000, rng)
+    def triple_setup(P, T, labels, rng_, extra):
+        """sample and refine TRIPLE3 = P on {u_12 <= T[0], u_13 <= T[1], u_23 <= T[2]}, and lay it
+        out for the branch and bound with the symmetry of equal labels"""
+        T12, T13, T23 = T
+        g = C.random_gram(float(T12), float(T13), float(T23), 200000, rng_)
         ax = [np.r_[-1.0, np.linspace(-1, float(T), 40), float(T)] for T in (T12, T13, T23)]
         G = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
         G = G[1 + 2 * G[:, 0] * G[:, 1] * G[:, 2] - (G ** 2).sum(1) >= 0]
         g = np.r_[g, G]
         vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
         best = C.refine_triple(P, g[np.argsort(vals)[-40:]], (float(T12), float(T13), float(T23)))
-        c3[combo] = C.above(max(float(vals.max()), best) + mg3 + EXTRA.get(''.join(combo), 0.0))
-        perm, sym = C.triple_layout(combo)
+        thr = C.above(max(float(vals.max()), best) + mg3 + extra)
+        perm, sym = C.triple_layout(labels)
         tops = [None] * 3
         for src, val in enumerate((T12, T13, T23)):
             tops[perm.index(src)] = float(C.above(val))
@@ -245,21 +280,58 @@ def main():
             for src in range(3):
                 ee[perm.index(src)] += e[src]
             Pr[tuple(ee)] = Pr.get(tuple(ee), 0) + co
+        return thr, Pr, tops, sym, float(vals.max()), len(g), best
+
+    c3 = {}
+    tjobs = []
+    for combo in itertools.combinations_with_replacement(C.TYPES, 3):
+        if all(C.Ntriple(tcounts(nb), list(combo)) == 0 for nb in C.COUNTS):
+            continue
+        P = C.triple3_poly(Bk, d3, combo)
+        T = (C.tmax(combo[0], combo[1]), C.tmax(combo[0], combo[2]), C.tmax(combo[1], combo[2]))
+        c3[combo], Pr, tops, sym, vmax, ns, best = triple_setup(P, T, combo, rng, EXTRA.get(''.join(combo), 0.0))
         print('  triple %s: float largest %.6e on %d samples; threshold %.6e%s; %d monomials, symmetry %d'
-              % (''.join(combo), vals.max(), len(g), float(c3[combo]),
+              % (''.join(combo), vmax, ns, float(c3[combo]),
                  ' (refined %.6e, extra %g)' % (best, EXTRA[''.join(combo)]) if ''.join(combo) in EXTRA else '',
                  len(P), sym), flush=True)
         if ONLY and ''.join(combo) not in ONLY:
             continue
-        tjobs.append((combo, (Pr, tops, sym, float(c3[combo]), ''.join(combo))))
-    if not PRE:
+        tjobs.append((''.join(combo), (Pr, tops, sym, float(c3[combo]), ''.join(combo))))
+    # triples refined by bins, sampled with a generator of their own so that the
+    # thresholds above stay those of the check without refinement
+    c3r = {}
+    rrng = np.random.default_rng(11)
+    for bs in REFINE:
+        combo = tuple(C.BINTYPE[b] for b in bs)
+        assert combo in c3, bs
+        hi = [C.EDGES[b + 1] for b in bs]
+        T = (C.amaxq(hi[0], hi[1]), C.amaxq(hi[0], hi[2]), C.amaxq(hi[1], hi[2]))
+        name = 'bins ' + '-'.join(str(b + 1) for b in bs)
+        c3r[bs], Pr, tops, sym, vmax, ns, best = triple_setup(C.triple3_poly(Bk, d3, combo), T, bs, rrng,
+                                                               EXTRA.get('-'.join(str(b + 1) for b in bs), 0.0))
+        print('  triple %s on %s (inner products at most %.6f, %.6f, %.6f): float largest %.6e on %d samples; '
+              'threshold %.6e against %.6e for the kind; symmetry %d'
+              % (''.join(combo), name, *[float(x) for x in T], vmax, ns, float(c3r[bs]), float(c3[combo]), sym), flush=True)
+        tjobs.append((''.join(combo) + ' on ' + name, (Pr, tops, sym, float(c3r[bs]), ''.join(combo) + ' ' + name)))
+    if not PRE and tjobs:
         with Pool(min(int(os.environ.get('TRIPLE_PROCS', '3')), len(tjobs))) as pool:
             res = pool.starmap(C.triple_box_check, [a for _, a in tjobs])
         nbox = 0
-        for (combo, _), (ok, msg, nd) in zip(tjobs, res):
-            C.check('TRIPLE3_%s <= c3 on the admissible triples' % ''.join(combo), ok, msg)
+        for (label, _), (ok, msg, nd) in zip(tjobs, res):
+            C.check('TRIPLE3_%s <= its threshold on the admissible triples' % label if ' on ' in label
+                    else 'TRIPLE3_%s <= c3 on the admissible triples' % label, ok, msg)
             nbox += nd
         print('  triple boxes in all: %d' % nbox, flush=True)
+
+    def Nbins(nb, bs):
+        out = 1
+        for b in set(bs):
+            out *= comb(nb[b], bs.count(b))
+        return out
+
+    def refined_gain(nb):
+        return (sum(Nbins(nb, bs) * max(c3[tuple(C.BINTYPE[b] for b in bs)] - c3r[bs], 0) for bs in c3r)
+                + sum(Nbins(nb, bs) * max(c2[(C.BINTYPE[bs[0]], C.BINTYPE[bs[1]])] - c2r[bs], 0) for bs in c2r))
     # the bound, over every count vector
     cache = {}
     worst, wvec = None, None
@@ -270,6 +342,8 @@ def main():
             cache[key] = (t / 2 + sum(C.Npair(tc, s, tt) * c2[(s, tt)] for (s, tt) in c2)
                           + sum(C.Ntriple(tc, list(cb)) * c3[cb] for cb in c3))
         val = cache[key] + sum(nb[b] * (m[b] + pt[C.BINTYPE[b]]) for b in range(len(nb)) if nb[b])
+        if c3r or c2r:
+            val -= refined_gain(nb)
         if worst is None or val > worst:
             worst, wvec = val, nb
     print('  %d count vectors, %d type-count vectors; largest bound %.6f at %s' % (len(C.COUNTS), len(cache), float(worst), wvec),
@@ -288,14 +362,18 @@ def main():
                 cache[key] = (t / 2 + sum(C.Npair(tc, s, tt) * c2[(s, tt)] for (s, tt) in c2)
                               + sum(C.Ntriple(tc, list(cb)) * c3[cb] for cb in c3))
             val = cache[key] + sum(nb[b] * (m[b] + pt[C.BINTYPE[b]]) for b in range(len(nb)) if nb[b])
+            if c3r or c2r:
+                val -= refined_gain(nb)
             if ew is None or val > ew:
                 ew, ev = val, nb
         C.check('with these thresholds, largest bound over the %d count vectors of %s below %s'
                 % (len(vecs), os.path.basename(extra), tname), A_(ew) < target,
                 '%.6f at %s < %s' % (float(ew), ev, target.str(8)))
     if ONLY and not PRE:
-        print('PARTIAL: only the triple inequalities %s were checked; with the thresholds above the bound would be '
-              '%.6f against %s = %s [%.0f s]' % (', '.join(ONLY), float(worst), tname, target.str(8), time.time() - t0))
+        kinds = ([k for k in ONLY if k in [''.join(c) for c in c3]] + [lab for lab, _ in tjobs if ' on ' in lab]
+                 + ['the pairs on bins ' + '-'.join(str(b + 1) for b in bs) for bs in c2r])
+        print('PARTIAL: only the inequalities %s were checked by branch and bound; with the thresholds above the bound would be '
+              '%.6f against %s = %s [%.0f s]' % (', '.join(kinds) or 'none', float(worst), tname, target.str(8), time.time() - t0))
         return
     if PRE:
         print('PRECHECK (floating point, no branch and bound): the thresholds give %.6f against %s = %s [%.0f s]'
