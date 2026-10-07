@@ -185,7 +185,7 @@ a local search is evidence, not a proof, and the statement is of the same kind
 as the 24-plus-one exclusion below, which three-point bounds do not settle: the
 typed three-point bound on 20 centres within 2.0161, one at 2.1, three at 2.35
 and four at sqrt6 stays at 0 at degree 6, and so does the one on 23 centres
-within 2.0161, one at 2.35 and four at sqrt6 at degree 8 (`CM/c28_typed_dirs.py`).
+within 2.0161, one at 2.35 and four at sqrt6 at degrees 8 and 10 (`CM/c28_typed_dirs.py`).
 
 ## musin: where the two-point kernel fails
 
