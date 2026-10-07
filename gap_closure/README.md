@@ -177,7 +177,14 @@ on the traces of the three-point blocks in the objective (`TRACE_REG=3e-4` in
 `CM/combo_direct.py`), to damp the swings between samples, and was stopped in
 its first round, slowed by the exact check beside it, to give its place to
 degree 8 at k = 16 (`c28lo16_d8.log`, from the samples of the certificate of
-`prop:count28-few`), a certificate that would cover more cases if it exists.
+`prop:count28-few`). Its first round gave 3.09593 on the samples (3.14856
+corrected), 0.0165 above the certificate at k = 13; with the thresholds of
+`multi_cap/runs/combo28_squeeze_precheck.log` that certificate bounds its case
+0.0154 above its value on the samples, so a certificate for all of k = 16
+would land near 3.111, and the run was stopped. `c28k15f4_d8.log` aims instead
+at the one case with 15 close that the check at smaller margins leaves, 15
+within 2.0161 and 4 beyond 2.35 (`case28_k15f4.json`), where the certificate
+of `prop:count28-few` gives 3.104750.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
