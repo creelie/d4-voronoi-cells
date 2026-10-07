@@ -15,6 +15,12 @@ A_1..A_D, [[A_0, z], [z^T, t]] and the three-point blocks (Clarabel's triangle f
 upper triangle by columns, off-diagonal entries times sqrt 2).
 
 Usage: python3 combo_direct.py d3 rounds case.json        (as combo_gen2.py)
+
+With TRACE_REG=<eps> the objective is eta + eps * (the sum of the traces of the
+three-point blocks) instead of eta.  The value printed is still eta, the bound.  The
+traces grow with the degree (about 9 at degree 8 and 33 at degree 10 at 28 centres), and
+large blocks make the triple polynomials swing between the sample points; the penalty
+trades a little of the bound for smaller swings.
 """
 import gc
 import itertools
@@ -199,6 +205,11 @@ def build_and_solve(d3, rounds, psamp, tsamp):
     A = A.tocsc()
     b = np.r_[bnon, np.zeros(pb)]
     q = np.zeros(nvar); q[etai] = 1.0
+    reg = float(os.environ.get('TRACE_REG', '0'))
+    if reg:
+        for name, (o, s) in L.blocks.items():
+            I = L.idx(name)
+            q[[I[i, i] for i in range(s)]] += reg
     P = sp.csc_matrix((nvar, nvar))
     st = clarabel.DefaultSettings()
     st.max_iter = int(os.environ.get('MAX_ITER', '500'))
