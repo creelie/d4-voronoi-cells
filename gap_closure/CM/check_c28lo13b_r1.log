@@ -16,3 +16,8 @@ statement (C) at 28 centres, case case28_lo13.json: combined certificate c28lo13
   [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (12306 boxes closed, 11795 set aside, Pi in Arb at 0 corners)
   [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (6 boxes closed, 0 set aside, Pi in Arb at 0 corners)
   [ok] f <= m_b on every bin  (3698 intervals, least room 3.68e-10)
+  triple AAA: float largest 8.320207e-04 on 649660 samples; threshold 8.325950e-04; 425 monomials, symmetry 2
+  triple AAB: float largest 5.616402e-04 on 649656 samples; threshold 5.623316e-04; 425 monomials, symmetry 1
+  triple AAF: float largest 3.215639e-04 on 649567 samples; threshold 3.222705e-04; 425 monomials, symmetry 1
+  triple ABB: float largest 4.640639e-04 on 649516 samples; threshold 4.646916e-04; 425 monomials, symmetry 1
+  triple ABF: float largest 3.201323e-04 on 649349 samples; threshold 3.215218e-04; 425 monomials, symmetry 0
