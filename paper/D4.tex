@@ -9857,8 +9857,7 @@ is the data set of \cite{LLM24data}, deposited by its authors under the MIT
 licence; it is included, with its checksum and licence notice, so that the
 proof of \cref{thm:twentyfour-points} can be rerun from the archive alone.
 The programmes of the package, apart from the deposit of \cite{LLM24data},
-were written, and the computations of the paper carried out, by Deep
-Bhattacharjee. They are in Python, with NumPy,
+were written by Deep Bhattacharjee. They are in Python, with NumPy,
 SciPy, SymPy and mpmath, with python-flint for the ball arithmetic of Arb,
 and with CVXPY and Clarabel for the semidefinite programmes; in Julia, with
 ClusteredLowRankSolver, LasserreSphericalCodes and Nemo for the second
@@ -9867,12 +9866,14 @@ in C, for the enumeration of the independent sets in the graph of the
 600-cell and for an integral over $O(4)$ in the re-verification of that
 certificate; and in shell scripts that run the checks in sequence. The
 formalisation of \cref{sec:formal-part} is written in Lean~4 alone, with no
-external library. Part of this code, including the
-re-verification of the computations, the programmes behind
+external library. Deep Bhattacharjee carried out every computation and
+every check of the paper, in C, Python, Julia and Lean~4, with the
+assistance of Claude Code, the command-line tool of Anthropic in which
+their AI model Claude writes programmes and runs them in a shell. Part of
+the code, including the re-verification of the computations, the
+programmes behind
 \cref{sec:noncontact,sec:closure,sec:second-order,sec:m24-robust,sec:G-and-C}
-and part of the Lean development, was developed with the assistance of
-Claude, an AI model made by Anthropic, and its computations were run with
-it.
+and part of the Lean development, was developed with that assistance.
 
 \section*{Competing interests}
 
