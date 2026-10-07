@@ -66,6 +66,11 @@ distances (sampled with a generator of their own as well).  With ONLY=NONE the b
 and only those of the listed combinations run; the run then ends PARTIAL, and it proves
 the case together with a passing full check of the same case, certificate, arguments
 and options, whose thresholds it reproduces.
+
+With PAIR_MARGIN=<kind>:<x>[,...], e.g. PAIR_MARGIN=AA:5e-6, the pair inequalities of the
+named kinds (and the pairs of REFINE_PAIRS of those kinds) take the margin x in place of
+margin2.  A kind whose function is nearly flat on a whole face of its domain needs many
+more boxes at a small margin; this keeps its margin while the others shrink.
 """
 import itertools
 import json
@@ -93,6 +98,7 @@ EXTRA = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('TRIPLE_E
 ONLY = [e for e in os.environ.get('ONLY', '').split(',') if e]
 REFINE = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_TRIPLES', '').split(',') if e]
 REFINE_PAIRS = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_PAIRS', '').split(',') if e]
+PAIR_MARGIN = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('PAIR_MARGIN', '').split(',') if e)}
 
 
 def num(x):
@@ -218,7 +224,7 @@ def main():
         v = Kv + P3 - pair_float(p / 2, q / 2, u)
         w = np.argsort(v)[-40:]
         best = C.refine_pair(A, Pu, np.stack([p[w], q[w], u[w]], 1), box)
-        return C.above(max(float(v.max()), best) + mg2), float(v.max()), Pu
+        return C.above(max(float(v.max()), best) + PAIR_MARGIN.get(C.TYPES[i] + C.TYPES[j], mg2)), float(v.max()), Pu
 
     c2 = {}
     for (s, tt) in itertools.combinations_with_replacement(C.TYPES, 2):
