@@ -181,10 +181,18 @@ degree 8 at k = 16 (`c28lo16_d8.log`, from the samples of the certificate of
 corrected), 0.0165 above the certificate at k = 13; with the thresholds of
 `multi_cap/runs/combo28_squeeze_precheck.log` that certificate bounds its case
 0.0154 above its value on the samples, so a certificate for all of k = 16
-would land near 3.111, and the run was stopped. `c28k15f4_d8.log` aims instead
+would land near 3.111, and the run was stopped. `c28k15f4_d8.log` aimed instead
 at the one case with 15 close that the check at smaller margins leaves, 15
 within 2.0161 and 4 beyond 2.35 (`case28_k15f4.json`), where the certificate
-of `prop:count28-few` gives 3.104750.
+of `prop:count28-few` gives 3.104750: its first round gave 3.08978 on the
+samples. With the thresholds its solver found on its own samples, the
+certificate of `prop:count28-few` already gives 3.07924 at k <= 13 (the
+programme's 3.07929), 3.09042 on that case and 3.09607 at k <= 16
+(`CM/c28_sampled_eval.py`, `CM/c28_sampled_eval.log`), so a certificate built
+for either case gains at most about 6e-4 on the samples, less than the
+1.45e-3 by which the level is missed. At degree 8 the kernel is saturated near
+15 close centres. `c28lo16_d10.log` returns to degree 10 with the trace
+penalty, at k = 16, from the samples of `c28lo15b_d10.log`.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
