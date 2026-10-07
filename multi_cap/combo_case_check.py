@@ -41,6 +41,17 @@ With ONLY=<kind>[,<kind>...], e.g. ONLY=FFF, the thresholds are computed exactly
 the full check (the sampling sequence is the same), but only the branch and bound of the
 named triple kinds runs: the pair inequalities, the bins and the other triple kinds are
 skipped.  It ends with a line PARTIAL and proves the named inequalities only.
+
+With EXTRA_CASES=<case.json>[,<case.json>...] the bound with the same thresholds is
+also evaluated, in exact arithmetic, over the count vectors of each listed case file
+(same M, types and bins, other constraints) and compared with the target.  The pair
+and triple inequalities, the bins and the positivity do not depend on the count
+vectors, so a passing full check of the main case together with these comparisons
+proves the listed cases as well.  The thresholds depend on the main case file only
+through the triple kinds it allows (the sampling sequence is fixed), so with
+PRECHECK=1 and the main case and arguments of a passing full check the run reproduces
+that check's thresholds, printed for comparison, and settles the listed cases at the
+cost of the sampling alone.
 """
 import itertools
 import json
@@ -263,6 +274,25 @@ def main():
             worst, wvec = val, nb
     print('  %d count vectors, %d type-count vectors; largest bound %.6f at %s' % (len(C.COUNTS), len(cache), float(worst), wvec),
           flush=True)
+    for extra in [e for e in os.environ.get('EXTRA_CASES', '').split(',') if e]:
+        E = json.load(open(extra))
+        assert (E['M'], E['types'], E['trange'], E['bins']) == (CASE['M'], CASE['types'], CASE['trange'], CASE['bins']), extra
+        main_constraints, CASE['constraints'] = CASE['constraints'], E['constraints']
+        vecs = counts()
+        CASE['constraints'] = main_constraints
+        ew, ev = None, None
+        for nb in vecs:
+            tc = tcounts(nb)
+            key = tuple(tc[s] for s in C.TYPES)
+            if key not in cache:
+                cache[key] = (t / 2 + sum(C.Npair(tc, s, tt) * c2[(s, tt)] for (s, tt) in c2)
+                              + sum(C.Ntriple(tc, list(cb)) * c3[cb] for cb in c3))
+            val = cache[key] + sum(nb[b] * (m[b] + pt[C.BINTYPE[b]]) for b in range(len(nb)) if nb[b])
+            if ew is None or val > ew:
+                ew, ev = val, nb
+        C.check('with these thresholds, largest bound over the %d count vectors of %s below %s'
+                % (len(vecs), os.path.basename(extra), tname), A_(ew) < target,
+                '%.6f at %s < %s' % (float(ew), ev, target.str(8)))
     if ONLY and not PRE:
         print('PARTIAL: only the triple inequalities %s were checked; with the thresholds above the bound would be '
               '%.6f against %s = %s [%.0f s]' % (', '.join(ONLY), float(worst), tname, target.str(8), time.time() - t0))

@@ -365,6 +365,22 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               ONLY=FFF (or a list of kinds) only those
                               triple branch and bounds run, from the same
                               thresholds, and the run ends PARTIAL.
+                              The two further cases of prop:count28-few:
+                              with PRECHECK=1, the same certificate, case,
+                              arguments and options, and
+                              EXTRA_CASES=case28_k14f3.json,case28_k15f0.json
+                              (gap_closure/CM; at most 14 within 2.0161 and
+                              at most 3 beyond 2.35, at most 15 within
+                              2.0161 and none beyond 2.35), the run
+                              reproduces the thresholds of the passing check
+                              and compares the exact largest bound over the
+                              count vectors of each listed case with
+                              9 pi^2/8 - 8: 3.102452 at (14, 0, 11, 0, 0, 0,
+                              3) over 59 799 vectors and 3.101488 at (15, 0,
+                              13, 0, 0, 0, 0) over 26 554.  The pair, bin and
+                              triple inequalities do not involve the count
+                              vectors, so the passing check covers them.
+                              Log: runs/combo28_extra_cases.log.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
