@@ -1,0 +1,4 @@
+28 with at most 15 centres within 2.0161 and exactly 4 beyond 2.35 (case28_k15f4.json; with at most 24 within 2.35 this is 4 or more beyond), the one case with 15 close that the check at smaller margins leaves; there the certificate of prop:count28-few gives 3.104750 at (15, 0, 8, 0, 0, 1, 4).  Three-point degree 8, three rounds, from its samples (RESUME=c28lo13b_d8_r1.npz, KEEP_BASE=1, TCOPLANAR=24, TSYM=24, REFINE=100, THREADS=4).  Started Wed Oct  7 19:10:28 UTC 2026
+resumed from c28lo13b_d8_r1.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 630, 'AAB': 686, 'AAF': 701, 'ABB': 703, 'ABF': 730, 'AFF': 741, 'BBB': 741, 'BBF': 741, 'BFF': 741, 'FFF': 741}
+fixed triples per kind with the symmetric slices: {'AAA': 1465, 'AAB': 1064, 'AAF': 1075, 'ABB': 1092, 'ABF': 730, 'AFF': 1125, 'BBB': 1580, 'BBF': 1121, 'BFF': 1124, 'FFF': 1585}
