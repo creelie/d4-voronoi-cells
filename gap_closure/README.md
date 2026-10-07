@@ -346,3 +346,23 @@ rounds, down to -31, came from gaps between the quadruple samples (0.035 to
 exclusion at sqrt6 the four-point part of degree 3 gives 0 as well. Degree 5
 with <e1, e2> needs more memory than this container has. Commands and output
 are in `C30/typed4pt_runs.log`.
+
+Local bounds on the number of neighbours do not help either.
+`CM/local_counts.py` adds to the programme of `CM/combo_direct.py`, for each
+pair of types (s, t) and each band u >= alpha of inner products of
+directions, a bound kappa(s, t, alpha) on the number of centres of type t in
+that band around a centre of type s: projected to the link sphere S^2 they are
+separated, and the solved cases of the Tammes problem (up to 14 points; the
+bound of Fejes Toth beyond) limit how many fit, for example 9 A-neighbours of
+an A centre with u >= 0.45 and 7 A-neighbours of an F centre with u >= 0.6.
+Each pair inequality is relaxed by multipliers on its bands, and the bound
+pays n_s kappa for each. On the whole case at 28 and degree 6 the dual of the
+programme describes the relaxed configuration: 24 centres of type A at
+distance 2 with about 8.5 neighbours each at u = 0.5, which the count 9
+allows, and four of type F at sqrt6, each with about 7.5 A-neighbours at the
+largest inner product 0.612. Bands from 0.2 to 0.55 leave the optimum at
+3.23114 (3.23113 without them); bands at 0.6 and 0.61 bind for the F centres
+and lower it to 3.22891, while the relaxed configuration moves half a
+neighbour to just below the band (`CM/local_counts_c28.log`). The near-D4
+arrangements that defeat the kernels are locally possible; what excludes
+them is global.

@@ -1,0 +1,4 @@
+28 with at most 15 centres within 2.0161 (case28_lo15.json), three-point degree 10, from the samples of round 2 of c28s_d10.log (RESUME=c28s_d10_r2.npz, pruned), with KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, three rounds, two solver threads beside the exact check at 28.  Started Wed Oct  7 05:49:43 UTC 2026
+resumed from c28s_d10_r2.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
