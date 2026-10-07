@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1791296845.27989 "D4.tex" "D4.pdf" "D4" 1791296850.62375 0
+["pdflatex"] 1791361594.56996 "D4.tex" "D4.pdf" "D4" 1791361602.24014 0
   "/etc/texmf/web2c/texmf.cnf" 1791167710.21763 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -173,10 +173,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1791167717.02445 319537 d0d0708249356078afe7362801504ba7 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1791167733 6830979 a1e9af113476dc8647f3fd0b74091426 ""
-  "D4.aux" 1791296850.41223 182081 174bf230798986a813b68c73e285b2f9 "pdflatex"
-  "D4.out" 1791296850.42023 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
-  "D4.tex" 1791296835.87355 669541 76829c720936b459cf523c56dc43e78c ""
-  "D4.toc" 1791296850.42023 16472 6f81fd81a01817e99a698dbb53123b5b "pdflatex"
+  "D4.aux" 1791361602.00726 182814 f410bfc33815ca2f95f254ce72eae9da "pdflatex"
+  "D4.out" 1791361602.01926 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
+  "D4.tex" 1791361519.05485 676524 f3264bb3f0095a16dff6f95be9902c9b ""
+  "D4.toc" 1791361602.01926 16472 23c9c2645540f70d538fbbe7acb8c94a "pdflatex"
   "figures/fig_c_arcs.png" 1791200272.16814 336878 4c1b9c3d0b1a9128902704d0d11d85ab ""
   "figures/fig_c_boundary.png" 1791176609.09636 617440 259bcb0e568cae0aa081f441887c3181 ""
   "figures/fig_c_cap.png" 1791176609.10244 208804 61f766f080181d31da4449ac77367fa8 ""
@@ -219,7 +219,7 @@
   "figures/fig_tikz_margin.png" 1791176609.20036 202718 71f4ee41e4bb913f0c68e5f49162a6cf ""
   "figures/fig_tikz_octant.png" 1791202569.72012 174310 a1119f79717c02958aa0f93dca5208f2 ""
   "figures/fig_tikz_pairs.png" 1791195897.37618 172447 0b12ea88f9e2f793e23ee102ea5ba15c ""
-  "figures/fig_tikz_proofmap.png" 1791256038.7498 382950 07df4d354d6533fe4d43e61ef71df9d0 ""
+  "figures/fig_tikz_proofmap.png" 1791361553.63527 412729 531d6dc31651b7b23bf48f2e12fcc7af ""
   "figures/fig_tikz_radial.png" 1791176609.20436 177690 2606eab928f6c7fe871bad9952a33499 ""
   "figures/fig_tikz_radii.png" 1791179990.24433 277604 c6f56a8c5ecdeca683a54a7485d7fb81 ""
   "figures/fig_tikz_saturation.png" 1791180071.33233 226004 4fbecd017766f3755472564c3aefe113 ""

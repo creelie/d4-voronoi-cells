@@ -101,3 +101,7 @@ largest: 12
 Typed three-point bound at degree 8 (c28_typed_dirs.py 23 8 3) on 23 within 2.0161, 1 at 2.35 and 4 at sqrt6:
 d=8 round 1: optimal_inaccurate Val=2.3745e-07 corrected=3.6166e-05  maxviol=1.2e-07  [681 s]
 [stopped after round 1: the value is 0, so degree 8 does not exclude 23 centres within 2.0161 at 28; the run for 22 (c28_typed_dirs.py 22 8 3) was stopped before its first round ended]
+
+Typed three-point bound at degree 10 (c28_typed_dirs.py 23 10 3) on the same 23 + 1 + 4 directions:
+d=10 round 1: optimal_inaccurate Val=4.1487e-07 corrected=3.4434e-04  maxviol=4.1e-07  [4205 s]
+[stopped after round 1 at 03:48 UTC on 2026-10-07: the value is 0 up to solver accuracy and refining the samples can only raise it, so degree 10 does not exclude 23 centres within 2.0161 at 28 either]

@@ -30,6 +30,17 @@ With LEVEL=<decimal> the final comparison is with that number instead of 9 pi^2/
 the check then proves the density level U(Y) < LEVEL for every packing set of the case,
 whose constraints hold whenever U(Y) >= 9 pi^2/8 - 8, so that U(Y) < max(9 pi^2/8 - 8,
 LEVEL) for every packing set of M centres.
+
+With TRIPLE_EXTRA=<kind>:<x>[,<kind>:<x>...], e.g. TRIPLE_EXTRA=FFF:1e-5, the threshold
+c3 of each named triple kind is raised by x beyond the sampled and refined maximum plus
+margin3.  Sampling and SLSQP can stop below a narrow peak of a triple polynomial, and the
+branch and bound then fails on that kind alone; the extra room lets it close while every
+other threshold stays as it was.  The final bound uses the raised thresholds.
+
+With ONLY=<kind>[,<kind>...], e.g. ONLY=FFF, the thresholds are computed exactly as in
+the full check (the sampling sequence is the same), but only the branch and bound of the
+named triple kinds runs: the pair inequalities, the bins and the other triple kinds are
+skipped.  It ends with a line PARTIAL and proves the named inequalities only.
 """
 import itertools
 import json
@@ -52,6 +63,8 @@ from truncated_search import pair as pair_float  # noqa: E402
 CASE = json.load(open(sys.argv[1]))
 PRE = os.environ.get('PRECHECK') == '1'
 BORDER = os.environ.get('BORDER') == '1'
+EXTRA = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('TRIPLE_EXTRA', '').split(',') if e)}
+ONLY = [e for e in os.environ.get('ONLY', '').split(',') if e]
 
 
 def num(x):
@@ -183,7 +196,7 @@ def main():
     jobs = [(A, C.pair3_poly(Bk, d3, C.TYPES.index(s), C.TYPES.index(tt)), c2[(s, tt)], (C.TRANGE[s], C.TRANGE[tt]), s == tt)
             for (s, tt) in c2]
     from multiprocessing import Pool
-    if not PRE:
+    if not PRE and not ONLY:
         with Pool(min(int(os.environ.get('PAIR_PROCS', '3')), len(jobs))) as pool:
             res = pool.starmap(C.pair_box_check, jobs)
         for (s, tt), (ok, msg) in zip(c2, res):
@@ -192,7 +205,7 @@ def main():
     mf = np.array(Z['m'], float)
     assert len(mf) == len(C.BINTYPE)
     m = [C.above(v + mgm) for v in mf]
-    if not PRE:
+    if not PRE and not ONLY:
         okb, msg = bracket_check(A, z, D2, R2, C1, C2, C.DMAX, C.EDGES, m)
         C.check('f <= m_b on every bin', okb, msg)
     # (d) triples
@@ -210,7 +223,7 @@ def main():
         g = np.r_[g, G]
         vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
         best = C.refine_triple(P, g[np.argsort(vals)[-40:]], (float(T12), float(T13), float(T23)))
-        c3[combo] = C.above(max(float(vals.max()), best) + mg3)
+        c3[combo] = C.above(max(float(vals.max()), best) + mg3 + EXTRA.get(''.join(combo), 0.0))
         perm, sym = C.triple_layout(combo)
         tops = [None] * 3
         for src, val in enumerate((T12, T13, T23)):
@@ -221,11 +234,15 @@ def main():
             for src in range(3):
                 ee[perm.index(src)] += e[src]
             Pr[tuple(ee)] = Pr.get(tuple(ee), 0) + co
-        print('  triple %s: float largest %.6e on %d samples; threshold %.6e; %d monomials, symmetry %d'
-              % (''.join(combo), vals.max(), len(g), float(c3[combo]), len(P), sym), flush=True)
+        print('  triple %s: float largest %.6e on %d samples; threshold %.6e%s; %d monomials, symmetry %d'
+              % (''.join(combo), vals.max(), len(g), float(c3[combo]),
+                 ' (refined %.6e, extra %g)' % (best, EXTRA[''.join(combo)]) if ''.join(combo) in EXTRA else '',
+                 len(P), sym), flush=True)
+        if ONLY and ''.join(combo) not in ONLY:
+            continue
         tjobs.append((combo, (Pr, tops, sym, float(c3[combo]), ''.join(combo))))
     if not PRE:
-        with Pool(int(os.environ.get('TRIPLE_PROCS', '3'))) as pool:
+        with Pool(min(int(os.environ.get('TRIPLE_PROCS', '3')), len(tjobs))) as pool:
             res = pool.starmap(C.triple_box_check, [a for _, a in tjobs])
         nbox = 0
         for (combo, _), (ok, msg, nd) in zip(tjobs, res):
@@ -246,6 +263,10 @@ def main():
             worst, wvec = val, nb
     print('  %d count vectors, %d type-count vectors; largest bound %.6f at %s' % (len(C.COUNTS), len(cache), float(worst), wvec),
           flush=True)
+    if ONLY and not PRE:
+        print('PARTIAL: only the triple inequalities %s were checked; with the thresholds above the bound would be '
+              '%.6f against %s = %s [%.0f s]' % (', '.join(ONLY), float(worst), tname, target.str(8), time.time() - t0))
+        return
     if PRE:
         print('PRECHECK (floating point, no branch and bound): the thresholds give %.6f against %s = %s [%.0f s]'
               % (float(worst), tname, target.str(8), time.time() - t0))
