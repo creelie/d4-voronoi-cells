@@ -9,3 +9,10 @@ statement (C) at 28 centres, case case28_lo13.json: combined certificate c28lo13
   pair BB: float largest K + PAIR3 - Pi 6.596511e-02 (file c2 6.596460e-02); threshold 6.597015e-02
   pair BF: float largest K + PAIR3 - Pi 7.086813e-02 (file c2 7.086644e-02); threshold 7.087321e-02
   pair FF: float largest K + PAIR3 - Pi 7.557776e-02 (file c2 7.557772e-02); threshold 7.558276e-02
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (3167158 boxes closed, 2513403 set aside, Pi in Arb at 3167109 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (65434 boxes closed, 66823 set aside, Pi in Arb at 3154 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (30745 boxes closed, 31040 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (3707 boxes closed, 3034 set aside, Pi in Arb at 434 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (12306 boxes closed, 11795 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (6 boxes closed, 0 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (3698 intervals, least room 3.68e-10)
