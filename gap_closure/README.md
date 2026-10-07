@@ -164,7 +164,7 @@ degree 6 (floating point, `c28lo{k}_d6.log`):
 
 At degree 8 the value drops by about 0.11 (k = 19: 3.09003 in round 1,
 `c28lo19_d8.log`; k = 20: 3.10234, `c28lo20_d8.log`, stopped when the smaller
-limits came in). `c28lo13_d8.log` runs k = 13 at degree 8 for four rounds.
+limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`).
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
@@ -179,12 +179,13 @@ centre of a 9-centre code in from 2.1 to 2.0161 in small steps
 that makes the 21 distances within 2.1 variables and rewards those at 2.0161
 (`CM/c28_maxclose.py`) finds 12 in 2000 starts and never 13
 (`CM/c28_close12_witness.txt`, slack 1e-5; from it `CM/c28_extend.py` misses
-13 by 4.2e-3). At 27 the same search finds 18. So the limit k at 28 has to be
+13 by 4.2e-3, and 600 steps of basin hopping, `CM/c28_hop.py`, stay at 12). At 27 the same search finds 18. So the limit k at 28 has to be
 at least 12, and at 27 at least 18. A miss in
 a local search is evidence, not a proof, and the statement is of the same kind
 as the 24-plus-one exclusion below, which three-point bounds do not settle: the
 typed three-point bound on 20 centres within 2.0161, one at 2.1, three at 2.35
-and four at sqrt6 stays at 0 (`CM/c28_typed_dirs.py`).
+and four at sqrt6 stays at 0 at degree 6, and so does the one on 23 centres
+within 2.0161, one at 2.35 and four at sqrt6 at degree 8 (`CM/c28_typed_dirs.py`).
 
 ## musin: where the two-point kernel fails
 
@@ -325,3 +326,23 @@ sqrt6 fall about tenfold per degree (+1.87, +0.167, +0.018, +0.0015 at
 degrees 10 to 16); those of the 0.71 control, where no certificate can
 exist, fall too (+5.56, +0.951, +0.192 at degrees 10 to 14), so the fall
 alone does not point towards a certificate.
+
+A four-point kernel does not help at the degrees that fit here.
+`C30/typed4pt.py` adds to the typed three-point kernel of `C30/typed3pt.py` a
+kernel that fixes two of the directions, e1 and e2, expands every other
+direction x in Chebyshev polynomials of (<e1, x>, <e2, x>) (and, with
+`WITH_S=1`, of <e1, e2>), and multiplies by the zonal functions of the plane
+orthogonal to e1 and e2; summed over the code it is a sum over pairs, triples
+and quadruples, and `typed4pt.py selftest` checks that grouping against the
+direct sum over the ordered poles (difference 1e-10). On 25 directions with
+inner products at most t the three-point part of degree 8 alone excludes the
+code up to t = 0.507 (corrected value -0.0096 there) and gives 0 from 0.508
+on; at degree 4 it gives 0 already at 0.5. Four-point parts of degree 3 and 5
+at t = 0.508 (over three-point degree 8), and of degree 3 (with or without
+<e1, e2>) and 5 at t = 0.5 (over three-point degree 4), all settle at the
+value 0 once the samples are refined. The negative values of their first
+rounds, down to -31, came from gaps between the quadruple samples (0.035 to
+0.053 in round 1), and fell to 0 as the gaps closed. On the 24-plus-one
+exclusion at sqrt6 the four-point part of degree 3 gives 0 as well. Degree 5
+with <e1, e2> needs more memory than this container has. Commands and output
+are in `C30/typed4pt_runs.log`.
