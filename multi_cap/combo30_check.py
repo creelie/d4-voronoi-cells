@@ -62,6 +62,7 @@ from certificate_check import (padd, pscale, pmul, univariate, gegenbauer_S3, le
 from truncated_search import pair as pair_float, S as S_float  # noqa: E402
 
 D2, R2 = 12, 4
+TAYLOR_MONO = os.environ.get('TRIPLE_TAYLOR', '') == 'mono'   # see triple_box_check
 DMAX = Fr(24494898, 10000000)                      # above sqrt 6
 TYPES = ['A', 'B', 'F']
 TRANGE = {'A': (Fr(2), Fr(205, 100)), 'B': (Fr(205, 100), Fr(225, 100)), 'F': (Fr(24, 10), DMAX)}
@@ -341,7 +342,11 @@ def pair_box_check(A, Pu, c2, box, symmetric, depth_max=70, batch=20000):
 
 def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000):
     """P <= cmax on {-1 <= x_i <= tops[i], Gram det >= 0} with x0 <= x1 if sym >= 1 and
-    x1 <= x2 if sym == 2, by second-order Taylor forms (typed_cardinality_check.verify_3d)."""
+    x1 <= x2 if sym == 2, by second-order Taylor forms (typed_cardinality_check.verify_3d).
+    With TRIPLE_TAYLOR=mono in the environment two sharper forms are used: on a box where
+    dP/dx_v has one sign the form is taken on the face where P is larger (it bounds P on the
+    whole box), and a diagonal second derivative enters through its upper end cut at 0, since
+    (x_v - c_v)^2 >= 0.  Both stay valid bounds; they matter where P comes close to cmax."""
     Pp = Poly(P); Dv = [Poly(derivative(P, v)) for v in range(3)]
     H = {(v, w): Poly(derivative(derivative(P, v), w)) for v in range(3) for w in range(v, 3)}
     det = Poly({(0, 0, 0): Fr(1), (1, 1, 1): Fr(2), (2, 0, 0): Fr(-1), (0, 2, 0): Fr(-1), (0, 0, 2): Fr(-1)})
@@ -359,7 +364,15 @@ def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000):
             _, dhi = det.eval((L, Hh))
             alive &= dhi >= 0
             n_out += int(np.sum(~alive))
-            c = (L + Hh) / 2; r = np.maximum(up(Hh - c), up(c - L))      # covers [L, Hh] although c is rounded
+            Lt, Ht = L, Hh
+            if TAYLOR_MONO:
+                # where dP/dx_v > 0 (< 0) on the whole box, P is largest on the face x_v = hi (lo):
+                # the bound below is taken on that face, which contains the largest value on the box
+                Lt, Ht = L.copy(), Hh.copy()
+                for v in range(3):
+                    gblo, gbhi = Dv[v].eval((L, Hh))
+                    Lt[v] = np.where(gblo > 0, Hh[v], Lt[v]); Ht[v] = np.where(gbhi < 0, L[v], Ht[v])
+            c = (Lt + Ht) / 2; r = np.maximum(up(Ht - c), up(c - Lt))      # covers [Lt, Ht] although c is rounded
             _, p_c = Pp.eval((c, c))
             dclo, _ = det.eval((c, c))
             inside = alive & (dclo >= 0)
@@ -377,10 +390,13 @@ def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000):
                 term = up(g * r[v]); first = up(first + term); contrib[v] = term
             second = np.zeros(c.shape[1])
             for (v, w), Hp in H.items():
-                hlo, hhi = Hp.eval((L, Hh))
+                hlo, hhi = Hp.eval((Lt, Ht))
                 habs = np.maximum(np.abs(hlo), np.abs(hhi))
                 if v == w:
-                    term = up(habs * up(r[v] * r[v])); second = up(second + term); contrib[v] = up(contrib[v] + term)
+                    # (x_v - c_v)^2 lies in [0, r_v^2], so with TAYLOR_MONO the upper end of d2P/dx_v^2,
+                    # cut at 0, bounds its term
+                    hdiag = np.maximum(hhi, 0.0) if TAYLOR_MONO else habs
+                    term = up(hdiag * up(r[v] * r[v])); second = up(second + term); contrib[v] = up(contrib[v] + term)
                 else:
                     term = up(up(2 * habs) * up(r[v] * r[w])); second = up(second + term)
                     contrib[v] = up(contrib[v] + term); contrib[w] = up(contrib[w] + term)
@@ -394,6 +410,10 @@ def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000):
                     return False, 'undecided box below width %g' % wmin, n_done
                 Lu, Hu = L[:, und], Hh[:, und]
                 axis = np.argmax(contrib[:, und], axis=0)
+                if TAYLOR_MONO:
+                    # a centre above cmax is outside the domain (else the check has failed): cut the
+                    # widest side, so that the Gram condition can discard the parts outside
+                    axis = np.where(p_c[und] > cmax, np.argmax(w_[:, und], axis=0), axis)
                 mid = (Lu + Hu) / 2
                 A_hi = Hu.copy(); B_lo = Lu.copy()
                 for v in range(3):

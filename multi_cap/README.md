@@ -365,7 +365,8 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               ONLY=FFF (or a list of kinds) only those
                               triple branch and bounds run, from the same
                               thresholds, and the run ends PARTIAL.
-                              The two further cases of prop:count28-few:
+                              Two further cases, now inside those of the next
+                              paragraph:
                               with PRECHECK=1, the same certificate, case,
                               arguments and options, and
                               EXTRA_CASES=case28_k14f3.json,case28_k15f0.json
@@ -381,6 +382,23 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               triple inequalities do not involve the count
                               vectors, so the passing check covers them.
                               Log: runs/combo28_extra_cases.log.
+                              The cases of prop:count28-few with 14 and 15
+                              within 2.0161: the same certificate, case,
+                              arguments and options, with ONLY=NONE,
+                              REFINE_TRIPLES=1-3-7,3-3-3,1-1-3,1-6-7,1-7-7,1-1-6,
+                              REFINE_PAIRS=3-6,6-6 and
+                              EXTRA_CASES=case28_k14.json,case28_k15f2.json
+                              (at most 14 within 2.0161; at most 15 within
+                              2.0161 and at most 2 beyond 2.35).  Each listed
+                              combination of bins gets the constant of its
+                              smaller set of inner products, checked by its
+                              own branch and bound (13 315 362 boxes in all),
+                              and the bound counts each pair or triple with
+                              the constant of its bins where one is given:
+                              3.102386 at (14, 0, 9, 0, 0, 1, 4) over 62 865
+                              vectors and 3.102823 at (15, 0, 8, 0, 0, 3, 2)
+                              over 55 611.  Log:
+                              runs/combo28_refined_check.log.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
