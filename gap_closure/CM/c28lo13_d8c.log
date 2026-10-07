@@ -1,0 +1,4 @@
+28 with at most 13 centres within 2.0161 (case28_lo13.json), three-point degree 8, continued from round 1 of c28lo13_d8b.log (RESUME=c28lo13b_d8_r1.npz, KEEP_BASE=1, TCOPLANAR=24, TSYM=24, REFINE=100), two more rounds.  Started Wed Oct  7 00:44:56 UTC 2026
+resumed from c28lo13b_d8_r1.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 630, 'AAB': 686, 'AAF': 701, 'ABB': 703, 'ABF': 730, 'AFF': 741, 'BBB': 741, 'BBF': 741, 'BFF': 741, 'FFF': 741}
+fixed triples per kind with the symmetric slices: {'AAA': 1465, 'AAB': 1064, 'AAF': 1075, 'ABB': 1092, 'ABF': 730, 'AFF': 1125, 'BBB': 1580, 'BBF': 1121, 'BFF': 1124, 'FFF': 1585}

@@ -16,3 +16,4 @@ d3=8 round 1: optimal_inaccurate  bound 3.07929 (target 3.10330), corrected <= 3
    c2: {'AA': 0.058134, 'AB': 0.064308, 'AF': 0.071608, 'BB': 0.065965, 'BF': 0.070866, 'FF': 0.075578}
    c3: {'AAA': 0.0008317, 'AAB': 0.0005604, 'AAF': 0.0003189, 'ABB': 0.0004614, 'ABF': 0.0003064, 'AFF': 0.000141, 'BBB': 0.0005348, 'BBF': 0.0004756, 'BFF': 0.0004618, 'FFF': 0.0007685}
    direct: 5898 variables, 114553 inequalities, 4299 psd rows in 48 cones, 54340525 nonzeros [14 s to build]
+[stopped at about 00:40 UTC on 2026-10-07 in round 2 by a container restart; continued as c28lo13c from the round-1 samples, log c28lo13_d8c.log]
