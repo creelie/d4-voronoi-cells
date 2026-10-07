@@ -164,7 +164,7 @@ degree 6 (floating point, `c28lo{k}_d6.log`):
 
 At degree 8 the value drops by about 0.11 (k = 19: 3.09003 in round 1,
 `c28lo19_d8.log`; k = 20: 3.10234, `c28lo20_d8.log`, stopped when the smaller
-limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`).
+limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`): round 1 gave 3.07929 on the samples and 3.09797 corrected, and the precheck of that certificate (`CM/c28lo13b_d8_r1.npz`, margins 5e-6, 5e-7, 1e-6, `BORDER=1`, `pre_c28lo13b_r1_small.log`) gives 3.100569 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. Its exact check runs in `CM/check_c28lo13b_r1.log`. A further round from those samples (`c28lo13_d8c.log`) gave 3.07941 and 3.10486 corrected and was stopped for the check.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
