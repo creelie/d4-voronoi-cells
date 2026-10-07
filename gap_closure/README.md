@@ -1,18 +1,19 @@
 # gap_closure: floating-point explorations of the open cases
 
 This directory holds the computations run against the two statements that the
-paper leaves open (Section "The statements (G) and (C)"): statement (C) for
-25 to 28 centres within sqrt6 and statement (G), and the two cases they
-settled, the residual case at thirty centres and the whole case at
-twenty-nine. They are floating-point semidefinite programmes on sampled
-constraints. **Two of them yield certificates**: the round-3 certificate of
-`C30/combo30p.py`, which `multi_cap/combo30_check.py` proves exactly and which
-is the fifth case of `thm:count30`, and the certificate of the run `c29r4` of
+paper leaves open (Section "The statements (G) and (C)"): statement (C) for 25
+to 28 centres within sqrt6 and statement (G), and the three cases they
+settled, the residual case at thirty centres, the whole case at twenty-nine,
+and twenty-eight with at most thirteen centres within 2.0161. They are
+floating-point semidefinite programmes on sampled constraints. **Three of them
+yield certificates**: the round-3 certificate of `C30/combo30p.py`, which
+`multi_cap/combo30_check.py` proves exactly and which is the fifth case of
+`thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
-which is `thm:count29`. The rest are kept
-so that the values quoted in the paper and in the pull requests can be
-reproduced, and no result of theirs is used in any proof, except the exact
-checks logged in `density/check_M.log` (see the last section).
+which are `thm:count29` and `prop:count28-few`. The rest are kept so that the
+values quoted in the paper and in the pull requests can be reproduced, and no
+result of theirs is used in any proof, except the exact checks logged in
+`density/check_M.log` (see the last section).
 
 The level that (C) asks for is `9 pi^2/8 - 8 = 3.10330`: a programme proves a
 case only if its bound, after the correction for the constraints that the
@@ -164,7 +165,7 @@ degree 6 (floating point, `c28lo{k}_d6.log`):
 
 At degree 8 the value drops by about 0.11 (k = 19: 3.09003 in round 1,
 `c28lo19_d8.log`; k = 20: 3.10234, `c28lo20_d8.log`, stopped when the smaller
-limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`): round 1 gave 3.07929 on the samples and 3.09797 corrected, and the precheck of that certificate (`CM/c28lo13b_d8_r1.npz`, margins 5e-6, 5e-7, 1e-6, `BORDER=1`, `pre_c28lo13b_r1_small.log`) gives 3.100569 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. Its first exact check (`CM/check_c28lo13b_r1.log`, 3.5 hours) proved the positivity, the six pair inequalities, the bins and nine of the ten triple inequalities, and failed on the kind FFF: a box with value 7.693729e-04 above the threshold 7.693708e-04. That threshold is the largest sampled value refined by SLSQP from the 40 best samples, plus margin3, and the sampling stopped below a narrow peak near 7.7176e-04 (ascent from 600 starts). The rerun raises that one threshold by 1e-5 (`TRIPLE_EXTRA=FFF:1e-5` in `multi_cap/combo_case_check.py`), which adds 4e-5 to the bound at (13, 0, 11, 0, 0, 0, 4), where four triples are of kind FFF, and runs in `CM/check_c28lo13b_r2.log`. A further round from those samples (`c28lo13_d8c.log`) gave 3.07941 and 3.10486 corrected and was stopped for the check.
+limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`): round 1 gave 3.07929 on the samples and 3.09797 corrected, and the precheck of that certificate (`CM/c28lo13b_d8_r1.npz`, margins 5e-6, 5e-7, 1e-6, `BORDER=1`, `pre_c28lo13b_r1_small.log`) gives 3.100569 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. Its first exact check (`CM/check_c28lo13b_r1.log`, 3.5 hours) proved the positivity, the six pair inequalities, the bins and nine of the ten triple inequalities, and failed on the kind FFF: a box with value 7.693729e-04 above the threshold 7.693708e-04. That threshold is the largest sampled value refined by SLSQP from the 40 best samples, plus margin3, and the sampling stopped below a narrow peak near 7.7176e-04 (ascent from 600 starts). The rerun raises that one threshold by 1e-5 (`TRIPLE_EXTRA=FFF:1e-5` in `multi_cap/combo_case_check.py`), which adds 4e-5 to the bound at (13, 0, 11, 0, 0, 0, 4), where four triples are of kind FFF, and passes (`CM/check_c28lo13b_r2.log`, copied to `multi_cap/runs/combo28_lo13_check.log`): 15 805 222 triple boxes and the largest bound 3.100609 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. This is `prop:count28-few`, and `c28lo13b_d8_r1.npz` is `multi_cap/radial_certificates/combo28_lo13_d8.npz`. The certificate reaches no further: with its proved thresholds the bound is 3.105310 at k = 14 and 3.149929 at k = 24, between 0.0043 and 0.0047 more for each further close centre (`CM/c28_kscan.py`, `CM/c28_kscan.log`). `CM/c28_config_test.py` checks the implementation on actual sets of 28 directions and distances, where the bound B(Y) of the kernels must lie above the union of caps U(Y): on the 12-close witness U = 2.263412 and B = 2.593852, and on the root system with four centres in deep holes U = 3.196365 and B = 3.702009 (`CM/c28_config_test.log`). A further round from those samples (`c28lo13_d8c.log`) gave 3.07941 and 3.10486 corrected and was stopped for the check.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
@@ -209,7 +210,9 @@ T(Y) <= 8 + eta have directions within an explicit root-sum-square distance
 rho(eta) of a root system. Through `cor:no-room`, the residual case at thirty
 would have needed rho < 0.206 at eta = 0.00368; the kernel on typed triples
 settled that case instead (`thm:count30`), and (L) remains the route for
-twenty-five to twenty-eight centres and for (G).
+twenty-five to twenty-seven centres, for twenty-eight with at least fourteen
+within 2.0161 (`prop:count28-few` settles the rest of twenty-eight), and for
+(G).
 
 `budget_far.py` maximises the distance to the nearest root system under
 T(Y) <= 8 + eta and the packing conditions, from root systems pushed out at

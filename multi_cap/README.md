@@ -343,6 +343,28 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.253872 at (24, 0, 0, 0, 0, 0, 0); this is
                               L_24 = 3.2539.  Four minutes.  Log:
                               runs/combo24_level_check.log.
+                              prop:count28-few: on
+                              radial_certificates/combo28_lo13_d8.npz with
+                              gap_closure/CM/case28_lo13.json (at most 13
+                              centres within 2.0161), margins 5e-6, 5e-7,
+                              1e-6, BORDER=1 and TRIPLE_EXTRA=FFF:1e-5 it
+                              passes: the six pair inequalities (3 279 356
+                              boxes), the bins (3 698 intervals), the ten
+                              triple inequalities (15 805 222 boxes), and
+                              the largest bound over the 60 214 count
+                              vectors, 3.100609 at (13, 0, 11, 0, 0, 0, 4),
+                              below 9 pi^2/8 - 8.  3.8 hours on four cores.
+                              Log: runs/combo28_lo13_check.log.  With
+                              TRIPLE_EXTRA=FFF:1e-5 the threshold of the
+                              triple kind FFF is raised by 1e-5 beyond its
+                              sampled and refined maximum: without it the
+                              first run passed everything else and failed on
+                              FFF, whose narrow peak (about 7.7176e-4) the
+                              samples missed by 3e-6 (log
+                              gap_closure/CM/check_c28lo13b_r1.log).  With
+                              ONLY=FFF (or a list of kinds) only those
+                              triple branch and bounds run, from the same
+                              thresholds, and the run ends PARTIAL.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
