@@ -343,7 +343,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.253872 at (24, 0, 0, 0, 0, 0, 0); this is
                               L_24 = 3.2539.  Four minutes.  Log:
                               runs/combo24_level_check.log.
-                              prop:count28-few: on
+                              prop:count28-few, first at larger margins: on
                               radial_certificates/combo28_lo13_d8.npz with
                               gap_closure/CM/case28_lo13.json (at most 13
                               centres within 2.0161), margins 5e-6, 5e-7,
@@ -382,8 +382,8 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               triple inequalities do not involve the count
                               vectors, so the passing check covers them.
                               Log: runs/combo28_extra_cases.log.
-                              The cases of prop:count28-few with 14 and 15
-                              within 2.0161: the same certificate, case,
+                              Then, at the same margins, the cases with 14
+                              and 15 within 2.0161: the same certificate, case,
                               arguments and options, with ONLY=NONE,
                               REFINE_TRIPLES=1-3-7,3-3-3,1-1-3,1-6-7,1-7-7,1-1-6,
                               REFINE_PAIRS=3-6,6-6 and
@@ -399,6 +399,45 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               vectors and 3.102823 at (15, 0, 8, 0, 0, 3, 2)
                               over 55 611.  Log:
                               runs/combo28_refined_check.log.
+                              The proposition as it stands: the same
+                              certificate and case at margins 1e-6, 5e-8, 1e-7
+                              with PAIR_MARGIN=AA:5e-6 (the AA pair inequality
+                              is within 1e-5 of its largest value all over its
+                              touching face), BORDER=1, TRIPLE_EXTRA=FFF:1e-5,
+                              the REFINE_TRIPLES and REFINE_PAIRS above, all
+                              kinds checked again, and
+                              EXTRA_CASES=case28_k14.json,case28_k15f3.json,case28_k16f0.json
+                              (at most 15 within 2.0161 and at most 3 beyond
+                              2.35; at most 16 within 2.0161 and none beyond).
+                              It passes: the six pair inequalities (3 532 617
+                              boxes), the bins (8 511 intervals), the ten
+                              triple inequalities (17 006 005 boxes), the
+                              refined combinations (14 396 003 boxes), and
+                              3.099739 at (14, 0, 9, 0, 0, 1, 4) over 62 865
+                              vectors, 3.102197 at (15, 0, 8, 0, 0, 2, 3) over
+                              62 063 and 3.102468 at (16, 0, 7, 0, 0, 5, 0)
+                              over 27 423.  6.8 hours on four cores, beside
+                              other runs.
+                              Log: runs/combo28_squeeze_check.log.
+                              Mixed certificates for the cases it leaves
+                              (gap_closure/CM/c28_hull.py; convex
+                              combinations of earlier certificates, each
+                              projected onto the positive semidefinite
+                              matrices, three-point degree 10):
+                              radial_certificates/combo28_mix1516_d10.npz on
+                              case28_k15f4.json with
+                              EXTRA_CASES=case28_k16f1.json, and
+                              radial_certificates/combo28_mix16_d10.npz on
+                              case28_lo16.json, margins 2e-6, 2e-7, 5e-7,
+                              BORDER=1, PAIR_MARGIN=AA:5e-6,
+                              TRIPLE_EXTRA=AAA:4e-7 (and AAB:2e-7 for the
+                              second).  Prechecks 3.098860 and 3.098060
+                              (runs/combo28_mix1516_precheck.log) and
+                              3.101264 (runs/combo28_mix16_precheck.log);
+                              the exact checks are running
+                              (runs/combo28_mix1516_check.log,
+                              runs/combo28_mix16_check.log), and nothing
+                              rests on them until one passes.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

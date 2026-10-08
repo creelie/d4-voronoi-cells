@@ -5,7 +5,7 @@ paper leaves open (Section "The statements (G) and (C)"): statement (C) for 25
 to 28 centres within sqrt6 and statement (G), and the three cases they
 settled, the residual case at thirty centres, the whole case at twenty-nine,
 and twenty-eight with at most fourteen centres within 2.0161 (fifteen with
-at most two beyond 2.35). They are
+at most three beyond 2.35, sixteen with none). They are
 floating-point semidefinite programmes on sampled constraints. **Three of them
 yield certificates**: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
@@ -166,7 +166,72 @@ degree 6 (floating point, `c28lo{k}_d6.log`):
 
 At degree 8 the value drops by about 0.11 (k = 19: 3.09003 in round 1,
 `c28lo19_d8.log`; k = 20: 3.10234, `c28lo20_d8.log`, stopped when the smaller
-limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`): round 1 gave 3.07929 on the samples and 3.09797 corrected, and the precheck of that certificate (`CM/c28lo13b_d8_r1.npz`, margins 5e-6, 5e-7, 1e-6, `BORDER=1`, `pre_c28lo13b_r1_small.log`) gives 3.100569 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. Its first exact check (`CM/check_c28lo13b_r1.log`, 3.5 hours) proved the positivity, the six pair inequalities, the bins and nine of the ten triple inequalities, and failed on the kind FFF: a box with value 7.693729e-04 above the threshold 7.693708e-04. That threshold is the largest sampled value refined by SLSQP from the 40 best samples, plus margin3, and the sampling stopped below a narrow peak near 7.7176e-04 (ascent from 600 starts). The rerun raises that one threshold by 1e-5 (`TRIPLE_EXTRA=FFF:1e-5` in `multi_cap/combo_case_check.py`), which adds 4e-5 to the bound at (13, 0, 11, 0, 0, 0, 4), where four triples are of kind FFF, and passes (`CM/check_c28lo13b_r2.log`, copied to `multi_cap/runs/combo28_lo13_check.log`): 15 805 222 triple boxes and the largest bound 3.100609 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. This is `prop:count28-few`, and `c28lo13b_d8_r1.npz` is `multi_cap/radial_certificates/combo28_lo13_d8.npz`. Over all count vectors the certificate reaches no further: with its proved thresholds the bound is 3.105310 at k = 14 and 3.149929 at k = 24, between 0.0043 and 0.0047 more for each further close centre (`CM/c28_kscan.py`, `CM/c28_kscan.log`). It does reach two more cases once the centres beyond 2.35 are bounded, since the worst vectors have four of them: at most 14 within 2.0161 with at most 3 beyond 2.35 (3.102452 at (14, 0, 11, 0, 0, 0, 3), `CM/case28_k14f3.json`) and at most 15 within 2.0161 with none beyond (3.101488 at (15, 0, 13, 0, 0, 0, 0), `CM/case28_k15f0.json`); at 15 with one beyond it would be 3.103335, just above. The pair, bin and triple inequalities do not involve the counts, so the passing check proves these cases once the exact largest bound over their count vectors lies below the level; the `EXTRA_CASES` option of `multi_cap/combo_case_check.py` computes it (`multi_cap/runs/combo28_extra_cases.log`). Narrower bins then reach one centre further. Three centres in the bins b, b' and b'' have inner products at most a(rho_b, rho_b'), a(rho_b, rho_b'') and a(rho_b', rho_b''), with rho_b the upper end of bin b, because a increases in each argument; so the inequality on triples of their kind holds on that smaller set with a smaller constant, and the same goes for pairs. The options `REFINE_TRIPLES` and `REFINE_PAIRS` of `multi_cap/combo_case_check.py` compute such constants with the same margins and check them by branch and bound; with `ONLY=NONE` the kinds themselves are not checked again (the passing check above covers them, with the same thresholds). For the triples in the bins (1, 3, 7) and (1, 6, 7) the constant drops from 3.2152e-4 to 3.1880e-4, for (3, 3, 3) from 5.4355e-4 to 5.3549e-4, for (1, 1, 3) from 5.6233e-4 to 5.6168e-4, and for the pairs in (3, 6) and (6, 6) from 6.59702e-2 to 6.59505e-2 and 6.59697e-2; the bins (1, 7, 7) and (1, 1, 6) give no measurable gain. The check (`multi_cap/runs/combo28_refined_check.log`, 13 315 362 further boxes, 8 792 068 of them for the combinations that lower a constant) gives 3.102386 at (14, 0, 9, 0, 0, 1, 4) over the 62 865 count vectors with at most 14 within 2.0161 (`CM/case28_k14.json`), and 3.102823 at (15, 0, 8, 0, 0, 3, 2) over the 55 611 with at most 15 within 2.0161 and at most 2 beyond 2.35 (`CM/case28_k15f2.json`), both below 3.10330; at 15 with 3 beyond it would be about 3.10479 at (15, 0, 8, 0, 0, 2, 3), above. `prop:count28-few` includes both cases. `CM/c28_config_test.py` checks the implementation on actual sets of 28 directions and distances, where the bound B(Y) of the kernels must lie above the union of caps U(Y): on the 12-close witness U = 2.263412 and B = 2.593852, and on the root system with four centres in deep holes U = 3.196365 and B = 3.702009 (`CM/c28_config_test.log`). A further round from those samples (`c28lo13_d8c.log`) gave 3.07941 and 3.10486 corrected and was stopped for the check.
+limits came in). `c28lo13_d8.log` ran k = 13 at degree 8 for four rounds: 3.06625, 3.07708, 3.07872, 3.07913 on the samples, corrected at best 3.14343 (round 3; in round 4 the pair functions bulged between samples); `c28lo13_d8b.log` continues it with the starting pair grid kept through every pruning (`KEEP_BASE=1`): round 1 gave 3.07929 on the samples and 3.09797 corrected, and the precheck of that certificate (`CM/c28lo13b_d8_r1.npz`, margins 5e-6, 5e-7, 1e-6, `BORDER=1`, `pre_c28lo13b_r1_small.log`) gives 3.100569 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. Its first exact check (`CM/check_c28lo13b_r1.log`, 3.5 hours) proved the positivity, the six pair inequalities, the bins and nine of the ten triple inequalities, and failed on the kind FFF: a box with value 7.693729e-04 above the threshold 7.693708e-04. That threshold is the largest sampled value refined by SLSQP from the 40 best samples, plus margin3, and the sampling stopped below a narrow peak near 7.7176e-04 (ascent from 600 starts). The rerun raises that one threshold by 1e-5 (`TRIPLE_EXTRA=FFF:1e-5` in `multi_cap/combo_case_check.py`), which adds 4e-5 to the bound at (13, 0, 11, 0, 0, 0, 4), where four triples are of kind FFF, and passes (`CM/check_c28lo13b_r2.log`, copied to `multi_cap/runs/combo28_lo13_check.log`): 15 805 222 triple boxes and the largest bound 3.100609 at (13, 0, 11, 0, 0, 0, 4), below 3.10330. This was the first form of `prop:count28-few`, and `c28lo13b_d8_r1.npz` is `multi_cap/radial_certificates/combo28_lo13_d8.npz`. Over all count vectors the certificate reaches no further: with its proved thresholds the bound is 3.105310 at k = 14 and 3.149929 at k = 24, between 0.0043 and 0.0047 more for each further close centre (`CM/c28_kscan.py`, `CM/c28_kscan.log`). It does reach two more cases once the centres beyond 2.35 are bounded, since the worst vectors have four of them: at most 14 within 2.0161 with at most 3 beyond 2.35 (3.102452 at (14, 0, 11, 0, 0, 0, 3), `CM/case28_k14f3.json`) and at most 15 within 2.0161 with none beyond (3.101488 at (15, 0, 13, 0, 0, 0, 0), `CM/case28_k15f0.json`); at 15 with one beyond it would be 3.103335, just above. The pair, bin and triple inequalities do not involve the counts, so the passing check proves these cases once the exact largest bound over their count vectors lies below the level; the `EXTRA_CASES` option of `multi_cap/combo_case_check.py` computes it (`multi_cap/runs/combo28_extra_cases.log`). Narrower bins then reach one centre further. Three centres in the bins b, b' and b'' have inner products at most a(rho_b, rho_b'), a(rho_b, rho_b'') and a(rho_b', rho_b''), with rho_b the upper end of bin b, because a increases in each argument; so the inequality on triples of their kind holds on that smaller set with a smaller constant, and the same goes for pairs. The options `REFINE_TRIPLES` and `REFINE_PAIRS` of `multi_cap/combo_case_check.py` compute such constants with the same margins and check them by branch and bound; with `ONLY=NONE` the kinds themselves are not checked again (the passing check above covers them, with the same thresholds). For the triples in the bins (1, 3, 7) and (1, 6, 7) the constant drops from 3.2152e-4 to 3.1880e-4, for (3, 3, 3) from 5.4355e-4 to 5.3549e-4, for (1, 1, 3) from 5.6233e-4 to 5.6168e-4, and for the pairs in (3, 6) and (6, 6) from 6.59702e-2 to 6.59505e-2 and 6.59697e-2; the bins (1, 7, 7) and (1, 1, 6) give no measurable gain. The check (`multi_cap/runs/combo28_refined_check.log`, 13 315 362 further boxes, 8 792 068 of them for the combinations that lower a constant) gives 3.102386 at (14, 0, 9, 0, 0, 1, 4) over the 62 865 count vectors with at most 14 within 2.0161 (`CM/case28_k14.json`), and 3.102823 at (15, 0, 8, 0, 0, 3, 2) over the 55 611 with at most 15 within 2.0161 and at most 2 beyond 2.35 (`CM/case28_k15f2.json`), both below 3.10330; at 15 with 3 beyond it would be about 3.10479 at (15, 0, 8, 0, 0, 2, 3), above. Smaller margins then reach one case further on each side. The pair inequalities take the margin 1e-6, except the kind AA, which keeps 5e-6 because it comes within 1e-5 of its largest value all over the face of its domain where the two centres touch (`PAIR_MARGIN=AA:5e-6` in `multi_cap/combo_case_check.py`); the triples take 5e-8 (FFF still 1e-5 more) and the bins 1e-7. The full check with these margins and the refined bins (`multi_cap/runs/combo28_squeeze_check.log`: 3 532 617 pair boxes, 8 511 bin intervals, 17 006 005 triple boxes and 14 396 003 refined boxes) gives 3.099739 at (14, 0, 9, 0, 0, 1, 4) over the 62 865 count vectors with at most 14 within 2.0161, 3.102197 at (15, 0, 8, 0, 0, 2, 3) over the 62 063 with at most 15 within 2.0161 and at most 3 beyond 2.35 (`CM/case28_k15f3.json`), and 3.102468 at (16, 0, 7, 0, 0, 5, 0) over the 27 423 with at most 16 within 2.0161 and none beyond 2.35 (`CM/case28_k16f0.json`), all below 3.10330 (the floating-point precheck is `multi_cap/runs/combo28_squeeze_precheck.log`). This is `prop:count28-few`. With its thresholds the bound is 3.104750 at (15, 0, 8, 0, 0, 1, 4), with 4 beyond 2.35, and 3.104002 at (16, 0, 7, 0, 0, 4, 1), with 1 beyond, both above, and it rises to 3.114620 at 17 close and 3.148022 at 24 (`CM/c28_open_cases.py`, `CM/c28_open_cases.log`, floating point); narrower bins do not close that gap, so the next step needs a certificate built for more close centres. `CM/c28_config_test.py` checks the implementation on actual sets of 28 directions and distances, where the bound B(Y) of the kernels must lie above the union of caps U(Y): on the 12-close witness U = 2.263412 and B = 2.593852, and on the root system with four centres in deep holes U = 3.196365 and B = 3.702009 (`CM/c28_config_test.log`). A further round from those samples (`c28lo13_d8c.log`) gave 3.07941 and 3.10486 corrected and was stopped for the check.
+
+At k = 15 the kernel of three-point degree 10 has more room on the samples.
+`c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709
+on the samples and 3.92182 corrected, and its continuation `c28lo15b_d10.log`
+gave 3.05883 and 3.15940, then 3.05807 and 3.40545; every round ended in a
+numerical error of the solver. `c28lo15c_d10.log` continued it with a penalty
+on the traces of the three-point blocks in the objective (`TRACE_REG=3e-4` in
+`CM/combo_direct.py`), to damp the swings between samples, and was stopped in
+its first round, slowed by the exact check beside it, to give its place to
+degree 8 at k = 16 (`c28lo16_d8.log`, from the samples of the certificate of
+`prop:count28-few`). Its first round gave 3.09593 on the samples (3.14856
+corrected), 0.0165 above the certificate at k = 13; with the thresholds of
+`multi_cap/runs/combo28_squeeze_precheck.log` that certificate bounds its case
+0.0154 above its value on the samples, so a certificate for all of k = 16
+would land near 3.111, and the run was stopped. `c28k15f4_d8.log` aimed instead
+at the one case with 15 close that the check at smaller margins leaves, 15
+within 2.0161 and 4 beyond 2.35 (`case28_k15f4.json`), where the certificate
+of `prop:count28-few` gives 3.104750: its first round gave 3.08978 on the
+samples. With the thresholds its solver found on its own samples, the
+certificate of `prop:count28-few` already gives 3.07924 at k <= 13 (the
+programme's 3.07929), 3.09042 on that case and 3.09607 at k <= 16
+(`CM/c28_sampled_eval.py`, `CM/c28_sampled_eval.log`), so a certificate built
+for either case gains at most about 6e-4 on the samples, less than the
+1.45e-3 by which the level is missed. At degree 8 the kernel is saturated near
+15 close centres. `c28lo16_d10.log` returned to degree 10 with the trace
+penalty, at k = 16, from the samples of `c28lo15b_d10.log`; it was killed for
+memory in its first round, with no round finished, when the mixing programme
+below was started beside it.
+
+A convex combination of certificates is again a certificate: the positivity
+conditions are convex, and every inequality is linear in the kernel, with its
+threshold taken for the combination. `CM/c28_hull.py` takes the certificates
+at 28 with the same types (degrees 6, 8 and 10; a certificate of lower degree
+enters with its three-point blocks embedded in the layout of degree 10, which
+changes none of its functions) and finds the convex weights that minimise the
+bound over a chosen set of count vectors. With only the weights unknown the
+programme is a linear programme, so it takes about 3 million samples, and it
+adds the local maxima of each combination, found by compass search, as
+further samples until its thresholds stop moving. The certificates of degree
+10 stopped on numerical errors of the solver and have eigenvalues near -1e-6
+in their blocks. The exact check sets negative eigenvalues to zero before it
+rounds, and for these certificates that moves the triple polynomials by up to
+1e-5, so the programme projects every certificate onto the positive
+semidefinite matrices first (without that step its first values, 3.08622 for
+15 close with 4 beyond 2.35 and 3.09929 over the whole case, were not what
+the check would see; the precheck of that mix gave 3.11286). With the
+projection, in floating point and with the margins of the check, the best mix
+gives 3.13159 over the whole case, 3.10618 at k = 17, 3.10076 over every
+vector with k <= 16, 3.09916 over 15 close with 4 beyond and 16 close with 1
+beyond, and 3.10014, 3.10039 and 3.10074 at 16 close with 2, 3 and 4 beyond.
+The two mixes below the level that cover the open cases at k <= 16 are
+`multi_cap/radial_certificates/combo28_mix1516_d10.npz` (15 close with 4
+beyond, 16 close with at most 1 beyond) and
+`multi_cap/radial_certificates/combo28_mix16_d10.npz` (k <= 16). Their
+prechecks at margins 2e-6 (AA 5e-6), 2e-7 and 5e-7 give 3.098860 on
+`CM/case28_k15f4.json` and 3.098060 on `CM/case28_k16f1.json`
+(`multi_cap/runs/combo28_mix1516_precheck.log`), and 3.101264 at (16, 7, 1,
+0, 0, 0, 4) on `CM/case28_lo16.json` (`multi_cap/runs/combo28_mix16_precheck.log`),
+all below 3.10330. The precheck's threshold for the kind AAA lies 2e-7 below
+a local maximum that the mixing programme found (and for AAB in the second
+mix it has only 1e-8 to spare), so the exact checks raise those thresholds
+(`TRIPLE_EXTRA=AAA:4e-7`, and `AAB:2e-7` in the second). The exact checks of
+both mixes at three-point degree 10 are running
+(`multi_cap/runs/combo28_mix1516_check.log`, `multi_cap/runs/combo28_mix16_check.log`);
+until one of them passes, these cases stay open.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
