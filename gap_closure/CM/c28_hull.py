@@ -187,7 +187,8 @@ def vectors():
 
 
 SETS = {'k15f4': lambda v: v[0] == 15 and v[6] == 4, 'k16f1': lambda v: v[0] == 16 and v[6] == 1,
-        'k16f2': lambda v: v[0] == 16 and v[6] == 2, 'lo16': lambda v: v[0] <= 16, 'lo13': lambda v: v[0] <= 13,
+        'k16f2': lambda v: v[0] == 16 and v[6] == 2, 'k16f3': lambda v: v[0] == 16 and v[6] == 3,
+        'k16f4': lambda v: v[0] == 16 and v[6] == 4, 'k16': lambda v: v[0] == 16, 'lo16': lambda v: v[0] <= 16, 'lo13': lambda v: v[0] <= 13,
         'k17': lambda v: v[0] == 17, 'lo17': lambda v: v[0] <= 17, 'all': lambda v: True,
         'hi17': lambda v: v[0] >= 17, 'rest': lambda v: (v[0] == 15 and v[6] == 4) or (v[0] == 16 and v[6] >= 1) or v[0] >= 17}
 ALLV = vectors()
