@@ -78,10 +78,34 @@ DEG = {2052: 6, 4098: 8, 7188: 10, 11538: 12}
 Zs = [np.load(c if c.startswith('/') else CM + c) for c in certs]
 D = max(DEG[len(Z['x3'])] for Z in Zs)
 K = len(Zs)
-X3 = np.stack([embed(np.array(Z['x3'], float), 3, DEG[len(Z['x3'])], D) for Z in Zs], 1)   # n3 x K
-AV = np.stack([np.array(Z['A'], float) for Z in Zs])                                         # K x 13 x 5 x 5
-ZV = np.stack([np.array(Z['z'], float) for Z in Zs])                                         # K x 5
-TV = np.array([float(Z['t']) for Z in Zs])
+
+
+def clip(M):
+    """the nearest positive semidefinite matrix: negative eigenvalues set to 0, as the exact
+    check does before it rounds (solutions that stopped on a numerical error can have
+    eigenvalues near -1e-6, which move the triple polynomials by up to 1e-5)"""
+    M = (np.array(M, float) + np.array(M, float).T) / 2
+    w, V = np.linalg.eigh(M)
+    return (V * np.maximum(w, 0)) @ V.T
+
+
+def projected(Z):
+    d = DEG[len(Z['x3'])]
+    B = {name: clip(M) for name, M in blocks(np.array(Z['x3'], float), 3, d).items()}
+    A = np.array(Z['A'], float)
+    nA = A.shape[1]
+    Bd = np.zeros((nA + 1, nA + 1))
+    Bd[:nA, :nA] = A[0]; Bd[:nA, nA] = Bd[nA, :nA] = np.array(Z['z'], float); Bd[nA, nA] = float(Z['t'])
+    Bd = clip(Bd)
+    A = np.stack([Bd[:nA, :nA]] + [clip(a) for a in A[1:]])
+    return embed(to_x3(B, 3, d), 3, d, D), A, Bd[:nA, nA], Bd[nA, nA]
+
+
+PJ = [projected(Z) for Z in Zs]
+X3 = np.stack([p[0] for p in PJ], 1)                                                         # n3 x K
+AV = np.stack([p[1] for p in PJ])                                                            # K x 13 x 5 x 5
+ZV = np.stack([p[2] for p in PJ])                                                            # K x 5
+TV = np.array([p[3] for p in PJ])
 L = T3.Layout(3, D)
 Bp = T3.Builder(L)
 for s in TYPES:
@@ -285,4 +309,5 @@ for it in range(iters):
     if os.environ.get('OUT'):
         mfine = [(bin_vals(np.linspace(lo, hi, 20001)) @ lam).max() + 2e-7 for _, lo, hi in G.BINS]
         np.savez(os.environ['OUT'], lam=lam, certs=np.array(certs), x3=x3, A=Av, z=lam @ ZV, t=lam @ TV,
-                 m=np.array(mfine), d3=D, bound=est[0])
+                 m=np.array(mfine), d3=D, bound=est[0],
+                 c2=np.array([cp[st] for st in pkeys]), c3=np.array([ct[cb] for cb in tkeys]))
