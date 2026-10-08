@@ -419,6 +419,25 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               over 27 423.  6.8 hours on four cores, beside
                               other runs.
                               Log: runs/combo28_squeeze_check.log.
+                              Mixed certificates for the cases it leaves
+                              (gap_closure/CM/c28_hull.py; convex
+                              combinations of earlier certificates, each
+                              projected onto the positive semidefinite
+                              matrices, three-point degree 10):
+                              radial_certificates/combo28_mix1516_d10.npz on
+                              case28_k15f4.json with
+                              EXTRA_CASES=case28_k16f1.json, and
+                              radial_certificates/combo28_mix16_d10.npz on
+                              case28_lo16.json, margins 2e-6, 2e-7, 5e-7,
+                              BORDER=1, PAIR_MARGIN=AA:5e-6,
+                              TRIPLE_EXTRA=AAA:4e-7 (and AAB:2e-7 for the
+                              second).  Prechecks 3.098860 and 3.098060
+                              (runs/combo28_mix1516_precheck.log) and
+                              3.101264 (runs/combo28_mix16_precheck.log);
+                              the exact checks are running
+                              (runs/combo28_mix1516_check.log,
+                              runs/combo28_mix16_check.log), and nothing
+                              rests on them until one passes.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

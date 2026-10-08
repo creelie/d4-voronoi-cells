@@ -191,8 +191,47 @@ programme's 3.07929), 3.09042 on that case and 3.09607 at k <= 16
 (`CM/c28_sampled_eval.py`, `CM/c28_sampled_eval.log`), so a certificate built
 for either case gains at most about 6e-4 on the samples, less than the
 1.45e-3 by which the level is missed. At degree 8 the kernel is saturated near
-15 close centres. `c28lo16_d10.log` returns to degree 10 with the trace
-penalty, at k = 16, from the samples of `c28lo15b_d10.log`.
+15 close centres. `c28lo16_d10.log` returned to degree 10 with the trace
+penalty, at k = 16, from the samples of `c28lo15b_d10.log`; it was killed for
+memory in its first round, with no round finished, when the mixing programme
+below was started beside it.
+
+A convex combination of certificates is again a certificate: the positivity
+conditions are convex, and every inequality is linear in the kernel, with its
+threshold taken for the combination. `CM/c28_hull.py` takes the certificates
+at 28 with the same types (degrees 6, 8 and 10; a certificate of lower degree
+enters with its three-point blocks embedded in the layout of degree 10, which
+changes none of its functions) and finds the convex weights that minimise the
+bound over a chosen set of count vectors. With only the weights unknown the
+programme is a linear programme, so it takes about 3 million samples, and it
+adds the local maxima of each combination, found by compass search, as
+further samples until its thresholds stop moving. The certificates of degree
+10 stopped on numerical errors of the solver and have eigenvalues near -1e-6
+in their blocks. The exact check sets negative eigenvalues to zero before it
+rounds, and for these certificates that moves the triple polynomials by up to
+1e-5, so the programme projects every certificate onto the positive
+semidefinite matrices first (without that step its first values, 3.08622 for
+15 close with 4 beyond 2.35 and 3.09929 over the whole case, were not what
+the check would see; the precheck of that mix gave 3.11286). With the
+projection, in floating point and with the margins of the check, the best mix
+gives 3.13159 over the whole case, 3.10618 at k = 17, 3.10076 over every
+vector with k <= 16, 3.09916 over 15 close with 4 beyond and 16 close with 1
+beyond, and 3.10014, 3.10039 and 3.10074 at 16 close with 2, 3 and 4 beyond.
+The two mixes below the level that cover the open cases at k <= 16 are
+`multi_cap/radial_certificates/combo28_mix1516_d10.npz` (15 close with 4
+beyond, 16 close with at most 1 beyond) and
+`multi_cap/radial_certificates/combo28_mix16_d10.npz` (k <= 16). Their
+prechecks at margins 2e-6 (AA 5e-6), 2e-7 and 5e-7 give 3.098860 on
+`CM/case28_k15f4.json` and 3.098060 on `CM/case28_k16f1.json`
+(`multi_cap/runs/combo28_mix1516_precheck.log`), and 3.101264 at (16, 7, 1,
+0, 0, 0, 4) on `CM/case28_lo16.json` (`multi_cap/runs/combo28_mix16_precheck.log`),
+all below 3.10330. The precheck's threshold for the kind AAA lies 2e-7 below
+a local maximum that the mixing programme found (and for AAB in the second
+mix it has only 1e-8 to spare), so the exact checks raise those thresholds
+(`TRIPLE_EXTRA=AAA:4e-7`, and `AAB:2e-7` in the second). The exact checks of
+both mixes at three-point degree 10 are running
+(`multi_cap/runs/combo28_mix1516_check.log`, `multi_cap/runs/combo28_mix16_check.log`);
+until one of them passes, these cases stay open.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
