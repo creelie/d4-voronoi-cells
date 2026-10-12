@@ -434,9 +434,15 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               second).  Prechecks 3.098860 and 3.098060
                               (runs/combo28_mix1516_precheck.log) and
                               3.101264 (runs/combo28_mix16_precheck.log);
-                              the exact checks are running
-                              (runs/combo28_mix1516_check.log,
-                              runs/combo28_mix16_check.log), and nothing
+                              both exact checks started on 8 October
+                              and stopped in their triples when the
+                              container was restarted (pairs and bins had
+                              passed); the check of the second, which
+                              covers every case of the first, was
+                              restarted on 12 October
+                              (runs/combo28_mix16_check.log; the stopped
+                              run of the first is in
+                              runs/combo28_mix1516_check.log), and nothing
                               rests on them until one passes.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py

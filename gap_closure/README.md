@@ -229,9 +229,21 @@ all below 3.10330. The precheck's threshold for the kind AAA lies 2e-7 below
 a local maximum that the mixing programme found (and for AAB in the second
 mix it has only 1e-8 to spare), so the exact checks raise those thresholds
 (`TRIPLE_EXTRA=AAA:4e-7`, and `AAB:2e-7` in the second). The exact checks of
-both mixes at three-point degree 10 are running
-(`multi_cap/runs/combo28_mix1516_check.log`, `multi_cap/runs/combo28_mix16_check.log`);
-until one of them passes, these cases stay open.
+both mixes at three-point degree 10 started on 8 October; in both, every pair
+inequality and the bins passed, and both stopped while their triples were
+being checked when the container was restarted. The check of the second mix,
+which covers every case of the first, was restarted on 12 October and is
+running (`multi_cap/runs/combo28_mix16_check.log`; the stopped run of the
+first is in `multi_cap/runs/combo28_mix1516_check.log`); until a check
+passes, these cases stay open.
+For k = 17, no mix of these certificates reaches the level even on its
+samples (3.10447 there), and at degree 8 a certificate built for one case
+gains only about 6e-4 on the samples. `CM/c28k17_d10.log` builds one at
+degree 10 for exactly 17 close (`CM/case28_k17.json`): round 1 gives 3.07522
+on its samples, but its triple inequalities exceed their constants between
+the samples by up to 1.4e-4 (corrected 3.31061), and round 2 was killed for
+memory. Its round-1 certificate goes into the mixing programme with the
+earlier ones.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
