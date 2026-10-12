@@ -453,14 +453,27 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (runs/combo28_mix16_check.log,
                               runs/combo28_mix17_check.log) for the check
                               of combo28_lo18_d10.npz, which covers both
-                              (TRIPLE_EXTRA=AAA:5e-7).  That check was
-                              itself stopped at its triples
+                              (TRIPLE_EXTRA=AAA:5e-7).  That check was itself
+                              stopped at its triples
                               (runs/combo28_lo18_check.log) once the same
                               check with POLY_EVAL=c had closed the same
                               boxes at levels 10 and 20 about 22 times
-                              faster; it continues in
-                              runs/combo28_lo18_checkc.log, and nothing
-                              rests on it until it passes.
+                              faster.  The check with POLY_EVAL=c passes
+                              (runs/combo28_lo18_checkc.log, 52 minutes):
+                              exact positivity, the six pair inequalities
+                              (181 820 boxes), the bins (1083 intervals), the
+                              ten triple inequalities (106 993 576 boxes),
+                              and 3.101381 at (18, 6, 3, 0, 0, 0, 1) over
+                              70 719 vectors; this is prop:count28-mixed.
+                              radial_certificates/combo28_lo19_d10.npz (at
+                              most 19 within 2.0161, case28_lo19.json) mixes
+                              in the degree-10 certificate built for exactly
+                              19 close (gap_closure/CM/c28k19_d10.log); the
+                              room it leaves allows the triple margin 1.5e-6,
+                              precheck 3.100907
+                              (runs/combo28_lo19_precheck.log), and its exact
+                              check runs in runs/combo28_lo19_check.log;
+                              nothing rests on it until it passes.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
