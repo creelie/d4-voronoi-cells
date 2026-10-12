@@ -1,1 +1,11 @@
 28 with exactly 21 centres within 2.0161 (case28_k21.json), three-point degree 10 with the trace penalty TRACE_REG=3e-4, one round, from the samples of c28k20_d10_r1.npz (RESUME, pruned to 5000 pair and 2500 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2.  The jump from 20 to 24 close failed numerically (c28k24_d10.log), so the chain continues one step at a time.  The mixes with the 20-close certificate give 3.102751 at k = 21 and 3.102791 over k <= 21.  Started Mon Oct 12 09:45:39 UTC 2026
+resumed from c28k20_d10_r1.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7863 variables, 95176 inequalities, 7389 psd rows in 56 cones, 67214655 nonzeros [32 s to build]
+   30 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.09515 (target 3.10330), corrected <= 3.19358  [6106 s]
+   viol: AA 1.9e-07, AB 6.8e-07, AF 4.2e-08, BB 4.8e-07, BF 1.3e-06, FF 1.6e-11, AAA 3.0e-05, AAB 2.5e-06, AAF 1.9e-06, ABB 3.8e-06, ABF 6.6e-06, AFF 1.1e-05, BBB 3.1e-07, BBF 8.2e-06, BFF 5.6e-06, FFF 3.2e-07
+   c2: {'AA': 0.008956, 'AB': 0.029254, 'AF': 0.046583, 'BB': 0.050379, 'BF': 0.063401, 'FF': 0.075785}
+   c3: {'AAA': 0.003399, 'AAB': 0.0026224, 'AAF': 0.001875, 'ABB': 0.0017958, 'ABF': 0.0012051, 'AFF': 0.0005824, 'BBB': 0.0010073, 'BBF': 0.0005968, 'BFF': 0.0002354, 'FFF': 0.001734}
+exit 0 at Mon Oct 12 11:27:48 UTC 2026
