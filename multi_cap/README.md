@@ -462,6 +462,19 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               same boxes, tests and counts, four times
                               faster; used by radial_case_check.py.
 
+  ipoly.c, ipoly_test.py      The interval evaluation of a polynomial on
+                              boxes (Poly.eval of certificate_check.py) in
+                              C: every product and sum in double and then
+                              one step outward, in the same order as the
+                              numpy code, so the enclosures agree bit for
+                              bit.  Used by the triple branch and bounds
+                              when POLY_EVAL=c is set (compiled with gcc
+                              -O3 -march=native -ffp-contract=off into the
+                              temporary directory on first use).
+                              ipoly_test.py compares the two on 640000
+                              random boxes (0 differences; about 27 times
+                              faster).
+
   pushout_check.py
                               thm:G-pushout: T on the one-centre ray at
                               delta = 0.1971 exceeds 8 (Arb), the pyramid
