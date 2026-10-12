@@ -54,7 +54,7 @@
 \contentsline {section}{\tocsection {}{10}{Conclusion}}{138}{section.10}%
 \contentsline {subsection}{\tocsubsection {}{10.1}{What is proved}}{138}{subsection.10.1}%
 \contentsline {subsection}{\tocsubsection {}{10.2}{The contact cases}}{139}{subsection.10.2}%
-\contentsline {subsection}{\tocsubsection {}{10.3}{Several deviations by elementary means}}{140}{subsection.10.3}%
+\contentsline {subsection}{\tocsubsection {}{10.3}{Several deviations by elementary means}}{139}{subsection.10.3}%
 \contentsline {subsection}{\tocsubsection {}{10.4}{What is open}}{140}{subsection.10.4}%
 \contentsline {subsection}{\tocsubsection {}{10.5}{Outlook}}{141}{subsection.10.5}%
 \contentsline {section}{\tocsection {}{11}{Computer verification}}{142}{section.11}%
@@ -149,7 +149,7 @@
 \contentsline {section}{\tocsection {Appendix}{E}{Numerical tables}}{174}{appendix.E}%
 \contentsline {subsection}{\tocsubsection {}{}{Chains}}{175}{section*.22}%
 \contentsline {subsection}{\tocsubsection {}{}{Dense configurations}}{175}{section*.23}%
-\contentsline {subsection}{\tocsubsection {}{}{Sampling at the singular configurations}}{175}{section*.24}%
+\contentsline {subsection}{\tocsubsection {}{}{Sampling at the singular configurations}}{176}{section*.24}%
 \contentsline {section}{\tocsection {Appendix}{F}{Explicit coordinates of the reference cell}}{176}{appendix.F}%
 \contentsline {section}{\tocsection {Appendix}{G}{A model of the Bernstein certificate}}{176}{appendix.G}%
 \contentsline {section}{\tocsection {Appendix}{}{References}}{177}{section*.25}%
