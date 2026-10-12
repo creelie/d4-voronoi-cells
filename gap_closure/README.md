@@ -231,19 +231,32 @@ mix it has only 1e-8 to spare), so the exact checks raise those thresholds
 (`TRIPLE_EXTRA=AAA:4e-7`, and `AAB:2e-7` in the second). The exact checks of
 both mixes at three-point degree 10 started on 8 October; in both, every pair
 inequality and the bins passed, and both stopped while their triples were
-being checked when the container was restarted. The check of the second mix,
-which covers every case of the first, was restarted on 12 October and is
-running (`multi_cap/runs/combo28_mix16_check.log`; the stopped run of the
-first is in `multi_cap/runs/combo28_mix1516_check.log`); until a check
-passes, these cases stay open.
+being checked when the container was restarted (`multi_cap/runs/combo28_mix1516_check.log`).
 For k = 17, no mix of these certificates reaches the level even on its
 samples (3.10447 there), and at degree 8 a certificate built for one case
-gains only about 6e-4 on the samples. `CM/c28k17_d10.log` builds one at
-degree 10 for exactly 17 close (`CM/case28_k17.json`): round 1 gives 3.07522
-on its samples, but its triple inequalities exceed their constants between
-the samples by up to 1.4e-4 (corrected 3.31061), and round 2 was killed for
-memory. Its round-1 certificate goes into the mixing programme with the
-earlier ones.
+gains only about 6e-4 on the samples. Certificates of degree 10 built for one
+value of k do reach it once mixed. `CM/c28k17_d10.log` builds one for exactly
+17 close (`CM/case28_k17.json`): round 1 gives 3.07522 on its samples, but its
+triple inequalities exceed their constants between the samples by up to
+1.4e-4 (corrected 3.31061), and round 2 was killed for memory. Mixed with the
+earlier certificates it gives 3.101579 at k = 17
+(`multi_cap/radial_certificates/combo28_mix17_d10.npz`, precheck 3.101230 in
+`multi_cap/runs/combo28_mix17_precheck.log`). `CM/c28k18_d10.log` builds one
+for exactly 18 close from the samples of the 17-close run, which carry its
+refinements; the gaps are far smaller (3.08058 on the samples, corrected
+3.13951), and the mix gives 3.100714 at k = 18, 3.10532 at 19, 3.10982 at 20
+and 3.12489 at 24 (3.13365 before). One mix then covers every vector with
+k <= 18 at 3.100721 (`multi_cap/radial_certificates/combo28_lo18_d10.npz`,
+precheck 3.100554 at (18, 3, 3, 0, 0, 0, 4) in
+`multi_cap/runs/combo28_lo18_precheck.log`, with the case file
+`CM/case28_lo18.json`). The exact checks of the mixes for k <= 16 and k = 17
+(restarted on 12 October) were stopped by hand in their triples
+(`multi_cap/runs/combo28_mix16_check.log`, `multi_cap/runs/combo28_mix17_check.log`),
+since the check of this one covers both; it runs with `TRIPLE_EXTRA=AAA:5e-7`
+(`multi_cap/runs/combo28_lo18_check.log`). Until it passes, the cases with
+15 or more close centres stay open. The chain continues at k = 19
+(`CM/c28k19_d10.log`), each certificate starting from the samples of the one
+before, towards one mix for the whole case.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.

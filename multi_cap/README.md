@@ -437,13 +437,25 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               both exact checks started on 8 October
                               and stopped in their triples when the
                               container was restarted (pairs and bins had
-                              passed); the check of the second, which
-                              covers every case of the first, was
-                              restarted on 12 October
-                              (runs/combo28_mix16_check.log; the stopped
-                              run of the first is in
-                              runs/combo28_mix1516_check.log), and nothing
-                              rests on them until one passes.
+                              passed; runs/combo28_mix1516_check.log).
+                              radial_certificates/combo28_mix17_d10.npz
+                              (exactly 17 within 2.0161, precheck 3.101230,
+                              runs/combo28_mix17_precheck.log) and
+                              radial_certificates/combo28_lo18_d10.npz (at
+                              most 18 within 2.0161, case28_lo18.json,
+                              precheck 3.100554,
+                              runs/combo28_lo18_precheck.log) add the
+                              degree-10 certificates built for 17 and 18
+                              close (gap_closure/CM/c28k17_d10.log,
+                              c28k18_d10.log).  The checks of the mixes for
+                              at most 16 and exactly 17 close were stopped
+                              by hand in their triples
+                              (runs/combo28_mix16_check.log,
+                              runs/combo28_mix17_check.log) for the check
+                              of combo28_lo18_d10.npz, which covers both
+                              (TRIPLE_EXTRA=AAA:5e-7,
+                              runs/combo28_lo18_check.log); nothing rests
+                              on it until it passes.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
