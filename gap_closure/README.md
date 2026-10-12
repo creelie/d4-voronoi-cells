@@ -5,17 +5,17 @@ paper leaves open (Section "The statements (G) and (C)"): statement (C) for 25
 to 28 centres within sqrt6 and statement (G), and the cases they settled,
 the residual case at thirty centres, the whole case at twenty-nine, and
 twenty-eight with at most fourteen centres within 2.0161 (fifteen with at
-most three beyond 2.35, sixteen with none), then with at most twenty. They
+most three beyond 2.35, sixteen with none), then with at most twenty-one. They
 are floating-point semidefinite programmes on sampled constraints. **Three of
 them yield certificates**, and a convex combination of several yields a
 fourth: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
-which are `thm:count29` and `prop:count28-few`; and the combination of twelve
+which are `thm:count29` and `prop:count28-few`; and the combination of fourteen
 certificates of `CM/combo_direct.py` found by `CM/c28_hull.py`, which
 `multi_cap/combo_case_check.py` proves exactly and which is
-`prop:count28-mixed` (at most twenty within 2.0161). The rest are kept so that the
+`prop:count28-mixed` (at most twenty-one within 2.0161). The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -282,11 +282,28 @@ at k = 21, 3.107033 at 22 and 3.115317 at 24. The k <= 20 mix
 triple margin 5e-7) **passes** its exact check in 54 minutes
 (`multi_cap/runs/combo28_lo20_check.log`): 3.099289 at (20, 3, 4, 0, 0, 0, 1)
 over the 72 996 vectors with k <= 20, after 168 390 pair boxes and 157 796 046
-triple boxes. This is `prop:count28-mixed`, which contains the earlier checks at
-k <= 18 and k <= 19; the cases with 21 or more close centres stay open. A jump
-from the 20-close samples straight to 24 close failed numerically
-(`CM/c28k24_d10.log`), so the chain goes on one step at a time
-(`CM/c28k21_d10.log`).
+triple boxes. A jump from the 20-close samples straight to 24 close failed
+numerically (`CM/c28k24_d10.log`, bound -23804), so the chain goes on one
+step at a time: `CM/c28k21_d10.log` builds a certificate for exactly 21 close
+from the 20-close samples (3.09515 on its samples, corrected 3.19358). A mix
+over 38 certificates with it (`multi_cap/radial_certificates/combo28_lo21_d10.npz`,
+fourteen nonzero weights, among them three certificates at 26 centres) gives
+3.101466 over k <= 21, 3.105672 at k = 22, 3.105741 over k <= 22 and
+3.114126 at 24 (floating point, climbed maxima, margins of the check); its
+precheck at the triple margin 5e-7 gives 3.103041
+(`multi_cap/runs/combo28_lo21_precheck.log`), and the exact check **passes**
+in 54 minutes (`multi_cap/runs/combo28_lo21_check.log`): 3.103041 at
+(21, 4, 2, 0, 0, 0, 1) over the 73 722 vectors with k <= 21, after 120 628
+pair boxes and 168 808 634 triple boxes. This is `prop:count28-mixed`, which
+contains the earlier checks at k <= 18, 19 and 20; the cases with 22 or more
+close centres stay open. `CM/c28k22_d10.log` builds the next certificate, for
+exactly 22 close, from the 21-close samples. The values on the samples rise by
+about 0.005 per step (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to
+21 close), and each mix lies about 0.006 above the sample value of its last
+certificate, so the chain may stop before 24 close. Extra certificates at 26,
+27 and 29 centres change the mixes by less than 0.001
+(`CM/c29d10_d10_r1.npz`, a failed run with coefficients near 1e12, has to be
+left out of any mix).
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
@@ -332,7 +349,7 @@ rho(eta) of a root system. Through `cor:no-room`, the residual case at thirty
 would have needed rho < 0.206 at eta = 0.00368; the kernel on typed triples
 settled that case instead (`thm:count30`), and (L) remains the route for
 twenty-five to twenty-seven centres, for the cases of twenty-eight that
-`prop:count28-mixed` leaves (all with at least twenty-one within 2.0161), and for
+`prop:count28-mixed` leaves (all with at least twenty-two within 2.0161), and for
 (G).
 
 `budget_far.py` maximises the distance to the nearest root system under
