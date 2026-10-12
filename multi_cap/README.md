@@ -477,6 +477,18 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               boxes), the bins (1087 intervals), the ten
                               triple inequalities (134 464 632 boxes), and
                               3.100907 at (19, 2, 7, 0, 0, 0, 0) over 71 995
+                              vectors.
+                              radial_certificates/combo28_lo20_d10.npz (at
+                              most 20 within 2.0161, case28_lo20.json) adds
+                              the certificate built for exactly 20 close
+                              (gap_closure/CM/c28k20_d10.log); precheck
+                              3.099289 at the triple margin 5e-7
+                              (runs/combo28_lo20_precheck.log), and its exact
+                              check passes (runs/combo28_lo20_check.log, 54
+                              minutes): the six pair inequalities (168 390
+                              boxes), the bins (1278 intervals), the ten
+                              triple inequalities (157 796 046 boxes), and
+                              3.099289 at (20, 3, 4, 0, 0, 0, 1) over 72 996
                               vectors; this is prop:count28-mixed.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py

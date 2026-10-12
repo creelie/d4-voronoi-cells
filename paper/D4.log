@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  12 OCT 2026 08:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  12 OCT 2026 10:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -995,13 +995,13 @@ Package pdftex.def Info: figures/fig_tikz_cradial.png  used on input line 8775.
 <figures/fig_tikz_radial.png, id=2499, 478.13832pt x 192.38274pt>
 File: figures/fig_tikz_radial.png Graphic file (type png)
 <use figures/fig_tikz_radial.png>
-Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 9174.
+Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 9175.
 (pdftex.def)             Requested size: 433.62001pt x 174.47264pt.
  [133] [134 <./figures/fig_tikz_radial.png (PNG copy)>] [135]
 <figures/fig_tikz_levels.png, id=2559, 529.16093pt x 199.60974pt>
 File: figures/fig_tikz_levels.png Graphic file (type png)
 <use figures/fig_tikz_levels.png>
-Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 9343.
+Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 9344.
 (pdftex.def)             Requested size: 433.62001pt x 163.56833pt.
 
 [136 <./figures/fig_tikz_levels.png (PNG copy)>] [137] [138] [139] [140]
@@ -1009,14 +1009,14 @@ Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 9343.
 <figures/fig_tikz_octant.png, id=2954, 384.62094pt x 184.57758pt>
 File: figures/fig_tikz_octant.png Graphic file (type png)
 <use figures/fig_tikz_octant.png>
-Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 10112.
+Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 10113.
 
 (pdftex.def)             Requested size: 433.62001pt x 208.10551pt.
  [147] [148 <./figures/fig_tikz_octant.png (PNG copy)>] [149] [150] [151]
 <figures/fig_c_arcs.png, id=3046, 2193.19376pt x 1332.98pt>
 File: figures/fig_c_arcs.png Graphic file (type png)
 <use figures/fig_c_arcs.png>
-Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10474.
+Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10475.
 (pdftex.def)             Requested size: 433.62001pt x 263.54033pt.
  [152] [153 <./figures/fig_c_arcs.png (PNG copy)>] [154] [155] [156] [157] [158
 ] [159]
@@ -1024,12 +1024,12 @@ Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 10474.
 File: figures/fig_chain_plateau.png Graphic file (type png)
 <use figures/fig_chain_plateau.png>
 Package pdftex.def Info: figures/fig_chain_plateau.png  used on input line 1105
-2.
+3.
 (pdftex.def)             Requested size: 429.28618pt x 274.55405pt.
 <figures/fig_dense_growth.png, id=3199, 2280.52pt x 1250.6725pt>
 File: figures/fig_dense_growth.png Graphic file (type png)
 <use figures/fig_dense_growth.png>
-Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 11080
+Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 11081
 .
 (pdftex.def)             Requested size: 429.28618pt x 235.41653pt.
  [160] [161 <./figures/fig_chain_plateau.png (PNG copy)>] [162 <./figures/fig_d
@@ -1038,7 +1038,7 @@ ense_growth.png (PNG copy)>] [163] [164]
 <figures/fig_c_swap.png, id=3357, 2981.1375pt x 1180.41pt>
 File: figures/fig_c_swap.png Graphic file (type png)
 <use figures/fig_c_swap.png>
-Package pdftex.def Info: figures/fig_c_swap.png  used on input line 11650.
+Package pdftex.def Info: figures/fig_c_swap.png  used on input line 11651.
 (pdftex.def)             Requested size: 433.62001pt x 171.6864pt.
  [169 <./figures/fig_c_swap.png>] [170] [171] [172]
 [173] [174] [175] [176] [177] [178] [179] [180] (./D4.aux)
@@ -1076,7 +1076,7 @@ ts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb>
 are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on D4.pdf (180 pages, 21189683 bytes).
+Output written on D4.pdf (180 pages, 21188800 bytes).
 PDF statistics:
  3904 PDF objects out of 4296 (max. 8388607)
  3568 compressed objects within 36 object streams
