@@ -1,1 +1,67 @@
 exact check of the mix of 43 certificates (9 with nonzero weight) for 28 centres with exactly 22 within 2.0161 (case28_k22.json), weights from the mixing LP over the 451 vectors with n1 = 22 at the smaller margins (pairs 5e-7, triples 5e-8), where it gives 3.101887 at (22, 0, 2, 0, 0, 0, 4); certificate mix28_k22d.npz; check margins: pairs 1e-6 (AA 1e-6), triples 2e-7, bins 1e-7, BORDER=1, POLY_EVAL=c.  Together with the passing check of combo28_lo21_d10.npz (at most 21 within 2.0161) this would give at most 22.  Started Mon Oct 12 21:06:49 UTC 2026
+statement (C) at 28 centres, case case28_k22.json: combined certificate mix28_k22d.npz, two-point degree 12/4, three-point degree 10; 451 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 26.526355241, float t 26.526355240)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.598817', 'B': '0.240341', 'F': '0.036620'}
+  pair AA: float largest K + PAIR3 - Pi -4.958700e-02 (file c2 -4.958700e-02); threshold -4.958600e-02
+  pair AB: float largest K + PAIR3 - Pi -2.330358e-02 (file c2 -2.330358e-02); threshold -2.330258e-02
+  pair AF: float largest K + PAIR3 - Pi -5.186295e-03 (file c2 -5.186297e-03); threshold -5.185295e-03
+  pair BB: float largest K + PAIR3 - Pi 7.581957e-03 (file c2 7.581954e-03); threshold 7.582957e-03
+  pair BF: float largest K + PAIR3 - Pi 1.951680e-02 (file c2 1.951666e-02); threshold 1.951791e-02
+  pair FF: float largest K + PAIR3 - Pi 3.006921e-02 (file c2 3.006924e-02); threshold 3.007024e-02
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (21433 boxes closed, 18263 set aside, Pi in Arb at 21379 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (10419 boxes closed, 9770 set aside, Pi in Arb at 2201 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (3511 boxes closed, 3448 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (4020 boxes closed, 3329 set aside, Pi in Arb at 615 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (23446 boxes closed, 21985 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (1645 boxes closed, 1344 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (2339 intervals, least room 1.37e-09)
+  triple AAA: float largest 4.113922e-03 on 649660 samples; threshold 4.114184e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 3.137804e-03 on 649656 samples; threshold 3.138032e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 2.326164e-03 on 649567 samples; threshold 2.326385e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 1.933222e-03 on 649516 samples; threshold 1.933526e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 1.353968e-03 on 649349 samples; threshold 1.354217e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 7.655946e-04 on 649302 samples; threshold 7.662144e-04; 756 monomials, symmetry 1
+  triple BBB: float largest 8.201989e-04 on 649325 samples; threshold 8.223431e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 4.822363e-04 on 649158 samples; threshold 4.824662e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 2.094274e-04 on 649009 samples; threshold 2.100012e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 2.045407e-03 on 648938 samples; threshold 2.045616e-03; 756 monomials, symmetry 2
+      AAA level 10: 0 boxes verified, 336 to bisect [0 s]
+      AAF level 10: 0 boxes verified, 624 to bisect [0 s]
+      AAB level 10: 0 boxes verified, 620 to bisect [0 s]
+      AAA level 20: 10587 boxes verified, 107516 to bisect [3 s]
+      ABB level 10: 0 boxes verified, 622 to bisect [0 s]
+      AAB level 20: 27402 boxes verified, 314538 to bisect [8 s]
+      ABB level 20: 24909 boxes verified, 319818 to bisect [7 s]
+      AAA level 30: 4856633 boxes verified, 3488232 to bisect [252 s]
+      AAB level 30: 12104850 boxes verified, 9641738 to bisect [638 s]
+      ABB level 30: 13884640 boxes verified, 8049974 to bisect [668 s]
+      ABF level 10: 0 boxes verified, 944 to bisect [0 s]
+      ABF level 20: 56803 boxes verified, 589698 to bisect [13 s]
+      AFF level 10: 0 boxes verified, 624 to bisect [0 s]
+      AFF level 20: 28918 boxes verified, 300730 to bisect [7 s]
+      AAB level 40: 33816958 boxes verified, 3460 to bisect [1250 s]
+      BBB level 10: 0 boxes verified, 346 to bisect [0 s]
+      BBB level 20: 11229 boxes verified, 103236 to bisect [3 s]
+      BBB level 30: 1868866 boxes verified, 83984 to bisect [70 s]
+      BBF level 10: 0 boxes verified, 618 to bisect [0 s]
+      BBF level 20: 28939 boxes verified, 301014 to bisect [7 s]
+      ABF level 30: 17719693 boxes verified, 8834572 to bisect [815 s]
+      AFF level 30: 8293016 boxes verified, 3760526 to bisect [374 s]
+      BBF level 30: 8242365 boxes verified, 2643450 to bisect [351 s]
+      BBF level 40: 11906625 boxes verified, 70218 to bisect [439 s]
+      BBF level 50: 12248773 boxes verified, 78604 to bisect [463 s]
+      BFF level 10: 0 boxes verified, 618 to bisect [0 s]
+      BFF level 20: 31713 boxes verified, 293798 to bisect [7 s]
+      AFF level 40: 16084891 boxes verified, 2784 to bisect [595 s]
+      FFF level 10: 0 boxes verified, 340 to bisect [0 s]
+      FFF level 20: 11413 boxes verified, 107206 to bisect [2 s]
+      FFF level 30: 2204326 boxes verified, 119216 to bisect [83 s]
+      BFF level 30: 7448685 boxes verified, 2712210 to bisect [320 s]
+      ABF level 40: 37653697 boxes verified, 95332 to bisect [1383 s]
+  [ok] TRIPLE3_AAA <= c3 on the admissible triples  (20186547 boxes, largest centre value 4.1140e-03)
+  [ok] TRIPLE3_AAB <= c3 on the admissible triples  (33818823 boxes, largest centre value 3.1378e-03)
+  [FAIL] TRIPLE3_AAF <= c3 on the admissible triples  (value 2.326519e-03 above 2.326385e-03)
+FAILED
+ended at 21:59 UTC on Mon Oct 12 2026 with the failure above: the inequality AAF has a narrow peak that the samples and the local ascent missed (a value 2.326519e-03 against the sampled largest 2.326164e-03); AAA and AAB passed.  Next: find that peak and raise the AAF threshold with TRIPLE_EXTRA.
