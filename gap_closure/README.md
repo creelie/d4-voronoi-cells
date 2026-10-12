@@ -5,17 +5,19 @@ paper leaves open (Section "The statements (G) and (C)"): statement (C) for 25
 to 28 centres within sqrt6 and statement (G), and the cases they settled,
 the residual case at thirty centres, the whole case at twenty-nine, and
 twenty-eight with at most fourteen centres within 2.0161 (fifteen with at
-most three beyond 2.35, sixteen with none), then with at most twenty-one. They
+most three beyond 2.35, sixteen with none), then with at most twenty-two. They
 are floating-point semidefinite programmes on sampled constraints. **Three of
 them yield certificates**, and a convex combination of several yields a
 fourth: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
-which are `thm:count29` and `prop:count28-few`; and the combination of fourteen
-certificates of `CM/combo_direct.py` found by `CM/c28_hull.py`, which
-`multi_cap/combo_case_check.py` proves exactly and which is
-`prop:count28-mixed` (at most twenty-one within 2.0161). The rest are kept so that the
+which are `thm:count29` and `prop:count28-few`; and two combinations of
+certificates of `CM/combo_direct.py`, one of fourteen found by `CM/c28_hull.py`
+for at most twenty-one within 2.0161 and one of nine found by
+`CM/c28_hull_multi.py` for exactly twenty-two, which
+`multi_cap/combo_case_check.py` proves exactly and which together are
+`prop:count28-mixed` (at most twenty-two within 2.0161). The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -294,10 +296,46 @@ precheck at the triple margin 5e-7 gives 3.103041
 (`multi_cap/runs/combo28_lo21_precheck.log`), and the exact check **passes**
 in 54 minutes (`multi_cap/runs/combo28_lo21_check.log`): 3.103041 at
 (21, 4, 2, 0, 0, 0, 1) over the 73 722 vectors with k <= 21, after 120 628
-pair boxes and 168 808 634 triple boxes. This is `prop:count28-mixed`, which
-contains the earlier checks at k <= 18, 19 and 20; the cases with 22 or more
-close centres stay open. `CM/c28k22_d10.log` builds the next certificate, for
-exactly 22 close, from the 21-close samples. The values on the samples rise by
+pair boxes and 168 808 634 triple boxes. This is the first half of
+`prop:count28-mixed`, which contains the earlier checks at k <= 18, 19 and 20.
+`CM/c28k22_d10.log` builds the next certificate, for exactly 22 close, from the
+21-close samples (3.09890 on its samples, corrected 3.13908), and
+`CM/c28k22b_d10.log` (two rounds), `CM/c28k22c_d10.log` and
+`CM/c28k22d_d10.log` refine it from the samples of the round before (corrected
+3.11819, 3.10373, 3.10201, 3.10563; `CM/c28k22e_d10.log` was stopped). Mixes
+over all vectors with k <= 22 stay above the level at the earlier margins
+(3.104638 with the round-4 certificate); at margins 2e-7 and 2e-8 their
+precheck gives 3.103286, too close to the level, and that exact check was
+stopped (`CM/check_c28lo22c.log`). Two changes close k = 22. First, the
+margins: the pair inequality on two A centres closes with the margin 2e-7 in
+place of 5e-6 (about 190 000 boxes for the round-4 mix), and the triple kind
+AAA closes with 5e-8 in 19.7 million boxes, against 13.4 million at 5e-7 for
+the k <= 21 mix. Second, k <= 21
+is proved, so the mix only has to cover the 451 vectors with exactly 22 close,
+and there its weights can favour the 22-close certificates:
+`CM/c28_hull_multi.py` (the multi-target form of `CM/c28_hull.py`, with the
+reported margins set by `MG_AA`, `MG2`, `MG3`) gives 3.101887 at
+(22, 0, 2, 0, 0, 0, 4) with margins 5e-7 for the pairs and 5e-8 for the
+triples, against 3.103487 over k <= 22 (`CM/c28_hull_k22d.log`; the
+combination is `CM/mix28_k22d.npz`, copied to
+`multi_cap/radial_certificates/combo28_k22_d10.npz`: nine nonzero weights,
+four of them on the 22-close rounds, one on a certificate at 26 centres). Its
+first exact check at margins 1e-6 (pairs, AA included), 2e-7 (triples) and
+1e-7 (bins) fails on the triple kind AAF (`CM/check_c28k22d.log`): that
+inequality has a narrow peak which the 650 000 samples and the local ascent
+from their 40 best miss. A denser search (`CM/c28_peak.py`, 15 million samples
+and 300 starts, `CM/peak_k22d.log`) puts its largest value at 2.326572e-03,
+3.87e-7 above the first run's value, and the rerun with the AAF threshold
+raised by 4e-7 (`TRIPLE_EXTRA=AAF:4e-7`) **passes** in 64 minutes
+(`CM/check_c28k22d2.log`, copied to `multi_cap/runs/combo28_k22_check.log`):
+3.102969 at (22, 0, 2, 0, 0, 0, 4) over the 451 vectors with k = 22, after
+64 474 pair boxes, 2339 bin intervals and 207 350 728 triple boxes. With the
+check at k <= 21 this is `prop:count28-mixed`, at most 22 within 2.0161; the
+cases with 23 or more close centres stay open. `CM/c28k23b_d10.log` builds a
+certificate for exactly 23 close from the round-4 22-close samples (3.09585 on
+its samples, corrected 4.16711), and the mix for exactly 23 with it gives
+3.105407 (3.108499 at exactly 24), above the level; `CM/c28k23c_d10.log`
+refines it. The values on the samples rise by
 about 0.005 per step (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to
 21 close), and each mix lies about 0.006 above the sample value of its last
 certificate, so the chain may stop before 24 close. Extra certificates at 26,
@@ -349,7 +387,7 @@ rho(eta) of a root system. Through `cor:no-room`, the residual case at thirty
 would have needed rho < 0.206 at eta = 0.00368; the kernel on typed triples
 settled that case instead (`thm:count30`), and (L) remains the route for
 twenty-five to twenty-seven centres, for the cases of twenty-eight that
-`prop:count28-mixed` leaves (all with at least twenty-two within 2.0161), and for
+`prop:count28-mixed` leaves (all with at least twenty-three within 2.0161), and for
 (G).
 
 `budget_far.py` maximises the distance to the nearest root system under
