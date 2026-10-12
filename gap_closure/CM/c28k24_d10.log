@@ -1,1 +1,12 @@
 28 with exactly 24 centres within 2.0161 (case28_k24.json), three-point degree 10 with the trace penalty TRACE_REG=3e-4, one round, from the samples of c28k20_d10_r1.npz (RESUME, pruned to 5000 pair and 2500 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2.  The chain skips 21 to 23 here to test the far end first: the mixes give 3.116546 at k = 24 with the 19-close certificate, and the typed three-point bound on directions alone does not exclude 23 directions at 2.0161 with one at 2.35 and four at sqrt6, so k = 24 is where the chain may stall.  The certificate built for 20 close (c28k20_d10.log) gives 3.09051 on its samples, corrected <= 3.11096.  Started Mon Oct 12 08:38:11 UTC 2026
+resumed from c28k20_d10_r1.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7638 variables, 94876 inequalities, 7389 psd rows in 56 cones, 67209720 nonzeros [24 s to build]
+   15 type-count vectors
+d3=10 round 1: NumericalError  bound -23804.34521 (target 3.10330), corrected <= 96646212.82162  [3995 s]
+   viol: AA 6.3e+01, AB -2.5e+02, AF 8.1e+01, BB -6.2e+03, BF -9.8e+02, FF 1.4e+02, AAA 2.3e+04, AAB 4.4e+04, AAF 1.5e+04, ABB 2.0e+04, ABF 2.1e+04, AFF 5.3e+03, BBB -4.3e+03, BBF 1.9e+02, BFF -2.8e+03, FFF 1.9e+02
+   c2: {'AA': -2129404.822484, 'AB': -1126644.531854, 'AF': -1417621.295335, 'BB': 238243.336166, 'BF': 814829.663124, 'FF': 1454454.41127}
+   c3: {'AAA': 97532.7957769, 'AAB': 60229.0562526, 'AAF': 87593.9220243, 'ABB': 90766.5228051, 'ABF': 30568.476011, 'AFF': -33704.0789191, 'BBB': 61605.035188, 'BBF': 409932.3179666, 'BFF': 776982.603963, 'FFF': 1154845.4410129}
+exit 0 at Mon Oct 12 09:45:10 UTC 2026
+[the solver failed numerically on this round (NumericalError, bound -23804): no certificate.  The chain goes back to k = 21 from the samples of the 20-close run (c28k21_d10.log), one step at a time towards 24]
