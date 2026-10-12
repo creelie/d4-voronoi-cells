@@ -1,0 +1,1 @@
+PRECHECK=1 BORDER=1 PAIR_MARGIN=AA:5e-6 python3 -u combo_case_check.py ../gap_closure/CM/case28_k17.json radial_certificates/combo28_mix17_d10.npz 10 2e-6 2e-7 5e-7   (the mixed certificate for exactly 17 within 2.0161: gap_closure/CM/c28_hull.py k17 over 14 certificates, among them c28k17_d10_r1.npz; mixing estimate 3.101579)
