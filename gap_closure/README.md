@@ -282,10 +282,11 @@ at k = 21, 3.107033 at 22 and 3.115317 at 24. The k <= 20 mix
 triple margin 5e-7) **passes** its exact check in 54 minutes
 (`multi_cap/runs/combo28_lo20_check.log`): 3.099289 at (20, 3, 4, 0, 0, 0, 1)
 over the 72 996 vectors with k <= 20, after 168 390 pair boxes and 157 796 046
-triple boxes. This is `prop:count28-mixed`, which covers the checks at k <= 18
-and k <= 19; the cases with 21 or more close centres stay open. A jump from the
-20-close samples straight to 24 close failed numerically (`CM/c28k24_d10.log`),
-so the chain goes on one step at a time (`CM/c28k21_d10.log`).
+triple boxes. This is `prop:count28-mixed`, which contains the earlier checks at
+k <= 18 and k <= 19; the cases with 21 or more close centres stay open. A jump
+from the 20-close samples straight to 24 close failed numerically
+(`CM/c28k24_d10.log`), so the chain goes on one step at a time
+(`CM/c28k21_d10.log`).
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.
