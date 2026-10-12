@@ -453,9 +453,14 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (runs/combo28_mix16_check.log,
                               runs/combo28_mix17_check.log) for the check
                               of combo28_lo18_d10.npz, which covers both
-                              (TRIPLE_EXTRA=AAA:5e-7,
-                              runs/combo28_lo18_check.log); nothing rests
-                              on it until it passes.
+                              (TRIPLE_EXTRA=AAA:5e-7).  That check was
+                              itself stopped at its triples
+                              (runs/combo28_lo18_check.log) once the same
+                              check with POLY_EVAL=c had closed the same
+                              boxes at levels 10 and 20 about 22 times
+                              faster; it continues in
+                              runs/combo28_lo18_checkc.log, and nothing
+                              rests on it until it passes.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

@@ -253,10 +253,16 @@ precheck 3.100554 at (18, 3, 3, 0, 0, 0, 4) in
 (restarted on 12 October) were stopped by hand in their triples
 (`multi_cap/runs/combo28_mix16_check.log`, `multi_cap/runs/combo28_mix17_check.log`),
 since the check of this one covers both; it runs with `TRIPLE_EXTRA=AAA:5e-7`
-(`multi_cap/runs/combo28_lo18_check.log`). Until it passes, the cases with
-15 or more close centres stay open. The chain continues at k = 19
-(`CM/c28k19_d10.log`), each certificate starting from the samples of the one
-before, towards one mix for the whole case.
+and the interval evaluation in C (`POLY_EVAL=c`, `multi_cap/ipoly.c`, bit for
+bit the numpy one), in `multi_cap/runs/combo28_lo18_checkc.log`; the same
+check in numpy (`multi_cap/runs/combo28_lo18_check.log`) closed the same boxes
+at its first two levels about 22 times slower and was stopped. Until it
+passes, the cases with 15 or more close centres stay open. The chain
+continues: `CM/c28k19_d10.log` builds a certificate for exactly 19 close from
+the samples of the 18-close run (3.08563 on its samples, corrected 3.10827),
+and `CM/c28k20_d10.log` one for 20 close from its samples, each certificate
+starting from the samples of the one before, towards one mix for the whole
+case.
 A certificate for some k reduces (C) at 28 to a statement about directions
 alone: no 28 centres satisfying the radial counts of 28 (21 within 2.1, 22
 within 2.15, 23 within 2.2, 24 within 2.35) have k + 1 of them within 2.0161.

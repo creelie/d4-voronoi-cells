@@ -1,1 +1,11 @@
 28 with exactly 19 centres within 2.0161 (case28_k19.json), three-point degree 10 with the trace penalty TRACE_REG=3e-4, one round, from the samples of c28k18_d10_r1.npz (RESUME, pruned to 5000 pair and 2500 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2 (the exact checks of the 16- and 17-close mixes run beside it).  The certificate built for 18 close (c28k18_d10.log) gives 3.08058 on its samples with much smaller gaps than the one for 17 (corrected 3.13951 against 3.31061), since its samples carry the refinements of that run; this one continues the chain.  Started Mon Oct 12 05:00:27 UTC 2026
+resumed from c28k18_d10_r1.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8013 variables, 93400 inequalities, 7389 psd rows in 56 cones, 65907614 nonzeros [30 s to build]
+   40 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.08563 (target 3.10330), corrected <= 3.10827  [6153 s]
+   viol: AA 1.1e-07, AB 3.7e-06, AF 3.8e-08, BB 4.5e-06, BF 1.0e-08, FF 7.9e-10, AAA 2.3e-06, AAB 3.7e-06, AAF 8.6e-06, ABB 5.5e-06, ABF 1.7e-05, AFF 1.8e-05, BBB 1.2e-06, BBF 2.1e-05, BFF 1.2e-05, FFF 1.8e-06
+   c2: {'AA': 0.02588, 'AB': 0.046429, 'AF': 0.060665, 'BB': 0.06516, 'BF': 0.075646, 'FF': 0.088021}
+   c3: {'AAA': 0.0031351, 'AAB': 0.0023267, 'AAF': 0.0017394, 'ABB': 0.0015866, 'ABF': 0.0011372, 'AFF': 0.0005719, 'BBB': 0.0009148, 'BBF': 0.0006142, 'BFF': 0.000263, 'FFF': 0.0011573}
+exit 0 at Mon Oct 12 06:43:39 UTC 2026
