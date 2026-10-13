@@ -2,14 +2,14 @@
 
 This directory holds the computations run against the two statements that the
 paper leaves open (Section "The statements (G) and (C)"): statement (C) for 25
-to 28 centres within sqrt6 and statement (G), and the cases they settled,
+to 27 centres within sqrt6 and statement (G), and the cases they settled,
 the residual case at thirty centres, the whole case at twenty-nine, and
-twenty-eight with at most fourteen centres within 2.0161 (fifteen with at
-most three beyond 2.35, sixteen with none), then all of twenty-eight but
-exactly twenty-three within 2.2, all of them within 2.0161, with four beyond
-2.35. They
+twenty-eight: first with at most fourteen centres within 2.0161 (fifteen
+with at most three beyond 2.35, sixteen with none), then all but exactly
+twenty-three within 2.2, all of them within 2.0161, with four beyond 2.35,
+and last that case, with its close-close-far triples counted. They
 are floating-point semidefinite programmes on sampled constraints. **Three of
-them yield certificates**, and convex combinations of several yield seven
+them yield certificates**, and convex combinations of several yield eight
 more: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
@@ -18,12 +18,13 @@ which are `thm:count29` and `prop:count28-few`; and four combinations of
 certificates of `CM/combo_direct.py`, one of fourteen found by `CM/c28_hull.py`
 for at most twenty-one within 2.0161, and one of nine for exactly twenty-two,
 one of six for exactly twenty-four and one of eight for exactly twenty-three
-with at most three beyond 2.35, found by `CM/c28_hull_multi.py`, and three
+with at most three beyond 2.35, found by `CM/c28_hull_multi.py`, and four
 for single vectors with twenty-three within 2.0161, four beyond 2.35 and the
-last centre in (2.05, 2.1], (2.1, 2.15] or (2.15, 2.2], found by
-`CM/c28_hull_case.py`, which `multi_cap/combo_case_check.py` proves exactly
-and which together are `prop:count28-mixed` (all of twenty-eight but exactly
-twenty-three within 2.2, all of them within 2.0161, with four beyond 2.35). The rest are kept so that the
+last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
+`CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
+counts its close-close-far triples), which `multi_cap/combo_case_check.py`
+proves exactly and which together are `prop:count28-mixed`, (C) at
+twenty-eight. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -470,14 +471,20 @@ most 9 have inner product at least 0.58: their projections to the link
 sphere of y have pairwise inner products at most
 (c0 - 0.58^2)/(1 - 0.61403^2), so caps on S^2 about them are disjoint. So at
 most 36 of the 253 close pairs per far centre take the full threshold, and
-the bound should drop by about 4 * 217 * 1.48e-7, to about 3.10323.
+the bound drops by 4 * 217 * 1.48e-7, to 3.10323.
 `combo_case_check.py` has this as `REGION_TRIPLES=<b>-<b>-<p>:<s1>:<s2>`. The
 two new thresholds are proved by branch and bound on sub-boxes, the symmetry
 of the polynomial is checked coefficient by coefficient, and the bound takes
 the worst split of each pivot's pairs. The exact check
 (`CM/check_c28k23f4n5r.log`, with the options of the grid precheck and
-`REGION_TRIPLES=1-1-7:-0.7944:0.58`) runs from 16:09 UTC on 2026-10-13.
-Nothing about this vector is proved until it passes. The values on the samples rise by about 0.005 per step
+`REGION_TRIPLES=1-1-7:-0.7944:0.58`, from 16:09 UTC on 2026-10-13)
+**passes** at 17:52: 3.103231, with thresholds 2.746103e-4 (middle) and
+2.742084e-4 (mixed) against 2.747585e-4 on the bins, after 21 697 pair boxes,
+2713 bin intervals and 200 740 860 triple boxes (copied to
+`multi_cap/runs/combo28_k23f4n5_check.log`; certificate
+`multi_cap/radial_certificates/combo28_k23f4n5_d10.npz`). With it
+`prop:count28-mixed` is (C) at twenty-eight, and (C) is proved from
+twenty-eight centres on. The values on the samples rise by about 0.005 per step
 (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to 21 close), and each mix
 lies about 0.006 above the sample value of its last certificate, which is why
 the chain was not continued to 24 close: the 24-close case closed with the

@@ -566,11 +566,21 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               passes (runs/combo28_k23f4n{2,3,4}_check.log,
                               75, 71 and 75 minutes): 3.103281, 3.101860
                               and 3.102128, after 127 221 931, 125 799 088
-                              and 124 117 379 triple boxes.  With the
-                              checks at most 21, exactly 22 and exactly 24
-                              this is prop:count28-mixed (all of 28 but
-                              exactly 23 within 2.2, all of them within
-                              2.0161, and 4 beyond 2.35).
+                              and 124 117 379 triple boxes.
+                              radial_certificates/combo28_k23f4n5_d10.npz
+                              is the mix for the last vector, the centre
+                              in (2.2, 2.35] (case28_k23f4n5.json); its
+                              check adds REFINE_GRID=121 and
+                              REGION_TRIPLES=1-1-7:-0.7944:0.58, which
+                              counts the close-close-far triples (at most
+                              3 close directions at inner product
+                              <= -0.7944 with a far one and at most 9 at
+                              >= 0.58, the rest under a lower threshold),
+                              and passes (runs/combo28_k23f4n5_check.log,
+                              103 minutes): 3.103231, after 200 740 860
+                              triple boxes.  With the checks at most 21,
+                              exactly 22 and exactly 24 this is
+                              prop:count28-mixed, (C) at 28.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
