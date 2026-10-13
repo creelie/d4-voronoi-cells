@@ -59,6 +59,10 @@ at least 0.03 from those before) instead of the 40 largest, which can all lie in
 basin of one peak while a higher one elsewhere is missed (the split check of the
 28-centre vector (23, 0, 0, 0, 0, 1, 4) failed on such an interior peak of TRIPLE3_AAF).
 Only the floating-point thresholds change; the branch and bound proves them either way.
+That peak is a narrow ridge: it falls by 3e-6 within 0.01 of its top, so spread-out
+samples miss its basin as well.  With REFINE_GRID=<n> the ascent also starts from every
+local maximum of an n^3 grid on the domain of each triple inequality; n = 121 (spacing
+about 0.013) finds that peak, n = 41 does not, at about two minutes per inequality.
 
 With REFINE_TRIPLES=<b>-<b'>-<b''>[,...] (bins numbered from 1, e.g. 1-3-7) each listed
 combination of bins gets a threshold of its own: a triple of centres in the bins b, b',
@@ -117,6 +121,7 @@ REFINE_PAIRS = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.envi
 PAIR_MARGIN = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('PAIR_MARGIN', '').split(',') if e)}
 SKIP_COVERED = os.environ.get('SKIP_COVERED') == '1'
 DIVERSE = int(os.environ.get('REFINE_DIVERSE', '0'))
+GRIDN = int(os.environ.get('REFINE_GRID', '0'))
 
 
 def num(x):
@@ -314,20 +319,42 @@ def main():
         okb, msg = bracket_check(A, z, D2, R2, C1, C2, C.DMAX, C.EDGES, m)
         C.check('f <= m_b on every bin', okb, msg)
     # (d) triples
-    def refine_starts(g, vals):
+    def refine_starts(g, vals, P_GRID=None):
         """the starts of the local ascent: the 40 largest samples, or with REFINE_DIVERSE=<n> up to n
         samples taken in decreasing order of value and at max-norm distance at least 0.03 from those
         already taken, so that a peak whose basin holds none of the 40 largest samples is still climbed"""
         order = np.argsort(vals)[::-1]
         if not DIVERSE:
-            return g[order[:40]]
+            return g[order[:40]] if P_GRID is None else np.r_[g[order[:40]], grid_local_maxima(*P_GRID)]
         taken = []
         for i in order:
             if all(np.max(np.abs(g[i] - g[j])) >= 0.03 for j in taken):
                 taken.append(i)
                 if len(taken) >= DIVERSE:
                     break
-        return g[np.array(taken)]
+        out = g[np.array(taken)]
+        return out if P_GRID is None else np.r_[out, grid_local_maxima(*P_GRID)]
+
+    def grid_local_maxima(P, T, n):
+        """the points of an n^3 grid on [-1, T_1] x [-1, T_2] x [-1, T_3], restricted to the admissible
+        triples, at which P is at least its value at every admissible neighbour (26-neighbourhood)"""
+        ax = [np.linspace(-1, float(t), n) for t in T]
+        X = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
+        ok = 1 + 2 * X[:, 0] * X[:, 1] * X[:, 2] - (X ** 2).sum(1) >= 0
+        V = np.full(len(X), -np.inf)
+        idx = np.where(ok)[0]
+        for s0 in range(0, len(idx), 20000):
+            j = idx[s0:s0 + 20000]
+            V[j] = C.peval(P, X[j, 0], X[j, 1], X[j, 2])
+        V3 = V.reshape(n, n, n)
+        pad = np.pad(V3, 1, constant_values=-np.inf)
+        loc = np.isfinite(V3)
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    if dx or dy or dz:
+                        loc &= V3 >= pad[1 + dx:n + 1 + dx, 1 + dy:n + 1 + dy, 1 + dz:n + 1 + dz]
+        return X[loc.reshape(-1)]
 
     def triple_setup(P, T, labels, rng_, extra):
         """sample and refine TRIPLE3 = P on {u_12 <= T[0], u_13 <= T[1], u_23 <= T[2]}, and lay it
@@ -339,7 +366,8 @@ def main():
         G = G[1 + 2 * G[:, 0] * G[:, 1] * G[:, 2] - (G ** 2).sum(1) >= 0]
         g = np.r_[g, G]
         vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
-        best = C.refine_triple(P, refine_starts(g, vals), (float(T12), float(T13), float(T23)))
+        P_GRID = (P, (T12, T13, T23), GRIDN) if GRIDN else None
+        best = C.refine_triple(P, refine_starts(g, vals, P_GRID), (float(T12), float(T13), float(T23)))
         thr = C.above(max(float(vals.max()), best) + mg3 + extra)
         perm, sym = C.triple_layout(labels)
         tops = [None] * 3
