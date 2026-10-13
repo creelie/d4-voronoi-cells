@@ -656,6 +656,14 @@ degrees 10 to 16); those of the 0.71 control, where no certificate can
 exist, fall too (+5.56, +0.951, +0.192 at degrees 10 to 14), so the fall
 alone does not point towards a certificate.
 
+More further directions do not help either. `typed_card_m.py` is the same
+programme with m further directions, at inner product at most t2 with the 24
+and at most t3 among themselves (two centres within sqrt6 at distance at
+least 2 have inner product at most 2/3). For 27 centres with 24 within 2.0161
+(m = 3, t2 = 0.6141, t3 = 2/3) degree 10 gives sampled Z +3.33
+(`typed_m24_3_d10.log`): the three-point bound does not exclude 24 centres
+within 2.0161 at 27 centres either.
+
 A four-point kernel does not help at the degrees that fit here.
 `C30/typed4pt.py` adds to the typed three-point kernel of `C30/typed3pt.py` a
 kernel that fixes two of the directions, e1 and e2, expands every other
