@@ -1,1 +1,11 @@
 28 with exactly 23 centres within 2.0161 (case28_k23.json), three-point degree 10 with the trace penalty TRACE_REG=3e-4, round 4 for the 23-close certificate, from the samples of the one before (RESUME=c28k23d_d10_r1.npz, pruned to KEEP_P=6000 pair and KEEP_T=3000 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3.  The round before gave 3.09776 on its samples (corrected 3.12889).  Started Tue Oct 13 03:11:09 UTC 2026
+resumed from c28k23d_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7713 variables, 108033 inequalities, 7389 psd rows in 56 cones, 76771900 nonzeros [22 s to build]
+   20 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.09792 (target 3.10330), corrected <= 3.12978  [5587 s]
+   viol: AA 7.1e-09, AB 3.8e-08, AF 5.8e-09, BB -1.9e-06, BF -3.0e-09, FF 1.1e-09, AAA 1.9e-07, AAB 1.4e-05, AAF 1.4e-05, ABB 2.7e-05, ABF 4.0e-05, AFF 6.8e-05, BBB -6.7e-05, BBF -8.4e-05, BFF 6.0e-05, FFF 1.7e-05
+   c2: {'AA': -0.083764, 'AB': -0.113848, 'AF': -0.021242, 'BB': 0.027307, 'BF': 0.027448, 'FF': 0.03736}
+   c3: {'AAA': 0.0056816, 'AAB': 0.00743, 'AAF': 0.0032144, 'ABB': 0.0015193, 'ABF': 0.0010462, 'AFF': -1.85e-05, 'BBB': 0.0067943, 'BBF': 0.0068313, 'BFF': 0.0065003, 'FFF': 0.0132107}
+exit 0 at Tue Oct 13 04:44:40 UTC 2026
