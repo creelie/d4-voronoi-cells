@@ -1,1 +1,11 @@
 28 with exactly 23 centres within 2.0161 and 4 beyond 2.35, with the close type narrowed: types A = [2, 2.0161], B = (2.0161, 2.35], F = (2.35, sqrt6) (case28_k23f4c.json: the same five count vectors as case28_k23f4.json; every A centre of these vectors lies within 2.0161, so the triple and pair inequalities with an A centre only need to hold on the narrower range, which cuts off the AAF peak at the AF inner product 0.6176), three-point degree 10 with the trace penalty TRACE_REG=3e-4, from the samples of c28k23f4a (RESUME=c28k23f4a_d10_r1_c.npz: c28k23f4a_d10_r1.npz with the samples outside the narrowed domain dropped; pruned to KEEP_P=6000 pair and KEEP_T=3000 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3.  c28k23f4a gave 3.09712 on its samples (corrected 3.23109).  Started Tue Oct 13 08:08:29 UTC 2026
+resumed from c28k23f4a_d10_r1_c.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1224, 'AAF': 1250, 'ABB': 1275, 'ABF': 1300, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1898, 'AAF': 1922, 'ABB': 1966, 'ABF': 1300, 'AFF': 2021, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7418 variables, 95207 inequalities, 7389 psd rows in 56 cones, 69439122 nonzeros [24 s to build]
+   1 type-count vectors
+d3=10 round 1: DualInfeasible  bound -146.39463 (target 3.10330), corrected <= 833552.29485  [4384 s]
+   viol: AA -5.7e-03, AB -2.5e-01, AF -7.4e-03, BB -4.0e+01, BF -4.1e+00, FF -1.7e-01, AAA 1.2e+02, AAB 1.0e+03, AAF 2.8e+02, ABF 6.0e+02, AFF 1.2e+02, BFF 2.1e+02, FFF 5.7e+01
+   c2: {'AA': -3772.545165, 'AB': -1084.941652, 'AF': -5025.178124, 'BB': 3188.18774, 'BF': -3596.439309, 'FF': 4238.510438}
+   c3: {'AAA': 381.6739806, 'AAB': -437.0742217, 'AAF': -701.0469189, 'ABF': 493.7871506, 'AFF': 2681.7048785, 'BFF': 870.3595296, 'FFF': 1734.2671562}
+exit 0 at Tue Oct 13 09:21:52 UTC 2026
