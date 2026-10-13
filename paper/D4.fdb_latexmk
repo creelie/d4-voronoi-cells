@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1791898318.50463 "D4.tex" "D4.pdf" "D4" 1791898323.37502 0
+["pdflatex"] 1791898441.77465 "D4.tex" "D4.pdf" "D4" 1791898446.56924 0
   "/etc/texmf/web2c/texmf.cnf" 1791167710.21763 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -173,10 +173,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1791167717.02445 319537 d0d0708249356078afe7362801504ba7 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1791167733 6830979 a1e9af113476dc8647f3fd0b74091426 ""
-  "D4.aux" 1791898323.14775 183370 6184f89e6215ea269d719bf8ace1136f "pdflatex"
-  "D4.out" 1791898323.15575 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
+  "D4.aux" 1791898446.37975 183370 6184f89e6215ea269d719bf8ace1136f "pdflatex"
+  "D4.out" 1791898446.38775 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
   "D4.tex" 1791897327.72257 692921 a1a2cbf492ef2a6f3ae2944c27dc099a ""
-  "D4.toc" 1791898323.15575 16472 9f734827bd28959483ddedf6400ab377 "pdflatex"
+  "D4.toc" 1791898446.38775 16472 9f734827bd28959483ddedf6400ab377 "pdflatex"
   "figures/fig_c_arcs.png" 1791200272.16814 336878 4c1b9c3d0b1a9128902704d0d11d85ab ""
   "figures/fig_c_boundary.png" 1791176609.09636 617440 259bcb0e568cae0aa081f441887c3181 ""
   "figures/fig_c_cap.png" 1791176609.10244 208804 61f766f080181d31da4449ac77367fa8 ""
@@ -207,7 +207,7 @@
   "figures/fig_tikz_capscheme.png" 1791179701.11234 172668 5e338e2fc7251830889d8e27058a7d8c ""
   "figures/fig_tikz_closure.png" 1790897134.15792 432905 d25ad55fde48350920fad8b1bf95e3d7 ""
   "figures/fig_tikz_codes.png" 1791898301.01974 339659 1e7a5f76390221b81c08d80ec5274003 ""
-  "figures/fig_tikz_count31.png" 1791268477.69054 319854 290e119fe0367a7a43a9cb5f5ed36404 ""
+  "figures/fig_tikz_count31.png" 1791898431.44775 319003 35cb63f249761444631da05375ea1e66 ""
   "figures/fig_tikz_counts.png" 1791176609.18757 153304 c9cc5814f8d32e2c411aaae7ce1d86e7 ""
   "figures/fig_tikz_cradial.png" 1790897134.16192 224248 db304870d5e34b2b32b0fe4da8751084 ""
   "figures/fig_tikz_eps0.png" 1791170089.28443 440182 b2872b2f1ff9be4c8a6d1c86a1aa3d9f ""
