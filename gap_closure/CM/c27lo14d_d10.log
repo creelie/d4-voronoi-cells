@@ -1,0 +1,1 @@
+27 with at most 14 centres within 2.0161 (case27_lo14.json), round 3: resumed from the round-2 certificate c27lo14c (3.10122 on its samples, corrected 3.15011; largest gaps ABF 4.5e-5, BFF 2.8e-5, AAF 2.6e-5), same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=3.  Started Tue Oct 13 23:01:47 UTC 2026
