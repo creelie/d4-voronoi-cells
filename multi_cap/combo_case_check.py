@@ -74,10 +74,10 @@ more boxes at a small margin; this keeps its margin while the others shrink.
 
 With SKIP_COVERED=1, a pair kind or a triple kind all of whose pairs or triples, in every
 count vector of the case, lie in combinations of bins listed in REFINE_PAIRS or
-REFINE_TRIPLES, each with a threshold at most that of the kind, is counted in the bound
-with those thresholds alone (the bound subtracts the full difference), so the threshold
-of the kind is not used and its branch and bound is skipped; the listed combinations are
-checked as usual.  This is for certificates built for narrower distance ranges than the
+REFINE_TRIPLES, is counted in the bound with the thresholds of those combinations alone:
+the threshold of the kind is raised to the largest of them where it lies below it, so
+that the bound subtracts the full difference, it is not used, and its branch and bound is
+skipped; the listed combinations are checked as usual.  This is for certificates built for narrower distance ranges than the
 types of the case, whose thresholds on the whole types are large and of no use.  The
 count vectors of EXTRA_CASES must then be covered in the same way, which is checked.
 """
@@ -282,11 +282,12 @@ def main():
     if SKIP_COVERED:
         for st in c2:
             cov, rs = covered2(st, c2r, C.COUNTS)
-            if cov and all(c2r[bs] <= c2[st] for bs in rs):
+            if cov:
                 skip2.add(st)
-                print('  pair %s%s: in every count vector each of its pairs lies in a listed pair of bins with a threshold at '
-                      'most the kind\'s, so the bound does not use c2_%s%s and its branch and bound is skipped'
-                      % (st[0], st[1], st[0], st[1]), flush=True)
+                c2[st] = max([c2[st]] + [c2r[bs] for bs in rs])
+                print('  pair %s%s: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts '
+                      'them with the thresholds of those bins alone and the branch and bound of the kind is skipped'
+                      % (st[0], st[1]), flush=True)
         if skip2 and not (PRE or ONLY):
             sts = list(c2)
             keep = [k for k in range(len(jobs)) if k >= len(sts) or sts[k] not in skip2]
@@ -364,11 +365,12 @@ def main():
     if SKIP_COVERED:
         for combo in c3:
             cov, rs = covered3(combo, c3r, C.COUNTS)
-            if cov and all(c3r[bs] <= c3[combo] for bs in rs):
+            if cov:
                 skip3.add(''.join(combo))
-                print('  triple %s: in every count vector each of its triples lies in a listed combination of bins with a '
-                      'threshold at most the kind\'s, so the bound does not use c3_%s and its branch and bound is skipped'
-                      % (''.join(combo), ''.join(combo)), flush=True)
+                c3[combo] = max([c3[combo]] + [c3r[bs] for bs in rs])
+                print('  triple %s: in every count vector each of its triples lies in a listed combination of bins, so the '
+                      'bound counts them with the thresholds of those combinations alone and the branch and bound of the '
+                      'kind is skipped' % ''.join(combo), flush=True)
         tjobs = [j for j in tjobs if j[0] not in skip3]
     if not PRE and tjobs:
         with Pool(min(int(os.environ.get('TRIPLE_PROCS', '3')), len(tjobs))) as pool:
