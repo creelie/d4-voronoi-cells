@@ -12,12 +12,12 @@ fourth: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
-which are `thm:count29` and `prop:count28-few`; and two combinations of
+which are `thm:count29` and `prop:count28-few`; and three combinations of
 certificates of `CM/combo_direct.py`, one of fourteen found by `CM/c28_hull.py`
-for at most twenty-one within 2.0161 and one of nine found by
-`CM/c28_hull_multi.py` for exactly twenty-two, which
-`multi_cap/combo_case_check.py` proves exactly and which together are
-`prop:count28-mixed` (at most twenty-two within 2.0161). The rest are kept so that the
+for at most twenty-one within 2.0161, and one of nine for exactly twenty-two
+and one of six for exactly twenty-four, both found by `CM/c28_hull_multi.py`,
+which `multi_cap/combo_case_check.py` proves exactly and which together are
+`prop:count28-mixed` (at most twenty-two or exactly twenty-four within 2.0161). The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -330,15 +330,45 @@ raised by 4e-7 (`TRIPLE_EXTRA=AAF:4e-7`) **passes** in 64 minutes
 (`CM/check_c28k22d2.log`, copied to `multi_cap/runs/combo28_k22_check.log`):
 3.102969 at (22, 0, 2, 0, 0, 0, 4) over the 451 vectors with k = 22, after
 64 474 pair boxes, 2339 bin intervals and 207 350 728 triple boxes. With the
-check at k <= 21 this is `prop:count28-mixed`, at most 22 within 2.0161; the
-cases with 23 or more close centres stay open. `CM/c28k23b_d10.log` builds a
-certificate for exactly 23 close from the round-4 22-close samples (3.09585 on
-its samples, corrected 4.16711), and the mix for exactly 23 with it gives
-3.105407 (3.108499 at exactly 24), above the level; `CM/c28k23c_d10.log`
-refines it. The values on the samples rise by
-about 0.005 per step (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to
-21 close), and each mix lies about 0.006 above the sample value of its last
-certificate, so the chain may stop before 24 close. Extra certificates at 26,
+check at k <= 21 this is the first part of `prop:count28-mixed`, at most 22
+within 2.0161. `CM/c28k23b_d10.log` builds a certificate for exactly 23 close
+from the round-4 22-close samples (3.09585 on its samples, corrected 4.16711),
+and `CM/c28k23c_d10.log`, `CM/c28k23d_d10.log` and `CM/c28k23e_d10.log` refine
+it from the samples of the round before (3.09733, 3.09776, 3.09792 on their
+samples, corrected 3.26595, 3.12889, 3.12978; `CM/c28k23d_try1_d10.log` is a
+first run of round 3, killed when the container ran out of memory).
+`CM/c28k23f_d10.log` is a fifth round with the trace penalty `TRACE_REG=1e-3`
+in place of 3e-4. The mixes with these rounds (`CM/c28_hull_multi.py`, margins
+5e-7 and 5e-8, each triple threshold raised to the largest value that
+`CM/c28_peak2.py` finds by dense sampling and local ascent; the climbing of the
+mixer alone misses peaks on the faces where two centres touch) give 3.105094,
+3.104861 and 3.104693 for exactly 23 close after rounds 2, 3 and 4, and
+3.104594 and 3.103447 for exactly 24 after rounds 3 and 4: the 23-close rounds
+lower the 24-close mix more than the 23-close one. Most of what separates the
+24-close mix from the level is the margins, at the 2600 AAA, 325 AAB and 325
+AAF triples and 325 AA pairs of its worst vector. At margins 1e-7 for the pairs
+and bins and 1e-8 for the triples its precheck gives 3.103128
+(`CM/pre_c28k24e.log`), and the exact check of the mix (`CM/mix28_k24e.npz`,
+copied to `multi_cap/radial_certificates/combo28_k24_d10.npz`: six nonzero
+weights, 0.90 of them on the 23-close rounds 3 and 4) at margins 1e-7, 3e-8
+and 1e-7, with the thresholds raised by 1e-6 for the triple kinds ABB, AFF,
+BBB, BBF, BFF, FFF and by 5e-7 for ABF, which have no triples, or 26, at the
+worst vectors, **passes** in 44 minutes (`CM/check_c28k24e.log`, copied to
+`multi_cap/runs/combo28_k24_check.log`): 3.103206 at (24, 2, 0, 0, 0, 1, 1)
+over the 126 vectors with k = 24, after 29 367 pair boxes, 7156 bin intervals
+and 117 675 808 triple boxes. This completes `prop:count28-mixed`, at most 22
+or exactly 24 within 2.0161; since at most 24 lie within 2.0161
+(`thm:kissing-stable`), exactly 23 close is the only open case at 28. There,
+at the same small margins, the round-4 mix exceeds the level only at three of
+the five vectors with four centres beyond 2.35 (at most 3.10437) and stays at
+most 3.10298 at every other vector; mixing for the worst vector alone gives
+the same value, so splitting the vectors further gains nothing.
+`CM/case28_k23f4.json` is the case of those five vectors, for a certificate
+targeted at them. The values on the samples rise by about 0.005 per step
+(3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to 21 close), and each mix
+lies about 0.006 above the sample value of its last certificate, which is why
+the chain was not continued to 24 close: the 24-close case closed with the
+23-close certificates instead. Extra certificates at 26,
 27 and 29 centres change the mixes by less than 0.001
 (`CM/c29d10_d10_r1.npz`, a failed run with coefficients near 1e12, has to be
 left out of any mix).
@@ -387,7 +417,7 @@ rho(eta) of a root system. Through `cor:no-room`, the residual case at thirty
 would have needed rho < 0.206 at eta = 0.00368; the kernel on typed triples
 settled that case instead (`thm:count30`), and (L) remains the route for
 twenty-five to twenty-seven centres, for the cases of twenty-eight that
-`prop:count28-mixed` leaves (all with at least twenty-three within 2.0161), and for
+`prop:count28-mixed` leaves (exactly twenty-three within 2.0161), and for
 (G).
 
 `budget_far.py` maximises the distance to the nearest root system under

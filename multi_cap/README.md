@@ -515,8 +515,24 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               six pair inequalities (64 474 boxes), the bins
                               (2339 intervals), the ten triple inequalities
                               (207 350 728 boxes), and 3.102969 at
-                              (22, 0, 2, 0, 0, 0, 4).  With the check at most
-                              21 this is prop:count28-mixed (at most 22).
+                              (22, 0, 2, 0, 0, 0, 4).
+                              radial_certificates/combo28_k24_d10.npz
+                              (exactly 24 within 2.0161, case28_k24.json) is
+                              the mix over those 126 vectors alone (six
+                              nonzero weights, 0.90 on two certificates for
+                              exactly 23 close); margins 1e-7 for the pairs
+                              (AA included), 3e-8 for the triples, 1e-7 for
+                              the bins, and 1e-6 more for ABB, AFF, BBB,
+                              BBF, BFF, FFF and 5e-7 more for ABF, which have
+                              no triples, or 26, at the worst vectors; its
+                              exact check passes
+                              (runs/combo28_k24_check.log, 44 minutes): the
+                              six pair inequalities (29 367 boxes), the bins
+                              (7156 intervals), the ten triple inequalities
+                              (117 675 808 boxes), and 3.103206 at
+                              (24, 2, 0, 0, 0, 1, 1).  With the checks at
+                              most 21 and exactly 22 this is
+                              prop:count28-mixed (at most 22 or exactly 24).
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
