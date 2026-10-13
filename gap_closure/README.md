@@ -440,8 +440,22 @@ within 2.002 gives 3.103234 with the split, hardly better. The precheck of
 the split case gives 3.103176, but two of its triple thresholds sat up to
 5.4e-8 below dense-search peaks, so the exact check
 (`CM/check_c28k23f4n5s.log`, from 12:43 UTC on 2026-10-13) raises each
-refined triple threshold above its peak (`TRIPLE_EXTRA`), which should give
-about 3.10328; nothing about this vector is proved yet. The values on the samples rise by about 0.005 per step
+refined triple threshold above its peak (`TRIPLE_EXTRA`), which should have
+given about 3.10328. It **failed** at 14:21 on the triples of bins 1-1-8 (two
+centres within 2.002 and one beyond 2.35), at a box centre 7e-10 above the
+threshold, after eleven other inequalities had passed. The true maximum of
+that inequality on its domain is 2.7474807e-4, at the interior point
+(0.42875, -0.81298, -0.81298), a narrow ridge that falls by 3e-6 within 0.01;
+the dense search and the precheck had climbed only the peak on the face
+where a close and the far direction are at their largest inner product
+(2.7466e-4 after the split). The ridge lies inside the domain of every split,
+so the split gains nothing at a = 23 and the route is dead. The check now has
+`REFINE_GRID=<n>`, which also climbs from every local maximum of an n^3 grid
+(n = 121 finds the ridge, n = 41 does not), and with it the precheck of the
+unsplit vector (`CM/pre_c28k23f4n5u_grid.log`) gives 3.103360 at margins
+1e-7/1e-8/1e-7, the value quoted before. From 14:40 round 2 of the
+single-vector round (`CM/c28k23f4g5r2_d10.log`) runs for a new certificate;
+nothing about this vector is proved. The values on the samples rise by about 0.005 per step
 (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to 21 close), and each mix
 lies about 0.006 above the sample value of its last certificate, which is why
 the chain was not continued to 24 close: the 24-close case closed with the
