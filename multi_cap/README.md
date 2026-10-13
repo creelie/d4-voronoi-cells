@@ -547,10 +547,30 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               the six pair inequalities (37 565 boxes), the
                               bins (2719 intervals), the ten triple
                               inequalities (162 022 640 boxes), and 3.102775
-                              at (23, 0, 0, 0, 0, 4, 1).  With the checks at
-                              most 21 and exactly 22 this is
-                              prop:count28-mixed (all but exactly 23 within
-                              2.0161 with 4 beyond 2.35).
+                              at (23, 0, 0, 0, 0, 4, 1).  The same
+                              thresholds give 3.102361 at the vector
+                              (23, 1, 0, 0, 0, 0, 4) (EXTRA_CASES=
+                              case28_k23f4m.json; gap_closure/CM/
+                              pre_c28k23f4m_extra.log).
+                              radial_certificates/combo28_k23f4n{2,3,4}_d10.npz
+                              are mixes for the single vectors with 23
+                              within 2.0161, 4 beyond 2.35 and the last
+                              centre in (2.05, 2.1], (2.1, 2.15] or
+                              (2.15, 2.2] (case28_k23f4n{2,3,4}.json),
+                              found with the types narrowed to the occupied
+                              bins (gap_closure/CM/c28_hull_case.py) and
+                              their bin constants recomputed on the usual
+                              bins (gap_closure/CM/remap_bins.py); each is
+                              checked with REFINE_TRIPLES and REFINE_PAIRS
+                              on the occupied bins and SKIP_COVERED=1, and
+                              passes (runs/combo28_k23f4n{2,3,4}_check.log,
+                              75, 71 and 75 minutes): 3.103281, 3.101860
+                              and 3.102128, after 127 221 931, 125 799 088
+                              and 124 117 379 triple boxes.  With the
+                              checks at most 21, exactly 22 and exactly 24
+                              this is prop:count28-mixed (all of 28 but
+                              exactly 23 within 2.2, all of them within
+                              2.0161, and 4 beyond 2.35).
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

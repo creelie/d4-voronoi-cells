@@ -6,9 +6,10 @@ to 28 centres within sqrt6 and statement (G), and the cases they settled,
 the residual case at thirty centres, the whole case at twenty-nine, and
 twenty-eight with at most fourteen centres within 2.0161 (fifteen with at
 most three beyond 2.35, sixteen with none), then all of twenty-eight but
-exactly twenty-three within 2.0161 with four beyond 2.35. They
+exactly twenty-three within 2.2, all of them within 2.0161, with four beyond
+2.35. They
 are floating-point semidefinite programmes on sampled constraints. **Three of
-them yield certificates**, and convex combinations of several yield four
+them yield certificates**, and convex combinations of several yield seven
 more: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
@@ -17,10 +18,12 @@ which are `thm:count29` and `prop:count28-few`; and four combinations of
 certificates of `CM/combo_direct.py`, one of fourteen found by `CM/c28_hull.py`
 for at most twenty-one within 2.0161, and one of nine for exactly twenty-two,
 one of six for exactly twenty-four and one of eight for exactly twenty-three
-with at most three beyond 2.35, found by `CM/c28_hull_multi.py`, which
-`multi_cap/combo_case_check.py` proves exactly and which together are
-`prop:count28-mixed` (all of twenty-eight but exactly twenty-three within
-2.0161 with four beyond 2.35). The rest are kept so that the
+with at most three beyond 2.35, found by `CM/c28_hull_multi.py`, and three
+for single vectors with twenty-three within 2.0161, four beyond 2.35 and the
+last centre in (2.05, 2.1], (2.1, 2.15] or (2.15, 2.2], found by
+`CM/c28_hull_case.py`, which `multi_cap/combo_case_check.py` proves exactly
+and which together are `prop:count28-mixed` (all of twenty-eight but exactly
+twenty-three within 2.2, all of them within 2.0161, with four beyond 2.35). The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -388,7 +391,44 @@ is the same five vectors with the close type narrowed to A = [2, 2.0161] and
 B = [2.0161, 2.35]: at these vectors every A centre lies within 2.0161, so the
 inequalities with an A centre need to hold only there, which cuts off the AAF
 peak at the AF inner product 0.6176; `CM/c28k23f4c_d10.log` is a round on it
-from the samples of c28k23f4a. The values on the samples rise by about 0.005 per step
+from the samples of c28k23f4a. It ends DualInfeasible after 4384 s: a case
+with a single type-count vector leaves the programme unbounded, and a round on
+such a case needs a second, proved vector beside it (`CM/case28_k23f4h.json`
+adds 24 close with 4 beyond 2.35; `CM/c28k23f4h_d10.log`: 3.07461 on its
+samples, 5.09653 corrected).
+
+The five vectors are then taken one at a time. (23, 1, 0, 0, 0, 0, 4) needs no
+new certificate: the thresholds of the passing check of `case28_k23fle3.json`
+give 3.102361 there (`CM/pre_c28k23f4m_extra.log`, `EXTRA_CASES`). For each
+of the other four, `CM/c28_hull_case.py` mixes the pool for that vector alone
+on a case whose types are narrowed to the bins it occupies
+(`CM/case28_k23f4g{2,3,4,5}_narrow.json`: A = [2, 2.0161], B = the bin of the
+last centre, F), with 400 climbing starts per kind and the dense-search peaks
+of an earlier mix as seeds (`PEAKS`); the dense search itself
+(`CM/c28_peak2.py`) needs contiguous bins and runs on a proxy case with the
+same upper ends (`CM/case28_k23f4g*_proxy.json`), since the triple domains
+depend only on the upper ends. `CM/remap_bins.py` recomputes the bin
+constants of the mix on the usual seven bins, and `combo_case_check.py` checks
+it on `CM/case28_k23f4n{2,3,4,5}.json` with the thresholds refined to the
+occupied bins and `SKIP_COVERED=1`. Dense-corrected at margins 1e-7/1e-7/1e-8
+the mixes give 3.103249 for (2.05, 2.1], 3.101123 for (2.1, 2.15], 3.101210
+for (2.15, 2.2] and 3.103356 for (2.2, 2.35], and the first three
+**pass** their exact checks (`CM/check_c28k23f4n2p.log`,
+`CM/check_c28k23f4n3g.log`, `CM/check_c28k23f4n4g.log`): 3.103281, 3.101860
+and 3.102128. So at 28 only (23, 0, 0, 0, 0, 1, 4) stays open: 23 within
+2.0161, one in (2.2, 2.35] and 4 beyond 2.35. There the mix gives 3.103285
+with no margins at all, too close to the level for a check; splitting its
+bin at 2.3 gains nothing, since the radial function rises to 2.35 and is flat
+from 2.28 on, and a round for that vector alone (`CM/case28_k23f4g5r.json`,
+from the samples of c28k23f4h, with the proved 24 + 4 vector beside it) runs
+from 11:23 UTC on 2026-10-13. The radial function of the mixes falls by about
+0.0022 from 2 to 2.0161, so splitting the close bin at 2.002
+(`CM/case28_k23f4n5s.json`) lowers the bound of every vector with a close
+centre beyond 2.002 by about 3e-4 per centre, while 23 centres within 2.002
+have smaller inner products (the AF bound 0.6126 instead of 0.6140, on which
+the AAF peak lies); in floating point this takes the (2.2, 2.35] mix from
+3.103356 to 3.103251 (dense-corrected, margins 1e-7/1e-7/1e-8). Its exact
+check is the next step; nothing about this vector is proved yet. The values on the samples rise by about 0.005 per step
 (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to 21 close), and each mix
 lies about 0.006 above the sample value of its last certificate, which is why
 the chain was not continued to 24 close: the 24-close case closed with the
