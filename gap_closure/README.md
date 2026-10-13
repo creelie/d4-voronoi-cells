@@ -5,19 +5,22 @@ paper leaves open (Section "The statements (G) and (C)"): statement (C) for 25
 to 28 centres within sqrt6 and statement (G), and the cases they settled,
 the residual case at thirty centres, the whole case at twenty-nine, and
 twenty-eight with at most fourteen centres within 2.0161 (fifteen with at
-most three beyond 2.35, sixteen with none), then with at most twenty-two. They
+most three beyond 2.35, sixteen with none), then all of twenty-eight but
+exactly twenty-three within 2.0161 with four beyond 2.35. They
 are floating-point semidefinite programmes on sampled constraints. **Three of
-them yield certificates**, and a convex combination of several yields a
-fourth: the round-3 certificate of `C30/combo30p.py`, which
+them yield certificates**, and convex combinations of several yield four
+more: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
-which are `thm:count29` and `prop:count28-few`; and three combinations of
+which are `thm:count29` and `prop:count28-few`; and four combinations of
 certificates of `CM/combo_direct.py`, one of fourteen found by `CM/c28_hull.py`
-for at most twenty-one within 2.0161, and one of nine for exactly twenty-two
-and one of six for exactly twenty-four, both found by `CM/c28_hull_multi.py`,
-which `multi_cap/combo_case_check.py` proves exactly and which together are
-`prop:count28-mixed` (at most twenty-two or exactly twenty-four within 2.0161). The rest are kept so that the
+for at most twenty-one within 2.0161, and one of nine for exactly twenty-two,
+one of six for exactly twenty-four and one of eight for exactly twenty-three
+with at most three beyond 2.35, found by `CM/c28_hull_multi.py`, which
+`multi_cap/combo_case_check.py` proves exactly and which together are
+`prop:count28-mixed` (all of twenty-eight but exactly twenty-three within
+2.0161 with four beyond 2.35). The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -338,7 +341,8 @@ it from the samples of the round before (3.09733, 3.09776, 3.09792 on their
 samples, corrected 3.26595, 3.12889, 3.12978; `CM/c28k23d_try1_d10.log` is a
 first run of round 3, killed when the container ran out of memory).
 `CM/c28k23f_d10.log` is a fifth round with the trace penalty `TRACE_REG=1e-3`
-in place of 3e-4. The mixes with these rounds (`CM/c28_hull_multi.py`, margins
+in place of 3e-4 (3.10027 on its samples, corrected 3.17106: worse on its own,
+but it lowers the mixes). The mixes with these rounds (`CM/c28_hull_multi.py`, margins
 5e-7 and 5e-8, each triple threshold raised to the largest value that
 `CM/c28_peak2.py` finds by dense sampling and local ascent; the climbing of the
 mixer alone misses peaks on the faces where two centres touch) give 3.105094,
@@ -358,13 +362,33 @@ worst vectors, **passes** in 44 minutes (`CM/check_c28k24e.log`, copied to
 over the 126 vectors with k = 24, after 29 367 pair boxes, 7156 bin intervals
 and 117 675 808 triple boxes. This completes `prop:count28-mixed`, at most 22
 or exactly 24 within 2.0161; since at most 24 lie within 2.0161
-(`thm:kissing-stable`), exactly 23 close is the only open case at 28. There,
-at the same small margins, the round-4 mix exceeds the level only at three of
-the five vectors with four centres beyond 2.35 (at most 3.10437) and stays at
-most 3.10298 at every other vector; mixing for the worst vector alone gives
-the same value, so splitting the vectors further gains nothing.
-`CM/case28_k23f4.json` is the case of those five vectors, for a certificate
-targeted at them. The values on the samples rise by about 0.005 per step
+(`thm:kissing-stable`), exactly 23 close was then the only open case at 28.
+There, at the same small margins, the round-4 mix exceeds the level only at
+three of the five vectors with four centres beyond 2.35 (at most 3.10437) and
+stays at most 3.10298 at every other vector; mixing for the worst vector alone
+gives the same value. So exactly 23 is split by the number beyond 2.35.
+`CM/case28_k23fle3.json` holds the 246 vectors with at most 3 beyond 2.35. The
+mix with round 5 (`CM/mix28_k23fle3f.npz`, copied to
+`multi_cap/radial_certificates/combo28_k23fle3_d10.npz`: eight nonzero weights,
+0.62 on two 22-close certificates and 0.35 on the 23-close rounds 2 to 5) gives
+3.102605 after the dense correction and 3.102649 in its precheck
+(`CM/pre_c28k23fle3f.log`), and its exact check at margins 5e-7, 1e-7 and
+1e-7, with the thresholds raised by 5e-7 for AAF (whose peak, on the face where
+the AF inner product is largest, the precheck missed by 2e-7) and by 1e-6 for
+FFF (at most one triple at these vectors), **passes** in 55 minutes
+(`CM/check_c28k23fle3f.log`, copied to `multi_cap/runs/combo28_k23fle3_check.log`):
+3.102775 at (23, 0, 0, 0, 0, 4, 1), after 37 565 pair boxes, 2719 bin intervals
+and 162 022 640 triple boxes. So at 28 only exactly 23 within 2.0161 with 4
+beyond 2.35 stays open. `CM/case28_k23f4.json` is the case of those five
+vectors; the mixes give 3.10408 there at the small margins and about 3.1040
+with no margins, above the level, so only better certificates can close it.
+`CM/c28k23f4a_d10.log` is a certificate targeted at them from the samples of
+round 5 (3.09712 on its samples, corrected 3.23109). `CM/case28_k23f4c.json`
+is the same five vectors with the close type narrowed to A = [2, 2.0161] and
+B = [2.0161, 2.35]: at these vectors every A centre lies within 2.0161, so the
+inequalities with an A centre need to hold only there, which cuts off the AAF
+peak at the AF inner product 0.6176; `CM/c28k23f4c_d10.log` is a round on it
+from the samples of c28k23f4a. The values on the samples rise by about 0.005 per step
 (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to 21 close), and each mix
 lies about 0.006 above the sample value of its last certificate, which is why
 the chain was not continued to 24 close: the 24-close case closed with the

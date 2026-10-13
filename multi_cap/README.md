@@ -530,9 +530,27 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               six pair inequalities (29 367 boxes), the bins
                               (7156 intervals), the ten triple inequalities
                               (117 675 808 boxes), and 3.103206 at
-                              (24, 2, 0, 0, 0, 1, 1).  With the checks at
+                              (24, 2, 0, 0, 0, 1, 1).
+                              radial_certificates/combo28_k23fle3_d10.npz
+                              (exactly 23 within 2.0161 and at most 3
+                              beyond 2.35, case28_k23fle3.json) is the mix
+                              over those 246 vectors alone (eight nonzero
+                              weights, 0.62 on two certificates for exactly
+                              22 close and 0.35 on four for exactly 23);
+                              margins 5e-7 for the pairs (AA included),
+                              1e-7 for the triples and the bins, and 5e-7
+                              more for AAF, which peaks on the face where
+                              the AF inner product is largest, and 1e-6 more
+                              for FFF, which has at most one triple; its
+                              exact check passes
+                              (runs/combo28_k23fle3_check.log, 55 minutes):
+                              the six pair inequalities (37 565 boxes), the
+                              bins (2719 intervals), the ten triple
+                              inequalities (162 022 640 boxes), and 3.102775
+                              at (23, 0, 0, 0, 0, 4, 1).  With the checks at
                               most 21 and exactly 22 this is
-                              prop:count28-mixed (at most 22 or exactly 24).
+                              prop:count28-mixed (all but exactly 23 within
+                              2.0161 with 4 beyond 2.35).
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

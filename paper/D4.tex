@@ -245,8 +245,8 @@ contact graph on $S^3$.
 
 This paper proves the conjecture at every centre whose neighbours within
 $2\sqrt2$ touch it, at every centre with at most twenty-three or at least
-twenty-nine other centres within $\sqrt6$, or with twenty-eight of which at
-most twenty-two or exactly twenty-four lie within $2.0161$, and in an explicit neighbourhood
+twenty-nine other centres within $\sqrt6$, or with twenty-eight unless
+exactly twenty-three of them lie within $2.0161$ and four beyond $2.35$, and in an explicit neighbourhood
 of the $D_4$ configuration, and it reduces the remaining centres to two
 explicit statements about at most twenty-eight neighbours; the cases left open
 are those of \cref{conj:shell} below.
@@ -329,8 +329,8 @@ set of other centres within $\sqrt6$ of $c$. The conclusion of
 \begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
 \item $|Y|\le23$, at any distances;
 \item $|Y|\ge31$, and then $\vol(V_c)>8.0179$;
-\item $|Y|=29$ or $|Y|=30$, or $|Y|=28$ and at most $22$ centres of $Y$,
-or exactly $24$, lie within $2.0161$ of $c$;
+\item $|Y|=29$ or $|Y|=30$, or $|Y|=28$ unless exactly $23$ centres of $Y$
+lie within $2.0161$ of $c$ and exactly $4$ beyond $2.35$;
 \item $|Y|=24$, and $Y$ lies on the rays from $c$ through the roots of a
 copy of $\Rt$;
 \item the contact directions of $c$ contain all but at most two of the
@@ -341,7 +341,7 @@ $2+\varepsilon_0$ and $\sqrt6$, where $\varepsilon_0=4\cdot10^{-26}$.
 \end{enumerate}
 \end{thm}
 
-These are \cref{thm:m23-labelled,thm:count31,thm:count30,thm:count29,prop:count28-few,prop:count28-mixed,cor:rays,cor:root-subsets,thm:near-contact}.
+These are \cref{thm:m23-labelled,thm:count31,thm:count30,thm:count29,prop:count28-few,prop:count28-mixed,cor:rays,cor:root-subsets,thm:near-contact}, case (c) at $|Y|=28$ with \cref{prop:C-radial,thm:kissing-stable}.
 Case (f) makes the $D_4$ configuration a strict local minimum of the cell
 volume among all packings, in an explicit neighbourhood; the constant
 $\varepsilon_0$ comes from a robust form of the classification
@@ -363,7 +363,8 @@ The twenty-four-cell conjecture is \cref{thm:local-general} together with
 \cref{thm:kissing-stable}, a centre at which \cref{conj:shell} fails has
 between $24$ and $28$ other centres within $\sqrt6$, one of them at a
 distance between $2+\varepsilon_0$ and $\sqrt6$, and at most $24$ within
-$2.0161$; if it has $28$, then exactly $23$ of them lie within $2.0161$.
+$2.0161$; if it has $28$, then exactly $23$ of them lie within $2.0161$
+and exactly $4$ beyond $2.35$.
 For a set $Y$ of centres within $\sqrt6$ of $c$ let $T(Y)$ be the
 volume of the part of $B(c,\sqrt{3/2})$ that no half-space of $Y$ cuts off,
 and $K(Y)$ the convex hull of $c$ and the images of the centres of $Y$ under
@@ -384,12 +385,13 @@ the number of centres within $2.05$, $2.1$, $2.15$ and $2.2$
 $|Y|=28$ when at most $14$ centres lie within $2.0161$, when $15$ do
 and at most $3$ lie beyond $2.35$, and when $16$ do and none lies beyond
 $2.35$ (\cref{prop:count28-few}), and with a kernel of higher degree,
-combined from kernels found for parts of the case, when at most $22$ do
-and when $24$ do (\cref{prop:count28-mixed}). We prove (G) along
+combined from kernels found for parts of the case, when at most $22$ do,
+when $24$ do, and when $23$ do and at most $3$ lie beyond $2.35$
+(\cref{prop:count28-mixed}). We prove (G) along
 every push-out of the root system and in a neighbourhood of it
 (\cref{thm:G-pushout,thm:near-contact}). Statement (G) in general, and (C)
 for $25\le|Y|\le27$ and for $|Y|=28$ with exactly $23$ centres within
-$2.0161$ (\cref{rem:count28-rest}), are open, and \cref{sec:G-and-C} sets out what each
+$2.0161$ and $4$ beyond $2.35$ (\cref{rem:count28-rest}), are open, and \cref{sec:G-and-C} sets out what each
 needs; \cref{fig:proof-map} shows the cases. The density bound does not
 require them cell by cell:
 \cref{lem:redistribution} shows that it suffices to move volume between
@@ -1472,7 +1474,7 @@ Result & Kernel & Degree & Finite check & Proved / needed\\
 \cref{thm:count30} & pairs; typed triples & $12$, $4$; $8$ & $193$ million boxes & $3.0992$ / $3.10330$\\
 \cref{thm:count29} & pairs; typed triples & $12$, $4$; $8$ & $16.3$ million boxes & $3.10147$ / $3.10330$\\
 \cref{prop:count28-few} & pairs; typed triples & $12$, $4$; $8$ & $30.0$ million boxes & $3.10247$ / $3.10330$\\
-\cref{prop:count28-mixed} & pairs; typed triples & $12$, $4$; $10$ & $494.1$ million boxes & $3.10321$ / $3.10330$\\
+\cref{prop:count28-mixed} & pairs; typed triples & $12$, $4$; $10$ & $656.1$ million boxes & $3.10321$ / $3.10330$\\
 \cref{prop:levels}, $M=24$ & pairs; typed triples & $6$ (triples) & $104\,028$ boxes & $3.25388$ / $3.3291$\\
 \cref{prop:levels}, $M=26$ & pairs; typed triples & $8$ (triples) & $7.5$ million boxes & $3.32906$ / $3.3291$\\
 \cref{prop:C-radial} & pairs, labelled & $12$, $4$ & one split per entry & $3.10276$ / $3.10330$\\
@@ -7877,8 +7879,8 @@ them, and \cref{rem:what-g-needs-2} sets out what a proof needs.
 For twenty-five or more centres within $\sqrt6$ the pair terms alone
 suffice from thirty-one centres on (\cref{thm:count31}), and with triples
 of typed directions added they suffice at thirty and at twenty-nine
-(\cref{thm:count30,thm:count29}), and at twenty-eight when at most twenty-two
-or exactly twenty-four centres lie within $2.0161$
+(\cref{thm:count30,thm:count29}), and at twenty-eight except when exactly
+twenty-three centres lie within $2.0161$ and four beyond $2.35$
 (\cref{prop:count28-few,prop:count28-mixed}). From twenty-five to twenty-seven,
 and in the case at twenty-eight that \cref{rem:count28-rest} describes, they
 are not proved to suffice, although the least value of $T$ found numerically for
@@ -7929,8 +7931,9 @@ of the second code. (c) The least contact-cell volume found over codes of
 slack $s$. (d) The cases of \cref{prop:reduction-G}; the green boxes are
 proved, the orange ones are statement (G) and statement (C) for twenty-five
 to twenty-eight centres, (C) being proved from twenty-nine on by
-\cref{thm:count31,thm:count30,thm:count29} and at twenty-eight with at most
-twenty-two or exactly twenty-four centres within $2.0161$ by \cref{prop:count28-few,prop:count28-mixed}.
+\cref{thm:count31,thm:count30,thm:count29} and at twenty-eight, except with
+exactly twenty-three centres within $2.0161$ and four beyond $2.35$, by
+\cref{prop:count28-few,prop:count28-mixed}.
 Panels (b) and (c) are floating-point minimisations, evidence and not
 bounds.}
 \label{fig:codes}
@@ -8099,8 +8102,9 @@ With at most $23$ centres within $\sqrt6$ the bound holds by
 \cref{thm:m23-labelled}, and with $31$ or more by \cref{thm:count31}
 (\cref{fig:count31}); \cref{thm:count30,thm:count29} below settle thirty and
 twenty-nine, \cref{prop:count28-few,prop:count28-mixed} settle twenty-eight
-with at most twenty-two or exactly twenty-four centres within $2.0161$, and what remains of (C) is the range from $25$ to
-$27$ and twenty-eight with exactly twenty-three.
+except with exactly twenty-three centres within $2.0161$ and four beyond
+$2.35$, and what remains of (C) is the range from $25$ to $27$ and that case
+at twenty-eight.
 
 \begin{remark}[Where the kernel stops]\label{rem:kernel-limit}
 The argument is Delsarte's linear programming method \cite{DGS77}, with the
@@ -8179,8 +8183,9 @@ $\Pi$ at $u=\frac12$, the inner product of neighbouring roots
 $u=\frac12$; $\Pi$ is positive from $u=\frac13$, where the two caps first
 meet. (d) The counts of centres within $\sqrt6$ and what settles each;
 thirty and twenty-nine are settled by the kernel on typed triples of
-\cref{thm:count30,thm:count29}, and twenty-eight with at most twenty-two
-or exactly twenty-four centres within $2.0161$ by \cref{prop:count28-few,prop:count28-mixed}.
+\cref{thm:count30,thm:count29}, and twenty-eight, except with exactly
+twenty-three centres within $2.0161$ and four beyond $2.35$, by
+\cref{prop:count28-few,prop:count28-mixed}.
 Panel (a) is floating point, except the value $3.0854$ at $31$, which is
 proved.}
 \label{fig:count31}
@@ -8767,7 +8772,8 @@ but not below $2.4$ for $M=25$ or $26$, where the optimum on the first case
 is $3.1124$ and $3.1068$. And, as for (G), the counts say
 nothing about the directions: the case of twenty-four close centres needs
 each of them within $0.093$ of a root system (except at $M=28$, where
-\cref{prop:count28-mixed} settles it), and the case of twenty-three
+\cref{prop:count28-mixed} settles it), and the case of twenty-three (at
+$M=28$ only with four centres beyond $2.35$, by \cref{prop:count28-mixed})
 a certificate that tells a packing from the fictitious configurations of
 \cref{rem:what-c-needs}.
 
@@ -8950,9 +8956,10 @@ semidefinite form a convex set and every other condition is checked afresh
 for the combination; certificates of degree $10$ found for single values of
 $n_1$, each from the samples of the one before, combine to reach further.
 
-\begin{prop}[Twenty-eight centres, at most twenty-two or twenty-four close]\label{prop:count28-mixed}
+\begin{prop}[Twenty-eight centres, all but twenty-three close and four far]\label{prop:count28-mixed}
 Suppose that exactly $28$ centres other than $c$ lie within $\sqrt6$ of $c$.
-If at most $22$ of them, or exactly $24$, lie within $2.0161$ of $c$, then $T(Y)>8$.
+If at most $22$ of them, or exactly $24$, lie within $2.0161$ of $c$, or
+exactly $23$ do and at most $3$ lie beyond $2.35$, then $T(Y)>8$.
 \end{prop}
 
 \begin{proof}
@@ -9010,12 +9017,34 @@ ball arithmetic at $11\,253$ of them; the bins take $7156$ intervals, and the
 ten inequalities on triples close $117\,675\,808$ boxes. The right side of
 \eqref{eq:thirty-bound}, evaluated in exact rational arithmetic, is largest
 at $(24,2,0,0,0,1,1)$, where it is $3.103206$, below $\frac98\pi^2-8$.
+
+For $n_1=23$ and $n_7\le3$ a fourth combination is used in the same way,
+over the $246$ vectors with $n_1=23$ and $n_7\le3$ that meet the same
+bounds. It is a convex combination of eight certificates found for the case
+at twenty-eight centres or parts of it, with $0.62$ of the weight on two
+found for twenty-two close centres and $0.35$ on four found for twenty-three
+(\cref{app:code-index}), made exact and checked in the same way. The margins
+are $5\cdot10^{-7}$ for the pairs, two centres of type $\mathsf a$
+included, $10^{-7}$ for the triples and $10^{-7}$ for the bins, except that
+for two centres of type $\mathsf a$ and one of type $\mathsf f$ the margin
+is $6\cdot10^{-7}$, since that inequality peaks on the face where an
+$\mathsf a$ and the $\mathsf f$ direction are at their largest inner
+product $0.6176$, and the samples miss that peak by $2\cdot10^{-7}$, and
+for three centres of
+type $\mathsf f$ it is $1.1\cdot10^{-6}$, since these vectors have at most
+one such triple. The six inequalities on pairs close $37\,565$ boxes,
+$15\,489$ of them for two centres of type $\mathsf a$, and evaluate $\Pi$
+in ball arithmetic at $17\,493$ of them; the bins take $2719$ intervals, and
+the ten inequalities on triples close $162\,022\,640$ boxes. The right side
+of \eqref{eq:thirty-bound}, evaluated in exact rational arithmetic, is
+largest at $(23,0,0,0,0,4,1)$, where it is $3.102775$, below
+$\frac98\pi^2-8$.
 \end{proof}
 
 \begin{remark}[What remains at twenty-eight centres]\label{rem:count28-rest}
 By \cref{prop:C-radial,prop:count28-mixed,thm:kissing-stable}, a set $Y$ of
-$28$ centres with $T(Y)\le8$ has exactly $23$ centres within $2.0161$
-and at least $24$ within $2.35$. Since
+$28$ centres with $T(Y)\le8$ has exactly $23$ centres within $2.0161$,
+exactly $24$ within $2.35$ and four beyond. Since
 $a(d,d')$ increases in each argument, the directions of $Y$, ordered by
 the distance of their centres from $c$, then satisfy
 $\langle\hat y_i,\hat y_j\rangle\le a(\rho_i,\rho_j)$, where $\rho_i$ is
@@ -9057,16 +9086,16 @@ $n_1\le16$, while programmes of degree $8$ for these two sets of vectors
 reach $3.08978$ and $3.09593$ on their samples; at $n_1\le13$ the constants
 of the check put the bound $0.0154$ above its value with the sampled ones.
 The convex combinations of \cref{prop:count28-mixed} go further: they
-settle $n_1=24$, and at $n_1=23$ they come close. In floating point, with the
-largest value of each inequality found by local maximisation and by a dense
-search, and margins $10^{-7}$ for the pairs and $10^{-8}$ for the triples,
-the best combination found so far gives $3.10437$ over the vectors with
-$n_1=23$, above the level. It exceeds the level only at three of the five
-vectors with four centres beyond $2.35$, and it is at most $3.10298$ at every
-other vector with $n_1=23$. Whether combinations of this kind reach those
-vectors, where four centres need holes of the twenty-three close directions,
-is open; if they do not, a bound for them has to come from the directions,
-through a certificate that detects holes.
+settle $n_1=24$, and $n_1=23$ with at most three centres beyond $2.35$. At
+the five vectors with $n_1=23$ and $n_7=4$ they come close. In floating
+point, with the largest value of each inequality found by local maximisation
+and by a dense search, and margins $10^{-7}$ for the pairs and $10^{-8}$ for
+the triples, the best combination found so far gives $3.10408$ there, above
+the level at three of the five vectors, and about $3.1040$ with no margins at all,
+so that smaller margins cannot close the case. Whether combinations of this
+kind reach those vectors, where four centres need holes of the twenty-three
+close directions, is open; if they do not, a bound for them has to come from
+the directions, through a certificate that detects holes.
 \end{remark}
 
 Statement (G) can be proved in full along one family: the root system with
@@ -9534,7 +9563,7 @@ cross-polytope (\cref{thm:local-uncond,thm:cap-inequality}).
 The conjecture holds also at every centre with at most twenty-three other
 centres within $\sqrt6$ (\cref{thm:m23-labelled}) or with at least
 twenty-nine (\cref{thm:count31,thm:count30,thm:count29}), or with twenty-eight
-of which at most twenty-two or exactly twenty-four lie within $2.0161$
+unless exactly twenty-three of them lie within $2.0161$ and four beyond $2.35$
 (\cref{prop:count28-few,prop:count28-mixed}); at every centre whose
 twenty-four neighbours within
 $\sqrt6$ lie on the rays of a root system (\cref{cor:rays}), whose contacts
@@ -9696,8 +9725,9 @@ $2+\varepsilon_0$ and $\sqrt6$. By \cref{prop:reduction-G} it follows from
 statement (G) for twenty-four centres and statement (C) for twenty-five to
 twenty-eight, and together these would give $\Delta_4=\pi^2/16$
 (\cref{cor:conj-density}). Statement (C) is proved from twenty-nine centres on
-(\cref{thm:count31,thm:count30,thm:count29}), and at twenty-eight when at most
-twenty-two or exactly twenty-four centres lie within $2.0161$ (\cref{prop:count28-few,prop:count28-mixed}).
+(\cref{thm:count31,thm:count30,thm:count29}), and at twenty-eight except when
+exactly twenty-three centres lie within $2.0161$ and four beyond $2.35$
+(\cref{prop:count28-few,prop:count28-mixed}).
 Statement (G) is proved along the
 push-outs of the root system and near it
 (\cref{thm:G-pushout,thm:near-contact}), and its second order is
@@ -9733,7 +9763,8 @@ centres it settles the case of at most fourteen centres within $2.0161$,
 fifteen with at most three beyond $2.35$, and sixteen with none beyond $2.35$
 (\cref{prop:count28-few}), and, with a convex combination of certificates of
 degree $10$ found for single numbers of centres within $2.0161$, the cases of
-at most twenty-two and of exactly twenty-four (\cref{prop:count28-mixed}). On the whole case at twenty-eight, with three
+at most twenty-two, of exactly twenty-four, and of exactly twenty-three with
+at most three beyond $2.35$ (\cref{prop:count28-mixed}). On the whole case at twenty-eight, with three
 types, the optimum of the programme on its sample points is $3.107$ at
 $d=8$, above $\frac98\pi^2-8=3.10330$, and $3.095$ at $d=10$, below it; at
 twenty-nine the step from $d=8$ to $d=10$ lowers the optimum from $3.064$ to
@@ -9741,8 +9772,8 @@ $3.012$. Whether a certificate of degree $10$ exists for the whole case is
 not settled: after five rounds of refinement the solutions still violate the
 inequalities on triples between the samples by more than $10^{-4}$, and with
 the $3276$ triples of $28$ centres a proof needs about $2\cdot10^{-6}$. A
-certificate for exactly twenty-three centres within $2.0161$ would settle
-twenty-eight. At
+certificate for exactly twenty-three centres within $2.0161$ and four beyond
+$2.35$ would settle twenty-eight. At
 twenty-seven the optima at $d=8$, $10$ and $12$ are $3.157$, $3.123$ and
 $3.113$, and at twenty-six the optimum at $d=8$ is $3.246$, all above the
 level.\footnote{These optima are those of the programmes
@@ -12047,7 +12078,10 @@ certificates of four of them enter the second combination of
 \cref{prop:count28-mixed}. For twenty-three, further rounds were run from the
 samples of the last round for twenty-two; the certificates of the first,
 third and fourth of them, with $0.90$ of the weight on the last two, enter the
-third combination, which settles twenty-four.
+third combination, which settles twenty-four. The fourth combination, for
+twenty-three with at most three centres beyond $2.35$, puts $0.62$ of its
+weight on two rounds for twenty-two and $0.35$ on the second to fifth rounds
+for twenty-three.
 
 \emph{Holes.} The labelled programmes of \cref{rem:what-c-needs} have two
 classes of directions, $n$ of slack $0.008$ and one further direction. They
