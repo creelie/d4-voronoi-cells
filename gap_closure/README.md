@@ -676,6 +676,17 @@ least 2 have inner product at most 2/3). For 27 centres with 24 within 2.0161
 (`typed_m24_3_d10.log`): the three-point bound does not exclude 24 centres
 within 2.0161 at 27 centres either.
 
+Counting the near neighbours of the further direction does not help.
+Directions of the 24 at inner product above t1 with it lie between 52.1 and
+59.5 degrees from it and at least 70.3 degrees apart on its link sphere, so
+by the Tammes problem there are at most 9 of them. `typed_card_hole.py` relaxes
+only those: with exactly mp of them, the pairs and triples through the further
+direction split by how many of their directions are near neighbours, each
+kind with its own constant. At degree 10 (`typed_hole_d10.log`) the sampled Z
+is +0.245, +0.534, +0.753, +0.950 and +1.123 for mp = 1, 3, 5, 7 and 9,
+against -2.5 for mp = 0 (25 directions at 0.508): one near neighbour already
+defeats the three-point bound.
+
 A four-point kernel does not help at the degrees that fit here.
 `C30/typed4pt.py` adds to the typed three-point kernel of `C30/typed3pt.py` a
 kernel that fixes two of the directions, e1 and e2, expands every other
