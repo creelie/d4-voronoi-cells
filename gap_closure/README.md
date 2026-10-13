@@ -420,15 +420,23 @@ and 3.102128. So at 28 only (23, 0, 0, 0, 0, 1, 4) stays open: 23 within
 with no margins at all, too close to the level for a check; splitting its
 bin at 2.3 gains nothing, since the radial function rises to 2.35 and is flat
 from 2.28 on, and a round for that vector alone (`CM/case28_k23f4g5r.json`,
-from the samples of c28k23f4h, with the proved 24 + 4 vector beside it) runs
-from 11:23 UTC on 2026-10-13. The radial function of the mixes falls by about
+from the samples of c28k23f4h, with the proved 24 + 4 vector beside it)
+reached 3.07957 on its samples but 3.66384 between them
+(`CM/c28k23f4g5r_d10.log`), as first rounds do. The radial function of the mixes falls by about
 0.0022 from 2 to 2.0161, so splitting the close bin at 2.002
 (`CM/case28_k23f4n5s.json`) lowers the bound of every vector with a close
 centre beyond 2.002 by about 3e-4 per centre, while 23 centres within 2.002
 have smaller inner products (the AF bound 0.6126 instead of 0.6140, on which
 the AAF peak lies); in floating point this takes the (2.2, 2.35] mix from
-3.103356 to 3.103251 (dense-corrected, margins 1e-7/1e-7/1e-8). Its exact
-check is the next step; nothing about this vector is proved yet. The values on the samples rise by about 0.005 per step
+3.103356 to 3.103251 (dense-corrected, margins 1e-7/1e-7/1e-8). A round
+with the close type narrowed to [2, 2.002] (`CM/case28_k23f4g5x2.json`)
+ended DualInfeasible, and a mix with its weights chosen for close centres
+within 2.002 gives 3.103234 with the split, hardly better. The precheck of
+the split case gives 3.103176, but two of its triple thresholds sat up to
+5.4e-8 below dense-search peaks, so the exact check
+(`CM/check_c28k23f4n5s.log`, from 12:43 UTC on 2026-10-13) raises each
+refined triple threshold above its peak (`TRIPLE_EXTRA`), which should give
+about 3.10328; nothing about this vector is proved yet. The values on the samples rise by about 0.005 per step
 (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to 21 close), and each mix
 lies about 0.006 above the sample value of its last certificate, which is why
 the chain was not continued to 24 close: the 24-close case closed with the
