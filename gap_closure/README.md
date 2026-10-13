@@ -90,11 +90,16 @@ radial_certificates/combo29_d8.npz 8 5e-6 1e-6 1e-6` passes with 3.101462 <
 `bigmachine/records/c29all_d10.log` on a 16-core machine, raw 2.9353,
 3.0004, 3.0105, 3.0119 in four rounds) were not needed.
 
-Below 29 the programme stays above the level on its samples, and samples only
-lower the optimum: at 28, 3.10668 with three types (`c28x_d8.log`, one round)
+Below 29 the programme stays above the level on its samples, as the solver
+returns it: at 28, 3.10668 with three types (`c28x_d8.log`, one round)
 and 3.11169 with four (`c28t4_d8.log`, round 2); at 27, 3.1570 (round 1 on the
 larger machine, `bigmachine/records/c27all_d8.log`); at 26, 3.30766 at
-degree 6 (`c26s_d6.log`) and 3.2456 at degree 8 (`c26h_d8.log`). At 29 degree
+degree 6 (`c26s_d6.log`) and 3.2456 at degree 8 (`c26h_d8.log`). Only the
+degree-6 solve at 26 ends `optimal`; the degree-8 solves end
+`optimal_inaccurate`, and every degree-10 and degree-12 solve at 27 and 28
+ends with `NumericalError` (its solutions still give the certificates of the
+mixes below). Samples only lower the true optimum, so these values suggest,
+but do not prove, that no certificate of that degree exists. At 29 degree
 10 lowers the raw value by about 0.05 against degree 8, so 28 is run at
 degree 10 next. Runs on a larger machine go through
 `bigmachine/run_combo.py`.

@@ -9110,9 +9110,10 @@ twenty-three centres at $2.0161$, one at $2.35$ and four at $\sqrt6$, which
 the statement excludes in particular: the optimum of its programme is $0$.
 
 The kernel of \cref{prop:count28-few} does not reach the whole case either.
-On its samples the optimum of the programme is $3.10668$ at $d=8$, above
-the level, and at $d=10$ it lay between $3.0917$ and $3.0951$ over five
-rounds of refinement, while the solutions violated the inequalities on triples
+On its samples the solver returns $3.10668$ for the programme at $d=8$, above
+the level, with its solution flagged as inaccurate, and at $d=10$ values
+between $3.0917$ and $3.0951$ over five rounds of refinement, each ended by a
+numerical error, while the solutions violated the inequalities on triples
 between the samples by more than $10^{-4}$; a proof with $3276$ triples
 needs about $2\cdot10^{-6}$. The largest value of the degree-$10$ kernel over
 the count vectors lies at twenty-two centres within $2.0161$, one in
@@ -9811,22 +9812,26 @@ degree $10$ found for single numbers of centres within $2.0161$, the cases of
 at most twenty-two, of exactly twenty-four, and of exactly twenty-three with
 at most three beyond $2.35$ or with twenty-four within $2.2$
 (\cref{prop:count28-mixed}). On the whole case at twenty-eight, with three
-types, the optimum of the programme on its sample points is $3.107$ at
-$d=8$, above $\frac98\pi^2-8=3.10330$, and $3.095$ at $d=10$, below it; at
-twenty-nine the step from $d=8$ to $d=10$ lowers the optimum from $3.064$ to
-$3.012$. Whether a certificate of degree $10$ exists for the whole case is
+types, the value that the solver returns for the programme on its sample
+points is $3.107$ at $d=8$, above $\frac98\pi^2-8=3.10330$, and $3.095$ at
+$d=10$, below it; at twenty-nine the step from $d=8$ to $d=10$ lowers it from
+$3.064$ to $3.012$. Whether a certificate of degree $10$ exists for the whole case is
 not settled: after five rounds of refinement the solutions still violate the
 inequalities on triples between the samples by more than $10^{-4}$, and with
 the $3276$ triples of $28$ centres a proof needs about $2\cdot10^{-6}$. A
 certificate for exactly twenty-three centres within $2.2$, all of them
 within $2.0161$, and four beyond $2.35$ would settle twenty-eight. At
-twenty-seven the optima at $d=8$, $10$ and $12$ are $3.157$, $3.123$ and
-$3.113$, and at twenty-six the optimum at $d=8$ is $3.246$, all above the
-level.\footnote{These optima are those of the programmes
-  in floating point, on sampled constraints, and only show where the method
-  stands; an optimum on samples is never larger than that of the full
-  programme, so a value above the level means that no certificate of that
-  form exists.} For
+twenty-seven the values at $d=8$, $10$ and $12$ are $3.157$, $3.123$ and
+$3.113$, and at twenty-six the value at $d=8$ is $3.246$, all above the
+level.\footnote{These are the objective values that the solver returned for
+  the programmes in floating point, on sampled constraints, and they only
+  show where the method stands. The solver flagged its solutions at $d=8$ as
+  inaccurate and stopped at $d=10$ and $d=12$ with numerical errors, as it
+  did at twenty-eight, where solutions of that kind still gave the
+  certificates of \cref{prop:count28-mixed}, so the values are approximate.
+  An optimum on samples is never larger than that of the full programme, so
+  if these values are close to the optima, no certificate of that form
+  exists; they do not prove it.} For
 the density alone much less is needed. The same kernel, run with a level in
 place of $\frac98\pi^2-8$, already carries \cref{thm:density-cells} below the
 three-point bound through its level at twenty-six centres, and its levels at
