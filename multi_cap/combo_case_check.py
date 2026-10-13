@@ -71,6 +71,15 @@ With PAIR_MARGIN=<kind>:<x>[,...], e.g. PAIR_MARGIN=AA:5e-6, the pair inequaliti
 named kinds (and the pairs of REFINE_PAIRS of those kinds) take the margin x in place of
 margin2.  A kind whose function is nearly flat on a whole face of its domain needs many
 more boxes at a small margin; this keeps its margin while the others shrink.
+
+With SKIP_COVERED=1, a pair kind or a triple kind all of whose pairs or triples, in every
+count vector of the case, lie in combinations of bins listed in REFINE_PAIRS or
+REFINE_TRIPLES, each with a threshold at most that of the kind, is counted in the bound
+with those thresholds alone (the bound subtracts the full difference), so the threshold
+of the kind is not used and its branch and bound is skipped; the listed combinations are
+checked as usual.  This is for certificates built for narrower distance ranges than the
+types of the case, whose thresholds on the whole types are large and of no use.  The
+count vectors of EXTRA_CASES must then be covered in the same way, which is checked.
 """
 import itertools
 import json
@@ -99,6 +108,7 @@ ONLY = [e for e in os.environ.get('ONLY', '').split(',') if e]
 REFINE = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_TRIPLES', '').split(',') if e]
 REFINE_PAIRS = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_PAIRS', '').split(',') if e]
 PAIR_MARGIN = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('PAIR_MARGIN', '').split(',') if e)}
+SKIP_COVERED = os.environ.get('SKIP_COVERED') == '1'
 
 
 def num(x):
@@ -138,6 +148,24 @@ def tcounts(nb):
 
 
 C.tcounts = tcounts
+
+
+def Nbins(nb, bs):
+    """number of pairs or triples of centres with one centre in each listed bin"""
+    out = 1
+    for b in set(bs):
+        out *= comb(nb[b], bs.count(b))
+    return out
+
+
+def covered2(st, c2r, vecs):
+    rs = [bs for bs in c2r if (C.BINTYPE[bs[0]], C.BINTYPE[bs[1]]) == st]
+    return bool(rs) and all(C.Npair(tcounts(nb), *st) == sum(Nbins(nb, bs) for bs in rs) for nb in vecs), rs
+
+
+def covered3(combo, c3r, vecs):
+    rs = [bs for bs in c3r if tuple(C.BINTYPE[b] for b in bs) == combo]
+    return bool(rs) and all(C.Ntriple(tcounts(nb), list(combo)) == sum(Nbins(nb, bs) for bs in rs) for nb in vecs), rs
 
 
 def main():
@@ -250,6 +278,19 @@ def main():
         if not PRE:
             jobs.append((A, Pu, c2r[bs], box, bs[0] == bs[1]))
             labels.append('K + PAIR3_%s%s <= Pi + its threshold on the pairs of %s' % (s, tt, name))
+    skip2 = set()
+    if SKIP_COVERED:
+        for st in c2:
+            cov, rs = covered2(st, c2r, C.COUNTS)
+            if cov and all(c2r[bs] <= c2[st] for bs in rs):
+                skip2.add(st)
+                print('  pair %s%s: in every count vector each of its pairs lies in a listed pair of bins with a threshold at '
+                      'most the kind\'s, so the bound does not use c2_%s%s and its branch and bound is skipped'
+                      % (st[0], st[1], st[0], st[1]), flush=True)
+        if skip2 and not (PRE or ONLY):
+            sts = list(c2)
+            keep = [k for k in range(len(jobs)) if k >= len(sts) or sts[k] not in skip2]
+            jobs, labels = [jobs[k] for k in keep], [labels[k] for k in keep]
     from multiprocessing import Pool
     if jobs:
         with Pool(min(int(os.environ.get('PAIR_PROCS', '3')), len(jobs))) as pool:
@@ -319,6 +360,16 @@ def main():
               'threshold %.6e against %.6e for the kind; symmetry %d'
               % (''.join(combo), name, *[float(x) for x in T], vmax, ns, float(c3r[bs]), float(c3[combo]), sym), flush=True)
         tjobs.append((''.join(combo) + ' on ' + name, (Pr, tops, sym, float(c3r[bs]), ''.join(combo) + ' ' + name)))
+    skip3 = set()
+    if SKIP_COVERED:
+        for combo in c3:
+            cov, rs = covered3(combo, c3r, C.COUNTS)
+            if cov and all(c3r[bs] <= c3[combo] for bs in rs):
+                skip3.add(''.join(combo))
+                print('  triple %s: in every count vector each of its triples lies in a listed combination of bins with a '
+                      'threshold at most the kind\'s, so the bound does not use c3_%s and its branch and bound is skipped'
+                      % (''.join(combo), ''.join(combo)), flush=True)
+        tjobs = [j for j in tjobs if j[0] not in skip3]
     if not PRE and tjobs:
         with Pool(min(int(os.environ.get('TRIPLE_PROCS', '3')), len(tjobs))) as pool:
             res = pool.starmap(C.triple_box_check, [a for _, a in tjobs])
@@ -328,12 +379,6 @@ def main():
                     else 'TRIPLE3_%s <= c3 on the admissible triples' % label, ok, msg)
             nbox += nd
         print('  triple boxes in all: %d' % nbox, flush=True)
-
-    def Nbins(nb, bs):
-        out = 1
-        for b in set(bs):
-            out *= comb(nb[b], bs.count(b))
-        return out
 
     def refined_gain(nb):
         return (sum(Nbins(nb, bs) * max(c3[tuple(C.BINTYPE[b] for b in bs)] - c3r[bs], 0) for bs in c3r)
@@ -360,6 +405,10 @@ def main():
         main_constraints, CASE['constraints'] = CASE['constraints'], E['constraints']
         vecs = counts()
         CASE['constraints'] = main_constraints
+        if skip2 or skip3:
+            C.check('the skipped kinds are covered by the listed bins in the count vectors of %s' % os.path.basename(extra),
+                    all(covered2(st, c2r, vecs)[0] for st in skip2)
+                    and all(covered3(tuple(k), c3r, vecs)[0] for k in skip3))
         ew, ev = None, None
         for nb in vecs:
             tc = tcounts(nb)
