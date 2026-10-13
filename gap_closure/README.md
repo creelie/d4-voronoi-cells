@@ -453,9 +453,31 @@ so the split gains nothing at a = 23 and the route is dead. The check now has
 `REFINE_GRID=<n>`, which also climbs from every local maximum of an n^3 grid
 (n = 121 finds the ridge, n = 41 does not), and with it the precheck of the
 unsplit vector (`CM/pre_c28k23f4n5u_grid.log`) gives 3.103360 at margins
-1e-7/1e-8/1e-7, the value quoted before. From 14:40 round 2 of the
-single-vector round (`CM/c28k23f4g5r2_d10.log`) runs for a new certificate;
-nothing about this vector is proved. The values on the samples rise by about 0.005 per step
+1e-7/1e-8/1e-7, the value quoted before. Round 2 of the single-vector round
+(`CM/c28k23f4g5r2_d10.log`, 14:40 to 16:08) reached 3.08341 on its samples
+and 3.27305 between them. A count of the close-close-far triples does what
+the split could not. On this mix the AAF inequality comes within 1.5e-7 of
+its maximum only where both close directions have inner product near the
+largest value 0.614 with the far one, or both near -0.813. With one of the
+two inner products in [-0.7944, 0.58] its maximum is 2.7460032e-4, against
+2.7474849e-4 on the whole domain (121-grid local maxima and SLSQP, scratchpad
+search). With one at most -0.7944 and the other at least 0.58 it is
+2.7420025e-4. Two exact facts bound how many close directions can sit at
+either end for a given far direction y, among directions with pairwise inner
+products at most c0 = 0.507954. At most 3 have inner product at most -0.7944:
+K of them have a sum S with |S|^2 <= K + K(K-1) c0 and <S, -y> >= 0.7944 K. At
+most 9 have inner product at least 0.58: their projections to the link
+sphere of y have pairwise inner products at most
+(c0 - 0.58^2)/(1 - 0.61403^2), so caps on S^2 about them are disjoint. So at
+most 36 of the 253 close pairs per far centre take the full threshold, and
+the bound should drop by about 4 * 217 * 1.48e-7, to about 3.10323.
+`combo_case_check.py` has this as `REGION_TRIPLES=<b>-<b>-<p>:<s1>:<s2>`. The
+two new thresholds are proved by branch and bound on sub-boxes, the symmetry
+of the polynomial is checked coefficient by coefficient, and the bound takes
+the worst split of each pivot's pairs. The exact check
+(`CM/check_c28k23f4n5r.log`, with the options of the grid precheck and
+`REGION_TRIPLES=1-1-7:-0.7944:0.58`) runs from 16:09 UTC on 2026-10-13.
+Nothing about this vector is proved until it passes. The values on the samples rise by about 0.005 per step
 (3.07522, 3.08058, 3.08563, 3.09051, 3.09515 for 17 to 21 close), and each mix
 lies about 0.006 above the sample value of its last certificate, which is why
 the chain was not continued to 24 close: the 24-close case closed with the
