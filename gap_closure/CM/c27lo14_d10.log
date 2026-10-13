@@ -1,1 +1,7 @@
 27 with at most 14 centres within 2.0161 (case27_lo14.json), three-point degree 10 with TRACE_REG=3e-4, from the samples of the whole-case round c27k10_d10_r2.npz (3.12320 on its samples over all of 27, flat within 0.001 over n1 = 0..24), pruned to KEEP_P=6000 and KEEP_T=3000 per kind, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2: does targeting a part of the 27-centre case bring the sample optimum below 3.10330, as it did at 28?  Started Tue Oct 13 13:25:05 UTC 2026
+resumed from c27k10_d10_r2.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8163 variables, 113189 inequalities, 7389 psd rows in 56 cones, 80417010 nonzeros [41 s to build]
+exit 137 at Tue Oct 13 14:26:00 UTC 2026
+note: killed by the memory limit at 14:26 UTC during round 1, when a peak search beside it (scratchpad, an unchunked evaluation of a 756-monomial polynomial on 641 000 points) took 3.6 GB; the round is to be restarted
