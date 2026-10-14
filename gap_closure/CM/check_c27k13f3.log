@@ -1,1 +1,86 @@
 exact check of mix27_k13f3.npz (27 centres, exactly 13 within 2.0161 and exactly 3 beyond 2.35, case27_k13f3.json; a convex combination of 10 certificates with 0.99 of the weight on the rounds for 27 centres and 0.56 on the round for exactly 14 within 2.0161), margins pairs 1e-6 (AA 1e-6), triples 1e-7, bins 1e-7, AAF threshold raised by a further 2e-7 (TRIPLE_EXTRA) since the precheck left it 3.6e-8 below the dense-search maximum, BORDER=1, POLY_EVAL=c; precheck 3.102153 (pre_c27k13f3.log), every other triple threshold 1e-7 above the dense-search maximum (peak2_c27k13f3.log); started Wed Oct 14 13:25:49 UTC 2026
+statement (C) at 27 centres, case case27_k13f3.json: combined certificate mix27_k13f3.npz, two-point degree 12/4, three-point degree 10; 230 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 93.151221078, float t 93.151221077)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.461724', 'B': '0.155198', 'F': '0.055686'}
+  pair AA: float largest K + PAIR3 - Pi 6.239886e-02 (file c2 6.239885e-02); threshold 6.239986e-02
+  pair AB: float largest K + PAIR3 - Pi 8.606391e-02 (file c2 8.606391e-02); threshold 8.606491e-02
+  pair AF: float largest K + PAIR3 - Pi 9.243190e-02 (file c2 9.243190e-02); threshold 9.243290e-02
+  pair BB: float largest K + PAIR3 - Pi 1.072245e-01 (file c2 1.072245e-01); threshold 1.072255e-01
+  pair BF: float largest K + PAIR3 - Pi 1.118529e-01 (file c2 1.118530e-01); threshold 1.118540e-01
+  pair FF: float largest K + PAIR3 - Pi 1.176600e-01 (file c2 1.176601e-01); threshold 1.176611e-01
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (2354456 boxes closed, 1786153 set aside, Pi in Arb at 2354378 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (75334 boxes closed, 76997 set aside, Pi in Arb at 3695 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (18367 boxes closed, 18324 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (4791 boxes closed, 3942 set aside, Pi in Arb at 660 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (37924 boxes closed, 36142 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (2485 boxes closed, 2211 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (2620 intervals, least room 5.81e-10)
+  triple AAA: float largest 3.175540e-03 on 649660 samples; threshold 3.175706e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 2.246879e-03 on 649656 samples; threshold 2.246992e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 2.043781e-03 on 649567 samples; threshold 2.044190e-03 (refined 2.043890e-03, extra 2e-07); 756 monomials, symmetry 1
+  triple ABB: float largest 1.419246e-03 on 649516 samples; threshold 1.419423e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 1.285483e-03 on 649349 samples; threshold 1.286248e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 1.096852e-03 on 649302 samples; threshold 1.097967e-03; 756 monomials, symmetry 1
+  triple BBB: float largest 6.858321e-04 on 649325 samples; threshold 6.861131e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 6.211351e-04 on 649158 samples; threshold 6.212525e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 5.378692e-04 on 649009 samples; threshold 5.380426e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 5.872487e-04 on 648938 samples; threshold 5.875779e-04; 756 monomials, symmetry 2
+      AAF level 10: 0 boxes verified, 624 to bisect [0 s]
+      AAA level 10: 0 boxes verified, 336 to bisect [0 s]
+      AAA level 20: 10950 boxes verified, 104768 to bisect [3 s]
+      AAF level 20: 29514 boxes verified, 313906 to bisect [7 s]
+      AAA level 30: 3073033 boxes verified, 2932290 to bisect [172 s]
+      AAA level 40: 14070366 boxes verified, 0 to bisect [525 s]
+      AAB level 10: 0 boxes verified, 618 to bisect [0 s]
+      AAB level 20: 29744 boxes verified, 305884 to bisect [7 s]
+      AAF level 30: 12386391 boxes verified, 6098436 to bisect [586 s]
+      AAB level 30: 10599402 boxes verified, 7212758 to bisect [533 s]
+      AAF level 40: 32784578 boxes verified, 29198 to bisect [1227 s]
+      ABB level 10: 0 boxes verified, 640 to bisect [0 s]
+      ABB level 20: 27183 boxes verified, 323372 to bisect [7 s]
+      AAB level 40: 24902861 boxes verified, 0 to bisect [935 s]
+      ABF level 10: 0 boxes verified, 944 to bisect [0 s]
+      ABF level 20: 56644 boxes verified, 584814 to bisect [14 s]
+      ABB level 30: 13532898 boxes verified, 8352298 to bisect [670 s]
+      ABF level 30: 17576293 boxes verified, 6644152 to bisect [787 s]
+      ABB level 40: 31550168 boxes verified, 1074 to bisect [1179 s]
+      BBB level 10: 0 boxes verified, 348 to bisect [0 s]
+      BBB level 20: 7543 boxes verified, 124580 to bisect [3 s]
+      AFF level 10: 0 boxes verified, 624 to bisect [0 s]
+      AFF level 20: 30241 boxes verified, 296020 to bisect [7 s]
+      BBB level 30: 3928878 boxes verified, 489336 to bisect [154 s]
+      BBF level 10: 0 boxes verified, 630 to bisect [0 s]
+      BBF level 20: 30446 boxes verified, 303100 to bisect [7 s]
+      BBF level 30: 5788868 boxes verified, 350550 to bisect [223 s]
+      BBF level 40: 6349535 boxes verified, 38690 to bisect [239 s]
+      BBF level 50: 6559892 boxes verified, 118670 to bisect [255 s]
+      BFF level 10: 0 boxes verified, 616 to bisect [0 s]
+      BFF level 20: 39471 boxes verified, 262184 to bisect [7 s]
+      AFF level 30: 8053636 boxes verified, 2945192 to bisect [352 s]
+      BFF level 30: 3927072 boxes verified, 17602 to bisect [142 s]
+      BFF level 40: 3945065 boxes verified, 724 to bisect [142 s]
+      BFF level 50: 3946925 boxes verified, 80 to bisect [142 s]
+      FFF level 10: 0 boxes verified, 340 to bisect [0 s]
+      FFF level 20: 13818 boxes verified, 103404 to bisect [2 s]
+      FFF level 30: 931730 boxes verified, 29702 to bisect [35 s]
+      FFF level 40: 995115 boxes verified, 6282 to bisect [38 s]
+      FFF level 50: 1014130 boxes verified, 5034 to bisect [40 s]
+      AFF level 40: 13377094 boxes verified, 660 to bisect [488 s]
+      AFF level 50: 13378544 boxes verified, 0 to bisect [488 s]
+  [ok] TRIPLE3_AAA <= c3 on the admissible triples  (14070366 boxes, largest centre value 3.1756e-03)
+  [ok] TRIPLE3_AAB <= c3 on the admissible triples  (24902861 boxes, largest centre value 2.2469e-03)
+  [ok] TRIPLE3_AAF <= c3 on the admissible triples  (32872231 boxes, largest centre value 2.0440e-03)
+  [ok] TRIPLE3_ABB <= c3 on the admissible triples  (31551077 boxes, largest centre value 1.4193e-03)
+  [ok] TRIPLE3_ABF <= c3 on the admissible triples  (29228986 boxes, largest centre value 1.2861e-03)
+  [ok] TRIPLE3_AFF <= c3 on the admissible triples  (13378544 boxes, largest centre value 1.0978e-03)
+  [ok] TRIPLE3_BBB <= c3 on the admissible triples  (4753780 boxes, largest centre value 6.8601e-04)
+  [ok] TRIPLE3_BBF <= c3 on the admissible triples  (6647227 boxes, largest centre value 6.2115e-04)
+  [ok] TRIPLE3_BFF <= c3 on the admissible triples  (3946965 boxes, largest centre value 5.3792e-04)
+  [ok] TRIPLE3_FFF <= c3 on the admissible triples  (1017698 boxes, largest centre value 5.8747e-04)
+  triple boxes in all: 162369735
+  230 count vectors, 11 type-count vectors; largest bound 3.102225 at (13, 3, 8, 0, 0, 0, 3)
+  [ok] largest bound over the count vectors below 9 pi^2/8 - 8  (3.102225 < [3.1033050 +/- 4.88e-8])
+PASS: in case case27_k13f3.json every packing set of 27 centres has U(Y) <= 3.102225 < 9 pi^2/8 - 8, so T(Y) > 8 [5985 s]
+exit 0 at Wed Oct 14 15:05:36 UTC 2026

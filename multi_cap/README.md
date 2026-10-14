@@ -626,9 +626,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               threshold raised above the dense-search
                               maximum (runs/combo27_k12f3_check.log, 66
                               minutes: 3.101859 at (12, 6, 6, 0, 0, 0, 3) after
-                              134 115 496 triple boxes).  The six mixes for
-                              27 together are prop:count27-few, (C) at 27
-                              with at most 12 within 2.0161.
+                              134 115 496 triple boxes).
                               radial_certificates/combo27_k13f2_d10.npz is
                               the mix for exactly 13 within 2.0161 and at
                               most 2 beyond 2.35 (case27_k13f2.json), with
@@ -637,6 +635,17 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (runs/combo27_k13f2_check.log, 91 minutes:
                               3.103225 at (13, 5, 7, 0, 0, 0, 2) after
                               143 913 003 triple boxes).
+                              radial_certificates/combo27_k13f3_d10.npz is
+                              the mix for exactly 13 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k13f3.json),
+                              with 0.56 of its weight on the round for
+                              exactly 14; its check passes with the AAF
+                              threshold raised above the dense-search
+                              maximum (runs/combo27_k13f3_check.log, 100
+                              minutes: 3.102225 at (13, 3, 8, 0, 0, 0, 3) after
+                              162 369 735 triple boxes).  The eight mixes for
+                              27 together are prop:count27-few, (C) at 27
+                              with at most 13 within 2.0161.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
