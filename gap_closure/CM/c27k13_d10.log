@@ -1,1 +1,11 @@
 27 with exactly 13 centres within 2.0161 (case27_k13.json): degree 10 round from the samples of the exactly-12 round c27k12 (3.09128 on its samples, corrected 3.10975). Same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=3, oom_score_adj 0; started Wed Oct 14 07:13:11 UTC 2026
+resumed from c27k12_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8163 variables, 101930 inequalities, 7389 psd rows in 56 cones, 71947920 nonzeros [17 s to build]
+   50 type-count vectors
+d3=10 round 1: optimal  bound 3.09689 (target 3.10330), corrected <= 3.13850  [10251 s]
+   viol: AA 1.2e-07, AB 3.0e-06, AF 1.4e-07, BB -1.8e-10, BF 9.2e-07, FF -2.9e-09, AAA 1.3e-06, AAB 1.5e-06, AAF 4.6e-05, ABB 3.5e-06, ABF 1.7e-05, AFF 1.3e-05, BBB 1.1e-06, BBF 1.8e-06, BFF 2.2e-06, FFF 1.7e-07
+   c2: {'AA': 0.063251, 'AB': 0.086722, 'AF': 0.093225, 'BB': 0.107635, 'BF': 0.112472, 'FF': 0.118492}
+   c3: {'AAA': 0.003155, 'AAB': 0.0022332, 'AAF': 0.002024, 'ABB': 0.0014137, 'ABF': 0.0012693, 'AFF': 0.0010717, 'BBB': 0.0006924, 'BBF': 0.0006166, 'BFF': 0.0005144, 'FFF': 0.0005588}
+exit 0 at Wed Oct 14 10:04:26 UTC 2026
