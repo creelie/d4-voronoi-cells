@@ -9,7 +9,8 @@ between their samples can cancel.  Float throughout; proves nothing.
 usage: python3 c28_hull_multi.py TARGET[,TARGET...] ITERS cert.npz [cert.npz ...]
 TARGET: k22, lo21, k15f4, k15f4+k16f1, ...  (see SETS); one mix per comma-separated target
 env: NP, NT (random samples per kind), OUT (prefix: OUT_TARGET.npz holds the best combination
-of each target, a certificate as it stands), MG_AA, MG2, MG3, MG_FFF (the margins added to the
+of each target, a certificate as it stands), CASEM, LOWS, FILTER (the count vectors, see
+vectors()), MG_AA, MG2, MG3, MG_FFF (the margins added to the
 thresholds when the bound is reported: 5e-6, 1e-6, 5e-8 and 1e-5 more for FFF by default;
 the mix for exactly 22 close, CM/mix28_k22d.npz, used MG_AA=5e-7 MG2=5e-7 MG3=5e-8)
 """
@@ -169,7 +170,9 @@ print('samples: pairs %d, triples %d [%.0f s]' % (sum(len(v[0]) for v in PS.valu
 
 
 def vectors():
-    out, lows = [], [0, 6, 21, 22, 23, 24]
+    # CASEM: the number of centres (28); LOWS: the least numbers within 2.0161, 2.05, 2.1, 2.15,
+    # 2.2 and 2.35 (prop:C-radial; 0,14,20,21,22,24 at 27)
+    out, lows = [], [int(x) for x in os.environ.get('LOWS', '0,6,21,22,23,24').split(',')]
     def rec(prefix, left):
         j = len(prefix)
         if j == 6:
@@ -178,7 +181,7 @@ def vectors():
             if sum(prefix) + n < lows[j]:
                 continue
             rec(prefix + [n], left - n)
-    rec([], 28)
+    rec([], int(os.environ.get('CASEM', '28')))
     return out
 
 
@@ -191,7 +194,11 @@ SETS.update({'k%d' % n: (lambda n: lambda v: v[0] == n)(n) for n in range(17, 25
 SETS.update({'lo%d' % n: (lambda n: lambda v: v[0] <= n)(n) for n in range(18, 25)})
 SETS.update({'k%df%d' % (n, f): (lambda n, f: lambda v: v[0] == n and v[6] == f)(n, f) for n in range(17, 25) for f in range(5)})
 SETS.update({'k%dfle%d' % (n, f): (lambda n, f: lambda v: v[0] == n and v[6] <= f)(n, f) for n in range(17, 25) for f in range(5)})
+SETS.update({'k%d' % n: (lambda n: lambda v: v[0] == n)(n) for n in range(0, 17)})      # also at 27 centres
+SETS.update({'lo%d' % n: (lambda n: lambda v: v[0] <= n)(n) for n in range(0, 18) if 'lo%d' % n not in SETS})
 ALLV = vectors()
+if os.environ.get('FILTER'):      # e.g. FILTER="v[6]<=2": keep only the vectors where it holds
+    ALLV = [v for v in ALLV if eval(os.environ['FILTER'], {'v': v, 'sum': sum})]
 def tc(v):
     return {s: sum(n for n, b in zip(v, BT) if b == s) for s in TYPES}
 
