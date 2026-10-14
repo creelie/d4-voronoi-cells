@@ -27,7 +27,7 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
   de Laat, Leijenhorst and de Muinck Keizer;
 - at most twenty-three other centres lie within sqrt 6 of c;
 - at least twenty-eight lie within sqrt 6;
-- exactly twenty-seven lie within sqrt 6, at most ten of them within 2.0161;
+- exactly twenty-seven lie within sqrt 6, at most eleven of them within 2.0161;
 - exactly twenty-four lie within sqrt 6, on the rays of a root system, or
   the contacts contain enough of a root system;
 - no centre lies strictly between 2 + 4e-26 and sqrt 6.
@@ -43,9 +43,8 @@ statements: (G), a volume bound when exactly twenty-four centres lie within
 sqrt 6, and (C), a bound on the caps when twenty-five or more do. Together
 they imply that D_4 gives the densest packing of R^4. **Neither is proved**:
 (C) is proved from twenty-eight centres on and at twenty-seven when at most
-ten centres lie within 2.0161 (also with exactly eleven and at most two beyond
-2.35, checked but not yet in the paper), and open otherwise from twenty-five
-to twenty-seven, and (G) is open.
+eleven centres lie within 2.0161, and open otherwise from twenty-five to
+twenty-seven, and (G) is open.
 The paper records what is proved about them and where each method stops;
 `gap_closure/` holds the floating-point explorations against them, none of
 which is a certificate, and the logs of the exact checks behind the density

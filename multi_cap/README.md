@@ -592,11 +592,9 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (runs/combo27_lo10f2_check.log, 58 minutes:
                               3.102938 at (10, 10, 5, 0, 0, 0, 2) after
                               99 741 630 triple boxes;
-                              runs/combo27_lo10f3_check.log, %(f3_minutes)s minutes:
-                              %(f3_bound)s at %(f3_vec_readme)s after
-                              %(f3_triples)s triple boxes).  Together
-                              they are prop:count27-few, (C) at 27 with at
-                              most 10 within 2.0161.
+                              runs/combo27_lo10f3_check.log, 50 minutes:
+                              3.100556 at (10, 10, 4, 0, 0, 0, 3) after
+                              105 075 559 triple boxes).
                               radial_certificates/combo27_k11f2_d10.npz is
                               the same kind of mix for 27 centres with
                               exactly 11 within 2.0161 and at most 2 beyond
@@ -604,6 +602,16 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               check passes (runs/combo27_k11f2_check.log,
                               47 minutes: 3.101756 at (11, 9, 5, 0, 0, 0, 2)
                               after 105 397 437 triple boxes).
+                              radial_certificates/combo27_k11f3_d10.npz is
+                              the mix for exactly 11 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k11f3.json),
+                              with 0.53 of its weight on the round for
+                              exactly 11; its check passes
+                              (runs/combo27_k11f3_check.log, 66 minutes:
+                              3.099786 at (11, 8, 5, 0, 0, 0, 3) after
+                              119 805 055 triple boxes).  The four mixes
+                              for 27 together are prop:count27-few, (C) at
+                              27 with at most 11 within 2.0161.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

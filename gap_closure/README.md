@@ -8,10 +8,10 @@ twenty-eight: first with at most fourteen centres within 2.0161 (fifteen
 with at most three beyond 2.35, sixteen with none), then all but exactly
 twenty-three within 2.2, all of them within 2.0161, with four beyond 2.35,
 and last that case, with its close-close-far triples counted, and
-twenty-seven with at most ten centres within 2.0161. They
-are floating-point semidefinite programmes on sampled constraints. **Three of
-them yield certificates**, and convex combinations of several yield ten
-more: the round-3 certificate of `C30/combo30p.py`, which
+twenty-seven with at most ten, and then exactly eleven, centres within
+2.0161. They are floating-point semidefinite programmes on sampled
+constraints. **Three of them yield certificates**, and convex combinations of
+several yield twelve more: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
@@ -25,11 +25,14 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and two combinations for twenty-seven centres with at most ten
-within 2.0161, one of six certificates for at most two beyond 2.35 and one of
-seven for exactly three, found by `CM/c28_hull_multi.py` with `CASEM=27`,
-which `multi_cap/combo_case_check.py` proves exactly and which together are
-`prop:count27-few`. The rest are kept so that the
+twenty-eight; and four combinations for twenty-seven centres, one of six
+certificates for at most ten within 2.0161 and at most two beyond 2.35, one
+of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
+six for exactly eleven within 2.0161 and at most two beyond 2.35 and one of
+seven for exactly eleven and exactly three, found by `CM/c28_hull_multi.py`
+with `CASEM=27`, which `multi_cap/combo_case_check.py` proves exactly and
+which together are `prop:count27-few`, (C) at 27 with at most 11 within
+2.0161. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -227,15 +230,15 @@ at most 10 added, the mix over the 2530 vectors with at most 10 within 2.0161
 and exactly 3 beyond 2.35 (`FILTER="v[6]==3"`) gives 3.098631, 3.098724 with
 the dense-search maxima (`CM/peak2_c27lo10f3.log`), and its exact check
 (`CM/mix27_lo10f3.npz` on `case27_lo10f3.json`, margins 2e-6, 5e-7 and
-1e-7, precheck 3.100556, `CM/pre_c27lo10f3.log`) passes: %(f3_bound)s at
-%(f3_vec_readme)s, after %(f3_pairs)s pair boxes and %(f3_triples)s triple boxes
-(`multi_cap/runs/combo27_lo10f3_check.log`, %(f3_minutes)s minutes). Together
-these are `prop:count27-few`, (C) at 27 with at most 10 within 2.0161. A check
+1e-7, precheck 3.100556, `CM/pre_c27lo10f3.log`) passes: 3.100556 at
+(10, 10, 4, 0, 0, 0, 3), after 576 954 pair boxes and 105 075 559 triple boxes
+(`multi_cap/runs/combo27_lo10f3_check.log`, 50 minutes). Together these two
+settle 27 with at most 10 within 2.0161. A check
 of the first mix over at most 9 within 2.0161 and any number beyond 2.35
 (`CM/check_c27lo9.log`, precheck 3.100668) was stopped once the second mix
 covered that set. With the type counts fixed, the bound moves with the bins
 only through the bin constants, and the constant of [2, 2.0161] exceeds that
-of (2.0161, 2.05] by 0.0053 to 0.0054 in these mixes, so each further centre
+of (2.0161, 2.05] by 0.0053 to 0.0055 in these mixes, so each further centre
 within 2.0161 costs about 0.005. The vector where the first mix was worst,
 (10, 11, 3, 0, 0, 0, 3), looks unrealisable: the best of 200 penalised
 minimisations of the overlaps and of the departures from the bins still
@@ -250,14 +253,33 @@ combination (`CM/mix27_k11f2.npz` on `case27_k11f2.json`, margins 1e-6, 1e-7
 and 1e-7, precheck 3.101756, `CM/pre_c27k11f2.log`) passes: 3.101756 at
 (11, 9, 5, 0, 0, 0, 2) over 2034 vectors, after 613 982 pair boxes and
 105 397 437 triple boxes (`CM/check_c27k11f2.log`, copy
-`multi_cap/runs/combo27_k11f2_check.log`, 47 minutes). So at 27 centres (C)
-also holds with exactly 11 within 2.0161 and at most 2 beyond 2.35; this is
-not yet in the paper. Exactly 11 with three beyond 2.35
-(`case27_k11f3.json`) is open, and so are 12 to 24 within 2.0161: with the
-same certificates the bound is 3.120346 at exactly 14, 3.141904 at 18,
-3.157926 at 21 and 3.170496 at 24, each worst at three beyond 2.35
+`multi_cap/runs/combo27_k11f2_check.log`, 47 minutes). With the same
+certificates the bound is 3.120346 at exactly 14 within 2.0161, 3.141904 at
+18, 3.157926 at 21 and 3.170496 at 24, each worst at three beyond 2.35
 (floating point). A round aimed at exactly 11 within 2.0161
-(`case27_k11.json`, `c27k11_d10.log`, from the samples of `c27lo10`) runs.
+(`case27_k11.json`, `c27k11_d10.log`, from the samples of `c27lo10`) gave
+3.08563 on its samples (3.11374 corrected). With it the mix over the 230
+vectors with exactly 11 within 2.0161 and 3 beyond 2.35 gives 3.097257
+(3.097926 with the dense-search maxima, `CM/peak2_c27k11f3.log`), and its
+exact check (`CM/mix27_k11f3.npz` on `case27_k11f3.json`, margins 2e-6, 5e-7
+and 1e-7, precheck 3.099786, `CM/pre_c27k11f3.log`) passes: 3.099786 at
+(11, 8, 5, 0, 0, 0, 3), after 1 275 045 pair boxes and 119 805 055 triple
+boxes (`CM/check_c27k11f3.log`, copy `multi_cap/runs/combo27_k11f3_check.log`,
+66 minutes). The four checks together are `prop:count27-few`, (C) at 27
+with at most 11 within 2.0161.
+
+The round for exactly 11 also lowers the bound further up: with it the mixes
+give 3.101177 at exactly 12 within 2.0161 with at most two beyond 2.35 and
+3.102693 with three (`case27_k12f2.json`, `case27_k12f3.json`), and 3.1137
+at 14, 3.1354 at 18, 3.1515 at 21 and 3.1652 at 24 (floating point). The
+first precheck at 12 with at most two beyond 2.35 (`CM/pre_c27k12f2.log`,
+3.100839) left the AAF and AFF thresholds up to 2.25e-6 below the
+dense-search maxima of `CM/peak2_c27k12f2.log` (a narrow AAF peak at inner
+products (-0.106, 0.608, 0.608), on the edge of the range); with those two
+raised (`TRIPLE_EXTRA=AAF:2.4e-6,AFF:1.2e-6`) the precheck gives 3.101565
+(`CM/pre_c27k12f2x.log`), and its exact check (`CM/check_c27k12f2.log`) runs.
+A round aimed at exactly 12 (`case27_k12.json`, `c27k12_d10.log`, from the
+samples of `c27k11`) runs.
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709
