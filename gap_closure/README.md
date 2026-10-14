@@ -277,7 +277,12 @@ first precheck at 12 with at most two beyond 2.35 (`CM/pre_c27k12f2.log`,
 dense-search maxima of `CM/peak2_c27k12f2.log` (a narrow AAF peak at inner
 products (-0.106, 0.608, 0.608), on the edge of the range); with those two
 raised (`TRIPLE_EXTRA=AAF:2.4e-6,AFF:1.2e-6`) the precheck gives 3.101565
-(`CM/pre_c27k12f2x.log`), and its exact check (`CM/check_c27k12f2.log`) runs.
+(`CM/pre_c27k12f2x.log`), and its exact check passes: 3.101565 at
+(12, 6, 7, 0, 0, 0, 2) over 2034 vectors, after 2 056 809 pair boxes and
+125 144 848 triple boxes (`CM/check_c27k12f2.log`, copy
+`multi_cap/runs/combo27_k12f2_check.log`, 75 minutes). So (C) also holds at
+27 with exactly 12 within 2.0161 and at most two beyond 2.35; this is in the
+remark after `prop:count27-few` and not yet in the proposition.
 A round aimed at exactly 12 (`case27_k12.json`, `c27k12_d10.log`, from the
 samples of `c27k11`) runs.
 
