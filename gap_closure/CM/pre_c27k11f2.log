@@ -1,1 +1,23 @@
 statement (C) at 27 centres, case case27_k11f2.json: combined certificate mix27_k11f2.npz, two-point degree 12/4, three-point degree 10; 2034 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 84.648367076, float t 84.648367075)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.526696', 'B': '0.146367', 'F': '0.057475'}
+  pair AA: float largest K + PAIR3 - Pi 4.081819e-02 (file c2 4.081820e-02); threshold 4.081921e-02
+  pair AB: float largest K + PAIR3 - Pi 7.007069e-02 (file c2 7.007069e-02); threshold 7.007169e-02
+  pair AF: float largest K + PAIR3 - Pi 7.570142e-02 (file c2 7.570142e-02); threshold 7.570242e-02
+  pair BB: float largest K + PAIR3 - Pi 9.671865e-02 (file c2 9.671864e-02); threshold 9.671965e-02
+  pair BF: float largest K + PAIR3 - Pi 1.003930e-01 (file c2 1.003930e-01); threshold 1.003940e-01
+  pair FF: float largest K + PAIR3 - Pi 1.052780e-01 (file c2 1.052780e-01); threshold 1.052790e-01
+  triple AAA: float largest 3.758108e-03 on 649660 samples; threshold 3.758268e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 2.609688e-03 on 649656 samples; threshold 2.609856e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 2.435752e-03 on 649567 samples; threshold 2.440681e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 1.565125e-03 on 649516 samples; threshold 1.565596e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 1.475342e-03 on 649349 samples; threshold 1.476275e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 1.340670e-03 on 649302 samples; threshold 1.350276e-03; 756 monomials, symmetry 1
+  triple BBB: float largest 6.221628e-04 on 649325 samples; threshold 6.223365e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 5.991727e-04 on 649158 samples; threshold 5.993551e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 5.453919e-04 on 649009 samples; threshold 5.458373e-04; 756 monomials, symmetry 1
+  2034 count vectors, 39 type-count vectors; largest bound 3.101756 at (11, 9, 5, 0, 0, 0, 2)
+PRECHECK (floating point, no branch and bound): the thresholds give 3.101756 against 9 pi^2/8 - 8 = [3.1033050 +/- 4.88e-8] [704 s]
+exit 0 at Wed Oct 14 03:44:57 UTC 2026
