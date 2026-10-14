@@ -294,11 +294,25 @@ peak as at 12 with at most two beyond 2.35; with it raised
 (12, 6, 6, 0, 0, 0, 3) over 230 vectors, after 975 258 pair boxes and
 134 115 496 triple boxes (`CM/check_c27k12f3.log`, copy
 `multi_cap/runs/combo27_k12f3_check.log`, 66 minutes). The six checks
-together are `prop:count27-few`, (C) at 27 with at most 12 within 2.0161. At exactly 13 within 2.0161 the mixes with it give 3.103476 with at most
-two beyond 2.35 and 3.105368 with three (`case27_k13f2.json`,
-`case27_k13f3.json`, floating point), still above the level. A round aimed at
+together are `prop:count27-few`, (C) at 27 with at most 12 within 2.0161.
+
+At exactly 13 within 2.0161 the mixes with the round for 12 give 3.103476
+with at most two beyond 2.35 and 3.105368 with three (`case27_k13f2.json`,
+`case27_k13f3.json`, floating point), above the level. A round aimed at
 exactly 13 (`case27_k13.json`, `c27k13_d10.log`, from the samples of
-`c27k12`) runs.
+`c27k12`) gave 3.09689 on its samples (3.13850 corrected). With it the mix
+for at most two beyond 2.35 gives 3.102635 (3.102903 with the dense-search
+maxima of `CM/peak2_c27k13f2.log`); its precheck (`CM/pre_c27k13f2.log`,
+margins 1e-6, 1e-7 and 1e-7, every triple threshold 1e-7 above the
+dense-search maximum) gives 3.103225, and its exact check passes: 3.103225 at
+(13, 5, 7, 0, 0, 0, 2) over 2034 vectors, after 2 587 765 pair boxes and
+143 913 003 triple boxes (`CM/check_c27k13f2.log`, copy
+`multi_cap/runs/combo27_k13f2_check.log`, 91 minutes). So (C) also holds at
+27 with exactly 13 within 2.0161 and at most two beyond 2.35; this is in the
+remark after `prop:count27-few`. With three beyond 2.35 the mix gives
+3.103560 after six iterations, still above the level. A round aimed at
+exactly 14 (`case27_k14.json`, `c27k14_d10.log`, from the samples of
+`c27k13`) runs.
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709

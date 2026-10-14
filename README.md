@@ -43,8 +43,9 @@ statements: (G), a volume bound when exactly twenty-four centres lie within
 sqrt 6, and (C), a bound on the caps when twenty-five or more do. Together
 they imply that D_4 gives the densest packing of R^4. **Neither is proved**:
 (C) is proved from twenty-eight centres on and at twenty-seven when at most
-twelve centres lie within 2.0161, and open otherwise from twenty-five to
-twenty-seven, and (G) is open.
+twelve centres lie within 2.0161 (also with exactly thirteen and at most two
+beyond 2.35), and open otherwise from twenty-five to twenty-seven, and (G) is
+open.
 The paper records what is proved about them and where each method stops;
 `gap_closure/` holds the floating-point explorations against them, none of
 which is a certificate, and the logs of the exact checks behind the density
