@@ -325,8 +325,8 @@ holds, a round for 15 lands near 3.108 on its samples. That round
 test this. With the rounds for 13 and 14 added to the pool, one iteration of
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
 and 3.163428 at 24, each worst at three beyond 2.35 (floating point, margins
-of the check included; scratchpad runs, before them 3.1243, 3.1349, 3.1513
-and 3.1680).
+of the check included; before these two rounds the values were 3.1243,
+3.1349, 3.1513 and 3.1680).
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709
