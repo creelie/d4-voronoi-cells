@@ -312,7 +312,17 @@ dense-search maximum) gives 3.103225, and its exact check passes: 3.103225 at
 remark after `prop:count27-few`. With three beyond 2.35 the mix gives
 3.103560 after six iterations, still above the level. A round aimed at
 exactly 14 (`case27_k14.json`, `c27k14_d10.log`, from the samples of
-`c27k13`) runs.
+`c27k13`) gave 3.10236 on its samples (3.10928 corrected). With it the mix
+for 13 within 2.0161 and three beyond 2.35 gives 3.101190 in floating point
+(margins of the check and climbed maxima included, worst at
+(13, 4, 7, 0, 0, 0, 3)); its precheck (`CM/pre_c27k13f3.log`, margins 1e-6,
+1e-7 and 1e-7) and exact check follow. At exactly 14 the mixes give 3.106334
+with at most two beyond 2.35 and 3.107087 with three, above the level. The
+optima of the rounds on their own samples rise by about 0.0055 per close
+centre (3.08563, 3.09128, 3.09689 and 3.10236 for 11 to 14); if that trend
+holds, a round for 15 lands near 3.108 on its samples. That round
+(`case27_k15.json`,
+`c27k15_d10.log`, from the samples of `c27k14`) runs to test this.
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709
