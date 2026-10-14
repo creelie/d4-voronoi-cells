@@ -284,7 +284,15 @@ raised (`TRIPLE_EXTRA=AAF:2.4e-6,AFF:1.2e-6`) the precheck gives 3.101565
 27 with exactly 12 within 2.0161 and at most two beyond 2.35; this is in the
 remark after `prop:count27-few` and not yet in the proposition.
 A round aimed at exactly 12 (`case27_k12.json`, `c27k12_d10.log`, from the
-samples of `c27k11`) runs.
+samples of `c27k11`) gave 3.09128 on its samples (3.10975 corrected). With it
+the mix over the vectors with exactly 12 within 2.0161 and 3 beyond 2.35
+(`case27_k12f3.json`) gives 3.099786 (3.099910 with the dense-search maxima,
+`CM/peak2_c27k12f3.log`); its precheck (`CM/pre_c27k12f3.log`) and exact check
+run. At exactly 13 within 2.0161 the mixes with it give 3.103476 with at most
+two beyond 2.35 and 3.105368 with three (`case27_k13f2.json`,
+`case27_k13f3.json`, floating point), still above the level. A round aimed at
+exactly 13 (`case27_k13.json`, `c27k13_d10.log`, from the samples of
+`c27k12`) runs.
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709
