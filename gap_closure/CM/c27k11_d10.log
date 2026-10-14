@@ -1,1 +1,11 @@
 27 with exactly 11 centres within 2.0161 (case27_k11.json): degree 10 round from the samples of the at-most-10 round c27lo10 (3.07963 on its samples, corrected 3.12474); with that round the mix for at most 10 within 2.0161 and 3 beyond 2.35 gives 3.098631. Same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=3, oom_score_adj 0; started Wed Oct 14 01:59:37 UTC 2026
+resumed from c27lo10_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8163 variables, 101631 inequalities, 7389 psd rows in 56 cones, 71811579 nonzeros [20 s to build]
+   50 type-count vectors
+d3=10 round 1: optimal  bound 3.08563 (target 3.10330), corrected <= 3.11374  [9602 s]
+   viol: AA 1.0e-06, AB 7.9e-07, AF 3.0e-07, BB 8.9e-07, BF 1.0e-07, FF 2.3e-07, AAA 3.2e-06, AAB 2.8e-06, AAF 1.1e-05, ABB 1.9e-06, ABF 3.7e-05, AFF 7.7e-05, BBB 2.1e-06, BBF 2.5e-06, BFF 1.2e-05, FFF 3.9e-07
+   c2: {'AA': 0.061723, 'AB': 0.085968, 'AF': 0.091942, 'BB': 0.107716, 'BF': 0.11196, 'FF': 0.117036}
+   c3: {'AAA': 0.0032251, 'AAB': 0.0022744, 'AAF': 0.0020882, 'ABB': 0.0014237, 'ABF': 0.001305, 'AFF': 0.0011485, 'BBB': 0.0006694, 'BBF': 0.0006216, 'BFF': 0.0005583, 'FFF': 0.0005992}
+exit 0 at Wed Oct 14 04:40:04 UTC 2026

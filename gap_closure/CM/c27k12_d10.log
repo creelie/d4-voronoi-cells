@@ -1,0 +1,1 @@
+27 with exactly 12 centres within 2.0161 (case27_k12.json): degree 10 round from the samples of the exactly-11 round c27k11 (3.08563 on its samples, corrected 3.11374). Same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=3, oom_score_adj 0; started Wed Oct 14 04:41:11 UTC 2026
