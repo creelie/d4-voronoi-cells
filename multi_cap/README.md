@@ -609,9 +609,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               exactly 11; its check passes
                               (runs/combo27_k11f3_check.log, 66 minutes:
                               3.099786 at (11, 8, 5, 0, 0, 0, 3) after
-                              119 805 055 triple boxes).  The four mixes
-                              for 27 together are prop:count27-few, (C) at
-                              27 with at most 11 within 2.0161.
+                              119 805 055 triple boxes).
                               radial_certificates/combo27_k12f2_d10.npz is
                               the mix for exactly 12 within 2.0161 and at
                               most 2 beyond 2.35 (case27_k12f2.json); its
@@ -620,6 +618,17 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (runs/combo27_k12f2_check.log, 75 minutes:
                               3.101565 at (12, 6, 7, 0, 0, 0, 2) after
                               125 144 848 triple boxes).
+                              radial_certificates/combo27_k12f3_d10.npz is
+                              the mix for exactly 12 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k12f3.json),
+                              with 0.61 of its weight on the round for
+                              exactly 12; its check passes with the AAF
+                              threshold raised above the dense-search
+                              maximum (runs/combo27_k12f3_check.log, 66
+                              minutes: 3.101859 at (12, 6, 6, 0, 0, 0, 3) after
+                              134 115 496 triple boxes).  The six mixes for
+                              27 together are prop:count27-few, (C) at 27
+                              with at most 12 within 2.0161.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
