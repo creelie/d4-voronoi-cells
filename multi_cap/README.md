@@ -434,15 +434,236 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               second).  Prechecks 3.098860 and 3.098060
                               (runs/combo28_mix1516_precheck.log) and
                               3.101264 (runs/combo28_mix16_precheck.log);
-                              the exact checks are running
-                              (runs/combo28_mix1516_check.log,
-                              runs/combo28_mix16_check.log), and nothing
-                              rests on them until one passes.
+                              both exact checks started on 8 October
+                              and stopped in their triples when the
+                              container was restarted (pairs and bins had
+                              passed; runs/combo28_mix1516_check.log).
+                              radial_certificates/combo28_mix17_d10.npz
+                              (exactly 17 within 2.0161, precheck 3.101230,
+                              runs/combo28_mix17_precheck.log) and
+                              radial_certificates/combo28_lo18_d10.npz (at
+                              most 18 within 2.0161, case28_lo18.json,
+                              precheck 3.100554,
+                              runs/combo28_lo18_precheck.log) add the
+                              degree-10 certificates built for 17 and 18
+                              close (gap_closure/CM/c28k17_d10.log,
+                              c28k18_d10.log).  The checks of the mixes for
+                              at most 16 and exactly 17 close were stopped
+                              by hand in their triples
+                              (runs/combo28_mix16_check.log,
+                              runs/combo28_mix17_check.log) for the check
+                              of combo28_lo18_d10.npz, which covers both
+                              (TRIPLE_EXTRA=AAA:5e-7).  That check was itself
+                              stopped at its triples
+                              (runs/combo28_lo18_check.log) once the same
+                              check with POLY_EVAL=c had closed the same
+                              boxes at levels 10 and 20 about 22 times
+                              faster.  The check with POLY_EVAL=c passes
+                              (runs/combo28_lo18_checkc.log, 52 minutes):
+                              exact positivity, the six pair inequalities
+                              (181 820 boxes), the bins (1083 intervals), the
+                              ten triple inequalities (106 993 576 boxes),
+                              and 3.101381 at (18, 6, 3, 0, 0, 0, 1) over
+                              70 719 vectors.
+                              radial_certificates/combo28_lo19_d10.npz (at
+                              most 19 within 2.0161, case28_lo19.json) mixes
+                              in the degree-10 certificate built for exactly
+                              19 close (gap_closure/CM/c28k19_d10.log); the
+                              room it leaves allows the triple margin 1.5e-6,
+                              precheck 3.100907
+                              (runs/combo28_lo19_precheck.log), and its exact
+                              check passes (runs/combo28_lo19_check.log, 47
+                              minutes): the six pair inequalities (112 492
+                              boxes), the bins (1087 intervals), the ten
+                              triple inequalities (134 464 632 boxes), and
+                              3.100907 at (19, 2, 7, 0, 0, 0, 0) over 71 995
+                              vectors.
+                              radial_certificates/combo28_lo20_d10.npz (at
+                              most 20 within 2.0161, case28_lo20.json) adds
+                              the certificate built for exactly 20 close
+                              (gap_closure/CM/c28k20_d10.log); precheck
+                              3.099289 at the triple margin 5e-7
+                              (runs/combo28_lo20_precheck.log), and its exact
+                              check passes (runs/combo28_lo20_check.log, 54
+                              minutes): the six pair inequalities (168 390
+                              boxes), the bins (1278 intervals), the ten
+                              triple inequalities (157 796 046 boxes), and
+                              3.099289 at (20, 3, 4, 0, 0, 0, 1) over 72 996
+                              vectors.
+                              radial_certificates/combo28_lo21_d10.npz (at
+                              most 21 within 2.0161, case28_lo21.json) adds
+                              the certificate built for exactly 21 close
+                              (gap_closure/CM/c28k21_d10.log) to a pool of
+                              38; precheck 3.103041 at the triple margin
+                              5e-7 (runs/combo28_lo21_precheck.log), and its
+                              exact check passes (runs/combo28_lo21_check.log,
+                              54 minutes): the six pair inequalities (120 628
+                              boxes), the bins (1270 intervals), the ten
+                              triple inequalities (168 808 634 boxes), and
+                              3.103041 at (21, 4, 2, 0, 0, 0, 1) over 73 722
+                              vectors.
+                              radial_certificates/combo28_k22_d10.npz
+                              (exactly 22 within 2.0161, case28_k22.json) is
+                              the mix over those 451 vectors alone
+                              (gap_closure/CM/c28_hull_multi.py, nine nonzero
+                              weights); margins 1e-6 for the pairs (AA
+                              included), 2e-7 for the triples, 1e-7 for the
+                              bins, and 4e-7 more for AAF, whose narrow peak
+                              the first run missed (TRIPLE_EXTRA=AAF:4e-7);
+                              its exact check passes
+                              (runs/combo28_k22_check.log, 64 minutes): the
+                              six pair inequalities (64 474 boxes), the bins
+                              (2339 intervals), the ten triple inequalities
+                              (207 350 728 boxes), and 3.102969 at
+                              (22, 0, 2, 0, 0, 0, 4).
+                              radial_certificates/combo28_k24_d10.npz
+                              (exactly 24 within 2.0161, case28_k24.json) is
+                              the mix over those 126 vectors alone (six
+                              nonzero weights, 0.90 on two certificates for
+                              exactly 23 close); margins 1e-7 for the pairs
+                              (AA included), 3e-8 for the triples, 1e-7 for
+                              the bins, and 1e-6 more for ABB, AFF, BBB,
+                              BBF, BFF, FFF and 5e-7 more for ABF, which have
+                              no triples, or 26, at the worst vectors; its
+                              exact check passes
+                              (runs/combo28_k24_check.log, 44 minutes): the
+                              six pair inequalities (29 367 boxes), the bins
+                              (7156 intervals), the ten triple inequalities
+                              (117 675 808 boxes), and 3.103206 at
+                              (24, 2, 0, 0, 0, 1, 1).
+                              radial_certificates/combo28_k23fle3_d10.npz
+                              (exactly 23 within 2.0161 and at most 3
+                              beyond 2.35, case28_k23fle3.json) is the mix
+                              over those 246 vectors alone (eight nonzero
+                              weights, 0.62 on two certificates for exactly
+                              22 close and 0.35 on four for exactly 23);
+                              margins 5e-7 for the pairs (AA included),
+                              1e-7 for the triples and the bins, and 5e-7
+                              more for AAF, which peaks on the face where
+                              the AF inner product is largest, and 1e-6 more
+                              for FFF, which has at most one triple; its
+                              exact check passes
+                              (runs/combo28_k23fle3_check.log, 55 minutes):
+                              the six pair inequalities (37 565 boxes), the
+                              bins (2719 intervals), the ten triple
+                              inequalities (162 022 640 boxes), and 3.102775
+                              at (23, 0, 0, 0, 0, 4, 1).  The same
+                              thresholds give 3.102361 at the vector
+                              (23, 1, 0, 0, 0, 0, 4) (EXTRA_CASES=
+                              case28_k23f4m.json; gap_closure/CM/
+                              pre_c28k23f4m_extra.log).
+                              radial_certificates/combo28_k23f4n{2,3,4}_d10.npz
+                              are mixes for the single vectors with 23
+                              within 2.0161, 4 beyond 2.35 and the last
+                              centre in (2.05, 2.1], (2.1, 2.15] or
+                              (2.15, 2.2] (case28_k23f4n{2,3,4}.json),
+                              found with the types narrowed to the occupied
+                              bins (gap_closure/CM/c28_hull_case.py) and
+                              their bin constants recomputed on the usual
+                              bins (gap_closure/CM/remap_bins.py); each is
+                              checked with REFINE_TRIPLES and REFINE_PAIRS
+                              on the occupied bins and SKIP_COVERED=1, and
+                              passes (runs/combo28_k23f4n{2,3,4}_check.log,
+                              75, 71 and 75 minutes): 3.103281, 3.101860
+                              and 3.102128, after 127 221 931, 125 799 088
+                              and 124 117 379 triple boxes.
+                              radial_certificates/combo28_k23f4n5_d10.npz
+                              is the mix for the last vector, the centre
+                              in (2.2, 2.35] (case28_k23f4n5.json); its
+                              check adds REFINE_GRID=121 and
+                              REGION_TRIPLES=1-1-7:-0.7944:0.58, which
+                              counts the close-close-far triples (at most
+                              3 close directions at inner product
+                              <= -0.7944 with a far one and at most 9 at
+                              >= 0.58, the rest under a lower threshold),
+                              and passes (runs/combo28_k23f4n5_check.log,
+                              103 minutes): 3.103231, after 200 740 860
+                              triple boxes.  With the checks at most 21,
+                              exactly 22 and exactly 24 this is
+                              prop:count28-mixed, (C) at 28.
+                              radial_certificates/combo27_lo10f2_d10.npz
+                              and combo27_lo10f3_d10.npz are mixes for 27
+                              centres with at most 10 within 2.0161 and at
+                              most 2, or exactly 3, beyond 2.35
+                              (gap_closure/CM/case27_lo10f2.json and
+                              case27_lo10f3.json), with 0.89 and 0.94 of
+                              their weight on rounds built for 27 centres;
+                              their checks pass
+                              (runs/combo27_lo10f2_check.log, 58 minutes:
+                              3.102938 at (10, 10, 5, 0, 0, 0, 2) after
+                              99 741 630 triple boxes;
+                              runs/combo27_lo10f3_check.log, 50 minutes:
+                              3.100556 at (10, 10, 4, 0, 0, 0, 3) after
+                              105 075 559 triple boxes).
+                              radial_certificates/combo27_k11f2_d10.npz is
+                              the same kind of mix for 27 centres with
+                              exactly 11 within 2.0161 and at most 2 beyond
+                              2.35 (gap_closure/CM/case27_k11f2.json); its
+                              check passes (runs/combo27_k11f2_check.log,
+                              47 minutes: 3.101756 at (11, 9, 5, 0, 0, 0, 2)
+                              after 105 397 437 triple boxes).
+                              radial_certificates/combo27_k11f3_d10.npz is
+                              the mix for exactly 11 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k11f3.json),
+                              with 0.53 of its weight on the round for
+                              exactly 11; its check passes
+                              (runs/combo27_k11f3_check.log, 66 minutes:
+                              3.099786 at (11, 8, 5, 0, 0, 0, 3) after
+                              119 805 055 triple boxes).
+                              radial_certificates/combo27_k12f2_d10.npz is
+                              the mix for exactly 12 within 2.0161 and at
+                              most 2 beyond 2.35 (case27_k12f2.json); its
+                              check passes with the AAF and AFF thresholds
+                              raised to the dense-search maxima
+                              (runs/combo27_k12f2_check.log, 75 minutes:
+                              3.101565 at (12, 6, 7, 0, 0, 0, 2) after
+                              125 144 848 triple boxes).
+                              radial_certificates/combo27_k12f3_d10.npz is
+                              the mix for exactly 12 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k12f3.json),
+                              with 0.61 of its weight on the round for
+                              exactly 12; its check passes with the AAF
+                              threshold raised above the dense-search
+                              maximum (runs/combo27_k12f3_check.log, 66
+                              minutes: 3.101859 at (12, 6, 6, 0, 0, 0, 3) after
+                              134 115 496 triple boxes).
+                              radial_certificates/combo27_k13f2_d10.npz is
+                              the mix for exactly 13 within 2.0161 and at
+                              most 2 beyond 2.35 (case27_k13f2.json), with
+                              0.31 of its weight on the round for exactly
+                              13; its check passes
+                              (runs/combo27_k13f2_check.log, 91 minutes:
+                              3.103225 at (13, 5, 7, 0, 0, 0, 2) after
+                              143 913 003 triple boxes).
+                              radial_certificates/combo27_k13f3_d10.npz is
+                              the mix for exactly 13 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k13f3.json),
+                              with 0.56 of its weight on the round for
+                              exactly 14; its check passes with the AAF
+                              threshold raised above the dense-search
+                              maximum (runs/combo27_k13f3_check.log, 100
+                              minutes: 3.102225 at (13, 3, 8, 0, 0, 0, 3) after
+                              162 369 735 triple boxes).  The eight mixes for
+                              27 together are prop:count27-few, (C) at 27
+                              with at most 13 within 2.0161.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
                               same boxes, tests and counts, four times
                               faster; used by radial_case_check.py.
+
+  ipoly.c, ipoly_test.py      The interval evaluation of a polynomial on
+                              boxes (Poly.eval of certificate_check.py) in
+                              C: every product and sum in double and then
+                              one step outward, in the same order as the
+                              numpy code, so the enclosures agree bit for
+                              bit.  Used by the triple branch and bounds
+                              when POLY_EVAL=c is set (compiled with gcc
+                              -O3 -march=native -ffp-contract=off into the
+                              temporary directory on first use).
+                              ipoly_test.py compares the two on 640000
+                              random boxes (0 differences; about 27 times
+                              faster).
 
   pushout_check.py
                               thm:G-pushout: T on the one-centre ray at

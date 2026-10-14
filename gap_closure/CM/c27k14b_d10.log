@@ -1,0 +1,1 @@
+27 with exactly 14 centres within 2.0161 (case27_k14.json): second degree 10 round, from the samples of the first round c27k14 (3.10236 on its samples, corrected 3.10928). Same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=3, oom_score_adj 0; started Wed Oct 14 15:59:46 UTC 2026

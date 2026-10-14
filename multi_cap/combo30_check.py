@@ -340,9 +340,10 @@ def pair_box_check(A, Pu, c2, box, symmetric, depth_max=70, batch=20000):
 
 # ---------------------------------------------------------------- (d) the triples
 
-def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000):
+def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000, bottoms=None):
     """P <= cmax on {-1 <= x_i <= tops[i], Gram det >= 0} with x0 <= x1 if sym >= 1 and
     x1 <= x2 if sym == 2, by second-order Taylor forms (typed_cardinality_check.verify_3d).
+    With bottoms the lower ends are bottoms[i] instead of -1 (a sub-box of the domain).
     With TRIPLE_TAYLOR=mono in the environment two sharper forms are used: on a box where
     dP/dx_v has one sign the form is taken on the face where P is larger (it bounds P on the
     whole box), and a diagonal second derivative enters through its upper end cut at 0, since
@@ -350,7 +351,8 @@ def triple_box_check(P, tops, sym, cmax, label='', wmin=1e-6, batch=150000):
     Pp = Poly(P); Dv = [Poly(derivative(P, v)) for v in range(3)]
     H = {(v, w): Poly(derivative(derivative(P, v), w)) for v in range(3) for w in range(v, 3)}
     det = Poly({(0, 0, 0): Fr(1), (1, 1, 1): Fr(2), (2, 0, 0): Fr(-1), (0, 2, 0): Fr(-1), (0, 0, 2): Fr(-1)})
-    lo = np.array([[-1.0], [-1.0], [-1.0]]); hi = np.array([[tops[0]], [tops[1]], [tops[2]]])
+    b0 = [-1.0, -1.0, -1.0] if bottoms is None else [float(b) for b in bottoms]
+    lo = np.array([[b0[0]], [b0[1]], [b0[2]]]); hi = np.array([[tops[0]], [tops[1]], [tops[2]]])
     n_done = n_out = 0; worst = -np.inf; level = 0; t0 = time.time()
     while lo.shape[1] > 0:
         n = lo.shape[1]; keep_lo = []; keep_hi = []
@@ -493,8 +495,9 @@ def refine_pair(A, Pu, starts, box):
     return best
 
 
-def refine_triple(P, starts, tops):
-    """the largest value of P found by local ascent on the admissible triples."""
+def refine_triple(P, starts, tops, bottoms=(-1, -1, -1)):
+    """the largest value of P found by local ascent on the admissible triples (with lower ends
+    bottoms instead of -1, on that sub-box)."""
     from scipy.optimize import minimize
     items = [(np.array(e), float(c)) for e, c in P.items()]
     E = np.array([e for e, _ in items]); Cf = np.array([c for _, c in items])
@@ -505,9 +508,9 @@ def refine_triple(P, starts, tops):
     best = -np.inf
     for x0 in starts:
         try:
-            r = minimize(f, x0, method='SLSQP', bounds=[(-1, tops[0]), (-1, tops[1]), (-1, tops[2])], constraints=[det],
+            r = minimize(f, x0, method='SLSQP', bounds=[(bottoms[i], tops[i]) for i in range(3)], constraints=[det],
                          options={'maxiter': 200, 'ftol': 1e-15})
-            x = np.clip(r.x, -1, tops)
+            x = np.clip(r.x, bottoms, tops)
             if 1 + 2 * x[0] * x[1] * x[2] - x[0] ** 2 - x[1] ** 2 - x[2] ** 2 >= -1e-12:
                 best = max(best, -f(x))
         except Exception:

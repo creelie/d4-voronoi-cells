@@ -1,0 +1,11 @@
+28 with exactly 23 centres within 2.0161, one in [2.2, 2.35] and 4 beyond 2.35, with the types narrowed: A = [2, 2.0161], B = [2.2, 2.35], F = (2.35, sqrt6) (case28_k23f4g5r.json, for the solver only: the vector of 24 within 2.0161 and 4 beyond 2.35, which is proved, is added so that the case has two type-count vectors; the exact check runs on the single-vector case with the bins refined), three-point degree 10 with TRACE_REG=3e-4, from the samples of c28k23f4h_d10_r1.npz cut to these ranges (c28k23f4g5r_start.npz; pruned to KEEP_P=6000 and KEEP_T=3000 per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3.  Started Tue Oct 13 11:23:12 UTC 2026
+resumed from c28k23f4g5r_start.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1224, 'AAF': 1250, 'ABB': 1275, 'ABF': 1300, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1898, 'AAF': 1922, 'ABB': 1966, 'ABF': 1300, 'AFF': 2021, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7420 variables, 85238 inequalities, 7389 psd rows in 56 cones, 64455263 nonzeros [23 s to build]
+   2 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.07957 (target 3.10330), corrected <= 3.66384  [4756 s]
+   viol: AA 6.3e-08, AB 2.5e-08, AF 1.4e-06, BB 1.1e-04, BF -1.2e-08, FF 1.6e-09, AAA 2.4e-05, AAB 4.0e-04, AAF 3.6e-04, ABF 4.2e-04, AFF 2.6e-04, BFF 2.8e-04, FFF 1.4e-05
+   c2: {'AA': -0.021932, 'AB': -0.04912, 'AF': -0.180903, 'BB': 0.170464, 'BF': 0.061691, 'FF': 0.034427}
+   c3: {'AAA': 0.0211671, 'AAB': 0.0158738, 'AAF': -0.0724851, 'ABF': -0.0382498, 'AFF': 0.2904878, 'BFF': 0.0007908, 'FFF': 0.0261134}
+exit 0 at Tue Oct 13 12:42:50 UTC 2026

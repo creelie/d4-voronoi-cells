@@ -1,0 +1,25 @@
+PRECHECK=1 BORDER=1 PAIR_MARGIN=AA:5e-6 python3 -u combo_case_check.py ../gap_closure/CM/case28_lo18.json radial_certificates/combo28_lo18_d10.npz 10 2e-6 2e-7 5e-7   (one mixed certificate for every case with at most 18 within 2.0161: gap_closure/CM/c28_hull.py lo18 over 15 certificates, among them the degree-10 certificates built for exactly 17 and 18 close, c28k17_d10.log and c28k18_d10.log; mixing estimate 3.100721; run on the file under its scratch name hmixU_lo18.npz)
+statement (C) at 28 centres, case case28_lo18.json: combined certificate hmixU_lo18.npz, two-point degree 12/4, three-point degree 10; 70719 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 59.401628156, float t 59.401628155)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.429903', 'B': '0.188451', 'F': '0.048734'}
+  pair AA: float largest K + PAIR3 - Pi 1.705222e-02 (file c2 1.705222e-02); threshold 1.705722e-02
+  pair AB: float largest K + PAIR3 - Pi 3.545762e-02 (file c2 3.545762e-02); threshold 3.545962e-02
+  pair AF: float largest K + PAIR3 - Pi 4.557503e-02 (file c2 4.557506e-02); threshold 4.557706e-02
+  pair BB: float largest K + PAIR3 - Pi 5.194485e-02 (file c2 5.194485e-02); threshold 5.194685e-02
+  pair BF: float largest K + PAIR3 - Pi 5.940024e-02 (file c2 5.940024e-02); threshold 5.940224e-02
+  pair FF: float largest K + PAIR3 - Pi 6.875869e-02 (file c2 6.875888e-02); threshold 6.876088e-02
+  triple AAA: float largest 2.693763e-03 on 649660 samples; threshold 2.694055e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 1.988465e-03 on 649656 samples; threshold 1.988734e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 1.608715e-03 on 649567 samples; threshold 1.609030e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 1.343882e-03 on 649516 samples; threshold 1.344198e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 1.065395e-03 on 649349 samples; threshold 1.065848e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 6.759389e-04 on 649302 samples; threshold 6.763059e-04; 756 monomials, symmetry 1
+  triple BBB: float largest 7.862415e-04 on 649325 samples; threshold 7.864612e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 6.130450e-04 on 649158 samples; threshold 6.133226e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 3.985717e-04 on 649009 samples; threshold 3.988349e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 9.515870e-04 on 648938 samples; threshold 9.518527e-04; 756 monomials, symmetry 2
+  70719 count vectors, 105 type-count vectors; largest bound 3.100554 at (18, 3, 3, 0, 0, 0, 4)
+PRECHECK (floating point, no branch and bound): the thresholds give 3.100554 against 9 pi^2/8 - 8 = [3.1033050 +/- 4.88e-8] [952 s]
+exit 0
