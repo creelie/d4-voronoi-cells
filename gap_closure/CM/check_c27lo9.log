@@ -1,1 +1,43 @@
 exact check of mix27_lo10d.npz (27 centres, at most 9 within 2.0161, case27_lo9.json; the convex combination of 11 earlier certificates made for at most 10 within 2.0161, mostly the two rounds built for at most 14), margins pairs 2e-6 (AA 2e-6), triples 3e-7, bins 1e-7, BORDER=1, POLY_EVAL=c; precheck 3.100668 at margins 1e-6/1e-7/1e-7 (pre_c27lo9.log), every triple threshold above the dense-search maximum; started Wed Oct 14 00:58:07 UTC 2026
+statement (C) at 27 centres, case case27_lo9.json: combined certificate mix27_lo10d.npz, two-point degree 12/4, three-point degree 10; 22640 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 72.862976104, float t 72.862976103)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.532384', 'B': '0.147883', 'F': '0.059637'}
+  pair AA: float largest K + PAIR3 - Pi 2.387018e-02 (file c2 2.387018e-02); threshold 2.387218e-02
+  pair AB: float largest K + PAIR3 - Pi 5.325611e-02 (file c2 5.325611e-02); threshold 5.325811e-02
+  pair AF: float largest K + PAIR3 - Pi 5.885309e-02 (file c2 5.885312e-02); threshold 5.885512e-02
+  pair BB: float largest K + PAIR3 - Pi 8.018132e-02 (file c2 8.018132e-02); threshold 8.018332e-02
+  pair BF: float largest K + PAIR3 - Pi 8.391168e-02 (file c2 8.391169e-02); threshold 8.391368e-02
+  pair FF: float largest K + PAIR3 - Pi 8.912920e-02 (file c2 8.912966e-02); threshold 8.913166e-02
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (886256 boxes closed, 674220 set aside, Pi in Arb at 886196 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (41449 boxes closed, 41780 set aside, Pi in Arb at 3249 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (9113 boxes closed, 9048 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (4245 boxes closed, 3552 set aside, Pi in Arb at 584 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (20371 boxes closed, 19332 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (1504 boxes closed, 1223 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (1423 intervals, least room 4.46e-10)
+  triple AAA: float largest 3.776794e-03 on 649660 samples; threshold 3.777193e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 2.630458e-03 on 649656 samples; threshold 2.630983e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 2.463950e-03 on 649567 samples; threshold 2.464623e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 1.579300e-03 on 649516 samples; threshold 1.580313e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 1.490316e-03 on 649349 samples; threshold 1.491551e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 1.314642e-03 on 649302 samples; threshold 1.316387e-03; 756 monomials, symmetry 1
+  triple BBB: float largest 6.272804e-04 on 649325 samples; threshold 6.276301e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 6.010326e-04 on 649158 samples; threshold 6.014329e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 5.315543e-04 on 649009 samples; threshold 5.320065e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 6.114415e-04 on 648938 samples; threshold 6.118794e-04; 756 monomials, symmetry 2
+      AAA level 10: 0 boxes verified, 334 to bisect [0 s]
+      AAA level 20: 11530 boxes verified, 99494 to bisect [2 s]
+      AAA level 30: 2576430 boxes verified, 2048714 to bisect [126 s]
+      AAB level 10: 0 boxes verified, 618 to bisect [0 s]
+      AAB level 20: 30912 boxes verified, 296724 to bisect [7 s]
+      AAB level 30: 9404320 boxes verified, 4195286 to bisect [404 s]
+      AAF level 10: 0 boxes verified, 626 to bisect [0 s]
+      AAF level 20: 31155 boxes verified, 295886 to bisect [7 s]
+      AAF level 30: 8409867 boxes verified, 3400120 to bisect [358 s]
+      ABB level 10: 0 boxes verified, 634 to bisect [0 s]
+      ABB level 20: 26852 boxes verified, 320586 to bisect [6 s]
+      ABB level 30: 13054609 boxes verified, 6326828 to bisect [570 s]
+exit 143 at Wed Oct 14 01:58:54 UTC 2026
+stopped at 01:58 UTC on 2026-10-14 during the fourth triple kind, with no failure: the mix for exactly 3 beyond 2.35 that uses the new round for at most 10 within 2.0161 gives 3.098631 for at most 10 within 2.0161 with 3 beyond 2.35, so together with check_c27lo10f2.log (PASS) it covers everything this check covers
