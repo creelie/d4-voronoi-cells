@@ -321,8 +321,8 @@ with at most two beyond 2.35 and 3.107087 with three, above the level. The
 optima of the rounds on their own samples rise by about 0.0055 per close
 centre (3.08563, 3.09128, 3.09689 and 3.10236 for 11 to 14); if that trend
 holds, a round for 15 lands near 3.108 on its samples. That round
-(`case27_k15.json`,
-`c27k15_d10.log`, from the samples of `c27k14`) runs to test this.
+(`case27_k15.json`, `c27k15_d10.log`, from the samples of `c27k14`) runs to
+test this.
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709
