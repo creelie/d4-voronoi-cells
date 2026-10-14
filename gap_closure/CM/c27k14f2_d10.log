@@ -1,0 +1,1 @@
+27 with exactly 14 centres within 2.0161 and at most 2 beyond 2.35 (case27_k14f2.json): degree 10 round from the samples of the second exactly-14 round c27k14b (3.10240 on its samples, corrected 3.11028). Same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=3, oom_score_adj 0; started Wed Oct 14 19:03:22 UTC 2026
