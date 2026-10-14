@@ -597,6 +597,13 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               %(f3_triples)s triple boxes).  Together
                               they are prop:count27-few, (C) at 27 with at
                               most 10 within 2.0161.
+                              radial_certificates/combo27_k11f2_d10.npz is
+                              the same kind of mix for 27 centres with
+                              exactly 11 within 2.0161 and at most 2 beyond
+                              2.35 (gap_closure/CM/case27_k11f2.json); its
+                              check passes (runs/combo27_k11f2_check.log,
+                              47 minutes: 3.101756 at (11, 9, 5, 0, 0, 0, 2)
+                              after 105 397 437 triple boxes).
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the

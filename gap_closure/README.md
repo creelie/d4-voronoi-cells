@@ -240,8 +240,24 @@ within 2.0161 costs about 0.005. The vector where the first mix was worst,
 (10, 11, 3, 0, 0, 0, 3), looks unrealisable: the best of 200 penalised
 minimisations of the overlaps and of the departures from the bins still
 misses, with two centres at distance 1.9853 (`CM/c27_config_search.py`,
-`CM/c27_config_search.log`; floating point, evidence only). The next round aims at exactly 11 within
-2.0161 (`case27_k11.json`, `c27k11_d10.log`, from the samples of `c27lo10`).
+`CM/c27_config_search.log`; floating point, evidence only).
+
+At exactly 11 within 2.0161 the same certificates, the round for at most 10
+included, give 3.104043 over all the vectors, again worst at three beyond
+2.35, and 3.101403 over those with at most two beyond 2.35 (3.101433 with the
+dense-search maxima, `CM/peak2_c27k11f2.log`). The exact check of that
+combination (`CM/mix27_k11f2.npz` on `case27_k11f2.json`, margins 1e-6, 1e-7
+and 1e-7, precheck 3.101756, `CM/pre_c27k11f2.log`) passes: 3.101756 at
+(11, 9, 5, 0, 0, 0, 2) over 2034 vectors, after 613 982 pair boxes and
+105 397 437 triple boxes (`CM/check_c27k11f2.log`, copy
+`multi_cap/runs/combo27_k11f2_check.log`, 47 minutes). So at 27 centres (C)
+also holds with exactly 11 within 2.0161 and at most 2 beyond 2.35; this is
+not yet in the paper. Exactly 11 with three beyond 2.35
+(`case27_k11f3.json`) is open, and so are 12 to 24 within 2.0161: with the
+same certificates the bound is 3.120346 at exactly 14, 3.141904 at 18,
+3.157926 at 21 and 3.170496 at 24, each worst at three beyond 2.35
+(floating point). A round aimed at exactly 11 within 2.0161
+(`case27_k11.json`, `c27k11_d10.log`, from the samples of `c27lo10`) runs.
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709
