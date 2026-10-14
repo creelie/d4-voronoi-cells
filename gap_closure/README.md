@@ -328,8 +328,12 @@ with at most two beyond 2.35 and 3.107087 with three, above the level. The
 optima of the rounds on their own samples rise by about 0.0055 per close
 centre (3.08563, 3.09128, 3.09689 and 3.10236 for 11 to 14); if that trend
 holds, a round for 15 lands near 3.108 on its samples. That round
-(`case27_k15.json`, `c27k15_d10.log`, from the samples of `c27k14`) runs to
-test this. With the rounds for 13 and 14 added to the pool, one iteration of
+(`case27_k15.json`, `c27k15_d10.log`, from the samples of `c27k14`, 3.0 hours)
+gave 3.10766 on its samples (3.11850 corrected), above the level even before
+any gap between samples, so degree 10 in this form very likely cannot settle
+15 or more within 2.0161 at 27 (evidence, not a proof: the solve carries the
+trace penalty). A second round for exactly 14 (`c27k14b_d10.log`, from the
+samples of `c27k14`) runs. With the rounds for 13 and 14 added to the pool, one iteration of
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
 and 3.163428 at 24, each worst at three beyond 2.35 (floating point, margins
 of the check included; before these two rounds the values were 3.1243,
