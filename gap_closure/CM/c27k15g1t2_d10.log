@@ -1,1 +1,11 @@
 27 with exactly 15 centres within 2.0161, exactly 3 beyond 2.35 and none in (2.1, 2.35] (10 count vectors), typed A = [2, 2.0161], B = (2.0161, 2.1], F = (2.35, sqrt6] (case27_k15f3g1_t1.json): second degree 10 round, from the samples of the first (c27k15g1t, 2.92918 on its samples, optimal_inaccurate, corrected 20.46470). Same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=2, oom_score_adj 0; started Mon Oct 19 20:59:40 UTC 2026
+resumed from c27k15g1t_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1164, 'AAF': 1250, 'ABB': 1176, 'ABF': 1264, 'AFF': 1326, 'BBB': 1176, 'BBF': 1267, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1843, 'AAF': 1922, 'ABB': 1859, 'ABF': 1264, 'AFF': 2021, 'BBB': 2652, 'BBF': 1942, 'BFF': 2021, 'FFF': 2807}
+   direct: 7419 variables, 103847 inequalities, 7389 psd rows in 56 cones, 74746652 nonzeros [19 s to build]
+   1 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.07254 (target 3.10330), corrected <= 3.97108  [4639 s]
+   viol: AA 7.7e-08, AB 1.3e-07, AF 1.9e-06, BB 8.4e-08, BF 1.5e-07, FF 4.8e-06, AAA 7.9e-05, AAB 2.0e-04, AAF 3.4e-04, ABB 2.4e-04, ABF 8.4e-04, AFF 2.1e-04, BBB 2.2e-04, BBF 4.8e-04, BFF 5.9e-04, FFF 1.7e-04
+   c2: {'AA': 0.068489, 'AB': -0.220781, 'AF': -0.066071, 'BB': -0.017962, 'BF': -0.10838, 'FF': 0.141644}
+   c3: {'AAA': 0.0576989, 'AAB': -0.0193637, 'AAF': -0.0504334, 'ABB': 0.016361, 'ABF': 0.0071725, 'AFF': 0.0759132, 'BBB': 0.0718764, 'BBF': 0.047611, 'BFF': 0.151824, 'FFF': 0.0486109}
+exit 0 at Mon Oct 19 22:17:23 UTC 2026
