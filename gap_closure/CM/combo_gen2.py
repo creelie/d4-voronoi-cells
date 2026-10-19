@@ -351,7 +351,8 @@ def main():
         for cb in tsamp:
             if 't_' + ''.join(cb) in sv:
                 tsamp[cb] = sv['t_' + ''.join(cb)]
-        L0 = T3.Layout(len(TYPES), d3)
+        # the layout of the resumed certificate, which may have another degree than this run
+        L0 = T3.Layout(len(TYPES), {2052: 6, 4098: 8, 7188: 10, 11538: 12}.get(len(sv['x3']), d3))
         c2keys = list(itertools.combinations_with_replacement(TYPES, 2))
         c3keys = [cb for cb in itertools.combinations_with_replacement(TYPES, 3)
                   if not all(Ntriple(tcounts(nb), list(cb)) == 0 for nb in COUNTS)]
