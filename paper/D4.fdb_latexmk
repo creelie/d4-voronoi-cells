@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1792382753.85212 "D4.tex" "D4.pdf" "D4" 1792382759.25876 0
+["pdflatex"] 1792382794.06976 "D4.tex" "D4.pdf" "D4" 1792382799.50182 0
   "/etc/texmf/web2c/texmf.cnf" 1791167710.21763 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -173,10 +173,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1791167717.02445 319537 d0d0708249356078afe7362801504ba7 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1791167733 6830979 a1e9af113476dc8647f3fd0b74091426 ""
-  "D4.aux" 1792382759.03851 183784 a52edc0236c57fda0c49686bf45ebad6 "pdflatex"
-  "D4.out" 1792382759.04651 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
-  "D4.tex" 1792382727.41349 712040 c442ffc06c2263ff36c01510f556fff7 ""
-  "D4.toc" 1792382759.04651 16472 0f7f8377ab083bf1b6954413e6dc3885 "pdflatex"
+  "D4.aux" 1792382799.30251 183784 a52edc0236c57fda0c49686bf45ebad6 "pdflatex"
+  "D4.out" 1792382799.31451 4770 acdd4a1998ce2c995ee91c8e90d4bdc1 "pdflatex"
+  "D4.tex" 1792382793.91507 712059 f1b615026372dfe9484e2dc469981668 ""
+  "D4.toc" 1792382799.31451 16472 0f7f8377ab083bf1b6954413e6dc3885 "pdflatex"
   "figures/fig_c_arcs.png" 1791200272.16814 336878 4c1b9c3d0b1a9128902704d0d11d85ab ""
   "figures/fig_c_boundary.png" 1791176609.09636 617440 259bcb0e568cae0aa081f441887c3181 ""
   "figures/fig_c_cap.png" 1791176609.10244 208804 61f766f080181d31da4449ac77367fa8 ""

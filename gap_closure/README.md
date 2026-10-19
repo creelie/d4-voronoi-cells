@@ -327,7 +327,7 @@ together are `prop:count27-few`, (C) at 27 with at most 13 within 2.0161. At exa
 with at most two beyond 2.35 and 3.107087 with three, above the level; with
 the rounds described below they now give 3.104966 with at most two beyond
 2.35 (with the four rounds for at most two beyond 2.35; 3.104543 on the
-samples alone) and 3.105798 with
+samples of the mixing LP) and 3.105798 with
 three (with the second round for 14 and the round for 15), still above the
 level (floating point, margins of the check and climbed maxima included). The
 optima of the rounds on their own samples rise by about 0.0055 per close
@@ -345,7 +345,7 @@ room on their samples: 3.10067 (3.24496 corrected, `c27k14f2_d10.log`),
 3.10083 (3.12683, `c27k14f2b_d10.log`), 3.10091 (3.10880,
 `c27k14f2c_d10.log`) and 3.10094 (3.11619, `c27k14f2d_d10.log`), all reported
 optimal_inaccurate by the solver. The mixes with them stall near 3.105, since
-even on the samples of the four rounds the best combination gives 3.1045,
+even on the samples of the mixing LP the best combination gives 3.1045,
 above the level. A round for exactly 14 within 2.0161 and exactly three
 beyond 2.35 (`case27_k14f3.json`, `c27k14f3_d10.log`, from the samples of
 `c27k14b`) runs. With the rounds for 13 and 14 added to the pool, one iteration of
