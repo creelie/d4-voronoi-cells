@@ -323,8 +323,12 @@ dense-search maximum (`CM/peak2_c27k13f3.log`); with it raised
 (13, 3, 8, 0, 0, 0, 3) over 230 vectors, after 2 493 357 pair boxes and
 162 369 735 triple boxes (`CM/check_c27k13f3.log`, copy
 `multi_cap/runs/combo27_k13f3_check.log`, 100 minutes). The eight checks
-together are `prop:count27-few`, (C) at 27 with at most 13 within 2.0161. At exactly 14 the mixes give 3.106334
-with at most two beyond 2.35 and 3.107087 with three, above the level. The
+together are `prop:count27-few`, (C) at 27 with at most 13 within 2.0161. At exactly 14 the mixes first gave 3.106334
+with at most two beyond 2.35 and 3.107087 with three, above the level; with
+the rounds described below they now give 3.105010 with at most two beyond
+2.35 (with the three rounds for at most two beyond 2.35) and 3.105798 with
+three (with the second round for 14 and the round for 15), still above the
+level (floating point, margins of the check and climbed maxima included). The
 optima of the rounds on their own samples rise by about 0.0055 per close
 centre (3.08563, 3.09128, 3.09689 and 3.10236 for 11 to 14); if that trend
 holds, a round for 15 lands near 3.108 on its samples. That round
