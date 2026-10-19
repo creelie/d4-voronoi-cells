@@ -112,6 +112,11 @@ Of the C(n_b, 2) pairs of centres of bin b, for a pivot with ka centres at <= s1
 >= s2, C(ka, 2) + C(kt, 2) take the threshold of the bins, ka kt the mixed one and the rest
 the middle one; the bound takes the largest such sum over ka <= Ka, kt <= Kt.  TRIPLE_EXTRA
 takes <b>-<b>-<p>/mid and <b>-<b>-<p>/mix for the two new thresholds.
+
+With SKIP_EMPTY=1 a kind of pairs that occurs in no count vector of the case gets no
+threshold and no branch and bound, as the kinds of triples never do; its count is 0 in
+every bound.  This is for case files with one type per bin (combo_mixtype_check.py),
+where the bins no count vector occupies are types of their own.
 """
 import itertools
 import json
@@ -141,6 +146,7 @@ REFINE = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.ge
 REFINE_PAIRS = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_PAIRS', '').split(',') if e]
 PAIR_MARGIN = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('PAIR_MARGIN', '').split(',') if e)}
 SKIP_COVERED = os.environ.get('SKIP_COVERED') == '1'
+SKIP_EMPTY = os.environ.get('SKIP_EMPTY') == '1'
 DIVERSE = int(os.environ.get('REFINE_DIVERSE', '0'))
 GRIDN = int(os.environ.get('REFINE_GRID', '0'))
 REGION = [(tuple(sorted(int(x) - 1 for x in e.split(':')[0].split('-'))), Fr(e.split(':')[1]), Fr(e.split(':')[2]))
@@ -291,11 +297,13 @@ def main():
         return C.above(max(float(v.max()), best) + PAIR_MARGIN.get(C.TYPES[i] + C.TYPES[j], mg2)), float(v.max()), Pu
 
     c2 = {}
-    for (s, tt) in itertools.combinations_with_replacement(C.TYPES, 2):
+    for kidx, (s, tt) in enumerate(itertools.combinations_with_replacement(C.TYPES, 2)):
+        if SKIP_EMPTY and all(C.Npair(tcounts(nb), s, tt) == 0 for nb in C.COUNTS):
+            continue
         i, j = C.TYPES.index(s), C.TYPES.index(tt)
         c2[(s, tt)], vmax, _ = pair_setup(i, j, (C.TRANGE[s], C.TRANGE[tt]), rng)
         print('  pair %s%s: float largest K + PAIR3 - Pi %.6e (file c2 %.6e); threshold %.6e'
-              % (s, tt, vmax, float(Z['c2'][len(c2) - 1]), float(c2[(s, tt)])), flush=True)
+              % (s, tt, vmax, float(Z['c2'][kidx]), float(c2[(s, tt)])), flush=True)
     jobs = [(A, C.pair3_poly(Bk, d3, C.TYPES.index(s), C.TYPES.index(tt)), c2[(s, tt)], (C.TRANGE[s], C.TRANGE[tt]), s == tt)
             for (s, tt) in c2]
     labels = ['K + PAIR3_%s%s <= Pi + c2 on the admissible pairs' % st for st in c2]

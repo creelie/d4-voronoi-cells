@@ -8,6 +8,11 @@ For each kind it prints the largest value on SAMPLES_MILLIONS million admissible
 (sampled as in the check, from dimensions 4, 3 and 2) and after SLSQP ascent from the
 STARTS (default 400) best of them, and the threshold the check computes with its own
 650 000 samples and 40 starts, for comparison.
+
+With MIXTYPE=1 the certificate is a mixed-typing combination (c27_hull_mt.py) on a case file
+with one type per bin (case_bins.py), read through multi_cap/combo_mixtype_check.py, and a
+KIND names its bins' types separated by '-', e.g. A1-B3-F7 (printed as A1B3F7, the key the
+PEAKS option of the mixing programmes reads).
 """
 import sys, os, time
 import numpy as np
@@ -19,6 +24,8 @@ MC = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'multi
 sys.path.insert(0, MC)
 os.chdir(MC)
 sys.argv = ['x', case, npz, '10']
+if os.environ.get('MIXTYPE') == '1':
+    import combo_mixtype_check  # noqa: F401  (patches the three-point polynomials of C)
 import combo_case_check as K
 C = K.C
 t0 = time.time()
@@ -54,7 +61,7 @@ def f_and_grad(E, co, x):
 
 
 for kind in kinds:
-    combo = tuple(kind)
+    combo = tuple(kind.split('-')) if '-' in kind else tuple(kind)
     P = C.triple3_poly(Bk, 10, combo)
     E, co, D = tables(P)
     T = tuple(float(C.tmax(a, b)) for a, b in ((combo[0], combo[1]), (combo[0], combo[2]), (combo[1], combo[2])))
@@ -78,4 +85,4 @@ for kind in kinds:
             if val > best:
                 best, bx = val, x
     print('%s: sampled max %.9e on %.1fM triples; ascent from %d starts %.9e at %s [%.0f s]'
-          % (kind, smax, n / 1e6, starts, best, np.round(bx, 6), time.time() - t0), flush=True)
+          % (''.join(combo), smax, n / 1e6, starts, best, np.round(bx, 6), time.time() - t0), flush=True)
