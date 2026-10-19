@@ -1,1 +1,11 @@
 27 with exactly 15 centres within 2.0161, exactly 3 beyond 2.35 and none in (2.1, 2.35] (10 count vectors), typed A = [2, 2.0161], B = (2.0161, 2.1], F = (2.35, sqrt6] (case27_k15f3g1_t1.json: the close centres a type of their own), for a mixed-typing combination (c27_hull_mt.py, as cert@ABBBBBF); a degree 10 round from the samples of the round for exactly 15 within 2.0161 (c27k15, 3.10766 on its samples) kept inside these ranges (filter_resume.py). TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2, oom_score_adj 0; started Mon Oct 19 19:31:12 UTC 2026
+resumed from resume27_k15g1t.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1164, 'AAF': 1250, 'ABB': 1176, 'ABF': 1264, 'AFF': 1326, 'BBB': 1176, 'BBF': 1267, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1843, 'AAF': 1922, 'ABB': 1859, 'ABF': 1264, 'AFF': 2021, 'BBB': 2652, 'BBF': 1942, 'BFF': 2021, 'FFF': 2807}
+   direct: 7419 variables, 99852 inequalities, 7389 psd rows in 56 cones, 70937962 nonzeros [22 s to build]
+   1 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 2.92918 (target 3.10330), corrected <= 20.46470  [4922 s]
+   viol: AA 1.6e-07, AB 3.4e-06, AF 2.5e-06, BB 3.3e-07, BF 2.2e-06, FF 3.5e-05, AAA 5.3e-04, AAB 2.0e-03, AAF 2.0e-03, ABB 9.8e-03, ABF 1.1e-02, AFF 1.0e-02, BBB 1.0e-02, BBF 2.6e-02, BFF 2.6e-02, FFF 1.3e-02
+   c2: {'AA': 0.210377, 'AB': -0.449553, 'AF': -0.342416, 'BB': -0.087562, 'BF': 0.19067, 'FF': 0.502285}
+   c3: {'AAA': 0.1520418, 'AAB': -0.0547308, 'AAF': -0.0476637, 'ABB': -0.0500904, 'ABF': -0.102519, 'AFF': 0.3225595, 'BBB': 0.6059787, 'BBF': 0.1362617, 'BFF': 0.2663535, 'FFF': 0.1575059}
+exit 0 at Mon Oct 19 20:53:41 UTC 2026
