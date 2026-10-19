@@ -207,16 +207,19 @@ iL = np.arange(K); i2 = K + np.arange(n2); i3 = K + n2 + np.arange(n3); iM = K +
 NV = iE + 1
 def lp(active):
     rows, b = [vrows], [np.zeros(len(vrows))]
+    def block(V, col):
+        n = len(V)
+        R = sp.hstack([sp.csr_matrix(V.astype(float)), sp.csr_matrix((n, NV - K))], format='lil')
+        R[:, col] = -1
+        return R.tocsr()
+    rows = [sp.csr_matrix(vrows)]
     for j, st in enumerate(pkeys):
-        V = PS[st][1][active['p'][st]]
-        R = np.zeros((len(V), NV)); R[:, iL] = V.astype(float); R[:, i2[j]] = -1; rows.append(R); b.append(np.zeros(len(V)))
+        V = PS[st][1][active['p'][st]]; rows.append(block(V, i2[j])); b.append(np.zeros(len(V)))
     for j, cb in enumerate(tkeys):
-        V = TS[cb][1][active['t'][cb]]
-        R = np.zeros((len(V), NV)); R[:, iL] = V.astype(float); R[:, i3[j]] = -1; rows.append(R); b.append(np.zeros(len(V)))
+        V = TS[cb][1][active['t'][cb]]; rows.append(block(V, i3[j])); b.append(np.zeros(len(V)))
     for bb in range(nb):
-        V = BV[bb]
-        R = np.zeros((len(V), NV)); R[:, iL] = V.astype(float); R[:, iM[bb]] = -1; rows.append(R); b.append(np.zeros(len(V)))
-    A = sp.vstack([sp.csr_matrix(R) for R in rows], format='csr'); bv = np.concatenate(b); rows.clear()
+        V = BV[bb]; rows.append(block(V, iM[bb])); b.append(np.zeros(len(V)))
+    A = sp.vstack(rows, format='csr'); bv = np.concatenate(b); rows.clear()
     Aeq = np.zeros((1, NV)); Aeq[0, iL] = 1
     cobj = np.zeros(NV); cobj[iE] = 1
     bounds = [(0, None)] * K + [(None, None)] * (NV - K)
@@ -224,7 +227,7 @@ def lp(active):
     return r
 
 
-def top_active(lam=None, keep=4000):
+def top_active(lam=None, keep=int(os.environ.get('KEEP', '4000'))):
     act = {'p': {}, 't': {}}
     for st in pkeys:
         V = PS[st][1]; s = V.max(1) if lam is None else V @ lam.astype(np.float32)
