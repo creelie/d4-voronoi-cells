@@ -333,7 +333,13 @@ gave 3.10766 on its samples (3.11850 corrected), above the level even before
 any gap between samples, so degree 10 in this form very likely cannot settle
 15 or more within 2.0161 at 27 (evidence, not a proof: the solve carries the
 trace penalty). A second round for exactly 14 (`c27k14b_d10.log`, from the
-samples of `c27k14`) runs. With the rounds for 13 and 14 added to the pool, one iteration of
+samples of `c27k14`) gave 3.10240 on its samples (3.11028 corrected), no gain.
+Rounds for exactly 14 with at most two beyond 2.35 alone (`case27_k14f2.json`,
+from the samples of `c27k14b` and then each from the previous one) have more
+room on their samples: 3.10067 (3.24496 corrected, `c27k14f2_d10.log`),
+3.10083 (3.12683, `c27k14f2b_d10.log`) and 3.10091 (3.10880,
+`c27k14f2c_d10.log`), all reported optimal_inaccurate by the solver; a fourth
+(`c27k14f2d_d10.log`) runs. With the rounds for 13 and 14 added to the pool, one iteration of
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
 and 3.163428 at 24, each worst at three beyond 2.35 (floating point, margins
 of the check included; before these two rounds the values were 3.1243,
