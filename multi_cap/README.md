@@ -643,9 +643,33 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               threshold raised above the dense-search
                               maximum (runs/combo27_k13f3_check.log, 100
                               minutes: 3.102225 at (13, 3, 8, 0, 0, 0, 3) after
-                              162 369 735 triple boxes).  The eight mixes for
+                              162 369 735 triple boxes).
+                              radial_certificates/combo27_k14f3g2_d10.npz is
+                              the mix for exactly 14 within 2.0161, exactly
+                              3 beyond 2.35 and at least one centre in
+                              (2.1, 2.35] (case27_k14f3g2.json, 219
+                              vectors), with 0.31 of its weight on the
+                              round for exactly 14 and 3 beyond 2.35; its
+                              check passes with the FFF threshold raised
+                              (runs/combo27_k14f3g2_check.log, 80 minutes:
+                              3.098199 at (14, 5, 4, 1, 0, 0, 3) after
+                              112 999 796 triple boxes).
+                              radial_certificates/combo27_k14f3g1_d10.npz is
+                              the mix for the 11 other vectors with exactly
+                              14 within 2.0161 and exactly 3 beyond 2.35
+                              (case27_k14f3g1.json), found with the middle
+                              type narrowed to (2.05, 2.1], with 0.41 of
+                              its weight on the two rounds for exactly 14
+                              and 3 beyond 2.35; its check takes the
+                              thresholds of the kinds with a middle centre
+                              per combination of bins (REFINE_PAIRS,
+                              REFINE_TRIPLES, SKIP_COVERED=1) and passes
+                              (runs/combo27_k14f3g1_check.log, 158 minutes:
+                              3.102269 at (14, 8, 2, 0, 0, 0, 3) after
+                              159 075 380 triple boxes).  The ten mixes for
                               27 together are prop:count27-few, (C) at 27
-                              with at most 13 within 2.0161.
+                              with at most 13 within 2.0161, or exactly 14
+                              within 2.0161 and exactly 3 beyond 2.35.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
