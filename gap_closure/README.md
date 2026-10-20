@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and thirteen combinations for twenty-seven centres, one of six
+twenty-eight; and fourteen combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -49,11 +49,14 @@ way, and one of eleven for the 192 vectors with exactly fifteen within
 vectors with exactly fourteen within 2.0161, at most two beyond 2.35, none in
 (2.1, 2.2] and one in (2.2, 2.35] (`CM/case27_k14f2g2a_bins.json`), found by
 `CM/c27_hull_mt.py` with each certificate typing the bin (2.2, 2.35] as B or
-as F, which `multi_cap/combo_mixtype_check.py` proves exactly; together they
-are `prop:count27-few`, (C) at 27 with at most 13 within 2.0161, with exactly
-14 within 2.0161 and either exactly 3 beyond 2.35 or none in (2.1, 2.2],
-or with exactly 15 within 2.0161, exactly 3 beyond 2.35 and at least one in
-(2.1, 2.35]. The rest are kept so that the
+as F, which `multi_cap/combo_mixtype_check.py` proves exactly, and one of
+ten for the 1868 vectors with exactly fourteen within 2.0161, at most two
+beyond 2.35 and a centre in (2.1, 2.2] (`CM/case27_k14f2g2b.json`), found by
+`CM/c27_hull_sub.py` with `SUB=2,3,4,5` (a threshold of its own for each
+combination of bins with a middle bin), which `multi_cap/combo_case_check.py`
+proves exactly; together they are `prop:count27-few`, (C) at 27 with at most
+14 within 2.0161, or with exactly 15 within 2.0161, exactly 3 beyond 2.35
+and at least one in (2.1, 2.35]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -399,8 +402,17 @@ boxes (`CM/check_c27k14f2g1.log`, copy `multi_cap/runs/combo27_k14f2g1_check.log
 (2.1, 2.35] are split again at 2.2. The 1868 with a centre in (2.1, 2.2]
 (`case27_k14f2g2b.json`) mix to 3.102039 with each middle bin a type of its
 own for the thresholds (`CM/c27_hull_sub.py`, `SUB=2,3,4,5`; precheck
-3.102749, `CM/pre_c27k14f2g2b.log`), and their exact check
-(`CM/check_c27k14f2g2b.log`) runs. The 127 with every middle centre in
+3.102749, `CM/pre_c27k14f2g2b.log`), and their exact check passes:
+3.102942 at (14, 5, 5, 0, 1, 0, 2) after 4 552 754 pair boxes and
+1 712 578 763 triple boxes (margins 5e-7, 5e-8 and 1e-7, 10 certificates).
+Container restarts stopped it twice, so it ran in parts: the pair pieces were
+proved by the start of 03:43 on 2026-10-20 (`CM/check_c27k14f2g2b.log`) and
+stored in the checkpoint `CM/check_c27k14f2g2b.ckpt`, a resume from 05:17
+(`CM/check_c27k14f2g2b_r2.log`) stored the triple setups in
+`CM/check_c27k14f2g2b.ckpt.setup`, and the resume from 06:02
+(`CM/check_c27k14f2g2b_r3.log`, copy `multi_cap/runs/combo27_k14f2g2b_check.log`)
+proved the 77 triple pieces and the bound and lists every piece with its
+result. The 127 with every middle centre in
 (2.05, 2.1] or (2.2, 2.35] (`case27_k14f2g2a.json`) stopped at 3.103583,
 even with a round built for them (`c27f2g2b_d10.log`, 3.10055 on its
 samples, 3.11126 corrected, from the samples of the round `c27f2g2_d10.log`
@@ -430,8 +442,13 @@ three rounds built for them with A = [2, 2.0161] and B = (2.0161, 2.1]
 `c27k15g1t3_d10.log`: 2.92918, 3.07254 and 3.08924 on their samples,
 20.46, 3.97 and 3.33 corrected), mixed with free typing, leave the mixing
 LP at 3.10494 on its samples, above the level, at (15, 8, 1, 0, 0, 0, 3)
-(`CM/sub/mix_c27k15f3g1mt.log`, `CM/sub/mix_c27k15f3g1mt4.log`); a fourth
-round with the trace penalty raised to 1e-3 (`c27k15g1t4_d10.log`) runs.
+(`CM/sub/mix_c27k15f3g1mt.log`, `CM/sub/mix_c27k15f3g1mt4.log`). A fourth
+and a fifth round (`c27k15g1t4_d10.log` with the trace penalty raised to
+1e-3, `c27k15g1t5_d10.log`) reach 3.09745 and 3.10009 on their samples but
+3.18203 and 3.18672 between them, and the full mix with them still settles
+at 3.1048 to 3.1054, so degree 10 stops here; a round of degree 12 from the
+samples of the fifth (`c27k15g1d12.log`) needs more than 10 GB and was
+killed for memory beside an exact check.
 These ten vectors look unrealisable: with 15 within 2.0161, 9 in
 (2.0161, 2.1] and 3 beyond 2.35 the best of 200 penalised minimisations
 still leaves two centres at 1.98754 (`CM/c27_config_search_k15f3g1.log`),
@@ -449,7 +466,22 @@ At 16 and 17 the vectors with a centre in (2.1, 2.35] give 3.106091 and
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
 and 3.163428 at 24, each worst at three beyond 2.35 (floating point, margins
 of the check included; before these two rounds the values were 3.1243,
-3.1349, 3.1513 and 3.1680).
+3.1349, 3.1513 and 3.1680). A round for exactly 15 within 2.0161, at most
+two beyond 2.35 and a centre in (2.1, 2.2] (`case27_k15f2g2b.json`, 1650
+vectors, which the pool mixes to 3.105865 with each middle bin a type of its
+own for the thresholds) runs from the samples of `c27f2g2` (`c27k15f2g2b_d10.log`).
+
+At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
+eight bins, the far range split at 2.444, the counts of row 25 of
+`prop:C-radial` and 24 within 2.444 by `lem:twentyfour-close`) the pool of
+27 and 28 mixes to 3.457, and a round of degree 10 built for the case
+(`c25lo14_d10.log`, from the samples of `c27k10` round 2, `TRACE_REG=3e-4`)
+gives 3.15848 on its samples and 3.23999 corrected. All 24 type-count
+vectors sit at 3.1585, and with fewer allowed within 2.0161 the bound of the
+same certificate drops by 0.00575 per centre, to 3.0779 with none
+(`CM/combo_perkey.py`, `CM/c25lo14_perkey.log`), so this form of degree 10
+gets below the level only with at most four within 2.0161. Floating point,
+evidence only.
 
 At k = 15 the kernel of three-point degree 10 has more room on the samples.
 `c28lo15_d10.log`, from the samples of round 2 of `c28s_d10.log`, gave 3.05709

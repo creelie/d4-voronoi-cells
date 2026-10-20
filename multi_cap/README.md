@@ -704,14 +704,29 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               minutes: 3.103112 at (14, 6, 4, 0, 0, 1, 2)
                               after 3 838 506 pair boxes and 598 800 571
                               triple boxes; precheck
-                              runs/combo27_k14f2g2amt_precheck.log).  The
-                              thirteen mixes for 27 together are
-                              prop:count27-few, (C) at 27 with at most 13
-                              within 2.0161, with exactly 14 within 2.0161
-                              and either exactly 3 beyond 2.35 or none in
-                              (2.1, 2.2], or with exactly
-                              15 within 2.0161, exactly 3 beyond 2.35 and
-                              at least one in (2.1, 2.35].
+                              runs/combo27_k14f2g2amt_precheck.log).
+                              radial_certificates/combo27_k14f2g2b_d10.npz
+                              is the mix for the 1868 vectors with exactly
+                              14 within 2.0161, at most 2 beyond 2.35 and
+                              a centre in (2.1, 2.2] (case27_k14f2g2b.json),
+                              found by gap_closure/CM/c27_hull_sub.py with
+                              a threshold of its own for each combination
+                              of bins with a middle bin: 10 certificates,
+                              0.999 of the weight on 8 found for 27 centres;
+                              its check passes at margins 5e-7, 5e-8 and
+                              1e-7 (runs/combo27_k14f2g2b_check.log, the
+                              resumed run that finished it; the pair pieces
+                              were proved by runs/combo27_k14f2g2b_check_run1.log
+                              and taken from the checkpoint
+                              runs/combo27_k14f2g2b_check.ckpt: 3.102942 at
+                              (14, 5, 5, 0, 1, 0, 2) after 4 552 754 pair
+                              boxes and 1 712 578 763 triple boxes; precheck
+                              runs/combo27_k14f2g2b_precheck.log).  The
+                              fourteen mixes for 27 together are
+                              prop:count27-few, (C) at 27 with at most 14
+                              within 2.0161, or with exactly 15 within
+                              2.0161, exactly 3 beyond 2.35 and at least
+                              one in (2.1, 2.35].
                               With CHECKPOINT=file in the environment the
                               result of each branch and bound on pairs or
                               triples is appended to the file as it
