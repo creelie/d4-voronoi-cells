@@ -11,7 +11,7 @@ and last that case, with its close-close-far triples counted, and
 twenty-seven with at most ten, then exactly eleven, twelve, thirteen and
 fourteen, centres within 2.0161. They are floating-point semidefinite programmes on sampled
 constraints. **Three of them yield certificates**, and convex combinations of
-several yield twenty more: the round-3 certificate of `C30/combo30p.py`, which
+several yield twenty-one more: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and twelve combinations for twenty-seven centres, one of six
+twenty-eight; and thirteen combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -45,9 +45,13 @@ the narrowed case `CM/case27_k14f2g1_narrow.json` and checked in the same
 way, and one of eleven for the 192 vectors with exactly fifteen within
 2.0161, exactly three beyond 2.35 and a centre in (2.1, 2.35]
 (`CM/case27_k15f3g2.json`), found by `CM/c28_hull_case.py`, which
-`multi_cap/combo_case_check.py` proves exactly and which together are
-`prop:count27-few`, (C) at 27 with at most 13 within 2.0161, with exactly
-14 within 2.0161 and either exactly 3 beyond 2.35 or none in (2.1, 2.35],
+`multi_cap/combo_case_check.py` proves exactly, and one of twelve for the 127
+vectors with exactly fourteen within 2.0161, at most two beyond 2.35, none in
+(2.1, 2.2] and one in (2.2, 2.35] (`CM/case27_k14f2g2a_bins.json`), found by
+`CM/c27_hull_mt.py` with each certificate typing the bin (2.2, 2.35] as B or
+as F, which `multi_cap/combo_mixtype_check.py` proves exactly; together they
+are `prop:count27-few`, (C) at 27 with at most 13 within 2.0161, with exactly
+14 within 2.0161 and either exactly 3 beyond 2.35 or none in (2.1, 2.2],
 or with exactly 15 within 2.0161, exactly 3 beyond 2.35 and at least one in
 (2.1, 2.35]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
@@ -407,7 +411,11 @@ points, each certificate may type each bin as any of A, B and F; mixing
 AABBBFF, the second giving (2.2, 2.35] the type F) gives 3.102001 (precheck
 3.102597, `CM/pre_c27k14f2g2amt.log`), and its exact check
 (`multi_cap/combo_mixtype_check.py` on the per-bin case
-`case27_k14f2g2a_bins.json`, `CM/check_c27k14f2g2amt.log`) runs. Widening
+`case27_k14f2g2a_bins.json`, `CM/check_c27k14f2g2amt.log`, copy
+`multi_cap/runs/combo27_k14f2g2amt_check.log`, 375 minutes, margins 1e-6,
+1e-7 and 1e-7) passes: 3.103112 at (14, 6, 4, 0, 0, 1, 2) after 3 838 506
+pair boxes and 598 800 571 triple boxes, 12 certificates, 0.38 of the weight
+on the typing AABBBFF and 0.34 on the round `c27f2g2b`. Widening
 the far type to [2.2, sqrt 6] (`case27_k14f2w.json`) gives 3.386, so the
 certificates cannot be used outside their far range. At exactly 15 within
 2.0161 and three beyond 2.35 the vectors with a centre in (2.1, 2.35]
@@ -424,6 +432,18 @@ three rounds built for them with A = [2, 2.0161] and B = (2.0161, 2.1]
 LP at 3.10494 on its samples, above the level, at (15, 8, 1, 0, 0, 0, 3)
 (`CM/sub/mix_c27k15f3g1mt.log`, `CM/sub/mix_c27k15f3g1mt4.log`); a fourth
 round with the trace penalty raised to 1e-3 (`c27k15g1t4_d10.log`) runs.
+These ten vectors look unrealisable: with 15 within 2.0161, 9 in
+(2.0161, 2.1] and 3 beyond 2.35 the best of 200 penalised minimisations
+still leaves two centres at 1.98754 (`CM/c27_config_search_k15f3g1.log`),
+and at (15, 8, 1, 0, 0, 0, 3) at 1.97948 (`CM/c27_config_search_k15f3g1w.log`),
+while 24 within 2.08 and 3 beyond 2.35 are found within ten tries
+(`CM/c27_config_search_24f3_208.log`) and 24 within 2.06 and 3 beyond 2.35
+are not (best distance 1.99325, `CM/c27_config_search_24f3_206.log`). The
+pair and triple functions of the best mix are flat (88 to 90 % of the
+sampled triples within 1e-4 of each maximum, `CM/c27_triple_profile.py`,
+`CM/c27_triple_profile.log`), so counting triples by region, as
+`REGION_TRIPLES` does at twenty-eight, gains nothing there. Floating
+point, evidence only.
 At 16 and 17 the vectors with a centre in (2.1, 2.35] give 3.106091 and
 3.113100. With the rounds for 13 and 14 added to the pool, one iteration of
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21

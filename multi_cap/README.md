@@ -688,11 +688,28 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               thresholds raised by 1e-6
                               (runs/combo27_k15f3g2_check.log, 94 minutes:
                               3.099309 at (15, 4, 4, 1, 0, 0, 3) after
-                              103 106 474 triple boxes).  The twelve mixes
-                              for 27 together are prop:count27-few, (C) at
-                              27 with at most 13 within 2.0161, with exactly
-                              14 within 2.0161 and either exactly 3 beyond
-                              2.35 or none in (2.1, 2.35], or with exactly
+                              103 106 474 triple boxes).
+                              radial_certificates/combo27_k14f2g2amt_d10.npz
+                              is the mixed-typing mix (see
+                              combo_mixtype_check.py) for the 127 vectors
+                              with exactly 14 within 2.0161, at most 2
+                              beyond 2.35, none in (2.1, 2.2] and at least
+                              one in (2.2, 2.35] (case27_k14f2g2a_bins.json,
+                              one type per bin): 12 certificates under the
+                              typings AABBBBF and AABBBFF, 0.38 of the
+                              weight on the second, 0.34 on the round
+                              c27f2g2b built for these vectors; its check
+                              passes at margins 1e-6, 1e-7 and 1e-7
+                              (runs/combo27_k14f2g2amt_check.log, 375
+                              minutes: 3.103112 at (14, 6, 4, 0, 0, 1, 2)
+                              after 3 838 506 pair boxes and 598 800 571
+                              triple boxes; precheck
+                              runs/combo27_k14f2g2amt_precheck.log).  The
+                              thirteen mixes for 27 together are
+                              prop:count27-few, (C) at 27 with at most 13
+                              within 2.0161, with exactly 14 within 2.0161
+                              and either exactly 3 beyond 2.35 or none in
+                              (2.1, 2.2], or with exactly
                               15 within 2.0161, exactly 3 beyond 2.35 and
                               at least one in (2.1, 2.35].
 
