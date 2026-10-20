@@ -712,6 +712,18 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (2.1, 2.2], or with exactly
                               15 within 2.0161, exactly 3 beyond 2.35 and
                               at least one in (2.1, 2.35].
+                              With CHECKPOINT=file in the environment the
+                              result of each branch and bound on pairs or
+                              triples is appended to the file as it
+                              finishes (and printed with a line "done:"),
+                              keyed by the SHA-256 of the function and its
+                              arguments; a later run with the same file
+                              takes every job whose key is there and passed
+                              from the file and computes the rest, so a
+                              check that a restart of the machine
+                              interrupted resumes.  The logs of the runs
+                              and the file are then the record of the
+                              check together.
 
   combo_mixtype_check.py case_bins.json mix.npz d3 [m2 m3 mm]
                               The exact check of combo_case_check.py for a

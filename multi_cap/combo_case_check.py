@@ -117,6 +117,15 @@ With SKIP_EMPTY=1 a kind of pairs that occurs in no count vector of the case get
 threshold and no branch and bound, as the kinds of triples never do; its count is 0 in
 every bound.  This is for case files with one type per bin (combo_mixtype_check.py),
 where the bins no count vector occupies are types of their own.
+
+With CHECKPOINT=<file> the result of each branch and bound on pairs or triples is
+appended to the file, and printed with a line "done:", as soon as it is known, keyed by
+the SHA-256 of the pickled function and arguments (polynomial, threshold, domain,
+symmetry).  A later run with the same file takes the result of every job whose key is
+there and passed from the file instead of running it again, and says so in its "[ok]"
+line, with the time of the run that proved it; the logs of the runs together are then
+the record of the check.  A job whose arguments differ in any way gets another key and
+runs again.  This lets a check that a restart of the machine interrupted resume.
 """
 import itertools
 import json
@@ -136,6 +145,57 @@ from radial_case_check import bracket_check  # noqa: E402
 from radial_count_sdp import C1, C2  # noqa: E402
 from certificate_check import ldl_positive  # noqa: E402
 from truncated_search import pair as pair_float  # noqa: E402
+
+CHECKPOINT = os.environ.get('CHECKPOINT')
+
+
+def _job_key(fn, args):
+    import hashlib
+    import pickle
+    return hashlib.sha256(pickle.dumps((fn.__module__, fn.__name__, args), protocol=4)).hexdigest()
+
+
+def _run_one(item):
+    i, fn, args = item
+    return i, fn(*args)
+
+
+def run_jobs(fn, arglist, labels, procs):
+    """fn(*a) for each a of arglist, in order, on a pool of procs workers; with CHECKPOINT,
+    each result is appended to that file as soon as it is known, and a result that a
+    previous run stored under the same key, and that passed, is taken from the file"""
+    from multiprocessing import Pool
+    keys = [_job_key(fn, a) for a in arglist] if CHECKPOINT else [None] * len(arglist)
+    stored = {}
+    if CHECKPOINT and os.path.exists(CHECKPOINT):
+        for line in open(CHECKPOINT):
+            try:
+                e = json.loads(line)
+            except ValueError:   # a line cut short by the interruption
+                continue
+            if e.get('result') and e['result'][0] is True:
+                stored[e['key']] = e
+    res, todo = [None] * len(arglist), []
+    for i in range(len(arglist)):
+        e = stored.get(keys[i])
+        if e is not None:
+            r = list(e['result'])
+            r[1] = '%s [from the checkpoint %s, proved by the run of %s]' % (r[1], os.path.basename(CHECKPOINT), e['when'])
+            res[i] = tuple(r)
+        else:
+            todo.append(i)
+    if todo:
+        with Pool(min(procs, len(todo))) as pool:
+            for i, r in pool.imap_unordered(_run_one, [(i, fn, arglist[i]) for i in todo]):
+                res[i] = r
+                print('  done: %s: %s %s' % (labels[i], 'ok' if r[0] else 'FAILED', r[1]), flush=True)
+                if CHECKPOINT:
+                    with open(CHECKPOINT, 'a') as f:
+                        f.write(json.dumps({'key': keys[i], 'label': labels[i], 'result': list(r),
+                                            'when': time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}) + '\n')
+                        f.flush()
+                        os.fsync(f.fileno())
+    return res
 
 CASE = json.load(open(sys.argv[1]))
 PRE = os.environ.get('PRECHECK') == '1'
@@ -336,10 +396,8 @@ def main():
             sts = list(c2)
             keep = [k for k in range(len(jobs)) if k >= len(sts) or sts[k] not in skip2]
             jobs, labels = [jobs[k] for k in keep], [labels[k] for k in keep]
-    from multiprocessing import Pool
     if jobs:
-        with Pool(min(int(os.environ.get('PAIR_PROCS', '3')), len(jobs))) as pool:
-            res = pool.starmap(C.pair_box_check, jobs)
+        res = run_jobs(C.pair_box_check, jobs, labels, int(os.environ.get('PAIR_PROCS', '3')))
         for label, (ok, msg) in zip(labels, res):
             C.check(label, ok, msg)
     # (c) bins
@@ -529,8 +587,8 @@ def main():
                       'kind is skipped' % ''.join(combo), flush=True)
         tjobs = [j for j in tjobs if j[0] not in skip3]
     if not PRE and tjobs:
-        with Pool(min(int(os.environ.get('TRIPLE_PROCS', '3')), len(tjobs))) as pool:
-            res = pool.starmap(C.triple_box_check, [a for _, a in tjobs])
+        res = run_jobs(C.triple_box_check, [a for _, a in tjobs], [lab for lab, _ in tjobs],
+                       int(os.environ.get('TRIPLE_PROCS', '3')))
         nbox = 0
         for (label, _), (ok, msg, nd) in zip(tjobs, res):
             C.check('TRIPLE3_%s <= its threshold on the admissible triples' % label if ' on ' in label
