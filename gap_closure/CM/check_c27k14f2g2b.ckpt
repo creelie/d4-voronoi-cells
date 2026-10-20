@@ -75,3 +75,5 @@
 {"key": "79e9dedefe1c132e571691bc7b2d35d6da12954eadb741ee84fe0d37ab192222", "label": "BBB on bins 3-5-5", "result": [true, "7807193 boxes, largest centre value 8.2558e-04", 7807193], "when": "2026-10-20 17:38:37 UTC"}
 {"key": "e28846095b8b4c31b60578479be2206f4b0a650a59256c9ca3e4526a1b7a3a95", "label": "BBB on bins 3-4-5", "result": [true, "15356833 boxes, largest centre value 8.2511e-04", 15356833], "when": "2026-10-20 17:40:04 UTC"}
 {"key": "8ea2649dc6cbbaaef26413a8ebc9c4156193d123bbbcd73fd03248459c14d28a", "label": "BBF on bins 3-4-7", "result": [true, "13119962 boxes, largest centre value 9.2291e-04", 13119962], "when": "2026-10-20 17:42:39 UTC"}
+{"key": "1f9cc48e427698944892ce3ba0562a126deff1a28197f90bd5ef4a86d1c6c686", "label": "BBB on bins 3-4-6", "result": [true, "16729509 boxes, largest centre value 8.2558e-04", 16729509], "when": "2026-10-20 17:45:03 UTC"}
+{"key": "1bd571bc6183aaafbc3256f5414a4318a912843a92e39ec9a3e297a59030307d", "label": "BBB on bins 3-6-6", "result": [true, "9421262 boxes, largest centre value 8.2558e-04", 9421262], "when": "2026-10-20 17:55:28 UTC"}
