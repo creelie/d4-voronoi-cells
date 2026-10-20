@@ -1,1 +1,11 @@
 27 with exactly 15 centres within 2.0161, exactly 3 beyond 2.35 and none in (2.1, 2.35] (10 count vectors), typed A = [2, 2.0161], B = (2.0161, 2.1], F = (2.35, sqrt6] (case27_k15f3g1_t1.json): fourth degree 10 round, from the samples of the third (c27k15g1t3, 3.08924 on its samples, optimal_inaccurate, corrected 3.33423), with the trace penalty raised to 1e-3 to damp the swings between samples (TRACE_REG=1e-3, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=2, oom_score_adj 0, beside the exact check of G2b (third start: the first, from 01:08 UTC on Oct 20, was lost to a container restart at about 03:15 during its final evaluation, the second, from 03:45, to another at about 05:16 while it solved); started Tue Oct 20 05:17:56 UTC 2026
+resumed from c27k15g1t3_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1164, 'AAF': 1250, 'ABB': 1176, 'ABF': 1264, 'AFF': 1326, 'BBB': 1176, 'BBF': 1267, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1843, 'AAF': 1922, 'ABB': 1859, 'ABF': 1264, 'AFF': 2021, 'BBB': 2652, 'BBF': 1942, 'BFF': 2021, 'FFF': 2807}
+   direct: 7419 variables, 97995 inequalities, 7389 psd rows in 56 cones, 69986777 nonzeros [35 s to build]
+   1 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.09745 (target 3.10330), corrected <= 3.18203  [10198 s]
+   viol: AA 2.0e-08, AB 1.2e-07, AF 6.8e-06, BB 1.8e-08, BF 5.6e-06, FF 1.6e-06, AAA 2.5e-06, AAB 1.7e-05, AAF 8.6e-05, ABB 1.6e-05, ABF 4.3e-05, AFF 1.3e-05, BBB 2.5e-05, BBF 8.6e-05, BFF 6.4e-05, FFF 9.3e-06
+   c2: {'AA': 0.02061, 'AB': -0.010527, 'AF': 0.022996, 'BB': -0.033609, 'BF': 0.011941, 'FF': 0.139508}
+   c3: {'AAA': 0.0073776, 'AAB': 0.0088122, 'AAF': -0.0031697, 'ABB': 0.003958, 'ABF': 0.0004976, 'AFF': 0.0526123, 'BBB': 0.024592, 'BBF': 0.0027527, 'BFF': 0.025263, 'FFF': 0.0105173}
+exit 0 at Tue Oct 20 08:08:31 UTC 2026
