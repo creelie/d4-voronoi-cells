@@ -67,3 +67,8 @@
 {"key": "83f61818421bde645e0e785b991d42246d37b03fa75cc6f8abb66fcf72f14fa0", "label": "BBB on bins 3-3-4", "result": [true, "7300448 boxes, largest centre value 8.2497e-04", 7300448], "when": "2026-10-20 17:06:49 UTC"}
 {"key": "35c9c761684b7b3a1a098878aaff321afb6a4df3c1a534199ed44424ddf635bb", "label": "ABB on bins 2-6-6", "result": [true, "29715627 boxes, largest centre value 1.4681e-03", 29715627], "when": "2026-10-20 17:07:32 UTC"}
 {"key": "9193c55cb5f614f169d737a2498dc9dc2e543f6cdcea5fe5675c85db605da6e6", "label": "ABF on bins 2-6-7", "result": [true, "27426954 boxes, largest centre value 1.4246e-03", 27426954], "when": "2026-10-20 17:12:29 UTC"}
+{"key": "521ef8e520f78a0d48d32150027879976bd5dee853b241f579eaa6b6502d348c", "label": "BBB on bins 3-3-5", "result": [true, "7546285 boxes, largest centre value 8.2497e-04", 7546285], "when": "2026-10-20 17:17:27 UTC"}
+{"key": "969e7cfb1e893824deae4cc589688115c398f0694b03a55fce9b9bad93165776", "label": "BBB on bins 3-3-6", "result": [true, "8191182 boxes, largest centre value 8.2558e-04", 8191182], "when": "2026-10-20 17:18:57 UTC"}
+{"key": "c43315a00c39ab530014fdd5bff4d09efd80e9025ae8efac4cbfa2a657d6fef7", "label": "BBF on bins 3-3-7", "result": [true, "6413398 boxes, largest centre value 9.2291e-04", 6413398], "when": "2026-10-20 17:22:08 UTC"}
+{"key": "03f4b189571c916b2a2257d8baa9fa9d60804a09c47fcd4491d33ee6e660c26b", "label": "ABB on bins 2-5-6", "result": [true, "53150984 boxes, largest centre value 1.4681e-03", 53150984], "when": "2026-10-20 17:22:53 UTC"}
+{"key": "51a556746fd27f26fc8b9e42c93e65fe35cd7a8bfcdfadd97d71d7045cde9a95", "label": "BBB on bins 3-4-4", "result": [true, "7530387 boxes, largest centre value 8.2497e-04", 7530387], "when": "2026-10-20 17:27:53 UTC"}
