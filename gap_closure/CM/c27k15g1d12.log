@@ -1,1 +1,7 @@
 27 with exactly 15 centres within 2.0161, exactly 3 beyond 2.35 and none in (2.1, 2.35] (10 count vectors), typed A = [2, 2.0161], B = (2.0161, 2.1], F = (2.35, sqrt6] (case27_k15f3g1_t1.json): degree 12 round from the samples of c27k15g1t5_d10_r1.npz, since the degree 10 mixes with four rounds stay above 9 pi^2/8 - 8 at (15, 8, 1, 0, 0, 0, 3). Fewer samples to fit the memory (TRACE_REG=1e-3, KEEP_P=4000, KEEP_T=1500, KEEP_BASE=1, TCOPLANAR=24, TSYM=24, REFINE=150), THREADS=2, nice 5, oom_score_adj 0, beside the exact check of G2b; started Tue Oct 20 10:51:24 UTC 2026
+resumed from c27k15g1t5_d10_r1.npz, pruned to 4000 pair and 1500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 630, 'AAB': 646, 'AAF': 698, 'ABB': 666, 'ABF': 704, 'AFF': 741, 'BBB': 666, 'BBF': 708, 'BFF': 741, 'FFF': 741}
+fixed triples per kind with the symmetric slices: {'AAA': 1469, 'AAB': 1023, 'AAF': 1071, 'ABB': 1044, 'ABF': 704, 'AFF': 1125, 'BBB': 1503, 'BBF': 1084, 'BFF': 1124, 'FFF': 1585}
+   direct: 11769 variables, 71099 inequalities, 11739 psd rows in 64 cones, 75231771 nonzeros [45 s to build]
+exit 137 at Tue Oct 20 10:54:19 UTC 2026
+(exit 137: killed by the memory limit at 10.1 GB beside the G2b exact check, whose four triple workers held about 4 GB)
