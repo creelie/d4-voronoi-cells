@@ -58,3 +58,4 @@
 {"key": "c37f13e793cead54714fb13a210f925435d45a7276593e0c654fdbf9fbd86b5f", "label": "ABB on bins 2-3-5", "result": [true, "50474693 boxes, largest centre value 1.4670e-03", 50474693], "when": "2026-10-20 15:21:47 UTC"}
 {"key": "f14d88df55377015b0a72a6d5378cd8216b620df7c17db21d9144973eb90cbe0", "label": "ABB on bins 2-3-6", "result": [true, "49254803 boxes, largest centre value 1.4681e-03", 49254803], "when": "2026-10-20 15:32:49 UTC"}
 {"key": "ac45ce7e2b92a338cc9b4ad04ae0c52c8a7fb7526be0630fc0de99e53d0c1659", "label": "ABB on bins 2-4-4", "result": [true, "25218720 boxes, largest centre value 1.4670e-03", 25218720], "when": "2026-10-20 15:34:29 UTC"}
+{"key": "8c4c2b97218f0cba3ad715db1ac25ff47a6ba3a96fc14479aee3bc4592b62350", "label": "ABF on bins 2-4-7", "result": [true, "25110589 boxes, largest centre value 1.4235e-03", 25110589], "when": "2026-10-20 16:09:29 UTC"}
