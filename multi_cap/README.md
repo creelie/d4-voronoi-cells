@@ -721,7 +721,11 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               takes every job whose key is there and passed
                               from the file and computes the rest, so a
                               check that a restart of the machine
-                              interrupted resumes.  The logs of the runs
+                              interrupted resumes.  The float sampling
+                              that sets each triple threshold is stored
+                              the same way in file.setup (keyed by its
+                              polynomial, domain and samples), so a resumed
+                              run does not repeat it.  The logs of the runs
                               and the file are then the record of the
                               check together.
 

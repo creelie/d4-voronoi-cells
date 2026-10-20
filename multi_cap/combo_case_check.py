@@ -125,7 +125,10 @@ symmetry).  A later run with the same file takes the result of every job whose k
 there and passed from the file instead of running it again, and says so in its "[ok]"
 line, with the time of the run that proved it; the logs of the runs together are then
 the record of the check.  A job whose arguments differ in any way gets another key and
-runs again.  This lets a check that a restart of the machine interrupted resume.
+runs again.  This lets a check that a restart of the machine interrupted resume.  The
+float sampling that sets each triple threshold is stored the same way in <file>.setup,
+keyed by its polynomial, domain and samples (drawn before the lookup, so that the random
+generators advance as in a run without the store), and a resumed run takes it from there.
 """
 import itertools
 import json
@@ -158,6 +161,45 @@ def _job_key(fn, args):
 def _run_one(item):
     i, fn, args = item
     return i, fn(*args)
+
+
+_setup_store = None
+_setup_hits = [0]
+
+
+def setup_cached(tag, parts, g, compute):
+    """compute(), or with CHECKPOINT=<file> the value stored for the same parts and samples g in
+    <file>.setup by an earlier run (the sampling of a threshold is deterministic given its samples,
+    which are drawn before this is called, so the generators advance as without the store)"""
+    global _setup_store
+    if not CHECKPOINT:
+        return compute()
+    import base64
+    import hashlib
+    import pickle
+    h = hashlib.sha256(pickle.dumps((tag, parts), protocol=4))
+    h.update(np.ascontiguousarray(g).tobytes())
+    key, path = h.hexdigest(), CHECKPOINT + '.setup'
+    if _setup_store is None:
+        _setup_store = {}
+        if os.path.exists(path):
+            for line in open(path):
+                try:
+                    e = json.loads(line)
+                except ValueError:
+                    continue
+                _setup_store[e['key']] = e['value']
+    if key in _setup_store:
+        _setup_hits[0] += 1
+        return pickle.loads(base64.b64decode(_setup_store[key]))
+    r = compute()
+    v = base64.b64encode(pickle.dumps(r, protocol=4)).decode()
+    with open(path, 'a') as f:
+        f.write(json.dumps({'key': key, 'value': v}) + '\n')
+        f.flush()
+        os.fsync(f.fileno())
+    _setup_store[key] = v
+    return r
 
 
 def run_jobs(fn, arglist, labels, procs):
@@ -455,21 +497,25 @@ def main():
         G = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
         G = G[1 + 2 * G[:, 0] * G[:, 1] * G[:, 2] - (G ** 2).sum(1) >= 0]
         g = np.r_[g, G]
-        vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
-        P_GRID = (P, (T12, T13, T23), GRIDN) if GRIDN else None
-        best = C.refine_triple(P, refine_starts(g, vals, P_GRID), (float(T12), float(T13), float(T23)))
-        thr = C.above(max(float(vals.max()), best) + mg3 + extra)
-        perm, sym = C.triple_layout(labels)
-        tops = [None] * 3
-        for src, val in enumerate((T12, T13, T23)):
-            tops[perm.index(src)] = float(C.above(val))
-        Pr = {}
-        for e, co in P.items():
-            ee = [0, 0, 0]
-            for src in range(3):
-                ee[perm.index(src)] += e[src]
-            Pr[tuple(ee)] = Pr.get(tuple(ee), 0) + co
-        return thr, Pr, tops, sym, float(vals.max()), len(g), best
+
+        def compute():
+            vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
+            P_GRID = (P, (T12, T13, T23), GRIDN) if GRIDN else None
+            best = C.refine_triple(P, refine_starts(g, vals, P_GRID), (float(T12), float(T13), float(T23)))
+            thr = C.above(max(float(vals.max()), best) + mg3 + extra)
+            perm, sym = C.triple_layout(labels)
+            tops = [None] * 3
+            for src, val in enumerate((T12, T13, T23)):
+                tops[perm.index(src)] = float(C.above(val))
+            Pr = {}
+            for e, co in P.items():
+                ee = [0, 0, 0]
+                for src in range(3):
+                    ee[perm.index(src)] += e[src]
+                Pr[tuple(ee)] = Pr.get(tuple(ee), 0) + co
+            return thr, Pr, tops, sym, float(vals.max()), len(g), best
+        return setup_cached('triple', (sorted(P.items()), [str(x) for x in T], tuple(labels), extra, mg3, GRIDN,
+                                       DIVERSE), g, compute)
 
     c3 = {}
     tjobs = []
@@ -523,9 +569,13 @@ def main():
         ax = [np.r_[np.linspace(b, t, 40), t] for b, t in zip(Bf_, Tf)]
         G = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
         g = np.r_[g, G[1 + 2 * G[:, 0] * G[:, 1] * G[:, 2] - (G ** 2).sum(1) >= 0]]
-        vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
-        best = C.refine_triple(P, refine_starts(g, vals, (P, Tf, GRIDN, Bf_) if GRIDN else None), Tf, Bf_)
-        return C.above(max(float(vals.max()), best) + mg3 + extra), float(vals.max()), len(g), best
+
+        def compute():
+            vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
+            best = C.refine_triple(P, refine_starts(g, vals, (P, Tf, GRIDN, Bf_) if GRIDN else None), Tf, Bf_)
+            return C.above(max(float(vals.max()), best) + mg3 + extra), float(vals.max()), len(g), best
+        return setup_cached('region', (sorted(P.items()), [str(x) for x in T], [str(x) for x in B], extra, mg3, GRIDN,
+                                       DIVERSE), g, compute)
 
     for bs, s1, s2 in REGION:
         assert bs in c3r and bs not in c3g, bs
@@ -575,6 +625,9 @@ def main():
             tjobs.append((''.join(combo) + ' on ' + name + ' ' + lab,
                           (P, [float(x) for x in Tq], 0, float(cq), ''.join(combo) + ' ' + name + ' ' + lab, 1e-6, 150000,
                            [float(x) for x in Bq])))
+    if _setup_hits[0]:
+        print('  (the samples and thresholds of %d of these triple setups were taken from %s.setup, stored by an '
+              'earlier run with the same samples)' % (_setup_hits[0], os.path.basename(CHECKPOINT)), flush=True)
     skip3 = set()
     if SKIP_COVERED:
         for combo in c3:
