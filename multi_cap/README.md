@@ -666,10 +666,55 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               REFINE_TRIPLES, SKIP_COVERED=1) and passes
                               (runs/combo27_k14f3g1_check.log, 158 minutes:
                               3.102269 at (14, 8, 2, 0, 0, 0, 3) after
-                              159 075 380 triple boxes).  The ten mixes for
-                              27 together are prop:count27-few, (C) at 27
-                              with at most 13 within 2.0161, or exactly 14
-                              within 2.0161 and exactly 3 beyond 2.35.
+                              159 075 380 triple boxes).
+                              radial_certificates/combo27_k14f2g1_d10.npz is
+                              the mix for the 39 vectors with exactly 14
+                              within 2.0161, at most 2 beyond 2.35 and none
+                              in (2.1, 2.35] (case27_k14f2g1.json), found
+                              with the middle type narrowed to (2.05, 2.1],
+                              with 0.018 of its weight on the two rounds
+                              found for that narrowed case; its check is
+                              taken per combination of bins as for the 11
+                              above and passes (runs/combo27_k14f2g1_check.log,
+                              167 minutes: 3.102974 at (14, 3, 8, 0, 0, 0, 2)
+                              after 220 104 690 triple boxes).
+                              radial_certificates/combo27_k15f3g2_d10.npz is
+                              the mix for exactly 15 within 2.0161, exactly
+                              3 beyond 2.35 and at least one centre in
+                              (2.1, 2.35] (case27_k15f3g2.json, 192
+                              vectors), with 0.57 of its weight on the
+                              second round for exactly 14 and 3 beyond
+                              2.35; its check passes with the AFF and FFF
+                              thresholds raised by 1e-6
+                              (runs/combo27_k15f3g2_check.log, 94 minutes:
+                              3.099309 at (15, 4, 4, 1, 0, 0, 3) after
+                              103 106 474 triple boxes).  The twelve mixes
+                              for 27 together are prop:count27-few, (C) at
+                              27 with at most 13 within 2.0161, with exactly
+                              14 within 2.0161 and either exactly 3 beyond
+                              2.35 or none in (2.1, 2.35], or with exactly
+                              15 within 2.0161, exactly 3 beyond 2.35 and
+                              at least one in (2.1, 2.35].
+
+  combo_mixtype_check.py case_bins.json mix.npz d3 [m2 m3 mm]
+                              The exact check of combo_case_check.py for a
+                              combination whose certificates type the bins
+                              differently (gap_closure/CM/c27_hull_mt.py):
+                              the three-point inequality of a certificate
+                              holds for every assignment of its types A, B,
+                              F to the points, so each certificate may type
+                              each bin as any of them.  mix.npz holds the
+                              shared pair kernel and bin constants and, per
+                              typing of the bins (gtyp), the weighted sum
+                              x3g of the three-point parts that use it; each
+                              group is rounded on its own, and the point
+                              term, pair and triple polynomials of a bin or
+                              combination of bins are the sums over the
+                              groups of those of the types each group gives
+                              them.  The case file gives each bin a type of
+                              its own (gap_closure/CM/case_bins.py makes
+                              one); SKIP_EMPTY=1 is set, so pair kinds that
+                              no count vector uses are skipped.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
