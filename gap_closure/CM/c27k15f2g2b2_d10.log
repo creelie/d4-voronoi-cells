@@ -2,3 +2,6 @@
 resumed from c27k15f2g2b_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
 fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
 fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8039 variables, 102969 inequalities, 7389 psd rows in 56 cones, 75330140 nonzeros [41 s to build]
+exit 143 at Tue Oct 20 20:44:03 UTC 2026
+(exit 143: stopped at 20:44 to give the machine to a degree 12 round; the sub-typed mix with round 1 had risen to 3.106412 on its samples by iteration 2 once the climbed maxima were added, so a second degree 10 round was not expected to close this case)
