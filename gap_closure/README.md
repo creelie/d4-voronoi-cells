@@ -466,10 +466,21 @@ At 16 and 17 the vectors with a centre in (2.1, 2.35] give 3.106091 and
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
 and 3.163428 at 24, each worst at three beyond 2.35 (floating point, margins
 of the check included; before these two rounds the values were 3.1243,
-3.1349, 3.1513 and 3.1680). A round for exactly 15 within 2.0161, at most
-two beyond 2.35 and a centre in (2.1, 2.2] (`case27_k15f2g2b.json`, 1650
-vectors, which the pool mixes to 3.105865 with each middle bin a type of its
-own for the thresholds) runs from the samples of `c27f2g2` (`c27k15f2g2b_d10.log`).
+3.1349, 3.1513 and 3.1680). For exactly 15 within 2.0161, at most two
+beyond 2.35 and a centre in (2.1, 2.2] (`case27_k15f2g2b.json`, 1650
+vectors) a round from the samples of `c27f2g2` (`c27k15f2g2b_d10.log`)
+reaches 3.10173 on its samples and 3.21195 corrected; mixed with 28 earlier
+certificates, each middle bin a type of its own for the thresholds, it gives
+3.103550 on the first samples of the mixing LP, but 3.106087 and 3.106412
+once the climbed maxima are fed back (the pool alone, on fewer samples,
+gave 3.105865). A second round from its samples (`c27k15f2g2b2_d10.log`)
+was stopped before solving, to give the machine to a degree 12 round. The
+pool gives 3.107342 over the 36 vectors with 15 within 2.0161, at most two
+beyond 2.35 and none in (2.1, 2.35], and 3.107266 over the 115 with none in
+(2.1, 2.2] and one in (2.2, 2.35] (floating point). The degree 12 round for
+the ten vectors with 15 within 2.0161 and three beyond 2.35, from the
+samples of the fifth round above, runs alone on the machine
+(`c27k15g1d12b.log`, trace penalty 3e-4, 9.6 GB).
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
