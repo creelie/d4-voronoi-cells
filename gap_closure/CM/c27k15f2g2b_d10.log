@@ -1,1 +1,11 @@
 27 with exactly 15 centres within 2.0161, at most 2 beyond 2.35 and at least one in (2.1, 2.2] (case27_k15f2g2b.json, 1650 count vectors; the pool mixes to 3.105865 on samples, 3.107161 with climbed maxima, sub-typed): a degree 10 round built for these vectors, from the samples of the round c27f2g2 for 14 within 2.0161, at most 2 beyond 2.35 and a centre in (2.1, 2.35]. TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2, nice 10, oom_score_adj 0, beside the exact check of G2b; started Tue Oct 20 16:32:49 UTC 2026
+resumed from c27f2g2_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8039 variables, 101429 inequalities, 7389 psd rows in 56 cones, 74180092 nonzeros [49 s to build]
+   33 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.10173 (target 3.10330), corrected <= 3.21195  [12719 s]
+   viol: AA 6.5e-07, AB 4.4e-06, AF 1.2e-06, BB -6.4e-10, BF 7.4e-08, FF -1.6e-08, AAA 2.1e-06, AAB 2.8e-05, AAF 6.3e-06, ABB 6.6e-05, ABF 1.0e-04, AFF 1.4e-05, BBB 6.5e-06, BBF 1.3e-05, BFF 1.3e-05
+   c2: {'AA': 0.061113, 'AB': 0.072117, 'AF': 0.073805, 'BB': 0.081524, 'BF': 0.079781, 'FF': 0.081616}
+   c3: {'AAA': 0.0022444, 'AAB': 0.00182, 'AAF': 0.0017437, 'ABB': 0.0014596, 'ABF': 0.0015176, 'AFF': 0.0014325, 'BBB': 0.0011629, 'BBF': 0.0013554, 'BFF': 0.0015495}
+exit 0 at Tue Oct 20 20:05:28 UTC 2026
