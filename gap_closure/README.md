@@ -479,8 +479,12 @@ pool gives 3.107342 over the 36 vectors with 15 within 2.0161, at most two
 beyond 2.35 and none in (2.1, 2.35], and 3.107266 over the 115 with none in
 (2.1, 2.2] and one in (2.2, 2.35] (floating point). The degree 12 round for
 the ten vectors with 15 within 2.0161 and three beyond 2.35, from the
-samples of the fifth round above, runs alone on the machine
-(`c27k15g1d12b.log`, trace penalty 3e-4, 9.6 GB).
+samples of the fifth round above, fits in 9.6 GB alone on the machine. At
+trace penalty 3e-4 it stopped on InsufficientProgress, its inequalities
+broken by up to 0.11 on the samples (`c27k15g1d12b.log`); at 1e-3 it
+reaches 3.04362 on its samples, against 3.10009 for the best round of
+degree 10, but 11.22727 corrected (`c27k15g1d12c.log`). A second round of
+degree 12 from its samples runs (`c27k15g1d12d.log`).
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
