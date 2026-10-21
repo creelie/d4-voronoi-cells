@@ -485,9 +485,12 @@ broken by up to 0.11 on the samples (`c27k15g1d12b.log`); at 1e-3 it
 reaches 3.04362 on its samples, against 3.10009 for the best round of
 degree 10, but 11.22727 corrected (`c27k15g1d12c.log`). The second round
 of degree 12, from its samples, reaches 3.07205 on its samples and 4.06246
-corrected (`c27k15g1d12d.log`); mixed with the degree 10 certificates it
-does not yet lower the floor of 3.1045 on the samples. A third round from
-its samples runs (`c27k15g1d12e.log`).
+corrected (`c27k15g1d12d.log`), and the third 3.08024 and 3.35771
+(`c27k15g1d12e.log`; the degree 10 chain gave 3.08924 and 3.33 at its third
+round). Mixed with the degree 10 certificates they do not yet lower the
+floor of 3.1045 on the samples (3.104544 with the third round, which gets
+almost no weight). A fourth round from its samples runs
+(`c27k15g1d12f.log`).
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
