@@ -496,7 +496,9 @@ certificates the four rounds lower the floor only from 3.104545 to
 rounds above get no weight (mix 3.107655, 3.108208 at climbed maxima), and
 a degree 10 round of its own on the same narrowed types
 (`case27_k15f2g1_t1.json`, from the samples of the fifth degree 10 round)
-runs (`c27k15f2g1t_d10.log`).
+stopped on a numerical error with the trace penalty 3e-4 and no usable
+certificate (`c27k15f2g1t_d10.log`); the retry with 1e-3 runs
+(`c27k15f2g1tb_d10.log`).
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
