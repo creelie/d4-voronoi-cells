@@ -1,0 +1,11 @@
+exact check of mix27_k16f3g2a.npz (27 centres, exactly 16 within 2.0161, exactly 3 beyond 2.35, none in (2.1, 2.2] and at least one in (2.2, 2.35], case27_k16f3g2a.json, 15 count vectors; a convex combination of the 27 certificates mixed for these vectors with c27_hull_sub.py, SUB=2,5 (the bins (2.05, 2.1] and (2.2, 2.35] each a type of its own for the thresholds), 3.087267 in floating point at the margins of the mixing programme (scratchpad s16/scout_k16f3g2a_subfull.sh), precheck pre_c27k16f3g2a.log), every pair and triple of bins with a centre in bin 3 or bin 6 refined (SKIP_COVERED=1), margins pairs 2e-6 (AA 2e-6), triples 2e-6, bins 1e-7, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k16f3g2a.ckpt; started Wed Oct 21 23:48:41 UTC 2026
+statement (C) at 27 centres, case case27_k16f3g2a.json: combined certificate mix27_k16f3g2a.npz, two-point degree 12/4, three-point degree 10; 15 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 25.321429863, float t 25.321429862)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.202766', 'B': '0.028311', 'F': '0.025347'}
+  pair AA: float largest K + PAIR3 - Pi 7.946000e-03 (file c2 7.945998e-03); threshold 7.948000e-03
+  pair AB: float largest K + PAIR3 - Pi 2.088764e-02 (file c2 2.088764e-02); threshold 2.088964e-02
+  pair AF: float largest K + PAIR3 - Pi 2.164071e-02 (file c2 2.164071e-02); threshold 2.164271e-02
+  pair BB: float largest K + PAIR3 - Pi 3.139513e-02 (file c2 3.139513e-02); threshold 3.139713e-02
+  pair BF: float largest K + PAIR3 - Pi 2.973701e-02 (file c2 2.973701e-02); threshold 2.973901e-02
