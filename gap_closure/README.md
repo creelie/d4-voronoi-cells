@@ -487,10 +487,16 @@ degree 10, but 11.22727 corrected (`c27k15g1d12c.log`). The second round
 of degree 12, from its samples, reaches 3.07205 on its samples and 4.06246
 corrected (`c27k15g1d12d.log`), and the third 3.08024 and 3.35771
 (`c27k15g1d12e.log`; the degree 10 chain gave 3.08924 and 3.33 at its third
-round). Mixed with the degree 10 certificates they do not yet lower the
-floor of 3.1045 on the samples (3.104544 with the third round, which gets
-almost no weight). A fourth round from its samples runs
-(`c27k15g1d12f.log`).
+round), and the fourth 3.08373 and 3.35796 (`c27k15g1d12f.log`): the
+values between samples stopped falling, as the degree 10 chain did at
+3.18, so the chain was stopped there. Mixed with the degree 10
+certificates the four rounds lower the floor only from 3.104545 to
+3.104383 on the samples (3.105111 at the climbed maxima). For 15 within
+2.0161, at most 2 beyond 2.35 and none in (2.1, 2.35] (36 vectors) the
+rounds above get no weight (mix 3.107655, 3.108208 at climbed maxima), and
+a degree 10 round of its own on the same narrowed types
+(`case27_k15f2g1_t1.json`, from the samples of the fifth degree 10 round)
+runs (`c27k15f2g1t_d10.log`).
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
