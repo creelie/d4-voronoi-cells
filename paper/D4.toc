@@ -48,7 +48,7 @@
 \contentsline {section}{\tocsection {}{8}{A density bound from the cells alone}}{143}{section.8}%
 \contentsline {section}{\tocsection {}{9}{Comparison with other strategies}}{145}{section.9}%
 \contentsline {subsection}{\tocsubsection {}{9.1}{Local against global}}{145}{subsection.9.1}%
-\contentsline {subsection}{\tocsubsection {}{9.2}{Linear programming bounds in dimension four}}{145}{subsection.9.2}%
+\contentsline {subsection}{\tocsubsection {}{9.2}{Linear programming bounds in dimension four}}{146}{subsection.9.2}%
 \contentsline {subsection}{\tocsubsection {}{9.3}{What each method asks of the reader}}{146}{subsection.9.3}%
 \contentsline {subsection}{\tocsubsection {}{9.4}{Other dimensions}}{146}{subsection.9.4}%
 \contentsline {section}{\tocsection {}{10}{Conclusion}}{146}{section.10}%
@@ -84,27 +84,27 @@
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Box-covering certificates.}}{161}{section*.9}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.3.2}{The region count}}{161}{subsubsection.B.3.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.3.3}{The eight regions, one by one}}{162}{subsubsection.B.3.3}%
-\contentsline {subparagraph}{\tocsubparagraph {}{}{Region top.}}{162}{section*.10}%
+\contentsline {subparagraph}{\tocsubparagraph {}{}{Region top.}}{163}{section*.10}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $2$.}}{163}{section*.11}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $4$ (two-piece).}}{163}{section*.12}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $6$.}}{163}{section*.13}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf A$.}}{163}{section*.14}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf D$.}}{163}{section*.15}%
 \contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf E$.}}{163}{section*.16}%
-\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf C$.}}{163}{section*.17}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.3.4}{What the eight certificates establish}}{163}{subsubsection.B.3.4}%
+\contentsline {subparagraph}{\tocsubparagraph {}{}{Region $\mathsf C$.}}{164}{section*.17}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.3.4}{What the eight certificates establish}}{164}{subsubsection.B.3.4}%
 \contentsline {subsection}{\tocsubsection {}{B.4}{Breakpoint classification on the second arc}}{164}{subsection.B.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.4.1}{Setup}}{164}{subsubsection.B.4.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.4.2}{The combinatorial atlas}}{164}{subsubsection.B.4.2}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.4.3}{Region top}}{164}{subsubsection.B.4.3}%
-\contentsline {subsubsection}{\tocsubsubsection {}{B.4.4}{The band immediately below region top}}{164}{subsubsection.B.4.4}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.4.3}{Region top}}{165}{subsubsection.B.4.3}%
+\contentsline {subsubsection}{\tocsubsubsection {}{B.4.4}{The band immediately below region top}}{165}{subsubsection.B.4.4}%
 \contentsline {subsection}{\tocsubsection {}{B.5}{Certificates on the second arc}}{165}{subsection.B.5}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.1}{Region top: an exact, zero-margin certificate}}{165}{subsubsection.B.5.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.2}{The band below region top}}{165}{subsubsection.B.5.2}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.3}{The band's $\mathsf C$-bounded sub-part}}{166}{subsubsection.B.5.3}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.4}{The band's $\mathsf B$-bounded sub-part}}{166}{subsubsection.B.5.4}%
 \contentsline {subsubsection}{\tocsubsubsection {}{B.5.5}{Coverage of the boundary}}{166}{subsubsection.B.5.5}%
-\contentsline {subsection}{\tocsubsection {}{B.6}{What the single-deviation case contains}}{166}{subsection.B.6}%
+\contentsline {subsection}{\tocsubsection {}{B.6}{What the single-deviation case contains}}{167}{subsection.B.6}%
 \contentsline {section}{\tocsection {Appendix}{C}{Several simultaneous deviations}}{167}{appendix.C}%
 \contentsline {subsection}{\tocsubsection {}{C.1}{The joint Hessian technique}}{167}{subsection.C.1}%
 \contentsline {subsubsection}{\tocsubsubsection {}{C.1.1}{Simultaneous deviations}}{167}{subsubsection.C.1.1}%
