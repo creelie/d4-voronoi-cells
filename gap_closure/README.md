@@ -461,6 +461,23 @@ sampled triples within 1e-4 of each maximum, `CM/c27_triple_profile.py`,
 `CM/c27_triple_profile.log`), so counting triples by region, as
 `REGION_TRIPLES` does at twenty-eight, gains nothing there. Floating
 point, evidence only.
+The same search finds packings in the other open parts. With at least 15
+within 2.0161, 20 within 2.1, 21 within 2.15, 22 within 2.2 and 25 within
+2.35 (the counts of prop:C-radial when at most 2 lie beyond 2.35) the first
+600 tries of seed 1 leave two centres at 1.999815
+(`CM/c27_config_search_k15f2mono.log`), but seed 2 finds a packing at try
+4318 of 10000, at (15, 0, 5, 1, 1, 3, 2), with most radii at the ends of
+their ranges and 28 distances equal to 2
+(`CM/c27_config_search_k15f2mono_b.log`); 15 within 2.0161, 10 in
+(2.0161, 2.35] and 2 beyond 2.35 with no other counts pack at once
+(`CM/c27_config_search_k15f2free.log`). At least 16 within 2.0161 with the
+counts 20, 21, 22 and 24 within 2.1, 2.15, 2.2 and 2.35 pack at try 276, at
+(16, 0, 4, 1, 1, 2, 3) (`CM/c27_config_search_k16mono.log`). At least 17
+within 2.0161 with these counts give no packing in 600 tries of seed 1 (best
+distance 1.999775, `CM/c27_config_search_k17mono.log`) and 10000 of seed 2
+(1.999301, `CM/c27_config_search_k17mono_b.log`). So 15 within 2.0161 with
+at most 2 beyond 2.35 and 16 with 3 beyond hold real packings and need
+certificates; 17 or more may not occur. Floating point, evidence only.
 At 16 and 17 the vectors with a centre in (2.1, 2.35] give 3.106091 and
 3.113100. With the rounds for 13 and 14 added to the pool, one iteration of
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
