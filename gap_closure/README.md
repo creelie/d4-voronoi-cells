@@ -483,8 +483,11 @@ samples of the fifth round above, fits in 9.6 GB alone on the machine. At
 trace penalty 3e-4 it stopped on InsufficientProgress, its inequalities
 broken by up to 0.11 on the samples (`c27k15g1d12b.log`); at 1e-3 it
 reaches 3.04362 on its samples, against 3.10009 for the best round of
-degree 10, but 11.22727 corrected (`c27k15g1d12c.log`). A second round of
-degree 12 from its samples runs (`c27k15g1d12d.log`).
+degree 10, but 11.22727 corrected (`c27k15g1d12c.log`). The second round
+of degree 12, from its samples, reaches 3.07205 on its samples and 4.06246
+corrected (`c27k15g1d12d.log`); mixed with the degree 10 certificates it
+does not yet lower the floor of 3.1045 on the samples. A third round from
+its samples runs (`c27k15g1d12e.log`).
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
