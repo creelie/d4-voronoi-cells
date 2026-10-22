@@ -819,6 +819,11 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               run does not repeat it.  The logs of the runs
                               and the file are then the record of the
                               check together.
+                              A case file may carry a key "exclude": a list
+                              of sets of constraints [bins, lo, hi]; a
+                              count vector that meets every constraint of
+                              one set is left out of the case (it is
+                              checked as a part of its own).
 
   combo_mixtype_check.py case_bins.json mix.npz d3 [m2 m3 mm]
                               The exact check of combo_case_check.py for a

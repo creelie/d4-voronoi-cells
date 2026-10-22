@@ -52,13 +52,16 @@ BINS = [(t, _num(a), _num(b)) for t, a, b in CASE['bins']]
 
 def _counts():
     """all count vectors over BINS with total M meeting the case constraints:
-    each constraint [bins, lo, hi] bounds the number of points in those bins."""
+    each constraint [bins, lo, hi] bounds the number of points in those bins; a vector
+    that meets every constraint of one of the sets in CASE['exclude'] is left out."""
     M, nb = CASE['M'], len(BINS)
     out = []
     def rec(prefix, left):
         if len(prefix) == nb - 1:
             v = prefix + [left]
-            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']):
+            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']) and \
+                    not any(all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in X)
+                            for X in CASE.get('exclude', [])):
                 out.append(tuple(v))
             return
         for k in range(left + 1):

@@ -7,6 +7,9 @@ labelled by distance and the three-point kernel on directions typed by distance 
 The case file gives M, the types and their distance ranges, the bins (each inside the
 range of one type) and constraints [bins, lo, hi] on the number of centres in groups
 of bins, each of which must be a proved count (prop:C-radial, thm:kissing-stable).
+An optional key "exclude" lists further sets of constraints in the same form; a vector
+that meets every constraint of one of these sets is left out of the case (it belongs to
+another part of the proof, checked on its own).
 The check is that of combo30_check.py: exact positivity, the pair inequalities by
 tensor Bernstein bounds, the bin brackets, the triple inequalities by Taylor forms,
 and then, for every integer vector of bin counts that the constraints allow, the bound
@@ -266,7 +269,9 @@ def counts():
     def rec(prefix, left):
         if len(prefix) == nb - 1:
             v = prefix + [left]
-            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']):
+            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']) and \
+                    not any(all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in X)
+                            for X in CASE.get('exclude', [])):
                 out.append(tuple(v))
             return
         for k in range(left + 1):
