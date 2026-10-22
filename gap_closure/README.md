@@ -514,7 +514,12 @@ centre in (2.1, 2.2] (`case27_k16f3g2b.json`) stop at 3.103284 on the
 samples and 3.103497 at the climbed maxima, 0.0002 above the level. A round
 for the 165 from the samples of `c27k14f3b` (`c27k16f3g2_d10.log`) reaches
 3.00148 on its samples and 72.85 between them; a second round from its
-samples runs (`c27k16f3g2b_d10.log`). The 9 vectors with 16 within 2.0161,
+samples (`c27k16f3g2b_d10.log`) was stopped before it solved, since mixed
+typing does better: with most of the weight typing the bin (2.05, 2.1] as A
+(typings AABBBBF, AABBBFF and AAABBBF, `CM/c27_hull_mt.py`) the 150 mix to
+3.101422 at the climbed maxima, the precheck at margins 1e-6, 1e-7 and 1e-7
+gives 3.101991 (`CM/pre_c27k16f3g2bmt.log`), and their exact check runs
+(`CM/check_c27k16f3g2bmt.log`). The 9 vectors with 16 within 2.0161,
 3 beyond 2.35 and none in (2.1, 2.35] mix to 3.114348 with the bin
 (2.05, 2.1] a type of its own, and look unrealisable too: with 16 within
 2.0161, 8 in (2.0161, 2.1] and 3 beyond 2.35 the best of 10000 tries leaves
@@ -529,8 +534,11 @@ reaches 3.10173 on its samples and 3.21195 corrected; mixed with 28 earlier
 certificates, each middle bin a type of its own for the thresholds, it gives
 3.103550 on the first samples of the mixing LP, but 3.106087 and 3.106412
 once the climbed maxima are fed back (the pool alone, on fewer samples,
-gave 3.105865). A second round from its samples (`c27k15f2g2b2_d10.log`)
-was stopped before solving, to give the machine to a degree 12 round. The
+gave 3.105865). A second round from its samples (`c27k15f2g2b2_d10.log`),
+first stopped to give the machine to a degree 12 round and then run again,
+reaches 3.10177 on its samples and 3.12584 corrected; a third, from its
+samples (`c27k15f2g2b3_d10.log`), was stopped before it solved, to leave
+memory for the mixes below. The
 pool gives 3.107342 over the 36 vectors with 15 within 2.0161, at most two
 beyond 2.35 and none in (2.1, 2.35], and 3.107266 over the 115 with none in
 (2.1, 2.2] and one in (2.2, 2.35] (floating point). The degree 12 round for
@@ -559,6 +567,28 @@ mixed with the pool it gets weight 0.001 and leaves the mix at 3.10746 on
 the samples (3.10855 at the climbed maxima). A second round from its
 samples (`c27k15f2g1t2_d10.log`) was stopped before it solved, to give
 the machine to the round for 16 within 2.0161.
+Mixed typing reaches further on these parts (`CM/c27_hull_mt.py`, floating
+point, evidence only). Over the 1650 vectors with 15 within 2.0161, at most
+2 beyond 2.35 and a centre in (2.1, 2.2], the typings AABBBBF, AABFFBF,
+AABBBFF and AABFFFF (middle bins typed F) with the second round give
+3.104466 at (15, 2, 7, 1, 0, 0, 2), 0.23 of the weight on that round; on
+that mix only the 66 vectors with exactly one centre in (2.1, 2.35] are
+above the level, and the 1584 with two or more, mixed on their own, reach
+3.102623 so far (the mix runs). Over the 36 with none in (2.1, 2.35] a pool
+of 14 certificates under five typings, among them AAABBBF, gives 3.099707,
+0.2 of the weight on `c27f2g1b` typed AAABBBF (`case27_k15f2g1_bins.json`);
+its dense search (`CM/peak2_c27k15f2g1mt.log`, an A2B3B3 peak 1.6e-5 above
+the samples) and exact check (`CM/check_c27k15f2g1mt.log`, margins 2e-6,
+5e-7 and 1e-6 with extra room on ten triple kinds) run. Over the 115 with
+none in (2.1, 2.2] and one in (2.2, 2.35] the same pool gives 3.106653,
+and only the 12 with no centre in (2.05, 2.1] are above the level; the 103
+others, mixed on their own, reach 3.101919 so far (the mix runs). At 16
+within 2.0161, 3 beyond 2.35 and none in (2.1, 2.35], the 8 vectors with at
+most 7 in (2.0161, 2.05] (`case27_k16f3g1lo7.json`) mix to 3.099519, their
+dense search (`CM/peak2_c27k16f3g1lo7mt.log`) puts every peak within
+1.0e-6 of the samples, and their exact check runs
+(`CM/check_c27k16f3g1lo7mt.log`); (16, 8, 0, 0, 0, 0, 3) is left, like
+(15, 9, 0, 0, 0, 0, 3).
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
