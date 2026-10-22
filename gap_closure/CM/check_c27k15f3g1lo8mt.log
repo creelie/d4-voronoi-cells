@@ -1,0 +1,8 @@
+exact check of the mixed-typing combination mix27_k15f3g1lo8mt.npz (27 centres, exactly 15 within 2.0161, exactly 3 beyond 2.35, none in (2.1, 2.35], at most 8 in (2.0161, 2.05]: the count vectors (15, a, 9 - a, 0, 0, 0, 3), a = 0..8; case27_k15f3g1lo8_bins.json, one type per bin) with multi_cap/combo_mixtype_check.py; mixed with c27_hull_mt.py from 9 certificates under typings AABBBBF, AAFBBBF, ABBBBBF, AABBBBB, AAABBBF, 0.84 of the weight on c27k14f3b typed AAABBBF, 3.090624 in floating point at margins 2e-7/2e-8 (scratchpad g9/scout.sh); dense search peak2_c27k15f3g1lo8mt.log; margins pairs 5e-6, triples 2e-6, bins 1e-6, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k15f3g1lo8mt.ckpt; started Thu Oct 22 08:04:37 UTC 2026
+mixed typing: 5 groups, typings ['AABBBBF', 'AAFBBBF', 'ABBBBBF', 'AABBBBB', 'AAABBBF']
+statement (C) at 27 centres, case case27_k15f3g1lo8_bins.json: combined certificate mix27_k15f3g1lo8mt.npz, two-point degree 12/4, three-point degree 10; 9 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 19.503188900, float t 19.503188899)
+  [ok] three-point blocks positive definite (exact LDL^T)  (215 blocks)
+  point terms: {'A1': '0.155856', 'A2': '0.159323', 'B3': '0.141002', 'B4': '0.024168', 'B5': '0.024168', 'B6': '0.024168', 'F7': '0.019601'}
+  pair A1A1: float largest K + PAIR3 - Pi 7.115788e-03 (file c2 7.115787e-03); threshold 7.120790e-03
