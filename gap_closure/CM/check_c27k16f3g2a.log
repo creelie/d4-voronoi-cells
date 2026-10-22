@@ -9,3 +9,221 @@ statement (C) at 27 centres, case case27_k16f3g2a.json: combined certificate mix
   pair AF: float largest K + PAIR3 - Pi 2.164071e-02 (file c2 2.164071e-02); threshold 2.164271e-02
   pair BB: float largest K + PAIR3 - Pi 3.139513e-02 (file c2 3.139513e-02); threshold 3.139713e-02
   pair BF: float largest K + PAIR3 - Pi 2.973701e-02 (file c2 2.973701e-02); threshold 2.973901e-02
+  pair FF: float largest K + PAIR3 - Pi 2.863475e-02 (file c2 2.863475e-02); threshold 2.863675e-02
+  pair AB on bins 1-3: float largest K + PAIR3 - Pi 2.088764e-02; threshold 2.088964e-02 against 2.088964e-02 for the kind
+  pair AB on bins 1-6: float largest K + PAIR3 - Pi 2.087089e-02; threshold 2.087290e-02 against 2.088964e-02 for the kind
+  pair AB on bins 2-3: float largest K + PAIR3 - Pi 2.087493e-02; threshold 2.087693e-02 against 2.088964e-02 for the kind
+  pair AB on bins 2-6: float largest K + PAIR3 - Pi 2.086813e-02; threshold 2.087052e-02 against 2.088964e-02 for the kind
+  pair BB on bins 3-3: float largest K + PAIR3 - Pi 3.139513e-02; threshold 3.139713e-02 against 3.139713e-02 for the kind
+  pair BB on bins 3-6: float largest K + PAIR3 - Pi 3.038668e-02; threshold 3.038877e-02 against 3.139713e-02 for the kind
+  pair BF on bins 3-7: float largest K + PAIR3 - Pi 2.973701e-02; threshold 2.973901e-02 against 2.973901e-02 for the kind
+  pair BB on bins 6-6: float largest K + PAIR3 - Pi 3.013315e-02; threshold 3.013582e-02 against 3.139713e-02 for the kind
+  pair BF on bins 6-7: float largest K + PAIR3 - Pi 2.959699e-02; threshold 2.959900e-02 against 2.973901e-02 for the kind
+  pair AB: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair BB: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair BF: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  done: K + PAIR3_AA <= Pi + c2 on the admissible pairs: ok 534897 boxes closed, 268253 set aside, Pi in Arb at 534878 corners
+  done: K + PAIR3_AF <= Pi + c2 on the admissible pairs: ok 25043 boxes closed, 25043 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_FF <= Pi + c2 on the admissible pairs: ok 7189 boxes closed, 7222 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_AB <= Pi + its threshold on the pairs of bins 1-3: ok 3128 boxes closed, 1210 set aside, Pi in Arb at 3112 corners
+  done: K + PAIR3_AB <= Pi + its threshold on the pairs of bins 1-6: ok 53 boxes closed, 25 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_AB <= Pi + its threshold on the pairs of bins 2-3: ok 391 boxes closed, 183 set aside, Pi in Arb at 356 corners
+  done: K + PAIR3_AB <= Pi + its threshold on the pairs of bins 2-6: ok 134 boxes closed, 83 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_BB <= Pi + its threshold on the pairs of bins 3-3: ok 425 boxes closed, 175 set aside, Pi in Arb at 405 corners
+  done: K + PAIR3_BB <= Pi + its threshold on the pairs of bins 3-6: ok 67 boxes closed, 31 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_BF <= Pi + its threshold on the pairs of bins 3-7: ok 2618 boxes closed, 2400 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_BB <= Pi + its threshold on the pairs of bins 6-6: ok 95 boxes closed, 57 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_BF <= Pi + its threshold on the pairs of bins 6-7: ok 33 boxes closed, 7 set aside, Pi in Arb at 0 corners
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (534897 boxes closed, 268253 set aside, Pi in Arb at 534878 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (25043 boxes closed, 25043 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (7189 boxes closed, 7222 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_AB <= Pi + its threshold on the pairs of bins 1-3  (3128 boxes closed, 1210 set aside, Pi in Arb at 3112 corners)
+  [ok] K + PAIR3_AB <= Pi + its threshold on the pairs of bins 1-6  (53 boxes closed, 25 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_AB <= Pi + its threshold on the pairs of bins 2-3  (391 boxes closed, 183 set aside, Pi in Arb at 356 corners)
+  [ok] K + PAIR3_AB <= Pi + its threshold on the pairs of bins 2-6  (134 boxes closed, 83 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + its threshold on the pairs of bins 3-3  (425 boxes closed, 175 set aside, Pi in Arb at 405 corners)
+  [ok] K + PAIR3_BB <= Pi + its threshold on the pairs of bins 3-6  (67 boxes closed, 31 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BF <= Pi + its threshold on the pairs of bins 3-7  (2618 boxes closed, 2400 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + its threshold on the pairs of bins 6-6  (95 boxes closed, 57 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BF <= Pi + its threshold on the pairs of bins 6-7  (33 boxes closed, 7 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (231 intervals, least room 2.92e-08)
+  triple AAA: float largest 2.088143e-03 on 649660 samples; threshold 2.090160e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 1.313211e-03 on 649656 samples; threshold 1.315257e-03; 756 monomials, symmetry 1
+  triple AAF: float largest -3.070326e-03 on 649567 samples; threshold -3.068236e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 6.511058e-04 on 649516 samples; threshold 6.531317e-04; 756 monomials, symmetry 1
+  triple ABF: float largest -1.349516e-03 on 649349 samples; threshold -1.347468e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 1.758548e-02 on 649302 samples; threshold 1.758758e-02; 756 monomials, symmetry 1
+  triple BBB: float largest 1.857446e-04 on 649325 samples; threshold 1.879613e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 1.425718e-04 on 649158 samples; threshold 1.445718e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 3.655402e-05 on 649009 samples; threshold 3.862665e-05; 756 monomials, symmetry 1
+  triple FFF: float largest 4.855622e-03 on 648938 samples; threshold 4.857631e-03; 756 monomials, symmetry 2
+  triple AAB on bins 1-1-3 (inner products at most 0.507954, 0.528444, 0.528444): float largest 1.313237e-03 on 649670 samples; threshold 1.315257e-03 against 1.315257e-03 for the kind; symmetry 1
+  triple AAB on bins 1-1-6 (inner products at most 0.507954, 0.589632, 0.589632): float largest 1.313231e-03 on 649656 samples; threshold 1.315257e-03 against 1.315257e-03 for the kind; symmetry 1
+  triple AAB on bins 1-2-3 (inner products at most 0.516230, 0.528444, 0.535714): float largest 1.313221e-03 on 649700 samples; threshold 1.315257e-03 against 1.315257e-03 for the kind; symmetry 0
+  triple AAB on bins 1-2-6 (inner products at most 0.516230, 0.589632, 0.594188): float largest 1.313248e-03 on 649663 samples; threshold 1.315257e-03 against 1.315257e-03 for the kind; symmetry 0
+  triple ABB on bins 1-3-3 (inner products at most 0.528444, 0.528444, 0.546485): float largest 6.510408e-04 on 649733 samples; threshold 6.531317e-04 against 6.531317e-04 for the kind; symmetry 1
+  triple ABB on bins 1-3-6 (inner products at most 0.528444, 0.589632, 0.601064): float largest 6.510990e-04 on 649652 samples; threshold 6.531317e-04 against 6.531317e-04 for the kind; symmetry 0
+  triple ABF on bins 1-3-7 (inner products at most 0.528444, 0.614029, 0.623065): float largest -1.349546e-03 on 649545 samples; threshold -1.347528e-03 against -1.347468e-03 for the kind; symmetry 0
+  triple ABB on bins 1-6-6 (inner products at most 0.589632, 0.589632, 0.637845): float largest 6.510725e-04 on 649540 samples; threshold 6.531317e-04 against 6.531317e-04 for the kind; symmetry 1
+  triple ABF on bins 1-6-7 (inner products at most 0.589632, 0.614029, 0.653414): float largest -1.349495e-03 on 649394 samples; threshold -1.347468e-03 against -1.347468e-03 for the kind; symmetry 0
+  triple AAB on bins 2-2-3 (inner products at most 0.524093, 0.535714, 0.535714): float largest 1.313218e-03 on 649720 samples; threshold 1.315257e-03 against 1.315257e-03 for the kind; symmetry 1
+  triple AAB on bins 2-2-6 (inner products at most 0.524093, 0.594188, 0.594188): float largest 1.313233e-03 on 649656 samples; threshold 1.315257e-03 against 1.315257e-03 for the kind; symmetry 1
+  triple ABB on bins 2-3-3 (inner products at most 0.535714, 0.535714, 0.546485): float largest 6.511044e-04 on 649724 samples; threshold 6.531317e-04 against 6.531317e-04 for the kind; symmetry 1
+  triple ABB on bins 2-3-6 (inner products at most 0.535714, 0.594188, 0.601064): float largest 6.510852e-04 on 649636 samples; threshold 6.531317e-04 against 6.531317e-04 for the kind; symmetry 0
+  triple ABF on bins 2-3-7 (inner products at most 0.535714, 0.617600, 0.623065): float largest -1.349585e-03 on 649521 samples; threshold -1.347528e-03 against -1.347468e-03 for the kind; symmetry 0
+  triple ABB on bins 2-6-6 (inner products at most 0.594188, 0.594188, 0.637845): float largest 6.511110e-04 on 649516 samples; threshold 6.531317e-04 against 6.531317e-04 for the kind; symmetry 1
+  triple ABF on bins 2-6-7 (inner products at most 0.594188, 0.617600, 0.653414): float largest -1.349516e-03 on 649349 samples; threshold -1.347468e-03 against -1.347468e-03 for the kind; symmetry 0
+  triple BBB on bins 3-3-3 (inner products at most 0.546485, 0.546485, 0.546485): float largest 1.858161e-04 on 649699 samples; threshold 1.879613e-04 against 1.879613e-04 for the kind; symmetry 2
+  triple BBB on bins 3-3-6 (inner products at most 0.546485, 0.601064, 0.601064): float largest 1.858294e-04 on 649610 samples; threshold 1.879613e-04 against 1.879613e-04 for the kind; symmetry 1
+  triple BBF on bins 3-3-7 (inner products at most 0.546485, 0.623065, 0.623065): float largest 1.417775e-04 on 649536 samples; threshold 1.438224e-04 against 1.445718e-04 for the kind; symmetry 1
+  triple BBB on bins 3-6-6 (inner products at most 0.601064, 0.601064, 0.637845): float largest 1.856896e-04 on 649417 samples; threshold 1.879613e-04 against 1.879613e-04 for the kind; symmetry 1
+  triple BBF on bins 3-6-7 (inner products at most 0.601064, 0.623065, 0.653414): float largest 1.416958e-04 on 649336 samples; threshold 1.438224e-04 against 1.445718e-04 for the kind; symmetry 0
+  triple BFF on bins 3-7-7 (inner products at most 0.623065, 0.623065, 0.666667): float largest 3.656517e-05 on 649262 samples; threshold 3.862665e-05 against 3.862665e-05 for the kind; symmetry 1
+  triple BBF on bins 6-6-7 (inner products at most 0.637845, 0.653414, 0.653414): float largest 1.425718e-04 on 649158 samples; threshold 1.445718e-04 against 1.445718e-04 for the kind; symmetry 1
+  triple BFF on bins 6-7-7 (inner products at most 0.653414, 0.653414, 0.666667): float largest 3.652291e-05 on 649009 samples; threshold 3.862665e-05 against 3.862665e-05 for the kind; symmetry 1
+  triple AAB: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple ABB: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple ABF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple BBB: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple BBF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple BFF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+      AAA level 10: 0 boxes verified, 336 to bisect [0 s]
+      AAA level 20: 12210 boxes verified, 93938 to bisect [4 s]
+      AAA level 30: 2149268 boxes verified, 1212376 to bisect [159 s]
+  done: AAA: ok 4091761 boxes, largest centre value 2.0882e-03
+      AAF level 10: 0 boxes verified, 620 to bisect [0 s]
+      AAF level 20: 30924 boxes verified, 301962 to bisect [11 s]
+      AAF level 30: 9143426 boxes verified, 4210394 to bisect [651 s]
+  done: AAF: ok 17895348 boxes, largest centre value -3.0702e-03
+      AFF level 10: 0 boxes verified, 624 to bisect [0 s]
+      AFF level 20: 33724 boxes verified, 277598 to bisect [10 s]
+      AFF level 30: 5954642 boxes verified, 1260866 to bisect [373 s]
+  done: AFF: ok 7714679 boxes, largest centre value 1.7585e-02
+      FFF level 10: 0 boxes verified, 340 to bisect [0 s]
+      FFF level 20: 14940 boxes verified, 92400 to bisect [4 s]
+      FFF level 30: 664044 boxes verified, 3552 to bisect [38 s]
+  done: FFF: ok 667191 boxes, largest centre value 4.8556e-03
+      AAB bins 1-1-3 level 10: 0 boxes verified, 606 to bisect [0 s]
+      AAB bins 1-1-3 level 20: 37925 boxes verified, 200610 to bisect [8 s]
+      AAB bins 1-1-3 level 30: 2075298 boxes verified, 0 to bisect [117 s]
+  done: AAB on bins 1-1-3: ok 2075298 boxes, largest centre value 1.3133e-03
+      AAB bins 1-1-6 level 10: 0 boxes verified, 616 to bisect [0 s]
+      AAB bins 1-1-6 level 20: 37184 boxes verified, 214052 to bisect [8 s]
+      AAB bins 1-1-6 level 30: 2660460 boxes verified, 3622 to bisect [152 s]
+  done: AAB on bins 1-1-6: ok 2663143 boxes, largest centre value 1.3132e-03
+      AAB bins 1-2-3 level 10: 0 boxes verified, 926 to bisect [0 s]
+      AAB bins 1-2-3 level 20: 72723 boxes verified, 396252 to bisect [16 s]
+      AAB bins 1-2-3 level 30: 4305360 boxes verified, 0 to bisect [241 s]
+  done: AAB on bins 1-2-3: ok 4305360 boxes, largest centre value 1.3132e-03
+      AAB bins 1-2-6 level 10: 0 boxes verified, 938 to bisect [0 s]
+      AAB bins 1-2-6 level 20: 71037 boxes verified, 422122 to bisect [16 s]
+      AAB bins 1-2-6 level 30: 5437851 boxes verified, 11604 to bisect [309 s]
+  done: AAB on bins 1-2-6: ok 5446917 boxes, largest centre value 1.3132e-03
+      ABB bins 1-3-3 level 10: 0 boxes verified, 616 to bisect [0 s]
+      ABB bins 1-3-3 level 20: 36634 boxes verified, 203060 to bisect [8 s]
+  done: ABB on bins 1-3-3: ok 2050792 boxes, largest centre value 6.5113e-04
+      ABB bins 1-3-6 level 10: 0 boxes verified, 940 to bisect [0 s]
+      ABB bins 1-3-6 level 20: 69148 boxes verified, 421930 to bisect [16 s]
+      ABB bins 1-3-6 level 30: 5261739 boxes verified, 0 to bisect [297 s]
+  done: ABB on bins 1-3-6: ok 5261739 boxes, largest centre value 6.5113e-04
+      ABF bins 1-3-7 level 10: 0 boxes verified, 946 to bisect [0 s]
+      ABF bins 1-3-7 level 20: 79237 boxes verified, 421606 to bisect [16 s]
+      ABF bins 1-3-7 level 30: 6657226 boxes verified, 289240 to bisect [384 s]
+  done: ABF on bins 1-3-7: ok 6943868 boxes, largest centre value -1.3495e-03
+      ABB bins 1-6-6 level 10: 0 boxes verified, 630 to bisect [0 s]
+      ABB bins 1-6-6 level 20: 35366 boxes verified, 226566 to bisect [9 s]
+      ABB bins 1-6-6 level 30: 3234795 boxes verified, 5602 to bisect [186 s]
+  done: ABB on bins 1-6-6: ok 3240397 boxes, largest centre value 6.5113e-04
+      ABF bins 1-6-7 level 10: 0 boxes verified, 946 to bisect [0 s]
+      ABF bins 1-6-7 level 20: 77438 boxes verified, 440962 to bisect [17 s]
+      ABF bins 1-6-7 level 30: 7864452 boxes verified, 483988 to bisect [464 s]
+  done: ABF on bins 1-6-7: ok 8345625 boxes, largest centre value -1.3495e-03
+      AAB bins 2-2-3 level 10: 0 boxes verified, 612 to bisect [0 s]
+      AAB bins 2-2-3 level 20: 37924 boxes verified, 204258 to bisect [9 s]
+      AAB bins 2-2-3 level 30: 2246588 boxes verified, 0 to bisect [129 s]
+  done: AAB on bins 2-2-3: ok 2246588 boxes, largest centre value 1.3132e-03
+      AAB bins 2-2-6 level 10: 0 boxes verified, 618 to bisect [0 s]
+      AAB bins 2-2-6 level 20: 37015 boxes verified, 216934 to bisect [9 s]
+      AAB bins 2-2-6 level 30: 2796414 boxes verified, 7952 to bisect [160 s]
+  done: AAB on bins 2-2-6: ok 2802805 boxes, largest centre value 1.3132e-03
+      ABB bins 2-3-3 level 10: 0 boxes verified, 618 to bisect [0 s]
+      ABB bins 2-3-3 level 20: 36583 boxes verified, 204798 to bisect [8 s]
+  done: ABB on bins 2-3-3: ok 2130096 boxes, largest centre value 6.5113e-04
+      ABB bins 2-3-6 level 10: 0 boxes verified, 944 to bisect [0 s]
+      ABB bins 2-3-6 level 20: 69039 boxes verified, 424482 to bisect [16 s]
+      ABB bins 2-3-6 level 30: 5380821 boxes verified, 0 to bisect [308 s]
+  done: ABB on bins 2-3-6: ok 5380821 boxes, largest centre value 6.5113e-04
+      ABF bins 2-3-7 level 10: 0 boxes verified, 948 to bisect [0 s]
+      ABF bins 2-3-7 level 20: 79104 boxes verified, 424232 to bisect [17 s]
+      ABF bins 2-3-7 level 30: 6806470 boxes verified, 310818 to bisect [397 s]
+  done: ABF on bins 2-3-7: ok 7114385 boxes, largest centre value -1.3495e-03
+      ABB bins 2-6-6 level 10: 0 boxes verified, 632 to bisect [0 s]
+      ABB bins 2-6-6 level 20: 35291 boxes verified, 227466 to bisect [9 s]
+      ABB bins 2-6-6 level 30: 3274862 boxes verified, 5790 to bisect [190 s]
+  done: ABB on bins 2-6-6: ok 3280652 boxes, largest centre value 6.5113e-04
+      ABF bins 2-6-7 level 10: 0 boxes verified, 944 to bisect [0 s]
+      ABF bins 2-6-7 level 20: 77274 boxes verified, 442706 to bisect [17 s]
+      ABF bins 2-6-7 level 30: 7979147 boxes verified, 506912 to bisect [474 s]
+  done: ABF on bins 2-6-7: ok 8482850 boxes, largest centre value -1.3495e-03
+      BBB bins 3-3-3 level 10: 0 boxes verified, 346 to bisect [0 s]
+      BBB bins 3-3-3 level 20: 12176 boxes verified, 81530 to bisect [3 s]
+  done: BBB on bins 3-3-3: ok 714636 boxes, largest centre value 1.8596e-04
+      BBB bins 3-3-6 level 10: 0 boxes verified, 634 to bisect [0 s]
+      BBB bins 3-3-6 level 20: 32941 boxes verified, 243726 to bisect [9 s]
+      BBB bins 3-3-6 level 30: 2655810 boxes verified, 0 to bisect [154 s]
+  done: BBB on bins 3-3-6: ok 2655810 boxes, largest centre value 1.8596e-04
+      BBF bins 3-3-7 level 10: 0 boxes verified, 626 to bisect [0 s]
+      BBF bins 3-3-7 level 20: 46525 boxes verified, 185284 to bisect [8 s]
+  done: BBF on bins 3-3-7: ok 1359418 boxes, largest centre value 1.4182e-04
+      BBB bins 3-6-6 level 10: 0 boxes verified, 638 to bisect [0 s]
+      BBB bins 3-6-6 level 20: 32287 boxes verified, 252976 to bisect [9 s]
+      BBB bins 3-6-6 level 30: 3295898 boxes verified, 30440 to bisect [194 s]
+  done: BBB on bins 3-6-6: ok 3326708 boxes, largest centre value 1.8595e-04
+      BBF bins 3-6-7 level 10: 0 boxes verified, 946 to bisect [0 s]
+      BBF bins 3-6-7 level 20: 87378 boxes verified, 384228 to bisect [16 s]
+  done: BBF on bins 3-6-7: ok 3188063 boxes, largest centre value 1.4182e-04
+      BFF bins 3-7-7 level 10: 0 boxes verified, 618 to bisect [0 s]
+      BFF bins 3-7-7 level 20: 44416 boxes verified, 187538 to bisect [8 s]
+      BFF bins 3-7-7 level 30: 2172302 boxes verified, 2266 to bisect [121 s]
+  done: BFF on bins 3-7-7: ok 2174424 boxes, largest centre value 3.6623e-05
+      BBF bins 6-6-7 level 10: 0 boxes verified, 626 to bisect [0 s]
+      BBF bins 6-6-7 level 20: 44838 boxes verified, 202772 to bisect [8 s]
+      BBF bins 6-6-7 level 30: 1831814 boxes verified, 264 to bisect [102 s]
+  done: BBF on bins 6-6-7: ok 1832078 boxes, largest centre value 1.4208e-04
+      BFF bins 6-7-7 level 10: 0 boxes verified, 616 to bisect [0 s]
+      BFF bins 6-7-7 level 20: 43531 boxes verified, 195000 to bisect [8 s]
+      BFF bins 6-7-7 level 30: 2549906 boxes verified, 12034 to bisect [140 s]
+  done: BFF on bins 6-7-7: ok 2561775 boxes, largest centre value 3.6617e-05
+  [ok] TRIPLE3_AAA <= c3 on the admissible triples  (4091761 boxes, largest centre value 2.0882e-03)
+  [ok] TRIPLE3_AAF <= c3 on the admissible triples  (17895348 boxes, largest centre value -3.0702e-03)
+  [ok] TRIPLE3_AFF <= c3 on the admissible triples  (7714679 boxes, largest centre value 1.7585e-02)
+  [ok] TRIPLE3_FFF <= c3 on the admissible triples  (667191 boxes, largest centre value 4.8556e-03)
+  [ok] TRIPLE3_AAB on bins 1-1-3 <= its threshold on the admissible triples  (2075298 boxes, largest centre value 1.3133e-03)
+  [ok] TRIPLE3_AAB on bins 1-1-6 <= its threshold on the admissible triples  (2663143 boxes, largest centre value 1.3132e-03)
+  [ok] TRIPLE3_AAB on bins 1-2-3 <= its threshold on the admissible triples  (4305360 boxes, largest centre value 1.3132e-03)
+  [ok] TRIPLE3_AAB on bins 1-2-6 <= its threshold on the admissible triples  (5446917 boxes, largest centre value 1.3132e-03)
+  [ok] TRIPLE3_ABB on bins 1-3-3 <= its threshold on the admissible triples  (2050792 boxes, largest centre value 6.5113e-04)
+  [ok] TRIPLE3_ABB on bins 1-3-6 <= its threshold on the admissible triples  (5261739 boxes, largest centre value 6.5113e-04)
+  [ok] TRIPLE3_ABF on bins 1-3-7 <= its threshold on the admissible triples  (6943868 boxes, largest centre value -1.3495e-03)
+  [ok] TRIPLE3_ABB on bins 1-6-6 <= its threshold on the admissible triples  (3240397 boxes, largest centre value 6.5113e-04)
+  [ok] TRIPLE3_ABF on bins 1-6-7 <= its threshold on the admissible triples  (8345625 boxes, largest centre value -1.3495e-03)
+  [ok] TRIPLE3_AAB on bins 2-2-3 <= its threshold on the admissible triples  (2246588 boxes, largest centre value 1.3132e-03)
+  [ok] TRIPLE3_AAB on bins 2-2-6 <= its threshold on the admissible triples  (2802805 boxes, largest centre value 1.3132e-03)
+  [ok] TRIPLE3_ABB on bins 2-3-3 <= its threshold on the admissible triples  (2130096 boxes, largest centre value 6.5113e-04)
+  [ok] TRIPLE3_ABB on bins 2-3-6 <= its threshold on the admissible triples  (5380821 boxes, largest centre value 6.5113e-04)
+  [ok] TRIPLE3_ABF on bins 2-3-7 <= its threshold on the admissible triples  (7114385 boxes, largest centre value -1.3495e-03)
+  [ok] TRIPLE3_ABB on bins 2-6-6 <= its threshold on the admissible triples  (3280652 boxes, largest centre value 6.5113e-04)
+  [ok] TRIPLE3_ABF on bins 2-6-7 <= its threshold on the admissible triples  (8482850 boxes, largest centre value -1.3495e-03)
+  [ok] TRIPLE3_BBB on bins 3-3-3 <= its threshold on the admissible triples  (714636 boxes, largest centre value 1.8596e-04)
+  [ok] TRIPLE3_BBB on bins 3-3-6 <= its threshold on the admissible triples  (2655810 boxes, largest centre value 1.8596e-04)
+  [ok] TRIPLE3_BBF on bins 3-3-7 <= its threshold on the admissible triples  (1359418 boxes, largest centre value 1.4182e-04)
+  [ok] TRIPLE3_BBB on bins 3-6-6 <= its threshold on the admissible triples  (3326708 boxes, largest centre value 1.8595e-04)
+  [ok] TRIPLE3_BBF on bins 3-6-7 <= its threshold on the admissible triples  (3188063 boxes, largest centre value 1.4182e-04)
+  [ok] TRIPLE3_BFF on bins 3-7-7 <= its threshold on the admissible triples  (2174424 boxes, largest centre value 3.6623e-05)
+  [ok] TRIPLE3_BBF on bins 6-6-7 <= its threshold on the admissible triples  (1832078 boxes, largest centre value 1.4208e-04)
+  [ok] TRIPLE3_BFF on bins 6-7-7 <= its threshold on the admissible triples  (2561775 boxes, largest centre value 3.6617e-05)
+  triple boxes in all: 119953227
+  15 count vectors, 8 type-count vectors; largest bound 3.093588 at (16, 4, 3, 0, 0, 1, 3)
+  [ok] largest bound over the count vectors below 9 pi^2/8 - 8  (3.093588 < [3.1033050 +/- 4.88e-8])
+PASS: in case case27_k16f3g2a.json every packing set of 27 centres has U(Y) <= 3.093588 < 9 pi^2/8 - 8, so T(Y) > 8 [11304 s]
+exit 0 at Thu Oct 22 02:57:09 UTC 2026
