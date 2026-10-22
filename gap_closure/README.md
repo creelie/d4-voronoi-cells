@@ -11,7 +11,7 @@ and last that case, with its close-close-far triples counted, and
 twenty-seven with at most ten, then exactly eleven, twelve, thirteen and
 fourteen, centres within 2.0161. They are floating-point semidefinite programmes on sampled
 constraints. **Three of them yield certificates**, and convex combinations of
-several yield twenty-one more: the round-3 certificate of `C30/combo30p.py`, which
+several yield twenty-four more: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and fifteen combinations for twenty-seven centres, one of six
+twenty-eight; and sixteen combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -59,9 +59,16 @@ within 2.0161, exactly three beyond 2.35, none in (2.1, 2.2] and one in
 (2.2, 2.35] (`CM/case27_k16f3g2a.json`), found by `CM/c27_hull_sub.py` with
 `SUB=2,5`, which `multi_cap/combo_case_check.py` proves exactly
 (`CM/check_c27k16f3g2a.log`: U <= 3.093588 at (16, 4, 3, 0, 0, 1, 3), 120.0
-million triple boxes); together they are `prop:count27-few`, (C) at 27 with at most
+million triple boxes), and one of five for the 9 vectors with exactly
+fifteen within 2.0161, exactly three beyond 2.35, none in (2.1, 2.35] and
+at most eight in (2.0161, 2.05] (`CM/case27_k15f3g1lo8_bins.json`), found
+by `CM/c27_hull_mt.py` under five typings of the bins, 0.93 of the weight
+typing the bin (2.05, 2.1] as A, which `multi_cap/combo_mixtype_check.py`
+proves exactly (`CM/check_c27k15f3g1lo8mt.log`: U <= 3.098238 at (15, 8, 1,
+0, 0, 0, 3), 208.9 million triple boxes); together they are
+`prop:count27-few`, (C) at 27 with at most
 14 within 2.0161, or with exactly 15 within 2.0161, exactly 3 beyond 2.35
-and at least one in (2.1, 2.35], or with exactly 16 within 2.0161, exactly
+and at least one in (2.05, 2.35], or with exactly 16 within 2.0161, exactly
 3 beyond 2.35, none in (2.1, 2.2] and at least one in (2.2, 2.35]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
@@ -468,6 +475,19 @@ sampled triples within 1e-4 of each maximum, `CM/c27_triple_profile.py`,
 `CM/c27_triple_profile.log`), so counting triples by region, as
 `REGION_TRIPLES` does at twenty-eight, gains nothing there. Floating
 point, evidence only.
+Mixed one vector at a time (`CM/mix27_k15f3g1_pervector.txt`), the ten
+give about 2.9787 + 0.014 a at (15, a, 9 - a, 0, 0, 0, 3) for a = 0..8
+(3.090543 at a = 8) but 3.105044 at a = 9, where all 24 centres within 2.1
+lie within 2.05, so that one vector is what stops the whole mix. The nine
+with a <= 8 (`case27_k15f3g1lo8.json`) mix to 3.090624 under five typings,
+0.93 of the weight typing the bin (2.05, 2.1] as A (`CM/mix27_k15f3g1lo8mt.log`),
+and pass the exact check (above): 3.098238 at (15, 8, 1, 0, 0, 0, 3). For
+(15, 9, 0, 0, 0, 0, 3) a round for the four vectors with 15 or 16 within
+2.0161, 24 within 2.1 (at most one beyond 2.05) and 3 beyond 2.35
+(`case27_k15a9.json`, `c27k15a9_d10.log`, from the samples of `c27k14f3b`)
+reaches 3.10380 on its own samples, already above the level, and 5.55
+corrected; with it the single-vector mix gives 3.104398
+(`CM/mix27_k15f3g1a9.log`), so that vector stays open.
 The same search finds packings in the other open parts. With at least 15
 within 2.0161, 20 within 2.1, 21 within 2.15, 22 within 2.2 and 25 within
 2.35 (the counts of prop:C-radial when at most 2 lie beyond 2.35) the first
