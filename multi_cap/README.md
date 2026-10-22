@@ -798,11 +798,39 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               pair boxes and 630 587 792 triple boxes;
                               dense search
                               gap_closure/CM/peak2_c27k16f3g2bmt.log).
-                              The eighteen mixes for 27 together are
+                              radial_certificates/combo27_k15f2g1_d10.npz
+                              is the mixed-typing mix for the 36 vectors
+                              (15, a, b, 0, 0, 0, n7), a + b + n7 = 12,
+                              n7 <= 2, with exactly 15 within 2.0161, at
+                              most 2 beyond 2.35 and none in (2.1, 2.35]
+                              (case27_k15f2g1_bins.json, one type per
+                              bin): 7 certificates under the typings
+                              AABBBBF, AAABBBF, AAFBBBF, ABBBBBF and
+                              AABBBBB, 0.52 of the weight typing the bin
+                              (2.05, 2.1] as A and 0.47 on the fourth round
+                              for exactly 14 and at most 2 beyond 2.35;
+                              its check passes at margins 2e-6, 5e-7 and
+                              1e-6 with TRIPLE_EXTRA A2F7F7:3e-6,
+                              A2B3F7:2e-6, A1F7F7:1e-6, A1A2B3:1e-6,
+                              A2B3B3:1e-6 and 5e-7 on A1A1B3, A1A1F7,
+                              A1A2F7, A2A2B3 and B3B3B3
+                              (runs/combo27_k15f2g1_check.log; a first run
+                              of 357 minutes verified every inequality but
+                              with 2e-5 on A2B3B3 its bound was 3.103547,
+                              and the rerun of 46 minutes checked the five
+                              kinds whose extra room was lowered, the rest
+                              taken from the checkpoint
+                              runs/combo27_k15f2g1_check.ckpt: 3.102529 at
+                              (15, 0, 11, 0, 0, 0, 1) after 256 495 pair
+                              boxes and 256 390 717 triple boxes; dense
+                              search gap_closure/CM/peak2_c27k15f2g1mt.log).
+                              The nineteen mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
-                              at least one in (2.05, 2.35].
+                              at least one in (2.05, 2.35], or with exactly
+                              15 within 2.0161, at most 2 beyond 2.35 and
+                              none in (2.1, 2.35].
                               With CHECKPOINT=file in the environment the
                               result of each branch and bound on pairs or
                               triples is appended to the file as it
