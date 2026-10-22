@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and fourteen combinations for twenty-seven centres, one of six
+twenty-eight; and fifteen combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -54,9 +54,15 @@ ten for the 1868 vectors with exactly fourteen within 2.0161, at most two
 beyond 2.35 and a centre in (2.1, 2.2] (`CM/case27_k14f2g2b.json`), found by
 `CM/c27_hull_sub.py` with `SUB=2,3,4,5` (a threshold of its own for each
 combination of bins with a middle bin), which `multi_cap/combo_case_check.py`
-proves exactly; together they are `prop:count27-few`, (C) at 27 with at most
+proves exactly, and one of seven for the 15 vectors with exactly sixteen
+within 2.0161, exactly three beyond 2.35, none in (2.1, 2.2] and one in
+(2.2, 2.35] (`CM/case27_k16f3g2a.json`), found by `CM/c27_hull_sub.py` with
+`SUB=2,5`, which `multi_cap/combo_case_check.py` proves exactly
+(`CM/check_c27k16f3g2a.log`: U <= 3.093588 at (16, 4, 3, 0, 0, 1, 3), 120.0
+million triple boxes); together they are `prop:count27-few`, (C) at 27 with at most
 14 within 2.0161, or with exactly 15 within 2.0161, exactly 3 beyond 2.35
-and at least one in (2.1, 2.35]. The rest are kept so that the
+and at least one in (2.1, 2.35], or with exactly 16 within 2.0161, exactly
+3 beyond 2.35, none in (2.1, 2.2] and at least one in (2.2, 2.35]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -479,7 +485,17 @@ distance 1.999775, `CM/c27_config_search_k17mono.log`) and 10000 of seed 2
 at most 2 beyond 2.35 and 16 with 3 beyond hold real packings and need
 certificates; 17 or more may not occur. Floating point, evidence only.
 At 16 and 17 the vectors with a centre in (2.1, 2.35] give 3.106091 and
-3.113100. With the rounds for 13 and 14 added to the pool, one iteration of
+3.113100. At 16 within 2.0161 and 3 beyond 2.35 (`case27_k16f3g2.json`,
+165 vectors) each middle bin a type of its own lowers the mix to 3.103447
+at the climbed maxima, and split at 2.2 the 15 vectors with none in
+(2.1, 2.2] mix to 3.087267 and are proved (above), while the 150 with a
+centre in (2.1, 2.2] (`case27_k16f3g2b.json`) stop at 3.103284 on the
+samples and 3.103497 at the climbed maxima, 0.0002 above the level. A round
+for the 165 from the samples of `c27k14f3b` (`c27k16f3g2_d10.log`) reaches
+3.00148 on its samples and 72.85 between them; a second round from its
+samples runs (`c27k16f3g2b_d10.log`). The 9 vectors with 16 within 2.0161,
+3 beyond 2.35 and none in (2.1, 2.35] mix to 3.114348 with the bin
+(2.05, 2.1] a type of its own (floating point). With the rounds for 13 and 14 added to the pool, one iteration of
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
 and 3.163428 at 24, each worst at three beyond 2.35 (floating point, margins
 of the check included; before these two rounds the values were 3.1243,
@@ -515,8 +531,11 @@ a degree 10 round of its own on the same narrowed types
 (`case27_k15f2g1_t1.json`, from the samples of the fifth degree 10 round)
 stopped on a numerical error with the trace penalty 3e-4 and no usable
 certificate (`c27k15f2g1t_d10.log`); the retry with 1e-3 reaches 2.98886
-on its samples and 16.12364 between them (`c27k15f2g1tb_d10.log`), and a
-second round from its samples runs (`c27k15f2g1t2_d10.log`).
+on its samples and 16.12364 between them (`c27k15f2g1tb_d10.log`), and
+mixed with the pool it gets weight 0.001 and leaves the mix at 3.10746 on
+the samples (3.10855 at the climbed maxima). A second round from its
+samples (`c27k15f2g1t2_d10.log`) was stopped before it solved, to give
+the machine to the round for 16 within 2.0161.
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
 eight bins, the far range split at 2.444, the counts of row 25 of
