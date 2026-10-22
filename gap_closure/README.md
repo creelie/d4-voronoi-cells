@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and seventeen combinations for twenty-seven centres, one of six
+twenty-eight; and eighteen combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -72,12 +72,16 @@ with exactly sixteen within 2.0161, exactly three beyond 2.35, none in
 typings of the bins, 0.94 of the weight typing the bin (2.05, 2.1] as A,
 which `multi_cap/combo_mixtype_check.py` proves exactly
 (`CM/check_c27k16f3g1lo7mt.log`: U <= 3.101848 at (16, 7, 1, 0, 0, 0, 3),
-292.0 million triple boxes); together they are
+292.0 million triple boxes), and one of six for the 150 vectors with
+exactly sixteen within 2.0161, exactly three beyond 2.35 and a centre in
+(2.1, 2.2] (`CM/case27_k16f3g2b_bins.json`), found by `CM/c27_hull_mt.py`
+under three typings of the bins, 0.81 of the weight typing the bin
+(2.05, 2.1] as A, which `multi_cap/combo_mixtype_check.py` proves exactly
+(`CM/check_c27k16f3g2bmt.log`: U <= 3.101991 at (16, 7, 0, 1, 0, 0, 3),
+630.6 million triple boxes); together they are
 `prop:count27-few`, (C) at 27 with at most
-14 within 2.0161, or with exactly 15 within 2.0161, exactly 3 beyond 2.35
-and at least one in (2.05, 2.35], or with exactly 16 within 2.0161, exactly
-3 beyond 2.35, none in (2.1, 2.2] and at least one in (2.05, 2.1] or in
-(2.2, 2.35]. The rest are kept so that the
+14 within 2.0161, or with exactly 15 or exactly 16 within 2.0161, exactly 3
+beyond 2.35 and at least one in (2.05, 2.35]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -526,8 +530,8 @@ samples (`c27k16f3g2b_d10.log`) was stopped before it solved, since mixed
 typing does better: with most of the weight typing the bin (2.05, 2.1] as A
 (typings AABBBBF, AABBBFF and AAABBBF, `CM/c27_hull_mt.py`) the 150 mix to
 3.101422 at the climbed maxima, the precheck at margins 1e-6, 1e-7 and 1e-7
-gives 3.101991 (`CM/pre_c27k16f3g2bmt.log`), and their exact check runs
-(`CM/check_c27k16f3g2bmt.log`). The 9 vectors with 16 within 2.0161,
+gives 3.101991 (`CM/pre_c27k16f3g2bmt.log`), and their exact check passes
+at that value (`CM/check_c27k16f3g2bmt.log`, above). The 9 vectors with 16 within 2.0161,
 3 beyond 2.35 and none in (2.1, 2.35] mix to 3.114348 with the bin
 (2.05, 2.1] a type of its own, and look unrealisable too: with 16 within
 2.0161, 8 in (2.0161, 2.1] and 3 beyond 2.35 the best of 10000 tries leaves
@@ -585,7 +589,8 @@ above the level. The 1584 with two or more, mixed on their own, reach
 3.102613 (`CM/mix27_k15f2g2bEmt.log`), but their dense search
 (`CM/peak2_c27k15f2g2bEmt.log`) finds peaks with a far centre up to 6.8e-6
 above the mix's thresholds, which lifts them to 3.104916 with 25 vectors
-above the level; a re-mix with those peaks fed back as samples runs. The 66
+above the level; a re-mix with those peaks fed back as samples runs, at
+3.103505 after its second iteration. The 66
 split into the 6 with no centre in (2.05, 2.1] (`case27_k15f2g2bH0.json`)
 and the 30 each with one in (2.05, 2.1] and the middle centre in
 (2.1, 2.15] or in (2.15, 2.2] (`case27_k15f2g2bH4.json`,
@@ -602,11 +607,19 @@ peak within 8e-7 of the thresholds, and the exact check runs at margins
 floating point with the peaks, margins and extra room). Over the 36 with none in (2.1, 2.35] a pool
 of 14 certificates under five typings, among them AAABBBF, gives 3.099707,
 0.2 of the weight on `c27f2g1b` typed AAABBBF (`case27_k15f2g1_bins.json`);
-its dense search (`CM/peak2_c27k15f2g1mt.log`, an A2B3B3 peak 1.6e-5 above
-the samples) and exact check (`CM/check_c27k15f2g1mt.log`, margins 2e-6,
-5e-7 and 1e-6 with extra room on ten triple kinds) run. Over the 115 with
+its dense search (`CM/peak2_c27k15f2g1mt.log`) finds an A2B3B3 peak 1.6e-5
+above the samples. Its exact check (`CM/check_c27k15f2g1mt.log`, margins
+2e-6, 5e-7 and 1e-6) verifies every inequality, but with the extra room put
+on ten triple thresholds (2e-5 on A2B3B3 alone) the bound is 3.103547 at
+(15, 4, 6, 0, 0, 0, 2), above the level, so that run fails; with the extra
+room on A2B3B3, A1A2B3, A2A2B3, B3B3B3 and A1A1B3 lowered to 1e-6, 1e-6,
+5e-7, 5e-7 and 5e-7 the same thresholds give 3.102529 in floating point,
+and a rerun that checks only those five kinds again, the rest taken from
+the checkpoint, runs. Over the 115 with
 none in (2.1, 2.2] and one in (2.2, 2.35] the same pool gives 3.106653,
-and only the 12 with no centre in (2.05, 2.1] are above the level. The 103
+and only the 12 with no centre in (2.05, 2.1] are above the level; with the
+bin (2.2, 2.35] split at 2.25 the mixing programme for those 12 stays at
+3.106459 on its samples. The 103
 others, mixed on their own, reach 3.101923 (`CM/mix27_k15f2g2aYmt.log`), but
 their dense search (`CM/peak2_c27k15f2g2aYmt.log`) finds peaks with a far
 centre up to 4.9e-6 above the thresholds (3.102708 with them); re-mixed with

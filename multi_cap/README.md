@@ -780,14 +780,29 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               pair boxes and 292 020 723 triple boxes;
                               dense search
                               gap_closure/CM/peak2_c27k16f3g1lo7mt.log).
-                              The seventeen mixes for 27 together are
+                              radial_certificates/combo27_k16f3g2b_d10.npz
+                              is the mixed-typing mix for the 150 vectors
+                              with exactly 16 within 2.0161, exactly 3
+                              beyond 2.35 and a centre in (2.1, 2.2]
+                              (case27_k16f3g2b_bins.json, one type per
+                              bin): 6 certificates under the typings
+                              AABBBBF, AABBBFF and AAABBBF, 0.81 of the
+                              weight on the second round for exactly 14
+                              and 3 beyond 2.35 typed AAABBBF; its check
+                              passes at margins 1e-6, 1e-7 and 1e-7, every
+                              triple threshold above the dense-search
+                              peaks (runs/combo27_k16f3g2b_check.log, 795
+                              minutes, checkpoint
+                              runs/combo27_k16f3g2b_check.ckpt: 3.101991
+                              at (16, 7, 0, 1, 0, 0, 3) after 5 335 843
+                              pair boxes and 630 587 792 triple boxes;
+                              dense search
+                              gap_closure/CM/peak2_c27k16f3g2bmt.log).
+                              The eighteen mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
-                              within 2.0161, or with exactly 15 within
-                              2.0161, exactly 3 beyond 2.35 and at least
-                              one in (2.05, 2.35], or with exactly 16
-                              within 2.0161, exactly 3 beyond 2.35, none in
-                              (2.1, 2.2] and at least one in (2.05, 2.1] or
-                              in (2.2, 2.35].
+                              within 2.0161, or with exactly 15 or exactly
+                              16 within 2.0161, exactly 3 beyond 2.35 and
+                              at least one in (2.05, 2.35].
                               With CHECKPOINT=file in the environment the
                               result of each branch and bound on pairs or
                               triples is appended to the file as it

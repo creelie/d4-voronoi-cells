@@ -28,10 +28,8 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
 - at most twenty-three other centres lie within sqrt 6 of c;
 - at least twenty-eight lie within sqrt 6;
 - exactly twenty-seven lie within sqrt 6, at most fourteen of them within
-  2.0161, or exactly fifteen within 2.0161, exactly three beyond 2.35 and at
-  least one in (2.05, 2.35], or exactly sixteen within 2.0161, exactly three
-  beyond 2.35, none in (2.1, 2.2] and at least one in (2.05, 2.1] or in
-  (2.2, 2.35];
+  2.0161, or exactly fifteen or exactly sixteen within 2.0161, exactly three
+  beyond 2.35 and at least one in (2.05, 2.35];
 - exactly twenty-four lie within sqrt 6, on the rays of a root system, or
   the contacts contain enough of a root system;
 - no centre lies strictly between 2 + 4e-26 and sqrt 6.
