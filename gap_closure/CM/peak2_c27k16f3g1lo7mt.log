@@ -1,0 +1,2 @@
+dense search of the triple polynomials of the mixed-typing mix mix27_k16f3g1lo7mt.npz (27 centres, exactly 16 within 2.0161, exactly 3 beyond 2.35, none in (2.1, 2.35], at most 7 in (2.0161, 2.05]; 8 count vectors) on every combination of bins its count vectors use (case27_k16f3g1lo7_bins.json, 20 combinations), 2M samples and 400 ascents per combination; started Thu Oct 22 08:38:22 UTC 2026
+mixed typing: 5 groups, typings ['AABBBBF', 'AAFBBBF', 'ABBBBBF', 'AABBBBB', 'AAABBBF']
