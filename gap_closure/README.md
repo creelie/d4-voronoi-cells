@@ -458,6 +458,7 @@ killed for memory beside an exact check.
 These ten vectors look unrealisable: with 15 within 2.0161, 9 in
 (2.0161, 2.1] and 3 beyond 2.35 the best of 200 penalised minimisations
 still leaves two centres at 1.98754 (`CM/c27_config_search_k15f3g1.log`),
+and the best of 10000 tries at 1.98906 (`CM/c27_config_search_k15g1f3.log`),
 and at (15, 8, 1, 0, 0, 0, 3) at 1.97948 (`CM/c27_config_search_k15f3g1w.log`),
 while 24 within 2.08 and 3 beyond 2.35 are found within ten tries
 (`CM/c27_config_search_24f3_208.log`) and 24 within 2.06 and 3 beyond 2.35
@@ -495,7 +496,9 @@ for the 165 from the samples of `c27k14f3b` (`c27k16f3g2_d10.log`) reaches
 3.00148 on its samples and 72.85 between them; a second round from its
 samples runs (`c27k16f3g2b_d10.log`). The 9 vectors with 16 within 2.0161,
 3 beyond 2.35 and none in (2.1, 2.35] mix to 3.114348 with the bin
-(2.05, 2.1] a type of its own (floating point). With the rounds for 13 and 14 added to the pool, one iteration of
+(2.05, 2.1] a type of its own, and look unrealisable too: with 16 within
+2.0161, 8 in (2.0161, 2.1] and 3 beyond 2.35 the best of 10000 tries leaves
+two centres at 1.98290 (`CM/c27_config_search_k16g1f3.log`; floating point). With the rounds for 13 and 14 added to the pool, one iteration of
 the mix gives 3.119733 at 16 within 2.0161, 3.131219 at 18, 3.144641 at 21
 and 3.163428 at 24, each worst at three beyond 2.35 (floating point, margins
 of the check included; before these two rounds the values were 3.1243,

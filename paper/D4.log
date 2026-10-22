@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  22 OCT 2026 03:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  22 OCT 2026 03:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -995,23 +995,23 @@ Package pdftex.def Info: figures/fig_tikz_cradial.png  used on input line 8803.
 <figures/fig_tikz_radial.png, id=2609, 478.13832pt x 192.38274pt>
 File: figures/fig_tikz_radial.png Graphic file (type png)
 <use figures/fig_tikz_radial.png>
-Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 9832.
+Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 9836.
 (pdftex.def)             Requested size: 433.62001pt x 174.47264pt.
 
 [143 <./figures/fig_tikz_radial.png (PNG copy)>] [144]
 <figures/fig_tikz_levels.png, id=2663, 529.16093pt x 199.60974pt>
 File: figures/fig_tikz_levels.png Graphic file (type png)
 <use figures/fig_tikz_levels.png>
-Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 10001.
+Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 10005.
 
 (pdftex.def)             Requested size: 433.62001pt x 163.56833pt.
  [145] [146 <./figures/fig_tikz_levels.png (PNG copy)>] [147] [148] [149] [150]
  [151] [152] [153]
 [154] [155] [156]
-<figures/fig_tikz_octant.png, id=3073, 384.62094pt x 184.57758pt>
+<figures/fig_tikz_octant.png, id=3070, 384.62094pt x 184.57758pt>
 File: figures/fig_tikz_octant.png Graphic file (type png)
 <use figures/fig_tikz_octant.png>
-Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 10793.
+Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 10797.
 
 (pdftex.def)             Requested size: 433.62001pt x 208.10551pt.
  [157] [158 <./figures/fig_tikz_octant.png (PNG copy)>]
@@ -1019,31 +1019,31 @@ Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 10793.
 <figures/fig_c_arcs.png, id=3162, 2193.19376pt x 1332.98pt>
 File: figures/fig_c_arcs.png Graphic file (type png)
 <use figures/fig_c_arcs.png>
-Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 11155.
+Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 11159.
 (pdftex.def)             Requested size: 433.62001pt x 263.54033pt.
  [162] [163 <./figures/fig_c_arcs.png (PNG copy)>] [164]
 [165] [166] [167] [168] [169]
-<figures/fig_chain_plateau.png, id=3311, 2617.78pt x 1674.255pt>
+<figures/fig_chain_plateau.png, id=3310, 2617.78pt x 1674.255pt>
 File: figures/fig_chain_plateau.png Graphic file (type png)
 <use figures/fig_chain_plateau.png>
 Package pdftex.def Info: figures/fig_chain_plateau.png  used on input line 1173
-3.
+7.
 (pdftex.def)             Requested size: 429.28618pt x 274.55405pt.
-<figures/fig_dense_growth.png, id=3317, 2280.52pt x 1250.6725pt>
+<figures/fig_dense_growth.png, id=3316, 2280.52pt x 1250.6725pt>
 File: figures/fig_dense_growth.png Graphic file (type png)
 <use figures/fig_dense_growth.png>
-Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 11761
+Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 11765
 .
 (pdftex.def)             Requested size: 429.28618pt x 235.41653pt.
  [170] [171 <./figures/fig_chain_plateau.png (PNG copy)>] [172 <./figures/fig_d
 ense_growth.png (PNG copy)>] [173] [174] [175]
-[176] [177]
-<figures/fig_c_swap.png, id=3470, 2981.1375pt x 1180.41pt>
+[176] [177] [178]
+<figures/fig_c_swap.png, id=3474, 2981.1375pt x 1180.41pt>
 File: figures/fig_c_swap.png Graphic file (type png)
 <use figures/fig_c_swap.png>
-Package pdftex.def Info: figures/fig_c_swap.png  used on input line 12331.
+Package pdftex.def Info: figures/fig_c_swap.png  used on input line 12335.
 (pdftex.def)             Requested size: 433.62001pt x 171.6864pt.
- [178] [179 <./figures/fig_c_swap.png>] [180] [181] [182] [183]
+ [179 <./figures/fig_c_swap.png>] [180] [181] [182] [183]
 [184] [185] [186] [187] [188] [189] [190] [191] (./D4.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1079,7 +1079,7 @@ ts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb>
 are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on D4.pdf (191 pages, 21333846 bytes).
+Output written on D4.pdf (191 pages, 21334707 bytes).
 PDF statistics:
  4033 PDF objects out of 4296 (max. 8388607)
  3685 compressed objects within 37 object streams
