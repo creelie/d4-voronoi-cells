@@ -929,6 +929,30 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               432 985 pair boxes and 337 743 310 triple
                               boxes; dense search
                               gap_closure/CM/peak2_c27k16f2G1bmmt.log).
+                              radial_certificates/combo27_k15f2g2aY_d10.npz
+                              is the mixed-typing mix for the 103 vectors
+                              (15, a, b, 0, 0, e, n7), b >= 1, e >= 1,
+                              n7 <= 2: exactly 15 within 2.0161, at most 2
+                              beyond 2.35, none in (2.1, 2.2] and at least
+                              one in each of (2.05, 2.1] and (2.2, 2.35]
+                              (case27_k15f2g2aY_bins.json); 6 certificates
+                              under the typings AABBBBF, AABBBFF, AAABBBF,
+                              AAABBFF and AABBBBB, 0.42 of the weight on
+                              the round c27k15, 0.68 typing the bin
+                              (2.05, 2.1] as A and 0.45 typing (2.2, 2.35]
+                              as F (3.102697, mixed with the dense-search
+                              peaks of a first mix fed back); its check
+                              passes at margins 5e-7, 5e-8 and 1e-7 with
+                              TRIPLE_EXTRA B3B6F7:1e-6,B6F7F7:4e-7,
+                              A1B3B6:4e-7,A2B3B6:4e-7,A1A1F7:1.5e-7,
+                              A1A2F7:1.5e-7,A2A2F7:1.5e-7,A1F7F7:1e-7
+                              (runs/combo27_k15f2g2aY_check.log, resumed
+                              after a restart of the machine from the
+                              checkpoint runs/combo27_k15f2g2aY_check.ckpt:
+                              3.103081 at (15, 8, 1, 0, 0, 1, 2) after
+                              7 585 532 pair boxes and 653 692 639 triple
+                              boxes; dense search
+                              gap_closure/CM/peak2_c27k15f2g2aYmt2.log).
                               radial_certificates/combo27_k15f2g2aX3_d10.npz
                               is the mixed-typing mix for the 6 vectors
                               (15, a, 0, 0, 0, e, n7), e >= 3, n7 <= 2:
@@ -952,7 +976,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               runs/combo27_k15f2g2aX3_check.ckpt: 3.102002
                               at (15, 7, 0, 0, 0, 3, 2) after 3 558 224 pair
                               boxes and 383 194 626 triple boxes).
-                              The twenty-five mixes for 27 together are
+                              The twenty-six mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
@@ -965,8 +989,9 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               2.0161, at most 2 beyond 2.35, none in
                               (2.2, 2.35] and at most one in (2.1, 2.2],
                               or with exactly 15 within 2.0161, at most 2
-                              beyond 2.35, none in (2.05, 2.2] and at
-                              least 3 in (2.2, 2.35],
+                              beyond 2.35, none in (2.1, 2.2], at least
+                              one in (2.2, 2.35] and, if none in
+                              (2.05, 2.1], at least 3 in (2.2, 2.35],
                               or with exactly 16 within 2.0161, at most 2
                               beyond 2.35, none in (2.1, 2.35] and, if 2
                               lie beyond 2.35, at least one in each of

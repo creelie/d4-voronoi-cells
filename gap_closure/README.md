@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and twenty-five combinations for twenty-seven centres, one of six
+twenty-eight; and twenty-six combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -113,7 +113,15 @@ least one in each of (2.0161, 2.05] and (2.05, 2.1]
 typings, 0.66 of the weight typing the bin (2.05, 2.1] as A, which
 `multi_cap/combo_mixtype_check.py` proves exactly
 (`CM/check_c27k16f2G1bmmt.log`: U <= 3.102229 at (16, 8, 1, 0, 0, 0, 2),
-337.7 million triple boxes), and one of four for the 6 vectors with exactly
+337.7 million triple boxes), one of six for the 103 vectors with exactly
+fifteen within 2.0161, at most two beyond 2.35, none in (2.1, 2.2] and at
+least one in each of (2.05, 2.1] and (2.2, 2.35]
+(`CM/case27_k15f2g2aY_bins.json`), found by `CM/c27_hull_mt.py` under five
+typings with the dense-search peaks of a first mix fed back, 0.68 of the
+weight typing the bin (2.05, 2.1] as A and 0.45 typing (2.2, 2.35] as F,
+which `multi_cap/combo_mixtype_check.py` proves exactly
+(`CM/check_c27k15f2g2aYmt2.log`: U <= 3.103081 at (15, 8, 1, 0, 0, 1, 2),
+653.7 million triple boxes), and one of four for the 6 vectors with exactly
 fifteen within 2.0161, at most two beyond 2.35, none in (2.05, 2.2] and at
 least three in (2.2, 2.35] (`CM/case27_k15f2g2aX3_bins.json`), found by
 `CM/c27_hull_mt.py` under five typings, 0.14 of the weight typing the bin
@@ -124,8 +132,8 @@ least three in (2.2, 2.35] (`CM/case27_k15f2g2aX3_bins.json`), found by
 14 within 2.0161, or with exactly 15 or exactly 16 within 2.0161, exactly 3
 beyond 2.35 and at least one in (2.05, 2.35], or with exactly 15 within
 2.0161, at most 2 beyond 2.35 and either none in (2.2, 2.35] and at most
-one in (2.1, 2.2], or none in (2.05, 2.2] and at least 3 in (2.2, 2.35],
-or with exactly 16 within 2.0161, at most 2 beyond 2.35, none
+one in (2.1, 2.2], or none in (2.1, 2.2], at least one in (2.2, 2.35] and,
+if none in (2.05, 2.1], at least 3 in (2.2, 2.35], or with exactly 16 within 2.0161, at most 2 beyond 2.35, none
 in (2.1, 2.35] and, if 2 lie beyond 2.35, at least one in each of
 (2.0161, 2.05] and (2.05, 2.1]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
@@ -705,9 +713,12 @@ their dense search (`CM/peak2_c27k15f2g2aYmt.log`) finds peaks with a far
 centre up to 4.9e-6 above the thresholds (3.102708 with them); re-mixed with
 those peaks fed back they reach 3.102697 (`CM/mix27_k15f2g2aYmt2.log`), the
 dense search of the re-mix (`CM/peak2_c27k15f2g2aYmt2.log`) finds every peak
-within 8.4e-7 of the thresholds, and the exact check runs at margins 5e-7,
-5e-8 and 1e-7 (`CM/check_c27k15f2g2aYmt2.log`, about 3.103077 in floating
-point with the peaks, margins and extra room). At 16 within 2.0161, 3
+within 8.4e-7 of the thresholds, and the exact check at margins 5e-7, 5e-8
+and 1e-7, with extra room on eight triple kinds (about 3.103077 in floating
+point with the peaks, margins and extra room), passes after a container
+restart, resumed from its checkpoint (`CM/check_c27k15f2g2aYmt2.log`:
+U <= 3.103081 at (15, 8, 1, 0, 0, 1, 2), 7 585 532 pair boxes, 1367 bin
+intervals, 653 692 639 triple boxes; copy `multi_cap/runs/combo27_k15f2g2aY_check.log`). At 16 within 2.0161, 3
 beyond 2.35 and none in (2.1, 2.35], the 8 vectors with at most 7 in
 (2.0161, 2.05] (`case27_k16f3g1lo7.json`) mix to 3.099519, their dense
 search (`CM/peak2_c27k16f3g1lo7mt.log`) puts every peak within 1.0e-6 of
