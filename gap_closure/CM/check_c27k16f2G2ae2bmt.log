@@ -1,0 +1,8 @@
+exact check of the mixed-typing combination mix27_k16f2G2ae2mt.npz (27 centres, exactly 16 within 2.0161, at most 2 beyond 2.35, none in (2.1, 2.2], exactly two in (2.05, 2.1] and at least two in (2.2, 2.35]: 9 count vectors; case27_k16f2G2ae2b_bins.json, one type per bin) with multi_cap/combo_mixtype_check.py; mixed with c27_hull_mt.py (scratchpad k16/scout_part.sh) for the 12 vectors with exactly two in (2.05, 2.1] and at least one in (2.2, 2.35], 3.100707 in floating point on these 9 at margins 2e-7/2e-8, about 3.102292 with the dense-search peaks (peak2_c27k16f2G2ae2bmt.log), the margins and the extra room below; margins pairs 1e-6, triples 1e-7, bins 1e-7, TRIPLE_EXTRA A2F7F7:3e-6,A1F7F7:8e-7,B3B6F7:1.5e-6,A2B6F7:7e-7,A1B3F7:6e-7,A2B3F7:6e-7,B6B6F7:6e-7,A1B6F7:7e-7,A2B6B6:3e-7,A1B6B6:4e-7,B6B6B6:3e-7,B3B6B6:3e-7, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k16f2G2ae2bmt.ckpt; started Fri Oct 23 04:45:41 UTC 2026
+mixed typing: 4 groups, typings ['AABBBBF', 'AABBBFF', 'AAABBBF', 'AAABBFF']
+statement (C) at 27 centres, case case27_k16f2G2ae2b_bins.json: combined certificate mix27_k16f2G2ae2mt.npz, two-point degree 12/4, three-point degree 10; 9 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 57.912966269, float t 57.912966268)
+  [ok] three-point blocks positive definite (exact LDL^T)  (172 blocks)
+  point terms: {'A1': '0.416004', 'A2': '0.416004', 'B3': '0.315016', 'B4': '0.165586', 'B5': '0.165586', 'B6': '0.129378', 'F7': '0.129896'}
+  pair A1A1: float largest K + PAIR3 - Pi 2.021743e-02 (file c2 2.021744e-02); threshold 2.021844e-02
