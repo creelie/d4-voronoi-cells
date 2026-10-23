@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and twenty-three combinations for twenty-seven centres, one of six
+twenty-eight; and twenty-four combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -106,13 +106,21 @@ exactly sixteen within 2.0161, at most one beyond 2.35 and none in
 under five typings, 0.50 of the weight typing the bin (2.05, 2.1] as A,
 which `multi_cap/combo_mixtype_check.py` proves exactly
 (`CM/check_c27k16f2G1amt.log`: U <= 3.102925 at (16, 0, 10, 0, 0, 0, 1),
-254.0 million triple boxes); together they are
+254.0 million triple boxes), and one of six for the 8 vectors with exactly
+sixteen within 2.0161, exactly two beyond 2.35, none in (2.1, 2.35] and at
+least one in each of (2.0161, 2.05] and (2.05, 2.1]
+(`CM/case27_k16f2G1bm_bins.json`), found by `CM/c27_hull_mt.py` under five
+typings, 0.66 of the weight typing the bin (2.05, 2.1] as A, which
+`multi_cap/combo_mixtype_check.py` proves exactly
+(`CM/check_c27k16f2G1bmmt.log`: U <= 3.102229 at (16, 8, 1, 0, 0, 0, 2),
+337.7 million triple boxes); together they are
 `prop:count27-few`, (C) at 27 with at most
 14 within 2.0161, or with exactly 15 or exactly 16 within 2.0161, exactly 3
 beyond 2.35 and at least one in (2.05, 2.35], or with exactly 15 within
 2.0161, at most 2 beyond 2.35, none in (2.2, 2.35] and at most one in
-(2.1, 2.2], or with exactly 16 within 2.0161, at most 1 beyond 2.35 and
-none in (2.1, 2.35]. The rest are kept so that the
+(2.1, 2.2], or with exactly 16 within 2.0161, at most 2 beyond 2.35, none
+in (2.1, 2.35] and, if 2 lie beyond 2.35, at least one in each of
+(2.0161, 2.05] and (2.05, 2.1]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -705,8 +713,9 @@ and the 8 with two beyond 2.35 and neither all nine middle centres in
 3.101333; the 23 pass their exact check (`CM/check_c27k16f2G1amt.log`:
 U <= 3.102925 at (16, 0, 10, 0, 0, 0, 1), 351 minutes, after a first run
 whose extra room counted the gap of each peak twice and gave 3.104441),
-and the exact check of the second runs (`CM/check_c27k16f2G1bmmt.log`,
-3.102229 in floating point with its own thresholds); (16, 0, 9, 0, 0, 0, 2) and
+and so do the 8 (`CM/check_c27k16f2G1bmmt.log`: U <= 3.102229 at
+(16, 8, 1, 0, 0, 0, 2), resumed from its checkpoint after a restart of the
+machine); (16, 0, 9, 0, 0, 0, 2) and
 (16, 9, 0, 0, 0, 0, 2), with 25 centres within 2.1, give 3.104116 and
 3.103832 and are open. With exactly one centre in (2.1, 2.2] and none in
 (2.2, 2.35] the 60 vectors give 3.107876, and per vector only the 24 with
@@ -714,8 +723,13 @@ at most three in (2.05, 2.1] are above the level; the 36 others
 (`CM/case27_k16f2Hn3.json`) mix to 3.092122 and their exact check runs
 (`CM/check_c27k16f2Hn3mt.log`); a mix for the 18 with one to three in
 (2.05, 2.1] gives 3.103291, and at most 3.099892 on the 12 with two or
-three (`CM/case27_k16f2Hm2.json`), whose dense search runs
-(`CM/peak2_c27k16f2Hm2mt.log`). With none in (2.1, 2.2] and one or more in
+three (`CM/case27_k16f2Hm2.json`), whose exact check runs
+(`CM/check_c27k16f2Hm2mt.log`, about 3.101345 with the peaks of its dense
+search `CM/peak2_c27k16f2Hm2mt.log`, the margins and extra room); the 6
+with exactly one (`CM/case27_k16f2Hn1.json`) mix to 3.102636, but to
+3.104253 with the peaks of their dense search
+(`CM/peak2_c27k16f2Hn1mt.log`) and the margins, so they are mixed again
+with those peaks. With none in (2.1, 2.2] and one or more in
 (2.2, 2.35] the 103 vectors give 3.111974, each centre in (2.05, 2.1]
 lowering the bound by about 0.003; a mix for the 79 with at least two in
 (2.05, 2.1] gives 3.103361, and 3.101372 on the 67 with at least three
