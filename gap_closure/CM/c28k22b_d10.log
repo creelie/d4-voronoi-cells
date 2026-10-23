@@ -1,0 +1,17 @@
+28 with exactly 22 centres within 2.0161 (case28_k22.json), three-point degree 10 with the trace penalty TRACE_REG=3e-4, two more rounds of refinement of the 22-close certificate, from its samples (RESUME=c28k22_d10_r1.npz, pruned to KEEP_P=6000 pair and KEEP_T=3000 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3.  The first round gave 3.09890 on its samples (corrected 3.13908), but the mix over 39 certificates with it gives 3.105272 over k <= 22, so the certificate's own samples miss its maxima by about 0.006.  Started Mon Oct 12 13:10:41 UTC 2026
+resumed from c28k22_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7788 variables, 107053 inequalities, 7389 psd rows in 56 cones, 76494753 nonzeros [34 s to build]
+   25 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.09910 (target 3.10330), corrected <= 3.11819  [6502 s]
+   viol: AA 1.8e-08, AB 1.1e-08, AF 1.0e-08, BB 2.2e-07, BF 3.8e-07, FF 2.3e-10, AAA 1.2e-06, AAB 9.2e-07, AAF 1.2e-05, ABB 3.0e-06, ABF 1.9e-05, AFF 1.5e-05, BBB -8.4e-07, BBF 3.1e-06, BFF 6.5e-06, FFF 5.0e-07
+   c2: {'AA': -0.046141, 'AB': -0.019291, 'AF': -0.000325, 'BB': 0.012777, 'BF': 0.025322, 'FF': 0.03597}
+   c3: {'AAA': 0.0042252, 'AAB': 0.0032323, 'AAF': 0.0023769, 'ABB': 0.0019821, 'ABF': 0.0013664, 'AFF': 0.0007588, 'BBB': 0.0008275, 'BBF': 0.000467, 'BFF': 0.0001862, 'FFF': 0.0021462}
+   direct: 7788 variables, 129678 inequalities, 7389 psd rows in 56 cones, 93530937 nonzeros [40 s to build]
+   25 type-count vectors
+d3=10 round 2: optimal_inaccurate  bound 3.09911 (target 3.10330), corrected <= 3.10373  [8025 s]
+   viol: AA 5.9e-09, AB 4.6e-10, AF 9.8e-09, BB -4.8e-09, BF -1.0e-08, FF -1.2e-10, AAA 8.1e-07, AAB 7.9e-07, AAF 1.8e-06, ABB 2.0e-06, ABF 5.1e-06, AFF 2.9e-06, BBB -5.0e-06, BBF 5.2e-07, BFF 4.2e-06, FFF 3.4e-08
+   c2: {'AA': -0.056875, 'AB': -0.030338, 'AF': -0.011414, 'BB': 0.001256, 'BF': 0.013538, 'FF': 0.024381}
+   c3: {'AAA': 0.0041745, 'AAB': 0.0031886, 'AAF': 0.0023372, 'ABB': 0.0019542, 'ABF': 0.0013535, 'AFF': 0.0007429, 'BBB': 0.000829, 'BBF': 0.0004719, 'BFF': 0.0001851, 'FFF': 0.0021047}
+exit 0 at Mon Oct 12 17:13:23 UTC 2026

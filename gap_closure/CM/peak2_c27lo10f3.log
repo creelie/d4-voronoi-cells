@@ -1,0 +1,12 @@
+AAA: sampled max 3.678863215e-03 on 2.1M triples; ascent from 400 starts 3.678893880e-03 at [-0.793012 -0.793012  0.508077] [45 s]
+AAB: sampled max 2.559340093e-03 on 2.1M triples; ascent from 400 starts 2.559433878e-03 at [ 0.509226 -0.807109  0.028182] [81 s]
+AAF: sampled max 2.387353527e-03 on 2.1M triples; ascent from 400 starts 2.387979603e-03 at [-0.108097  0.607353  0.607353] [122 s]
+ABB: sampled max 1.541723197e-03 on 2.1M triples; ascent from 400 starts 1.542437889e-03 at [-0.819283  0.594188 -0.794364] [160 s]
+ABF: sampled max 1.449576407e-03 on 2.1M triples; ascent from 400 starts 1.449616236e-03 at [-0.102909  0.589089  0.619282] [197 s]
+AFF: sampled max 1.291261727e-03 on 2.1M triples; ascent from 400 starts 1.291678264e-03 at [-0.912871 -0.912871  0.666667] [233 s]
+BBB: sampled max 6.248057136e-04 on 2.1M triples; ascent from 400 starts 6.248143891e-04 at [-0.63008  0.61178 -0.23055] [271 s]
+BBF: sampled max 5.993330812e-04 on 2.1M triples; ascent from 400 starts 5.994203728e-04 at [-0.651402 -0.73262   0.011689] [316 s]
+BFF: sampled max 5.413972082e-04 on 2.1M triples; ascent from 400 starts 5.418070607e-04 at [-0.722957  0.032989  0.666667] [360 s]
+FFF: sampled max 6.065637650e-04 on 2.1M triples; ascent from 400 starts 6.066115354e-04 at [ 0.123763  0.666667 -0.657117] [414 s]
+exit 0
+stored bound 3.098631; with the dense triple maxima 3.098724 at (10, 10, 4, 0, 0, 0, 3)

@@ -52,13 +52,16 @@ BINS = [(t, _num(a), _num(b)) for t, a, b in CASE['bins']]
 
 def _counts():
     """all count vectors over BINS with total M meeting the case constraints:
-    each constraint [bins, lo, hi] bounds the number of points in those bins."""
+    each constraint [bins, lo, hi] bounds the number of points in those bins; a vector
+    that meets every constraint of one of the sets in CASE['exclude'] is left out."""
     M, nb = CASE['M'], len(BINS)
     out = []
     def rec(prefix, left):
         if len(prefix) == nb - 1:
             v = prefix + [left]
-            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']):
+            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']) and \
+                    not any(all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in X)
+                            for X in CASE.get('exclude', [])):
                 out.append(tuple(v))
             return
         for k in range(left + 1):
@@ -351,7 +354,8 @@ def main():
         for cb in tsamp:
             if 't_' + ''.join(cb) in sv:
                 tsamp[cb] = sv['t_' + ''.join(cb)]
-        L0 = T3.Layout(len(TYPES), d3)
+        # the layout of the resumed certificate, which may have another degree than this run
+        L0 = T3.Layout(len(TYPES), {2052: 6, 4098: 8, 7188: 10, 11538: 12}.get(len(sv['x3']), d3))
         c2keys = list(itertools.combinations_with_replacement(TYPES, 2))
         c3keys = [cb for cb in itertools.combinations_with_replacement(TYPES, 3)
                   if not all(Ntriple(tcounts(nb), list(cb)) == 0 for nb in COUNTS)]
