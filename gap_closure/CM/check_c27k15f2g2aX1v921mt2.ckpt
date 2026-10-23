@@ -1,0 +1,3 @@
+{"key": "5985a623b1760ba888bf53a41aca4d437ac71cd0a6393c4938c30efb6ec46bfe", "label": "K + PAIR3_A1A2 <= Pi + c2 on the admissible pairs", "result": [true, "108057 boxes closed, 85313 set aside, Pi in Arb at 108031 corners"], "when": "2026-10-23 12:32:39 UTC"}
+{"key": "9a0c096713ef37f3d0681a6fe2997bd35463b30267cff4640c81c1a90be83128", "label": "K + PAIR3_A1B6 <= Pi + c2 on the admissible pairs", "result": [true, "7661 boxes closed, 7727 set aside, Pi in Arb at 17 corners"], "when": "2026-10-23 12:33:19 UTC"}
+{"key": "98732ac0fec561ee12d3e99e26c189a4d29383861b237e166b37bb4cef721232", "label": "K + PAIR3_A1F7 <= Pi + c2 on the admissible pairs", "result": [true, "6975 boxes closed, 6800 set aside, Pi in Arb at 0 corners"], "when": "2026-10-23 12:33:58 UTC"}
