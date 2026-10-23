@@ -886,7 +886,29 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               pair boxes and 436 542 789 triple boxes;
                               dense search
                               gap_closure/CM/peak2_c27k15f2g2bH0mt2.log).
-                              The twenty-two mixes for 27 together are
+                              radial_certificates/combo27_k16f2G1a_d10.npz
+                              is the mixed-typing mix for the 23 vectors
+                              (16, a, b, 0, 0, 0, n7), a + b + n7 = 11,
+                              n7 <= 1: exactly 16 within 2.0161, at most 1
+                              beyond 2.35 and none in (2.1, 2.35]
+                              (case27_k16f2G1a_bins.json); 6 certificates
+                              under five typings (AABBBBF, AAABBBF,
+                              AAFBBBF, ABBBBBF, AABBBBB), 0.60 of the
+                              weight on the round c27k14f2d and 0.50
+                              typing the bin (2.05, 2.1] as A (3.101015);
+                              its check passes at margins 1e-6, 5e-8 and
+                              1e-7 with no TRIPLE_EXTRA
+                              (runs/combo27_k16f2G1a_check.log; a first
+                              run that raised four triple thresholds by
+                              the gap of their dense-search peaks over the
+                              mix constants was stopped, its bound 3.104441
+                              counting each gap twice, and the rerun of 351
+                              minutes took the pairs from the checkpoint
+                              runs/combo27_k16f2G1a_check.ckpt: 3.102925 at
+                              (16, 0, 10, 0, 0, 0, 1) after 265 329 pair
+                              boxes and 253 960 645 triple boxes; dense
+                              search gap_closure/CM/peak2_c27k16f2G1amt.log).
+                              The twenty-three mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
@@ -897,7 +919,9 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               exactly one in (2.1, 2.35], lying in
                               (2.1, 2.2]; that is, with exactly 15 within
                               2.0161, at most 2 beyond 2.35, none in
-                              (2.2, 2.35] and at most one in (2.1, 2.2].
+                              (2.2, 2.35] and at most one in (2.1, 2.2],
+                              or with exactly 16 within 2.0161, at most 1
+                              beyond 2.35 and none in (2.1, 2.35].
                               With CHECKPOINT=file in the environment the
                               result of each branch and bound on pairs or
                               triples is appended to the file as it
