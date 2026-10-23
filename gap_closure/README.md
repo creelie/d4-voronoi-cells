@@ -11,7 +11,7 @@ and last that case, with its close-close-far triples counted, and
 twenty-seven with at most ten, then exactly eleven, twelve, thirteen and
 fourteen, centres within 2.0161. They are floating-point semidefinite programmes on sampled
 constraints. **Three of them yield certificates**, and convex combinations of
-several yield twenty-nine more: the round-3 certificate of `C30/combo30p.py`, which
+several yield thirty more: the round-3 certificate of `C30/combo30p.py`, which
 `multi_cap/combo30_check.py` proves exactly and which is the fifth case of
 `thm:count30`, and the certificates of the runs `c29r4` and `c28lo13b` of
 `CM/combo_direct.py`, which `multi_cap/combo_case_check.py` proves exactly and
@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and twenty-one combinations for twenty-seven centres, one of six
+twenty-eight; and twenty-two combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -93,13 +93,19 @@ typings of the bins, 0.67 of the weight typing the bin (2.05, 2.1] as A,
 which `multi_cap/combo_mixtype_check.py` proves exactly
 (`CM/check_c27k15f2g2bH4mt.log`: U <= 3.099453 at (15, 8, 1, 1, 0, 0, 2),
 511.1 million triple boxes; `CM/check_c27k15f2g2bH5mt.log`: U <= 3.099138
-at (15, 8, 1, 0, 1, 0, 2), 500.8 million triple boxes); together they are
+at (15, 8, 1, 0, 1, 0, 2), 500.8 million triple boxes), and one of eight
+for the 6 vectors with exactly fifteen within 2.0161, at most two beyond
+2.35, none in (2.05, 2.1] and exactly one in (2.1, 2.35], lying in
+(2.1, 2.2] (`CM/case27_k15f2g2bH0_bins.json`), found by `CM/c27_hull_mt.py`
+under the same typings with the peaks of a dense search added to the
+samples, which `multi_cap/combo_mixtype_check.py` proves exactly
+(`CM/check_c27k15f2g2bH0mt2.log`: U <= 3.102737 at (15, 9, 0, 0, 1, 0, 2),
+436.5 million triple boxes); together they are
 `prop:count27-few`, (C) at 27 with at most
 14 within 2.0161, or with exactly 15 or exactly 16 within 2.0161, exactly 3
 beyond 2.35 and at least one in (2.05, 2.35], or with exactly 15 within
-2.0161, at most 2 beyond 2.35 and none in (2.1, 2.35], or with exactly 15
-within 2.0161, at most 2 beyond 2.35, at least one in (2.05, 2.1] and
-exactly one in (2.1, 2.35], lying in (2.1, 2.2]. The rest are kept so that the
+2.0161, at most 2 beyond 2.35, none in (2.2, 2.35] and at most one in
+(2.1, 2.2]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -638,9 +644,10 @@ re-mix (`CM/peak2_c27k15f2g2bH0mt2.log`) finds every peak within 8e-7 of
 the thresholds, and the exact check at margins 5e-7, 5e-8 and 1e-7
 (`CM/check_c27k15f2g2bH0mt2.log`) verified every inequality but one: the
 triple kind A2B4F7, whose dense-search peak lies 2.6e-7 above its threshold
-and which had no extra room, fails (value 1.532870e-3 above 1.532793e-3).
-The rerun raises A2B4F7 by 4e-7 and takes the other pieces from the
-checkpoint (about 3.102736 in floating point). Over the 36 with none in (2.1, 2.35] a pool
+and which had no extra room, failed (value 1.532870e-3 above 1.532793e-3).
+The rerun raises A2B4F7 by 4e-7, takes the other pieces from the
+checkpoint and passes (U <= 3.102737 at (15, 9, 0, 0, 1, 0, 2), above), so
+all 66 vectors with exactly one centre in (2.1, 2.35] are proved. Over the 36 with none in (2.1, 2.35] a pool
 of 14 certificates under five typings, among them AAABBBF, gives 3.099707,
 0.2 of the weight on `c27f2g1b` typed AAABBBF (`case27_k15f2g1_bins.json`);
 its dense search (`CM/peak2_c27k15f2g1mt.log`) finds an A2B3B3 peak 1.6e-5

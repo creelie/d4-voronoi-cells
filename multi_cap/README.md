@@ -858,16 +858,46 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               boxes and 500 788 974 triple boxes; dense
                               searches gap_closure/CM/peak2_c27k15f2g2bH4mt.log
                               and peak2_c27k15f2g2bH5mt.log).
-                              The twenty-one mixes for 27 together are
+                              radial_certificates/combo27_k15f2g2bH0_d10.npz
+                              is the mixed-typing mix for the 6 vectors
+                              (15, a, 0, 1, 0, 0, n7) and
+                              (15, a, 0, 0, 1, 0, n7), a + n7 = 11,
+                              n7 <= 2: exactly 15 within 2.0161, at most 2
+                              beyond 2.35, none in (2.05, 2.1] and exactly
+                              one in (2.1, 2.35], lying in (2.1, 2.2]
+                              (case27_k15f2g2bH0_bins.json), so 24 or more
+                              within 2.05; 8 certificates under the same
+                              five typings, 0.39 of the weight on the
+                              rounds c27k15f2g2b and c27k15f2g2b2, mixed
+                              with the dense-search peaks of a first mix
+                              added to the samples (3.102414); its check
+                              passes at margins 5e-7, 5e-8 and 1e-7 with
+                              TRIPLE_EXTRA A2B5F7:1e-6, A1B5F7:8e-7,
+                              B4F7F7:5e-7, A2B4F7:4e-7, A1B4F7:3e-7 and
+                              2e-7 on A1A2B4, A2A2B4, A2A2B5 and A1A2B5
+                              (runs/combo27_k15f2g2bH0_check.log; the first
+                              run of 638 minutes verified every inequality
+                              but A2B4F7, whose threshold had no extra room
+                              and lay below its dense-search peak, and the
+                              rerun of 34 minutes checked A2B4F7 again with
+                              4e-7 more, the rest taken from the checkpoint
+                              runs/combo27_k15f2g2bH0_check.ckpt: 3.102737
+                              at (15, 9, 0, 0, 1, 0, 2) after 1 637 400
+                              pair boxes and 436 542 789 triple boxes;
+                              dense search
+                              gap_closure/CM/peak2_c27k15f2g2bH0mt2.log).
+                              The twenty-two mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
                               at least one in (2.05, 2.35], or with exactly
                               15 within 2.0161, at most 2 beyond 2.35 and
                               none in (2.1, 2.35], or with exactly 15
-                              within 2.0161, at most 2 beyond 2.35, at
-                              least one in (2.05, 2.1] and exactly one in
-                              (2.1, 2.35], lying in (2.1, 2.2].
+                              within 2.0161, at most 2 beyond 2.35 and
+                              exactly one in (2.1, 2.35], lying in
+                              (2.1, 2.2]; that is, with exactly 15 within
+                              2.0161, at most 2 beyond 2.35, none in
+                              (2.2, 2.35] and at most one in (2.1, 2.2].
                               With CHECKPOINT=file in the environment the
                               result of each branch and bound on pairs or
                               triples is appended to the file as it
