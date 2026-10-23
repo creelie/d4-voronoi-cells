@@ -945,9 +945,10 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (gap_closure/CM/peak2_c27k15f2g2aX3mt.log),
                               A1B6B6 by 6e-7 after a first run met a value
                               above its threshold at a narrow peak the
-                              dense search had missed (runs/
-                              combo27_k15f2g2aX3_check.log, resumed after a
-                              restart of the machine from the checkpoint
+                              dense search had missed
+                              (runs/combo27_k15f2g2aX3_check.log, resumed
+                              after a restart of the machine from the
+                              checkpoint
                               runs/combo27_k15f2g2aX3_check.ckpt: 3.102002
                               at (15, 7, 0, 0, 0, 3, 2) after 3 558 224 pair
                               boxes and 383 194 626 triple boxes).
