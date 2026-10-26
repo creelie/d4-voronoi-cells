@@ -976,7 +976,45 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               runs/combo27_k15f2g2aX3_check.ckpt: 3.102002
                               at (15, 7, 0, 0, 0, 3, 2) after 3 558 224 pair
                               boxes and 383 194 626 triple boxes).
-                              The twenty-six mixes for 27 together are
+                              radial_certificates/combo27_k16f2Hn3_d10.npz
+                              is the mixed-typing mix for the 36 vectors
+                              (16, a, b, n4, n5, 0, n7), n4 + n5 = 1,
+                              b >= 4, n7 <= 2: exactly 16 within 2.0161, at
+                              most 2 beyond 2.35, exactly one in
+                              (2.1, 2.2], none in (2.2, 2.35] and at least
+                              4 in (2.05, 2.1] (case27_k16f2Hn3_bins.json);
+                              8 certificates under the typings AABBBBF,
+                              AABFFBF, AABBBFF, AAABBBF and AAABBFF, 0.54
+                              of the weight on the round c27f2g2b, 0.65
+                              typing the bin (2.05, 2.1] as A and 0.13
+                              typing (2.1, 2.2] as F (3.092122); its check
+                              passes at margins 2e-6, 5e-7 and 1e-6 with
+                              TRIPLE_EXTRA raising 12 triple kinds above
+                              their dense-search peaks
+                              (gap_closure/CM/peak2_c27k16f2Hn3mt.log)
+                              (runs/combo27_k16f2Hn3_check.log, resumed
+                              after restarts of the machine from the
+                              checkpoint runs/combo27_k16f2Hn3_check.ckpt:
+                              3.096243 at (16, 4, 4, 0, 1, 0, 2) after
+                              946 240 pair boxes and 610 085 598 triple
+                              boxes).
+                              radial_certificates/combo27_k15f2g2aX1v1110_d10.npz,
+                              combo27_k15f2g2aX1v1020_d10.npz,
+                              combo27_k15f2g2aX1v1011_d10.npz and
+                              combo27_k16f2v8210_d10.npz are mixed-typing
+                              mixes for the single vectors
+                              (15, 11, 0, 0, 0, 1, 0), (15, 10, 0, 0, 0, 2, 0),
+                              (15, 10, 0, 0, 0, 1, 1) and (16, 8, 2, 0, 0, 1, 0)
+                              (gap_closure/CM/case27_k15f2g2aX1v*_bins.json,
+                              case27_k16f2v8210_bins.json); their checks pass
+                              (runs/combo27_k15f2g2aX1v1110_check.log 3.098938,
+                              runs/combo27_k15f2g2aX1v1020_check.log 3.096137,
+                              runs/combo27_k15f2g2aX1v1011_check.log 3.100562
+                              after a first run failed on A2B6F7 and was
+                              resumed with 3e-7 more room there,
+                              runs/combo27_k16f2v8210_check.log 3.099725).
+                              They are not yet part of prop:count27-few.
+                              The twenty-seven mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
@@ -993,9 +1031,11 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               one in (2.2, 2.35] and, if none in
                               (2.05, 2.1], at least 3 in (2.2, 2.35],
                               or with exactly 16 within 2.0161, at most 2
-                              beyond 2.35, none in (2.1, 2.35] and, if 2
-                              lie beyond 2.35, at least one in each of
-                              (2.0161, 2.05] and (2.05, 2.1].
+                              beyond 2.35, none in (2.2, 2.35] and either
+                              none in (2.1, 2.2] and, if 2 lie beyond
+                              2.35, at least one in each of (2.0161, 2.05]
+                              and (2.05, 2.1], or exactly one in
+                              (2.1, 2.2] and at least 4 in (2.05, 2.1].
                               With CHECKPOINT=file in the environment the
                               result of each branch and bound on pairs or
                               triples is appended to the file as it
