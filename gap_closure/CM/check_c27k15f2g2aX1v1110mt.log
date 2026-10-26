@@ -3,3 +3,130 @@ mixed typing: 5 groups, typings ['AABBBBF', 'AABBBFF', 'ABBBBBF', 'ABBBBFF', 'AA
 statement (C) at 27 centres, case case27_k15f2g2aX1v1110_bins.json: combined certificate mix27_k15f2g2aX1v1110mt.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
   [ok] dmax exceeds sqrt 6
   [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 90.349211374, float t 90.349211373)
+  [ok] three-point blocks positive definite (exact LDL^T)  (215 blocks)
+  point terms: {'A1': '0.463177', 'A2': '0.463869', 'B3': '0.487984', 'B4': '0.487984', 'B5': '0.487984', 'B6': '0.186029', 'F7': '0.169669'}
+  pair A1A1: float largest K + PAIR3 - Pi 5.841582e-02 (file c2 5.841582e-02); threshold 5.841682e-02
+  pair A1A2: float largest K + PAIR3 - Pi 5.839377e-02 (file c2 5.839377e-02); threshold 5.839477e-02
+  pair A1B6: float largest K + PAIR3 - Pi 8.176260e-02 (file c2 8.176260e-02); threshold 8.176360e-02
+  pair A2A2: float largest K + PAIR3 - Pi 5.826336e-02 (file c2 5.826337e-02); threshold 5.826437e-02
+  pair A2B6: float largest K + PAIR3 - Pi 8.177361e-02 (file c2 8.177361e-02); threshold 8.177461e-02
+  done: K + PAIR3_A1A2 <= Pi + c2 on the admissible pairs: ok 64453 boxes closed, 52910 set aside, Pi in Arb at 64422 corners
+  done: K + PAIR3_A1B6 <= Pi + c2 on the admissible pairs: ok 15989 boxes closed, 15901 set aside, Pi in Arb at 2294 corners
+  done: K + PAIR3_A2A2 <= Pi + c2 on the admissible pairs: ok 77232 boxes closed, 68561 set aside, Pi in Arb at 77164 corners
+  done: K + PAIR3_A2B6 <= Pi + c2 on the admissible pairs: ok 17572 boxes closed, 17542 set aside, Pi in Arb at 109 corners
+  done: K + PAIR3_A1A1 <= Pi + c2 on the admissible pairs: ok 245935 boxes closed, 191266 set aside, Pi in Arb at 245916 corners
+  [ok] K + PAIR3_A1A1 <= Pi + c2 on the admissible pairs  (245935 boxes closed, 191266 set aside, Pi in Arb at 245916 corners)
+  [ok] K + PAIR3_A1A2 <= Pi + c2 on the admissible pairs  (64453 boxes closed, 52910 set aside, Pi in Arb at 64422 corners)
+  [ok] K + PAIR3_A1B6 <= Pi + c2 on the admissible pairs  (15989 boxes closed, 15901 set aside, Pi in Arb at 2294 corners)
+  [ok] K + PAIR3_A2A2 <= Pi + c2 on the admissible pairs  (77232 boxes closed, 68561 set aside, Pi in Arb at 77164 corners)
+  [ok] K + PAIR3_A2B6 <= Pi + c2 on the admissible pairs  (17572 boxes closed, 17542 set aside, Pi in Arb at 109 corners)
+  [ok] f <= m_b on every bin  (6433 intervals, least room 1.65e-10)
+  triple A1A1A1: float largest 3.129486e-03 on 649630 samples; threshold 3.129669e-03; 756 monomials, symmetry 2
+  triple A1A1A2: float largest 3.105139e-03 on 649656 samples; threshold 3.105329e-03; 756 monomials, symmetry 1
+  triple A1A1B6: float largest 2.128898e-03 on 649656 samples; threshold 2.129138e-03; 756 monomials, symmetry 1
+  triple A1A2A2: float largest 3.095573e-03 on 649686 samples; threshold 3.095711e-03; 756 monomials, symmetry 1
+  triple A1A2B6: float largest 2.120339e-03 on 649663 samples; threshold 2.123127e-03 (refined 2.121027e-03, extra 2e-06); 756 monomials, symmetry 0
+  triple A2A2A2: float largest 3.185422e-03 on 649660 samples; threshold 3.185674e-03 (refined 3.185474e-03, extra 1e-07); 756 monomials, symmetry 2
+  triple A2A2B6: float largest 2.176076e-03 on 649656 samples; threshold 2.176176e-03; 756 monomials, symmetry 1
+      A1A1A1 level 10: 0 boxes verified, 328 to bisect [0 s]
+      A1A1A2 level 10: 0 boxes verified, 606 to bisect [0 s]
+      A1A1A1 level 20: 11861 boxes verified, 99056 to bisect [11 s]
+      A1A1A2 level 20: 32009 boxes verified, 284232 to bisect [28 s]
+      A1A1A1 level 30: 2337989 boxes verified, 1458864 to bisect [533 s]
+exact check of the mixed-typing combination mix27_k15f2g2aX1v1110mt.npz (27 centres, the single count vector (15, 11, 0, 0, 0, 1, 0): exactly 15 within 2.0161, 11 in (2.0161, 2.05], 1 in (2.2, 2.35], none beyond 2.35; case27_k15f2g2aX1v1110_bins.json, one type per bin) with multi_cap/combo_mixtype_check.py; mixed with c27_hull_mt.py for that vector alone (scratchpad mtF/scout_X1v.sh) from 14 certificates, 3.097797 in floating point at the climbed maxima and margins 2e-7/2e-8, about 3.098591 with the dense-search peaks (peak2_c27k15f2g2aX1v1110mt.log; A1A2B6 1.6e-6 above the mix's constant) and the margins below; margins pairs 1e-6, triples 1e-7, bins 1e-7, TRIPLE_EXTRA A1A2B6:2e-6,A2A2A2:1e-7, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k15f2g2aX1v1110mt.ckpt; started Fri Oct 23 12:02:13 UTC 2026
+mixed typing: 5 groups, typings ['AABBBBF', 'AABBBFF', 'ABBBBBF', 'ABBBBFF', 'AABBBBB']
+statement (C) at 27 centres, case case27_k15f2g2aX1v1110_bins.json: combined certificate mix27_k15f2g2aX1v1110mt.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 90.349211374, float t 90.349211373)
+  [ok] three-point blocks positive definite (exact LDL^T)  (215 blocks)
+  point terms: {'A1': '0.463177', 'A2': '0.463869', 'B3': '0.487984', 'B4': '0.487984', 'B5': '0.487984', 'B6': '0.186029', 'F7': '0.169669'}
+  pair A1A1: float largest K + PAIR3 - Pi 5.841582e-02 (file c2 5.841582e-02); threshold 5.841682e-02
+  pair A1A2: float largest K + PAIR3 - Pi 5.839377e-02 (file c2 5.839377e-02); threshold 5.839477e-02
+  pair A1B6: float largest K + PAIR3 - Pi 8.176260e-02 (file c2 8.176260e-02); threshold 8.176360e-02
+  pair A2A2: float largest K + PAIR3 - Pi 5.826336e-02 (file c2 5.826337e-02); threshold 5.826437e-02
+  pair A2B6: float largest K + PAIR3 - Pi 8.177361e-02 (file c2 8.177361e-02); threshold 8.177461e-02
+  [ok] K + PAIR3_A1A1 <= Pi + c2 on the admissible pairs  (245935 boxes closed, 191266 set aside, Pi in Arb at 245916 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:21:27 UTC])
+  [ok] K + PAIR3_A1A2 <= Pi + c2 on the admissible pairs  (64453 boxes closed, 52910 set aside, Pi in Arb at 64422 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:08:48 UTC])
+  [ok] K + PAIR3_A1B6 <= Pi + c2 on the admissible pairs  (15989 boxes closed, 15901 set aside, Pi in Arb at 2294 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:10:09 UTC])
+  [ok] K + PAIR3_A2A2 <= Pi + c2 on the admissible pairs  (77232 boxes closed, 68561 set aside, Pi in Arb at 77164 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:17:17 UTC])
+  [ok] K + PAIR3_A2B6 <= Pi + c2 on the admissible pairs  (17572 boxes closed, 17542 set aside, Pi in Arb at 109 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:18:47 UTC])
+  [ok] f <= m_b on every bin  (6433 intervals, least room 1.65e-10)
+  triple A1A1A1: float largest 3.129486e-03 on 649630 samples; threshold 3.129669e-03; 756 monomials, symmetry 2
+  triple A1A1A2: float largest 3.105139e-03 on 649656 samples; threshold 3.105329e-03; 756 monomials, symmetry 1
+  triple A1A1B6: float largest 2.128898e-03 on 649656 samples; threshold 2.129138e-03; 756 monomials, symmetry 1
+  triple A1A2A2: float largest 3.095573e-03 on 649686 samples; threshold 3.095711e-03; 756 monomials, symmetry 1
+  triple A1A2B6: float largest 2.120339e-03 on 649663 samples; threshold 2.123127e-03 (refined 2.121027e-03, extra 2e-06); 756 monomials, symmetry 0
+  triple A2A2A2: float largest 3.185422e-03 on 649660 samples; threshold 3.185674e-03 (refined 3.185474e-03, extra 1e-07); 756 monomials, symmetry 2
+  triple A2A2B6: float largest 2.176076e-03 on 649656 samples; threshold 2.176176e-03; 756 monomials, symmetry 1
+  (the samples and thresholds of 7 of these triple setups were taken from check_c27k15f2g2aX1v1110mt.ckpt.setup, stored by an earlier run with the same samples)
+      A1A1A1 level 10: 0 boxes verified, 328 to bisect [0 s]
+      A1A1A2 level 10: 0 boxes verified, 606 to bisect [0 s]
+      A1A1A1 level 20: 11861 boxes verified, 99056 to bisect [15 s]
+      A1A1A2 level 20: 32009 boxes verified, 284232 to bisect [40 s]
+      A1A1A1 level 30: 2337989 boxes verified, 1458864 to bisect [676 s]
+  done: A1A1A1: ok 7309670 boxes, largest centre value 3.1296e-03
+      A1A1B6 level 10: 0 boxes verified, 616 to bisect [0 s]
+      A1A1B6 level 20: 32596 boxes verified, 289110 to bisect [41 s]
+      A1A1A2 level 30: 7194005 boxes verified, 5222540 to bisect [2125 s]
+exact check of the mixed-typing combination mix27_k15f2g2aX1v1110mt.npz (27 centres, the single count vector (15, 11, 0, 0, 0, 1, 0): exactly 15 within 2.0161, 11 in (2.0161, 2.05], 1 in (2.2, 2.35], none beyond 2.35; case27_k15f2g2aX1v1110_bins.json, one type per bin) with multi_cap/combo_mixtype_check.py; mixed with c27_hull_mt.py for that vector alone (scratchpad mtF/scout_X1v.sh) from 14 certificates, 3.097797 in floating point at the climbed maxima and margins 2e-7/2e-8, about 3.098591 with the dense-search peaks (peak2_c27k15f2g2aX1v1110mt.log; A1A2B6 1.6e-6 above the mix's constant) and the margins below; margins pairs 1e-6, triples 1e-7, bins 1e-7, TRIPLE_EXTRA A1A2B6:2e-6,A2A2A2:1e-7, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k15f2g2aX1v1110mt.ckpt; started Mon Oct 26 00:05:48 UTC 2026
+mixed typing: 5 groups, typings ['AABBBBF', 'AABBBFF', 'ABBBBBF', 'ABBBBFF', 'AABBBBB']
+statement (C) at 27 centres, case case27_k15f2g2aX1v1110_bins.json: combined certificate mix27_k15f2g2aX1v1110mt.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 90.349211374, float t 90.349211373)
+  [ok] three-point blocks positive definite (exact LDL^T)  (215 blocks)
+  point terms: {'A1': '0.463177', 'A2': '0.463869', 'B3': '0.487984', 'B4': '0.487984', 'B5': '0.487984', 'B6': '0.186029', 'F7': '0.169669'}
+  pair A1A1: float largest K + PAIR3 - Pi 5.841582e-02 (file c2 5.841582e-02); threshold 5.841682e-02
+  pair A1A2: float largest K + PAIR3 - Pi 5.839377e-02 (file c2 5.839377e-02); threshold 5.839477e-02
+  pair A1B6: float largest K + PAIR3 - Pi 8.176260e-02 (file c2 8.176260e-02); threshold 8.176360e-02
+  pair A2A2: float largest K + PAIR3 - Pi 5.826336e-02 (file c2 5.826337e-02); threshold 5.826437e-02
+  pair A2B6: float largest K + PAIR3 - Pi 8.177361e-02 (file c2 8.177361e-02); threshold 8.177461e-02
+  [ok] K + PAIR3_A1A1 <= Pi + c2 on the admissible pairs  (245935 boxes closed, 191266 set aside, Pi in Arb at 245916 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:21:27 UTC])
+  [ok] K + PAIR3_A1A2 <= Pi + c2 on the admissible pairs  (64453 boxes closed, 52910 set aside, Pi in Arb at 64422 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:08:48 UTC])
+  [ok] K + PAIR3_A1B6 <= Pi + c2 on the admissible pairs  (15989 boxes closed, 15901 set aside, Pi in Arb at 2294 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:10:09 UTC])
+  [ok] K + PAIR3_A2A2 <= Pi + c2 on the admissible pairs  (77232 boxes closed, 68561 set aside, Pi in Arb at 77164 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:17:17 UTC])
+  [ok] K + PAIR3_A2B6 <= Pi + c2 on the admissible pairs  (17572 boxes closed, 17542 set aside, Pi in Arb at 109 corners [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 11:18:47 UTC])
+  [ok] f <= m_b on every bin  (6433 intervals, least room 1.65e-10)
+  triple A1A1A1: float largest 3.129486e-03 on 649630 samples; threshold 3.129669e-03; 756 monomials, symmetry 2
+  triple A1A1A2: float largest 3.105139e-03 on 649656 samples; threshold 3.105329e-03; 756 monomials, symmetry 1
+  triple A1A1B6: float largest 2.128898e-03 on 649656 samples; threshold 2.129138e-03; 756 monomials, symmetry 1
+  triple A1A2A2: float largest 3.095573e-03 on 649686 samples; threshold 3.095711e-03; 756 monomials, symmetry 1
+  triple A1A2B6: float largest 2.120339e-03 on 649663 samples; threshold 2.123127e-03 (refined 2.121027e-03, extra 2e-06); 756 monomials, symmetry 0
+  triple A2A2A2: float largest 3.185422e-03 on 649660 samples; threshold 3.185674e-03 (refined 3.185474e-03, extra 1e-07); 756 monomials, symmetry 2
+  triple A2A2B6: float largest 2.176076e-03 on 649656 samples; threshold 2.176176e-03; 756 monomials, symmetry 1
+  (the samples and thresholds of 7 of these triple setups were taken from check_c27k15f2g2aX1v1110mt.ckpt.setup, stored by an earlier run with the same samples)
+      A1A1B6 level 10: 0 boxes verified, 616 to bisect [0 s]
+      A1A1A2 level 10: 0 boxes verified, 606 to bisect [0 s]
+      A1A1A2 level 20: 32009 boxes verified, 284232 to bisect [42 s]
+      A1A1B6 level 20: 32596 boxes verified, 289110 to bisect [43 s]
+      A1A1B6 level 30: 7020759 boxes verified, 1698344 to bisect [1910 s]
+  done: A1A1B6: ok 9842940 boxes, largest centre value 2.1290e-03
+      A1A2A2 level 10: 0 boxes verified, 608 to bisect [0 s]
+      A1A1A2 level 30: 7194005 boxes verified, 5222540 to bisect [2406 s]
+      A1A2A2 level 20: 31565 boxes verified, 287246 to bisect [44 s]
+      A1A2A2 level 30: 7616654 boxes verified, 5975078 to bisect [2726 s]
+  done: A1A1A2: ok 22097856 boxes, largest centre value 3.1052e-03
+      A1A2B6 level 10: 0 boxes verified, 938 to bisect [0 s]
+      A1A2B6 level 20: 62492 boxes verified, 559942 to bisect [83 s]
+  done: A1A2A2: ok 24986953 boxes, largest centre value 3.0956e-03
+      A2A2A2 level 10: 0 boxes verified, 336 to bisect [0 s]
+      A2A2A2 level 20: 11434 boxes verified, 102096 to bisect [13 s]
+      A1A2B6 level 30: 13604097 boxes verified, 3215154 to bisect [2936 s]
+      A2A2A2 level 30: 2733643 boxes verified, 2245888 to bisect [741 s]
+  done: A1A2B6: ok 18320763 boxes, largest centre value 2.1210e-03
+      A2A2B6 level 10: 0 boxes verified, 618 to bisect [0 s]
+      A2A2B6 level 20: 31932 boxes verified, 293890 to bisect [35 s]
+  done: A2A2A2: ok 8940731 boxes, largest centre value 3.1854e-03
+      A2A2B6 level 30: 7626482 boxes verified, 2123358 to bisect [1125 s]
+  done: A2A2B6: ok 10979234 boxes, largest centre value 2.1760e-03
+  [ok] TRIPLE3_A1A1A1 <= c3 on the admissible triples  (7309670 boxes, largest centre value 3.1296e-03 [from the checkpoint check_c27k15f2g2aX1v1110mt.ckpt, proved by the run of 2026-10-23 12:32:39 UTC])
+  [ok] TRIPLE3_A1A1A2 <= c3 on the admissible triples  (22097856 boxes, largest centre value 3.1052e-03)
+  [ok] TRIPLE3_A1A1B6 <= c3 on the admissible triples  (9842940 boxes, largest centre value 2.1290e-03)
+  [ok] TRIPLE3_A1A2A2 <= c3 on the admissible triples  (24986953 boxes, largest centre value 3.0956e-03)
+  [ok] TRIPLE3_A1A2B6 <= c3 on the admissible triples  (18320763 boxes, largest centre value 2.1210e-03)
+  [ok] TRIPLE3_A2A2A2 <= c3 on the admissible triples  (8940731 boxes, largest centre value 3.1854e-03)
+  [ok] TRIPLE3_A2A2B6 <= c3 on the admissible triples  (10979234 boxes, largest centre value 2.1760e-03)
+  triple boxes in all: 102478147
+  1 count vectors, 1 type-count vectors; largest bound 3.098938 at (15, 11, 0, 0, 0, 1, 0)
+  [ok] largest bound over the count vectors below 9 pi^2/8 - 8  (3.098938 < [3.1033050 +/- 4.88e-8])
+PASS: in case case27_k15f2g2aX1v1110_bins.json every packing set of 27 centres has U(Y) <= 3.098938 < 9 pi^2/8 - 8, so T(Y) > 8 [10587 s]
+exit 0 at Mon Oct 26 03:02:36 UTC 2026
