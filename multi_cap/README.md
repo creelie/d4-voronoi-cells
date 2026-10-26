@@ -1035,6 +1035,27 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.101346 at (16, 6, 2, 1, 0, 0, 2) after
                               1 256 629 pair boxes and 707 041 803 triple
                               boxes).
+                              radial_certificates/combo27_k16f2Hn1f1_d10.npz
+                              is the mixed-typing mix for the 4 vectors
+                              (16, 9 - n7, 1, n4, n5, 0, n7), n4 + n5 = 1,
+                              n7 <= 1: exactly 16 within 2.0161, at most 1
+                              beyond 2.35, exactly one in (2.1, 2.2], none
+                              in (2.2, 2.35] and exactly one in
+                              (2.05, 2.1] (case27_k16f2Hn1f1_bins.json);
+                              8 certificates under the typings AAABBBF,
+                              AABBBBF, AAABFFF and AABFFBF, mixed for the
+                              6 vectors with exactly one in (2.05, 2.1]
+                              with the dense-search peaks of a first mix
+                              fed back (gap_closure/CM/mix27_k16f2Hn1mt2.npz,
+                              3.103299 on the 6), 0.34 of the weight on the
+                              round c27k14f2c and 0.72 typing the bin
+                              (2.05, 2.1] as A; its check passes at margins
+                              1e-6, 1e-7 and 1e-7 with TRIPLE_EXTRA 6e-7 on
+                              A1B5F7 (runs/combo27_k16f2Hn1f1_check.log,
+                              resumed from the checkpoint
+                              runs/combo27_k16f2Hn1f1_check.ckpt: 3.103245
+                              at (16, 8, 1, 1, 0, 0, 1) after 1 089 091
+                              pair boxes and 609 312 255 triple boxes).
                               radial_certificates/combo27_k16f2G2an3_d10.npz
 
                               is the mixed-typing mix for the 67 vectors
@@ -1108,7 +1129,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.099725). The four with 15 within 2.0161 are
                               part of prop:count27-few; (16, 8, 2, 0, 0, 1, 0)
                               is not yet.
-                              The thirty-four mixes for 27 together are
+                              The thirty-five mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
@@ -1128,8 +1149,10 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               and, if 2 lie beyond 2.35, at least one in
                               (2.05, 2.1], or
                               exactly one in (2.1, 2.2], none in
-                              (2.2, 2.35] and at least 2 in (2.05, 2.1],
-                              or none in (2.1, 2.2], at least one in
+                              (2.2, 2.35] and either at least 2 in
+                              (2.05, 2.1] or exactly 1 there and at most
+                              1 beyond 2.35, or none in (2.1, 2.2], at
+                              least one in
                               (2.2, 2.35] and at least 3 in (2.05, 2.1].
                               With CHECKPOINT=file in the environment the
                               result of each branch and bound on pairs or

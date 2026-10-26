@@ -158,8 +158,10 @@ there mix to 3.102636 (case27_k16f2Hn1.json) but 3.104253 with their
 dense-search peaks (peak2_c27k16f2Hn1mt.log) and the margins, and re-mixed
 with those peaks to 3.103299 (mix27_k16f2Hn1mt2.npz), about 3.1038 with the
 peaks of the new mix on the 2 with n_7 = 2, which are open (mixed one at a
-time 3.104478 and 3.1078), and 3.103244 on the 4 with n_7 <= 1
-(case27_k16f2Hn1f1.json), whose exact check runs (check_c27k16f2Hn1f1mt.log);
+time 3.104478 and 3.105504), and 3.103244 on the 4 with n_7 <= 1
+(case27_k16f2Hn1f1.json), whose exact check passes at 20:04 UTC on Oct 26
+(check_c27k16f2Hn1f1mt.log: U <= 3.103245 at (16, 8, 1, 1, 0, 0, 1), 609.3
+million triple boxes; in the paper since then);
 with none in (2.1, 2.2] and one or more in (2.2, 2.35] the 103 give 3.111974,
 and the 67 with at least three in (2.05, 2.1] mix to 3.101372, 3.102149 with
 their dense-search peaks (peak2_c27k16f2G2an3mt.log), margins 1e-6/1e-7/1e-7
@@ -186,8 +188,11 @@ with exactly three are mixed one at a time; of the 12 with one or two there,
 the 6 with one in (2.05, 2.1] are mixed one at a time ((16, 9, 1, 0, 0, 1, 0)
 to 3.100745 and (16, 8, 1, 0, 0, 2, 0) to 3.098354, exact checks running,
 check_c27k16f2v9110mt.log and check_c27k16f2v8120mt.log; (16, 8, 1, 0, 0, 1,
-1) to 3.101428, dense search running), and the 6 with none there are open
-((16, 10, 0, 0, 0, 1, 0) alone 3.103160); the 1372 vectors with a centre in
+1) to 3.101428, 3.102542 with its dense-search peaks, exact check queued,
+check_c27k16f2v8111mt.log; (16, 7, 1, 0, 0, 2, 1) to 3.103269, dense search
+running, peak2_c27k16f2v7121mt.log; the other 3 queued), and the 6 with none
+there are open ((16, 10, 0, 0, 0, 1, 0) alone 3.103160; the other 5 queued
+for mixes of their own); the 1372 vectors with a centre in
 (2.1, 2.2] and at least two in (2.1, 2.35] mix to 3.107964 with 225 above the
 level; under that mix the 1109 with at least two in (2.1, 2.2] and at least
 three in (2.1, 2.35] give 3.102171 (case27_k16f2Ex.json) but 3.104914 with
