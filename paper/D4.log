@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  26 OCT 2026 12:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.5)  26 OCT 2026 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1000,60 +1000,59 @@ Package pdftex.def Info: figures/fig_tikz_cradial.png  used on input line 8809.
 <figures/fig_tikz_radial.png, id=2655, 478.13832pt x 192.38274pt>
 File: figures/fig_tikz_radial.png Graphic file (type png)
 <use figures/fig_tikz_radial.png>
-Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 10453.
+Package pdftex.def Info: figures/fig_tikz_radial.png  used on input line 10495.
 
 (pdftex.def)             Requested size: 433.62001pt x 174.47264pt.
  [150]
 [151]
-<figures/fig_tikz_levels.png, id=2710, 529.16093pt x 199.60974pt>
+<figures/fig_tikz_levels.png, id=2711, 529.16093pt x 199.60974pt>
 File: figures/fig_tikz_levels.png Graphic file (type png)
 <use figures/fig_tikz_levels.png>
-Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 10622.
+Package pdftex.def Info: figures/fig_tikz_levels.png  used on input line 10664.
 
 (pdftex.def)             Requested size: 433.62001pt x 163.56833pt.
  [152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162]
 [163]
-<figures/fig_tikz_octant.png, id=3122, 384.62094pt x 184.57758pt>
+<figures/fig_tikz_octant.png, id=3121, 384.62094pt x 184.57758pt>
 File: figures/fig_tikz_octant.png Graphic file (type png)
 <use figures/fig_tikz_octant.png>
-Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 11417.
+Package pdftex.def Info: figures/fig_tikz_octant.png  used on input line 11459.
 
 (pdftex.def)             Requested size: 433.62001pt x 208.10551pt.
  [164] [165] [166] [167]
-<figures/fig_c_arcs.png, id=3204, 2193.19376pt x 1332.98pt>
+<figures/fig_c_arcs.png, id=3205, 2193.19376pt x 1332.98pt>
 File: figures/fig_c_arcs.png Graphic file (type png)
 <use figures/fig_c_arcs.png>
-Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 11779.
+Package pdftex.def Info: figures/fig_c_arcs.png  used on input line 11821.
 (pdftex.def)             Requested size: 433.62001pt x 263.54033pt.
  [168] [169] [170] [171] [172] [173] [174]
-<figures/fig_chain_plateau.png, id=3345, 2617.78pt x 1674.255pt>
+[175]
+<figures/fig_chain_plateau.png, id=3355, 2617.78pt x 1674.255pt>
 File: figures/fig_chain_plateau.png Graphic file (type png)
 <use figures/fig_chain_plateau.png>
-Package pdftex.def Info: figures/fig_chain_plateau.png  used on input line 1235
-7.
+Package pdftex.def Info: figures/fig_chain_plateau.png  used on input line 1239
+9.
 (pdftex.def)             Requested size: 429.28618pt x 274.55405pt.
-
-[175]
-<figures/fig_dense_growth.png, id=3360, 2280.52pt x 1250.6725pt>
+<figures/fig_dense_growth.png, id=3361, 2280.52pt x 1250.6725pt>
 File: figures/fig_dense_growth.png Graphic file (type png)
 <use figures/fig_dense_growth.png>
-Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 12385
+Package pdftex.def Info: figures/fig_dense_growth.png  used on input line 12427
 .
 (pdftex.def)             Requested size: 429.28618pt x 235.41653pt.
  [176] [177] [178] [179] [180] [181] [182]
-<figures/fig_c_swap.png, id=3507, 2981.1375pt x 1180.41pt>
+<figures/fig_c_swap.png, id=3508, 2981.1375pt x 1180.41pt>
 File: figures/fig_c_swap.png Graphic file (type png)
 <use figures/fig_c_swap.png>
-Package pdftex.def Info: figures/fig_c_swap.png  used on input line 12955.
+Package pdftex.def Info: figures/fig_c_swap.png  used on input line 12997.
 (pdftex.def)             Requested size: 433.62001pt x 171.6864pt.
  [183] [184] [185] [186]
-[187] [188] [189] [190] [191] [192] [193] [194] [195] [196 <./figures/fig_tikz_
-codes.png (PNG copy)>] [197 <./figures/fig_tikz_count31.png (PNG copy)>]
-[198 <./figures/fig_tikz_lemma.png (PNG copy)>] [199 <./figures/fig_tikz_cradia
-l.png (PNG copy)>] [200 <./figures/fig_tikz_radial.png (PNG copy)> <./figures/f
-ig_tikz_levels.png (PNG copy)>] [201 <./figures/fig_tikz_octant.png (PNG copy)>
-] [202 <./figures/fig_c_arcs.png (PNG copy)>] [203 <./figures/fig_chain_plateau
-.png (PNG copy)>] [204 <./figures/fig_dense_growth.png (PNG copy)>] [205 <./fig
+[187] [188] [189] [190] [191] [192] [193] [194] [195] [196] [197 <./figures/fig
+_tikz_codes.png (PNG copy)>] [198 <./figures/fig_tikz_count31.png (PNG copy)>]
+[199 <./figures/fig_tikz_lemma.png (PNG copy)>] [200 <./figures/fig_tikz_cradia
+l.png (PNG copy)>] [201 <./figures/fig_tikz_radial.png (PNG copy)> <./figures/f
+ig_tikz_levels.png (PNG copy)>] [202 <./figures/fig_tikz_octant.png (PNG copy)>
+] [203 <./figures/fig_c_arcs.png (PNG copy)>] [204 <./figures/fig_chain_plateau
+.png (PNG copy)>] [205 <./figures/fig_dense_growth.png (PNG copy)>] [206 <./fig
 ures/fig_c_swap.png>] (./D4.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1063,13 +1062,13 @@ Package rerunfilecheck Info: File `D4.out' has not changed.
 (rerunfilecheck)             Checksum: ACDD4A1998CE2C995EE91C8E90D4BDC1;4770.
  ) 
 Here is how much of TeX's memory you used:
- 19075 strings out of 476106
- 316117 string characters out of 5793933
- 1970975 words of memory out of 5000000
+ 19076 strings out of 476106
+ 316125 string characters out of 5793933
+ 1974975 words of memory out of 5000000
  39822 multiletter control sequences out of 15000+600000
  676160 words of font info for 110 fonts, out of 8000000 for 9000
  220 hyphenation exceptions out of 8191
- 75i,14n,79p,2053b,736s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,14n,79p,2052b,708s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/p
@@ -1089,10 +1088,10 @@ ts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb>
 are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on D4.pdf (205 pages, 21558014 bytes).
+Output written on D4.pdf (206 pages, 21561685 bytes).
 PDF statistics:
- 4112 PDF objects out of 4296 (max. 8388607)
- 3749 compressed objects within 38 object streams
- 852 named destinations out of 1000 (max. 500000)
+ 4118 PDF objects out of 4296 (max. 8388607)
+ 3754 compressed objects within 38 object streams
+ 853 named destinations out of 1000 (max. 500000)
  22433 words of extra memory for PDF output out of 24883 (max. 10000000)
 
