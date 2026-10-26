@@ -1,0 +1,15 @@
+exact check of the mixed-typing combination mix27_k16f2v0902mt.npz (27 centres, the single count vector (16, 0, 9, 0, 0, 0, 2): exactly 16 within 2.0161, none in (2.0161, 2.05], 9 in (2.05, 2.1], none in (2.1, 2.35], 2 beyond 2.35; case27_k16f2v0902_bins.json, one type per bin) with multi_cap/combo_mixtype_check.py; mixed with c27_hull_mt.py for that vector alone (scratchpad k16/scout_part.sh) from 14 certificates under five typings, six of them with weight, 3.082699 in floating point at the climbed maxima and margins 2e-7/2e-8, 3.097927 at the margins below with no dense search (the triple margin 5e-6 lies far above the gaps of earlier dense-search peaks over the refined thresholds, at most 2.6e-7); margins pairs 2e-6, triples 5e-6, bins 1e-6, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k16f2v0902mt.ckpt; started Mon Oct 26 15:00:06 UTC 2026
+mixed typing: 5 groups, typings ['AAABBBF', 'AAABBFF', 'AABBBBF', 'AABBBFF', 'AABBBBB']
+statement (C) at 27 centres, case case27_k16f2v0902_bins.json: combined certificate mix27_k16f2v0902mt.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 91.459407175, float t 91.459407174)
+  [ok] three-point blocks positive definite (exact LDL^T)  (215 blocks)
+  point terms: {'A1': '0.458755', 'A2': '0.458755', 'B3': '0.431104', 'B4': '0.251140', 'B5': '0.251140', 'B6': '0.251140', 'F7': '0.090276'}
+  pair A1A1: float largest K + PAIR3 - Pi 6.049892e-02 (file c2 6.049892e-02); threshold 6.050092e-02
+  pair A1B3: float largest K + PAIR3 - Pi 6.242281e-02 (file c2 6.242282e-02); threshold 6.242481e-02
+  pair A1F7: float largest K + PAIR3 - Pi 8.887682e-02 (file c2 8.887682e-02); threshold 8.887882e-02
+  pair B3B3: float largest K + PAIR3 - Pi 6.389497e-02 (file c2 6.389497e-02); threshold 6.389697e-02
+  pair B3F7: float largest K + PAIR3 - Pi 9.227553e-02 (file c2 9.227571e-02); threshold 9.227770e-02
+  pair F7F7: float largest K + PAIR3 - Pi 1.174232e-01 (file c2 1.174232e-01); threshold 1.174252e-01
+  done: K + PAIR3_A1B3 <= Pi + c2 on the admissible pairs: ok 6280 boxes closed, 5285 set aside, Pi in Arb at 6196 corners
+  done: K + PAIR3_A1F7 <= Pi + c2 on the admissible pairs: ok 9818 boxes closed, 9709 set aside, Pi in Arb at 0 corners
