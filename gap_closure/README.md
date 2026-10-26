@@ -759,8 +759,11 @@ more room there), and these four are in the paper;
 (15, 9, 0, 0, 0, 1, 2), mixed on its own, stays at 3.106600 and is open,
 and (15, 8, 0, 0, 0, 2, 2), mixed on its own, gives 3.103115 but 3.105325
 with the peaks of its dense search, and mixed again with those peaks
-3.103269 at small margins (`CM/mix27_k15f2g2aX1v822mt2.npz`), whose dense
-search runs (`CM/peak2_c27k15f2g2aX1v822mt2.log`); it is open. The 103
+3.103269 at small margins (`CM/mix27_k15f2g2aX1v822mt2.npz`), but
+3.103774 even with no margins with the peaks of its own dense search
+(`CM/peak2_c27k15f2g2aX1v822mt2.log`), and a third mix with the peaks of
+both searches fed back stopped with its programme at 3.103548, above the
+level; it is open. The 103
 others, mixed on their own, reach 3.101923 (`CM/mix27_k15f2g2aYmt.log`), but
 their dense search (`CM/peak2_c27k15f2g2aYmt.log`) finds peaks with a far
 centre up to 4.9e-6 above the thresholds (3.102708 with them); re-mixed with
@@ -790,7 +793,10 @@ and so do the 8 (`CM/check_c27k16f2G1bmmt.log`: U <= 3.102229 at
 (16, 8, 1, 0, 0, 0, 2), resumed from its checkpoint after a restart of the
 machine); (16, 0, 9, 0, 0, 0, 2) and
 (16, 9, 0, 0, 0, 0, 2), with 25 centres within 2.1, give 3.104116 and
-3.103832 and are open. With exactly one centre in (2.1, 2.2] and none in
+3.103832; mixed on its own (`CM/case27_k16f2v0902.json`), the first gives
+3.082699 and its exact check runs at margins 2e-6/5e-6/1e-6 with no dense
+search (`CM/check_c27k16f2v0902mt.log`, 3.097927 in floating point at those
+margins), and the second, mixed on its own, stays at 3.103729 and is open. With exactly one centre in (2.1, 2.2] and none in
 (2.2, 2.35] the 60 vectors give 3.107876, and per vector only the 24 with
 at most three in (2.05, 2.1] are above the level; the 36 others
 (`CM/case27_k16f2Hn3.json`) mix to 3.092122 and pass their exact check
@@ -809,7 +815,8 @@ three (`CM/case27_k16f2Hm2.json`), whose exact check passes
 peaks of their dense search (`CM/peak2_c27k16f2Hn1mt.log`) and the
 margins; mixed again with those peaks they give 3.103299
 (`CM/mix27_k16f2Hn1mt2.npz`), and with the peaks of the new mix about
-3.1038 on the 2 with two beyond 2.35, which are open, and 3.103244 on the
+3.1038 on the 2 with two beyond 2.35, which mixed one at a time stay at
+3.104478 and above 3.105 and are open, and 3.103244 on the
 4 with at most one (`CM/case27_k16f2Hn1f1.json`), whose exact check runs
 (`CM/check_c27k16f2Hn1f1mt.log`). With none in (2.1, 2.2] and one or more in
 (2.2, 2.35] the 103 vectors give 3.111974, each centre in (2.05, 2.1]
@@ -848,10 +855,16 @@ peaks of their dense search (`CM/peak2_c27k16f2Exmt.log`), so they are
 mixed again with those peaks; the 81 with exactly two in (2.1, 2.2] and
 none in (2.2, 2.35] (up to 3.1042 under that mix,
 `CM/case27_k16f2E2.json`), mixed on their own, give 3.101190 at
-(16, 7, 0, 1, 1, 0, 2) and their dense search runs
-(`CM/peak2_c27k16f2E2mt.log`); the 144 with exactly one in (2.1, 2.2] and
-one to three in (2.2, 2.35] (up to 3.1078 under that mix) are being mixed
-on their own and stand at 3.106889 after three rounds. All of these values are floating
+(16, 7, 0, 1, 1, 0, 2), 3.102381 with the peaks of their dense search
+(`CM/peak2_c27k16f2E2mt.log`) and 3.102802 with the margins 5e-7/5e-8/1e-7
+and extra room, and their exact check runs (`CM/check_c27k16f2E2mt.log`);
+the 144 with exactly one in (2.1, 2.2] and one to three in (2.2, 2.35] (up
+to 3.1078 under that mix), mixed on their own, give 3.106891
+(`CM/mix27_k16f2E1mt.log`), and per vector only the 18 with none in
+(2.05, 2.1] are above the level: the 126 others (`CM/case27_k16f2E1b.json`)
+give at most 3.10288 at margins 1e-6/1e-7/1e-7, and the 108 with at least
+two there (`CM/case27_k16f2E1c.json`) 3.09891, and their dense search runs
+(`CM/peak2_c27k16f2E1mt.log`). All of these values are floating
 point.
 
 At twenty-five centres with at most 14 within 2.0161 (`case25_lo14.json`:
