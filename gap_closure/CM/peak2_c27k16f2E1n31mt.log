@@ -1,0 +1,7 @@
+dense search of the triple polynomials of the mixed-typing mix mix27_k16f2E1n31mt.npz (re-mixed with c27_hull_mt.py from 16 certificates under typings AAABBBF, AAABBFF, AABBBBF, AABBBFF, AABFFBF for the 18 count vectors of 27 centres with exactly 16 within 2.0161, at most 2 beyond 2.35, one in (2.1, 2.2], one in (2.05, 2.1] and one to three in (2.2, 2.35], with the dense-search peaks of the E1 mix (peak2_c27k16f2E1mt.log) fed back; 3.102552 at iteration 1 at the climbed maxima and the check margins, saved before the LP of iteration 2 ran out of memory, mix27_k16f2E1n31mt.log) on the combinations of bins that occur (case27_k16f2E1n31_bins.json), 2M samples and 400 ascents per combination; started Mon Oct 26 20:36:26 UTC 2026
+mixed typing: 5 groups, typings ['AAABBBF', 'AAABBFF', 'AABBBBF', 'AABBBFF', 'AABFFBF']
+A1A1A1: sampled max 2.649725718e-03 on 2.1M triples; ascent from 400 starts 2.649749840e-03 at [ 0.436001  0.436001 -0.584565] [174 s]
+A1A1A2: sampled max 2.649725718e-03 on 2.1M triples; ascent from 400 starts 2.649749840e-03 at [ 0.436001  0.436001 -0.584565] [346 s]
+A1A1B3: sampled max 2.433305291e-03 on 2.1M triples; ascent from 400 starts 2.433310682e-03 at [-0.310115  0.507889 -0.013188] [516 s]
+A1A1B4: sampled max 1.956981825e-03 on 2.1M triples; ascent from 400 starts 1.957008859e-03 at [-0.835646 -0.350943 -0.12162 ] [672 s]
+A1A1B5: sampled max 1.956981825e-03 on 2.1M triples; ascent from 400 starts 1.957008859e-03 at [-0.835646 -0.350943 -0.12162 ] [828 s]
