@@ -1023,6 +1023,30 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.102140 at (16, 5, 3, 0, 0, 1, 2) after
                               3 590 588 pair boxes and 616 011 287 triple
                               boxes).
+                              radial_certificates/combo27_k16f2G2ae2b_d10.npz
+                              is the mixed-typing mix for the 9 vectors
+                              (16, a, 2, 0, 0, e, n7), e >= 2, n7 <= 2:
+                              exactly 16 within 2.0161, at most 2 beyond
+                              2.35, none in (2.1, 2.2], exactly 2 in
+                              (2.05, 2.1] and at least 2 in (2.2, 2.35]
+                              (case27_k16f2G2ae2b_bins.json); 7 certificates
+                              under the typings AABBBBF, AABBBFF, AAABBBF
+                              and AAABBFF, mixed for the 12 vectors with
+                              exactly 2 in (2.05, 2.1] and at least one in
+                              (2.2, 2.35] (gap_closure/CM/mix27_k16f2G2ae2mt.npz),
+                              0.58 of the weight on the round c27f2g2b, 0.67
+                              typing the bin (2.05, 2.1] as A and 0.34
+                              typing (2.2, 2.35] as F (3.100707 on the 9);
+                              its check passes at margins 1e-6, 1e-7 and
+                              1e-7 with TRIPLE_EXTRA raising 12 triple
+                              kinds above their dense-search peaks
+                              (gap_closure/CM/peak2_c27k16f2G2ae2bmt.log)
+                              (runs/combo27_k16f2G2ae2b_check.log, resumed
+                              after restarts of the machine from the
+                              checkpoint runs/combo27_k16f2G2ae2b_check.ckpt:
+                              3.102282 at (16, 5, 2, 0, 0, 2, 2) after
+                              3 612 007 pair boxes and 641 317 975 triple
+                              boxes); not yet part of prop:count27-few.
                               radial_certificates/combo27_k15f2g2aX1v1110_d10.npz,
                               combo27_k15f2g2aX1v1020_d10.npz,
                               combo27_k15f2g2aX1v1011_d10.npz,

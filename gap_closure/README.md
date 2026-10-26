@@ -806,8 +806,12 @@ lowering the bound by about 0.003; a mix for the 79 with at least two in
 `multi_cap/runs/combo27_k16f2G2an3_check.log`); a mix
 for the 12 with exactly two in (2.05, 2.1] gives 3.103355, and 3.100707 on
 the 9 with at least two in (2.2, 2.35] (`CM/case27_k16f2G2ae2b.json`),
-whose exact check runs (`CM/check_c27k16f2G2ae2bmt.log`, about 3.102292
-with the peaks of `CM/peak2_c27k16f2G2ae2bmt.log`). Of the 3 with exactly
+whose exact check passes (`CM/check_c27k16f2G2ae2bmt.log`: U <= 3.102282
+at (16, 5, 2, 0, 0, 2, 2), 3 612 007 pair boxes, 1604 bin intervals,
+641 317 975 triple boxes, about 3.102292 expected with the peaks of
+`CM/peak2_c27k16f2G2ae2bmt.log`, the margins and extra room; copy
+`multi_cap/runs/combo27_k16f2G2ae2b_check.log`; not yet in the paper,
+which takes these 9 together with the 3 below). Of the 3 with exactly
 two in (2.05, 2.1] and one in (2.2, 2.35], (16, 8, 2, 0, 0, 1, 0), mixed
 on its own (`CM/case27_k16f2v8210.json`), passes its exact check
 (`CM/check_c27k16f2v8210mt.log`: U <= 3.099725, 230.4 million triple
