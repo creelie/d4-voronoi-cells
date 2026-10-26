@@ -1,0 +1,10 @@
+exact check of the mixed-typing combination mix27_k16f2v6212mt.npz (27 centres, the single count vector (16, 6, 2, 0, 0, 1, 2): exactly 16 within 2.0161, 6 in (2.0161, 2.05], 2 in (2.05, 2.1], 1 in (2.2, 2.35], 2 beyond 2.35; case27_k16f2v6212_bins.json, one type per bin) with multi_cap/combo_mixtype_check.py; mixed with c27_hull_mt.py for that vector alone from 14 certificates, 3.100933 in floating point at the climbed maxima and margins 2e-7/2e-8, 3.102064 with the dense-search peaks (peak2_c27k16f2v6212mt.log; A2F7F7 4.9e-6, A1F7F7 3.1e-6, A1A1F7 8.4e-7, A1A2F7 8.3e-7, A2A2F7 8.2e-7, A2B3F7 and A1B3F7 4.4e-7, A2B3B6 and A1B3B6 3.2e-7, B3F7F7 2.0e-7, B6F7F7 1.1e-7 above the mix's constants, the rest at most 6.7e-8) and margins 1e-6/1e-7/1e-7, and 3.102623 with the extras below counted on top of the peaks; margins pairs 1e-6, triples 1e-7, bins 1e-7, TRIPLE_EXTRA A2F7F7:5e-6,A1F7F7:3.2e-6,A1A1F7:9e-7,A1A2F7:9e-7,A2A2F7:9e-7,A2B3F7:5e-7,A1B3F7:5e-7,A2B3B6:4e-7,A1B3B6:4e-7,B3F7F7:3e-7,B6F7F7:2e-7, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k16f2v6212mt.ckpt; started Mon Oct 26 12:17:24 UTC 2026
+mixed typing: 5 groups, typings ['AAABBBF', 'AAABBFF', 'AABBBBF', 'AABBBFF', 'AABBBBB']
+statement (C) at 27 centres, case case27_k16f2v6212_bins.json: combined certificate mix27_k16f2v6212mt.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 41.125543785, float t 41.125543784)
+  [ok] three-point blocks positive definite (exact LDL^T)  (215 blocks)
+  point terms: {'A1': '0.310134', 'A2': '0.310134', 'B3': '0.239433', 'B4': '0.104395', 'B5': '0.104395', 'B6': '0.088856', 'F7': '0.089951'}
+  pair A1A1: float largest K + PAIR3 - Pi 1.312648e-02 (file c2 1.312649e-02); threshold 1.312749e-02
+  pair A1A2: float largest K + PAIR3 - Pi 1.312632e-02 (file c2 1.312632e-02); threshold 1.312732e-02
+  pair A1B3: float largest K + PAIR3 - Pi 1.858553e-02 (file c2 1.858553e-02); threshold 1.858653e-02

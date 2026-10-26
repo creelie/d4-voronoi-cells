@@ -1,0 +1,11 @@
+27 with exactly 14 centres within 2.0161, at most 2 beyond 2.35 and none in (2.1, 2.35], with the middle type narrowed to (2.05, 2.1] (case27_k14f2g1_narrow.json, 39 count vectors): a degree 10 round built for this narrowed case, from the samples of the third round for 14 within 2.0161 and at most 2 beyond 2.35 (c27k14f2c, 3.10091 on its samples) that lie in the narrowed ranges, with the starting grids of the narrowed case added (resume27_f2g1.npz). TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3, oom_score_adj 0. The best mix for these vectors so far gives 3.104311 in floating point (narrowed, existing certificates); started Mon Oct 19 09:11:42 UTC 2026
+resumed from resume27_f2g1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1176, 'AAF': 1258, 'ABB': 1176, 'ABF': 1265, 'AFF': 1326, 'BBB': 1176, 'BBF': 1267, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1855, 'AAF': 1931, 'ABB': 1859, 'ABF': 1265, 'AFF': 2022, 'BBB': 2652, 'BBF': 1942, 'BFF': 2021, 'FFF': 2807}
+   direct: 7838 variables, 97992 inequalities, 7389 psd rows in 56 cones, 71911094 nonzeros [30 s to build]
+   39 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 2.99574 (target 3.10330), corrected <= 13.27450  [7330 s]
+   viol: AA 1.6e-06, AB 2.0e-06, AF 1.1e-05, BB 1.5e-07, BF 1.0e-05, FF 6.5e-05, AAA 4.8e-04, AAB 3.1e-03, AAF 3.0e-04, ABB 4.9e-03, ABF 3.5e-03, AFF 7.4e-04, BBB 3.6e-03, BBF 2.8e-03, BFF 8.4e-04
+   c2: {'AA': 0.22159, 'AB': 0.142989, 'AF': 0.297635, 'BB': 0.071681, 'BF': 0.295629, 'FF': 0.490204}
+   c3: {'AAA': 0.0067083, 'AAB': 0.0101484, 'AAF': 0.0033687, 'ABB': 0.0132964, 'ABF': 0.0036914, 'AFF': -0.0048048, 'BBB': 0.0161521, 'BBF': 0.0037276, 'BFF': -0.007436}
+exit 0 at Mon Oct 19 11:14:25 UTC 2026

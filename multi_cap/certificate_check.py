@@ -51,7 +51,7 @@ stops with a message at the first failure.
 Usage: python3 certificate_check.py [degree] [minimum box width]
   (a third argument 'continue' lets step 3 run even if step 2 fails, for testing)
 """
-import sys, time
+import os, sys, time
 from fractions import Fraction as Fr
 import numpy as np
 from mpmath import iv, mp
@@ -249,6 +249,8 @@ def omega_tables(om0, om1, om2, r_star, n=12000, n2=3000):
     return us, olow, ohigh, d1lo, d1hi, du, M2
 
 # ---------------------------------------------------------------- interval arithmetic on arrays
+POLY_EVAL_C = os.environ.get('POLY_EVAL') == 'c'   # see Poly
+
 def down(x): return np.nextafter(x, -np.inf)
 def up(x): return np.nextafter(x, np.inf)
 
@@ -262,8 +264,33 @@ def ipow_list(a, n):
     for _ in range(n): out.append(imul(out[-1], a))
     return out
 
+_IPOLY = []
+
+def _ipoly():
+    """ipoly.c (next to this file), compiled once into the temporary directory and loaded:
+    the evaluation below, operation for operation and in the same order, without numpy's
+    temporary arrays (ipoly_test.py compares the two bit for bit)."""
+    if not _IPOLY:
+        import ctypes, hashlib, subprocess, tempfile
+        src = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ipoly.c')
+        flags = ['-O3', '-march=native', '-ffp-contract=off', '-fno-fast-math', '-fPIC', '-shared']
+        tag = hashlib.sha256(open(src, 'rb').read() + ' '.join(flags).encode()).hexdigest()[:16]
+        so = os.path.join(tempfile.gettempdir(), 'ipoly_%s.so' % tag)
+        if not os.path.exists(so):
+            tmp = '%s.%d' % (so, os.getpid())
+            subprocess.run(['gcc'] + flags + ['-o', tmp, src], check=True)
+            os.replace(tmp, so)
+        lib = ctypes.CDLL(so)
+        D, I = ctypes.POINTER(ctypes.c_double), ctypes.POINTER(ctypes.c_int64)
+        lib.ipoly_eval.argtypes = [ctypes.c_int64, D, D, ctypes.c_int64, I, D, D, I, D, D]
+        lib.ipoly_eval.restype = ctypes.c_int
+        _IPOLY.append((lib, D, I))
+    return _IPOLY[0]
+
 class Poly:
-    """A polynomial with interval coefficients, for evaluation on boxes."""
+    """A polynomial with interval coefficients, for evaluation on boxes.  With POLY_EVAL=c
+    in the environment the evaluation runs in ipoly.c, which gives the same enclosures bit
+    for bit, faster."""
     def __init__(self, p):
         items = sorted(p.items())
         self.exps = np.array([e for e, _ in items], dtype=int)
@@ -272,12 +299,27 @@ class Poly:
         self.deg = self.exps.max(axis=0)
     def eval(self, box):
         """box = (lo, hi) arrays of shape (3, n); returns (lo, hi) of the polynomial."""
+        if POLY_EVAL_C:
+            return self.eval_c(box)
         pw = [ipow_list((box[0][v], box[1][v]), int(self.deg[v])) for v in range(3)]
         lo = np.zeros(box[0].shape[1]); hi = np.zeros(box[0].shape[1])
         for (a, b, c), cl, ch in zip(self.exps, self.clo, self.chi):
             m = imul(imul(pw[0][a], pw[1][b]), pw[2][c])
             m = imul(m, (np.full_like(lo, cl), np.full_like(hi, ch)))
             lo, hi = iadd((lo, hi), m)
+        return lo, hi
+    def eval_c(self, box):
+        lib, D, I = _ipoly()
+        L = np.ascontiguousarray(box[0], dtype=np.float64); H = np.ascontiguousarray(box[1], dtype=np.float64)
+        n = L.shape[1]; lo = np.empty(n); hi = np.empty(n)
+        if not hasattr(self, '_cx'):
+            self._cx = (np.ascontiguousarray(self.exps, dtype=np.int64), np.ascontiguousarray(self.clo, dtype=np.float64),
+                        np.ascontiguousarray(self.chi, dtype=np.float64), np.ascontiguousarray(self.deg, dtype=np.int64))
+        ex, cl, ch, dg = self._cx
+        if lib.ipoly_eval(n, L.ctypes.data_as(D), H.ctypes.data_as(D), len(ex), ex.ctypes.data_as(I),
+                          cl.ctypes.data_as(D), ch.ctypes.data_as(D), dg.ctypes.data_as(I),
+                          lo.ctypes.data_as(D), hi.ctypes.data_as(D)) != 0:
+            raise ValueError('degree too large for ipoly.c')
         return lo, hi
 
 def derivative(p, var):

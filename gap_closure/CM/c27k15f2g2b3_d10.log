@@ -1,0 +1,7 @@
+27 with exactly 15 centres within 2.0161, at most 2 beyond 2.35 and at least one in (2.1, 2.2] (case27_k15f2g2b.json, 1650 count vectors): a third degree 10 round built for these vectors, from the samples of the second (c27k15f2g2b2_d10.log: 3.10177 on its samples, 3.12584 corrected; with it and the middle bins typed F the mix gives 3.104466 over all 1650 vectors, 0.23 of the weight on round 2). TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2, nice 15 (below the exact checks), oom_score_adj 0; started Thu Oct 22 09:34:02 UTC 2026
+resumed from c27k15f2g2b2_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8039 variables, 99690 inequalities, 7389 psd rows in 56 cones, 72576443 nonzeros [33 s to build]
+exit 143 at Thu Oct 22 09:36:28 UTC 2026
+stopped by hand at Thu Oct 22 09:36:29 UTC 2026 before it solved: beside three exact checks it left no memory for the group mixes, which an out-of-memory kill at 09:36 showed

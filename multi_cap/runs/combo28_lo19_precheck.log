@@ -1,0 +1,25 @@
+PRECHECK=1 BORDER=1 PAIR_MARGIN=AA:5e-6 python3 -u combo_case_check.py ../gap_closure/CM/case28_lo19.json radial_certificates/combo28_lo19_d10.npz 10 2e-6 1.5e-6 5e-7   (one mixed certificate for every case with at most 19 within 2.0161: gap_closure/CM/c28_hull.py lo19 over 18 certificates, among them the degree-10 certificates built for exactly 17, 18 and 19 close, gap_closure/CM/c28k17_d10.log, c28k18_d10.log, c28k19_d10.log; weights c28k19 0.6664, c28k18 0.1465, c28m r3 0.0681, c28lo15b r1 0.0663, c28lo15b r2 0.0263, c28lo13c 0.0161, c28allpc r3 0.0065, c26h r2 0.0036, c28s r1 0.0001; the mixing programme gives 3.096464 with its climbed maxima and the margins 2e-6, 2e-7, so the triple margin is raised to 1.5e-6 here, which costs 3276 x 1.3e-6 = 0.0043 and needs far fewer boxes)
+statement (C) at 28 centres, case case28_lo19.json: combined certificate hmix19_lo19.npz, two-point degree 12/4, three-point degree 10; 71995 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 63.398162856, float t 63.398162855)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.494721', 'B': '0.205897', 'F': '0.043264'}
+  pair AA: float largest K + PAIR3 - Pi 1.264485e-02 (file c2 1.264485e-02); threshold 1.264985e-02
+  pair AB: float largest K + PAIR3 - Pi 3.475864e-02 (file c2 3.475864e-02); threshold 3.476064e-02
+  pair AF: float largest K + PAIR3 - Pi 4.744585e-02 (file c2 4.744585e-02); threshold 4.744785e-02
+  pair BB: float largest K + PAIR3 - Pi 5.499598e-02 (file c2 5.499602e-02); threshold 5.499801e-02
+  pair BF: float largest K + PAIR3 - Pi 6.437381e-02 (file c2 6.437381e-02); threshold 6.437581e-02
+  pair FF: float largest K + PAIR3 - Pi 7.579005e-02 (file c2 7.579005e-02); threshold 7.579205e-02
+  triple AAA: float largest 3.247055e-03 on 649660 samples; threshold 3.248658e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 2.387309e-03 on 649656 samples; threshold 2.388909e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 1.874813e-03 on 649567 samples; threshold 1.876334e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 1.597109e-03 on 649516 samples; threshold 1.598624e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 1.206966e-03 on 649349 samples; threshold 1.208614e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 7.052153e-04 on 649302 samples; threshold 7.067253e-04; 756 monomials, symmetry 1
+  triple BBB: float largest 8.750574e-04 on 649325 samples; threshold 8.765955e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 6.154235e-04 on 649158 samples; threshold 6.169338e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 3.118295e-04 on 649009 samples; threshold 3.134823e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 1.147077e-03 on 648938 samples; threshold 1.148666e-03; 756 monomials, symmetry 2
+  71995 count vectors, 105 type-count vectors; largest bound 3.100907 at (19, 2, 7, 0, 0, 0, 0)
+PRECHECK (floating point, no branch and bound): the thresholds give 3.100907 against 9 pi^2/8 - 8 = [3.1033050 +/- 4.88e-8] [917 s]
+exit 0

@@ -1,0 +1,81 @@
+(C) at 28 for the one count vector (23, 0, 0, 0, 1, 0, 4) (case28_k23f4n4.json: exactly 23 within 2.0161, one in (2.15, 2.2], 4 beyond 2.35): certificate mix28_k23f4n4g.npz, a convex combination of the pool mixed for that vector with the close type narrowed to [2, 2.0161] and the middle type to [2.15, 2.2] (c28_hull_case.py on case28_k23f4g4_narrow.json; dense-corrected floating-point value 3.101210 at margins 1e-7/1e-7/1e-8); checked with the thresholds refined to the occupied bins (REFINE_TRIPLES=1-1-1,1-1-5,1-1-7,1-5-7,1-7-7,5-7-7, REFINE_PAIRS=1-1,1-5,1-7,5-7, SKIP_COVERED=1), margins 5e-7 1e-7 1e-7, TRIPLE_EXTRA=1-7-7:1e-6,1-5-7:1e-6,5-7-7:1e-6,FFF:1e-6,1-1-7:2e-7,1-1-5:1e-7, BORDER=1, POLY_EVAL=c.  Started Tue Oct 13 11:12:47 UTC 2026
+statement (C) at 28 centres, case case28_k23f4n4.json: combined certificate mix28_k23f4n4g.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 29.074707801, float t 29.074707800)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.715516', 'B': '0.558345', 'F': '0.033827'}
+  pair AA: float largest K + PAIR3 - Pi -5.730982e-02 (file c2 -5.730982e-02); threshold -5.730932e-02
+  pair AB: float largest K + PAIR3 - Pi -5.507103e-02 (file c2 -5.511410e-02); threshold -5.507053e-02
+  pair AF: float largest K + PAIR3 - Pi -1.550915e-02 (file c2 -1.550915e-02); threshold -1.550865e-02
+  pair BB: float largest K + PAIR3 - Pi 3.716945e-02 (file c2 3.657350e-02); threshold 3.716995e-02
+  pair BF: float largest K + PAIR3 - Pi 3.132457e-02 (file c2 3.117578e-02); threshold 3.132507e-02
+  pair FF: float largest K + PAIR3 - Pi 3.963034e-02 (file c2 3.963038e-02); threshold 3.963088e-02
+  pair AA on bins 1-1: float largest K + PAIR3 - Pi -5.730982e-02; threshold -5.730932e-02 against -5.730932e-02 for the kind
+  pair AB on bins 1-5: float largest K + PAIR3 - Pi -5.511411e-02; threshold -5.511360e-02 against -5.507053e-02 for the kind
+  pair AF on bins 1-7: float largest K + PAIR3 - Pi -1.550915e-02; threshold -1.550865e-02 against -1.550865e-02 for the kind
+  pair BF on bins 5-7: float largest K + PAIR3 - Pi 3.117578e-02; threshold 3.117628e-02 against 3.132507e-02 for the kind
+  pair AA: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair AB: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair AF: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair BF: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (1244 boxes closed, 1049 set aside, Pi in Arb at 590 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (7 boxes closed, 0 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_AA <= Pi + its threshold on the pairs of bins 1-1  (8925 boxes closed, 7096 set aside, Pi in Arb at 8907 corners)
+  [ok] K + PAIR3_AB <= Pi + its threshold on the pairs of bins 1-5  (19 boxes closed, 1 set aside, Pi in Arb at 2 corners)
+  [ok] K + PAIR3_AF <= Pi + its threshold on the pairs of bins 1-7  (2049 boxes closed, 1937 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BF <= Pi + its threshold on the pairs of bins 5-7  (17 boxes closed, 2 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (2816 intervals, least room 4.21e-10)
+  triple AAA: float largest 5.456285e-03 on 649660 samples; threshold 5.456414e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 5.250851e-03 on 649656 samples; threshold 5.251657e-03; 756 monomials, symmetry 1
+  triple AAF: float largest -2.833351e-04 on 649567 samples; threshold -2.831401e-04; 756 monomials, symmetry 1
+  triple ABF: float largest 1.205830e-04 on 649349 samples; threshold 1.207300e-04; 756 monomials, symmetry 0
+  triple AFF: float largest 1.234342e-02 on 649302 samples; threshold 1.234440e-02; 756 monomials, symmetry 1
+  triple BFF: float largest 2.136173e-03 on 649009 samples; threshold 2.136496e-03; 756 monomials, symmetry 1
+  triple FFF: float largest 8.375203e-03 on 648938 samples; threshold 8.376353e-03 (refined 8.375253e-03, extra 1e-06); 756 monomials, symmetry 2
+  triple AAA on bins 1-1-1 (inner products at most 0.507954, 0.507954, 0.507954): float largest 5.456289e-03 on 649630 samples; threshold 5.456414e-03 against 5.456414e-03 for the kind; symmetry 2
+  triple AAB on bins 1-1-5 (inner products at most 0.507954, 0.552897, 0.552897): float largest 5.250418e-03 on 649715 samples; threshold 5.250752e-03 against 5.251657e-03 for the kind; symmetry 1
+  triple AAF on bins 1-1-7 (inner products at most 0.507954, 0.614029, 0.614029): float largest -2.834387e-04 on 649582 samples; threshold -2.829401e-04 against -2.831401e-04 for the kind; symmetry 1
+  triple ABF on bins 1-5-7 (inner products at most 0.552897, 0.614029, 0.634641): float largest 1.203371e-04 on 649520 samples; threshold 1.217300e-04 against 1.207300e-04 for the kind; symmetry 0
+  triple AFF on bins 1-7-7 (inner products at most 0.614029, 0.614029, 0.666667): float largest 1.234322e-02 on 649315 samples; threshold 1.234458e-02 against 1.234440e-02 for the kind; symmetry 1
+  triple BFF on bins 5-7-7 (inner products at most 0.634641, 0.634641, 0.666667): float largest 2.136373e-03 on 649155 samples; threshold 2.137496e-03 against 2.136496e-03 for the kind; symmetry 1
+  triple AAA: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple AAB: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple AAF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple ABF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple AFF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple BFF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+      AAA bins 1-1-1 level 10: 0 boxes verified, 330 to bisect [0 s]
+      FFF level 10: 0 boxes verified, 340 to bisect [0 s]
+      AAA bins 1-1-1 level 20: 10926 boxes verified, 105356 to bisect [3 s]
+      FFF level 20: 11451 boxes verified, 108164 to bisect [3 s]
+      FFF level 30: 2335509 boxes verified, 104866 to bisect [120 s]
+      AAB bins 1-1-5 level 10: 0 boxes verified, 618 to bisect [0 s]
+      AAB bins 1-1-5 level 20: 30300 boxes verified, 299902 to bisect [10 s]
+      AAA bins 1-1-1 level 30: 4853378 boxes verified, 3052502 to bisect [321 s]
+      AAB bins 1-1-5 level 30: 10132837 boxes verified, 5716146 to bisect [630 s]
+      AAF bins 1-1-7 level 10: 0 boxes verified, 618 to bisect [0 s]
+      AAF bins 1-1-7 level 20: 27999 boxes verified, 316732 to bisect [10 s]
+      ABF bins 1-5-7 level 10: 0 boxes verified, 948 to bisect [0 s]
+      ABF bins 1-5-7 level 20: 56975 boxes verified, 564334 to bisect [16 s]
+      AAF bins 1-1-7 level 30: 11456118 boxes verified, 6132726 to bisect [750 s]
+      ABF bins 1-5-7 level 30: 13011840 boxes verified, 4639758 to bisect [748 s]
+      AFF bins 1-7-7 level 10: 0 boxes verified, 624 to bisect [0 s]
+      AFF bins 1-7-7 level 20: 29711 boxes verified, 295426 to bisect [8 s]
+      AFF bins 1-7-7 level 30: 7623223 boxes verified, 3429910 to bisect [550 s]
+      AAF bins 1-1-7 level 40: 32149988 boxes verified, 0 to bisect [1767 s]
+      BFF bins 5-7-7 level 10: 0 boxes verified, 618 to bisect [0 s]
+      BFF bins 5-7-7 level 20: 33746 boxes verified, 274634 to bisect [8 s]
+      AFF bins 1-7-7 level 40: 14418651 boxes verified, 3676 to bisect [891 s]
+      BFF bins 5-7-7 level 30: 5455458 boxes verified, 1296950 to bisect [318 s]
+  [ok] TRIPLE3_FFF <= c3 on the admissible triples  (2464644 boxes, largest centre value 8.3752e-03)
+  [ok] TRIPLE3_AAA on bins 1-1-1 <= its threshold on the admissible triples  (23476047 boxes, largest centre value 5.4563e-03)
+  [ok] TRIPLE3_AAB on bins 1-1-5 <= its threshold on the admissible triples  (23225963 boxes, largest centre value 5.2505e-03)
+  [ok] TRIPLE3_AAF on bins 1-1-7 <= its threshold on the admissible triples  (32149988 boxes, largest centre value -2.8324e-04)
+  [ok] TRIPLE3_ABF on bins 1-5-7 <= its threshold on the admissible triples  (21154195 boxes, largest centre value 1.2063e-04)
+  [ok] TRIPLE3_AFF on bins 1-7-7 <= its threshold on the admissible triples  (14420489 boxes, largest centre value 1.2343e-02)
+  [ok] TRIPLE3_BFF on bins 5-7-7 <= its threshold on the admissible triples  (7226053 boxes, largest centre value 2.1364e-03)
+  triple boxes in all: 124117379
+  1 count vectors, 1 type-count vectors; largest bound 3.102128 at (23, 0, 0, 0, 1, 0, 4)
+  [ok] largest bound over the count vectors below 9 pi^2/8 - 8  (3.102128 < [3.1033050 +/- 4.88e-8])
+PASS: in case case28_k23f4n4.json every packing set of 28 centres has U(Y) <= 3.102128 < 9 pi^2/8 - 8, so T(Y) > 8 [4491 s]
+exit 0 at Tue Oct 13 12:27:41 UTC 2026

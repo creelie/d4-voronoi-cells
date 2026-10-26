@@ -11,3 +11,30 @@ statement (C) at 28 centres, case case28_k15f4.json: combined certificate combo2
   pair BB: float largest K + PAIR3 - Pi 4.607343e-02 (file c2 4.607346e-02); threshold 4.607546e-02
   pair BF: float largest K + PAIR3 - Pi 5.122657e-02 (file c2 5.122674e-02); threshold 5.122874e-02
   pair FF: float largest K + PAIR3 - Pi 5.678597e-02 (file c2 5.678596e-02); threshold 5.678797e-02
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (612800 boxes closed, 485930 set aside, Pi in Arb at 612753 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (52211 boxes closed, 52722 set aside, Pi in Arb at 4012 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (17574 boxes closed, 17577 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (4408 boxes closed, 3635 set aside, Pi in Arb at 575 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (13191 boxes closed, 12541 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (31 boxes closed, 13 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (1248 intervals, least room 1.11e-08)
+  triple AAA: float largest 1.704139e-03 on 649660 samples; threshold 1.704873e-03 (refined 1.704273e-03, extra 4e-07); 756 monomials, symmetry 2
+  triple AAB: float largest 1.257333e-03 on 649656 samples; threshold 1.257588e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 1.006028e-03 on 649567 samples; threshold 1.007715e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 8.932486e-04 on 649516 samples; threshold 8.935092e-04; 756 monomials, symmetry 1
+  triple ABF: float largest 7.240581e-04 on 649349 samples; threshold 7.309719e-04; 756 monomials, symmetry 0
+  triple AFF: float largest 5.034369e-04 on 649302 samples; threshold 5.049862e-04; 756 monomials, symmetry 1
+  triple BBB: float largest 6.306075e-04 on 649325 samples; threshold 6.309702e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 5.655813e-04 on 649158 samples; threshold 5.667740e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 4.951539e-04 on 649009 samples; threshold 4.954121e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 9.419032e-04 on 648938 samples; threshold 9.421617e-04; 756 monomials, symmetry 2
+      AAB level 10: 0 boxes verified, 616 to bisect [2 s]
+      AAA level 10: 0 boxes verified, 334 to bisect [2 s]
+      AAF level 10: 0 boxes verified, 624 to bisect [2 s]
+      AAA level 20: 12491 boxes verified, 88320 to bisect [73 s]
+      AAF level 20: 33713 boxes verified, 271900 to bisect [233 s]
+      AAB level 20: 31549 boxes verified, 299898 to bisect [246 s]
+      AAA level 30: 2136681 boxes verified, 360554 to bisect [4438 s]
+      ABB level 10: 0 boxes verified, 624 to bisect [4 s]
+      ABB level 20: 32762 boxes verified, 280420 to bisect [479 s]
+[stopped at about 04:40 UTC on 2026-10-08 when the container was restarted, while the triples were being checked (every pair inequality and the bins had passed); not restarted, because the exact check of combo28_mix16_d10.npz (runs/combo28_mix16_check.log) covers every case of this one]

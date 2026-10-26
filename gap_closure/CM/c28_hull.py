@@ -191,6 +191,8 @@ SETS = {'k15f4': lambda v: v[0] == 15 and v[6] == 4, 'k16f1': lambda v: v[0] == 
         'k16f4': lambda v: v[0] == 16 and v[6] == 4, 'k16': lambda v: v[0] == 16, 'lo16': lambda v: v[0] <= 16, 'lo13': lambda v: v[0] <= 13,
         'k17': lambda v: v[0] == 17, 'lo17': lambda v: v[0] <= 17, 'all': lambda v: True,
         'hi17': lambda v: v[0] >= 17, 'rest': lambda v: (v[0] == 15 and v[6] == 4) or (v[0] == 16 and v[6] >= 1) or v[0] >= 17}
+SETS.update({'k%d' % n: (lambda n: lambda v: v[0] == n)(n) for n in range(17, 25)})
+SETS.update({'lo%d' % n: (lambda n: lambda v: v[0] <= n)(n) for n in range(18, 25)})
 ALLV = vectors()
 VS = [v for v in ALLV if any(SETS[t](v) for t in target.split('+'))]
 
