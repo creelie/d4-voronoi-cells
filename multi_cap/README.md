@@ -929,6 +929,19 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               432 985 pair boxes and 337 743 310 triple
                               boxes; dense search
                               gap_closure/CM/peak2_c27k16f2G1bmmt.log).
+                              radial_certificates/combo27_k16f2v0902_d10.npz
+                              is the mixed-typing mix for the single vector
+                              (16, 0, 9, 0, 0, 0, 2): exactly 16 within
+                              2.0161, 9 in (2.05, 2.1] and 2 beyond 2.35
+                              (case27_k16f2v0902_bins.json); 6
+                              certificates under the typings AAABBBF and
+                              AABBBBF, 0.54 of the weight on the round
+                              c27k12 and 0.64 typing the bin (2.05, 2.1]
+                              as A (3.082699); its check passes at margins
+                              2e-6, 5e-6 and 1e-6 with no extra room and no
+                              dense search (runs/combo27_k16f2v0902_check.log:
+                              3.097967 after 711 129 pair boxes and
+                              82 947 207 triple boxes).
                               radial_certificates/combo27_k15f2g2aY_d10.npz
                               is the mixed-typing mix for the 103 vectors
                               (15, a, b, 0, 0, e, n7), b >= 1, e >= 1,
@@ -1095,7 +1108,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               3.099725). The four with 15 within 2.0161 are
                               part of prop:count27-few; (16, 8, 2, 0, 0, 1, 0)
                               is not yet.
-                              The thirty-three mixes for 27 together are
+                              The thirty-four mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
@@ -1113,7 +1126,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               or with exactly 16 within 2.0161, at most 2
                               beyond 2.35 and either none in (2.1, 2.35]
                               and, if 2 lie beyond 2.35, at least one in
-                              each of (2.0161, 2.05] and (2.05, 2.1], or
+                              (2.05, 2.1], or
                               exactly one in (2.1, 2.2], none in
                               (2.2, 2.35] and at least 2 in (2.05, 2.1],
                               or none in (2.1, 2.2], at least one in

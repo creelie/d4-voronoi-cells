@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and thirty-three combinations for twenty-seven centres, one of six
+twenty-eight; and thirty-four combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -113,7 +113,12 @@ least one in each of (2.0161, 2.05] and (2.05, 2.1]
 typings, 0.66 of the weight typing the bin (2.05, 2.1] as A, which
 `multi_cap/combo_mixtype_check.py` proves exactly
 (`CM/check_c27k16f2G1bmmt.log`: U <= 3.102229 at (16, 8, 1, 0, 0, 0, 2),
-337.7 million triple boxes), one of six for the 103 vectors with exactly
+337.7 million triple boxes), one of six for the vector (16, 0, 9, 0, 0, 0, 2)
+(`CM/case27_k16f2v0902_bins.json`), found by `CM/c27_hull_mt.py` for that
+vector alone under five typings, 0.64 of the weight typing the bin
+(2.05, 2.1] as A, which `multi_cap/combo_mixtype_check.py` proves exactly
+at margins 2e-6, 5e-6 and 1e-6 (`CM/check_c27k16f2v0902mt.log`:
+U <= 3.097967, 82.9 million triple boxes), one of six for the 103 vectors with exactly
 fifteen within 2.0161, at most two beyond 2.35, none in (2.1, 2.2] and at
 least one in each of (2.05, 2.1] and (2.2, 2.35]
 (`CM/case27_k15f2g2aY_bins.json`), found by `CM/c27_hull_mt.py` under five
@@ -169,8 +174,8 @@ beyond 2.35 and at least one in (2.05, 2.35], or with exactly 15 within
 2.0161, at most 2 beyond 2.35 and either none in (2.2, 2.35] and at most
 one in (2.1, 2.2], or none in (2.1, 2.2], at least one in (2.2, 2.35] and,
 if none in (2.05, 2.1], at least 3 in (2.2, 2.35] or at most 1 beyond 2.35, or with exactly 16 within 2.0161, at most 2 beyond 2.35 and
-either none in (2.1, 2.35] and, if 2 lie beyond 2.35, at least one in each
-of (2.0161, 2.05] and (2.05, 2.1], or exactly one in (2.1, 2.2], none in
+either none in (2.1, 2.35] and, if 2 lie beyond 2.35, at least one in
+(2.05, 2.1], or exactly one in (2.1, 2.2], none in
 (2.2, 2.35] and at least 2 in (2.05, 2.1], or none in (2.1, 2.2], at least
 one in (2.2, 2.35] and at least 3 in (2.05, 2.1]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
@@ -794,9 +799,9 @@ and so do the 8 (`CM/check_c27k16f2G1bmmt.log`: U <= 3.102229 at
 machine); (16, 0, 9, 0, 0, 0, 2) and
 (16, 9, 0, 0, 0, 0, 2), with 25 centres within 2.1, give 3.104116 and
 3.103832; mixed on its own (`CM/case27_k16f2v0902.json`), the first gives
-3.082699 and its exact check runs at margins 2e-6/5e-6/1e-6 with no dense
-search (`CM/check_c27k16f2v0902mt.log`, 3.097927 in floating point at those
-margins), and the second, mixed on its own, stays at 3.103729 and is open. With exactly one centre in (2.1, 2.2] and none in
+3.082699 and passes its exact check at margins 2e-6/5e-6/1e-6 with no dense
+search (`CM/check_c27k16f2v0902mt.log`: U <= 3.097967, 82.9 million triple
+boxes, 19:04 on 2026-10-26), and the second, mixed on its own, stays at 3.103729 and is open. With exactly one centre in (2.1, 2.2] and none in
 (2.2, 2.35] the 60 vectors give 3.107876, and per vector only the 24 with
 at most three in (2.05, 2.1] are above the level; the 36 others
 (`CM/case27_k16f2Hn3.json`) mix to 3.092122 and pass their exact check

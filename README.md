@@ -34,8 +34,8 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
   one in (2.1, 2.2], or none in (2.1, 2.2], at least one in (2.2, 2.35]
   and, if none in (2.05, 2.1], at least three in (2.2, 2.35] or at most one beyond 2.35, or exactly
   sixteen within 2.0161, at most two beyond 2.35 and either none in
-  (2.1, 2.35] and, if two lie beyond 2.35, at least one in each of
-  (2.0161, 2.05] and (2.05, 2.1], or exactly one in (2.1, 2.2], none in
+  (2.1, 2.35] and, if two lie beyond 2.35, at least one in
+  (2.05, 2.1], or exactly one in (2.1, 2.2], none in
   (2.2, 2.35] and at least two in (2.05, 2.1], or none in (2.1, 2.2], at
   least one in (2.2, 2.35] and at least three in (2.05, 2.1];
 - exactly twenty-four lie within sqrt 6, on the rays of a root system, or
