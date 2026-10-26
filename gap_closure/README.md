@@ -177,7 +177,9 @@ if none in (2.05, 2.1], at least 3 in (2.2, 2.35] or at most 1 beyond 2.35, or w
 either none in (2.1, 2.35] and, if 2 lie beyond 2.35, at least one in
 (2.05, 2.1], or exactly one in (2.1, 2.2], none in
 (2.2, 2.35] and at least 2 in (2.05, 2.1], or none in (2.1, 2.2], at least
-one in (2.2, 2.35] and at least 3 in (2.05, 2.1]. The rest are kept so that the
+one in (2.2, 2.35] and at least 3 in (2.05, 2.1]. The record of how each
+part at 27 was found, and of what is still open there, is in
+`count27_record.md`. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
