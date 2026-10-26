@@ -1025,11 +1025,13 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               boxes).
                               radial_certificates/combo27_k15f2g2aX1v1110_d10.npz,
                               combo27_k15f2g2aX1v1020_d10.npz,
-                              combo27_k15f2g2aX1v1011_d10.npz and
+                              combo27_k15f2g2aX1v1011_d10.npz,
+                              combo27_k15f2g2aX1v921_d10.npz and
                               combo27_k16f2v8210_d10.npz are mixed-typing
                               mixes for the single vectors
                               (15, 11, 0, 0, 0, 1, 0), (15, 10, 0, 0, 0, 2, 0),
-                              (15, 10, 0, 0, 0, 1, 1) and (16, 8, 2, 0, 0, 1, 0)
+                              (15, 10, 0, 0, 0, 1, 1), (15, 9, 0, 0, 0, 2, 1)
+                              and (16, 8, 2, 0, 0, 1, 0)
                               (gap_closure/CM/case27_k15f2g2aX1v*_bins.json,
                               case27_k16f2v8210_bins.json); their checks pass
                               (runs/combo27_k15f2g2aX1v1110_check.log 3.098938,
@@ -1037,9 +1039,14 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               runs/combo27_k15f2g2aX1v1011_check.log 3.100562
                               after a first run failed on A2B6F7 and was
                               resumed with 3e-7 more room there,
-                              runs/combo27_k16f2v8210_check.log 3.099725).
-                              They are not yet part of prop:count27-few.
-                              The twenty-eight mixes for 27 together are
+                              runs/combo27_k15f2g2aX1v921_check.log 3.103026
+                              after a first run failed on A1A1A1 and A2B6F7
+                              and was resumed with 2e-7 and 5e-7 more room
+                              there, runs/combo27_k16f2v8210_check.log
+                              3.099725). The four with 15 within 2.0161 are
+                              part of prop:count27-few; (16, 8, 2, 0, 0, 1, 0)
+                              is not yet.
+                              The thirty-two mixes for 27 together are
                               prop:count27-few, (C) at 27 with at most 14
                               within 2.0161, or with exactly 15 or exactly
                               16 within 2.0161, exactly 3 beyond 2.35 and
@@ -1053,8 +1060,7 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               (2.2, 2.35] and at most one in (2.1, 2.2],
                               or with exactly 15 within 2.0161, at most 2
                               beyond 2.35, none in (2.1, 2.2], at least
-                              one in (2.2, 2.35] and, if none in
-                              (2.05, 2.1], at least 3 in (2.2, 2.35],
+                              one in (2.2, 2.35] and, if none in (2.05, 2.1], at least 3 in (2.2, 2.35] or at most 1 beyond 2.35,
                               or with exactly 16 within 2.0161, at most 2
                               beyond 2.35 and either none in (2.1, 2.35]
                               and, if 2 lie beyond 2.35, at least one in

@@ -32,7 +32,7 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
   beyond 2.35 and at least one in (2.05, 2.35], or exactly fifteen within
   2.0161, at most two beyond 2.35 and either none in (2.2, 2.35] and at most
   one in (2.1, 2.2], or none in (2.1, 2.2], at least one in (2.2, 2.35]
-  and, if none in (2.05, 2.1], at least three in (2.2, 2.35], or exactly
+  and, if none in (2.05, 2.1], at least three in (2.2, 2.35] or at most one beyond 2.35, or exactly
   sixteen within 2.0161, at most two beyond 2.35 and either none in
   (2.1, 2.35] and, if two lie beyond 2.35, at least one in each of
   (2.0161, 2.05] and (2.05, 2.1], or exactly one in (2.1, 2.2], none in
