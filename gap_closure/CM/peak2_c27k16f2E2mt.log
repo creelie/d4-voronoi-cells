@@ -1,0 +1,6 @@
+dense search of the triple polynomials of the mixed-typing mix mix27_k16f2E2mt.npz (mixed for the 81 count vectors of 27 centres with exactly 16 within 2.0161, at most 2 beyond 2.35, exactly two in (2.1, 2.2] and none in (2.2, 2.35]; from 16 certificates under typings AAABBBF, AAABBFF, AABBBBF, AABBBFF, AABFFBF to 3.101190 at the climbed maxima and the check margins, mix27_k16f2E2mt.log) on the combinations of bins that occur (case27_k16f2E2_bins.json), 2M samples and 400 ascents per combination; started Mon Oct 26 13:09:21 UTC 2026
+mixed typing: 5 groups, typings ['AAABBBF', 'AAABBFF', 'AABBBBF', 'AABBBFF', 'AABFFBF']
+A1A1A1: sampled max 2.811404309e-03 on 2.1M triples; ascent from 400 starts 2.811429469e-03 at [-0.726584  0.507954  0.222767] [123 s]
+A1A1A2: sampled max 2.811586268e-03 on 2.1M triples; ascent from 400 starts 2.811586493e-03 at [-0.733277  0.211115  0.509799] [265 s]
+A1A1B3: sampled max 2.237252425e-03 on 2.1M triples; ascent from 400 starts 2.237368312e-03 at [-0.868231 -0.698931  0.508415] [392 s]
+A1A1B4: sampled max 2.317639589e-03 on 2.1M triples; ascent from 400 starts 2.317728581e-03 at [-0.733365  0.531507 -0.843638] [518 s]
