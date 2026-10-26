@@ -25,7 +25,7 @@ last centre in (2.05, 2.1], (2.1, 2.15], (2.15, 2.2] or (2.2, 2.35], found by
 `CM/c28_hull_case.py` (the last one checked with `REGION_TRIPLES`, which
 counts its close-close-far triples), which `multi_cap/combo_case_check.py`
 proves exactly and which together are `prop:count28-mixed`, (C) at
-twenty-eight; and twenty-seven combinations for twenty-seven centres, one of six
+twenty-eight; and twenty-eight combinations for twenty-seven centres, one of six
 certificates for at most ten within 2.0161 and at most two beyond 2.35, one
 of seven for at most ten within 2.0161 and exactly three beyond 2.35, one of
 six for exactly eleven within 2.0161 and at most two beyond 2.35, one of
@@ -127,23 +127,32 @@ least three in (2.2, 2.35] (`CM/case27_k15f2g2aX3_bins.json`), found by
 `CM/c27_hull_mt.py` under five typings, 0.14 of the weight typing the bin
 (2.2, 2.35] as F, which `multi_cap/combo_mixtype_check.py` proves exactly
 (`CM/check_c27k15f2g2aX3mt.log`: U <= 3.102002 at (15, 7, 0, 0, 0, 3, 2),
-383.2 million triple boxes), and one of eight for the 36 vectors with
+383.2 million triple boxes), one of eight for the 36 vectors with
 exactly sixteen within 2.0161, at most two beyond 2.35, exactly one in
 (2.1, 2.2], none in (2.2, 2.35] and at least four in (2.05, 2.1]
 (`CM/case27_k16f2Hn3_bins.json`), found by `CM/c27_hull_mt.py` under five
 typings, 0.65 of the weight typing the bin (2.05, 2.1] as A and 0.13 typing
 (2.1, 2.2] as F, which `multi_cap/combo_mixtype_check.py` proves exactly
 (`CM/check_c27k16f2Hn3mt.log`: U <= 3.096243 at (16, 4, 4, 0, 1, 0, 2),
-610.1 million triple boxes); together they are
+610.1 million triple boxes), and one of seven for the 67 vectors with
+exactly sixteen within 2.0161, at most two beyond 2.35, none in (2.1, 2.2],
+at least one in (2.2, 2.35] and at least three in (2.05, 2.1]
+(`CM/case27_k16f2G2an3_bins.json`), found by `CM/c27_hull_mt.py` under five
+typings for the 79 vectors with at least two in (2.05, 2.1], 0.67 of the
+weight typing the bin (2.05, 2.1] as A and 0.34 typing (2.2, 2.35] as F,
+which `multi_cap/combo_mixtype_check.py` proves exactly
+(`CM/check_c27k16f2G2an3mt.log`: U <= 3.102140 at (16, 5, 3, 0, 0, 1, 2),
+616.0 million triple boxes); together they are
 `prop:count27-few`, (C) at 27 with at most
 14 within 2.0161, or with exactly 15 or exactly 16 within 2.0161, exactly 3
 beyond 2.35 and at least one in (2.05, 2.35], or with exactly 15 within
 2.0161, at most 2 beyond 2.35 and either none in (2.2, 2.35] and at most
 one in (2.1, 2.2], or none in (2.1, 2.2], at least one in (2.2, 2.35] and,
-if none in (2.05, 2.1], at least 3 in (2.2, 2.35], or with exactly 16 within 2.0161, at most 2 beyond 2.35, none
-in (2.2, 2.35] and either none in (2.1, 2.2] and, if 2 lie beyond 2.35, at
-least one in each of (2.0161, 2.05] and (2.05, 2.1], or exactly one in
-(2.1, 2.2] and at least 4 in (2.05, 2.1]. The rest are kept so that the
+if none in (2.05, 2.1], at least 3 in (2.2, 2.35], or with exactly 16 within 2.0161, at most 2 beyond 2.35 and
+either none in (2.1, 2.35] and, if 2 lie beyond 2.35, at least one in each
+of (2.0161, 2.05] and (2.05, 2.1], or exactly one in (2.1, 2.2], none in
+(2.2, 2.35] and at least 4 in (2.05, 2.1], or none in (2.1, 2.2], at least
+one in (2.2, 2.35] and at least 3 in (2.05, 2.1]. The rest are kept so that the
 values quoted in the paper and in the pull requests can be reproduced, and no
 result of theirs is used in any proof, except the exact checks logged in
 `density/check_M.log` (see the last section).
@@ -774,9 +783,12 @@ with those peaks. With none in (2.1, 2.2] and one or more in
 (2.2, 2.35] the 103 vectors give 3.111974, each centre in (2.05, 2.1]
 lowering the bound by about 0.003; a mix for the 79 with at least two in
 (2.05, 2.1] gives 3.103361, and 3.101372 on the 67 with at least three
-(`CM/case27_k16f2G2an3.json`), whose exact check runs
-(`CM/check_c27k16f2G2an3mt.log`, about 3.102149 with the peaks of its dense
-search `CM/peak2_c27k16f2G2an3mt.log`, the margins and extra room); a mix
+(`CM/case27_k16f2G2an3.json`), whose exact check passes
+(`CM/check_c27k16f2G2an3mt.log`: U <= 3.102140 at (16, 5, 3, 0, 0, 1, 2),
+3 590 588 pair boxes, 1600 bin intervals, 616 011 287 triple boxes, about
+3.102149 expected with the peaks of its dense search
+`CM/peak2_c27k16f2G2an3mt.log`, the margins and extra room; copy
+`multi_cap/runs/combo27_k16f2G2an3_check.log`); a mix
 for the 12 with exactly two in (2.05, 2.1] gives 3.103355, and 3.100707 on
 the 9 with at least two in (2.2, 2.35] (`CM/case27_k16f2G2ae2b.json`),
 whose exact check runs (`CM/check_c27k16f2G2ae2bmt.log`, about 3.102292
