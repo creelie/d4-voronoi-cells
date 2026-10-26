@@ -815,8 +815,9 @@ boxes; not yet in the paper), (16, 7, 2, 0, 0, 1, 1), mixed on its own
 (`CM/case27_k16f2v7211.json`), gives 3.098756 (3.099854 with the peaks of
 `CM/peak2_c27k16f2v7211mt.log`) and its exact check runs
 (`CM/check_c27k16f2v7211mt.log`), and (16, 6, 2, 0, 0, 1, 2), mixed on its
-own (`CM/case27_k16f2v6212.json`), gives 3.100933 and its dense search
-runs. The 1372 vectors with a centre in (2.1, 2.2] and at least two in
+own (`CM/case27_k16f2v6212.json`), gives 3.100933 (3.102064 with the peaks of
+`CM/peak2_c27k16f2v6212mt.log`) and its exact check runs
+(`CM/check_c27k16f2v6212mt.log`). The 1372 vectors with a centre in (2.1, 2.2] and at least two in
 (2.1, 2.35] mix to 3.107964 with 225 above the level (scratchpad scout, 9
 certificates under four typings, `CM/mix27_k16f2Emt.log`); under that mix
 the 1109 with at least two in (2.1, 2.2] and at least three in (2.1, 2.35]
