@@ -1,0 +1,24 @@
+16 certificates, three-point degree 10, n3 7188 [0 s]
+sub-types ['A1', 'A2', 'B3', 'B4', 'B5', 'B6', 'F7']; 24 pair kinds, 57 triple kinds over 18 count vectors
+samples: pairs 528960, triples 834962 [2530 s]
+18 count vectors in all (18 distinct rows)
+iter 0: LP 3.023936; with climbed maxima and the margins of the check 3.108241 at (16, 6, 1, 0, 1, 1, 2); weights {'c27k14f2c_d10_r1.npz@AAABBBF': 0.7423, 'c27k15_d10_r1.npz@AABBBBF': 0.2577}; largest gaps [(np.float64(0.003803702), 'B4B6'), (np.float64(0.002642478), 'B3B6'), (np.float64(0.00234925), 'B3B5'), (np.float64(0.002177595), 'A2B6')] [4122 s]
+iter 1: LP 3.101925; with climbed maxima and the margins of the check 3.102552 at (16, 4, 1, 1, 0, 3, 2); weights {'c27k14f3b_d10_r1.npz@AABFFBF': 0.001, 'c27k12_d10_r1.npz@AAABBFF': 0.0726, 'c27k12_d10_r1.npz@AABFFBF': 0.0508, 'c27k15_d10_r1.npz@AAABBFF': 0.0731, 'c27k15_d10_r1.npz@AABBBFF': 0.0473, 'c27k15_d10_r1.npz@AABFFBF': 0.0222, 'c27f2g2b_d10_r1.npz@AAABBBF': 0.3247, 'c27f2g2b_d10_r1.npz@AABBBBF': 0.1299, 'c27k15f2g2b_d10_r1.npz@AAABBBF': 0.0432, 'c27k15f2g2b_d10_r1.npz@AAABBFF': 0.08, 'c27k15f2g2b_d10_r1.npz@AABFFBF': 0.0439, 'c27k15f2g2b2_d10_r1.npz@AAABBBF': 0.1113}; largest gaps [(np.float64(2.5847e-05), 'B6B6B6'), (np.float64(1.7327e-05), 'B6F7F7'), (np.float64(8.294e-06), 'A1B4'), (np.float64(5.081e-06), 'A2F7F7')] [5621 s]
+Traceback (most recent call last):
+  File "/home/claude/d4-voronoi-cells/gap_closure/CM/c27_hull_mt.py", line 307, in <module>
+    r = lp(act)
+        ^^^^^^^
+  File "/home/claude/d4-voronoi-cells/gap_closure/CM/c27_hull_mt.py", line 228, in lp
+    r = linprog(cobj, A_ub=A, b_ub=bv, A_eq=Aeq, b_eq=[1], bounds=bounds, method='highs')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/scipy/optimize/_linprog.py", line 660, in linprog
+    sol = _linprog_highs(lp, solver=highs_solvers[meth],
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/scipy/optimize/_linprog_highs.py", line 355, in _linprog_highs
+    res = _highs_wrapper(c, A.indptr, A.indices, A.data, lhs, rhs,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/scipy/optimize/_highspy/_highs_wrapper.py", line 206, in _highs_wrapper
+    run_status = highs.run()
+                 ^^^^^^^^^^^
+MemoryError: std::bad_alloc
+exit 1 at Mon Oct 26 20:22:32 UTC 2026
