@@ -1,0 +1,11 @@
+27 with 15 or 16 centres within 2.0161, 24 within 2.1 with at most one in (2.05, 2.1], none in (2.1, 2.35] and exactly 3 beyond 2.35 (case27_k15a9.json, 4 count vectors: (15,9,0,..,3), (15,8,1,..,3), (16,8,0,..,3), (16,7,1,..,3)). Per-vector mixes with mixed typing (scratchpad pv/) give 2.979 + 0.014 a for (15,a,9-a,0,0,0,3), a = 0..8 (3.0905 at a = 8), but 3.104853 for a = 9 even with 17 certificates, above the level 3.103305: a degree 10 round built for these vectors, from the samples of c27k14f3b (the certificate with most weight). TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3, nice 5, oom_score_adj 0; started Thu Oct 22 07:30:57 UTC 2026
+resumed from c27k14f3b_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7444 variables, 86211 inequalities, 7389 psd rows in 56 cones, 63523513 nonzeros [19 s to build]
+   2 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.10380 (target 3.10330), corrected <= 5.55134  [6888 s]
+   viol: AA 5.4e-07, AB 6.8e-06, AF 5.3e-06, BB -1.8e-03, BF 3.6e-06, FF 9.8e-06, AAA 1.9e-05, AAB 8.1e-03, AAF 3.4e-05, ABF 4.6e-03, AFF 8.2e-05, BFF 6.8e-04, FFF 8.1e-06
+   c2: {'AA': 0.037677, 'AB': 0.132502, 'AF': 0.0655, 'BB': 0.144336, 'BF': 0.151465, 'FF': 0.141955}
+   c3: {'AAA': 0.0117125, 'AAB': 0.0037895, 'AAF': -0.0298042, 'ABF': -0.0161248, 'AFF': 0.160933, 'BFF': -9.92e-05, 'FFF': 0.0248989}
+exit 0 at Thu Oct 22 09:26:14 UTC 2026

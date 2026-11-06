@@ -1,0 +1,3 @@
+blocks [0 s]
+AAF: tops (0.5240928019036288, 0.6176000187531377, 0.6176000187531377); sampled max 2.326505232e-03 on 25 batches; refined from 300 starts 2.326571841e-03 [2051 s]
+(run as python3 c28_peak.py case28_k22.json mix28_k22d.npz AAF,ABB,ABF,AFF,BBB,BBF,BFF,FFF 25; stopped by hand after AAF, the kind that failed; the other kinds were left to the exact check, check_c28k22d2.log, which passes)

@@ -1,0 +1,12 @@
+28 with exactly 23 centres within 2.0161, one in [2.2, 2.35] and 4 beyond 2.35, with the types narrowed: A = [2, 2.002], B = [2.2, 2.35], F = (2.35, sqrt6) (case28_k23f4g5x2.json, for the solver only: the vector of 24 close and 4 beyond 2.35 is added so that the case has two type-count vectors; the exact check runs on the single-vector case with the bins refined), three-point degree 10 with TRACE_REG=3e-4, from the samples of c28k23f4g5r_d10_r1.npz cut to these ranges (c28k23f4g5x2_start.npz; pruned to KEEP_P=6000 and KEEP_T=3000 per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3.  Started Tue Oct 13 12:44:10 UTC 2026
+resumed from c28k23f4g5x2_start.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1221, 'AAF': 1248, 'ABB': 1275, 'ABF': 1299, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2588, 'AAB': 1893, 'AAF': 1919, 'ABB': 1967, 'ABF': 1299, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7420 variables, 84840 inequalities, 7389 psd rows in 56 cones, 62426967 nonzeros [30 s to build]
+   2 type-count vectors
+d3=10 round 1: DualInfeasible  bound -1.02668 (target 3.10330), corrected <= 1554.89542  [2315 s]
+   viol: AA 5.1e-03, AB -1.1e-02, AF -3.6e-03, BB -7.8e-02, BF -3.0e-02, FF -5.1e-02, AAA 1.7e-01, AAB 5.1e-01, AAF 9.8e-01, ABF 3.8e-01, AFF 7.2e-01, BFF 5.4e-02, FFF -3.4e-03
+   c2: {'AA': 4.994678, 'AB': 2.770237, 'AF': 3.085989, 'BB': 1.352468, 'BF': 1.493815, 'FF': 1.415957}
+   c3: {'AAA': -0.594169, 'AAB': -0.8272141, 'AAF': -1.1339126, 'ABF': 0.8160353, 'AFF': 1.8499611, 'BFF': 0.2009311, 'FFF': 0.8128956}
+exit 0 at Tue Oct 13 13:23:06 UTC 2026
+Note (appended after the run): DualInfeasible even with the 24 + 4 vector beside the target, once the close type is narrowed to [2, 2.002]; this route is dropped. The (2.2, 2.35] vector is checked with the existing mix and the close bin split at 2.002 (check_c28k23f4n5s.log).

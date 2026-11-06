@@ -7,6 +7,9 @@ labelled by distance and the three-point kernel on directions typed by distance 
 The case file gives M, the types and their distance ranges, the bins (each inside the
 range of one type) and constraints [bins, lo, hi] on the number of centres in groups
 of bins, each of which must be a proved count (prop:C-radial, thm:kissing-stable).
+An optional key "exclude" lists further sets of constraints in the same form; a vector
+that meets every constraint of one of these sets is left out of the case (it belongs to
+another part of the proof, checked on its own).
 The check is that of combo30_check.py: exact positivity, the pair inequalities by
 tensor Bernstein bounds, the bin brackets, the triple inequalities by Taylor forms,
 and then, for every integer vector of bin counts that the constraints allow, the bound
@@ -53,6 +56,17 @@ PRECHECK=1 and the main case and arguments of a passing full check the run repro
 that check's thresholds, printed for comparison, and settles the listed cases at the
 cost of the sampling alone.
 
+With REFINE_DIVERSE=<n> the local ascent that refines each triple threshold starts from up
+to n samples spread over the domain (taken by decreasing value, each at max-norm distance
+at least 0.03 from those before) instead of the 40 largest, which can all lie in the
+basin of one peak while a higher one elsewhere is missed (the split check of the
+28-centre vector (23, 0, 0, 0, 0, 1, 4) failed on such an interior peak of TRIPLE3_AAF).
+Only the floating-point thresholds change; the branch and bound proves them either way.
+That peak is a narrow ridge: it falls by 3e-6 within 0.01 of its top, so spread-out
+samples miss its basin as well.  With REFINE_GRID=<n> the ascent also starts from every
+local maximum of an n^3 grid on the domain of each triple inequality; n = 121 (spacing
+about 0.013) finds that peak, n = 41 does not, at about two minutes per inequality.
+
 With REFINE_TRIPLES=<b>-<b'>-<b''>[,...] (bins numbered from 1, e.g. 1-3-7) each listed
 combination of bins gets a threshold of its own: a triple of centres in the bins b, b',
 b'' has inner products at most a(hi_b, hi_b'), a(hi_b, hi_b''), a(hi_b', hi_b''), so
@@ -71,6 +85,53 @@ With PAIR_MARGIN=<kind>:<x>[,...], e.g. PAIR_MARGIN=AA:5e-6, the pair inequaliti
 named kinds (and the pairs of REFINE_PAIRS of those kinds) take the margin x in place of
 margin2.  A kind whose function is nearly flat on a whole face of its domain needs many
 more boxes at a small margin; this keeps its margin while the others shrink.
+
+With SKIP_COVERED=1, a pair kind or a triple kind all of whose pairs or triples, in every
+count vector of the case, lie in combinations of bins listed in REFINE_PAIRS or
+REFINE_TRIPLES, is counted in the bound with the thresholds of those combinations alone:
+the threshold of the kind is raised to the largest of them where it lies below it, so
+that the bound subtracts the full difference, it is not used, and its branch and bound is
+skipped; the listed combinations are checked as usual.  This is for certificates built for narrower distance ranges than the
+types of the case, whose thresholds on the whole types are large and of no use.  The
+count vectors of EXTRA_CASES must then be covered in the same way, which is checked.
+
+With REGION_TRIPLES=<b>-<b>-<p>:<s1>:<s2>[,...] (a combination of REFINE_TRIPLES with two
+centres in one bin b and the third, the pivot, in another bin p, e.g. 1-1-7:-0.7944:0.58) the
+triples of that combination are split by the inner products u, u' of the directions of its
+two centres of bin b with that of its pivot.  The polynomial is checked to be symmetric in u
+and u' (exact coefficients), and two more thresholds are sampled, refined and proved by
+branch and bound, on sub-boxes of the domain: the middle one with u in [s1, s2] (by the
+symmetry, it bounds every triple with u or u' in [s1, s2]) and the mixed one with u <= s1 and
+u' >= s2.  Two counts hold for every pivot y, with c0 = a(hi_b, hi_b) the largest inner
+product of two directions of bin b and T = a(hi_b, hi_p) that of one of bin b with one of bin
+p, when s1 < 0 < s2 < T, s1^2 > c0 and s2^2 < c0:
+  at most Ka = floor((1 - c0)/(s1^2 - c0)) directions x of bin b have <x, y> <= s1, since K
+  of them have a sum S with |S|^2 <= K + K(K-1) c0 and <S, -y> >= K |s1|;
+  at most Kt have <x, y> >= s2, with Kt the largest K such that (1 + g)/2 >= (1 - 2/K)^2,
+  g = (c0 - s2^2)/(1 - T^2): their projections to the unit sphere of the hyperplane
+  orthogonal to y have pairwise inner products at most g, so the caps of angular radius
+  arccos(g)/2 about them are disjoint and K (1 - sqrt((1 + g)/2)) <= 2.
+Of the C(n_b, 2) pairs of centres of bin b, for a pivot with ka centres at <= s1 and kt at
+>= s2, C(ka, 2) + C(kt, 2) take the threshold of the bins, ka kt the mixed one and the rest
+the middle one; the bound takes the largest such sum over ka <= Ka, kt <= Kt.  TRIPLE_EXTRA
+takes <b>-<b>-<p>/mid and <b>-<b>-<p>/mix for the two new thresholds.
+
+With SKIP_EMPTY=1 a kind of pairs that occurs in no count vector of the case gets no
+threshold and no branch and bound, as the kinds of triples never do; its count is 0 in
+every bound.  This is for case files with one type per bin (combo_mixtype_check.py),
+where the bins no count vector occupies are types of their own.
+
+With CHECKPOINT=<file> the result of each branch and bound on pairs or triples is
+appended to the file, and printed with a line "done:", as soon as it is known, keyed by
+the SHA-256 of the pickled function and arguments (polynomial, threshold, domain,
+symmetry).  A later run with the same file takes the result of every job whose key is
+there and passed from the file instead of running it again, and says so in its "[ok]"
+line, with the time of the run that proved it; the logs of the runs together are then
+the record of the check.  A job whose arguments differ in any way gets another key and
+runs again.  This lets a check that a restart of the machine interrupted resume.  The
+float sampling that sets each triple threshold is stored the same way in <file>.setup,
+keyed by its polynomial, domain and samples (drawn before the lookup, so that the random
+generators advance as in a run without the store), and a resumed run takes it from there.
 """
 import itertools
 import json
@@ -91,6 +152,96 @@ from radial_count_sdp import C1, C2  # noqa: E402
 from certificate_check import ldl_positive  # noqa: E402
 from truncated_search import pair as pair_float  # noqa: E402
 
+CHECKPOINT = os.environ.get('CHECKPOINT')
+
+
+def _job_key(fn, args):
+    import hashlib
+    import pickle
+    return hashlib.sha256(pickle.dumps((fn.__module__, fn.__name__, args), protocol=4)).hexdigest()
+
+
+def _run_one(item):
+    i, fn, args = item
+    return i, fn(*args)
+
+
+_setup_store = None
+_setup_hits = [0]
+
+
+def setup_cached(tag, parts, g, compute):
+    """compute(), or with CHECKPOINT=<file> the value stored for the same parts and samples g in
+    <file>.setup by an earlier run (the sampling of a threshold is deterministic given its samples,
+    which are drawn before this is called, so the generators advance as without the store)"""
+    global _setup_store
+    if not CHECKPOINT:
+        return compute()
+    import base64
+    import hashlib
+    import pickle
+    h = hashlib.sha256(pickle.dumps((tag, parts), protocol=4))
+    h.update(np.ascontiguousarray(g).tobytes())
+    key, path = h.hexdigest(), CHECKPOINT + '.setup'
+    if _setup_store is None:
+        _setup_store = {}
+        if os.path.exists(path):
+            for line in open(path):
+                try:
+                    e = json.loads(line)
+                except ValueError:
+                    continue
+                _setup_store[e['key']] = e['value']
+    if key in _setup_store:
+        _setup_hits[0] += 1
+        return pickle.loads(base64.b64decode(_setup_store[key]))
+    r = compute()
+    v = base64.b64encode(pickle.dumps(r, protocol=4)).decode()
+    with open(path, 'a') as f:
+        f.write(json.dumps({'key': key, 'value': v}) + '\n')
+        f.flush()
+        os.fsync(f.fileno())
+    _setup_store[key] = v
+    return r
+
+
+def run_jobs(fn, arglist, labels, procs):
+    """fn(*a) for each a of arglist, in order, on a pool of procs workers; with CHECKPOINT,
+    each result is appended to that file as soon as it is known, and a result that a
+    previous run stored under the same key, and that passed, is taken from the file"""
+    from multiprocessing import Pool
+    keys = [_job_key(fn, a) for a in arglist] if CHECKPOINT else [None] * len(arglist)
+    stored = {}
+    if CHECKPOINT and os.path.exists(CHECKPOINT):
+        for line in open(CHECKPOINT):
+            try:
+                e = json.loads(line)
+            except ValueError:   # a line cut short by the interruption
+                continue
+            if e.get('result') and e['result'][0] is True:
+                stored[e['key']] = e
+    res, todo = [None] * len(arglist), []
+    for i in range(len(arglist)):
+        e = stored.get(keys[i])
+        if e is not None:
+            r = list(e['result'])
+            r[1] = '%s [from the checkpoint %s, proved by the run of %s]' % (r[1], os.path.basename(CHECKPOINT), e['when'])
+            res[i] = tuple(r)
+        else:
+            todo.append(i)
+    if todo:
+        with Pool(min(procs, len(todo))) as pool:
+            for i, r in pool.imap_unordered(_run_one, [(i, fn, arglist[i]) for i in todo]):
+                res[i] = r
+                print('  done: %s: %s %s' % (labels[i], 'ok' if r[0] else 'FAILED', r[1]), flush=True)
+                if CHECKPOINT:
+                    with open(CHECKPOINT, 'a') as f:
+                        f.write(json.dumps({'key': keys[i], 'label': labels[i], 'result': list(r),
+                                            'when': time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}) + '\n')
+                        f.flush()
+                        os.fsync(f.fileno())
+    return res
+
 CASE = json.load(open(sys.argv[1]))
 PRE = os.environ.get('PRECHECK') == '1'
 BORDER = os.environ.get('BORDER') == '1'
@@ -99,6 +250,12 @@ ONLY = [e for e in os.environ.get('ONLY', '').split(',') if e]
 REFINE = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_TRIPLES', '').split(',') if e]
 REFINE_PAIRS = [tuple(sorted(int(x) - 1 for x in e.split('-'))) for e in os.environ.get('REFINE_PAIRS', '').split(',') if e]
 PAIR_MARGIN = {k: float(v) for k, v in (e.split(':') for e in os.environ.get('PAIR_MARGIN', '').split(',') if e)}
+SKIP_COVERED = os.environ.get('SKIP_COVERED') == '1'
+SKIP_EMPTY = os.environ.get('SKIP_EMPTY') == '1'
+DIVERSE = int(os.environ.get('REFINE_DIVERSE', '0'))
+GRIDN = int(os.environ.get('REFINE_GRID', '0'))
+REGION = [(tuple(sorted(int(x) - 1 for x in e.split(':')[0].split('-'))), Fr(e.split(':')[1]), Fr(e.split(':')[2]))
+          for e in os.environ.get('REGION_TRIPLES', '').split(',') if e]
 
 
 def num(x):
@@ -112,7 +269,9 @@ def counts():
     def rec(prefix, left):
         if len(prefix) == nb - 1:
             v = prefix + [left]
-            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']):
+            if all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in CASE['constraints']) and \
+                    not any(all(lo <= sum(v[i] for i in bs) <= hi for bs, lo, hi in X)
+                            for X in CASE.get('exclude', [])):
                 out.append(tuple(v))
             return
         for k in range(left + 1):
@@ -138,6 +297,24 @@ def tcounts(nb):
 
 
 C.tcounts = tcounts
+
+
+def Nbins(nb, bs):
+    """number of pairs or triples of centres with one centre in each listed bin"""
+    out = 1
+    for b in set(bs):
+        out *= comb(nb[b], bs.count(b))
+    return out
+
+
+def covered2(st, c2r, vecs):
+    rs = [bs for bs in c2r if (C.BINTYPE[bs[0]], C.BINTYPE[bs[1]]) == st]
+    return bool(rs) and all(C.Npair(tcounts(nb), *st) == sum(Nbins(nb, bs) for bs in rs) for nb in vecs), rs
+
+
+def covered3(combo, c3r, vecs):
+    rs = [bs for bs in c3r if tuple(C.BINTYPE[b] for b in bs) == combo]
+    return bool(rs) and all(C.Ntriple(tcounts(nb), list(combo)) == sum(Nbins(nb, bs) for bs in rs) for nb in vecs), rs
 
 
 def main():
@@ -227,11 +404,13 @@ def main():
         return C.above(max(float(v.max()), best) + PAIR_MARGIN.get(C.TYPES[i] + C.TYPES[j], mg2)), float(v.max()), Pu
 
     c2 = {}
-    for (s, tt) in itertools.combinations_with_replacement(C.TYPES, 2):
+    for kidx, (s, tt) in enumerate(itertools.combinations_with_replacement(C.TYPES, 2)):
+        if SKIP_EMPTY and all(C.Npair(tcounts(nb), s, tt) == 0 for nb in C.COUNTS):
+            continue
         i, j = C.TYPES.index(s), C.TYPES.index(tt)
         c2[(s, tt)], vmax, _ = pair_setup(i, j, (C.TRANGE[s], C.TRANGE[tt]), rng)
         print('  pair %s%s: float largest K + PAIR3 - Pi %.6e (file c2 %.6e); threshold %.6e'
-              % (s, tt, vmax, float(Z['c2'][len(c2) - 1]), float(c2[(s, tt)])), flush=True)
+              % (s, tt, vmax, float(Z['c2'][kidx]), float(c2[(s, tt)])), flush=True)
     jobs = [(A, C.pair3_poly(Bk, d3, C.TYPES.index(s), C.TYPES.index(tt)), c2[(s, tt)], (C.TRANGE[s], C.TRANGE[tt]), s == tt)
             for (s, tt) in c2]
     labels = ['K + PAIR3_%s%s <= Pi + c2 on the admissible pairs' % st for st in c2]
@@ -250,10 +429,22 @@ def main():
         if not PRE:
             jobs.append((A, Pu, c2r[bs], box, bs[0] == bs[1]))
             labels.append('K + PAIR3_%s%s <= Pi + its threshold on the pairs of %s' % (s, tt, name))
-    from multiprocessing import Pool
+    skip2 = set()
+    if SKIP_COVERED:
+        for st in c2:
+            cov, rs = covered2(st, c2r, C.COUNTS)
+            if cov:
+                skip2.add(st)
+                c2[st] = max([c2[st]] + [c2r[bs] for bs in rs])
+                print('  pair %s%s: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts '
+                      'them with the thresholds of those bins alone and the branch and bound of the kind is skipped'
+                      % (st[0], st[1]), flush=True)
+        if skip2 and not (PRE or ONLY):
+            sts = list(c2)
+            keep = [k for k in range(len(jobs)) if k >= len(sts) or sts[k] not in skip2]
+            jobs, labels = [jobs[k] for k in keep], [labels[k] for k in keep]
     if jobs:
-        with Pool(min(int(os.environ.get('PAIR_PROCS', '3')), len(jobs))) as pool:
-            res = pool.starmap(C.pair_box_check, jobs)
+        res = run_jobs(C.pair_box_check, jobs, labels, int(os.environ.get('PAIR_PROCS', '3')))
         for label, (ok, msg) in zip(labels, res):
             C.check(label, ok, msg)
     # (c) bins
@@ -264,6 +455,44 @@ def main():
         okb, msg = bracket_check(A, z, D2, R2, C1, C2, C.DMAX, C.EDGES, m)
         C.check('f <= m_b on every bin', okb, msg)
     # (d) triples
+    def refine_starts(g, vals, P_GRID=None):
+        """the starts of the local ascent: the 40 largest samples, or with REFINE_DIVERSE=<n> up to n
+        samples taken in decreasing order of value and at max-norm distance at least 0.03 from those
+        already taken, so that a peak whose basin holds none of the 40 largest samples is still climbed"""
+        order = np.argsort(vals)[::-1]
+        if not DIVERSE:
+            return g[order[:40]] if P_GRID is None else np.r_[g[order[:40]], grid_local_maxima(*P_GRID)]
+        taken = []
+        for i in order:
+            if all(np.max(np.abs(g[i] - g[j])) >= 0.03 for j in taken):
+                taken.append(i)
+                if len(taken) >= DIVERSE:
+                    break
+        out = g[np.array(taken)]
+        return out if P_GRID is None else np.r_[out, grid_local_maxima(*P_GRID)]
+
+    def grid_local_maxima(P, T, n, B=(-1, -1, -1)):
+        """the points of an n^3 grid on [B_1, T_1] x [B_2, T_2] x [B_3, T_3] (B_i = -1 unless given),
+        restricted to the admissible triples, at which P is at least its value at every admissible
+        neighbour (26-neighbourhood)"""
+        ax = [np.linspace(float(b), float(t), n) for b, t in zip(B, T)]
+        X = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
+        ok = 1 + 2 * X[:, 0] * X[:, 1] * X[:, 2] - (X ** 2).sum(1) >= 0
+        V = np.full(len(X), -np.inf)
+        idx = np.where(ok)[0]
+        for s0 in range(0, len(idx), 20000):
+            j = idx[s0:s0 + 20000]
+            V[j] = C.peval(P, X[j, 0], X[j, 1], X[j, 2])
+        V3 = V.reshape(n, n, n)
+        pad = np.pad(V3, 1, constant_values=-np.inf)
+        loc = np.isfinite(V3)
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    if dx or dy or dz:
+                        loc &= V3 >= pad[1 + dx:n + 1 + dx, 1 + dy:n + 1 + dy, 1 + dz:n + 1 + dz]
+        return X[loc.reshape(-1)]
+
     def triple_setup(P, T, labels, rng_, extra):
         """sample and refine TRIPLE3 = P on {u_12 <= T[0], u_13 <= T[1], u_23 <= T[2]}, and lay it
         out for the branch and bound with the symmetry of equal labels"""
@@ -273,20 +502,25 @@ def main():
         G = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
         G = G[1 + 2 * G[:, 0] * G[:, 1] * G[:, 2] - (G ** 2).sum(1) >= 0]
         g = np.r_[g, G]
-        vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
-        best = C.refine_triple(P, g[np.argsort(vals)[-40:]], (float(T12), float(T13), float(T23)))
-        thr = C.above(max(float(vals.max()), best) + mg3 + extra)
-        perm, sym = C.triple_layout(labels)
-        tops = [None] * 3
-        for src, val in enumerate((T12, T13, T23)):
-            tops[perm.index(src)] = float(C.above(val))
-        Pr = {}
-        for e, co in P.items():
-            ee = [0, 0, 0]
-            for src in range(3):
-                ee[perm.index(src)] += e[src]
-            Pr[tuple(ee)] = Pr.get(tuple(ee), 0) + co
-        return thr, Pr, tops, sym, float(vals.max()), len(g), best
+
+        def compute():
+            vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
+            P_GRID = (P, (T12, T13, T23), GRIDN) if GRIDN else None
+            best = C.refine_triple(P, refine_starts(g, vals, P_GRID), (float(T12), float(T13), float(T23)))
+            thr = C.above(max(float(vals.max()), best) + mg3 + extra)
+            perm, sym = C.triple_layout(labels)
+            tops = [None] * 3
+            for src, val in enumerate((T12, T13, T23)):
+                tops[perm.index(src)] = float(C.above(val))
+            Pr = {}
+            for e, co in P.items():
+                ee = [0, 0, 0]
+                for src in range(3):
+                    ee[perm.index(src)] += e[src]
+                Pr[tuple(ee)] = Pr.get(tuple(ee), 0) + co
+            return thr, Pr, tops, sym, float(vals.max()), len(g), best
+        return setup_cached('triple', (sorted(P.items()), [str(x) for x in T], tuple(labels), extra, mg3, GRIDN,
+                                       DIVERSE), g, compute)
 
     c3 = {}
     tjobs = []
@@ -319,9 +553,100 @@ def main():
               'threshold %.6e against %.6e for the kind; symmetry %d'
               % (''.join(combo), name, *[float(x) for x in T], vmax, ns, float(c3r[bs]), float(c3[combo]), sym), flush=True)
         tjobs.append((''.join(combo) + ' on ' + name, (Pr, tops, sym, float(c3r[bs]), ''.join(combo) + ' ' + name)))
+    # triples of a refined combination of bins (b, b, p), split by the inner products of the two centres
+    # of bin b with the centre of bin p (REGION_TRIPLES); sampled with a generator of their own as well
+    c3g = {}
+    grng = np.random.default_rng(13)
+    PAIRIDX = {(0, 1): 0, (0, 2): 1, (1, 2): 2}
+
+    def below(x):
+        """the largest double <= x, as a rational"""
+        y = float(x)
+        if Fr(y) > Fr(x):
+            y = float(np.nextafter(y, -np.inf))
+        return Fr(y)
+
+    def region_setup(P, T, B, rng_, extra):
+        """sample and refine TRIPLE3 = P on the sub-box B <= u <= T of its domain"""
+        Tf, Bf_ = [float(x) for x in T], [float(x) for x in B]
+        g = C.random_gram(*Tf, 200000, rng_)
+        g = g[np.all(g >= np.array(Bf_), axis=1)]
+        ax = [np.r_[np.linspace(b, t, 40), t] for b, t in zip(Bf_, Tf)]
+        G = np.stack(np.meshgrid(*ax, indexing='ij'), -1).reshape(-1, 3)
+        g = np.r_[g, G[1 + 2 * G[:, 0] * G[:, 1] * G[:, 2] - (G ** 2).sum(1) >= 0]]
+
+        def compute():
+            vals = C.peval(P, g[:, 0], g[:, 1], g[:, 2])
+            best = C.refine_triple(P, refine_starts(g, vals, (P, Tf, GRIDN, Bf_) if GRIDN else None), Tf, Bf_)
+            return C.above(max(float(vals.max()), best) + mg3 + extra), float(vals.max()), len(g), best
+        return setup_cached('region', (sorted(P.items()), [str(x) for x in T], [str(x) for x in B], extra, mg3, GRIDN,
+                                       DIVERSE), g, compute)
+
+    for bs, s1, s2 in REGION:
+        assert bs in c3r and bs not in c3g, bs
+        i, j, k = (0, 1, 2) if bs[0] == bs[1] != bs[2] else (1, 2, 0)
+        assert bs[i] == bs[j] != bs[k], bs
+        xi, yi = PAIRIDX[tuple(sorted((i, k)))], PAIRIDX[tuple(sorted((j, k)))]
+        b, p = bs[i], bs[k]
+        combo = tuple(C.BINTYPE[x] for x in bs)
+        name = 'bins ' + '-'.join(str(x + 1) for x in bs)
+        P = C.triple3_poly(Bk, d3, combo)
+
+        def swap(e):
+            e = list(e)
+            e[xi], e[yi] = e[yi], e[xi]
+            return tuple(e)
+        C.check('TRIPLE3 on %s symmetric under exchange of the two centres of bin %d (exact coefficients)' % (name, b + 1),
+                all(P.get(swap(e), 0) == co for e, co in P.items()))
+        hi = [C.EDGES[x + 1] for x in bs]
+        T = [C.amaxq(hi[0], hi[1]), C.amaxq(hi[0], hi[2]), C.amaxq(hi[1], hi[2])]
+        c0, Tx = C.amaxq(C.EDGES[b + 1], C.EDGES[b + 1]), T[xi]
+        assert s1 < 0 < s2 < Tx < 1 and s1 * s1 > c0 and s2 * s2 < c0, (s1, s2, c0, Tx)
+        # at most Ka directions of bin b have inner product <= s1 with a direction of bin p: K of them
+        # have sum S with |S|^2 <= K + K(K-1) c0 and <S, -y> >= K |s1|, so K s1^2 <= 1 + (K-1) c0
+        Ka = int((1 - c0) / (s1 * s1 - c0))
+        # at most Kt have inner product >= s2: projected to the unit sphere of the hyperplane
+        # orthogonal to y, two of them have inner product at most g, so the caps of angular radius
+        # arccos(g)/2 about them are disjoint, and Kt (1 - sqrt((1 + g)/2)) <= 2
+        g = (c0 - s2 * s2) / (1 - Tx * Tx)
+        Kt = 2
+        while (1 + g) / 2 >= (1 - Fr(2, Kt + 1)) ** 2:
+            Kt += 1
+        Bm, Tm = [Fr(-1)] * 3, list(T)
+        Bm[xi], Tm[xi] = below(s1), C.above(s2)
+        Bx, Tx_ = [Fr(-1)] * 3, list(T)
+        Tx_[xi], Bx[yi] = C.above(s1), below(s2)
+        ex = '-'.join(str(x + 1) for x in bs)
+        cm, vm, nm, bm = region_setup(P, Tm, Bm, grng, EXTRA.get(ex + '/mid', 0.0))
+        cx, vx, nx, bx = region_setup(P, Tx_, Bx, grng, EXTRA.get(ex + '/mix', 0.0))
+        c3g[bs] = (b, p, cm, cx, Ka, Kt)
+        print('  triple %s on %s split by the inner products of its two centres of bin %d with the centre of bin %d: '
+              'some in [%s, %s], float largest %.6e on %d samples, threshold %.6e; one <= %s and the other >= %s, '
+              'float largest %.6e on %d samples, threshold %.6e; against %.6e for the bins; with each centre of bin %d '
+              'at most %d centres of bin %d at inner product <= %s and at most %d at >= %s'
+              % (''.join(combo), name, b + 1, p + 1, s1, s2, max(vm, bm), nm, float(cm), s1, s2, max(vx, bx), nx,
+                 float(cx), float(c3r[bs]), p + 1, Ka, b + 1, s1, Kt, s2), flush=True)
+        for lab, Bq, Tq, cq in (('middle', Bm, Tm, cm), ('mixed', Bx, Tx_, cx)):
+            tjobs.append((''.join(combo) + ' on ' + name + ' ' + lab,
+                          (P, [float(x) for x in Tq], 0, float(cq), ''.join(combo) + ' ' + name + ' ' + lab, 1e-6, 150000,
+                           [float(x) for x in Bq])))
+    if _setup_hits[0]:
+        print('  (the samples and thresholds of %d of these triple setups were taken from %s.setup, stored by an '
+              'earlier run with the same samples)' % (_setup_hits[0], os.path.basename(CHECKPOINT)), flush=True)
+    skip3 = set()
+    if SKIP_COVERED:
+        for combo in c3:
+            cov, rs = covered3(combo, c3r, C.COUNTS)
+            if cov:
+                skip3.add(''.join(combo))
+                c3[combo] = max([c3[combo]] + [c3r[bs] for bs in rs])
+                print('  triple %s: in every count vector each of its triples lies in a listed combination of bins, so the '
+                      'bound counts them with the thresholds of those combinations alone and the branch and bound of the '
+                      'kind is skipped' % ''.join(combo), flush=True)
+        tjobs = [j for j in tjobs if j[0] not in skip3]
     if not PRE and tjobs:
-        with Pool(min(int(os.environ.get('TRIPLE_PROCS', '3')), len(tjobs))) as pool:
-            res = pool.starmap(C.triple_box_check, [a for _, a in tjobs])
+        res = run_jobs(C.triple_box_check, [a for _, a in tjobs], [lab for lab, _ in tjobs],
+                       int(os.environ.get('TRIPLE_PROCS', '3')))
         nbox = 0
         for (label, _), (ok, msg, nd) in zip(tjobs, res):
             C.check('TRIPLE3_%s <= its threshold on the admissible triples' % label if ' on ' in label
@@ -329,15 +654,28 @@ def main():
             nbox += nd
         print('  triple boxes in all: %d' % nbox, flush=True)
 
-    def Nbins(nb, bs):
-        out = 1
-        for b in set(bs):
-            out *= comb(nb[b], bs.count(b))
-        return out
-
     def refined_gain(nb):
         return (sum(Nbins(nb, bs) * max(c3[tuple(C.BINTYPE[b] for b in bs)] - c3r[bs], 0) for bs in c3r)
                 + sum(Nbins(nb, bs) * max(c2[(C.BINTYPE[bs[0]], C.BINTYPE[bs[1]])] - c2r[bs], 0) for bs in c2r))
+    def region_gain(nb):
+        """for each split combination (b, b, p): every centre of bin p sees at most C(n_b, 2) pairs of
+        centres of bin b, of which, with ka of them at inner product <= s1 and kt at >= s2 with it, at most
+        C(ka, 2) + C(kt, 2) have both on one side (threshold of the bins), ka kt one on each side (mixed
+        threshold) and the rest some in [s1, s2] (middle threshold); the largest such sum over the allowed
+        ka <= Ka, kt <= Kt replaces C(n_b, 2) times the threshold of the bins"""
+        out = 0
+        for bs, (b, p, cm, cx, Ka, Kt) in c3g.items():
+            n, ch = nb[b], c3r[bs]
+            if nb[p] == 0 or n < 2:
+                continue
+            cm, cx, tot, best = min(cm, ch), min(cx, ch), comb(n, 2), None
+            for ka in range(min(Ka, n) + 1):
+                for kt in range(min(Kt, n - ka) + 1):
+                    hot, mix = comb(ka, 2) + comb(kt, 2), ka * kt
+                    v = hot * ch + mix * cx + (tot - hot - mix) * cm
+                    best = v if best is None or v > best else best
+            out += nb[p] * (tot * ch - best)
+        return out
     # the bound, over every count vector
     cache = {}
     worst, wvec = None, None
@@ -350,6 +688,8 @@ def main():
         val = cache[key] + sum(nb[b] * (m[b] + pt[C.BINTYPE[b]]) for b in range(len(nb)) if nb[b])
         if c3r or c2r:
             val -= refined_gain(nb)
+        if c3g:
+            val -= region_gain(nb)
         if worst is None or val > worst:
             worst, wvec = val, nb
     print('  %d count vectors, %d type-count vectors; largest bound %.6f at %s' % (len(C.COUNTS), len(cache), float(worst), wvec),
@@ -360,6 +700,10 @@ def main():
         main_constraints, CASE['constraints'] = CASE['constraints'], E['constraints']
         vecs = counts()
         CASE['constraints'] = main_constraints
+        if skip2 or skip3:
+            C.check('the skipped kinds are covered by the listed bins in the count vectors of %s' % os.path.basename(extra),
+                    all(covered2(st, c2r, vecs)[0] for st in skip2)
+                    and all(covered3(tuple(k), c3r, vecs)[0] for k in skip3))
         ew, ev = None, None
         for nb in vecs:
             tc = tcounts(nb)
@@ -370,6 +714,8 @@ def main():
             val = cache[key] + sum(nb[b] * (m[b] + pt[C.BINTYPE[b]]) for b in range(len(nb)) if nb[b])
             if c3r or c2r:
                 val -= refined_gain(nb)
+            if c3g:
+                val -= region_gain(nb)
             if ew is None or val > ew:
                 ew, ev = val, nb
         C.check('with these thresholds, largest bound over the %d count vectors of %s below %s'

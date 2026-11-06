@@ -1,0 +1,7 @@
+28 with exactly 23 centres within 2.0161 (case28_k23.json), three-point degree 10 with the trace penalty TRACE_REG=3e-4, round 3 for the 23-close certificate, from the samples of the one before (RESUME=c28k23c_d10_r1.npz, pruned to KEEP_P=6000 pair and KEEP_T=3000 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3.  The round before gave 3.09733 on its samples (corrected 3.26595).  Started Tue Oct 13 00:25:13 UTC 2026
+resumed from c28k23c_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7713 variables, 106947 inequalities, 7389 psd rows in 56 cones, 76000900 nonzeros [20 s to build]
+exit 137 at Tue Oct 13 01:30:57 UTC 2026
+Note: this try was killed at 01:30 UTC on 2026-10-13 by the container's memory limit, after a 5 GB probe was started beside the solver; round 3 was restarted from the same samples, log c28k23d_d10.log.

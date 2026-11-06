@@ -1,5 +1,5 @@
-Thu Oct  8 01:41:00 UTC 2026
-exact check of the mixed certificate radial_certificates/combo28_mix16_d10.npz (a convex combination of earlier certificates at 28, each rounded to positive semidefinite; gap_closure/CM/c28_hull.py, target: at most 16 within 2.0161) on case28_lo16.json; margins 2e-6 (AA 5e-6), 2e-7 (AAA 4e-7 more, AAB 2e-7 more), 5e-7, BORDER=1
+Mon Oct 12 00:07:38 UTC 2026
+exact check of the mixed certificate radial_certificates/combo28_mix16_d10.npz (a convex combination of earlier certificates at 28, each rounded to positive semidefinite; gap_closure/CM/c28_hull.py, target: at most 16 within 2.0161) on case28_lo16.json; margins 2e-6 (AA 5e-6), 2e-7 (AAA 4e-7 more, AAB 2e-7 more), 5e-7, BORDER=1.  Restarted on 12 October: the first run (started 01:41 UTC on 8 October; every pair inequality and the bins passed) stopped when the container was restarted while its triples were being checked.
 statement (C) at 28 centres, case case28_lo16.json: combined certificate combo28_mix16_d10.npz, two-point degree 12/4, three-point degree 10; 67342 count vectors
   [ok] dmax exceeds sqrt 6
   [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 53.732111683, float t 53.732111682)
@@ -11,3 +11,35 @@ statement (C) at 28 centres, case case28_lo16.json: combined certificate combo28
   pair BB: float largest K + PAIR3 - Pi 4.903661e-02 (file c2 4.903661e-02); threshold 4.903861e-02
   pair BF: float largest K + PAIR3 - Pi 5.397588e-02 (file c2 5.397591e-02); threshold 5.397792e-02
   pair FF: float largest K + PAIR3 - Pi 5.908455e-02 (file c2 5.908455e-02); threshold 5.908655e-02
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (589727 boxes closed, 465449 set aside, Pi in Arb at 589680 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (46124 boxes closed, 46409 set aside, Pi in Arb at 4017 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (20434 boxes closed, 20553 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (3939 boxes closed, 3241 set aside, Pi in Arb at 544 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (22911 boxes closed, 21986 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (22 boxes closed, 7 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (1159 intervals, least room 2.31e-08)
+  triple AAA: float largest 1.444905e-03 on 649660 samples; threshold 1.445625e-03 (refined 1.445025e-03, extra 4e-07); 756 monomials, symmetry 2
+  triple AAB: float largest 1.040134e-03 on 649656 samples; threshold 1.040540e-03 (refined 1.040140e-03, extra 2e-07); 756 monomials, symmetry 1
+  triple AAF: float largest 8.106806e-04 on 649567 samples; threshold 8.111695e-04; 756 monomials, symmetry 1
+  triple ABB: float largest 7.535189e-04 on 649516 samples; threshold 7.538094e-04; 756 monomials, symmetry 1
+  triple ABF: float largest 6.043380e-04 on 649349 samples; threshold 6.079254e-04; 756 monomials, symmetry 0
+  triple AFF: float largest 4.151471e-04 on 649302 samples; threshold 4.163740e-04; 756 monomials, symmetry 1
+  triple BBB: float largest 6.007450e-04 on 649325 samples; threshold 6.009710e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 5.346002e-04 on 649158 samples; threshold 5.353167e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 4.892300e-04 on 649009 samples; threshold 4.895002e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 8.396434e-04 on 648938 samples; threshold 8.399238e-04; 756 monomials, symmetry 2
+      AAF level 10: 0 boxes verified, 624 to bisect [3 s]
+      AAA level 10: 0 boxes verified, 334 to bisect [3 s]
+      AAB level 10: 0 boxes verified, 618 to bisect [3 s]
+      AAA level 20: 12800 boxes verified, 86664 to bisect [112 s]
+      AAF level 20: 34359 boxes verified, 266422 to bisect [285 s]
+      AAB level 20: 32372 boxes verified, 293448 to bisect [299 s]
+      AAA level 30: 1898318 boxes verified, 268184 to bisect [3664 s]
+      ABB level 10: 0 boxes verified, 624 to bisect [4 s]
+      ABB level 20: 33169 boxes verified, 277798 to bisect [472 s]
+      AAF level 30: 4791817 boxes verified, 1475992 to bisect [12271 s]
+      ABF level 10: 0 boxes verified, 944 to bisect [4 s]
+      ABF level 20: 80006 boxes verified, 454630 to bisect [590 s]
+Terminated
+exit 143 at Mon Oct 12 06:02:46 UTC 2026
+[stopped by hand at 06:03 UTC on 2026-10-12 while its triples were being checked (the pair inequalities and the bins had passed): one mixed certificate for every case with at most 18 centres within 2.0161 (radial_certificates/combo28_lo18_d10.npz, precheck 3.100554, runs/combo28_lo18_precheck.log) covers this case, so its exact check (runs/combo28_lo18_check.log) takes the processors]

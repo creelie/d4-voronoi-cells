@@ -1,0 +1,13 @@
+# python3 typed_card_hole.py 10 0.508 0.6141 4 9; then 10 0.508 0.6141 3 1 3 5 7; then 10 0.508 0.6141 2 0 (control)   (19:40 to 20:05 UTC on 2026-10-13)
+  d=10 mp=9 round 1: optimal_inaccurate, sampled Z 1.12273, corrected Z 5.63458; A 12.4048, g1 max -1.000e+00, a2 -9.6785e-01 (var -9.6785e-01) b1 2.1382e-02 (var 2.1033e-02) b10 2.1245e-02 (var 2.1181e-02) b11 2.1254e-02 (var 2.1251e-02) [288 s]
+  sampled Z above 0: no certificate of degree 10 for mp=9
+  d=10 mp=1 round 1: optimal_inaccurate, sampled Z 0.24538, corrected Z 9.32534; A 12.4190, g1 max -1.000e+00, a2 -9.2612e-01 (var -9.2612e-01) b1 2.1649e-02 (var 2.0985e-02) b10 2.1227e-02 (var 2.1172e-02) [73 s]
+  sampled Z above 0: no certificate of degree 10 for mp=1
+  d=10 mp=3 round 1: optimal_inaccurate, sampled Z 0.53427, corrected Z 9.86565; A 12.4151, g1 max -1.000e+00, a2 -9.4833e-01 (var -9.4833e-01) b1 2.1694e-02 (var 2.0999e-02) b10 2.1170e-02 (var 2.1124e-02) b11 2.1448e-02 (var 2.1443e-02) [193 s]
+  sampled Z above 0: no certificate of degree 10 for mp=3
+  d=10 mp=5 round 1: optimal_inaccurate, sampled Z 0.75255, corrected Z 9.06949; A 12.4174, g1 max -1.000e+00, a2 -9.5812e-01 (var -9.5812e-01) b1 2.1629e-02 (var 2.1000e-02) b10 2.1186e-02 (var 2.1124e-02) b11 2.1418e-02 (var 2.1412e-02) [166 s]
+  sampled Z above 0: no certificate of degree 10 for mp=5
+  d=10 mp=7 round 1: optimal_inaccurate, sampled Z 0.94953, corrected Z 8.17629; A 12.4139, g1 max -1.000e+00, a2 -9.6466e-01 (var -9.6466e-01) b1 2.1567e-02 (var 2.1013e-02) b10 2.1202e-02 (var 2.1143e-02) b11 2.1298e-02 (var 2.1294e-02) [200 s]
+  sampled Z above 0: no certificate of degree 10 for mp=7
+  d=10 mp=0 round 1: optimal, sampled Z -3.12325, corrected Z 127.37184; A 30.0000, g1 max -1.000e+00, b1 -1.6399e-03 (var -1.1096e-02) [23 s]
+  d=10 mp=0 round 2: optimal, sampled Z -2.53562, corrected Z 57.32003; A 30.0000, g1 max -1.000e+00, b1 -6.7162e-03 (var -1.1053e-02) [55 s]

@@ -1,0 +1,8 @@
+14 certificates, three-point degree 10, n3 7188 [0 s]
+sub-types ['A1', 'A2', 'B3', 'B4', 'B5', 'B6', 'F7']; 14 pair kinds, 29 triple kinds over 12 count vectors
+samples: pairs 308560, triples 443811 [1073 s]
+12 count vectors in all (12 distinct rows)
+iter 0: LP 2.968133; with climbed maxima and the margins of the check 3.115525 at (16, 5, 1, 0, 0, 3, 2); weights {'c27k14f2d_d10_r1.npz@AABBBBF': 0.0174, 'c27k14f2c_d10_r1.npz@AABBBBF': 0.9794, 'c27k14f2c_d10_r1.npz@ABBBBBF': 0.0032}; largest gaps [(np.float64(0.002855303), 'B3B6'), (np.float64(0.002169375), 'A2B6'), (np.float64(0.002138511), 'A1B6'), (np.float64(2.6917e-05), 'B6F7F7')] [1790 s]
+iter 1: LP 3.103952; with climbed maxima and the margins of the check 3.104977 at (16, 5, 1, 0, 0, 3, 2); weights {'c27k12_d10_r1.npz@AABBBFF': 0.1209, 'c27f2g2b_d10_r1.npz@AABBBBF': 0.8772, 'c27f2g2b_d10_r1.npz@ABBBBBF': 0.002}; largest gaps [(np.float64(5.135e-06), 'A2B6B6'), (np.float64(3.883e-06), 'A1B3B6'), (np.float64(3.872e-06), 'B3B6F7'), (np.float64(3.156e-06), 'A2B3B6')] [2454 s]
+iter 2: LP 3.104560; with climbed maxima and the margins of the check 3.104732 at (16, 5, 1, 0, 0, 3, 2); weights {'c27k14b_d10_r1.npz@AABBBFF': 0.0468, 'c27k12_d10_r1.npz@AABBBFF': 0.0448, 'c27lo14c_d10_r1.npz@AABBBFF': 0.0195, 'c27lo14c_d10_r1.npz@ABBBBFF': 0.0027, 'c27f2g2b_d10_r1.npz@AABBBBF': 0.8862}; largest gaps [(np.float64(4.71e-07), 'A2B6B6'), (np.float64(7.4e-08), 'A2B6'), (np.float64(6.7e-08), 'B6B6B6'), (np.float64(6.4e-08), 'A1A2A2')] [2981 s]
+exit 143 at Mon Oct 26 16:03:02 UTC 2026

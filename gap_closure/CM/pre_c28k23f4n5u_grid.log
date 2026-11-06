@@ -1,0 +1,39 @@
+statement (C) at 28 centres, case case28_k23f4n5.json: combined certificate mix28_k23f4n5u.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 26.330343839, float t 26.330343838)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.711191', 'B': '0.553285', 'F': '0.033073'}
+  pair AA: float largest K + PAIR3 - Pi -6.108297e-02 (file c2 -6.108297e-02); threshold -6.108287e-02
+  pair AB: float largest K + PAIR3 - Pi -5.804921e-02 (file c2 -5.804952e-02); threshold -5.804911e-02
+  pair AF: float largest K + PAIR3 - Pi -1.735221e-02 (file c2 -1.735222e-02); threshold -1.735211e-02
+  pair BB: float largest K + PAIR3 - Pi 3.051265e-02 (file c2 3.010701e-02); threshold 3.051275e-02
+  pair BF: float largest K + PAIR3 - Pi 2.721784e-02 (file c2 2.721520e-02); threshold 2.721794e-02
+  pair FF: float largest K + PAIR3 - Pi 3.576009e-02 (file c2 3.576010e-02); threshold 3.576020e-02
+  pair AA on bins 1-1: float largest K + PAIR3 - Pi -6.108297e-02; threshold -6.108287e-02 against -6.108287e-02 for the kind
+  pair AB on bins 1-6: float largest K + PAIR3 - Pi -5.804953e-02; threshold -5.804943e-02 against -5.804911e-02 for the kind
+  pair AF on bins 1-7: float largest K + PAIR3 - Pi -1.735221e-02; threshold -1.735211e-02 against -1.735211e-02 for the kind
+  pair BF on bins 6-7: float largest K + PAIR3 - Pi 2.721505e-02; threshold 2.721530e-02 against 2.721794e-02 for the kind
+  pair AA: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair AB: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair AF: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  pair BF: in every count vector each of its pairs lies in a listed pair of bins, so the bound counts them with the thresholds of those bins alone and the branch and bound of the kind is skipped
+  triple AAA: float largest 5.324570e-03 on 649660 samples; threshold 5.324766e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 5.157761e-03 on 649656 samples; threshold 5.158560e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 2.745149e-04 on 649567 samples; threshold 2.750557e-04; 756 monomials, symmetry 1
+  triple ABF: float largest 3.311711e-04 on 649349 samples; threshold 3.312113e-04; 756 monomials, symmetry 0
+  triple AFF: float largest 1.011133e-02 on 649302 samples; threshold 1.011231e-02; 756 monomials, symmetry 1
+  triple BFF: float largest 2.183845e-03 on 649009 samples; threshold 2.184073e-03; 756 monomials, symmetry 1
+  triple FFF: float largest 7.960401e-03 on 648938 samples; threshold 7.960482e-03; 756 monomials, symmetry 2
+  triple AAA on bins 1-1-1 (inner products at most 0.507954, 0.507954, 0.507954): float largest 5.324547e-03 on 649630 samples; threshold 5.324594e-03 against 5.324766e-03 for the kind; symmetry 2
+  triple AAB on bins 1-1-6 (inner products at most 0.507954, 0.589632, 0.589632): float largest 5.157684e-03 on 649656 samples; threshold 5.157825e-03 against 5.158560e-03 for the kind; symmetry 1
+  triple AAF on bins 1-1-7 (inner products at most 0.507954, 0.614029, 0.614029): float largest 2.744039e-04 on 649582 samples; threshold 2.747585e-04 against 2.750557e-04 for the kind; symmetry 1
+  triple ABF on bins 1-6-7 (inner products at most 0.589632, 0.614029, 0.653414): float largest 3.304890e-04 on 649394 samples; threshold 3.312113e-04 against 3.312113e-04 for the kind; symmetry 0
+  triple AFF on bins 1-7-7 (inner products at most 0.614029, 0.614029, 0.666667): float largest 1.011131e-02 on 649315 samples; threshold 1.011150e-02 against 1.011231e-02 for the kind; symmetry 1
+  triple AAA: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple AAB: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple AAF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple ABF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  triple AFF: in every count vector each of its triples lies in a listed combination of bins, so the bound counts them with the thresholds of those combinations alone and the branch and bound of the kind is skipped
+  1 count vectors, 1 type-count vectors; largest bound 3.103360 at (23, 0, 0, 0, 0, 1, 4)
+PRECHECK (floating point, no branch and bound): the thresholds give 3.103360 against 9 pi^2/8 - 8 = [3.1033050 +/- 4.88e-8] [2739 s]
+exit 0

@@ -1,0 +1,22 @@
+statement (C) at 27 centres, case case27_k14f3g2.json: combined certificate mix27_k14f3g2a.npz, two-point degree 12/4, three-point degree 10; 219 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 68.151045793, float t 68.151045792)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.359131', 'B': '0.107622', 'F': '0.041582'}
+  pair AA: float largest K + PAIR3 - Pi 4.368371e-02 (file c2 4.368371e-02); threshold 4.368471e-02
+  pair AB: float largest K + PAIR3 - Pi 6.271952e-02 (file c2 6.271952e-02); threshold 6.272052e-02
+  pair AF: float largest K + PAIR3 - Pi 6.719215e-02 (file c2 6.719215e-02); threshold 6.719315e-02
+  pair BB: float largest K + PAIR3 - Pi 7.941407e-02 (file c2 7.941406e-02); threshold 7.941507e-02
+  pair BF: float largest K + PAIR3 - Pi 8.180534e-02 (file c2 8.180540e-02); threshold 8.180640e-02
+  pair FF: float largest K + PAIR3 - Pi 8.571796e-02 (file c2 8.571804e-02); threshold 8.571903e-02
+  triple AAA: float largest 2.796870e-03 on 649660 samples; threshold 2.797062e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 1.916475e-03 on 649656 samples; threshold 1.916594e-03; 756 monomials, symmetry 1
+  triple AAF: float largest -3.838528e-04 on 649567 samples; threshold -3.836641e-04; 756 monomials, symmetry 1
+  triple ABB: float largest 1.140112e-03 on 649516 samples; threshold 1.140997e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 5.403367e-05 on 649349 samples; threshold 5.429428e-05; 756 monomials, symmetry 0
+  triple AFF: float largest 9.390632e-03 on 649302 samples; threshold 9.391986e-03; 756 monomials, symmetry 1
+  triple BBB: float largest 4.958391e-04 on 649325 samples; threshold 4.959663e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 4.362075e-04 on 649158 samples; threshold 4.364127e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 3.444769e-04 on 649009 samples; threshold 3.446046e-04; 756 monomials, symmetry 1
+exit 143 at Mon Oct 19 09:09:19 UTC 2026
+stopped at Mon Oct 19 09:09:20 UTC 2026 (superseded: the exact check of the same mix runs)

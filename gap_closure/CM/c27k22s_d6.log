@@ -1,0 +1,8 @@
+27 with exactly 22 centres within 2.0161 (case27_k22.json, tag c27k22s), three-point degree 6, one round, THREADS=1, run beside c27lo14b on 2026-10-13: where in the close count does the 27-centre kernel bind?
+   direct: 2547 variables, 65548 inequalities, 2253 psd rows in 40 cones, 17767795 nonzeros [6 s to build]
+   18 type-count vectors
+d3=6 round 1: optimal_inaccurate  bound 3.27258 (target 3.10330), corrected <= 3.47497  [711 s]
+   viol: AA 1.2e-05, AB 2.1e-06, AF 5.7e-06, BB 2.9e-05, BF 2.9e-08, FF 1.2e-06, AAA 5.4e-05, AAB 4.9e-05, AAF 9.5e-05, ABB 8.8e-05, ABF 1.2e-04, AFF 1.4e-04, BBB 4.4e-05, BBF 5.9e-05, BFF 1.1e-04, FFF 2.1e-05
+   c2: {'AA': 0.024606, 'AB': 0.025485, 'AF': 0.026543, 'BB': 0.027931, 'BF': 0.028838, 'FF': 0.030375}
+   c3: {'AAA': -4.99e-05, 'AAB': 6.74e-05, 'AAF': 0.0001594, 'ABB': 0.000122, 'ABF': 0.0002212, 'AFF': 0.0003, 'BBB': 0.0001139, 'BBF': 0.0002149, 'BFF': 0.0002453, 'FFF': 0.0001038}
+exit 0

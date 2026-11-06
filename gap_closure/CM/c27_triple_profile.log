@@ -1,0 +1,11 @@
+# MIX=<scratch>/k15f3g1mt4_all.npz (the mix of sub/mix_c27k15f3g1mt4.log after iteration 3, 3.10494 on the samples of the mixing LP at (15, 8, 1, 0, 0, 0, 3); not kept) KINDS=1-1-2 then 1-1-1,1-2-2,1-1-7,1-2-7 N=20000 python3 c27_triple_profile.py   (the further local maxima are listed for 1-1-2 only; 20 October 2026, 02:03 and 02:05 UTC)
+1-1-2 ['A1', 'A1', 'A2'] T [0.508  0.5162 0.5162] max 1.7949051e-03 at (np.float64(-0.2697), np.float64(-0.2696), np.float64(-0.2696)) quantiles 50/90/99 1.787e-03 1.794e-03 1.795e-03 frac within 1e-5/1e-4/1e-3 of max: 0.5677 0.8978 1.0000
+   other local max 1.7949051e-03 at (np.float64(-0.2697), np.float64(-0.2696), np.float64(-0.2696))
+   other local max 1.7949051e-03 at (np.float64(-0.2697), np.float64(-0.2696), np.float64(-0.2696))
+   other local max 1.7949051e-03 at (np.float64(-0.2697), np.float64(-0.2696), np.float64(-0.2696))
+   other local max 1.7949051e-03 at (np.float64(-0.2697), np.float64(-0.2696), np.float64(-0.2696))
+   other local max 1.7949051e-03 at (np.float64(-0.2697), np.float64(-0.2696), np.float64(-0.2696))
+1-1-1 ['A1', 'A1', 'A1'] T [0.508 0.508 0.508] max 1.8185563e-03 at (np.float64(-0.2696), np.float64(-0.2696), np.float64(-0.2696)) quantiles 50/90/99 1.811e-03 1.818e-03 1.818e-03 frac within 1e-5/1e-4/1e-3 of max: 0.5654 0.8966 1.0000
+1-2-2 ['A1', 'A2', 'A2'] T [0.5162 0.5162 0.5241] max 1.8078526e-03 at (np.float64(0.4954), np.float64(-0.6825), np.float64(-0.6929)) quantiles 50/90/99 1.800e-03 1.807e-03 1.808e-03 frac within 1e-5/1e-4/1e-3 of max: 0.5619 0.8924 1.0000
+1-1-7 ['A1', 'A1', 'F7'] T [0.508 0.614 0.614] max -3.4157991e-03 at (np.float64(-0.0101), np.float64(-0.8487), np.float64(-0.4299)) quantiles 50/90/99 -3.435e-03 -3.418e-03 -3.417e-03 frac within 1e-5/1e-4/1e-3 of max: 0.3409 0.8809 1.0000
+1-2-7 ['A1', 'A2', 'F7'] T [0.5162 0.614  0.6176] max -3.3719877e-03 at (np.float64(-0.0101), np.float64(-0.8488), np.float64(-0.4298)) quantiles 50/90/99 -3.391e-03 -3.374e-03 -3.373e-03 frac within 1e-5/1e-4/1e-3 of max: 0.3444 0.8801 1.0000

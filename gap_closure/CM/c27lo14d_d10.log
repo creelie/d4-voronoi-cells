@@ -1,0 +1,6 @@
+27 with at most 14 centres within 2.0161 (case27_lo14.json), round 3: resumed from the round-2 certificate c27lo14c (3.10122 on its samples, corrected 3.15011; largest gaps ABF 4.5e-5, BFF 2.8e-5, AAF 2.6e-5), same options (TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150), THREADS=3.  Started Tue Oct 13 23:01:47 UTC 2026
+resumed from c27lo14c_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8163 variables, 99483 inequalities, 7389 psd rows in 56 cones, 70426903 nonzeros [15 s to build]
+stopped at 23:07 UTC by hand, 5 minutes into its solve: the mix of rounds 1 and 2 gave 3.105624 for at most 10 within 2.0161 against 3.126974 for at most 14, so the solver moves to the case with at most 10 (c27lo10_d10.log)

@@ -1,0 +1,11 @@
+28 with exactly 23 centres within 2.0161, one in [2.2, 2.35] and 4 beyond 2.35, types narrowed as in c28k23f4g5r (case28_k23f4g5r.json, with the proved 24 + 4 vector beside it): round 2 of that round, resumed from c28k23f4g5r_d10_r1.npz (3.07957 on its samples, 3.66384 between them), three-point degree 10 with TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3. Aim: a new certificate for the last open vector at 28, after the split at 2.002 failed (the AAF inequality of the mix peaks at an interior point, which the split does not move).  Started Tue Oct 13 14:39:56 UTC 2026
+resumed from c28k23f4g5r_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1224, 'AAF': 1250, 'ABB': 1275, 'ABF': 1300, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1898, 'AAF': 1922, 'ABB': 1966, 'ABF': 1300, 'AFF': 2021, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7420 variables, 92358 inequalities, 7389 psd rows in 56 cones, 67940377 nonzeros [32 s to build]
+   2 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.08341 (target 3.10330), corrected <= 3.27305  [5286 s]
+   viol: AA 2.0e-08, AB 4.5e-08, AF 1.0e-08, BB -9.9e-04, BF -4.6e-09, FF 2.1e-10, AAA 9.9e-06, AAB 1.2e-04, AAF 1.2e-04, ABF 1.4e-04, AFF 7.8e-05, BFF 8.2e-05, FFF 6.9e-05
+   c2: {'AA': -0.003863, 'AB': -0.054152, 'AF': -0.098688, 'BB': 0.281697, 'BF': 0.036564, 'FF': 0.041577}
+   c3: {'AAA': 0.0161897, 'AAB': 0.0135506, 'AAF': -0.0532661, 'ABF': -0.0273757, 'AFF': 0.2114693, 'BFF': 0.0031296, 'FFF': 0.0085853}
+exit 0 at Tue Oct 13 16:08:31 UTC 2026

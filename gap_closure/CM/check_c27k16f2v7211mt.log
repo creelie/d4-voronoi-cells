@@ -1,0 +1,20 @@
+exact check of the mixed-typing combination mix27_k16f2v7211mt.npz (27 centres, the single count vector (16, 7, 2, 0, 0, 1, 1): exactly 16 within 2.0161, 7 in (2.0161, 2.05], 2 in (2.05, 2.1], 1 in (2.2, 2.35], 1 beyond 2.35; case27_k16f2v7211_bins.json, one type per bin) with multi_cap/combo_mixtype_check.py; mixed with c27_hull_mt.py for that vector alone (scratchpad k16/scout_k16v2.sh) from 14 certificates, 3.098756 in floating point at the climbed maxima and margins 2e-7/2e-8, 3.099854 with the dense-search peaks (peak2_c27k16f2v7211mt.log; A1A2F7 2.4e-6, A2A2F7 1.9e-6, A1A2B6 1.1e-6, A2A2B6 9.9e-7, A2A2B3 7.0e-7, A1B3B6 4.5e-7, A1A1B6 3.5e-7 and A2B3B6 2.2e-7 above the mix's constants, the rest at most 1.1e-7) and margins 1e-6/1e-7/1e-7, and 3.101939 with the margins below and the extras below counted on top of the peaks; margins pairs 2e-6, triples 3e-7, bins 1e-7, TRIPLE_EXTRA A1A2F7:4e-6,A2A2F7:4e-6,A1A2B6:2e-6,A2A2B6:2e-6,A2A2B3:1.5e-6,A1B3B6:1e-6,A1A1B6:8e-7,A2B3B6:6e-7,A1A2B3:3e-7,A1A1F7:3e-7,A1A1B3:2e-7, BORDER=1, POLY_EVAL=c, CHECKPOINT=check_c27k16f2v7211mt.ckpt; started Mon Oct 26 11:07:19 UTC 2026
+mixed typing: 5 groups, typings ['AAABBBF', 'AAABBFF', 'AABBBBF', 'AABBBFF', 'AABBBBB']
+statement (C) at 27 centres, case case27_k16f2v7211_bins.json: combined certificate mix27_k16f2v7211mt.npz, two-point degree 12/4, three-point degree 10; 1 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 64.743431027, float t 64.743431026)
+  [ok] three-point blocks positive definite (exact LDL^T)  (215 blocks)
+  point terms: {'A1': '0.438619', 'A2': '0.438619', 'B3': '0.385095', 'B4': '0.350384', 'B5': '0.350384', 'B6': '0.172743', 'F7': '0.166953'}
+  pair A1A1: float largest K + PAIR3 - Pi 2.651901e-02 (file c2 2.651901e-02); threshold 2.652101e-02
+  pair A1A2: float largest K + PAIR3 - Pi 2.651889e-02 (file c2 2.651889e-02); threshold 2.652090e-02
+  pair A1B3: float largest K + PAIR3 - Pi 3.052904e-02 (file c2 3.052922e-02); threshold 3.053122e-02
+  pair A1B6: float largest K + PAIR3 - Pi 4.844830e-02 (file c2 4.844831e-02); threshold 4.845030e-02
+  pair A1F7: float largest K + PAIR3 - Pi 4.871660e-02 (file c2 4.871660e-02); threshold 4.871860e-02
+  pair A2A2: float largest K + PAIR3 - Pi 2.651904e-02 (file c2 2.651904e-02); threshold 2.652104e-02
+  pair A2B3: float largest K + PAIR3 - Pi 3.051932e-02 (file c2 3.051932e-02); threshold 3.052132e-02
+  pair A2B6: float largest K + PAIR3 - Pi 4.835818e-02 (file c2 4.835818e-02); threshold 4.836018e-02
+  pair A2F7: float largest K + PAIR3 - Pi 4.871628e-02 (file c2 4.871628e-02); threshold 4.871828e-02
+  pair B3B3: float largest K + PAIR3 - Pi 3.399738e-02 (file c2 3.399737e-02); threshold 3.399938e-02
+  pair B3B6: float largest K + PAIR3 - Pi 5.310963e-02 (file c2 5.310977e-02); threshold 5.311176e-02
+  pair B3F7: float largest K + PAIR3 - Pi 5.281854e-02 (file c2 5.281883e-02); threshold 5.282083e-02
+  pair B6F7: float largest K + PAIR3 - Pi 7.647998e-02 (file c2 7.648007e-02); threshold 7.648207e-02

@@ -1,0 +1,41 @@
+exact check of the mix of 42 certificates for 28 centres with at most 22 within 2.0161 (case28_lo22.json, also case28_k22.json), weights from the mixing LP at the smaller margins (pairs 5e-7, triples 5e-8), certificate mix28_lo22c.npz; check margins: pairs 2e-7 (AA 2e-7), triples 2e-8, bins 1e-7, BORDER=1, POLY_EVAL=c.  Precheck at these margins: 3.103286 at (22, 0, 2, 0, 0, 0, 4).  Started Mon Oct 12 20:36:21 UTC 2026
+statement (C) at 28 centres, case case28_lo22.json: combined certificate mix28_lo22c.npz, two-point degree 12/4, three-point degree 10; 74173 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 56.905139026, float t 56.905139025)
+  [ok] three-point blocks positive definite (exact LDL^T)  (43 blocks)
+  point terms: {'A': '0.515664', 'B': '0.226465', 'F': '0.039861'}
+  pair AA: float largest K + PAIR3 - Pi 1.275458e-03 (file c2 1.275455e-03); threshold 1.275659e-03
+  pair AB: float largest K + PAIR3 - Pi 2.315882e-02 (file c2 2.315882e-02); threshold 2.315902e-02
+  pair AF: float largest K + PAIR3 - Pi 3.864461e-02 (file c2 3.864461e-02); threshold 3.864481e-02
+  pair BB: float largest K + PAIR3 - Pi 4.532182e-02 (file c2 4.532181e-02); threshold 4.532202e-02
+  pair BF: float largest K + PAIR3 - Pi 5.650968e-02 (file c2 5.650972e-02); threshold 5.650992e-02
+  pair FF: float largest K + PAIR3 - Pi 6.836746e-02 (file c2 6.836746e-02); threshold 6.836766e-02
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (84554 boxes closed, 67689 set aside, Pi in Arb at 84496 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (16095 boxes closed, 15379 set aside, Pi in Arb at 3207 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (6766 boxes closed, 6671 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (4334 boxes closed, 3568 set aside, Pi in Arb at 801 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (96348 boxes closed, 90721 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (383 boxes closed, 200 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (1417 intervals, least room 6.50e-09)
+  triple AAA: float largest 3.426333e-03 on 649660 samples; threshold 3.426354e-03; 756 monomials, symmetry 2
+  triple AAB: float largest 2.586656e-03 on 649656 samples; threshold 2.586726e-03; 756 monomials, symmetry 1
+  triple AAF: float largest 1.929225e-03 on 649567 samples; threshold 1.929288e-03; 756 monomials, symmetry 1
+  triple ABB: float largest 1.720002e-03 on 649516 samples; threshold 1.720240e-03; 756 monomials, symmetry 1
+  triple ABF: float largest 1.221810e-03 on 649349 samples; threshold 1.221932e-03; 756 monomials, symmetry 0
+  triple AFF: float largest 6.437845e-04 on 649302 samples; threshold 6.438439e-04; 756 monomials, symmetry 1
+  triple BBB: float largest 9.112391e-04 on 649325 samples; threshold 9.121330e-04; 756 monomials, symmetry 2
+  triple BBF: float largest 5.845686e-04 on 649158 samples; threshold 5.847074e-04; 756 monomials, symmetry 1
+  triple BFF: float largest 2.614084e-04 on 649009 samples; threshold 2.614971e-04; 756 monomials, symmetry 1
+  triple FFF: float largest 1.496112e-03 on 648938 samples; threshold 1.496147e-03; 756 monomials, symmetry 2
+      AAF level 10: 0 boxes verified, 624 to bisect [0 s]
+      AAA level 10: 0 boxes verified, 334 to bisect [0 s]
+      AAB level 10: 0 boxes verified, 618 to bisect [0 s]
+      AAA level 20: 10729 boxes verified, 106666 to bisect [4 s]
+      AAF level 20: 27286 boxes verified, 321130 to bisect [10 s]
+      AAB level 20: 27586 boxes verified, 312292 to bisect [11 s]
+      AAA level 30: 4647659 boxes verified, 3487008 to bisect [300 s]
+      AAF level 30: 12530015 boxes verified, 7454336 to bisect [678 s]
+      AAB level 30: 12033555 boxes verified, 9785292 to bisect [704 s]
+      AAA level 40: 19986801 boxes verified, 147142 to bisect [824 s]
+      ABB level 10: 0 boxes verified, 622 to bisect [0 s]
+stopped by hand at 21:06 UTC on Mon Oct 12 2026 after the pairs and bins passed and during the triples: this mix leaves only 2e-5 of room, while the mix over exactly 22 close centres (check_c28k22d.log) leaves about 0.0008 at its margins, and at most 21 is already proved.

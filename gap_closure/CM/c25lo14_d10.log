@@ -1,0 +1,11 @@
+25 with at most 14 centres within 2.0161 (case25_lo14.json: eight bins, the last two split at 2.444; row 25 of prop:C-radial and 24 within 2.444 by lem:twentyfour-close): three-point degree 10 with TRACE_REG=3e-4, from the samples of the whole-case round c27k10_d10_r2.npz, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2, nice 5, beside the exact check of G2b: how far below the level the relaxation goes at 25 when few centres are close (the 27/28 pool mixes only to 3.457 here); started Tue Oct 20 11:42:04 UTC 2026
+resumed from c27k10_d10_r2.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7773 variables, 107066 inequalities, 7389 psd rows in 56 cones, 78787059 nonzeros [46 s to build]
+   24 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.15848 (target 3.10330), corrected <= 3.23999  [16870 s]
+   viol: AA 6.4e-07, AB 1.1e-06, AF 2.1e-06, BB 1.6e-05, BF -1.6e-06, FF -1.9e-03, AAA 5.7e-06, AAB 1.8e-05, AAF 3.5e-05, ABB 2.9e-05, ABF 2.2e-04, AFF 3.0e-05, BBB 1.4e-05, BBF -1.6e-05, BFF -3.9e-04
+   c2: {'AA': 0.148199, 'AB': 0.176805, 'AF': 0.198067, 'BB': 0.206329, 'BF': 0.227564, 'FF': 0.242508}
+   c3: {'AAA': 0.0057169, 'AAB': 0.0045831, 'AAF': 0.0037201, 'ABB': 0.0034094, 'ABF': 0.0025386, 'AFF': 0.0020125, 'BBB': 0.002195, 'BBF': 0.0013274, 'BFF': 0.0011543}
+exit 0 at Tue Oct 20 16:23:57 UTC 2026

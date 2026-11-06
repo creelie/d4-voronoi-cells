@@ -1,0 +1,11 @@
+28 with exactly 18 centres within 2.0161 (case28_k18.json), three-point degree 10 with the trace penalty TRACE_REG=3e-4, one round, from the samples of c28k17_d10_r1.npz (RESUME, pruned to 5000 pair and 2500 triple samples per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2 (the exact check of the 16-close mix runs beside it).  With the certificate for exactly 17 close (c28k17_d10.log) the mix of 14 certificates gives 3.101579 at 17 close in floating point with the margins of the exact check, and 3.10701 at 18, 3.11682 at 20, 3.12573 at 22 and 3.13365 at 24 close (17 certificates); a certificate built for 18 close is the next candidate for the mix.  Started Mon Oct 12 00:40:33 UTC 2026
+resumed from c28k17_d10_r1.npz, pruned to 5000 pair and 2500 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8088 variables, 100709 inequalities, 7389 psd rows in 56 cones, 71270963 nonzeros [27 s to build]
+   45 type-count vectors
+d3=10 round 1: optimal  bound 3.08058 (target 3.10330), corrected <= 3.13951  [8316 s]
+   viol: AA 9.0e-08, AB 1.7e-06, AF 2.3e-08, BB 2.0e-08, BF 7.1e-08, FF 2.2e-08, AAA 2.6e-06, AAB 1.5e-05, AAF 1.7e-05, ABB 9.3e-06, ABF 5.4e-05, AFF 3.0e-05, BBB 7.1e-06, BBF 3.2e-05, BFF 2.9e-05, FFF 1.1e-05
+   c2: {'AA': 0.041638, 'AB': 0.061935, 'AF': 0.07542, 'BB': 0.080349, 'BF': 0.090374, 'FF': 0.103846}
+   c3: {'AAA': 0.0030982, 'AAB': 0.0023014, 'AAF': 0.001763, 'ABB': 0.0015753, 'ABF': 0.001163, 'AFF': 0.0005773, 'BBB': 0.0009197, 'BBF': 0.0006456, 'BFF': 0.0002697, 'FFF': 0.0009587}
+exit 0 at Mon Oct 12 02:59:40 UTC 2026

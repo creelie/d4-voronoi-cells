@@ -1,0 +1,7 @@
+27 with exactly 15 centres within 2.0161, at most 2 beyond 2.35 and none in (2.1, 2.35] (36 count vectors), typed A = [2, 2.0161], B = (2.0161, 2.1], F = (2.35, sqrt6] (case27_k15f2g1_t1.json, type counts (15, 12, 0), (15, 11, 1), (15, 10, 2)): a second degree 10 round built for these vectors, from the samples of c27k15f2g1tb_d10_r1.npz (c27k15f2g1tb_d10.log: 2.98886 on its samples, 16.12364 corrected). The mix of earlier certificates gives 3.107655 here (3.108208 at climbed maxima). TRACE_REG=1e-3, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3, nice 5, oom_score_adj 0; started Wed Oct 21 21:22:25 UTC 2026
+resumed from c27k15f2g1tb_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1164, 'AAF': 1250, 'ABB': 1176, 'ABF': 1264, 'AFF': 1326, 'BBB': 1176, 'BBF': 1267, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1843, 'AAF': 1922, 'ABB': 1859, 'ABF': 1264, 'AFF': 2021, 'BBB': 2652, 'BBF': 1942, 'BFF': 2021, 'FFF': 2807}
+   direct: 7436 variables, 99785 inequalities, 7389 psd rows in 56 cones, 74327639 nonzeros [32 s to build]
+exit 143 at Wed Oct 21 22:38:12 UTC 2026
+stopped by hand at Wed Oct 21 22:38:16 UTC 2026 before it solved, to give the machine to a degree 10 round for 16 within 2.0161, 3 beyond 2.35 and a centre in (2.1, 2.35] (c27k16f3g2_d10.log), whose sub-typed mixes stop 0.0002 above the level

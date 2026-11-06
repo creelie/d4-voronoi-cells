@@ -1,0 +1,18 @@
+27 with exactly 15 centres within 2.0161, at most 2 beyond 2.35 and at least one in (2.1, 2.2] (case27_k15f2g2b.json, 1650 count vectors): a second degree 10 round built for these vectors, from the samples of the first (c27k15f2g2b_d10.log: 3.10173 on its samples, 3.21195 corrected; with it the sub-typed mix gives 3.103550 on the samples of the mixing programme, iteration 0). TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3, nice 10, oom_score_adj 0, beside that mix; started Tue Oct 20 20:28:21 UTC 2026
+resumed from c27k15f2g2b_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8039 variables, 102969 inequalities, 7389 psd rows in 56 cones, 75330140 nonzeros [41 s to build]
+exit 143 at Tue Oct 20 20:44:03 UTC 2026
+(exit 143: stopped at 20:44 to give the machine to a degree 12 round; the sub-typed mix with round 1 had risen to 3.106412 on its samples by iteration 2 once the climbed maxima were added, so a second degree 10 round was not expected to close this case)
+27 with exactly 15 centres within 2.0161, at most 2 beyond 2.35 and at least one in (2.1, 2.2] (case27_k15f2g2b.json, 1650 count vectors): a second degree 10 round built for these vectors, from the samples of the first (c27k15f2g2b_d10.log: 3.10173 on its samples, 3.21195 corrected; with it the sub-typed mix gives 3.103550 on the samples of the mixing programme, iteration 0). TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=2, nice 10, oom_score_adj 0, beside that mix; started Thu Oct 22 04:12:34 UTC 2026, second start: the first (20:30 on 2026-10-20) was stopped before it solved, see above
+resumed from c27k15f2g2b_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1176, 'AAB': 1231, 'AAF': 1258, 'ABB': 1275, 'ABF': 1302, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2642, 'AAB': 1906, 'AAF': 1931, 'ABB': 1966, 'ABF': 1302, 'AFF': 2022, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 8039 variables, 102969 inequalities, 7389 psd rows in 56 cones, 75330140 nonzeros [20 s to build]
+   33 type-count vectors
+d3=10 round 1: optimal  bound 3.10177 (target 3.10330), corrected <= 3.12584  [7402 s]
+   viol: AA 1.7e-07, AB 1.6e-06, AF 1.8e-08, BB 1.6e-06, BF 5.4e-08, FF 8.2e-08, AAA 3.3e-07, AAB 4.9e-06, AAF 2.6e-06, ABB 9.1e-06, ABF 2.2e-05, AFF 1.9e-04, BBB 9.0e-07, BBF 2.0e-05, BFF 3.5e-05
+   c2: {'AA': 0.09959, 'AB': 0.112293, 'AF': 0.112961, 'BB': 0.123164, 'BF': 0.120266, 'FF': 0.121529}
+   c3: {'AAA': 0.0023205, 'AAB': 0.001826, 'AAF': 0.0017881, 'ABB': 0.0014047, 'ABF': 0.0015067, 'AFF': 0.0014422, 'BBB': 0.0010567, 'BBF': 0.0012985, 'BFF': 0.0015138}
+exit 0 at Thu Oct 22 06:16:24 UTC 2026

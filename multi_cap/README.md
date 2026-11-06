@@ -434,15 +434,785 @@ The contact and non-contact cases of sec:deviation-domain and sec:noncontact, fi
                               second).  Prechecks 3.098860 and 3.098060
                               (runs/combo28_mix1516_precheck.log) and
                               3.101264 (runs/combo28_mix16_precheck.log);
-                              the exact checks are running
-                              (runs/combo28_mix1516_check.log,
-                              runs/combo28_mix16_check.log), and nothing
-                              rests on them until one passes.
+                              both exact checks started on 8 October
+                              and stopped in their triples when the
+                              container was restarted (pairs and bins had
+                              passed; runs/combo28_mix1516_check.log).
+                              radial_certificates/combo28_mix17_d10.npz
+                              (exactly 17 within 2.0161, precheck 3.101230,
+                              runs/combo28_mix17_precheck.log) and
+                              radial_certificates/combo28_lo18_d10.npz (at
+                              most 18 within 2.0161, case28_lo18.json,
+                              precheck 3.100554,
+                              runs/combo28_lo18_precheck.log) add the
+                              degree-10 certificates built for 17 and 18
+                              close (gap_closure/CM/c28k17_d10.log,
+                              c28k18_d10.log).  The checks of the mixes for
+                              at most 16 and exactly 17 close were stopped
+                              by hand in their triples
+                              (runs/combo28_mix16_check.log,
+                              runs/combo28_mix17_check.log) for the check
+                              of combo28_lo18_d10.npz, which covers both
+                              (TRIPLE_EXTRA=AAA:5e-7).  That check was itself
+                              stopped at its triples
+                              (runs/combo28_lo18_check.log) once the same
+                              check with POLY_EVAL=c had closed the same
+                              boxes at levels 10 and 20 about 22 times
+                              faster.  The check with POLY_EVAL=c passes
+                              (runs/combo28_lo18_checkc.log, 52 minutes):
+                              exact positivity, the six pair inequalities
+                              (181 820 boxes), the bins (1083 intervals), the
+                              ten triple inequalities (106 993 576 boxes),
+                              and 3.101381 at (18, 6, 3, 0, 0, 0, 1) over
+                              70 719 vectors.
+                              radial_certificates/combo28_lo19_d10.npz (at
+                              most 19 within 2.0161, case28_lo19.json) mixes
+                              in the degree-10 certificate built for exactly
+                              19 close (gap_closure/CM/c28k19_d10.log); the
+                              room it leaves allows the triple margin 1.5e-6,
+                              precheck 3.100907
+                              (runs/combo28_lo19_precheck.log), and its exact
+                              check passes (runs/combo28_lo19_check.log, 47
+                              minutes): the six pair inequalities (112 492
+                              boxes), the bins (1087 intervals), the ten
+                              triple inequalities (134 464 632 boxes), and
+                              3.100907 at (19, 2, 7, 0, 0, 0, 0) over 71 995
+                              vectors.
+                              radial_certificates/combo28_lo20_d10.npz (at
+                              most 20 within 2.0161, case28_lo20.json) adds
+                              the certificate built for exactly 20 close
+                              (gap_closure/CM/c28k20_d10.log); precheck
+                              3.099289 at the triple margin 5e-7
+                              (runs/combo28_lo20_precheck.log), and its exact
+                              check passes (runs/combo28_lo20_check.log, 54
+                              minutes): the six pair inequalities (168 390
+                              boxes), the bins (1278 intervals), the ten
+                              triple inequalities (157 796 046 boxes), and
+                              3.099289 at (20, 3, 4, 0, 0, 0, 1) over 72 996
+                              vectors.
+                              radial_certificates/combo28_lo21_d10.npz (at
+                              most 21 within 2.0161, case28_lo21.json) adds
+                              the certificate built for exactly 21 close
+                              (gap_closure/CM/c28k21_d10.log) to a pool of
+                              38; precheck 3.103041 at the triple margin
+                              5e-7 (runs/combo28_lo21_precheck.log), and its
+                              exact check passes (runs/combo28_lo21_check.log,
+                              54 minutes): the six pair inequalities (120 628
+                              boxes), the bins (1270 intervals), the ten
+                              triple inequalities (168 808 634 boxes), and
+                              3.103041 at (21, 4, 2, 0, 0, 0, 1) over 73 722
+                              vectors.
+                              radial_certificates/combo28_k22_d10.npz
+                              (exactly 22 within 2.0161, case28_k22.json) is
+                              the mix over those 451 vectors alone
+                              (gap_closure/CM/c28_hull_multi.py, nine nonzero
+                              weights); margins 1e-6 for the pairs (AA
+                              included), 2e-7 for the triples, 1e-7 for the
+                              bins, and 4e-7 more for AAF, whose narrow peak
+                              the first run missed (TRIPLE_EXTRA=AAF:4e-7);
+                              its exact check passes
+                              (runs/combo28_k22_check.log, 64 minutes): the
+                              six pair inequalities (64 474 boxes), the bins
+                              (2339 intervals), the ten triple inequalities
+                              (207 350 728 boxes), and 3.102969 at
+                              (22, 0, 2, 0, 0, 0, 4).
+                              radial_certificates/combo28_k24_d10.npz
+                              (exactly 24 within 2.0161, case28_k24.json) is
+                              the mix over those 126 vectors alone (six
+                              nonzero weights, 0.90 on two certificates for
+                              exactly 23 close); margins 1e-7 for the pairs
+                              (AA included), 3e-8 for the triples, 1e-7 for
+                              the bins, and 1e-6 more for ABB, AFF, BBB,
+                              BBF, BFF, FFF and 5e-7 more for ABF, which have
+                              no triples, or 26, at the worst vectors; its
+                              exact check passes
+                              (runs/combo28_k24_check.log, 44 minutes): the
+                              six pair inequalities (29 367 boxes), the bins
+                              (7156 intervals), the ten triple inequalities
+                              (117 675 808 boxes), and 3.103206 at
+                              (24, 2, 0, 0, 0, 1, 1).
+                              radial_certificates/combo28_k23fle3_d10.npz
+                              (exactly 23 within 2.0161 and at most 3
+                              beyond 2.35, case28_k23fle3.json) is the mix
+                              over those 246 vectors alone (eight nonzero
+                              weights, 0.62 on two certificates for exactly
+                              22 close and 0.35 on four for exactly 23);
+                              margins 5e-7 for the pairs (AA included),
+                              1e-7 for the triples and the bins, and 5e-7
+                              more for AAF, which peaks on the face where
+                              the AF inner product is largest, and 1e-6 more
+                              for FFF, which has at most one triple; its
+                              exact check passes
+                              (runs/combo28_k23fle3_check.log, 55 minutes):
+                              the six pair inequalities (37 565 boxes), the
+                              bins (2719 intervals), the ten triple
+                              inequalities (162 022 640 boxes), and 3.102775
+                              at (23, 0, 0, 0, 0, 4, 1).  The same
+                              thresholds give 3.102361 at the vector
+                              (23, 1, 0, 0, 0, 0, 4) (EXTRA_CASES=
+                              case28_k23f4m.json; gap_closure/CM/
+                              pre_c28k23f4m_extra.log).
+                              radial_certificates/combo28_k23f4n{2,3,4}_d10.npz
+                              are mixes for the single vectors with 23
+                              within 2.0161, 4 beyond 2.35 and the last
+                              centre in (2.05, 2.1], (2.1, 2.15] or
+                              (2.15, 2.2] (case28_k23f4n{2,3,4}.json),
+                              found with the types narrowed to the occupied
+                              bins (gap_closure/CM/c28_hull_case.py) and
+                              their bin constants recomputed on the usual
+                              bins (gap_closure/CM/remap_bins.py); each is
+                              checked with REFINE_TRIPLES and REFINE_PAIRS
+                              on the occupied bins and SKIP_COVERED=1, and
+                              passes (runs/combo28_k23f4n{2,3,4}_check.log,
+                              75, 71 and 75 minutes): 3.103281, 3.101860
+                              and 3.102128, after 127 221 931, 125 799 088
+                              and 124 117 379 triple boxes.
+                              radial_certificates/combo28_k23f4n5_d10.npz
+                              is the mix for the last vector, the centre
+                              in (2.2, 2.35] (case28_k23f4n5.json); its
+                              check adds REFINE_GRID=121 and
+                              REGION_TRIPLES=1-1-7:-0.7944:0.58, which
+                              counts the close-close-far triples (at most
+                              3 close directions at inner product
+                              <= -0.7944 with a far one and at most 9 at
+                              >= 0.58, the rest under a lower threshold),
+                              and passes (runs/combo28_k23f4n5_check.log,
+                              103 minutes): 3.103231, after 200 740 860
+                              triple boxes.  With the checks at most 21,
+                              exactly 22 and exactly 24 this is
+                              prop:count28-mixed, (C) at 28.
+                              radial_certificates/combo27_lo10f2_d10.npz
+                              and combo27_lo10f3_d10.npz are mixes for 27
+                              centres with at most 10 within 2.0161 and at
+                              most 2, or exactly 3, beyond 2.35
+                              (gap_closure/CM/case27_lo10f2.json and
+                              case27_lo10f3.json), with 0.89 and 0.94 of
+                              their weight on rounds built for 27 centres;
+                              their checks pass
+                              (runs/combo27_lo10f2_check.log, 58 minutes:
+                              3.102938 at (10, 10, 5, 0, 0, 0, 2) after
+                              99 741 630 triple boxes;
+                              runs/combo27_lo10f3_check.log, 50 minutes:
+                              3.100556 at (10, 10, 4, 0, 0, 0, 3) after
+                              105 075 559 triple boxes).
+                              radial_certificates/combo27_k11f2_d10.npz is
+                              the same kind of mix for 27 centres with
+                              exactly 11 within 2.0161 and at most 2 beyond
+                              2.35 (gap_closure/CM/case27_k11f2.json); its
+                              check passes (runs/combo27_k11f2_check.log,
+                              47 minutes: 3.101756 at (11, 9, 5, 0, 0, 0, 2)
+                              after 105 397 437 triple boxes).
+                              radial_certificates/combo27_k11f3_d10.npz is
+                              the mix for exactly 11 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k11f3.json),
+                              with 0.53 of its weight on the round for
+                              exactly 11; its check passes
+                              (runs/combo27_k11f3_check.log, 66 minutes:
+                              3.099786 at (11, 8, 5, 0, 0, 0, 3) after
+                              119 805 055 triple boxes).
+                              radial_certificates/combo27_k12f2_d10.npz is
+                              the mix for exactly 12 within 2.0161 and at
+                              most 2 beyond 2.35 (case27_k12f2.json); its
+                              check passes with the AAF and AFF thresholds
+                              raised to the dense-search maxima
+                              (runs/combo27_k12f2_check.log, 75 minutes:
+                              3.101565 at (12, 6, 7, 0, 0, 0, 2) after
+                              125 144 848 triple boxes).
+                              radial_certificates/combo27_k12f3_d10.npz is
+                              the mix for exactly 12 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k12f3.json),
+                              with 0.61 of its weight on the round for
+                              exactly 12; its check passes with the AAF
+                              threshold raised above the dense-search
+                              maximum (runs/combo27_k12f3_check.log, 66
+                              minutes: 3.101859 at (12, 6, 6, 0, 0, 0, 3) after
+                              134 115 496 triple boxes).
+                              radial_certificates/combo27_k13f2_d10.npz is
+                              the mix for exactly 13 within 2.0161 and at
+                              most 2 beyond 2.35 (case27_k13f2.json), with
+                              0.31 of its weight on the round for exactly
+                              13; its check passes
+                              (runs/combo27_k13f2_check.log, 91 minutes:
+                              3.103225 at (13, 5, 7, 0, 0, 0, 2) after
+                              143 913 003 triple boxes).
+                              radial_certificates/combo27_k13f3_d10.npz is
+                              the mix for exactly 13 within 2.0161 and
+                              exactly 3 beyond 2.35 (case27_k13f3.json),
+                              with 0.56 of its weight on the round for
+                              exactly 14; its check passes with the AAF
+                              threshold raised above the dense-search
+                              maximum (runs/combo27_k13f3_check.log, 100
+                              minutes: 3.102225 at (13, 3, 8, 0, 0, 0, 3) after
+                              162 369 735 triple boxes).
+                              radial_certificates/combo27_k14f3g2_d10.npz is
+                              the mix for exactly 14 within 2.0161, exactly
+                              3 beyond 2.35 and at least one centre in
+                              (2.1, 2.35] (case27_k14f3g2.json, 219
+                              vectors), with 0.31 of its weight on the
+                              round for exactly 14 and 3 beyond 2.35; its
+                              check passes with the FFF threshold raised
+                              (runs/combo27_k14f3g2_check.log, 80 minutes:
+                              3.098199 at (14, 5, 4, 1, 0, 0, 3) after
+                              112 999 796 triple boxes).
+                              radial_certificates/combo27_k14f3g1_d10.npz is
+                              the mix for the 11 other vectors with exactly
+                              14 within 2.0161 and exactly 3 beyond 2.35
+                              (case27_k14f3g1.json), found with the middle
+                              type narrowed to (2.05, 2.1], with 0.41 of
+                              its weight on the two rounds for exactly 14
+                              and 3 beyond 2.35; its check takes the
+                              thresholds of the kinds with a middle centre
+                              per combination of bins (REFINE_PAIRS,
+                              REFINE_TRIPLES, SKIP_COVERED=1) and passes
+                              (runs/combo27_k14f3g1_check.log, 158 minutes:
+                              3.102269 at (14, 8, 2, 0, 0, 0, 3) after
+                              159 075 380 triple boxes).
+                              radial_certificates/combo27_k14f2g1_d10.npz is
+                              the mix for the 39 vectors with exactly 14
+                              within 2.0161, at most 2 beyond 2.35 and none
+                              in (2.1, 2.35] (case27_k14f2g1.json), found
+                              with the middle type narrowed to (2.05, 2.1],
+                              with 0.018 of its weight on the two rounds
+                              found for that narrowed case; its check is
+                              taken per combination of bins as for the 11
+                              above and passes (runs/combo27_k14f2g1_check.log,
+                              167 minutes: 3.102974 at (14, 3, 8, 0, 0, 0, 2)
+                              after 220 104 690 triple boxes).
+                              radial_certificates/combo27_k15f3g2_d10.npz is
+                              the mix for exactly 15 within 2.0161, exactly
+                              3 beyond 2.35 and at least one centre in
+                              (2.1, 2.35] (case27_k15f3g2.json, 192
+                              vectors), with 0.57 of its weight on the
+                              second round for exactly 14 and 3 beyond
+                              2.35; its check passes with the AFF and FFF
+                              thresholds raised by 1e-6
+                              (runs/combo27_k15f3g2_check.log, 94 minutes:
+                              3.099309 at (15, 4, 4, 1, 0, 0, 3) after
+                              103 106 474 triple boxes).
+                              radial_certificates/combo27_k14f2g2amt_d10.npz
+                              is the mixed-typing mix (see
+                              combo_mixtype_check.py) for the 127 vectors
+                              with exactly 14 within 2.0161, at most 2
+                              beyond 2.35, none in (2.1, 2.2] and at least
+                              one in (2.2, 2.35] (case27_k14f2g2a_bins.json,
+                              one type per bin): 12 certificates under the
+                              typings AABBBBF and AABBBFF, 0.38 of the
+                              weight on the second, 0.34 on the round
+                              c27f2g2b built for these vectors; its check
+                              passes at margins 1e-6, 1e-7 and 1e-7
+                              (runs/combo27_k14f2g2amt_check.log, 375
+                              minutes: 3.103112 at (14, 6, 4, 0, 0, 1, 2)
+                              after 3 838 506 pair boxes and 598 800 571
+                              triple boxes; precheck
+                              runs/combo27_k14f2g2amt_precheck.log).
+                              radial_certificates/combo27_k14f2g2b_d10.npz
+                              is the mix for the 1868 vectors with exactly
+                              14 within 2.0161, at most 2 beyond 2.35 and
+                              a centre in (2.1, 2.2] (case27_k14f2g2b.json),
+                              found by gap_closure/CM/c27_hull_sub.py with
+                              a threshold of its own for each combination
+                              of bins with a middle bin: 10 certificates,
+                              0.999 of the weight on 8 found for 27 centres;
+                              its check passes at margins 5e-7, 5e-8 and
+                              1e-7 (runs/combo27_k14f2g2b_check.log, the
+                              resumed run that finished it; the pair pieces
+                              were proved by runs/combo27_k14f2g2b_check_run1.log
+                              and taken from the checkpoint
+                              runs/combo27_k14f2g2b_check.ckpt: 3.102942 at
+                              (14, 5, 5, 0, 1, 0, 2) after 4 552 754 pair
+                              boxes and 1 712 578 763 triple boxes; precheck
+                              runs/combo27_k14f2g2b_precheck.log).
+                              radial_certificates/combo27_k16f3g2a_d10.npz
+                              is the mix for the 15 vectors with exactly
+                              16 within 2.0161, exactly 3 beyond 2.35, none
+                              in (2.1, 2.2] and at least one in (2.2, 2.35]
+                              (case27_k16f3g2a.json), found by
+                              gap_closure/CM/c27_hull_sub.py with SUB=2,5
+                              (a threshold of its own for each combination
+                              of bins with the bin 3 or the bin 6): 7
+                              certificates, 0.98 of the weight on 6 found
+                              for 27 centres and 0.68 on the second round
+                              for exactly 14 and 3 beyond 2.35; its check
+                              passes at margins 2e-6, 2e-6 and 1e-7
+                              (runs/combo27_k16f3g2a_check.log, 188
+                              minutes, checkpoint
+                              runs/combo27_k16f3g2a_check.ckpt: 3.093588 at
+                              (16, 4, 3, 0, 0, 1, 3) after 574 073 pair
+                              boxes and 119 953 227 triple boxes; precheck
+                              runs/combo27_k16f3g2a_precheck.log).
+                              radial_certificates/combo27_k15f3g1lo8_d10.npz
+                              is the mixed-typing mix for the 9 vectors
+                              (15, a, 9 - a, 0, 0, 0, 3), a <= 8, with
+                              exactly 15 within 2.0161, exactly 3 beyond
+                              2.35, none in (2.1, 2.35] and at most 8 in
+                              (2.0161, 2.05] (case27_k15f3g1lo8_bins.json,
+                              one type per bin): 5 certificates under the
+                              typings AABBBBF, AAFBBBF, ABBBBBF, AABBBBB
+                              and AAABBBF, 0.93 of the weight on the last,
+                              0.84 on the second round for exactly 14 and
+                              3 beyond 2.35; its check passes at margins
+                              5e-6, 2e-6 and 1e-6
+                              (runs/combo27_k15f3g1lo8_check.log, 248
+                              minutes, checkpoint
+                              runs/combo27_k15f3g1lo8_check.ckpt: 3.098238
+                              at (15, 8, 1, 0, 0, 0, 3) after 1 012 799
+                              pair boxes and 208 898 819 triple boxes;
+                              dense search
+                              gap_closure/CM/peak2_c27k15f3g1lo8mt.log).
+                              radial_certificates/combo27_k16f3g1lo7_d10.npz
+                              is the mixed-typing mix for the 8 vectors
+                              (16, a, 8 - a, 0, 0, 0, 3), a <= 7, with
+                              exactly 16 within 2.0161, exactly 3 beyond
+                              2.35, none in (2.1, 2.35] and at most 7 in
+                              (2.0161, 2.05] (case27_k16f3g1lo7_bins.json,
+                              one type per bin): 9 certificates under the
+                              typings AABBBBF, AAFBBBF, ABBBBBF, AABBBBB
+                              and AAABBBF, 0.94 of the weight on the last,
+                              0.91 on the two rounds for exactly 14 and 3
+                              beyond 2.35 and 0.75 on the second of them;
+                              its check passes at margins 2e-6, 5e-7 and
+                              1e-6 with TRIPLE_EXTRA A2F7F7:2e-6,
+                              B3B3B3:1e-6, A1B3B3:5e-7, A2B3B3:5e-7
+                              (runs/combo27_k16f3g1lo7_check.log, 429
+                              minutes, checkpoint
+                              runs/combo27_k16f3g1lo7_check.ckpt: 3.101848
+                              at (16, 7, 1, 0, 0, 0, 3) after 3 420 911
+                              pair boxes and 292 020 723 triple boxes;
+                              dense search
+                              gap_closure/CM/peak2_c27k16f3g1lo7mt.log).
+                              radial_certificates/combo27_k16f3g2b_d10.npz
+                              is the mixed-typing mix for the 150 vectors
+                              with exactly 16 within 2.0161, exactly 3
+                              beyond 2.35 and a centre in (2.1, 2.2]
+                              (case27_k16f3g2b_bins.json, one type per
+                              bin): 6 certificates under the typings
+                              AABBBBF, AABBBFF and AAABBBF, 0.81 of the
+                              weight on the second round for exactly 14
+                              and 3 beyond 2.35 typed AAABBBF; its check
+                              passes at margins 1e-6, 1e-7 and 1e-7, every
+                              triple threshold above the dense-search
+                              peaks (runs/combo27_k16f3g2b_check.log, 795
+                              minutes, checkpoint
+                              runs/combo27_k16f3g2b_check.ckpt: 3.101991
+                              at (16, 7, 0, 1, 0, 0, 3) after 5 335 843
+                              pair boxes and 630 587 792 triple boxes;
+                              dense search
+                              gap_closure/CM/peak2_c27k16f3g2bmt.log).
+                              radial_certificates/combo27_k15f2g1_d10.npz
+                              is the mixed-typing mix for the 36 vectors
+                              (15, a, b, 0, 0, 0, n7), a + b + n7 = 12,
+                              n7 <= 2, with exactly 15 within 2.0161, at
+                              most 2 beyond 2.35 and none in (2.1, 2.35]
+                              (case27_k15f2g1_bins.json, one type per
+                              bin): 7 certificates under the typings
+                              AABBBBF, AAABBBF, AAFBBBF, ABBBBBF and
+                              AABBBBB, 0.52 of the weight typing the bin
+                              (2.05, 2.1] as A and 0.47 on the fourth round
+                              for exactly 14 and at most 2 beyond 2.35;
+                              its check passes at margins 2e-6, 5e-7 and
+                              1e-6 with TRIPLE_EXTRA A2F7F7:3e-6,
+                              A2B3F7:2e-6, A1F7F7:1e-6, A1A2B3:1e-6,
+                              A2B3B3:1e-6 and 5e-7 on A1A1B3, A1A1F7,
+                              A1A2F7, A2A2B3 and B3B3B3
+                              (runs/combo27_k15f2g1_check.log; a first run
+                              of 357 minutes verified every inequality but
+                              with 2e-5 on A2B3B3 its bound was 3.103547,
+                              and the rerun of 46 minutes checked the five
+                              kinds whose extra room was lowered, the rest
+                              taken from the checkpoint
+                              runs/combo27_k15f2g1_check.ckpt: 3.102529 at
+                              (15, 0, 11, 0, 0, 0, 1) after 256 495 pair
+                              boxes and 256 390 717 triple boxes; dense
+                              search gap_closure/CM/peak2_c27k15f2g1mt.log).
+                              radial_certificates/combo27_k15f2g2bH4_d10.npz
+                              and combo27_k15f2g2bH5_d10.npz are the
+                              mixed-typing mixes for the 30 vectors each
+                              (15, a, b, 1, 0, 0, n7) and
+                              (15, a, b, 0, 1, 0, n7), b >= 1,
+                              a + b + n7 = 11, n7 <= 2: exactly 15 within
+                              2.0161, at most 2 beyond 2.35, at least one
+                              in (2.05, 2.1] and exactly one in
+                              (2.1, 2.35], lying in (2.1, 2.15] or in
+                              (2.15, 2.2] (case27_k15f2g2bH4_bins.json,
+                              case27_k15f2g2bH5_bins.json); 8 certificates
+                              each under the typings AABBBBF, AABFFBF,
+                              AABBBFF, AABFFFF and AAABBBF, 0.67 of the
+                              weight typing the bin (2.05, 2.1] as A, with
+                              0.22 (H4) and 0.52 (H5) on the two rounds
+                              c27k15f2g2b and c27k15f2g2b2; their checks
+                              pass at margins 2e-6, 5e-7 and 1e-6 with
+                              TRIPLE_EXTRA A1F7F7:4e-6, A2F7F7:3e-6,
+                              B4F7F7:1.5e-6, B3F7F7:1e-6, A1A2B3:1e-6,
+                              A2A2F7:5e-7 (H4) and B5F7F7:1.5e-6,
+                              A2B3F7:1.5e-6, A2B5F7:1e-6, A1B5F7:1e-6,
+                              A1A2B3:1e-6, A2F7F7:1e-6 (H5)
+                              (runs/combo27_k15f2g2bH4_check.log, 741
+                              minutes, checkpoint
+                              runs/combo27_k15f2g2bH4_check.ckpt: 3.099453
+                              at (15, 8, 1, 1, 0, 0, 2) after 738 140 pair
+                              boxes and 511 125 998 triple boxes;
+                              runs/combo27_k15f2g2bH5_check.log, 728
+                              minutes, checkpoint
+                              runs/combo27_k15f2g2bH5_check.ckpt: 3.099138
+                              at (15, 8, 1, 0, 1, 0, 2) after 785 003 pair
+                              boxes and 500 788 974 triple boxes; dense
+                              searches gap_closure/CM/peak2_c27k15f2g2bH4mt.log
+                              and peak2_c27k15f2g2bH5mt.log).
+                              radial_certificates/combo27_k15f2g2bH0_d10.npz
+                              is the mixed-typing mix for the 6 vectors
+                              (15, a, 0, 1, 0, 0, n7) and
+                              (15, a, 0, 0, 1, 0, n7), a + n7 = 11,
+                              n7 <= 2: exactly 15 within 2.0161, at most 2
+                              beyond 2.35, none in (2.05, 2.1] and exactly
+                              one in (2.1, 2.35], lying in (2.1, 2.2]
+                              (case27_k15f2g2bH0_bins.json), so 24 or more
+                              within 2.05; 8 certificates under the same
+                              five typings, 0.39 of the weight on the
+                              rounds c27k15f2g2b and c27k15f2g2b2, mixed
+                              with the dense-search peaks of a first mix
+                              added to the samples (3.102414); its check
+                              passes at margins 5e-7, 5e-8 and 1e-7 with
+                              TRIPLE_EXTRA A2B5F7:1e-6, A1B5F7:8e-7,
+                              B4F7F7:5e-7, A2B4F7:4e-7, A1B4F7:3e-7 and
+                              2e-7 on A1A2B4, A2A2B4, A2A2B5 and A1A2B5
+                              (runs/combo27_k15f2g2bH0_check.log; the first
+                              run of 638 minutes verified every inequality
+                              but A2B4F7, whose threshold had no extra room
+                              and lay below its dense-search peak, and the
+                              rerun of 34 minutes checked A2B4F7 again with
+                              4e-7 more, the rest taken from the checkpoint
+                              runs/combo27_k15f2g2bH0_check.ckpt: 3.102737
+                              at (15, 9, 0, 0, 1, 0, 2) after 1 637 400
+                              pair boxes and 436 542 789 triple boxes;
+                              dense search
+                              gap_closure/CM/peak2_c27k15f2g2bH0mt2.log).
+                              radial_certificates/combo27_k16f2G1a_d10.npz
+                              is the mixed-typing mix for the 23 vectors
+                              (16, a, b, 0, 0, 0, n7), a + b + n7 = 11,
+                              n7 <= 1: exactly 16 within 2.0161, at most 1
+                              beyond 2.35 and none in (2.1, 2.35]
+                              (case27_k16f2G1a_bins.json); 6 certificates
+                              under five typings (AABBBBF, AAABBBF,
+                              AAFBBBF, ABBBBBF, AABBBBB), 0.60 of the
+                              weight on the round c27k14f2d and 0.50
+                              typing the bin (2.05, 2.1] as A (3.101015);
+                              its check passes at margins 1e-6, 5e-8 and
+                              1e-7 with no TRIPLE_EXTRA
+                              (runs/combo27_k16f2G1a_check.log; a first
+                              run that raised four triple thresholds by
+                              the gap of their dense-search peaks over the
+                              mix constants was stopped, its bound 3.104441
+                              counting each gap twice, and the rerun of 351
+                              minutes took the pairs from the checkpoint
+                              runs/combo27_k16f2G1a_check.ckpt: 3.102925 at
+                              (16, 0, 10, 0, 0, 0, 1) after 265 329 pair
+                              boxes and 253 960 645 triple boxes; dense
+                              search gap_closure/CM/peak2_c27k16f2G1amt.log).
+                              radial_certificates/combo27_k16f2G1bm_d10.npz
+                              is the mixed-typing mix for the 8 vectors
+                              (16, a, 9 - a, 0, 0, 0, 2), 1 <= a <= 8:
+                              exactly 16 within 2.0161, exactly 2 beyond
+                              2.35, none in (2.1, 2.35] and at least one in
+                              each of (2.0161, 2.05] and (2.05, 2.1]
+                              (case27_k16f2G1bm_bins.json); 6 certificates
+                              under the same five typings, 0.36 of the
+                              weight on the round c27k14f2d and 0.66
+                              typing the bin (2.05, 2.1] as A (3.101333);
+                              its check passes at margins 1e-6, 1e-7 and
+                              1e-7 with TRIPLE_EXTRA
+                              A1F7F7:3.2e-06,A2F7F7:3e-06,A1A2F7:3.1e-07,
+                              A1A1F7:1.4e-07
+                              (runs/combo27_k16f2G1bm_check.log, resumed
+                              after a restart of the machine from the
+                              checkpoint runs/combo27_k16f2G1bm_check.ckpt:
+                              3.102229 at (16, 8, 1, 0, 0, 0, 2) after
+                              432 985 pair boxes and 337 743 310 triple
+                              boxes; dense search
+                              gap_closure/CM/peak2_c27k16f2G1bmmt.log).
+                              radial_certificates/combo27_k16f2v0902_d10.npz
+                              is the mixed-typing mix for the single vector
+                              (16, 0, 9, 0, 0, 0, 2): exactly 16 within
+                              2.0161, 9 in (2.05, 2.1] and 2 beyond 2.35
+                              (case27_k16f2v0902_bins.json); 6
+                              certificates under the typings AAABBBF and
+                              AABBBBF, 0.54 of the weight on the round
+                              c27k12 and 0.64 typing the bin (2.05, 2.1]
+                              as A (3.082699); its check passes at margins
+                              2e-6, 5e-6 and 1e-6 with no extra room and no
+                              dense search (runs/combo27_k16f2v0902_check.log:
+                              3.097967 after 711 129 pair boxes and
+                              82 947 207 triple boxes).
+                              radial_certificates/combo27_k15f2g2aY_d10.npz
+                              is the mixed-typing mix for the 103 vectors
+                              (15, a, b, 0, 0, e, n7), b >= 1, e >= 1,
+                              n7 <= 2: exactly 15 within 2.0161, at most 2
+                              beyond 2.35, none in (2.1, 2.2] and at least
+                              one in each of (2.05, 2.1] and (2.2, 2.35]
+                              (case27_k15f2g2aY_bins.json); 6 certificates
+                              under the typings AABBBBF, AABBBFF, AAABBBF,
+                              AAABBFF and AABBBBB, 0.42 of the weight on
+                              the round c27k15, 0.68 typing the bin
+                              (2.05, 2.1] as A and 0.45 typing (2.2, 2.35]
+                              as F (3.102697, mixed with the dense-search
+                              peaks of a first mix fed back); its check
+                              passes at margins 5e-7, 5e-8 and 1e-7 with
+                              TRIPLE_EXTRA B3B6F7:1e-6,B6F7F7:4e-7,
+                              A1B3B6:4e-7,A2B3B6:4e-7,A1A1F7:1.5e-7,
+                              A1A2F7:1.5e-7,A2A2F7:1.5e-7,A1F7F7:1e-7
+                              (runs/combo27_k15f2g2aY_check.log, resumed
+                              after a restart of the machine from the
+                              checkpoint runs/combo27_k15f2g2aY_check.ckpt:
+                              3.103081 at (15, 8, 1, 0, 0, 1, 2) after
+                              7 585 532 pair boxes and 653 692 639 triple
+                              boxes; dense search
+                              gap_closure/CM/peak2_c27k15f2g2aYmt2.log).
+                              radial_certificates/combo27_k15f2g2aX3_d10.npz
+                              is the mixed-typing mix for the 6 vectors
+                              (15, a, 0, 0, 0, e, n7), e >= 3, n7 <= 2:
+                              exactly 15 within 2.0161, at most 2 beyond
+                              2.35, none in (2.05, 2.2] and at least 3 in
+                              (2.2, 2.35] (case27_k15f2g2aX3_bins.json); 4
+                              certificates under the typings AABBBBF,
+                              AABBBFF, ABBBBBF, ABBBBFF and AABBBBB, 0.81
+                              of the weight on the round c27f2g2b and 0.14
+                              typing the bin (2.2, 2.35] as F (3.098894);
+                              its check passes at margins 1e-6, 1e-7 and
+                              1e-7 with TRIPLE_EXTRA raising 13 triple
+                              kinds above their dense-search peaks
+                              (gap_closure/CM/peak2_c27k15f2g2aX3mt.log),
+                              A1B6B6 by 6e-7 after a first run met a value
+                              above its threshold at a narrow peak the
+                              dense search had missed
+                              (runs/combo27_k15f2g2aX3_check.log, resumed
+                              after a restart of the machine from the
+                              checkpoint
+                              runs/combo27_k15f2g2aX3_check.ckpt: 3.102002
+                              at (15, 7, 0, 0, 0, 3, 2) after 3 558 224 pair
+                              boxes and 383 194 626 triple boxes).
+                              radial_certificates/combo27_k16f2Hn3_d10.npz
+                              is the mixed-typing mix for the 36 vectors
+                              (16, a, b, n4, n5, 0, n7), n4 + n5 = 1,
+                              b >= 4, n7 <= 2: exactly 16 within 2.0161, at
+                              most 2 beyond 2.35, exactly one in
+                              (2.1, 2.2], none in (2.2, 2.35] and at least
+                              4 in (2.05, 2.1] (case27_k16f2Hn3_bins.json);
+                              8 certificates under the typings AABBBBF,
+                              AABFFBF, AABBBFF, AAABBBF and AAABBFF, 0.54
+                              of the weight on the round c27f2g2b, 0.65
+                              typing the bin (2.05, 2.1] as A and 0.13
+                              typing (2.1, 2.2] as F (3.092122); its check
+                              passes at margins 2e-6, 5e-7 and 1e-6 with
+                              TRIPLE_EXTRA raising 12 triple kinds above
+                              their dense-search peaks
+                              (gap_closure/CM/peak2_c27k16f2Hn3mt.log)
+                              (runs/combo27_k16f2Hn3_check.log, resumed
+                              after restarts of the machine from the
+                              checkpoint runs/combo27_k16f2Hn3_check.ckpt:
+                              3.096243 at (16, 4, 4, 0, 1, 0, 2) after
+                              946 240 pair boxes and 610 085 598 triple
+                              boxes).
+                                                            radial_certificates/combo27_k16f2Hm2_d10.npz
+                              is the mixed-typing mix for the 12 vectors
+                              (16, a, b, n4, n5, 0, n7), n4 + n5 = 1,
+                              b in {2, 3}, n7 <= 2: exactly 16 within
+                              2.0161, at most 2 beyond 2.35, exactly one in
+                              (2.1, 2.2], none in (2.2, 2.35] and 2 or 3 in
+                              (2.05, 2.1] (case27_k16f2Hm2_bins.json);
+                              8 certificates under the typings AABBBBF,
+                              AABFFBF, AABBBFF, AABFFFF and AAABBBF, mixed
+                              for the 18 vectors with 1 to 3 in
+                              (2.05, 2.1] (gap_closure/CM/mix27_k16f2Hmmt.npz),
+                              0.48 of the weight on the round c27k14f2c,
+                              0.73 typing the bin (2.05, 2.1] as A and 0.14
+                              typing (2.1, 2.2] as F (3.099892 on the 12);
+                              its check passes at margins 1e-6, 1e-7 and
+                              1e-7 with TRIPLE_EXTRA raising 17 triple
+                              kinds above their dense-search peaks
+                              (gap_closure/CM/peak2_c27k16f2Hm2mt.log)
+                              (runs/combo27_k16f2Hm2_check.log, resumed
+                              after restarts of the machine from the
+                              checkpoint runs/combo27_k16f2Hm2_check.ckpt:
+                              3.101346 at (16, 6, 2, 1, 0, 0, 2) after
+                              1 256 629 pair boxes and 707 041 803 triple
+                              boxes).
+                              radial_certificates/combo27_k16f2Hn1f1_d10.npz
+                              is the mixed-typing mix for the 4 vectors
+                              (16, 9 - n7, 1, n4, n5, 0, n7), n4 + n5 = 1,
+                              n7 <= 1: exactly 16 within 2.0161, at most 1
+                              beyond 2.35, exactly one in (2.1, 2.2], none
+                              in (2.2, 2.35] and exactly one in
+                              (2.05, 2.1] (case27_k16f2Hn1f1_bins.json);
+                              8 certificates under the typings AAABBBF,
+                              AABBBBF, AAABFFF and AABFFBF, mixed for the
+                              6 vectors with exactly one in (2.05, 2.1]
+                              with the dense-search peaks of a first mix
+                              fed back (gap_closure/CM/mix27_k16f2Hn1mt2.npz,
+                              3.103299 on the 6), 0.34 of the weight on the
+                              round c27k14f2c and 0.72 typing the bin
+                              (2.05, 2.1] as A; its check passes at margins
+                              1e-6, 1e-7 and 1e-7 with TRIPLE_EXTRA 6e-7 on
+                              A1B5F7 (runs/combo27_k16f2Hn1f1_check.log,
+                              resumed from the checkpoint
+                              runs/combo27_k16f2Hn1f1_check.ckpt: 3.103245
+                              at (16, 8, 1, 1, 0, 0, 1) after 1 089 091
+                              pair boxes and 609 312 255 triple boxes).
+                              radial_certificates/combo27_k16f2G2an3_d10.npz
+
+                              is the mixed-typing mix for the 67 vectors
+                              (16, a, b, 0, 0, e, n7), b >= 3, e >= 1,
+                              a + b >= 6, n7 <= 2: exactly 16 within
+                              2.0161, at most 2 beyond 2.35, none in
+                              (2.1, 2.2], at least one in (2.2, 2.35] and
+                              at least 3 in (2.05, 2.1]
+                              (case27_k16f2G2an3_bins.json); 7 certificates
+                              under the typings AABBBBF, AABBBFF, AAABBBF,
+                              AAABBFF and AABBBBB, mixed for the 79 vectors
+                              with at least 2 in (2.05, 2.1]
+                              (gap_closure/CM/mix27_k16f2G2an2mt.npz), 0.58
+                              of the weight on the round c27f2g2b, 0.67
+                              typing the bin (2.05, 2.1] as A and 0.34
+                              typing (2.2, 2.35] as F (3.101372 on the 67);
+                              its check passes at margins 1e-6, 1e-7 and
+                              1e-7 with TRIPLE_EXTRA raising 12 triple
+                              kinds above their dense-search peaks
+                              (gap_closure/CM/peak2_c27k16f2G2an3mt.log)
+                              (runs/combo27_k16f2G2an3_check.log, resumed
+                              after restarts of the machine from the
+                              checkpoint runs/combo27_k16f2G2an3_check.ckpt:
+                              3.102140 at (16, 5, 3, 0, 0, 1, 2) after
+                              3 590 588 pair boxes and 616 011 287 triple
+                              boxes).
+                              radial_certificates/combo27_k16f2G2ae2b_d10.npz
+                              is the mixed-typing mix for the 9 vectors
+                              (16, a, 2, 0, 0, e, n7), e >= 2, n7 <= 2:
+                              exactly 16 within 2.0161, at most 2 beyond
+                              2.35, none in (2.1, 2.2], exactly 2 in
+                              (2.05, 2.1] and at least 2 in (2.2, 2.35]
+                              (case27_k16f2G2ae2b_bins.json); 7 certificates
+                              under the typings AABBBBF, AABBBFF, AAABBBF
+                              and AAABBFF, mixed for the 12 vectors with
+                              exactly 2 in (2.05, 2.1] and at least one in
+                              (2.2, 2.35] (gap_closure/CM/mix27_k16f2G2ae2mt.npz),
+                              0.58 of the weight on the round c27f2g2b, 0.67
+                              typing the bin (2.05, 2.1] as A and 0.34
+                              typing (2.2, 2.35] as F (3.100707 on the 9);
+                              its check passes at margins 1e-6, 1e-7 and
+                              1e-7 with TRIPLE_EXTRA raising 12 triple
+                              kinds above their dense-search peaks
+                              (gap_closure/CM/peak2_c27k16f2G2ae2bmt.log)
+                              (runs/combo27_k16f2G2ae2b_check.log, resumed
+                              after restarts of the machine from the
+                              checkpoint runs/combo27_k16f2G2ae2b_check.ckpt:
+                              3.102282 at (16, 5, 2, 0, 0, 2, 2) after
+                              3 612 007 pair boxes and 641 317 975 triple
+                              boxes); not yet part of prop:count27-few.
+                              radial_certificates/combo27_k15f2g2aX1v1110_d10.npz,
+                              combo27_k15f2g2aX1v1020_d10.npz,
+                              combo27_k15f2g2aX1v1011_d10.npz,
+                              combo27_k15f2g2aX1v921_d10.npz and
+                              combo27_k16f2v8210_d10.npz are mixed-typing
+                              mixes for the single vectors
+                              (15, 11, 0, 0, 0, 1, 0), (15, 10, 0, 0, 0, 2, 0),
+                              (15, 10, 0, 0, 0, 1, 1), (15, 9, 0, 0, 0, 2, 1)
+                              and (16, 8, 2, 0, 0, 1, 0)
+                              (gap_closure/CM/case27_k15f2g2aX1v*_bins.json,
+                              case27_k16f2v8210_bins.json); their checks pass
+                              (runs/combo27_k15f2g2aX1v1110_check.log 3.098938,
+                              runs/combo27_k15f2g2aX1v1020_check.log 3.096137,
+                              runs/combo27_k15f2g2aX1v1011_check.log 3.100562
+                              after a first run failed on A2B6F7 and was
+                              resumed with 3e-7 more room there,
+                              runs/combo27_k15f2g2aX1v921_check.log 3.103026
+                              after a first run failed on A1A1A1 and A2B6F7
+                              and was resumed with 2e-7 and 5e-7 more room
+                              there, runs/combo27_k16f2v8210_check.log
+                              3.099725). The four with 15 within 2.0161 are
+                              part of prop:count27-few; (16, 8, 2, 0, 0, 1, 0)
+                              is not yet.
+                              The thirty-five mixes for 27 together are
+                              prop:count27-few, (C) at 27 with at most 14
+                              within 2.0161, or with exactly 15 or exactly
+                              16 within 2.0161, exactly 3 beyond 2.35 and
+                              at least one in (2.05, 2.35], or with exactly
+                              15 within 2.0161, at most 2 beyond 2.35 and
+                              none in (2.1, 2.35], or with exactly 15
+                              within 2.0161, at most 2 beyond 2.35 and
+                              exactly one in (2.1, 2.35], lying in
+                              (2.1, 2.2]; that is, with exactly 15 within
+                              2.0161, at most 2 beyond 2.35, none in
+                              (2.2, 2.35] and at most one in (2.1, 2.2],
+                              or with exactly 15 within 2.0161, at most 2
+                              beyond 2.35, none in (2.1, 2.2], at least
+                              one in (2.2, 2.35] and, if none in (2.05, 2.1], at least 3 in (2.2, 2.35] or at most 1 beyond 2.35,
+                              or with exactly 16 within 2.0161, at most 2
+                              beyond 2.35 and either none in (2.1, 2.35]
+                              and, if 2 lie beyond 2.35, at least one in
+                              (2.05, 2.1], or
+                              exactly one in (2.1, 2.2], none in
+                              (2.2, 2.35] and either at least 2 in
+                              (2.05, 2.1] or exactly 1 there and at most
+                              1 beyond 2.35, or none in (2.1, 2.2], at
+                              least one in
+                              (2.2, 2.35] and at least 3 in (2.05, 2.1].
+                              With CHECKPOINT=file in the environment the
+                              result of each branch and bound on pairs or
+                              triples is appended to the file as it
+                              finishes (and printed with a line "done:"),
+                              keyed by the SHA-256 of the function and its
+                              arguments; a later run with the same file
+                              takes every job whose key is there and passed
+                              from the file and computes the rest, so a
+                              check that a restart of the machine
+                              interrupted resumes.  The float sampling
+                              that sets each triple threshold is stored
+                              the same way in file.setup (keyed by its
+                              polynomial, domain and samples), so a resumed
+                              run does not repeat it.  The logs of the runs
+                              and the file are then the record of the
+                              check together.
+                              A case file may carry a key "exclude": a list
+                              of sets of constraints [bins, lo, hi]; a
+                              count vector that meets every constraint of
+                              one set is left out of the case (it is
+                              checked as a part of its own).
+
+  combo_mixtype_check.py case_bins.json mix.npz d3 [m2 m3 mm]
+                              The exact check of combo_case_check.py for a
+                              combination whose certificates type the bins
+                              differently (gap_closure/CM/c27_hull_mt.py):
+                              the three-point inequality of a certificate
+                              holds for every assignment of its types A, B,
+                              F to the points, so each certificate may type
+                              each bin as any of them.  mix.npz holds the
+                              shared pair kernel and bin constants and, per
+                              typing of the bins (gtyp), the weighted sum
+                              x3g of the three-point parts that use it; each
+                              group is rounded on its own, and the point
+                              term, pair and triple polynomials of a bin or
+                              combination of bins are the sums over the
+                              groups of those of the types each group gives
+                              them.  The case file gives each bin a type of
+                              its own (gap_closure/CM/case_bins.py makes
+                              one); SKIP_EMPTY=1 is set, so pair kinds that
+                              no count vector uses are skipped.
 
   pair_bb_fast.py             The branch and bound of radial_count_check.py
                               for K <= Pi, processed in numpy batches: the
                               same boxes, tests and counts, four times
                               faster; used by radial_case_check.py.
+
+  ipoly.c, ipoly_test.py      The interval evaluation of a polynomial on
+                              boxes (Poly.eval of certificate_check.py) in
+                              C: every product and sum in double and then
+                              one step outward, in the same order as the
+                              numpy code, so the enclosures agree bit for
+                              bit.  Used by the triple branch and bounds
+                              when POLY_EVAL=c is set (compiled with gcc
+                              -O3 -march=native -ffp-contract=off into the
+                              temporary directory on first use).
+                              ipoly_test.py compares the two on 640000
+                              random boxes (0 differences; about 27 times
+                              faster).
 
   pushout_check.py
                               thm:G-pushout: T on the one-centre ray at

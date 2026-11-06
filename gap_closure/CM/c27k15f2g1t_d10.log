@@ -1,0 +1,11 @@
+27 with exactly 15 centres within 2.0161, at most 2 beyond 2.35 and none in (2.1, 2.35] (36 count vectors), typed A = [2, 2.0161], B = (2.0161, 2.1], F = (2.35, sqrt6] (case27_k15f2g1_t1.json, type counts (15, 12, 0), (15, 11, 1), (15, 10, 2)): a degree 10 round built for these vectors, from the samples of c27k15g1t5_d10_r1.npz (the fifth round for 15 close with 3 far on the same typing, 3.10009 on its samples). The mix of earlier certificates gives 3.107655 here (3.108208 at climbed maxima). TRACE_REG=3e-4, KEEP_P=6000, KEEP_T=3000, KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3, nice 5, oom_score_adj 0; started Wed Oct 21 16:13:39 UTC 2026
+resumed from c27k15g1t5_d10_r1.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1164, 'AAF': 1250, 'ABB': 1176, 'ABF': 1264, 'AFF': 1326, 'BBB': 1176, 'BBF': 1267, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1843, 'AAF': 1922, 'ABB': 1859, 'ABF': 1264, 'AFF': 2021, 'BBB': 2652, 'BBF': 1942, 'BFF': 2021, 'FFF': 2807}
+   direct: 7436 variables, 95912 inequalities, 7389 psd rows in 56 cones, 71287893 nonzeros [51 s to build]
+   3 type-count vectors
+d3=10 round 1: NumericalError  bound 2.66297 (target 3.10330), corrected <= 365.25933  [9339 s]
+   viol: AA 1.9e-07, AB 7.0e-06, AF 1.8e-07, BB 1.3e-05, BF 3.4e-06, FF -2.5e-04, AAA 4.8e-02, AAB 1.4e-01, AAF 3.4e-02, ABB 1.5e-01, ABF 1.0e-01, AFF 2.4e-02, BBB 7.8e-02, BBF 4.9e-02, BFF 2.7e-02
+   c2: {'AA': -3.763765, 'AB': -1.147958, 'AF': -0.043051, 'BB': 0.897436, 'BF': -0.250519, 'FF': 6.913772}
+   c3: {'AAA': 1.2587578, 'AAB': -0.0849305, 'AAF': -0.351535, 'ABB': -1.2403237, 'ABF': -1.0245556, 'AFF': 1.4595345, 'BBB': 3.4984547, 'BBF': 3.2611712, 'BFF': -0.7332826}
+exit 0 at Wed Oct 21 18:49:54 UTC 2026

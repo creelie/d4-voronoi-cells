@@ -1,0 +1,11 @@
+28 with exactly 23 centres within 2.0161, none in (2.0161, 2.05], one in (2.05, 2.35] and 4 beyond 2.35, with the close type narrowed: types A = [2, 2.0161], B = [2.05, 2.35], F = (2.35, sqrt6) (case28_k23f4h.json: the four vectors of case28_k23f4n.json plus the vector of 24 within 2.0161 and 4 beyond 2.35, which is proved and is added so that the case has two type-count vectors; the narrowed round c28k23f4c with a single one ended DualInfeasible; for the solver only: the bins leave a gap at (2.0161, 2.05), and the exact check runs on case28_k23f4n.json with the bins refined), three-point degree 10 with TRACE_REG=3e-4, from the samples of c28k23f4c (B pairs below 2.05 dropped: c28k23f4c_d10_r1_g.npz; pruned to KEEP_P=6000 and KEEP_T=3000 per kind), KEEP_BASE=1, TCOPLANAR=32, TSYM=32, REFINE=150, THREADS=3.  Started Tue Oct 13 09:26:39 UTC 2026
+resumed from c28k23f4c_d10_r1_g.npz, pruned to 6000 pair and 3000 triple samples per kind
+fixed coplanar triples per kind: {'AAA': 1128, 'AAB': 1224, 'AAF': 1250, 'ABB': 1275, 'ABF': 1300, 'AFF': 1326, 'BBB': 1275, 'BBF': 1326, 'BFF': 1326, 'FFF': 1326}
+fixed triples per kind with the symmetric slices: {'AAA': 2594, 'AAB': 1898, 'AAF': 1922, 'ABB': 1966, 'ABF': 1300, 'AFF': 2021, 'BBB': 2760, 'BBF': 2011, 'BFF': 2013, 'FFF': 2807}
+   direct: 7423 variables, 92273 inequalities, 7389 psd rows in 56 cones, 68057564 nonzeros [28 s to build]
+   2 type-count vectors
+d3=10 round 1: optimal_inaccurate  bound 3.07461 (target 3.10330), corrected <= 5.09653  [6929 s]
+   viol: AA 9.6e-08, AB 9.4e-06, AF 1.2e-08, BB 2.5e-04, BF 6.8e-06, FF 1.2e-08, AAA 1.2e-04, AAB 1.5e-03, AAF 1.1e-03, ABF 1.9e-03, AFF 8.4e-04, BFF 4.3e-04, FFF 1.3e-04
+   c2: {'AA': 0.017355, 'AB': -0.35787, 'AF': -0.340745, 'BB': 1.31079, 'BF': -0.239046, 'FF': 0.044146}
+   c3: {'AAA': 0.0423625, 'AAB': 0.0345999, 'AAF': -0.1604257, 'ABF': -0.0471745, 'AFF': 0.6183823, 'BFF': 0.0008228, 'FFF': 0.0215447}
+exit 0 at Tue Oct 13 11:22:31 UTC 2026
