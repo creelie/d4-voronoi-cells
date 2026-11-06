@@ -1,3 +1,11 @@
+## Current manuscript revision
+
+[Paper PDF](paper/revision-v3.1.0/D4-24.pdf) · [TeX ZIP](paper/revision-v3.1.0/D4-24tex.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.1.0) · [Zenodo concept DOI](https://doi.org/10.5281/zenodo.22766562)
+
+The revision preserves the supplied manuscript and adds a protected convex hull that exterior packing centres cannot cut. An explicit volume estimate proves (G) for a family of simultaneous radial and directional perturbations of the D4 roots. The unrestricted case (G) and the remaining cases (C) for 25–28 centres are open.
+
+<!-- current-manuscript-v310 -->
+
 # The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture: supplementary code
 
 Certificates, the programmes that check them, run logs and Lean 4 checks for

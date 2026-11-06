@@ -1,0 +1,106 @@
+\subsection{A larger region protected from exterior centres}
+\label{sec:protected-shell}
+
+Fix a centre at the origin, a radius $D\ge2$, and let $Y$ be the
+other centres of the packing with norm strictly less than $D$.
+For $y\in Y$, put
+\[
+ a_D(y)=\frac{D^2}{D^2+|y|^2-4},\qquad
+ K_D^+(Y)=\operatorname{conv}\bigl(B(D/2)\cup
+                       \{a_D(y)y:y\in Y\}\bigr).
+\]
+Here $B(r)$ is the closed ball about the origin.
+
+\begin{prop}[Protection against every exterior centre]\label{prop:protected-shell}
+The true Voronoi cell $V_c$ and the cell $V(Y)$ cut out by $Y$
+agree on $K_D^+(Y)$. This hull contains both $B(D/2)$ and the
+inversion hull $K(Y)$ of \cref{prop:inversion-hull}.
+\end{prop}
+\begin{proof}
+If $|z|\ge D$ is another packing centre, then
+$2\langle y,z\rangle\le |z|^2+|y|^2-4$. With $u=|y|^2-4\ge0$,
+monotonicity of $t/(t+u)$ gives
+\[
+ 2\langle a_D(y)y,z\rangle
+ \le\frac{D^2(|z|^2+u)}{D^2+u}\le |z|^2.
+\]
+The ball $B(D/2)$ lies in the same half-space by Cauchy--Schwarz.
+Convexity yields $K_D^+(Y)\subset H_z$ for each exterior $z$.
+Finally $a_D(y)\ge4/|y|^2$, since $(D^2-4)(|y|^2-4)\ge0$.
+The inverted point $4y/|y|^2$ is on the segment from $0$ to
+$a_D(y)y$. This proves the containment.
+\end{proof}
+
+\begin{prop}[A tilted twenty-four-centre family]\label{prop:protected-tilt}
+Take $D=\sqrt6$ and suppose $Y$ consists of twenty-four centres
+$y_i=2(1+\eta_i)w_i$ with $|w_i|=1$. After rotation and labelling,
+let $u_i$ be the unit $D_4$ root directions. Put
+$\eta=\max_i\eta_i$ and $\epsilon=\max_i|w_i-u_i|$.
+If $0\le\eta\le1/10$, $\eta_i\ge\eta/2$ for every $i$, and
+$\epsilon\le\eta/10$, then
+\[
+ \vol(V(Y)\cap K(Y))\ge 8+6\eta,
+ \qquad \vol(V_c)\ge8+9\eta.
+\]
+Consequently this family satisfies (G), including its equality condition.
+\end{prop}
+\begin{proof}
+Let $Q$ be the regular reference Voronoi cell and
+$K_0=\operatorname{conv}\{2u_i\}$. The coordinates in
+\cref{sec:root-system} give $\vol Q=8$, $Q\subset B(\sqrt2)$
+and $B(\sqrt2)\subset K_0$. For
+\[
+ s=\frac{1+\min_i\eta_i}{1+\sqrt2\epsilon}
+\]
+one has $sQ\subset V(Y)$: for $x\in Q$,
+$\langle x,w_i\rangle\le\langle x,u_i\rangle+\sqrt2\epsilon
+\le1+\sqrt2\epsilon$.
+
+The vertices defining the two hulls in the proposition lie along
+$w_i$ at lengths $2/(1+\eta_i)$ and $2k(\eta_i)$, respectively,
+where $k(t)=(1+t)/(1+4t/3+2t^2/3)$. Both factors decrease for
+$t\ge0$. Both hulls contain the origin. They therefore contain
+the hulls of $2b w_i$, with $b=(1+\eta)^{-1}$ and $b=k(\eta)$,
+respectively. For any test vector $v$, the support function of
+the hull of $2b w_i$ is at least
+\[
+ b h_{K_0}(v)-2b\epsilon |v|
+ \ge b(1-\sqrt2\epsilon)h_{K_0}(v).
+\]
+Thus the corresponding hull contains $k_*K_0$, with
+$k_*=b(1-\sqrt2\epsilon)$.
+
+The part of $sQ$ beyond any one facet of $k_*K_0$ has volume at
+most $8(s-k_*)_+^4$. To see this, choose the facet $x_1=\sqrt2 k_*$.
+The inequalities $x_1\pm x_j\le\sqrt2 s$ for $2\le j\le4$
+bound the section there by a cube of side $2(\sqrt2 s-x_1)$.
+Integrating its volume from $\sqrt2 k_*$ to $\sqrt2 s$ gives the
+claimed bound, with zero loss when $s\le k_*$. All facets are
+equivalent under orthogonal symmetries preserving $Q$ and $K_0$.
+Indeed the facets have normals $\pm e_i$ or
+$(\pm1,\pm1,\pm1,\pm1)/2$. Signed permutations and an orthogonal
+Hadamard matrix divided by $2$ preserve the root system and send
+any of these normals to $e_1$. Taking the union over the twenty-four
+facets bounds the loss by $192(s-k_*)_+^4$.
+
+Using $\sqrt2<3/2$, one obtains $1+\eta/3\le s\le1+\eta$,
+since $(1+\eta/3)(1+3\eta/20)\le1+\eta/2$ in the stated interval.
+Also $(1+\eta)^{-1}\ge1-\eta$ and $k(\eta)\ge1-2\eta/5$.
+For the latter, multiply by the positive denominator and subtract:
+\[
+ (1+t)-(1-2t/5)(1+4t/3+2t^2/3)
+ =t/15-2t^2/15+4t^3/15\ge0.
+\]
+It follows that $s-k_*\le43\eta/20$ for $K(Y)$ and
+$s-k_*\le31\eta/20$ for $K_D^+(Y)$. Finally
+$8(s^4-1)\ge32\eta/3$ and $\eta^4\le\eta/1000$.
+Subtracting the respective losses gives the two stated constants,
+using $192(43/20)^4/1000<21/5$ and
+$192(31/20)^4/1000<6/5$. The protected-hull identity gives the
+second inequality for $V_c$. If $\eta=0$, then $\epsilon=0$ and
+the configuration is the reference root system.
+\end{proof}
+
+This estimate covers a restricted range of simultaneous changes in
+direction and radius. It leaves (G) outside that range and the
+remaining cases of (C) unresolved.
