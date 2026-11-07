@@ -35,3 +35,4 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.22766562"
     description: "Concept DOI: every version, resolving to the latest"
+doi: "10.5281/zenodo.24045631"

@@ -8,7 +8,7 @@ Repository: https://github.com/creelie/d4-voronoi-cells
 
 Current research release: https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.1
 
-Current release: https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.1. The version DOI is pending archival verification.
+Verified version DOI: https://doi.org/10.5281/zenodo.24045631
 
 ## Abstract to use
 
