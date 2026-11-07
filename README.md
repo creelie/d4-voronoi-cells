@@ -2,7 +2,7 @@
 
 ## Current manuscript
 
-[PDF](papers/d424.pdf) · [TeX ZIP](papers/d424tex.zip) · [GitHub release and version DOI](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.0)
+[PDF](papers/d424.pdf) · [TeX ZIP](papers/d424tex.zip) · [GitHub release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.0) · [Zenodo DOI 10.5281/zenodo.24042717](https://doi.org/10.5281/zenodo.24042717)
 
 Research revision v3.5.0 proves a packing-density bound below 0.634625. Some 24–27-neighbour cases of the sharp volume bound remain open. Earlier manuscripts are available in the [release history](https://github.com/creelie/d4-voronoi-cells/releases).
 
@@ -71,7 +71,7 @@ bound of the paper, whose certificates are in multi_cap/radial_certificates/.
 
 ## Citation
 
-Cite the version DOI listed on the v3.5.0 release page for this manuscript. The [release history](https://github.com/creelie/d4-voronoi-cells/releases) links to the earlier version records. Citation metadata is in CITATION.cff and .zenodo.json.
+Cite the v3.5.0 manuscript using [its version DOI](https://doi.org/10.5281/zenodo.24042717). The [release history](https://github.com/creelie/d4-voronoi-cells/releases) links to the earlier version records. Citation metadata is in CITATION.cff and .zenodo.json.
 
 ## Layout
 

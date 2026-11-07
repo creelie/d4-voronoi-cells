@@ -13,5 +13,5 @@ The standard-library checkers can be run from this directory.
   python anc/exterior_test.py
 The corresponding results are in the log files under anc/.
 
-The unrestricted cases (G) and (C) remain open. The release link in the paper gives the version DOI. The earlier computational
+The unrestricted cases (G) and (C) remain open. The title-page imprint includes the verified version DOI. The earlier computational
 and formal-verification materials retain their stated scope.
