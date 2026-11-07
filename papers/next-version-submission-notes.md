@@ -12,7 +12,7 @@ Verified version DOI: https://doi.org/10.5281/zenodo.24042717
 
 ## Abstract to use
 
-Use the short abstract in the attached current PDF and its identical TeX source. The manuscript proves a four-dimensional sphere-packing density bound below 0.634625. It includes the cap-intersection comparison and rational verification of the twenty-six-neighbour profiles. Some twenty-four to twenty-seven-neighbour cases of the sharp twenty-four-cell bound remain open.
+We prove that every unit-ball packing in $\mathbb R^4$ has density below $0.634625$. A comparison of cap intersections gives a joint bound on the truncated cell and its outer annulus. An exact count over radial profiles sharpens the bound at twenty-six neighbours. The sharp cell bound holds for contact configurations and additional tilted shells. Some configurations with twenty-four to twenty-seven near neighbours remain open.
 
 ## Changes for the submission note
 
@@ -20,4 +20,4 @@ The current mathematical revision adds the cap-intersection comparison and impro
 
 ## Files and scope
 
-Upload `d424tex.zip`, which contains `main.tex` and its required assets, and use `d424.pdf` for preview. Do not describe the remaining sharp volume-eight conjecture as proved. Confirm all authors, their order, the human-understanding declaration, and licence for the current submission. No new full Lean formalization is asserted by this packaging note.
+Upload `d424tex.zip`, which contains `D4.tex` and its required assets, and use `d424.pdf` for preview. Set `D4.tex` as the main document and compile with pdfLaTeX at least three times. Do not describe the remaining sharp volume-eight conjecture as proved. Confirm all authors, their order, the human-understanding declaration, and licence for the current submission. No new full Lean formalization is asserted by this packaging note.
