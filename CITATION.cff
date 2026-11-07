@@ -31,10 +31,8 @@ abstract: >-
   sphere-packing bound below 0.634625. The cap-intersection comparison and the
   rational check of 26-neighbour profiles are included. Some 24–27-neighbour
   cases of the sharp twenty-four-cell bound remain open.
+doi: "10.5281/zenodo.24042717"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22766562"
     description: "Concept DOI: every version, resolving to the latest"
-  - type: doi
-    value: "10.5281/zenodo.23076993"
-    description: "Version DOI of v1.12.0, the earlier package"
