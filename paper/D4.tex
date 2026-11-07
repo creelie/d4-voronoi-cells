@@ -63,13 +63,13 @@
 
 %% Floats sit near the text that discusses them; at this measure a figure is
 %% never wider than the column, so the only question is vertical placement.
-\renewcommand{\topfraction}{0.9}
-\renewcommand{\bottomfraction}{0.7}
-\renewcommand{\textfraction}{0.08}
-\renewcommand{\floatpagefraction}{0.85}
-\setcounter{topnumber}{3}
-\setcounter{bottomnumber}{2}
-\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.04}
+\renewcommand{\floatpagefraction}{0.80}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{6}
 \usepackage[maxfloats=120]{morefloats}
 
 \setcounter{tocdepth}{1}
@@ -570,7 +570,7 @@ proof in the main text uses them.
 three-dimensional analogue, where they can be drawn: the face-centred
 cubic lattice, the rhombic dodecahedron and its twelve contacts.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.78\textwidth]{fig_c_corner}
 \caption{The three-dimensional analogue. (a) The all-contact corner: the
@@ -774,7 +774,7 @@ three-dimensional form of the cap inequality of \cref{sec:cap-theorem}, and
 (d) is the decomposition into the three $16$-cells that
 triality permutes.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_cell24}
 \caption{(a) The reference cell, the regular $24$-cell $\VCell$, in an orthogonal projection to three dimensions: the $8$ vertices of the axis family (teal), the $16$ of the sign family (blue), the $32$ edges inside the sign family and the $64$ joining the two families (grey). (b) The Schlegel diagram of the same cell from one octahedral facet (clay): the remaining $18$ vertices and $84$ edges fill the interior of that facet with the other $23$ octahedra. (c) The cap inequality one dimension down. The octahedron of inradius $1$ carries its inscribed ball; the half-space at unit distance normal to a vertex cuts off the clay pyramid, drawn displaced along its normal, and the one normal to a facet touches that facet (teal) and cuts off nothing. (d) The same $24$ vertices read as three $16$-cells, which triality permutes, drawn side by side in one orthogonal projection, each with its own $24$ edges and the hull of its image: the axis family (teal) and the sign family split by the parity of the number of minus signs (ochre, violet).}
@@ -847,7 +847,7 @@ the unit vector from $c$ towards $y$, and $|y-c|/2\ge R$. The reference
 cell has circumradius $\sqrt2$ (\cref{lem:refcell-vol}).
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.9\textwidth]{fig_tikz_radii}
 \caption{The radii that decide which centres cut $V_c$, in a plane through
@@ -1034,7 +1034,7 @@ $\delta(\mathcal{C})\le\pi^2/16$ follows as in \cref{lem:cells-density}
 (\cref{fig:saturation}). Every packing lies in a saturated one.
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.62\textwidth]{fig_tikz_saturation}
 \caption{The counting of \cref{lem:cells-density,lem:redistribution},
@@ -1640,7 +1640,7 @@ In the setting above with $|D|=m\ge2$, $\vol(V_c)\ge8$ if and only if
 
 \Cref{fig:free-volume} draws the three terms of \eqref{eq:freevol}.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.92\linewidth]{fig_free_volume}
 \caption{The free-volume identity of \cref{thm:freevol-new}, drawn on
@@ -2018,7 +2018,7 @@ Both evaluations, together with the facet-local bound of
 checked numerically and collected in \cref{fig:boundary}.
 \end{remark}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_boundary}
 \caption{(a) A single facet of the reference cell, drawn inside the
@@ -2838,7 +2838,7 @@ $k=1,\dots,4$, and (iii) says
 \end{equation}
 for every $x\in S^3$ and every $Q\in\mathcal I_4$ with $|Q|\ge2$.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_sigma2}
 \caption{The certificate, as \cref{prop:verified} reads it. (a) The
@@ -2871,7 +2871,7 @@ $x,y\in C$, that is $\sigma_2(\langle x,y\rangle)=0$ by
 $\langle x,y\rangle$ in $\{-1,-\tfrac12,0,\tfrac12\}$.
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_d4contacts}
 \caption{What \cref{thm:twentyfour-points} forces. (a) The twenty-four
@@ -3035,7 +3035,7 @@ does not reach. The entries were also compared with those of the
 authors: for the thirteen signatures with $|\lambda|\le10$ and
 $\lambda_2\le4$ all $88$ entries agree coefficient by coefficient.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_verify}
 \caption{Steps~3 and~5 of the verification of the certificate. (a) The
@@ -3499,7 +3499,7 @@ situation from $m=24$, where the true value is $8$ and no slack exists.
 \Cref{fig:counting}(a) plots the range, and \cref{fig:counting}(b)
 records what settles each part of it.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_counting}
 \caption{(a) The covering bound \eqref{eq:covering-bound} at every
@@ -3715,7 +3715,7 @@ three-point form of \cref{sec:strict-inequality} and its certificate in
 \cref{sec:certificate}.
 \end{remark}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_pairs}
 \caption{Pair angles at twenty-three contacts. (a) The $253$ pair angles
@@ -4123,7 +4123,7 @@ with those configurations.
 work, \cref{fig:rig}(c) the spectrum that supplies the constant, and
 \cref{fig:rig}(d) the two sides of the final inequality.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.82\textwidth]{fig_c_rig}
 \caption{(a) The neighbour sum in dimension three, where it fits in one picture: a contact direction of the face-centred cubic lattice (teal), the four contact directions at $60^\circ$ from it (clay), and their sum (ochre), which is twice the direction itself. (b) The same identity in dimension four, drawn where it lives. The eight roots at inner product $1$ from a root $\alpha$ fill the hyperplane $\langle\alpha,x\rangle=1$, a copy of $\mathbb{R}^3$, as the vertices of a cube centred at $\alpha/2$ (dark); eight times that centre is $4\alpha$. (c) The singular values of the rigidity operator $\Lambda$ on the $72$-dimensional tangent space, with multiplicities (\cref{lem:rigidity-spectrum}). The kernel is the six infinitesimal rotations, and the smallest nonzero value is one of the two constants that turn the first-order argument into a radius; the other is the weight $\tfrac{11}{16}$ that every pair carries in the image of $\Lambda$. (d) The two sides of the inequality that closes \cref{thm:local-uniqueness}. Feasibility forces $\|\varepsilon\|^2\le\tfrac{397}{4}\|\varepsilon\|^4$, so the displacement is either zero or at least $2/\sqrt{397}$: the shaded band holds no contact configuration of $24$ directions.}
@@ -4337,7 +4337,7 @@ of its
 twenty-three directions lie outside every copy of $\Rt$, so it is not
 reachable from a deletion by exchanging one or two directions.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_rootmeet}
 \caption{(a) The six supports of the roots, joined in the three couples of
@@ -4577,14 +4577,14 @@ $\Rt$ and their forty-eight deletions
 and nothing else; there the arithmetic is in $\mathbb{Z}[\sqrt2]$.
 \end{remark}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.86\textwidth]{fig_c_structab}
 \caption{(a) The $24$ contact directions of $D_4$ seen from a deep hole (dark), radius proportional to angle: an octahedron at $45^\circ$ (clay), a cuboctahedron at $90^\circ$ (teal), an octahedron at $135^\circ$ (blue), and the $96$ pairs at $60^\circ$ as edges, grey between shells. (b) The dual $24$-cell seen from the same hole and on the same scale. The hole is now itself a direction (dark), and the others form a cube at $60^\circ$ (clay), an octahedron at $90^\circ$ (teal) and a cube at $120^\circ$ (blue); the edges are the $88$ pairs at $60^\circ$ that avoid the antipode of the hole, which lies at $180^\circ$ and is not drawn. The two panels together carry the $48$ directions of the binary octahedral group.}
 \label{fig:structab}
 \end{figure}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.86\textwidth]{fig_c_structcd}
 \caption{(a) The $600$-cell seen from one vertex, radius proportional to angle: its vertices in shells at $36^\circ$ to $144^\circ$ (grey) and, darker and joined by their $88$ edges, the $23$ vertices of an inscribed $24$-cell, the centre among them, whose twenty-fourth vertex is the antipode at $180^\circ$ and is not drawn; they form a deletion. (b) The cap lemma on a great $2$-sphere: three contact directions $60^\circ$ apart carry caps of radius $r_*=35.26^\circ$ that meet in exactly one point, the circumcentre of their triangle (ringed); any smaller radius separates them.}
@@ -4728,7 +4728,7 @@ inner-product multiset $-1$ eleven times, $-\tfrac12$ eighty-eight
 times, $0$ sixty-six times, $\tfrac12$ eighty-eight times, and
 $g=\tfrac12$ to fifteen digits. \Cref{fig:slack} draws the table.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_slack}
 \caption{(a) The continuation of \cref{tab:slack-continuation}: the largest
@@ -4908,14 +4908,14 @@ meet three at a time only at the eight triangle circumcentres; the
 uncovered measure there is exactly the two-term inclusion and
 exclusion, as it is on $S^3$ below $r_*$.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.86\textwidth]{fig_c_pf1}
 \caption{(a) Two contact directions at angle $\gamma=60^\circ$ and their caps of radius $r=r_*$. The lens in which the caps overlap (violet) has measure $\Lambda(r,\gamma)$, and $\omega(\gamma)$ integrates it against $d(\sec^4r)$; the dark arc is $\gamma$ and the clay arc is $r$. (b) The caps of radius $r_*$ about the twelve contact directions of the same lattice, the sphere shaded by how many caps cover it: one (pale blue), two in the lenses, three at the eight triangle circumcentres (clay), and none in the six square holes (ochre).}
 \label{fig:pfone}
 \end{figure}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.42\textwidth]{fig_c_pf2}
 \caption{The truncated cell in dimension three: the Voronoi cell of the
@@ -5232,7 +5232,7 @@ configuration of $23$ directions, and \cref{thm:strict-reduction}
 gives the rest.
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_certificate}
 \caption{(a) The certificate of \cref{thm:certificate}: the slack of the
@@ -5290,7 +5290,7 @@ for which the same programme exhibits the admissible triple
 $(-\tfrac1{16},-\tfrac1{16},-\tfrac1{16})$ at which \eqref{eq:C} fails.
 \end{remark}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_domain3d}
 \caption{(a) The domain of the certificate condition: the admissible region
@@ -5468,7 +5468,7 @@ decomposition $M=R(M^{\mathsf T}M)^{1/2}$ has $\|M-R\|\le D/6$. Hence
 $\|W-RV\|_F\le\|W(I-P)\|_F+\|M-R\|\,\|V\|_F\le2D/\sqrt{6-D}+\sqrt{24}D/6$.
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_eps0}
 \caption{Where $\varepsilon_0=4\cdot10^{-26}$ comes from. (a) The chain of
@@ -5665,7 +5665,7 @@ $2.5\cdot10^{-5}$. With the floating-point maxima in place of $e_1$ and
 $e_2$ the left sides would be $24.0072$ and $25.0053$.
 \end{remark}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_cardinality}
 \caption{The two halves of \cref{thm:m24} at positive slack. (a) The
@@ -5826,7 +5826,7 @@ half-space $\{x_0\ge1\}$ cuts from $B$ the cone over the octahedron
 $\{\sum_{j\ge1}|x_j|\le1\}$ with apex $2\base_0$, of volume exactly
 $\tfrac13$, which is the pyramid it cuts from $Q$. \Cref{fig:cap}(a) shows the three bodies in section.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_cap}
 \caption{(a) The section of the reference cell $\mathcal{V}$, of
@@ -6156,7 +6156,7 @@ which finds the same $303$ boxes and the same largest value and also checks
 the three polynomial inequalities of the case $|S|=1$.
 \end{remark}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_capscheme}
 \caption{The cap argument of \cref{sec:cap-theorem}. (a) The plane
@@ -6363,7 +6363,7 @@ negative, which is exactly where the cross-polytope argument is needed.
 \Cref{fig:defect}(a) plots the defect over the whole range and
 \cref{fig:defect}(b) against that second-order rate.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_defect}
 \caption{(a) The volume defect $\defect(\varphi,\eta)$ over the whole
@@ -6511,7 +6511,7 @@ $23$ & $1$ & never & & & \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_noncontact}
 \caption{Neighbours that do not touch. (a) A two-dimensional section, to
@@ -6601,7 +6601,7 @@ can come close to it only in a deep hole of its contacts: at distance
 $2+\delta$ only where the contact directions leave a cap of angular
 radius $\arccos(\tfrac12+\tfrac\delta4)$ empty (\cref{fig:tikz-closure}(b)).
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.92\textwidth]{fig_tikz_closure}
 \caption{Two elementary facts behind \cref{sec:closure}, to scale.
@@ -6680,7 +6680,7 @@ The same statements are proved again in Lean's kernel. \Cref{fig:closure}(a) sho
 its three pairs.
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_closure}
 \caption{(a) \Cref{cor:root-subsets}: a vertex $v$ of the $24$-cell and
@@ -6773,7 +6773,7 @@ certificate loses when two directions come closer than $60^\circ$, which
 the packing allows only to centres that have moved out
 (\cref{fig:tikz-labelled,fig:labelled}).
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_labelled}
 \caption{The proof of \cref{thm:m23-labelled}. (a) The share
@@ -6932,7 +6932,7 @@ those computed in Lean as well, together with $s(D)>8-A_*$, $a_D/(1-\frac D2a_D)
 (\cref{sec:reproducibility-new}).
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_labelled}
 \caption{(a) A plane section through $c$ and two centres at the packing
@@ -6982,7 +6982,7 @@ centres within $\sqrt6$ no lower bound for $\vol(V_c\cap B(\sqrt{3/2}))$
 reaches $8$, and a proof has to look beyond that ball. Near the root
 system the next theorem does, through the inversion hull.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_stop}
 \caption{Why the pair terms stop at twenty-three centres, to scale.
@@ -7480,7 +7480,7 @@ numerical exploration of kissing configurations in four dimensions, through
 the Hopf map, is in \cite{AP13}.
 \end{remark}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_margin}
 \caption{The margin of the second level against the root system
@@ -7495,7 +7495,7 @@ which contains the slacks $0.008$ of \cref{thm:kissing-stable} and $0.017$ of
 \label{fig:margin}
 \end{figure}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_counts}
 \caption{The right side of \cref{lem:no-triple} for every count of centres
@@ -7508,7 +7508,7 @@ caps are empty.}
 \label{fig:counts}
 \end{figure}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_level2}
 \caption{The second level of the hierarchy at slack $0$. (a) The
@@ -7663,7 +7663,7 @@ $B$ and $c$ are built from the root system in the proof assistant itself
 (\cref{sec:reproducibility-new}).
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_secondorder}
 \caption{The second order at the root system.
@@ -7883,7 +7883,7 @@ points in double precision and below $10^{-48}$ at three with $50$-digit
 arithmetic.
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_hexloop}
 \caption{The curve of \cref{prop:hexagon-loop}, drawn at $\theta=17^\circ$.
@@ -8044,7 +8044,7 @@ $\sqrt2\,\Rt$; then $c$ has $24$ contacts, and $V_c$ is the $24$-cell by
 \cref{lem:24-no-shell}.
 \end{proof}
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_codes}
 \caption{Twenty-four-point codes at positive slack, and the two statements
@@ -8660,7 +8660,7 @@ With $34$ centres the same argument would need $11\,S(2.444)$, which
 exceeds the room $2.6491\cdot10^{-5}$ of \cref{thm:m23-labelled}; that
 count is settled by \cref{thm:count31} in any case.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_lemma}
 \caption{The constants of \cref{lem:twentyfour-close}. (a) The volume $S(d)$
@@ -8914,7 +8914,7 @@ a certificate that tells a packing from the fictitious configurations of
 \cref{rem:what-c-needs}, except at $M=28$, where \cref{prop:count28-mixed}
 settles both.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_cradial}
 \caption{\Cref{prop:C-radial}: for $M$ centres within $\sqrt6$ of $c$ with
@@ -10666,7 +10666,7 @@ cannot exclude a single centre far out. That is still far from the
 neighbourhood of \cref{thm:near-contact}, where $\sum_i\delta_i\le4\cdot10^{-3}$,
 and it does not constrain the directions.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_radial}
 \caption{\Cref{prop:G-radial}. (a) For twenty-four centres with $T(Y)\le8$,
@@ -10727,16 +10727,11 @@ a new semidefinite method, and the computations of this section indicate
 that the remaining step does too.
 \end{remark}
 
-\FloatBarrier
 \input{round26-angular}
-\FloatBarrier
 \input{protected-shell}
 \input{exact-shell}
-\FloatBarrier
 \input{annular-bound}
-\FloatBarrier
 \input{cap-comparison}
-\FloatBarrier
 
 \section{A density bound from the cells alone}\label{sec:density-cells}
 
@@ -11647,7 +11642,7 @@ one fails. The interior is settled by the argument of
 \Cref{fig:fundamental-domain} shows the triangle and which argument
 covers which part of it.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_tikz_octant}
 \caption{(a) The fundamental triangle of \cref{lem:two-symmetries-new} on
@@ -12009,7 +12004,7 @@ $\mathsf C$, $\mathsf D$, $\mathsf E$ between them, described in
 \cref{sec:arc1-cert}, which certifies the sign on each. The names are
 labels only.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_arcs}
 \caption{(a) The four breakpoint curves of the first arc, drawn to scale
@@ -12587,7 +12582,7 @@ the pairwise cross-terms from reaching their individual extremes
 simultaneously. It explains the plateau qualitatively; no bound is
 derived from it.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.99\textwidth]{fig_chain_plateau}
 \caption{Richardson-extrapolated minimum eigenvalue of the joint
@@ -12615,7 +12610,7 @@ and a small negative value cannot be told apart at machine precision.
 \Cref{sec:musin-degeneracy,sec:exact-sing} examine one such
 configuration at higher precision.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=0.99\textwidth]{fig_dense_growth}
 \caption{Richardson-extrapolated minimum eigenvalue of $H_A$ under
@@ -13185,7 +13180,7 @@ circle through $\alpha$ and $\beta$, towards each other; at $\theta_*$
 they have exchanged places and the configuration is the root system
 again.
 
-\begin{figure}[tb]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_c_swap}
 \caption{(a) The volume defect along the three swap paths of this subsection,
@@ -14309,13 +14304,14 @@ Graduate Texts in Mathematics~42, Springer, New York, 1977.
 \bibitem[Slo]{Slo}
 N.~J.~A.~Sloane, with R.~H.~Hardin, W.~D.~Smith and others,
 \textit{Tables of spherical codes}, published electronically at
-\bluelink{http://neilsloane.com/packings/}{neilsloane.com/packings/};
-accessed 15 September 2026.
+\bluelink{https://neilsloane.com/packings/}{neilsloane.com/packings/};
+accessed 8 November 2026.
 
 \bibitem[Thu10]{Thu10}
 A.~Thue,
 \textit{\"Uber die dichteste Zusammenstellung von kongruenten Kreisen in einer Ebene},
-Norske Vid.\ Selsk.\ Skr.\ No.~1 (1910), 1--9.
+Videnskabs-Selskabets Skrifter, I. Mat.-Naturv. Klasse, Kristiania,
+1910, no.~1, 1--9.
 
 \bibitem[Via17]{Via17}
 M.~S.~Viazovska,

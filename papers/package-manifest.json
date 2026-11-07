@@ -1,11 +1,13 @@
 {
-  "release": "v3.5.0",
-  "version_doi": "10.5281/zenodo.24042717",
+  "release": "v3.5.1",
+  "version_doi": null,
+  "pages": 224,
   "files": {
-    "aiprovenance.md": "706148cd202f4a5bd56b8cc31d196446a7570ee569207566d50ea96d80aa0a16",
-    "d424.pdf": "ee700bf6a13974a28ddd3557b1da18c0e72492fdbe1440e36c01352361b74a66",
-    "d424tex.zip": "d4878df971ab6a99d0bd152ed975fb47ac59103299bfba2ca33eae413226ee60",
-    "next-version-submission-notes.md": "e2a9479a7ac53cc10c9448827c5af85e38731c020cb6adda95fc0cdc45cea907",
-    "release-details.md": "30367e021badcde9c57964bd5afdb85761d7fe02b5952cfba515c91e4701ff28"
+    "aiprovenance.md": "1f110ccbea3bbfb837da513762f2d325d8b400af567c365c68fc6f54277d8c1b",
+    "bibliography-audit.md": "2e76908bddb559d3bf8e73fb4ff47fcffb2f12e2d8feade842167c20c09fd2c5",
+    "d424.pdf": "4c2c28bbbf64edf5acbf394f2fff28de1c1893646c1478ea443fc716e8449a20",
+    "d424tex.zip": "a8a45a144760ce5a65f6f7139f89df007a01799c7821b97c2caf59311d3c0389",
+    "next-version-submission-notes.md": "f9be789641a7c5c53575c23159168753f30a98eb6b7364824f203cb789556288",
+    "release-details.md": "c5efcf9add4d5ae8feffbd620f179d0c3ba7a9579fc0b116ca6435cf7e1221aa"
   }
 }

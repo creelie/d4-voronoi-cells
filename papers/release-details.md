@@ -1,9 +1,9 @@
-# Current release
+# The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture
 
-Title: The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture
+[GitHub release v3.5.1](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.1)
 
-GitHub release: https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.0
+Corrects the historical Thue citation and updates the spherical-code table link. Revised figure placement fills the large gaps caused by forced float barriers.
 
-Version DOI: https://doi.org/10.5281/zenodo.24042717
+The PDF has **224 pages**, compared with 227 in v3.5.0. The revised bibliography contains 70 cited entries and 63 checked DOI links. See `papers/bibliography-audit.md` for individual sources. The `papers/` folder contains the current PDF, TeX ZIP and submission notes.
 
-The current PDF and TeX ZIP include the verified DOI. The mathematics proves density below 0.634625 and leaves some twenty-four to twenty-seven-neighbour cases open. The current `papers/` folder also contains submission notes and AI provenance. Older release tags preserve the historical record. These submission notes were added after the archive was published; they make no mathematical change to v3.5.0.
+Version DOI pending archival verification.
