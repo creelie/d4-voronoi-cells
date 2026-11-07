@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper and this archive."
-title: "Supplementary code for The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture"
+title: "The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture"
 type: software
 authors:
   - family-names: Bhattacharjee
@@ -18,8 +18,8 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "v2.0.0"
-date-released: "2026-10-05"
+version: "3.3.0"
+date-released: "2026-11-07"
 keywords:
   - sphere packing
   - Voronoi cell

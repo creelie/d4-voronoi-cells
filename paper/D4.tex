@@ -36,7 +36,8 @@
     \endgraf\vskip\baselineskip}%
   \hss}}}
 \makeatother
-\usepackage{graphicx}
+\usepackage{graphicx,tikz,placeins}
+\usetikzlibrary{arrows.meta,positioning}
 \graphicspath{{figures/}}
 \DeclareGraphicsExtensions{.png}
 \usepackage[expansion=false]{microtype}
@@ -170,7 +171,7 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 \email{shounakbhattacharyab@gmail.com}
 
 \date{November 7, 2026}
-\thanks{Research release v3.2.0. \url{https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.2.0}. Version DOI \href{https://doi.org/10.5281/zenodo.24024996}{10.5281/zenodo.24024996}.}
+\input{round26-imprint}
 
 \subjclass[2020]{Primary 52C17, 11H31; Secondary 05B40, 11H06, 52B11,
 52C25, 90C22, 68V15}
@@ -192,8 +193,9 @@ not all at distance $2$. Hence the twenty-four-cell conjecture holds for every
 contact configuration, $D_4$ is a strict local minimum of the cell volume, and
 no periodic packing avoiding the exception is denser than $D_4$; the remaining
 cells reduce to two explicit inequalities about at most twenty-seven centres.
-A protected convex hull also settles a family of twenty-four-centre cells
-with simultaneous radial and directional perturbations.
+A protected convex hull settles families of twenty-four-centre cells
+with simultaneous radial and directional perturbations, including an
+angular stability bound without comparable radial displacements.
 The cells alone bound the density of every packing of unit balls in
 $\mathbb{R}^4$ by $0.63477$, below the three-point bound.
 \end{abstract}
@@ -10727,6 +10729,10 @@ a new semidefinite method, and the computations of this section indicate
 that the remaining step does too.
 \end{remark}
 
+\FloatBarrier
+\input{round26-angular}
+\FloatBarrier
+
 \section{A density bound from the cells alone}\label{sec:density-cells}
 
 Statements (G) and (C) are needed for the value $\pi^2/16$, but not for a
@@ -13882,6 +13888,8 @@ linear algebra: the change to the Bernstein basis of a given degree is a
 fixed invertible linear map, and the elevation of degree is another. No
 floating-point step enters, as none enters the certificates of the arcs.
 
+\input{round26-check-appendix}
+
 \begin{thebibliography}{CKMRV17}
 \setlength{\itemsep}{-1.3pt}
 
@@ -14322,6 +14330,8 @@ G.~M.~Ziegler,
 \textit{Lectures on Polytopes},
 Graduate Texts in Mathematics~152, Springer, New York, 1995.
 \bluelink{https://doi.org/10.1007/978-1-4613-8431-1}{doi:10.1007/978-1-4613-8431-1}
+
+\bibitem{Round26Schneider} R.~Schneider, \emph{Convex Bodies: The Brunn--Minkowski Theory}, second expanded edition, Cambridge University Press, 2014, \href{https://doi.org/10.1017/CBO9781139003858}{doi:10.1017/CBO9781139003858}.
 
 \end{thebibliography}
 
