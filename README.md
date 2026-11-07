@@ -211,3 +211,7 @@ environment variable overrides, and report what they established:
 
 See LICENSE. The data set in third_party/ keeps its own licence (MIT),
 reproduced beside it.
+
+## Next platform submission
+
+[Preprints.org v11 to v12 notes](papers/next-version-submission-notes.md), [AI provenance](papers/aiprovenance.md), and [current release details](papers/release-details.md) accompany the current paper.
