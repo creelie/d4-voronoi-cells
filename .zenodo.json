@@ -1,7 +1,7 @@
 {
   "title": "The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture",
   "upload_type": "publication",
-  "description": "The complete manuscript incorporates a quantitative angular stability theorem for unequal root push-outs, with an explicit packing example. The unrestricted cases (G) and (C) remain open.",
+  "description": "Research revision of the four-dimensional sphere packing manuscript. A pair and triple cap comparison and a rational enumeration of radial profiles yield a packing-density bound below 0.634625. Some 24–27-neighbour cases of the sharp volume bound remain open.",
   "creators": [
     {
       "name": "Bhattacharjee, Deep",
@@ -30,7 +30,7 @@
   ],
   "license": "MIT",
   "access_right": "open",
-  "version": "3.3.0",
+  "version": "3.5.0",
   "publication_type": "preprint",
-  "publication_date": "2026-11-07"
+  "publication_date": "2026-11-08"
 }

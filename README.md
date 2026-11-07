@@ -1,20 +1,12 @@
 # The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture
 
-The complete manuscript incorporates a quantitative angular stability theorem for unequal root push-outs, with an explicit packing example. The unrestricted cases (G) and (C) remain open.
+## Current manuscript
 
-[Complete PDF](revision-v3.3.0/d424.pdf) · [TeX ZIP](revision-v3.3.0/d424tex.zip) · [Submission package](revision-v3.3.0/d424.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.3.0) · [Zenodo DOI](https://doi.org/10.5281/zenodo.24028518)
+[PDF](papers/d424.pdf) · [TeX ZIP](papers/d424tex.zip) · [GitHub release and version DOI](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.0)
 
-<!-- integrated-round26 -->
+Research revision v3.5.0 proves a packing-density bound below 0.634625. Some 24–27-neighbour cases of the sharp volume bound remain open. Earlier manuscripts are available in the [release history](https://github.com/creelie/d4-voronoi-cells/releases).
 
-## Current manuscript revision
-
-[Paper PDF](paper/revision-v3.2.0/D4-24.pdf) · [TeX ZIP](paper/revision-v3.2.0/D4-24tex.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.2.0) · [Version DOI](https://doi.org/10.5281/zenodo.24024996)
-
-This revision combines the certificate results in merge #40 with the protected-shell volume estimates. Condition (C) is proved for 28 or more nearby centres and specified 27-centre sectors. The 25- and 26-centre cases and the remaining 27-centre cases of (C), and the unrestricted case of (G), remain open.
-
-<!-- current-manuscript-v310 -->
-
-# The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture: supplementary code
+## Supplementary code
 
 Certificates, the programmes that check them, run logs and Lean 4 checks for
 
@@ -61,7 +53,7 @@ R^4. The paper proves vol(V_c) >= 8, with equality only for the regular
 
 With one deviating contact direction the bound has an elementary proof, by
 the extremal cap of a cross-polytope. With no assumption on the centres, the
-same lower bounds for the cells give density at most 0.63477 for every
+same lower bounds for the cells give density below 0.634625 for every
 packing of unit balls in R^4; this is below the three-point bound 0.63611 of
 Cohn, de Laat and Salmon, and above pi^2/16 = 0.61685.
 
@@ -79,17 +71,12 @@ bound of the paper, whose certificates are in multi_cap/radial_certificates/.
 
 ## Citation
 
-The release v2.0.0 accompanies version 3 of arXiv:2609.25120. The concept
-DOI 10.5281/zenodo.22766562, which the paper cites, covers every version
-and resolves to the latest release; the earlier package v1.12.0 is
-10.5281/zenodo.23076993. `CITATION.cff` and `.zenodo.json` carry the
-metadata. The package is maintained at
-https://github.com/creelie/d4-voronoi-cells and can also be obtained from
-Deep Bhattacharjee, itsdeep@live.com.
+Cite the version DOI listed on the v3.5.0 release page for this manuscript. The [release history](https://github.com/creelie/d4-voronoi-cells/releases) links to the earlier version records. Citation metadata is in CITATION.cff and .zenodo.json.
 
 ## Layout
 
-    paper/              the manuscript (D4.tex, D4.pdf), its figures and the
+    papers/             the current PDF and TeX ZIP
+    paper/              the current TeX sources, figures and the
                           scripts that draw them (figures_new/)
     cap_certificate/    the cap inequality of the section "Positivity for
                           every deviation direction", end to end

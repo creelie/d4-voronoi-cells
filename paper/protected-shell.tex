@@ -1,0 +1,187 @@
+\subsection{Protection at the shell radius}
+\label{shell-protect:sec}
+
+The inversion hull in \cref{prop:inversion-hull} allows exterior centres
+at any distance at least $2$. The radial separation used in
+\cref{prop:reduction-G} gives a larger common region. We first give its
+exact description and then use an explicit inner approximation.
+
+\begin{prop}[The common region protected by the shell]
+\label{shell-protect:prop}
+Let $R\ge2$. Let $\{0\}\cup Y$ be a finite packing set with
+$2\le |y|\le R$ for every $y\in Y$. Define
+\[
+ K_R(Y)=\operatorname{conv}\left(
+ B(0,R/2)\ \cup\
+ \left\{\frac{R^2y}{|y|^2+R^2-4}:y\in Y\right\}\right),
+\]
+where the ball is closed. Every centre $z$ of an extension of the
+packing with $|z|\ge R$ leaves $K_R(Y)$ on the origin's side of its
+bisector. In particular, if all centres outside $\{0\}\cup Y$ have
+norm at least $R$, then $V_0$ contains $V(Y)\cap K_R(Y)$.
+
+For $u\in S^3$ put $b_y=\langle u,y\rangle$ and
+$f_y(s)=s^2-2b_ys+|y|^2-4$. Define
+\[
+ s_Y(u)=\max\!\left(
+ \{R\}\cup
+ \left\{b_y+\sqrt{b_y^2+4-|y|^2}:y\in Y,\ f_y(R)<0\right\}
+ \right).
+\]
+The intersection of the origin's Voronoi cells over all such extensions is
+exactly
+\[
+ V(Y)\cap\{x:\langle x,u\rangle\le s_Y(u)/2\text{ for all }u\in S^3\}.
+\]
+\end{prop}
+
+\begin{proof}
+The bisector of $z$ leaves $B(0,R/2)$ whole by Cauchy--Schwarz. For
+$r=|y|$ and $s=|z|$ the packing inequality gives
+$2\langle y,z\rangle\le r^2+s^2-4$. Thus
+\[
+ 2\left\langle\frac{R^2y}{r^2+R^2-4},z\right\rangle
+ \le\frac{R^2(r^2+s^2-4)}{r^2+R^2-4}\le s^2,
+\]
+where the last inequality is equivalent to
+$(r^2-4)(s^2-R^2)\ge0$. The closed half-space is convex,
+so it also contains $K_R(Y)$.
+
+In direction $u$, a single new centre at $su$, $s\ge R$, respects all
+separation constraints precisely when $f_y(s)\ge0$ for each $y$.
+Since $b_y\le R$, each $f_y$ is nondecreasing on $[R,\infty)$.
+If $f_y(R)\ge0$ it imposes no further constraint. If $f_y(R)<0$
+the larger root is real and strictly above $R$, and is the least
+admissible radius for this constraint. Hence $s_Y(u)$ is the least
+radius allowed by all of $Y$. Its half-space implies the half-spaces
+for larger radii in the same direction. Conversely the extension
+obtained by adding the single centre at $s_Y(u)u$ realizes this
+constraint. Taking all directions proves the formula.
+\end{proof}
+
+For $R=\sqrt6$ the points in this hull are $6y/(|y|^2+2)$.
+They are at least as far from $0$ as the inversion points on the
+same rays, with strict inequality if $|y|>2$. The ball in the hull
+also retains all of the volume counted by $T(Y)$.
+
+\begin{thm}[Angular stability on the full radial shell]
+\label{shell-protect:thm}
+Let $u_1,\ldots,u_{24}$ be the unit $D_4$ roots and let
+$Y=\{2(1+\eta_i)w_i:1\le i\le24\}$, where the $w_i$ are unit vectors
+and $0\le\eta_i\le\sqrt{3/2}-1$. Suppose that $\{0\}\cup Y$ consists of
+twenty-five distinct centres of a unit-ball packing, and all other
+centres have norm at least $\sqrt6$. Put $S=\sum_i\eta_i$ and
+$\epsilon=\max_i|w_i-u_i|$ after one rotation and labelling.
+Then the following estimates hold:
+\begin{align*}
+ \epsilon\le S/400 &\quad\Longrightarrow\quad
+ \operatorname{vol}(V_0)\ge 8+S/8,\\
+ \max_i\eta_i\le1/10,\quad \epsilon\le S/100
+ &\quad\Longrightarrow\quad \operatorname{vol}(V_0)\ge 8+S/4 .
+\end{align*}
+If $w_i=u_i$ for all $i$, the first lower bound strengthens to
+$8+S/3$. In all three bounds a cell of volume $8$ is the regular
+twenty-four-cell.
+\end{thm}
+
+\begin{proof}
+Put $a_i=1+\eta_i$, $h=\max_i a_i$ and $k(a)=3a/(2a^2+1)$.
+For the radial configuration $w_i=u_i$ write
+\[
+ V_\eta=\{x:\langle x,u_i\rangle\le a_i\text{ for all }i\},\qquad
+ H_\eta=\operatorname{conv}\{2k(a_i)u_i:1\le i\le24\}.
+\]
+The origin is in $H_\eta$ by antipodality. The unperturbed cell $Q$
+and hull $K_0$ of \cref{round26:sec:root-angular} satisfy
+$V_\eta\subset hQ$ and $k(h)K_0\subset H_\eta$ because $k$ is decreasing
+for $a\ge1$. The disjoint single-facet caps from
+\cref{round26:eq:pure-radial-bound,round26:eq:radial-gain} give
+\[
+ \operatorname{vol}(V_\eta)
+ \ge 8+\frac13\sum_i\bigl[1-(1-\eta_i)^4\bigr].
+\]
+
+Each point of $V_\eta\setminus H_\eta$ violates a facet inequality of
+$k(h)K_0$. Fix such a facet and rotate coordinates by a root symmetry so
+that its normal is $e_1$. A point assigned to it has $x_1>\sqrt2 k(h)$.
+From $x\in hQ$ we have $|x_j|\le\sqrt2 h-x_1$ for $j=2,3,4$. Since
+\[
+ \frac{h}{k(h)}-1=\frac23(h^2-1)\le\frac13,
+\]
+the ray through $x$ has $\sum_{j=2}^4|x_j|<x_1$. Let
+$\eta_v$ be the largest displacement of the six roots of this facet,
+and let $\bar\eta_v$ be their mean. The octahedron in the plane
+$x_1=\sqrt2 k(1+\eta_v)$ with transverse $\ell^1$ radius
+$\sqrt2 k(1+\eta_v)$ lies in $H_\eta$: its vertices lie on the six
+corresponding segments from $0$ to $2k(a_i)u_i$. The ray through $x$
+meets the octahedron. Therefore $x\notin H_\eta$ implies
+$x_1>\sqrt2 k(1+\eta_v)$.
+
+For $j=2,3,4$, let $b_j$ be the mean of the two displacements at the
+roots $(e_1\pm e_j)/\sqrt2$. At fixed $x_1$ the two inequalities for
+these roots restrict $x_j$ to an interval of length
+$2(\sqrt2(1+b_j)-x_1)$, or to the empty set. In a nonempty section
+the product of the three lengths is bounded by
+$8(\sqrt2(1+\bar\eta_v)-x_1)^3$ by the arithmetic-geometric mean
+inequality. Integrating this upper bound from $\sqrt2 k(1+\eta_v)$
+to $\sqrt2(1+\bar\eta_v)$ gives
+\[
+ 8\bigl(1+\bar\eta_v-k(1+\eta_v)\bigr)^4 .
+\]
+The factor $8$ includes the fourth power of $\sqrt2$.
+For $a\ge1$, $a-k(a)\le(11/8)(a-1)$: after factoring out $a-1$
+this follows from $6a^2-16a+11>0$. Thus
+$1-k(1+\eta_v)\le(3/8)\eta_v$. Each root occurs at six facets, so
+Jensen's inequality gives $\sum_v\bar\eta_v^4\le\sum_i\eta_i^4$,
+and $\sum_v\eta_v^4\le6\sum_i\eta_i^4$. By the triangle inequality
+in $\ell^4$ and $6^{1/4}<8/5$, the total removed volume is bounded by
+\[
+ 8\bigl(1+(3/8)6^{1/4}\bigr)^4\sum_i\eta_i^4
+ \le\frac{32768}{625}\sum_i\eta_i^4 .
+\]
+
+The resulting lower bound for $\operatorname{vol}(V_\eta\cap H_\eta)$
+is $8+\sum_i\eta_i q(\eta_i)$, with
+\[
+ q(t)=\frac43-2t+\frac43t^2
+      -\left(\frac13+\frac{32768}{625}\right)t^3.
+\]
+It decreases on $[0,9/40]$ since $-2+8t/3<0$ there.
+The shell gives $\eta_i<9/40$,
+and $q(9/40)=41980759/120000000>1/3$.
+If $\eta_i\le1/10$ then
+$q(\eta_i)\ge q(1/10)=2051071/1875000>1$.
+Thus the radial lower bounds are $8+S/3$ and $8+S$, respectively.
+
+For the angular perturbations write $V_w$ for the cell defined by the
+inequalities $\langle x,w_i\rangle\le a_i$, and
+$H_w=\operatorname{conv}\{2k(a_i)w_i\}$. Set
+$\lambda=1-(7/4)\epsilon$, which is positive under either angular
+condition. Since $V_\eta\subset B(0,\sqrt2h)$ and
+$\sqrt2h\le\sqrt3<7/4$, for $x\in V_\eta$ we have
+$\langle\lambda x,w_i\rangle\le\lambda(a_i+(7/4)\epsilon)\le a_i$.
+Consequently $\lambda V_\eta\subset V_w$.
+The support functions of $H_w$ and $H_\eta$ differ by at most
+$2\epsilon|z|$ in direction $z$. The support function of $H_\eta$ is
+at least $\sqrt2 k(h)|z|\ge(3\sqrt3/4)|z|$. Since
+$(7/4)(3\sqrt3/4)>2$, the support-function inclusion criterion gives
+$\lambda H_\eta\subset H_w$.
+
+\Cref{shell-protect:prop} implies $V_w\cap H_w\subset V_0$.
+Hence if the applicable radial bound
+is $8+cS$, the perturbed cell has volume at least
+$\lambda^4(8+cS)\ge 8+cS-7\epsilon(8+cS)$.
+For $c=1/3$, $S\le27/5$ and
+$1/3-7(49/5)/400=971/6000>1/8$.
+For $c=1$, $S\le12/5$ and $1-7(52/5)/100=34/125>1/4$.
+This proves both claims. When $S=0$ the angular hypothesis gives
+$w_i=u_i$ and $Q\subset K_0$ gives $V_0=Q$.
+\end{proof}
+
+\begin{remark}
+The conclusion concerns the actual cell and uses $K_{\sqrt6}(Y)$ in place
+of the smaller hull in statement (G). In particular the proof does not
+require $T(Y)\le8$. It gives no angular matching for an arbitrary set
+of twenty-four shell neighbours with $T(Y)\le8$. The untreated
+twenty-five- to twenty-seven-centre cases of (C) also remain.
+\end{remark}
