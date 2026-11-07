@@ -1,3 +1,11 @@
+# The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture
+
+The complete manuscript incorporates a quantitative angular stability theorem for unequal root push-outs, with an explicit packing example. The unrestricted cases (G) and (C) remain open.
+
+[Complete PDF](revision-v3.3.0/d424.pdf) · [TeX ZIP](revision-v3.3.0/d424tex.zip) · [Submission package](revision-v3.3.0/d424.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.3.0) · [Zenodo DOI](https://doi.org/10.5281/zenodo.22766562)
+
+<!-- integrated-round26 -->
+
 ## Current manuscript revision
 
 [Paper PDF](paper/revision-v3.2.0/D4-24.pdf) · [TeX ZIP](paper/revision-v3.2.0/D4-24tex.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.2.0) · [Version DOI](https://doi.org/10.5281/zenodo.24024996)
