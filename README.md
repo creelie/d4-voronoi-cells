@@ -2,7 +2,7 @@
 
 The complete manuscript incorporates a quantitative angular stability theorem for unequal root push-outs, with an explicit packing example. The unrestricted cases (G) and (C) remain open.
 
-[Complete PDF](revision-v3.3.0/d424.pdf) · [TeX ZIP](revision-v3.3.0/d424tex.zip) · [Submission package](revision-v3.3.0/d424.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.3.0) · [Zenodo DOI](https://doi.org/10.5281/zenodo.22766562)
+[Complete PDF](revision-v3.3.0/d424.pdf) · [TeX ZIP](revision-v3.3.0/d424tex.zip) · [Submission package](revision-v3.3.0/d424.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.3.0) · [Zenodo DOI](https://doi.org/10.5281/zenodo.24028518)
 
 <!-- integrated-round26 -->
 

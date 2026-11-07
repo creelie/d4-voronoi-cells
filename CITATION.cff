@@ -53,7 +53,7 @@ abstract: >-
   domain; and Lean 4 checks of the finite arithmetic of these steps. Part of the
   code was developed with the assistance of Claude, an AI model made by
   Anthropic.
-doi: "10.5281/zenodo.22766562"
+doi: "10.5281/zenodo.24028518"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22766562"
