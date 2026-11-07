@@ -18,7 +18,7 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "3.5.0"
+version: "3.5.1"
 date-released: "2026-11-08"
 keywords:
   - sphere packing
@@ -31,7 +31,6 @@ abstract: >-
   sphere-packing bound below 0.634625. The cap-intersection comparison and the
   rational check of 26-neighbour profiles are included. Some 24–27-neighbour
   cases of the sharp twenty-four-cell bound remain open.
-doi: "10.5281/zenodo.24042717"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22766562"

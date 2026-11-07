@@ -2,9 +2,9 @@
 
 ## Current manuscript
 
-[PDF](papers/d424.pdf) · [TeX ZIP](papers/d424tex.zip) · [GitHub release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.0) · [Zenodo DOI 10.5281/zenodo.24042717](https://doi.org/10.5281/zenodo.24042717)
+Current release: https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.1. The version DOI is pending archival verification.
 
-Research revision v3.5.0 proves a packing-density bound below 0.634625. Some 24–27-neighbour cases of the sharp volume bound remain open. Earlier manuscripts are available in the [release history](https://github.com/creelie/d4-voronoi-cells/releases).
+Research revision v3.5.1 proves a packing-density bound below 0.634625. Some 24–27-neighbour cases of the sharp volume bound remain open. Earlier manuscripts are available in the [release history](https://github.com/creelie/d4-voronoi-cells/releases).
 
 ## Supplementary code
 
@@ -71,7 +71,7 @@ bound of the paper, whose certificates are in multi_cap/radial_certificates/.
 
 ## Citation
 
-Cite the v3.5.0 manuscript using [its version DOI](https://doi.org/10.5281/zenodo.24042717). The [release history](https://github.com/creelie/d4-voronoi-cells/releases) links to the earlier version records. Citation metadata is in CITATION.cff and .zenodo.json.
+Current release: https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.1. The version DOI is pending archival verification.
 
 ## Layout
 
@@ -215,3 +215,6 @@ reproduced beside it.
 ## Next platform submission
 
 [Preprints.org v11 to v12 notes](papers/next-version-submission-notes.md), [AI provenance](papers/aiprovenance.md), and [current release details](papers/release-details.md) accompany the current paper.
+
+
+[Reference audit](papers/bibliography-audit.md) · Current PDF: 224 pages.

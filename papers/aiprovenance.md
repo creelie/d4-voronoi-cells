@@ -2,7 +2,7 @@
 
 Work: The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture
 
-Current release v3.5.0. Verified version DOI: https://doi.org/10.5281/zenodo.24042717
+Current release: https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.5.1. The version DOI is pending archival verification.
 
 Human authors in manuscript order: Deep Bhattacharjee; Ushashi Bhattacharya; Priyabrata Mandal; Shounak Bhattacharya.
 
@@ -11,3 +11,6 @@ The manuscript contains a mix of human-written and AI-generated text. Human auth
 No new full Lean formalization is claimed. A finite script or a successful TeX compilation is not a proof of the unresolved geometric cases. The submitting authors must confirm the human-understanding declaration for the complete current revision. No new human review or platform declaration is inferred by this file.
 
 This statement summarizes tool use without reproducing private reasoning traces or inventing prompts or benchmark results.
+
+
+For this revision, OpenAI Codex checked bibliographic records, edited citation metadata, reviewed PDF layout, and rebuilt the submission files.
