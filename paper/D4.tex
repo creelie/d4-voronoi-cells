@@ -170,7 +170,7 @@ Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India}
 \address{Research Head, Asian College of Teachers, Kolkata, West Bengal, India}
 \email{shounakbhattacharyab@gmail.com}
 
-\date{November 7, 2026}
+\date{November 8, 2026}
 \input{round26-imprint}
 
 \subjclass[2020]{Primary 52C17, 11H31; Secondary 05B40, 11H06, 52B11,
@@ -186,18 +186,12 @@ system; semidefinite programming}
 }
 
 \begin{abstract}
-We prove that every Voronoi cell of a unit-ball packing in $\mathbb{R}^4$ has
-at least the volume of the regular twenty-four-cell, with equality only for
-$D_4$, unless $24$ to $27$ other centres lie within $\sqrt6$ of its centre,
-not all at distance $2$. Hence the twenty-four-cell conjecture holds for every
-contact configuration, $D_4$ is a strict local minimum of the cell volume, and
-no periodic packing avoiding the exception is denser than $D_4$; the remaining
-cells reduce to two explicit inequalities about at most twenty-seven centres.
-A protected convex hull settles families of twenty-four-centre cells
-with simultaneous radial and directional perturbations, including an
-angular stability bound without comparable radial displacements.
-The cells alone bound the density of every packing of unit balls in
-$\mathbb{R}^4$ by $0.63477$, below the three-point bound.
+We prove that every unit-ball packing in $\mathbb R^4$ has density below
+$0.634625$. A comparison of cap intersections gives a joint bound on the
+truncated cell and its outer annulus. An exact count over radial profiles
+sharpens the bound at twenty-six neighbours. The sharp cell bound holds
+for contact configurations and additional tilted shells. Some configurations
+with twenty-four to twenty-seven near neighbours remain open.
 \end{abstract}
 
 \maketitle
@@ -409,6 +403,10 @@ require them cell by cell:
 neighbouring cells, antisymmetrically, so that every centre ends with at
 least $8$, and the theorems above say that no transfer is needed at the
 centres they cover. Whether such a transfer exists is open as well.
+\Cref{shell-protect:prop,shell-protect:thm} use the shell radius to
+enlarge the protected region and prove the volume bound for a wider
+range of angular perturbations and for radial push-outs throughout
+the shell.
 
 \begin{figure}[tbp]
 \centering
@@ -439,18 +437,18 @@ nearest-neighbour distance $2$.
 
 Without the hypothesis on the centres the same cell bounds still control
 the density. At a centre with $24$ to $27$ others within $\sqrt6$ the cell
-is not shown to reach $8$, but it is shown to exceed $7.7742$, and this gives
+is not shown to reach $8$, but it is shown to exceed $7.7759$, and this gives
 the following bound for every packing (\cref{sec:density-cells}).
 
 \begin{thm}[Density from the cells]\label{thm:intro-density}
-Every packing of unit balls in $\mathbb{R}^4$ has density at most
-$0.63477$.
+Every packing of unit balls in $\mathbb{R}^4$ has density less than
+$0.634625$.
 \end{thm}
 
 This is below the three-point bound $0.63611$ of Cohn, de Laat and Salmon
 \cite{CdLS22} and the linear programming bound $0.64774$ of Cohn and Elkies
-\cite{CE03}, and it uses nothing but the volume of each cell inside the
-ball of radius $\sqrt{3/2}$ about its centre.
+\cite{CE03}. The proof adds a uniform correction beyond the truncation
+radius $\sqrt{3/2}$ to the cap certificates (\cref{thm:annular-bound}).
 
 \subsection{Methods}\label{sec:methods-intro}
 
@@ -10732,6 +10730,13 @@ that the remaining step does too.
 \FloatBarrier
 \input{round26-angular}
 \FloatBarrier
+\input{protected-shell}
+\input{exact-shell}
+\FloatBarrier
+\input{annular-bound}
+\FloatBarrier
+\input{cap-comparison}
+\FloatBarrier
 
 \section{A density bound from the cells alone}\label{sec:density-cells}
 
@@ -10748,7 +10753,7 @@ density of every packing.
 \begin{prop}[The union of caps from twenty-four to thirty centres]\label{prop:levels}
 Let $24\le M\le30$, and let $Y$ be a packing set of exactly $M$ centres with
 $2\le|y|<\sqrt6$. Then $U(Y)<L_M$, with $L_M$ as in \cref{tab:levels}. In
-particular $U(Y)<3.3291$ for every such set.
+particular $U(Y)<3.3274$ for every such set.
 \end{prop}
 
 \begin{proof}
@@ -10783,7 +10788,9 @@ $2.0161$, $2.05$, $2.1$, $2.15$, $2.2$ and $2.444$, the derivation of
 \eqref{eq:typed-triples}, made exact and checked as in the proof of
 \cref{thm:count29} with margins of $2\cdot10^{-5}$ for the pairs and
 $2\cdot10^{-6}$ for the triples and the bins, gives at most $3.32906$ over the
-$17\,845$ count vectors of the case, at $(15,0,9,0,0,0,2)$. Its six inequalities on
+$17\,845$ count vectors of the case, at $(15,0,9,0,0,0,2)$. Combining the
+kernel bound with the single-cap sum before maximising over these vectors
+gives $3.288$ instead (\cref{app:profiles-26}). Its six inequalities on
 pairs close $9\,996$ boxes, the bins take $6\,323$ intervals, and
 its nine inequalities on triples close $7\,512\,629$ boxes. The kernel on pairs
 alone gives $3.3501$ here, with the split $N(2.03)\le25$ against
@@ -10809,16 +10816,16 @@ is the entry of \cref{tab:levels}. Each certificate is checked as those of
 \caption{The levels of \cref{prop:levels}: for $M$ centres within $\sqrt6$,
 an upper bound $L_M$ for the union of caps $U(Y)$, and the lower bound
 $\frac98\pi^2-L_M$ for the volume of the cell that it gives. Every entry is
-rounded in the safe direction. For $M=24$ and $M=26$ the bound is the value
-of the kernel on typed triples, and the others are values of two-point
-certificates.}
+rounded in the safe direction. For $M=24$ the bound uses the kernel on
+typed triples. For $M=26$ it combines that kernel with the single-cap sum.
+The other values come from two-point certificates.}
 \label{tab:levels}
 \begin{tabular}{@{}lccccccc@{}}
 \toprule
 $M$ & $24$ & $25$ & $26$ & $27$ & $28$ & $29$ & $30$\\
 \midrule
-$L_M$ & $3.2539$ & $3.3274$ & $3.3291$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
-$\frac98\pi^2-L_M$ & $7.8494$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
+$L_M$ & $3.2539$ & $3.3274$ & $3.2880$ & $3.3090$ & $3.2587$ & $3.2080$ & $3.1538$\\
+$\frac98\pi^2-L_M$ & $7.8494$ & $7.7759$ & $7.8153$ & $7.7943$ & $7.8446$ & $7.8953$ & $7.9495$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -10826,7 +10833,7 @@ $\frac98\pi^2-L_M$ & $7.8494$ & $7.7759$ & $7.7742$ & $7.7943$ & $7.8446$ & $7.8
 \begin{thm}[Density from the cells]\label{thm:density-cells}
 Every packing of unit balls in $\mathbb{R}^4$ has density at most
 \[
-  \frac{\pi^2/2}{\frac98\pi^2-3.3291}=0.634766\ldots .
+  \frac{\pi^2/2}{\frac98\pi^2-3.3274+1/28600}<0.634625 .
 \]
 \end{thm}
 
@@ -10835,25 +10842,15 @@ Enlarge the packing to a saturated one, which does not lower its density,
 and let $c$ be a centre and $Y$ the set of other centres within $\sqrt6$ of
 it. If $|Y|\le23$, then $\vol(V_c)>8$ by \cref{thm:m23-labelled}. If
 $|Y|\ge31$, then $\vol(V_c)\ge T(Y)>8$ by \cref{thm:count31}. Otherwise
-$24\le|Y|\le30$, and $\vol(V_c)\ge T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3291$
-by \cref{lem:no-triple,prop:levels}. Every cell therefore has volume at least
-$v=\frac98\pi^2-3.3291=7.7742\ldots$, and \cref{lem:cells-density} bounds the
-density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
+$24\le|Y|\le30$, and $T(Y)=\frac98\pi^2-U(Y)>\frac98\pi^2-3.3274$
+by \cref{lem:no-triple,prop:levels}. Add the uniform correction
+$1/28600$ of \cref{thm:annular-bound}. Every cell therefore has volume at
+least $v=\frac98\pi^2-3.3274+1/28600$, and \cref{lem:cells-density} bounds
+the density by $\vol(B^4)/v$, with $\vol(B^4)=\pi^2/2$.
+\Cref{app:annular-constants} checks the last comparison.
 \end{proof}
 
-\begin{figure}[tb]
-\centering
-\includegraphics[width=\textwidth]{fig_tikz_levels}
-\caption{The density bound of \cref{thm:density-cells}. (a) The levels
-$L_M$ of \cref{prop:levels} against the level $\frac98\pi^2-8$ that statement
-(C) asks for (green) and the level $3.34549$ below which every count would
-have to fall for the bound to pass the three-point bound (violet); all of
-them do, the largest being $L_{26}$ (orange). (b) The resulting
-bound (orange) with the others for $\mathbb{R}^4$: the density $\pi^2/16$ of $D_4$, the floor of
-\cref{rem:density-cells}, the three-point bound \cite{CdLS22}, and the linear
-programming bound \cite{CE03}.}
-\label{fig:levels}
-\end{figure}
+\input{density-figure}
 
 \begin{remark}[Where the bound stands]\label{rem:density-cells}
 The bound lies below the three-point bound $0.63611$ of Cohn, de Laat and
@@ -10861,16 +10858,17 @@ Salmon \cite{CdLS22}, the best published bound in dimension four before
 it, and below the linear programming bound $0.64774$ of Cohn and
 Elkies \cite{CE03}.\footnote{Cohn and Elkies state their bounds for the centre
   density, the density divided by $\vol(B^n)$; their value $0.13126$ in
-  dimension four is a density of $0.13126\,\pi^2/2=0.64774$.} It uses no Fourier analysis and no global object, only the volume
-of each cell inside the ball of radius $\sqrt{3/2}$ about its centre, and its
-proof is local in the sense of \cref{sec:comparison-methods}.
+  dimension four is a density of $0.13126\,\pi^2/2=0.64774$.} The proof uses the volume inside the truncation ball of radius
+$\sqrt{3/2}$ and the correction of \cref{thm:annular-bound}. It is
+local in the sense of \cref{sec:comparison-methods}.
 
-The bound is limited in two ways. The first is the level at $M=26$,
-$3.3291$, with the level $3.3274$ of the pairs alone at $M=25$ just below it
+The bound is limited in two ways. The first is the level at $M=25$,
+$3.3274$, after the refinement at $M=26$ lowered that level to $3.288$
 (\cref{fig:levels}(a)). The kernel on typed triples brings the level at
 $M=24$ from $24\,S(2)=3.33512$, the value with the pair terms dropped, to
 $3.2539$, against $3.19636$ at the root system, and the level at $M=26$ from
-$3.3501$ to $3.3291$. At $M=26$ the optimum of its programme in floating
+$3.3501$ to $3.3291$ before the refinement.
+At $M=26$ the optimum of its programme in floating
 point is $3.2456$ on the sampled constraints; the certified level is higher
 because the exact check bounds each inequality on triples over the whole
 domain, where it exceeds its values at the samples. The pairs alone could
@@ -10918,11 +10916,10 @@ reduces the bound for a cell either to an extremal problem for one fixed
 polytope (\cref{sec:cap-theorem}) or to an inequality between the distances
 and pair angles of the neighbours inside a ball in which no three caps meet,
 which a semidefinite kernel certifies
-(\cref{sec:strict-inequality,sec:closure}). In dimension four the global
-route is closed: by the result of Li \cite{Li25} recalled in
-\cref{sec:history-new}, no auxiliary function brings the linear programming
-bound down to $\pi^2/16$, and the three-point refinement of
-\cite{CdLS22} stays above it as well.
+(\cref{sec:strict-inequality,sec:closure}). Li's result \cite{Li25}, recalled in \cref{sec:history-new}, gives a
+strict gap between the ordinary linear programming bound and
+$\pi^2/16$ in dimension four. The computed three-point bound of
+\cite{CdLS22} also lies above $\pi^2/16$.
 
 \subsection{Linear programming bounds in dimension four}
 
@@ -11011,7 +11008,7 @@ neighbours within $\sqrt6$ are within $\varepsilon_0=4\cdot10^{-26}$ of
 contact (\cref{thm:near-contact}); and, by \cref{thm:main-general}, every
 periodic or saturated packing whose centres are all of these kinds has
 density at most $\pi^2/16$. With no assumption on the centres, the same
-lower bounds for the cells give $0.63477$ for the density of every packing
+lower bounds for the cells give $0.634625$ for the density of every packing
 of unit balls in $\mathbb{R}^4$ (\cref{thm:density-cells}), below the
 three-point bound $0.63611$ of \cite{CdLS22}. The paper also proves that the kissing
 number of $\mathbb{R}^4$ is stable under a slack of $0.008$
@@ -11174,6 +11171,17 @@ Statement (G) is proved along the
 push-outs of the root system and near it
 (\cref{thm:G-pushout,thm:near-contact}), and its second order is
 nonnegative on the packing cone (\cref{prop:cone-min,prop:tilt-block}).
+\Cref{thm:exact-shell-tilt} proves the actual cell bound for a wider range
+of tilts at nearly equal radii. \Cref{prop:exact-shell-test,lem:shell-certificate-stability}
+give a pointwise exterior-cut test and a volume bound on a neighbourhood of
+each shell carrying a strict polytope certificate. The computations in
+\cref{sec:shell-computation} cover specific neighbourhoods. A uniform bound
+on the remaining twenty-four- to twenty-seven-neighbour configurations is open.
+\Cref{thm:annular-bound} settles every shell with $T(Y)\ge8-1/28600$ and
+reduces the volume comparison for the other shells to bounding the
+available annular volume $A(Y)$ or finding a different lower bound.
+\Cref{thm:annular-cap-comparison} bounds $A(Y)$ by pair data, but a
+uniform estimate at volume $8$ for the remaining shells is still open.
 
 Both statements need a localisation that the methods of this paper do not
 supply: that twenty-four centres with $T\le8$ lie near a copy of
@@ -11470,6 +11478,9 @@ the code, including the re-verification of the computations, the
 programmes behind
 \cref{sec:noncontact,sec:closure,sec:second-order,sec:m24-robust,sec:G-and-C}
 and part of the Lean development, was developed with that assistance.
+
+AI tools assisted the development and checking of the shell-protection
+argument and the preparation of this revision.
 
 \section*{Competing interests}
 
@@ -13890,6 +13901,9 @@ floating-point step enters, as none enters the certificates of the arcs.
 
 \input{round26-check-appendix}
 
+\input{annular-constants}
+\input{cap-comparison-appendix}
+
 \begin{thebibliography}{CKMRV17}
 \setlength{\itemsep}{-1.3pt}
 
@@ -14018,6 +14032,12 @@ J.\ Analyse Math.\ \textbf{17} (1966), 71--107.
 S.~Diamond and S.~Boyd,
 \textit{CVXPY: a Python-embedded modeling language for convex optimization},
 J.\ Mach.\ Learn.\ Res.\ \textbf{17} (2016), no.~83, 1--5.
+
+\bibitem[DLM21]{DLM21}
+M.~Dostert, D.~de Laat, and P.~Moustrou,
+\textit{Exact semidefinite programming bounds for packing problems},
+SIAM J. Optim. \textbf{31} (2021), no.~2, 1433--1458.
+\bluelink{https://doi.org/10.1137/20M1351692}{doi:10.1137/20M1351692}
 
 \bibitem[DGS77]{DGS77}
 P.~Delsarte, J.~M.~Goethals, and J.~J.~Seidel,

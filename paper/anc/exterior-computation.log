@@ -1,0 +1,5 @@
+24 neighbours: clipped orbit protected; untrimmed vertex cut
+24 neighbours: exact clipped volume > 8.032; perturbations of 1/2000 give > 8.007
+25 neighbours: x=(0,0,0,5/4) protected; x=(0,0,0,3/2) cut; perturbations of 1/500 give volume > 10.2
+26 neighbours: x=(0,0,0,5/4) protected; x=(0,0,0,3/2) cut; perturbations of 1/500 give volume > 10.2
+27 neighbours: x=(0,0,0,5/4) protected; x=(0,0,0,3/2) cut; perturbations of 1/500 give volume > 10.2

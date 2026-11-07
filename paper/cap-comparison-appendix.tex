@@ -1,0 +1,200 @@
+\section{Checks for the annular cap comparison}
+\label{app:annular-cap-comparison}
+
+The algebraic constants in \cref{thm:annular-cap-comparison}
+satisfy
+\[
+ \frac{(53/40)^2+8(53/40)}9=\frac{19769}{14400}<\frac{11}{8},
+ \qquad
+ \frac{32\cdot27\cdot6^3}{105\cdot4^7(314/100)}<\frac7{200},
+ \qquad \frac{5}{3}\frac7{200}=\frac7{120}.
+\]
+Here \(4^7=16^{7/2}\). These comparisons need only integer
+arithmetic after cross multiplication.
+
+The following example checks the effect of the two volume
+bounds on the same shell. Let \(Y=2hU\), where \(U\) is the
+set of twenty-four unit \(D_4\) roots and \(h\) is either
+\(1\) or \(10031/10000\). These are admissible shells since
+each pair of distinct unit roots has distance at least \(1\)
+and \(2h<\sqrt6\). The cap plane distance is \(h\).
+Each root has eight other roots at inner product \(1/2\),
+so there are ninety-six such unordered pairs. All other
+pairs have inner product at most \(0\), and cannot cut the
+same point of \(B_\rho\), since its norm would be at least
+\(\sqrt2h>\rho\).
+
+Put \(\alpha=\arccos(h/r)\) for \(r\in\{r_0,\rho\}\).
+Integration of perpendicular three-balls gives the single
+cap volume
+\[
+ S_r(2h)=\frac{4\pi}{3}
+ \left(\frac{3r^4}{8}\alpha-
+       \frac{h(5r^2-2h^2)}8\sqrt{r^2-h^2}\right).
+\]
+For completeness, use polar coordinates in the plane of
+the two cap normals, at angle \(\pi/3\) to one another.
+The angle of the projection runs from \(\pi/3-\alpha\)
+to \(\alpha\). On the half from \(\pi/6\) to \(\alpha\),
+the first normal requires projected radius at least
+\(h/\cos\phi\), and the other half is its reflection.
+The two perpendicular coordinates contribute a disk of
+area \(\pi(r^2-s^2)\) at projected radius \(s\).
+Integrating \(s\) from \(h/\cos\phi\) to \(r\), and doubling,
+gives the pair volume
+\[
+ \Pi_r=\frac{\pi}{2}\bigl(G_r(h,\alpha)-G_r(h,\pi/6)\bigr),
+ \qquad
+ G_r(h,\phi)=r^4\phi-2r^2h^2\tan\phi+
+                    h^4\left(\tan\phi+\frac{\tan^3\phi}{3}\right).
+\]
+Indeed \(G_r'(h,\phi)=(r^2-h^2\sec^2\phi)^2\).
+Thus \(C_r=24S_r(2h)\), \(P_r=96\Pi_r\), and the value of
+\(T(Y)\) uses the exact two-term inclusion--exclusion formula
+at \(r_0\).
+
+\begin{table}[ht]
+\centering
+\caption{Rational enclosures for the truncated volume and
+the expressions \(T+(77/100)L\) from the two annular bounds.
+The positive term \(g(\rho)\) is omitted from both expressions.}
+\label{tab:annular-cap-check}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\(h\) & \(T(Y)\) & \cref{eq:annular-cap-one-pair} & \cref{eq:annular-cap-exact-pairs}\\
+\midrule
+\(1\) & \( (7.9069,\,7.9070) \) & \( (7.9146,\,7.9147) \) & \( (7.9360,\,7.9361) \)\\
+\(10031/10000\) & \( (7.9962,\,7.9963) \) & \( (8.0008,\,8.0009) \) & \( (8.0291,\,8.0293) \)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The script \texttt{anc/cap\_comparison.py} encloses square
+roots on a grid of denominator \(10^{24}\) by integer square
+root. It evaluates \(\arctan(\sqrt{r^2-h^2}/h)\) on the
+endpoint fractions with the first forty-eight terms of the
+alternating series and the first omitted term as an error
+bound. It uses the same series for the Machin formula in
+\cref{app:annular-constants}. All other operations are on
+rational intervals.\footnote{The argument of each arctangent
+is in \([0,1)\) here, so the error bound follows directly
+from alternating terms of decreasing magnitude.}
+For \(h=10031/10000\), even the bound using pair data only
+at \(r_0\) proves volume greater than \(8\) for every
+exterior extension, although \(T(Y)<8-1/28600\).
+The \(h=1\) row records the loss of this criterion at the
+regular cell, whose volume is exactly \(8\).
+
+\section{A smaller certified level at twenty-six neighbours}
+\label{app:profiles-26}
+
+Use the seven bins with lower endpoints
+\[
+ (2,\ 2.0161,\ 2.05,\ 2.1,\ 2.15,\ 2.2,\ 2.444)
+\]
+from the \(M=26\) part of \cref{prop:levels}, with types
+\(\mathsf{A,A,B,B,B,B,F}\). Let \(n=(n_0,\ldots,n_6)\)
+be the vector of occupancies. If \(T(Y)\le8\), then
+\(n_0\le24\), the total is \(26\), and the cumulative
+occupancies through bins \(1,\ldots,5\) are at least
+\((15,20,22,23,24)\), by the radial and cardinality
+certificates in that proof. In particular \(n_6\le2\).
+
+The previous certified kernel bounds the union of caps \(U(Y)\)
+above by
+\[
+ F(n)=\frac{t}{2}+\sum_{b=0}^6 n_bq_b
+   +\sum_{\mathsf{st}}N_{\mathsf{st}}c_{\mathsf{st}}
+   +\sum_{\mathsf{stu}}N_{\mathsf{stu}}c_{\mathsf{stu}},
+\]
+with \(t=8.282667610\). The point coefficients, in bin order, are
+\[
+ \begin{array}{rrrr}
+  0.10730785 & 0.10730646 & -0.05347062 & -0.05363574\\
+  -0.05425642 & -0.05347062 & -0.03946852 &
+ \end{array}
+\]
+Each \(N_w\) counts unordered subsets with type word \(w\).
+If the type counts are \(n_{\mathsf A},n_{\mathsf B},n_{\mathsf F}\),
+then \(N_w=\prod_{\mathsf s}\binom{n_{\mathsf s}}{m_{\mathsf s}(w)}\),
+where \(m_{\mathsf s}(w)\) is the multiplicity of \(\mathsf s\) in \(w\).
+The constants \(c_w\) in this computation are the entries below
+plus \(10^{-7}\) in each case.
+\[
+\begin{array}{c|rrr}
+w & \mathsf{AA} & \mathsf{AB} & \mathsf{AF}\\
+\hline
+c_w-10^{-7} & -0.02327176 & -0.01036330 & -0.01503736\\
+w & \mathsf{BB} & \mathsf{BF} & \mathsf{FF}\\
+\hline
+c_w-10^{-7} & -0.001713338 & -0.004512281 & -0.003681549
+\end{array}
+\]
+\[
+\begin{array}{c|rrr}
+w & \mathsf{AAA} & \mathsf{AAB} & \mathsf{AAF}\\
+\hline
+c_w-10^{-7} & .001497925 & .0009598990 & .001322105\\
+w & \mathsf{ABB} & \mathsf{ABF} & \mathsf{AFF}\\
+\hline
+c_w-10^{-7} & .0005966748 & .001043879 & .001145076\\
+w & \mathsf{BBB} & \mathsf{BBF} & \mathsf{BFF}\\
+\hline
+c_w-10^{-7} & .0004094797 & .0006564131 & .001043982
+\end{array}
+\]
+The type \(\mathsf{FFF}\) has multiplicity zero.
+The constants are rounded upward from the archived checks
+of the individual kernel inequalities.\footnote{The input is
+\href{https://github.com/creelie/d4-voronoi-cells/blob/v3.4.0/multi_cap/runs/combo26_level_check.log}{the v3.4.0
+certificate log} and the array \texttt{m} in
+\texttt{multi\_cap/radial\_certificates/combo26\_level\_d8.npz}.
+The \(q_b\) combine the recorded point term for the type with
+the upward-rounded bin bound \(m_b+2\cdot10^{-6}\) of the
+checker. The rational postprocessing here takes the
+kernel inequalities as inputs. For related methods of
+certifying semidefinite packing bounds, see \cite{DLM21}.}
+
+There is a second bound, independent of the kernel.
+If \(d_b\) is the lower endpoint of bin \(b\), monotonicity
+of the single cap gives
+\[
+ U(Y)\le \sum_b n_b S_{r_0}(d_b).
+\]
+Taking the minimum of this expression and \(F(n)\) before
+maximising over \(n\) gives a smaller level. The script
+\texttt{anc/cap\_profiles\_26.py} enumerates the \(17\,845\)
+weak compositions satisfying the cumulative constraints.
+It rounds the cap bounds upward using the interval procedure
+in \cref{app:annular-cap-comparison} and finds that
+\[
+ \max_n\min\left\{F(n),\ \sum_b n_b S_{r_0}(d_b)\right\}
+ <3.288 .
+\]
+The upper bounds in the script are largest at
+\((20,0,5,0,0,0,1)\). They give \(T(Y)>8\) on \(12\,378\)
+of the profiles. The profile \((15,0,9,0,0,0,2)\) that
+previously gave the largest kernel value has a cap sum less
+than \(3.027\) and so already gives \(T(Y)>8\).
+If \(T(Y)>8\), then \(U(Y)<9\pi^2/8-8<3.288\) directly.
+Thus \(U(Y)<3.288\) holds at this neighbour count without
+any assumption on \(T(Y)\).
+
+The largest level in \cref{tab:levels} is consequently
+at \(M=25\). In that case the two-bin certificate has
+upward bounds \(t=1.819065983\), \(m_0=0.097085101\)
+and \(m_1=0.087814019\), with zero multiplier
+for the radial side condition.\footnote{These are
+rounded upward from the coefficient array in
+\texttt{multi\_cap/radial\_certificates/density\_25.json}
+and the value of \(t\) in \texttt{gap\_closure/density/check\_25.log}
+in the same archive.}
+Since \(m_0>m_1\), at most twenty-three neighbours
+within \(2.0161\) gives
+\[
+ U(Y)\le t/2+23m_0+2m_1<3.3182.
+\]
+Thus only twenty-five-neighbour shells with exactly
+twenty-four within \(2.0161\) can exceed the level \(3.3182\)
+after these refinements. The sharp level \(9\pi^2/8-8\)
+would require a further improvement.

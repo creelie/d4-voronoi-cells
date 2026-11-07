@@ -1,0 +1,53 @@
+\section{Rational checks for the annular bound}
+\label{app:annular-constants}
+
+Put \(a=12247/10000\), \(a_+=122475/100000\),
+\(q_-=12649/10000\) and \(q_+=1265/1000\). Squaring gives
+\(a<r_0<a_+\), \(q_-<q<q_+\), and
+\(77/100<\sqrt{3/5}<31/40\).
+
+For the exterior loss estimate, the square of the upper bound for
+the ratio of removed volume to reserved volume per centre is
+bounded by the rational number
+\[
+ \left(\frac25\left(\frac{96}{95}\right)^2\right)^2
+ \frac{(2\rho(\rho-a))^3}{a^6 b^6}
+ =\frac{22535460391546257408000000000}
+        {439736697911706067259903971009}
+ <\left(\frac{23}{100}\right)^2 .
+\]
+Here \(b=1/4\) and \(\rho=5/4\).
+The slope bound for the disjoint vertex cones follows from
+\[
+ \frac{q-r_0}{r_0\sqrt{q^2-1}}
+ < \frac{q_+-a}{a(77/100)} < \frac1{20}.
+\]
+Finally, the lower bound \(314/100<\pi\) gives
+\[
+ g(r_0)>2(314/100)\frac{(q_--a_+)^4}{(31/40)^3}
+ =\frac{65277247497517}{1861937500000000000}>\frac1{28600}.
+\]
+
+For the density comparison we use
+\(3.1415926<\pi<3.1415927\).
+These rational bounds follow from
+\(\pi=16\arctan(1/5)-4\arctan(1/239)\) and the alternating series
+for the arctangent. The identity follows by the tangent double-angle
+formula, which gives \(\tan(4\arctan(1/5))=120/119\).
+Subtracting \(\arctan(1/239)\) gives an angle in \((0,\pi/2)\)
+with tangent \(1\).
+For \(x\in\{1/5,1/239\}\) the sum
+\(\sum_{j=0}^7(-1)^jx^{2j+1}/(2j+1)\) is a lower bound for
+\(\arctan x\), and adding \(x^{17}/17\) is an upper bound.
+Use the lower bound at \(1/5\) and the upper at \(1/239\)
+for the lower estimate of \(\pi\), and the opposite bounds
+for the upper estimate.
+The function
+\[
+ z\longmapsto \frac{z/2}{9z/8-33274/10000+1/28600}
+\]
+decreases for positive denominators. Substitution of the rational
+lower bound for \(\pi^2\) bounds the ratio in
+\cref{thm:density-cells} above by \(0.634625\).
+The script \texttt{anc/annular\_constants.py} repeats these checks
+with exact fractions.
