@@ -1,6 +1,6 @@
 ## Current manuscript revision
 
-[Paper PDF](paper/revision-v3.2.0/D4-24.pdf) · [TeX ZIP](paper/revision-v3.2.0/D4-24tex.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.2.0) · [Zenodo concept DOI](https://doi.org/10.5281/zenodo.22766562)
+[Paper PDF](paper/revision-v3.2.0/D4-24.pdf) · [TeX ZIP](paper/revision-v3.2.0/D4-24tex.zip) · [Release](https://github.com/creelie/d4-voronoi-cells/releases/tag/v3.2.0) · [Version DOI](https://doi.org/10.5281/zenodo.24024996)
 
 This revision combines the certificate results in merge #40 with the protected-shell volume estimates. Condition (C) is proved for 28 or more nearby centres and specified 27-centre sectors. The 25- and 26-centre cases and the remaining 27-centre cases of (C), and the unrestricted case of (G), remain open.
 

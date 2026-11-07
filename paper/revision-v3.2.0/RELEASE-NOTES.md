@@ -4,4 +4,4 @@ This revision combines the certificate results in merge #40 with the protected-s
 
 The protected-shell arguments are analytic. The certificate inputs and checkers from #40 remain in the release source tree. The consolidation compiles the manuscript from its TeX sources and carries over those certificates.
 
-Zenodo concept DOI https://doi.org/10.5281/zenodo.22766562
+Version DOI https://doi.org/10.5281/zenodo.24024996
