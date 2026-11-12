@@ -1,0 +1,10 @@
+certificate degree 8, t = 1013//2000 = 1/2 + 13//2000 exactly; the boxes run to 0.5065000000000001
+PASS 1. f_k >= 0 and F_0..F_8 positive definite (exact LDL^T)
+PASS 2. B = 1 + f(1) + F(1,1,1) (exact rational), value as in the Python log  [got 24.974999950; 425 monomials in P2; expected 24.974999950]
+PASS 3. (i) P1 <= 1e-6 on [-1, t]  [got 221 intervals, largest centre value -1.349e-04; expected 221 intervals]
+      (ii) level 10: 0 boxes verified, 332 to bisect [0 s]
+      (ii) level 20: 21504 boxes verified, 41260 to bisect [12 s]
+      (ii) level 30: 140965 boxes verified, 6032 to bisect [42 s]
+PASS 4. (ii) P2 <= 1e-5 on the ordered admissible domain  [got 150225 boxes, largest centre value -1.1801e-04; expected 150225 boxes]
+PASS 5. at |C| = 25: (N-1)(1-e1) - (N-1)(N-2) e2 > B - 1 (exact)  [got 23.994456 vs 23.975000]
+PASS: A(4, 0.5065) <= 24

@@ -1,0 +1,22 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag'
+        required: true
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          gh release create "$TAG" papers/D4Paper.pdf --target "$GITHUB_SHA" \
+            --title "$TAG: The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture" \
+            --notes "Paper, Lean 4 checks and Julia verification suite. Every packing of unit balls in R^4 has density below 0.630996; the twenty-four-cell bound is proved in the cases listed in the paper, and the remaining cases with 24 to 27 near neighbours are open."

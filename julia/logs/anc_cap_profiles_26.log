@@ -1,0 +1,4 @@
+PASS U < 3.288 on all 17845 count profiles; largest at (20,0,5,0,0,0,1)  [got profiles=17845 max=3.287675588 at (20, 0, 5, 0, 0, 0, 1); expected 17845 profiles, max at (20, 0, 5, 0, 0, 0, 1)]
+PASS profiles clearing T > 8 by these two bounds alone  [got 12378; expected 12378]
+PASS former maximising profile (15,0,9,0,0,0,2) has cap sum < 3.027  [got 3.0266824417; expected < 3.027]
+PASS 25-neighbour level < 3.3182 if at most 23 lie within 2.0161  [got 3.3181183525; expected < 3.3182]

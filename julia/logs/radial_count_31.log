@@ -1,0 +1,9 @@
+PASS dmax exceeds sqrt 6  [got 6.00000028030404]
+PASS A_0, ..., A_12 symmetric
+PASS A_1, ..., A_12 positive semidefinite (exact LDL^T)
+PASS A_0 positive definite (exact LDL^T)  [got least pivot 1.463827508109301e-7]
+PASS [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  [got t = 10.684161960813384]
+PASS pair inequality K <= Pi on the admissible domain  [got 191740 closed, 180310 dropped, 54248 Arb values; expected 191740 closed, 180310 dropped, 54248 Arb values]
+PASS S(d) + K(d, d, 1)/2 - z . p(d) <= m on [2, dmax]  [got m = -0.07279699037177068, largest bound -0.07279724810743822, 356 intervals; expected 356 intervals]
+PASS m < 0, so the bound falls with the count
+PASS M m + t/2 < 9 pi^2/8 - 8  [got 3.085374278881801 < 3.1033049512255286; expected 3.0853743 (Python log)]

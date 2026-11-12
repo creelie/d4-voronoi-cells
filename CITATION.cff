@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this code, please cite the paper and this archive."
+message: "If you use this work, please cite the paper and this archive."
 title: "The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture"
 type: software
 authors:
@@ -8,6 +8,7 @@ authors:
     orcid: "https://orcid.org/0000-0003-0466-750X"
   - family-names: Bhattacharya
     given-names: Ushashi
+    affiliation: "National Taiwan University (formerly)"
     orcid: "https://orcid.org/0009-0002-2254-3914"
   - family-names: Mandal
     given-names: Priyabrata
@@ -18,21 +19,20 @@ authors:
     affiliation: "Asian College of Teachers, Kolkata"
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
-version: "3.5.1"
-date-released: "2026-11-08"
+version: "4.0.0"
+date-released: "2026-11-12"
 keywords:
   - sphere packing
   - Voronoi cell
-  - semidefinite programming
+  - twenty-four-cell
   - spherical codes
   - Lean 4
 abstract: >-
-  Manuscript, certificates and verification programs for the four-dimensional
-  sphere-packing bound below 0.634625. The cap-intersection comparison and the
-  rational check of 26-neighbour profiles are included. Some 24–27-neighbour
-  cases of the sharp twenty-four-cell bound remain open.
+  Paper, Lean 4 checks and Julia verification suite. Every packing of unit
+  balls in R^4 has density below 0.630996; the twenty-four-cell bound is
+  proved in the cases listed in the paper, and the remaining cases with 24 to
+  27 near neighbours are open.
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22766562"
     description: "Concept DOI: every version, resolving to the latest"
-doi: "10.5281/zenodo.24045631"

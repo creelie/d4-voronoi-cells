@@ -1,0 +1,57 @@
+
+check                       result   passed  failed  seconds  supports
+anc_check_exact             PASS     7       0       2        explicit constants of the annular/exterior argument (anc/check_exact.py)
+anc_annular_constants       PASS     3       0       0        annular constants (anc/annular_constants.py)
+anc_cap_comparison          PASS     3       0       0        cap comparison (anc/cap_comparison.py)
+anc_cap_profiles_26         PASS     4       0       4        the 17845 profiles at 26 centres (anc/cap_profiles_26.py)
+anc_exterior_test           PASS     5       0       16       exterior computation (anc/exterior_test.py)
+cap_certificate             PASS     19      0       7        thm:cap-inequality, rem:cap-boxes (cap_certificate/)
+covering_bound              PASS     6       0       1        thm:covering-bound, cor:m22, tab:covering-bound
+twentyfour_close            PASS     15      0       1        lem:twentyfour-close (constants in 200-bit ball arithmetic)
+pushout                     PASS     6       0       0        thm:G-pushout (constants in ball arithmetic and exact rationals)
+G_nbhd                      PASS     62      0       3        thm:G-nbhd, app:G-nbhd, tab:G-nbhd-bins (lem:T-near-roots, thm:one-large-push at e0 = 1/48; 200-bit balls; first case + 29 bins)
+hexagon_rigidity            PASS     15      0       0        thm:hexagon-rigidity, cor:hexagon-close (exact rationals)
+labelled_certificate_II     PASS     9       0       24       thm:m23-labelled, regions II_s and II_f (region I is in the full tier)
+certificate_check           PASS     5       0       94       thm:certificate (m = 23 three-point certificate)
+radial_count_31             PASS     9       0       90       thm:count31
+case_24_r2.0161             PASS     9       0       109      prop:C-radial / prop:G-radial, single split 24_r2.0161 [378545 boxes]
+case_24_r2.05               PASS     9       0       132      prop:C-radial / prop:G-radial, single split 24_r2.05 [382938 boxes]
+case_24_r2.1                PASS     9       0       8        prop:C-radial / prop:G-radial, single split 24_r2.1 [23129 boxes]
+case_24_r2.15               PASS     9       0       6        prop:C-radial / prop:G-radial, single split 24_r2.15 [26245 boxes]
+case_25_r2.05               PASS     9       0       94       prop:C-radial / prop:G-radial, single split 25_r2.05 [309096 boxes]
+case_25_r2.1                PASS     9       0       7        prop:C-radial / prop:G-radial, single split 25_r2.1 [21770 boxes]
+case_25_r2.15               PASS     9       0       4        prop:C-radial / prop:G-radial, single split 25_r2.15 [10167 boxes]
+case_25_r2.2                PASS     9       0       7        prop:C-radial / prop:G-radial, single split 25_r2.2 [19894 boxes]
+case_26_r2.05               PASS     9       0       38       prop:C-radial / prop:G-radial, single split 26_r2.05 [124034 boxes]
+case_26_r2.1                PASS     9       0       7        prop:C-radial / prop:G-radial, single split 26_r2.1 [23058 boxes]
+case_26_r2.15               PASS     9       0       2        prop:C-radial / prop:G-radial, single split 26_r2.15 [5551 boxes]
+case_26_r2.2                PASS     9       0       1        prop:C-radial / prop:G-radial, single split 26_r2.2 [3015 boxes]
+case_27_r2.05               PASS     9       0       148      prop:C-radial / prop:G-radial, single split 27_r2.05 [479347 boxes]
+case_27_r2.15               PASS     9       0       4        prop:C-radial / prop:G-radial, single split 27_r2.15 [12939 boxes]
+case_27_r2.2                PASS     9       0       1        prop:C-radial / prop:G-radial, single split 27_r2.2 [2948 boxes]
+case_27_r2.35               PASS     9       0       2        prop:C-radial / prop:G-radial, single split 27_r2.35 [3576 boxes]
+case_28_r2.1                PASS     9       0       131      prop:C-radial / prop:G-radial, single split 28_r2.1 [435661 boxes]
+case_28_r2.15               PASS     9       0       9        prop:C-radial / prop:G-radial, single split 28_r2.15 [32163 boxes]
+case_28_r2.2                PASS     9       0       3        prop:C-radial / prop:G-radial, single split 28_r2.2 [11934 boxes]
+case_28_r2.35               PASS     9       0       4        prop:C-radial / prop:G-radial, single split 28_r2.35 [14380 boxes]
+case_29_r2.05               PASS     9       0       160      prop:C-radial / prop:G-radial, single split 29_r2.05 [558507 boxes]
+case_29_r2.1                PASS     9       0       64       prop:C-radial / prop:G-radial, single split 29_r2.1 [195866 boxes]
+case_29_r2.15               PASS     9       0       16       prop:C-radial / prop:G-radial, single split 29_r2.15 [49492 boxes]
+case_29_r2.3                PASS     9       0       2        prop:C-radial / prop:G-radial, single split 29_r2.3 [3555 boxes]
+case_30_r2.15               PASS     9       0       9        prop:C-radial / prop:G-radial, single split 30_r2.15 [28037 boxes]
+case_30_r2.25               PASS     9       0       6        prop:C-radial / prop:G-radial, single split 30_r2.25 [16329 boxes]
+density_24                  PASS     4       0       0        prop:levels, two-point level at M = 24 [0 boxes]
+density_25                  PASS     10      0       60       prop:levels, two-point level at M = 25 [183114 boxes]
+density_27                  PASS     10      0       126      prop:levels, two-point level at M = 27 [408785 boxes]
+density_28                  PASS     10      0       170      prop:levels, two-point level at M = 28 [517744 boxes]
+density_29                  PASS     10      0       185      prop:levels, two-point level at M = 29 [561322 boxes]
+density_30                  PASS     10      0       52       prop:levels, two-point level at M = 30 [161335 boxes]
+cardinality_d8_s005         PASS     5       0       35       thm:kissing-stable, degree 8, t = 0.505 (115 532 boxes)
+cardinality_d8_s0065        PASS     5       0       44       thm:kissing-stable, degree 8, t = 0.5065 (150 225 boxes)
+combo24_level               PASS     19      0       53       prop:levels at M = 24 (combined two-/three-point certificate)
+combo30_precheck            PASS     5       0       25       thm:count30, fifth case: exact positivity, thresholds and bound only (no branch and bound; not a proof)
+profile_levels              PASS     21      0       6        profile-level bound max G = 3.2888648 at (22,0,3,0,0,0,0) and density < 0.631496 (anc/profile_levels.py; exact rationals on constants rounded up to 1e-13; Arb for the density)
+profile_levels_tight        PASS     20      0       3        prop:profile-levels, thm:density-cells: max G = 3.2826739 at (22,0,3,0,0,0,0) and density < 0.630996, with the pair and triple thresholds of the M = 26 run with pair margin 2e-7 (data/logs/density/combo26_tight_check.log; proved by that run and by the full-tier entry combo26_tight)
+explicit_eps0               PASS     15      0       32       thm:near-contact, thm:m24-robust (explicit eps_0)
+llm24_certificate           PASS     11      0       478      prop:verified, thm:twentyfour-points (steps 1, 2, 4, 6, 7 of the verification)
+total: 54 run, 54 passed, 0 failed or in error, 0 skipped; 2488 s

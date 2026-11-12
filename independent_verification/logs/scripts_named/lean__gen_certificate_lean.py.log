@@ -1,2 +1,0 @@
-$ (cd lean && gen_certificate_lean.py)
-wrote D4Certificate.lean

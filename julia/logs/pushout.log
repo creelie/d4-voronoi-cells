@@ -1,0 +1,6 @@
+PASS T on the one-centre ray at delta = 0.1971 exceeds 8  [got 8.000015233; expected 8.000015233]
+PASS T at the root system is 7.906940...  [got 7.906940156; expected 7.906940156]
+PASS (1 + eta_B)^2 - 1 < 1/3  [got 0.20681; expected 0.20681]
+PASS g(eta)/eta decreases on [0, eta_B]: -2 + (8/3) eta_B < 0
+PASS g(eta)/eta >= 2/5 on [0, eta_B]  [got 0.41379; expected 0.41379]
+PASS pyramid: (2 + eta)/(1 + eta) <= 2

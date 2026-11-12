@@ -1,0 +1,44 @@
+S(2)      = [0.1389635009356165567242048456830516876919546143889958278484 +/- 5.65e-59]
+omega(1/2)= [0.001445408619234230142700582090531541422254098730047017879 +/- 5.32e-58]
+T_root    = [7.9069401562172171785071419591584574991573945658945033027 +/- 1.51e-56]
+Lipschitz L = pi/(72 sqrt3) = [0.025191657836586359036028864689474385170612031223510285771804 +/- 1.02e-61]
+
+Theorem A/B table: m with vol >= 8+m*S   (delta1=max push, delta2=second largest push)
+  d0=1/48   delta1=0.100 delta2=0.100  m>=+0.0095 cond_ok=True
+  d0=1/48   delta1=0.140 delta2=0.140  m>=-0.3095 cond_ok=True
+  d0=1/48   delta1=0.200 delta2=0.100  m>=-0.2879 cond_ok=True
+  d0=1/48   delta1=0.230 delta2=0.100  m>=-0.4217 cond_ok=False
+  d0=1/48   delta1=0.250 delta2=0.100  m>=-0.5189 cond_ok=False
+  d0=1/48   delta1=0.250 delta2=0.150  m>=-0.8056 cond_ok=False
+  d0=1/64   delta1=0.100 delta2=0.100  m>=+0.2382 cond_ok=True
+  d0=1/64   delta1=0.140 delta2=0.140  m>=-0.0124 cond_ok=True
+  d0=1/64   delta1=0.200 delta2=0.100  m>=-0.0099 cond_ok=True
+  d0=1/64   delta1=0.230 delta2=0.100  m>=-0.1198 cond_ok=True
+  d0=1/64   delta1=0.250 delta2=0.100  m>=-0.2002 cond_ok=False
+  d0=1/64   delta1=0.250 delta2=0.150  m>=-0.4394 cond_ok=False
+  d0=1/100  delta1=0.100 delta2=0.100  m>=+0.4051 cond_ok=True
+  d0=1/100  delta1=0.140 delta2=0.140  m>=+0.2169 cond_ok=True
+  d0=1/100  delta1=0.200 delta2=0.100  m>=+0.2000 cond_ok=True
+  d0=1/100  delta1=0.230 delta2=0.100  m>=+0.1112 cond_ok=True
+  d0=1/100  delta1=0.250 delta2=0.100  m>=+0.0458 cond_ok=True
+  d0=1/100  delta1=0.250 delta2=0.150  m>=-0.1478 cond_ok=True
+  d0=1/200  delta1=0.100 delta2=0.100  m>=+0.5036 cond_ok=True
+  d0=1/200  delta1=0.140 delta2=0.140  m>=+0.3621 cond_ok=True
+  d0=1/200  delta1=0.200 delta2=0.100  m>=+0.3303 cond_ok=True
+  d0=1/200  delta1=0.230 delta2=0.100  m>=+0.2572 cond_ok=True
+  d0=1/200  delta1=0.250 delta2=0.100  m>=+0.2029 cond_ok=True
+  d0=1/200  delta1=0.250 delta2=0.150  m>=+0.0450 cond_ok=True
+
+Theorem C: d(W)<=d0 and T(Y)<=8
+  d0=1/48   pen<=0.00461  delta_max<0.212  second<0.097  m>=-0.3264  cond_ok=True  => not covered
+  d0=1/56   pen<=0.00393  delta_max<0.210  second<0.096  m>=-0.1404  cond_ok=True  => not covered
+  d0=1/60   pen<=0.00366  delta_max<0.209  second<0.096  m>=-0.0763  cond_ok=True  => not covered
+  d0=1/64   pen<=0.00343  delta_max<0.208  second<0.096  m>=-0.0238  cond_ok=True  => not covered
+  d0=1/68   pen<=0.00322  delta_max<0.208  second<0.095  m>=+0.0199  cond_ok=True  => PROVED
+  d0=1/72   pen<=0.00304  delta_max<0.207  second<0.095  m>=+0.0569  cond_ok=True  => PROVED
+  d0=1/80   pen<=0.00273  delta_max<0.206  second<0.095  m>=+0.1131  cond_ok=True  => PROVED
+  d0=1/100  pen<=0.00217  delta_max<0.204  second<0.094  m>=+0.2050  cond_ok=True  => PROVED
+  d0=1/120  pen<=0.00181  delta_max<0.203  second<0.094  m>=+0.2554  cond_ok=True  => PROVED
+  d0=1/150  pen<=0.00144  delta_max<0.202  second<0.093  m>=+0.3026  cond_ok=True  => PROVED
+  d0=1/200  pen<=0.00108  delta_max<0.201  second<0.093  m>=+0.3426  cond_ok=True  => PROVED
+  d0=1/400  pen<=0.00054  delta_max<0.199  second<0.092  m>=+0.3975  cond_ok=True  => PROVED

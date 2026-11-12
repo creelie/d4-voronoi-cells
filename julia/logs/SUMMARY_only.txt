@@ -1,0 +1,5 @@
+
+check                       result   passed  failed  seconds  supports
+profile_levels              PASS     21      0       9        profile-level bound max G = 3.2888648 at (22,0,3,0,0,0,0) and density < 0.631496 (anc/profile_levels.py; exact rationals on constants rounded up to 1e-13; Arb for the density)
+profile_levels_tight        PASS     20      0       4        prop:profile-levels, thm:density-cells: max G = 3.2826739 at (22,0,3,0,0,0,0) and density < 0.630996, with the pair and triple thresholds of the M = 26 run with pair margin 2e-7 (data/logs/density/combo26_tight_check.log; proved by that run and by the full-tier entry combo26_tight)
+total: 2 run, 2 passed, 0 failed or in error, 0 skipped; 13 s
