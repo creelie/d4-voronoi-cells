@@ -20,6 +20,7 @@ authors:
 repository-code: "https://github.com/creelie/d4-voronoi-cells"
 license: MIT
 version: "4.0.0"
+doi: "10.5281/zenodo.24153568"
 date-released: "2026-11-12"
 keywords:
   - sphere packing
@@ -36,3 +37,6 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.22766562"
     description: "Concept DOI: every version, resolving to the latest"
+  - type: doi
+    value: "10.5281/zenodo.24153568"
+    description: "Version 4.0.0"

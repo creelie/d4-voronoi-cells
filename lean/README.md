@@ -25,8 +25,10 @@ triples exactly 96 do, each pairwise at 60 degrees with a common vertex.
 The identities depend on propext, Classical.choice and Quot.sound, the
 combinatorial theorems on propext at most; nothing uses `native_decide`.
 About two minutes.  The log of `run_all.sh` over all sixteen files is
-`runs/run_all_2026-11-12.log`, and the logs of the four Lake builds are
-`runs/lake_*_2026-11-12.log`.
+`runs/run_all_2026-11-12.log`. The Lake builds of `cell600` and
+`certificate` were rerun for this version (`runs/lake_*_2026-11-12.log`);
+the logs of the `cardinality` and `count` builds are
+`runs/KissCardinality_build.log` and `runs/Count31_build_2026-10-06.log`.
 
 `D4SecondOrder.lean` covers the exact content of Section
 21.2, the second order of the cell volume at the root system.  It computes
