@@ -1,0 +1,49 @@
+== lake build certificate
+✔ [2/23] Built D4LabelledData (454ms)
+✔ [3/23] Built D4LabelledData:c.o (160ms)
+✔ [4/23] Built D4LabelledData:dynlib (51ms)
+✔ [5/23] Built D4CertData (47s)
+✔ [6/23] Built D4CertData:c.o (110s)
+✔ [7/23] Built D4CertData:dynlib (298ms)
+✔ [8/23] Built D4CertDomain (1.4s)
+✔ [9/23] Built D4CertDomain:c.o (1.8s)
+✔ [10/23] Built D4CertDomain:dynlib (55ms)
+✔ [11/23] Built D4LabelledDomain (1.3s)
+✔ [12/23] Built D4LabelledDomain:c.o (1.3s)
+✔ [13/23] Built D4LabelledDomain:dynlib (72ms)
+✔ [14/23] Built D4Omega (17s)
+ℹ [15/23] Built D4LabelledStat (325s)
+info: D4LabelledStat.lean:8:0: (0, 39399)
+info: D4LabelledStat.lean:9:0: (0, 9545)
+✔ [16/23] Built D4Omega:c.o (1.3s)
+✔ [17/23] Built D4Omega:dynlib (46ms)
+ℹ [18/23] Built D4LabelledMain (322s)
+info: D4LabelledMain.lean:26:0: 'region_IIf' depends on axioms: [propext, Classical.choice, Quot.sound, region_IIf._native.native_decide.ax_1_1]
+ℹ [19/23] Built D4OmegaMain (861s)
+info: D4OmegaMain.lean:58:0: (10923, 15723, 0.285530, 0.397198)
+info: D4OmegaMain.lean:60:0: ((0, 39551), 0, 9545)
+info: D4OmegaMain.lean:61:0: 'count_bound' depends on axioms: [propext, Classical.choice, Quot.sound, count_bound._native.native_decide.ax_1_1]
+info: D4OmegaMain.lean:62:0: 'covering_above_8' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ covering_above_8._native.native_decide.ax_1_1]
+info: D4OmegaMain.lean:63:0: 'region_IIf_lean' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ region_IIf_lean._native.native_decide.ax_1_1]
+ℹ [20/23] Built D4CertStat (1664s)
+info: D4CertStat.lean:9:0: (0, 421881)
+ℹ [21/23] Built D4CertMain (1667s)
+info: D4CertMain.lean:19:0: 449
+info: D4CertMain.lean:20:0: 'domain_ok' depends on axioms: [propext, Classical.choice, Quot.sound, domain_ok._native.native_decide.ax_1_1]
+ℹ [22/23] Built D4OmegaRegionI (1598s)
+info: D4OmegaRegionI.lean:12:0: 'domain_ok_lean_tables' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ domain_ok_lean_tables._native.native_decide.ax_1_1]
+Build completed successfully (23 jobs).
+
+real	35m2.672s
+user	62m24.572s
+sys	0m5.794s
+exit 0

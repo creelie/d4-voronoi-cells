@@ -1,0 +1,3 @@
+== lake build cardinality
+ℹ [11/17] Replayed KissMain8
+info: KissMain8.lean:22:0: 'cert8_ii' depends on axioms: [propext, Classical.choice, Quot.sound, cert8_ii._native.native_decide.ax_1_1]

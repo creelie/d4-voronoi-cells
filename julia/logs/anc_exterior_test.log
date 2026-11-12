@@ -1,0 +1,5 @@
+PASS 24 neighbours: clipped orbit protected; untrimmed vertex cut  [got strata=5909]
+PASS 24 neighbours: exact clipped volume > 8.032; perturbations of 1/2000 give > 8.007  [got 8.032048031808204; expected > 8.032]
+PASS 25 neighbours: x=(0,0,0,5/4) protected; x=(0,0,0,3/2) cut; perturbations of 1/500 give volume > 10.2  [got strata=2158]
+PASS 26 neighbours: x=(0,0,0,5/4) protected; x=(0,0,0,3/2) cut; perturbations of 1/500 give volume > 10.2  [got strata=2396]
+PASS 27 neighbours: x=(0,0,0,5/4) protected; x=(0,0,0,3/2) cut; perturbations of 1/500 give volume > 10.2  [got strata=2669]

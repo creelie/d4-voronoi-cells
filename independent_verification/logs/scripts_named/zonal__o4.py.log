@@ -1,2 +1,0 @@
-$ (cd zonal && o4.py)
-o4 selftest passed

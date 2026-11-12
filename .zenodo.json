@@ -1,36 +1,50 @@
 {
   "title": "The Sphere Packing Problem in Dimension 4 and the Twenty-Four-Cell Conjecture",
   "upload_type": "publication",
-  "description": "Research revision of the four-dimensional sphere packing manuscript. A pair and triple cap comparison and a rational enumeration of radial profiles yield a packing-density bound below 0.634625. Some 24–27-neighbour cases of the sharp volume bound remain open.",
+  "description": "We prove that every packing of unit balls in four-dimensional Euclidean space has density below 0.630996, and that the Voronoi cell of a centre has volume at least 8, with equality only for the 24-cell, in a list of cases: all contact configurations, every centre with at most 23 or at least 28 neighbours within the square root of 6, the listed radial profiles of 27 neighbours, an explicit neighbourhood of the root system D4, and every configuration of 24 neighbours whose directions lie within 1/48 of the root system, with no limit on the push-outs. The remaining cases reduce to two explicit statements for 24 to 27 neighbours, which stay open, so the twenty-four-cell conjecture and the optimality of D4 are not proved. The archive contains the paper, Lean 4 proofs of the finite arithmetic and a Julia verification suite.",
   "creators": [
     {
       "name": "Bhattacharjee, Deep",
-      "orcid": "0000-0003-0466-750X"
+      "orcid": "0000-0003-0466-750X",
+      "affiliation": "Formerly, Electro-Gravitational Space Propulsion Laboratory (EGSPL), Bhubaneswar, Odisha 751030, India; Formerly, University of Calcutta (Heramba Chandra College), 23/49 Gariahat Road, Golpark, Kolkata 700029, West Bengal, India"
     },
     {
       "name": "Bhattacharya, Ushashi",
-      "orcid": "0009-0002-2254-3914"
+      "orcid": "0009-0002-2254-3914",
+      "affiliation": "Formerly, National Taiwan University, Taipei 106319, Taiwan"
     },
     {
       "name": "Mandal, Priyabrata",
-      "affiliation": "Maulana Azad National Institute of Technology Bhopal",
-      "orcid": "0000-0001-6472-6239"
+      "orcid": "0000-0001-6472-6239",
+      "affiliation": "Department of Mathematics, Bioinformatics and Computer Applications, Maulana Azad National Institute of Technology Bhopal, Bhopal 462003, India"
     },
     {
       "name": "Bhattacharya, Shounak",
-      "affiliation": "Asian College of Teachers, Kolkata"
+      "affiliation": "Research Head, Asian College of Teachers, Kolkata, West Bengal, India"
     }
   ],
   "keywords": [
     "sphere packing",
     "Voronoi cell",
-    "semidefinite programming",
+    "twenty-four-cell",
     "spherical codes",
     "Lean 4"
   ],
   "license": "MIT",
   "access_right": "open",
-  "version": "3.5.1",
+  "version": "4.0.0",
   "publication_type": "preprint",
-  "publication_date": "2026-11-08"
+  "publication_date": "2026-11-12",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/creelie/d4-voronoi-cells",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.24045631",
+      "relation": "isNewVersionOf",
+      "scheme": "doi"
+    }
+  ]
 }

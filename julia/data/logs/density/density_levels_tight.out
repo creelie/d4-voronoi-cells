@@ -1,0 +1,24 @@
+pair thresholds taken from the log /tmp/claude-0/d4/verify/c26full/full_tight.log: {'AA': -0.02329153670844, 'AB': -0.0103830896169, 'AF': -0.01505714494284, 'BB': -0.001733136266862, 'BF': -0.004532076467919, 'FF': -0.003701345298651}
+constants of the typed certificate agree with the log /tmp/claude-0/d4/verify/c26full/full_tight.log (all kinds proved there)
+S(e_b) upper bounds: ['0.1389635009', '0.1273288867', '0.1046916513', '0.0758130327', '0.0521298076', '0.0333964703', '0.0000025325']
+two-point certificates (t/2, m0, m1): [('0.9095329909', '0.0970851006', '0.0878140183'), ('4.5238173034', '-0.0443547088', '-0.0501172844'), ('4.5338315966', '-0.0447180657', '-0.0504752608'), ('4.5482527029', '-0.0452186014', '-0.0510049757'), ('4.8498109771', '-0.0565351159', '-0.0565351159')]
+M = 24: U(Y) <= 3.2395754  (largest at (24, 0, 0, 0, 0, 0, 0); 593775 profiles)
+M = 25: U(Y) <= 3.2826739  (largest at (22, 0, 3, 0, 0, 0, 0); 736280 profiles)
+M = 26: U(Y) <= 3.2809570  (largest at (20, 0, 5, 0, 0, 0, 1); 906185 profiles)
+M = 27: U(Y) <= 3.2809595  (largest at (20, 0, 5, 0, 0, 0, 2); 1107540 profiles)
+M = 28: U(Y) <= 3.2586970  (largest at (24, 0, 0, 0, 0, 1, 3); 1344820 profiles)
+M = 29: U(Y) <= 3.2079814  (largest at (24, 0, 0, 0, 0, 0, 5); 1622950 profiles)
+M = 30: U(Y) <= 3.1999976  (largest at (9, 13, 0, 0, 5, 1, 2); 1947330 profiles)
+   without n_0 <= 24 (no use of thm:kissing-stable): M = 24: U(Y) <= 3.2395754 at (24, 0, 0, 0, 0, 0, 0)
+   without n_0 <= 24 (no use of thm:kissing-stable): M = 25: U(Y) <= 3.2826739 at (22, 0, 3, 0, 0, 0, 0)
+   without n_0 <= 24 (no use of thm:kissing-stable): M = 26: U(Y) <= 3.2809570 at (20, 0, 5, 0, 0, 0, 1)
+   without n_0 <= 24 (no use of thm:kissing-stable): M = 27: U(Y) <= 3.2809595 at (20, 0, 5, 0, 0, 0, 2)
+   without n_0 <= 24 (no use of thm:kissing-stable): M = 28: U(Y) <= 3.2625398 at (25, 0, 0, 0, 0, 0, 3)
+   without n_0 <= 24 (no use of thm:kissing-stable): M = 29: U(Y) <= 3.2102926 at (29, 0, 0, 0, 0, 0, 0)
+   without n_0 <= 24 (no use of thm:kissing-stable): M = 30: U(Y) <= 3.1999976 at (9, 13, 0, 0, 5, 1, 2)
+level L* = 3282673877139/1000000000000 = 3.2826739
+cells with at most 23 neighbours within sqrt6: volume >= [7.90714442971 +/- 3.66e-12]
+every cell of a saturated packing: volume > 9 pi^2/8 - L* + 1/28600 = [7.82066603912149 +/- 3.49e-15]
+density of every packing < [0.630995132110131 +/- 3.08e-16]
+  density < 0.631496 : True
+  density < 0.630996 : True

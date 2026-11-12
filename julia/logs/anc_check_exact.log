@@ -1,0 +1,7 @@
+PASS 24 root directions, 24 dual facets, six incidences at each end
+PASS Hadamard root symmetry and exact radial coefficient 227/600  [got 227//600; expected 227//600]
+PASS angular comparison coefficient > 1/4  [got 6527//25000; expected 6527//25000]
+PASS transfer comparison monotonicity at 1200 rational entries  [got 1200; expected 1200]
+PASS cross-cell mask has a negative rational quadratic form
+PASS complete small highest-weight orbit enumeration  [got 4; expected 4]
+PASS signed-window energy and prefix identity for all 2046 sign strings of lengths 1-10  [got 2046; expected 2046]

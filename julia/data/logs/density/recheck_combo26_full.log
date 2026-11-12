@@ -1,0 +1,47 @@
+statement (C) at 26 centres, case case26_all.json: combined certificate combo26_level_d8.npz, two-point degree 12/4, three-point degree 8; 17845 count vectors
+  [ok] dmax exceeds sqrt 6
+  [ok] A_1..A_D and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  (t = 8.282667607, float t 8.282669772)
+  [ok] three-point blocks positive definite (exact LDL^T)  (35 blocks)
+  point terms: {'A': '0.237248', 'B': '0.076471', 'F': '0.090236'}
+  pair AA: float largest K + PAIR3 - Pi -2.329178e-02 (file c2 -2.329185e-02); threshold -2.327176e-02
+  pair AB: float largest K + PAIR3 - Pi -1.038348e-02 (file c2 -1.039879e-02); threshold -1.036330e-02
+  pair AF: float largest K + PAIR3 - Pi -1.505743e-02 (file c2 -1.505192e-02); threshold -1.503736e-02
+  pair BB: float largest K + PAIR3 - Pi -1.733338e-03 (file c2 -1.733343e-03); threshold -1.713338e-03
+  pair BF: float largest K + PAIR3 - Pi -4.532285e-03 (file c2 -4.413312e-03); threshold -4.512281e-03
+  pair FF: float largest K + PAIR3 - Pi -3.702309e-03 (file c2 -1.509593e-03); threshold -3.681549e-03
+  done: K + PAIR3_AA <= Pi + c2 on the admissible pairs: ok 398 boxes closed, 306 set aside, Pi in Arb at 354 corners
+  done: K + PAIR3_AB <= Pi + c2 on the admissible pairs: ok 8293 boxes closed, 7976 set aside, Pi in Arb at 201 corners
+  done: K + PAIR3_AF <= Pi + c2 on the admissible pairs: ok 139 boxes closed, 129 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_BB <= Pi + c2 on the admissible pairs: ok 1117 boxes closed, 1024 set aside, Pi in Arb at 107 corners
+  done: K + PAIR3_BF <= Pi + c2 on the admissible pairs: ok 44 boxes closed, 27 set aside, Pi in Arb at 0 corners
+  done: K + PAIR3_FF <= Pi + c2 on the admissible pairs: ok 5 boxes closed, 0 set aside, Pi in Arb at 0 corners
+  [ok] K + PAIR3_AA <= Pi + c2 on the admissible pairs  (398 boxes closed, 306 set aside, Pi in Arb at 354 corners)
+  [ok] K + PAIR3_AB <= Pi + c2 on the admissible pairs  (8293 boxes closed, 7976 set aside, Pi in Arb at 201 corners)
+  [ok] K + PAIR3_AF <= Pi + c2 on the admissible pairs  (139 boxes closed, 129 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_BB <= Pi + c2 on the admissible pairs  (1117 boxes closed, 1024 set aside, Pi in Arb at 107 corners)
+  [ok] K + PAIR3_BF <= Pi + c2 on the admissible pairs  (44 boxes closed, 27 set aside, Pi in Arb at 0 corners)
+  [ok] K + PAIR3_FF <= Pi + c2 on the admissible pairs  (5 boxes closed, 0 set aside, Pi in Arb at 0 corners)
+  [ok] f <= m_b on every bin  (6323 intervals, least room 1.50e-10)
+  triple AAA: float largest 1.495333e-03 on 649660 samples; threshold 1.497925e-03; 425 monomials, symmetry 2
+  triple AAB: float largest 9.573107e-04 on 649576 samples; threshold 9.598990e-04; 425 monomials, symmetry 1
+  triple AAF: float largest 1.320087e-03 on 649567 samples; threshold 1.322105e-03; 425 monomials, symmetry 1
+  triple ABB: float largest 5.945645e-04 on 649313 samples; threshold 5.966748e-04; 425 monomials, symmetry 1
+  triple ABF: float largest 1.040978e-03 on 649299 samples; threshold 1.043879e-03; 425 monomials, symmetry 0
+  triple AFF: float largest 1.141615e-03 on 649302 samples; threshold 1.145076e-03; 425 monomials, symmetry 1
+  triple BBB: float largest 4.070524e-04 on 648923 samples; threshold 4.094797e-04; 425 monomials, symmetry 2
+  triple BBF: float largest 6.544102e-04 on 648919 samples; threshold 6.564131e-04; 425 monomials, symmetry 1
+  triple BFF: float largest 1.041112e-03 on 648934 samples; threshold 1.043982e-03; 425 monomials, symmetry 1
+  (the samples and thresholds of 9 of these triple setups were taken from c26.ckpt.setup, stored by an earlier run with the same samples)
+  [ok] TRIPLE3_AAA <= c3 on the admissible triples  (790523 boxes, largest centre value 1.4959e-03 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 03:42:22 UTC])
+  [ok] TRIPLE3_AAB <= c3 on the admissible triples  (2321734 boxes, largest centre value 9.5755e-04 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 04:23:51 UTC])
+  [ok] TRIPLE3_AAF <= c3 on the admissible triples  (577496 boxes, largest centre value 1.3201e-03 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 03:26:09 UTC])
+  [ok] TRIPLE3_ABB <= c3 on the admissible triples  (2634975 boxes, largest centre value 5.9466e-04 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 04:55:09 UTC])
+  [ok] TRIPLE3_ABF <= c3 on the admissible triples  (267408 boxes, largest centre value 1.0411e-03 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 03:45:44 UTC])
+  [ok] TRIPLE3_AFF <= c3 on the admissible triples  (117405 boxes, largest centre value 1.1411e-03 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 03:47:04 UTC])
+  [ok] TRIPLE3_BBB <= c3 on the admissible triples  (537784 boxes, largest centre value 4.0739e-04 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 03:53:02 UTC])
+  [ok] TRIPLE3_BBF <= c3 on the admissible triples  (178555 boxes, largest centre value 6.5424e-04 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 03:56:19 UTC])
+  [ok] TRIPLE3_BFF <= c3 on the admissible triples  (86751 boxes, largest centre value 1.0392e-03 [from the checkpoint c26.ckpt, proved by the run of 2026-11-12 03:57:13 UTC])
+  triple boxes in all: 7512631
+  17845 count vectors, 33 type-count vectors; largest bound 3.329050 at (15, 0, 9, 0, 0, 0, 2)
+  [ok] largest bound over the count vectors below 3.3352  (3.329050 < [3.3352000 +/- 3e-12])
+PASS: in case case26_all.json every packing set of 26 centres has U(Y) <= 3.329050 < 3.3352, so U(Y) < max(9 pi^2/8 - 8, 3.3352) for every packing set of 26 centres [77 s]

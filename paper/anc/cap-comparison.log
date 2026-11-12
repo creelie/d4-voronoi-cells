@@ -1,3 +1,0 @@
-PASS pair dilation, triple-to-pair ratio and five-completion constants
-h=1 T=[7.90694015, 7.90694016] one-radius lower expression=[7.91466037, 7.91466038] two-radius lower expression=[7.93603476, 7.93603477]
-h=10031/10000 T=[7.99621535, 7.99621536] one-radius lower expression=[8.00086993, 8.00086994] two-radius lower expression=[8.02919724, 8.02919725]

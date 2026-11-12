@@ -1,0 +1,12 @@
+PASS dmax exceeds sqrt 6
+PASS the case tree covers every packing  [got 2 leaves]
+PASS one certificate per leaf, in order
+leaf 1: 0 <= N(2.0161) <= 18, 0 <= N(2.05) <= 18
+PASS leaf 1 edges as in the case
+PASS leaf 1 A_k and [[A_0, z], [z^T, t]] positive semidefinite (exact LDL^T)  [got t = 8.255477165]
+PASS leaf 1 K <= Pi on the admissible domain  [got 307684 closed, 250823 dropped, 266491 Arb values; expected 307684 closed, 250823 dropped]
+PASS leaf 1 f <= m_b on every bin  [got 345 intervals, least room 1.0679088474098373e-7; expected 345 intervals]
+PASS leaf 1 s >= 0
+PASS leaf 1 largest sum_b n_b m_b over the case, plus t/2, below the target  [got 3.1002101519536023 < 3.1033049512255286; expected 3.1002102]
+leaf 2: 0 <= N(2.0161) <= 24, 19 <= N(2.05) <= 29
+  [----] residual case: no certificate

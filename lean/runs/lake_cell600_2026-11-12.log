@@ -1,0 +1,29 @@
+== lake build cell600
+ℹ [2/6] Built D4Cell600Enum (117s)
+info: D4Cell600Enum.lean:360:0: 'D4Cell600.card_verts' does not depend on any axioms
+info: D4Cell600Enum.lean:361:0: 'D4Cell600.verts_nodup' does not depend on any axioms
+info: D4Cell600Enum.lean:362:0: 'D4Cell600.verts_norm' does not depend on any axioms
+info: D4Cell600Enum.lean:363:0: 'D4Cell600.verts_inner' does not depend on any axioms
+info: D4Cell600Enum.lean:364:0: 'D4Cell600.degree_twelve' does not depend on any axioms
+info: D4Cell600Enum.lean:365:0: 'D4Cell600.rootlike_partners' does not depend on any axioms
+info: D4Cell600Enum.lean:366:0: 'D4Cell600.cells_count' does not depend on any axioms
+info: D4Cell600Enum.lean:367:0: 'D4Cell600.cells_card' does not depend on any axioms
+info: D4Cell600Enum.lean:368:0: 'D4Cell600.cells_nodup' does not depend on any axioms
+info: D4Cell600Enum.lean:369:0: 'D4Cell600.cells_in_range' does not depend on any axioms
+info: D4Cell600Enum.lean:370:0: 'D4Cell600.cells_rootlike' depends on axioms: [propext]
+info: D4Cell600Enum.lean:371:0: 'D4Cell600.five_cells_through_each' does not depend on any axioms
+info: D4Cell600Enum.lean:372:0: 'D4Cell600.count_consistent' does not depend on any axioms
+✔ [3/6] Built D4Cell600Enum:c.o (6.0s)
+✔ [4/6] Built D4Cell600Enum:dynlib (1.1s)
+ℹ [5/6] Built D4Cell600Main (10s)
+info: D4Cell600Main.lean:32:0: 'D4Cell600.no_25' depends on axioms: [propext, Quot.sound, D4Cell600.no_25._native.native_decide.ax_1_1]
+info: D4Cell600Main.lean:33:0: 'D4Cell600.five_24' depends on axioms: [propext, Quot.sound, D4Cell600.five_24._native.native_decide.ax_1_1]
+info: D4Cell600Main.lean:34:0: 'D4Cell600.all_23_in_cells' depends on axioms: [propext,
+ Quot.sound,
+ D4Cell600.all_23_in_cells._native.native_decide.ax_1_1]
+Build completed successfully (6 jobs).
+
+real	2m16.554s
+user	2m7.954s
+sys	0m5.405s
+exit 0

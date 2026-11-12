@@ -1,0 +1,31 @@
+ all delta_i <= 0.097: m>=+0.0292 ok=True
+ top in [0.097,0.101], others < 0.097: m>=+0.1766 ok=True
+ top in [0.101,0.105], others < 0.093: m>=+0.1913 ok=True
+ top in [0.105,0.109], others < 0.090: m>=+0.2009 ok=True
+ top in [0.109,0.113], others < 0.086: m>=+0.2147 ok=True
+ top in [0.113,0.117], others < 0.082: m>=+0.2281 ok=True
+ top in [0.117,0.121], others < 0.079: m>=+0.2274 ok=True
+ top in [0.121,0.125], others < 0.075: m>=+0.2290 ok=True
+ top in [0.125,0.129], others < 0.072: m>=+0.2277 ok=True
+ top in [0.129,0.133], others < 0.069: m>=+0.2261 ok=True
+ top in [0.133,0.137], others < 0.066: m>=+0.2245 ok=True
+ top in [0.137,0.141], others < 0.063: m>=+0.2227 ok=True
+ top in [0.141,0.145], others < 0.060: m>=+0.2207 ok=True
+ top in [0.145,0.149], others < 0.057: m>=+0.2187 ok=True
+ top in [0.149,0.153], others < 0.054: m>=+0.2166 ok=True
+ top in [0.153,0.157], others < 0.052: m>=+0.2117 ok=True
+ top in [0.157,0.161], others < 0.049: m>=+0.2095 ok=True
+ top in [0.161,0.165], others < 0.046: m>=+0.2071 ok=True
+ top in [0.165,0.169], others < 0.044: m>=+0.2020 ok=True
+ top in [0.169,0.173], others < 0.042: m>=+0.1968 ok=True
+ top in [0.173,0.177], others < 0.039: m>=+0.1943 ok=True
+ top in [0.177,0.181], others < 0.037: m>=+0.1890 ok=True
+ top in [0.181,0.185], others < 0.035: m>=+0.1836 ok=True
+ top in [0.185,0.189], others < 0.033: m>=+0.1782 ok=True
+ top in [0.189,0.193], others < 0.030: m>=+0.1754 ok=True
+ top in [0.193,0.197], others < 0.028: m>=+0.1699 ok=True
+ top in [0.197,0.201], others < 0.026: m>=+0.1643 ok=True
+ top in [0.201,0.205], others < 0.025: m>=+0.1559 ok=True
+ top in [0.205,0.209], others < 0.023: m>=+0.1502 ok=True
+ top in [0.209,0.212], others < 0.021: m>=+0.1473 ok=True
+d0=1/48: delta_max<0.212; covered=True; worst m>=+0.0292

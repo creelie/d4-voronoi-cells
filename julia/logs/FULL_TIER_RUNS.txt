@@ -1,0 +1,7 @@
+Full-tier entries run individually (one core):
+labelled_certificate_full    PASS  10 checks   117 s   thm:m23-labelled, all three regions
+case_27_r2.1                 PASS   9 checks   272 s   1 087 011 boxes, counts identical to the Python log
+case_30_r2.05                PASS   9 checks   964 s   2 888 432 boxes, counts identical to the Python log
+cardinality_26_d10           PASS   5 checks   692 s   thm:twenty-six: B = 25.799999928, 790 intervals, 1 287 272 boxes, identical
+cardinality_d10_s008         NOT COMPLETED: the run was stopped by a time limit of the job runner before it ended; no result
+Not run: case_29_r2.0161, density_26, case_30, combo30, combo26_level, combo26_tight, combo29.

@@ -1,8 +1,8 @@
 # Lean 4 verification
 
-Fifteen files and four small Lake projects: machine checks of finite
+Sixteen files and four small Lake projects: machine checks of finite
 arithmetic and of polynomial identities taken from the paper.
-`run_all.sh` checks the fifteen files with
+`run_all.sh` checks the sixteen files with
 the pinned toolchain (`lean-toolchain`: leanprover/lean4:v4.34.0-rc2) and
 prints the axiom report of each; the four Lake projects are built with
 `lake build` in their directories.
@@ -24,8 +24,9 @@ one or two roots meets all three pairs at a vertex; and of the 2024 deleted
 triples exactly 96 do, each pairwise at 60 degrees with a common vertex.
 The identities depend on propext, Classical.choice and Quot.sound, the
 combinatorial theorems on propext at most; nothing uses `native_decide`.
-About two minutes.  The log of `run_all.sh` over all fifteen files is
-`runs/run_all_2026-09-30.log`.
+About two minutes.  The log of `run_all.sh` over all sixteen files is
+`runs/run_all_2026-11-12.log`, and the logs of the four Lake builds are
+`runs/lake_*_2026-11-12.log`.
 
 `D4SecondOrder.lean` covers the exact content of Section
 21.2, the second order of the cell volume at the root system.  It computes
@@ -355,10 +356,26 @@ vertices in Z[phi], the combinatorial facts the kernel checks, and the
 depth-first enumeration as a Lean function; `D4Cell600Main.lean` states the
 three counts the enumeration returns and settles them by `native_decide`.
 
+`D4Hexagons.lean` covers the finite and exact content of sec:hexagon-rigidity.
+From the 24 roots it builds the 96 pairs of T and the 16 hexagons, and proves
+by `decide` that each hexagon satisfies u_(k-1) + u_(k+1) = u_k cyclically,
+that the 16 hexagons use 96 pairs of T, each once, and that every root lies
+in exactly four hexagons.  The quadratic-form bounds of lem:hexagon-identity
+(psi_upper, psi_lower) and the two identities of step (i) of the proof
+(endpoint, squares_shift) are proved over every commutative ring.
+`hexCheck p q u v` decides F(p/q, u/v) < p/q for the first form of F after
+clearing both square roots, with every sign checked; the kernel proves it at
+(1/48, 17/20000) and (7/100, 9/5000), and proves that it fails at
+(1/48, 18/20000).  The constants are checked last: sqrt(480) s + 6 eta^2
+dominates the root in step (iii) and 81 + 1/4 = 325/4 (compare_constants),
+0.110940 < 2/sqrt(325) < 0.110941 (radius_325), and 2/sqrt(1 - 2s) > 2.0017
+at s = 17/20000 (radius_close).  The identities depend on propext,
+Classical.choice and Quot.sound, the decided statements on propext at most.
+
 ## What they need
 
 A Lean 4 toolchain, and nothing else. There is no Mathlib dependency. For
-the fifteen files there is no `lakefile`: install elan and run
+the sixteen files there is no `lakefile`: install elan and run
 
     lean D4Stress.lean
     lean D4Meet.lean
@@ -375,11 +392,12 @@ the fifteen files there is no `lakefile`: install elan and run
     lean D4HoleBudget.lean
     lean D4DesignBudget.lean
     lean D4A18.lean
+    lean D4Hexagons.lean
 
 or `sh run_all.sh`. The first two take a few seconds, the third about
 twenty, the fourth about forty, the fifth about six and the sixth about
 ninety, the seventh about thirty, the eighth and ninth about a second
-each, the tenth about twenty, the eleventh, twelfth and thirteenth about ten each, the fourteenth about fifteen, and the fifteenth about three minutes. Silence means
+each, the tenth about twenty, the eleventh, twelfth and thirteenth about ten each, the fourteenth about fifteen, the fifteenth about three minutes and the sixteenth a few seconds. Silence means
 every theorem in the file was accepted by the kernel; the axiom audit at the foot of each file then prints
 one line per theorem. For the projects,
 
@@ -556,8 +574,7 @@ monomials of the expanded polynomial, agreeing with the Python expansion.
 status 0, every box verified or discarded, after 421881 boxes (the Python
 run of `certificate_check.py` processes 1309185, its monomial-by-monomial
 interval evaluation being looser than the nested evaluation used here).
-The build log is `multi_cap/runs/lean_certificate_build.log`, and the
-counter run is `multi_cap/runs/lean_certificate_stat.log`.
+The build log is `runs/lake_certificate_2026-11-12.log`.
 
 ### certificate/D4LabelledMain.lean
 

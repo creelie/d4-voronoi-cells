@@ -1,0 +1,3 @@
+PASS pair dilation, triple-to-pair ratio and five-completion constants
+PASS h=1//1 thresholds and logged intervals  [got T=[7.90694015, 7.90694016] one-radius lower expression=[7.91466037, 7.91466038] two-radius lower expression=[7.93603476, 7.93603477]; expected T=[7.90694015, 7.90694016] one-radius lower expression=[7.91466037, 7.91466038] two-radius lower expression=[7.93603476, 7.93603477]]
+PASS h=10031//10000 thresholds and logged intervals  [got T=[7.99621535, 7.99621536] one-radius lower expression=[8.00086993, 8.00086994] two-radius lower expression=[8.02919724, 8.02919725]; expected T=[7.99621535, 7.99621536] one-radius lower expression=[8.00086993, 8.00086994] two-radius lower expression=[8.02919724, 8.02919725]]
